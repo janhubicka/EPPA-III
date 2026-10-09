@@ -1,0 +1,142 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,geometry}
+\geometry{margin=29mm}
+\title{EPPA--III: the complementary-half partition lemma}
+\author{Independent validation supplement}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+
+\noindent
+\textbf{Purpose.} Proposition 3.23 invokes Lemma 3.7 without
+its hypothesis that \(H\setminus G\cong sK_t\).
+The following lemma provides that hypothesis under
+precisely the non-homogeneity assumption in Proposition 3.23.
+The circulation manuscript remains untouched.
+
+\paragraph{Lemma.}
+Let \(H\) be a finite non-homogeneous vertex-transitive
+EPPA witness for an induced \(G=sK_t\) such that
+\(|H|=2st\), with \(s,t\ge1\).
+Then \(H[V(H)\setminus V(G)]\cong sK_t\).
+
+\paragraph{Proof.}
+Put \(B=V(H)\setminus V(G)\), and \(n=st=|B|\).
+Since \(H\) is regular and \(|G|=|B|\),
+double-counting the edges crossing \((G,B)\) gives
+\[
+                 |E(H[G])|=|E(H[B])|.        \tag{*}
+\]
+If \(s=1\), this is the maximum possible number
+\(\binom t2\) of edges on \(B\), so \(H[B]=K_t\).
+If \(t=1\), both sides have zero edges, so \(H[B]=sK_1\).
+Assume \(s,t\ge2\).
+
+Let \(W=\operatorname{Aut}(G)=S_t\wr S_s\).
+For \(w\in B\), let
+\[
+             P(w)=(N_H(w)\cap C_i)_{i=1}^s.
+\]
+Every member of \(W\) extends, by EPPA, to an
+automorphism of \(H\) preserving both \(G\) and \(B\).
+Consequently the \(W\)-orbit of \(P(w)\) is
+realized among the \(n\) vertices of \(B\), and
+has size at most \(st\).
+
+Call the \(i\)-th coordinate of a profile
+\emph{partial} if its size is strictly between
+\(0\) and \(t\), and let \(p\) count these coordinates.
+If \(2\le p<s\), its orbit has size at least
+\(\binom sp t^p\ge st^2>st\).
+If \(p=s\ge2\), its orbit has size at least
+\(t^s>st\), with the sole exception \(s=t=2\),
+where equality can occur.
+For \(p=1\), if its size is \(k\),
+the orbit has size
+\[
+       s\binom tk\binom{s-1}{r},
+\]
+where \(r\) is the number of the remaining
+coordinates that are full. The bound \(\le st\)
+forces \(k=1\) or \(k=t-1\) (so \(\binom tk=t\)),
+and \(\binom{s-1}{r}=1\). Thus the other
+coordinates are either all empty or all full.
+The orbit consists of exactly \(st\)
+distinct profiles, naturally indexed by the
+\(st\) vertices of \(G\), and carries the
+natural \(W\)-permutation action.
+
+Suppose first that a partial coordinate occurs.
+The \(st\) different profiles exhaust \(B\),
+so the action on \(B\) is precisely the natural
+action of \(S_t\wr S_s\), apart from the
+exception \(s=t=2\) noted below.
+There are just two orbits of \(W\) on unordered
+pairs of distinct points: pairs from the same
+\(t\)-block and pairs from different blocks.
+Thus \(H[B]\) is either empty, complete,
+\(sK_t\), or \(\overline{sK_t}\).
+The edge-count identity (*) singles out \(sK_t\).
+
+In the exceptional case \(s=t=2\), a profile
+with two partial coordinates consists of
+one vertex selected from each clique of \(G\).
+Its orbit has four elements, with the natural
+\(S_2\wr S_2\)-action on the four corners of
+a square. Its two pair-orbits have sizes
+four (square edges) and two (opposite corners).
+By (*) the graph \(H[B]\) has exactly two edges,
+so it must consist of the opposite-corner
+matching \(2K_2\).
+
+It remains to suppose \emph{every} \(P(w)\) is a
+union of whole \(G\)-cliques. Then the vertices
+of each \(C_i\) have the same closed neighbourhood
+in \(H\): they are true twins. Because \(H\)
+is vertex-transitive, all true-twin classes
+have a common size \(a\ge t\).
+They are cliques, and different \(C_i\)'s
+lie in different classes.
+Let \(Q\) be the quotient graph on these classes.
+It is vertex-transitive and has
+\[
+                      M=\frac{2st}{a}\le2s
+\]
+vertices. The \(s\) classes meeting \(G\)
+form an independent set of \(Q\).
+If \(Q\) had no edges, \(H\) would be a
+disjoint union of equal-sized cliques and
+hence homogeneous, contrary to hypothesis.
+Thus \(Q\) has positive degree, and its
+independent sets have size at most \(M/2\).
+It follows that \(s\le M/2\), and hence
+\(M=2s\) and \(a=t\).
+The vertices of \(G\) occupy exactly \(s\)
+whole true-twin classes; the vertices of \(B\)
+occupy the remaining \(s\) classes.
+They already contribute \(s\binom t2\) edges
+inside \(B\), which by (*) is its entire
+edge count. Thus no two distinct classes
+in \(B\) are adjacent and \(H[B]\cong sK_t\).
+\(\square\)
+
+\paragraph{Consequences for the manuscript.}
+This lemma is independent of imprimitivity,
+and so justifies applying Lemma 3.7 to
+the non-homogeneous \(H\) in Proposition 3.23.
+If \(G=\overline{sK_t}\), complement
+both graphs first, use the lemma for
+\(\overline H\) and \(\overline G=sK_t\),
+and apply Lemma 3.7 there.
+This also removes the invalid use of Lemma 3.3
+for complements of unions of cliques.
+
+\paragraph{Validation boundary.}
+The combinatorial orbit classification was
+independently enumerated for small parameters
+by \texttt{checks/section3\_profiles.py}.
+This is a paper-level proof, not a Lean
+formalization of the lemma. No manuscript
+TeX has been modified.
+\end{document}
