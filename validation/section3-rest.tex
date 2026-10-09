@@ -58,17 +58,45 @@ orbits on unordered pairs both have size five.
 Thus the bipartite cross graph is \(C_{10}\).
 This replaces the unsupported claim that prime size alone
 forces one cycle.
-\paragraph{S3-09, Lemma 3.20: diagonal equivariance needs two cases.}
-For a block system of nine pairs, the natural pairing
-between \(G=R_3\) and \(V'\) provides the same
-\(\operatorname{Aut}(R_3)\) action on both sides.
-The two degree-four cross relations are indeed the
-neighbour and non-neighbour orbitals. In the case of
-two blocks of size nine there is no given equivariant
-pairing; the proof's reference to the degree-one
-matching argument does not justify it in degree four.
-Explain the induced subdirect action or provide a
-separate argument for this block system.
+\paragraph{S3-09, Lemma 3.20: the two-block action gap is now
+repaired at paper level (Lean pending).}
+The proof need not identify the two actions first. For
+\(w\in V'=H\setminus G\), set \(S_w=N_H(w)\cap V(G)\).
+Since every automorphism of \(G=R_3\) extends to one of \(H\)
+preserving \(G\) and \(V'\), the multiset
+\((S_w:w\in V')\) is invariant under
+\(A=\operatorname{Aut}(R_3)\).
+Each set has cardinality \(d_{\rm cross}\), and there are
+nine sets counted with multiplicities. Directly classifying
+the orbits of \(A\) on subsets gives the lists
+\[
+\begin{array}{c|l}
+k&\text{orbit sizes on }k\text{-subsets}\\ \hline
+2 &18,18\\
+3 &6,6,36,36\\
+4 &9,9,36,36,36
+\end{array}
+\]
+The lists exclude \(d_{\rm cross}=2,3\), since no invariant
+multiset of total size nine can be built from the listed
+orbits. When \(d_{\rm cross}=4\), the nine sets must be
+precisely one of the two size-nine orbits: all neighbourhoods
+of vertices of \(R_3\), or all non-neighbourhoods.
+The induced equivariant correspondence \(w\mapsto S_w\)
+forces the second half to carry either the natural
+\(R_3\) adjacency or its complement. If its adjacency is
+the complement under this correspondence, vertices in the
+two halves belong to respectively 10 and 12 triangles.
+That contradicts vertex-transitivity. The two surviving
+possibilities are exactly the cross neighbour and
+cross non-neighbour constructions in the manuscript.
+
+This short argument works \emph{for both types of block
+system}, without assuming a matching beforehand.
+The orbit and triangle calculations have reproducible
+certificates in \texttt{checks/section3\_r3\_orbits.py}.
+They are paper- and Python-verified, \emph{not Lean proved}.
+
 \paragraph{S3-08, finite validation for the \(2K_2\) complement.}
 Suppose \(H\) is transitive on eight vertices and is EPPA
 for an induced \(G=2K_2\) occupying four vertices.
