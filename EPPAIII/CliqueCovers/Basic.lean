@@ -66,7 +66,8 @@ theorem coverAdj_flip {s t : Nat} (X : CrossType) (Y : Bool)
         (CrossType.rel_comm X x.2.2 y.2.2).mp hxy
       simpa [hi.symm] using hyx
     · have hY : Y = true := by simpa [hi] using hc
-      simpa [hi.symm] using hY
+      have hji : y.2.1 ≠ x.2.1 := Ne.symm hi
+      simpa [hji] using hY
 
 theorem coverAdj_irrefl {s t : Nat} (X : CrossType) (Y : Bool)
     (x : CoverVertex s t) : ¬ coverAdj X Y x x := by
@@ -79,16 +80,24 @@ theorem coverAdj_irrefl {s t : Nat} (X : CrossType) (Y : Bool)
 def coverGraph (s t : Nat) (X : CrossType) (Y : Bool) :
     SimpleGraph (CoverVertex s t) where
   Adj := coverAdj X Y
-  symm := coverAdj_flip X Y
-  loopless := coverAdj_irrefl X Y
+  symm := by
+    constructor
+    intro x y h
+    exact coverAdj_flip X Y x y h
+  loopless := by
+    constructor
+    intro x h
+    exact coverAdj_irrefl X Y x h
 
 /-- A disjoint union of `s` cliques with `t` vertices each. -/
 def cliqueUnion (s t : Nat) : SimpleGraph (Fin s × Fin t) where
   Adj := fun x y => x.1 = y.1 ∧ x.2 ≠ y.2
   symm := by
+    constructor
     intro x y h
     exact ⟨h.1.symm, h.2.symm⟩
   loopless := by
+    constructor
     intro x h
     exact h.2 rfl
 
