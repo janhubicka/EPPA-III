@@ -1,0 +1,140 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=28mm}
+\title{EPPA--III: short two-point proof of the double-cover step}
+\author{Independent validation note; manuscript unchanged}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Statement.}
+Let \(G\) be a finite non-homogeneous graph and
+\(H\) an EPPA witness for an induced copy of \(G\).
+Suppose an \(\operatorname{Aut}(H)\)-invariant
+system of imprimitivity partitions \(H\) into pairs
+\(\{x_0,x_1\}\), one for each \(x\in G\), with
+\(G=\{x_0:x\in V(G)\}\).
+Then all edges between different pairs are
+exactly those of the Taylor double of \(G\);
+edges within the pairs are either all present or
+all absent. Furthermore, \(\operatorname{Aut}(H)\)
+induces a 2-transitive group on the pairs and
+acts transitively on ordered inter-pair edges
+and on ordered inter-pair nonedges.
+
+\paragraph{Proof of the structure.}
+Because the pair system is invariant, every
+automorphism of \(H\) induces a permutation
+of the pairs, and if it maps \(x_0\) to \(y_0\)
+it must map \(x_1\) to \(y_1\).
+Every ordered edge of \(G\) can be carried by
+an EPPA extension to every other ordered edge,
+and likewise for ordered nonedges.
+Consequently, the adjacency matrix between
+two different pairs depends only on whether
+\(x\sim_G y\). Writing its rows and columns in
+the order \(0,1\), the matrices have the form
+\[
+  A_E=\begin{pmatrix}1&c_E\\c_E&e_T\end{pmatrix},
+  \qquad
+  A_N=\begin{pmatrix}0&c_N\\c_N&n_T\end{pmatrix},
+  \qquad c_E,c_N,e_T,n_T\in\{0,1\}.
+\]
+The off-diagonal entries agree because EPPA
+extends the transposition of the ordered pair.
+Since \(G\) is non-homogeneous, it has both
+edges and nonedges.
+
+Let \(m_E=1+2c_E+e_T\) and \(m_N=2c_N+n_T\)
+be the numbers of edges between the two pairs.
+If \(m_E\ne m_N\), every automorphism of \(H\)
+preserves the edge/nonedge distinction on the
+underlying set of pairs. Thus every partial
+automorphism of \(G\), extended to \(H\) and
+then projected to the invariant pair system,
+extends to an automorphism of \(G\).
+That would make \(G\) homogeneous. Hence
+\(m_E=m_N\).
+
+The four binary parameters now have precisely
+three possible configurations:
+\[
+\begin{array}{c|cc}
+  &A_E&A_N\\ \hline
+  \text{one edge}&
+  \bigl(\begin{smallmatrix}1&0\\0&0\end{smallmatrix}\bigr)&
+  \bigl(\begin{smallmatrix}0&0\\0&1\end{smallmatrix}\bigr)\\[2pt]
+  \text{two edges}&
+  \bigl(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\bigr)&
+  \bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr)\\[2pt]
+  \text{three edges}&
+  \bigl(\begin{smallmatrix}1&1\\1&0\end{smallmatrix}\bigr)&
+  \bigl(\begin{smallmatrix}0&1\\1&1\end{smallmatrix}\bigr)
+\end{array}
+\]
+In the first configuration, the \emph{unique
+edge} between every two different pairs joins
+vertices in the same layer. In the third,
+the \emph{unique nonedge} between every two
+different pairs likewise joins vertices in
+the same layer. An automorphism that flips
+one pair but not another would turn that
+unique edge (respectively nonedge) into a
+cross-layer edge (respectively nonedge),
+which is impossible. Therefore every
+automorphism flips either \emph{all} pairs
+or \emph{none}. Any EPPA extension of a
+nonempty partial automorphism \(G\to G\)
+must fix the bottom layer setwise, and
+hence restricts to an automorphism of \(G\).
+This again contradicts non-homogeneity.
+
+Only the middle configuration remains,
+which is exactly the Taylor double between
+different fibres. The mate adjacency
+\(x_0\sim x_1\) is constant by the one-point
+EPPA extensions, so it can be uniformly
+added or omitted.
+
+\paragraph{The orbit conclusion.}
+Let \(K\) be the group induced by
+\(\operatorname{Aut}(H)\) on the pairs.
+Two-point EPPA shows that \(K\) is
+transitive separately on ordered edges and
+ordered nonedges of \(G\). If these were
+distinct \(K\)-orbits, then \(K\le
+\operatorname{Aut}(G)\), forcing \(G\)
+to be homogeneous as above. Hence the
+two orbits coalesce: \(K\) is 2-transitive.
+Every pair of distinct fibres in the
+Taylor-double pattern has two edges
+and two nonedges between them. The
+deck involution exchanging \(x_0,x_1\)
+simultaneously for every \(x\) exchanges
+the two edges and the two nonedges.
+Combining it with 2-transitivity of \(K\)
+proves transitivity on ordered edges and
+ordered nonedges connecting different fibres.
+
+\paragraph{Consequences.}
+This replaces the maximal-partial-automorphism
+argument in Claim 3.5 and the ensuing counting
+in Claim 3.6 with an elementary two-point
+orbit calculation. It also gives the Case~2
+double-cover identification in Lemma 3.12
+\emph{without using regularity or unequal
+clique sizes}, once the pair system is known.
+For Lemma 3.3, Claim 3.4 remains the separate
+step establishing that invariant pair system.
+
+\paragraph{Verification boundary.}
+The three binary configurations are exhaustively
+checked and encoded in Lean in
+\texttt{EPPAIII/DoubleCover/PairPatterns.lean}.
+The logical implication from an invariant pair
+system and EPPA to the uniform matrices, and
+the layer-rigidity implication, remain to be
+fully formalized. The source manuscript has
+not been changed.
+\end{document}
