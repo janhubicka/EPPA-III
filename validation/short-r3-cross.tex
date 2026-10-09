@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=32mm]{geometry}
+\title{Local replacement for Lemma 3.20, cross-degree 2--4}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+\noindent
+\textbf{Proposed substitution for items (3) and (4) only.}
+For \(w\in V'=V(H)\setminus V(G)\), let
+\(S_w=N_H(w)\cap V(G)\). Every automorphism of \(G=R_3\)
+extends to \(H\) preserving the two halves, so the
+multiset of nine sets \(S_w\) is invariant under
+\(A=\operatorname{Aut}(R_3)\).
+The orbit sizes of \(A\) on 2-, 3-, and 4-subsets are,
+respectively,
+\[
+(18,18),\qquad (6,6,36,36),\qquad
+(9,9,36,36,36).
+\]
+As \(|S_w|=d_{\rm cross}\), the first two lists exclude
+\(d_{\rm cross}\in\{2,3\}\). If \(d_{\rm cross}=4\),
+the multiset is one of the two orbits of size nine,
+consisting of the neighbourhoods or the non-neighbourhoods
+of vertices of \(R_3\). We thus obtain an equivariant
+identification of \(V'\) with \(V(G)\). Under this
+identification, \(H[V']\) is \(R_3\) or its complement.
+In the latter case the numbers of triangles through
+vertices of the two halves are 10 and 12, contradicting
+transitivity. The former case yields exactly the two
+graphs in (3) and (4) of the classification, according
+to the chosen four-set orbit.
+
+\medskip
+\noindent
+\textbf{Audit boundary.} The orbit lists and triangle
+counts are independently checked by
+\texttt{checks/section3\_r3\_orbits.py}.
+No original manuscript TeX is modified, and no claim of
+Lean verification of this passage is made.
+\end{document}

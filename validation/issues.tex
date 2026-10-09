@@ -229,8 +229,13 @@ the potential \(C_4\dot\cup C_6\) cross relation in Lemma 3.18.
 hypothesis is automatic for the \(s=t=2\) case:
 none of the 96 transitive eight-vertex candidates with
 \(H\setminus G\cong P_3\dot\cup K_1\) satisfies EPPA.
-\item \textbf{S3-09:} justify the identification of the two
-\(R_3\)-actions in Lemma 3.20 for the two-nine-vertex-block case.
+\item \textbf{S3-09 (paper-level repaired, Lean pending):}
+the size-\(k\) subset orbit lists for \(\operatorname{Aut}(R_3)\),
+with \(k=2,3,4\), exclude cross-degrees 2, 3 and determine
+the only two degree-four cross patterns. This also fixes
+the missing two-block equivariance step. The replacement is
+in \texttt{validation/short-r3-cross.tex}; its finite
+orbit and triangle counts are included in CI.
 \end{itemize}
 The two standard-library Python checkers are included in CI.
 Neither the manuscript nor the previously suggested Wagner

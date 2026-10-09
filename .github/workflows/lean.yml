@@ -58,6 +58,7 @@ jobs:
         run: |
           python3 checks/section3_counterexamples.py
           python3 checks/section3_2k2_complement.py
+          python3 checks/section3_r3_orbits.py
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then
