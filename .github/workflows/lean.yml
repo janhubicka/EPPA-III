@@ -54,6 +54,10 @@ jobs:
         run: |
           python3 checks/cover_2k2.py
           python3 checks/cover_2k2_all.py
+      - name: Check Section 3 remaining lemmas
+        run: |
+          python3 checks/section3_counterexamples.py
+          python3 checks/section3_2k2_complement.py
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then

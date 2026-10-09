@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\section*{EPPA--III Section 3 remainder: audit}
+The manuscript source \texttt{main-new(7).tex} remains unchanged.
+\paragraph{S3-01, Lemma 3.12: false without non-homogeneous witness.}
+Take \(G=K_2\dot\cup K_1\subset H=3K_2\). Then \(H\) is homogeneous,
+transitive and imprimitive, and \(2|G|=|H|\), but is not one of
+the graphs in the conclusion. More strongly
+\(K_3\dot\cup K_2\dot\cup K_1\subset 4K_3\) contradicts \(s=2\).
+Add the hypothesis that \(H\) is non-homogeneous; this is necessary,
+not yet a complete repair of the proof.
+\paragraph{S3-02, Proposition 3.23: the doubles are missing.}
+Both \(2C_5\) and \(2R_3\) are non-homogeneous, transitive and imprimitive,
+and each is an EPPA witness for one embedded \(C_5\) or \(R_3\).
+They are incorrectly called homogeneous in the proof.
+Case (4) should include \(H=2G\), as does the main theorem.
+\paragraph{S3-03, Proposition 3.23: invalid invocation of Lemma 3.3.}
+The final paragraph invokes Lemma 3.3 for complements of
+unions of cliques, which that lemma explicitly excludes.
+Complement both \(G\) and \(H\) and use the equal-clique
+case, after settling the partition hypothesis below.
+\paragraph{S3-04, Proposition 3.23: missing partition hypothesis.}
+Lemma 3.7 assumes not only that \(G\cong sK_t\) but also that
+\(H\setminus G\cong sK_t\). Proposition 3.23 invokes Lemma 3.7
+without first showing the latter property. Regularity and
+\(|G|=|H|/2\) give equal edge counts in the two halves,
+not isomorphism. The \(s=t=2\) instance is checked separately;
+the general transfer remains open.
+\paragraph{S3-05, Claim 3.15: structural inference needs repair.}
+An edge between different blocks of imprimitivity need not
+automatically join two blocks meeting \(G\). Also extending
+permutations of \(G\cap\Pi\) while fixing a vertex of \(\Pi'\)
+does not by itself establish a faithful action on
+\(\Pi'\setminus G\). Hence the claimed inequality
+\(|\Pi'\setminus G|\geq |G\cap\Pi|\) requires an argument,
+as do the subsequent equality and two-block conclusions.
+This is a proof gap, not a known counterexample when \(H\)
+is assumed non-homogeneous.
+\paragraph{S3-06, Claims 3.13 and 3.16: block action details.}
+In Claim 3.13, the assertion that each block meets at most
+one maximal clique of \(G\) can be justified by selecting an
+independent transversal of the maximal cliques and extending all
+its permutations. The invariant block-equivalence relation must
+be constant on unordered pairs of that transversal; all points
+cannot occupy one block since \(G\) does not. In Claim 3.16,
+the preservation of selected \(D_i\)'s and the inclusion
+\(\varphi(C_1\setminus K)\subseteq D_1\) need justification.
+\paragraph{S3-07, Lemma 3.18: one-sentence repair of the cross-degree 2 case.}
+A 2-regular bipartite graph on \(5+5\) vertices is either
+\(C_{10}\) or \(C_4\dot\cup C_6\).
+In the second case its \(C_4\) determines the unique pair of
+vertices of \(G=C_5\) having two common neighbours in
+\(H\setminus G\). Every automorphism of \(C_5\) extends to \(H\)
+and preserves both halves, so this pair would be invariant
+under \(\operatorname{Aut}(C_5)\). But its edge and nonedge
+orbits on unordered pairs both have size five.
+Thus the bipartite cross graph is \(C_{10}\).
+This replaces the unsupported claim that prime size alone
+forces one cycle.
+\paragraph{S3-09, Lemma 3.20: diagonal equivariance needs two cases.}
+For a block system of nine pairs, the natural pairing
+between \(G=R_3\) and \(V'\) provides the same
+\(\operatorname{Aut}(R_3)\) action on both sides.
+The two degree-four cross relations are indeed the
+neighbour and non-neighbour orbitals. In the case of
+two blocks of size nine there is no given equivariant
+pairing; the proof's reference to the degree-one
+matching argument does not justify it in degree four.
+Explain the induced subdirect action or provide a
+separate argument for this block system.
+\paragraph{S3-08, finite validation for the \(2K_2\) complement.}
+Suppose \(H\) is transitive on eight vertices and is EPPA
+for an induced \(G=2K_2\) occupying four vertices.
+Since \(H\) is regular and the halves have equal size,
+the two induced halves have the same number of edges.
+Thus \(H\setminus G\) has precisely two edges:
+\(2K_2\) or \(P_3\dot\cup K_1\).
+For the second possibility a standard-library exhaustive
+check finds 864 cross-edge matrices compatible with regularity,
+96 vertex-transitive ones, and \emph{zero} EPPA witnesses
+for the designated \(2K_2\). Therefore \(H\setminus G
+\cong2K_2\) in this finite case, without assuming it.
+See \texttt{checks/section3\_2k2\_complement.py}.
+This does not establish the corresponding general statement
+for arbitrary \(s,t\).
+\section*{Reproducibility and scope}
+The independent test \texttt{checks/section3\_counterexamples.py}
+checks 22 partial automorphisms for \(K_2\dot\cup K_1\),
+1465 for \(K_3\dot\cup K_2\dot\cup K_1\),
+286 for \(C_5\), and 34498 for \(R_3\). Both finite
+scripts are standard-library Python. No original TeX files
+have been modified, and the complete Section 3 classification
+is \emph{not} certified by Lean.
+\end{document}
