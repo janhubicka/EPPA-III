@@ -137,6 +137,29 @@ is the cube (fails EPPA for the designated copy), and the fourth
 is the Wagner graph. The reproducible exhaustive check is
 \texttt{checks/cover\_2k2.py}, written using Python's standard library.
 
+\paragraph{GCC--08 (confirmed full finite test): the whole \(s=t=2\) case.}
+The 64 special matrices above are only a subset of the possible
+cross-relations. We independently enumerated all \(2^{16}=65{,}536\)
+bipartite graphs between the two distinguished copies of \(2K_2\),
+without imposing any regularity on the four \(2\times2\) cross-blocks.
+Vertex transitivity implies uniform total degree, reducing the
+candidates to 140 cross matrices. Exactly 68 of these are
+vertex-transitive, and 28 have EPPA for the designated \(2K_2\).
+They represent six graph-isomorphism types.
+
+Crucially, the test does \emph{not} stop at graph isomorphism:
+for each of the 28 accepted matrices, it enumerates all
+independent rearrangements of the cliques and vertices
+on the \(C\) and \(D\) sides (the action of
+\(\operatorname{Aut}(2K_2)\times\operatorname{Aut}(2K_2)\)).
+Every accepted matrix is equivalent under these \emph{permitted}
+relabellings to a uniform generalised clique cover
+(Definition 1.6) or to the Wagner matrix. Hence the exact
+finite \(s=t=2\) instance of Lemma 3.7, under its partition
+hypotheses, is independently verified. This is exhaustive
+Python verification, not Lean proof.
+Reproduction: \texttt{checks/cover\_2k2\_all.py}.
+
 \section*{Next formalisation goals}
 \begin{enumerate}
 \item Define partial automorphisms of the distinguished induced \(sK_t\)
