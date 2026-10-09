@@ -79,4 +79,64 @@ theorem all_bottom_of_one_bottom {V : Type*}
         hPreserve hExists hSame x x0
     _ = false := hx0
 
+/-- The exceptional inter-fibre relation for a graph: the unique edge
+in the one-edge pattern, or the unique nonedge in the three-edge pattern. -/
+def graphExceptional {V : Type*} (H : SimpleGraph (Bool × V))
+    (high : Bool) (u v : Bool × V) : Prop :=
+  u.2 ≠ v.2 ∧ (if high then ¬ H.Adj u v else H.Adj u v)
+
+/-- A graph automorphism preserving the fibre system and the unique
+inter-fibre edge/nonedge cannot flip individual fibres independently.
+All graph-specific hypotheses are explicit; no existence of a hidden
+canonical lift is assumed. -/
+theorem graph_uniform_layer_of_exceptional {V : Type*}
+    (H : SimpleGraph (Bool × V)) (high : Bool)
+    (q : Equiv.Perm (Bool × V)) (σ : Equiv.Perm V)
+    (hq : ∀ u v, H.Adj u v ↔ H.Adj (q u) (q v))
+    (hFibre : ∀ (b : Bool) (x : V), (q (b, x)).2 = σ x)
+    (hOccurs : ∀ x y : V, x ≠ y → ∃ b : Bool,
+      if high then ¬ H.Adj (b, x) (b, y) else H.Adj (b, x) (b, y))
+    (hSame : ∀ u v : Bool × V, u.2 ≠ v.2 →
+      (if high then ¬ H.Adj u v else H.Adj u v) → u.1 = v.1) :
+    ∀ x y : V, (q (false, x)).1 = (q (false, y)).1 := by
+  have hproj (u : Bool × V) : (q u).2 = σ u.2 := by
+    rcases u with ⟨b, x⟩
+    exact hFibre b x
+  have hPres : ∀ u v, graphExceptional H high u v ↔
+      graphExceptional H high (q u) (q v) := by
+    intro u v
+    have hn : (u.2 ≠ v.2) ↔ ((q u).2 ≠ (q v).2) := by
+      rw [hproj u, hproj v]
+      constructor
+      · intro h hh
+        exact h (σ.injective hh)
+      · intro h hh
+        exact h (congrArg σ hh)
+    change (u.2 ≠ v.2 ∧
+      (if high then ¬ H.Adj u v else H.Adj u v)) ↔
+      ((q u).2 ≠ (q v).2 ∧
+        (if high then ¬ H.Adj (q u) (q v) else H.Adj (q u) (q v)))
+    constructor
+    · rintro ⟨ha, hb⟩
+      refine ⟨hn.mp ha, ?_⟩
+      cases high
+      · exact (hq u v).mp hb
+      · exact fun hc => hb ((hq u v).mpr hc)
+    · rintro ⟨ha, hb⟩
+      refine ⟨hn.mpr ha, ?_⟩
+      cases high
+      · exact (hq u v).mpr hb
+      · exact fun hc => hb ((hq u v).mp hc)
+  have hSource : ∀ x y : V, x ≠ y →
+      ∃ b : Bool, graphExceptional H high (b, x) (b, y) := by
+    intro x y hxy
+    obtain ⟨b, hb⟩ := hOccurs x y hxy
+    exact ⟨b, ⟨hxy, hb⟩⟩
+  have hTarget : ∀ u v : Bool × V,
+      graphExceptional H high u v → u.1 = v.1 := by
+    intro u v hh
+    exact hSame u v hh.1 hh.2
+  exact uniform_layer_of_exceptional (graphExceptional H high)
+    q σ hFibre hPres hSource hTarget
+
 end EPPAIII.DoubleCover
