@@ -40,7 +40,9 @@ theorem cubeMatching_left_induced :
   intro u v
   rcases u with ⟨i, a⟩
   rcases v with ⟨j, b⟩
-  simp [cliqueUnion, cubeMatchingGraph, cubeMatchingAdj, coverLeftEmbedding]
+  change (i = j ∧ a ≠ b) ↔
+    cubeMatchingAdj (false, (i, a)) (false, (j, b))
+  simp [cubeMatchingAdj]
 
 /-- Swapping the two vertices of the second clique is a (total)
 partial automorphism of the designated first half. -/
@@ -49,7 +51,13 @@ private def swapSecond : Equiv.Perm (Fin 2 × Fin 2) :=
 
 private theorem swapSecond_partial :
     IsPartialGraphAutomorphism (cliqueUnion 2 2) Finset.univ swapSecond := by
-  decide
+  intro u v _ _
+  change (u.1 = v.1 ∧ u.2 ≠ v.2) ↔
+    ((swapSecond u).1 = (swapSecond v).1 ∧
+      (swapSecond u).2 ≠ (swapSecond v).2)
+  rcases u with ⟨i, a⟩
+  rcases v with ⟨j, b⟩
+  fin_cases i <;> fin_cases a <;> fin_cases j <;> fin_cases b <;> decide
 
 /-- A vertex in the first clique and the first vertex in the second
 clique have a common neighbour in the opposite half. -/
@@ -58,7 +66,7 @@ private theorem common_for_first :
       (right (0 : Fin 2) (0 : Fin 2)) ∧
     cubeMatchingGraph.Adj (left (1 : Fin 2) (0 : Fin 2))
       (right (0 : Fin 2) (0 : Fin 2)) := by
-  decide
+  simp [cubeMatchingGraph, cubeMatchingAdj, left, right]
 
 /-- But replacing the second-clique vertex by its mate destroys
 all common neighbours. This is a concrete graph invariant. -/
@@ -66,7 +74,10 @@ private theorem no_common_for_second :
     ∀ w : CoverVertex 2 2,
       ¬ (cubeMatchingGraph.Adj (left (0 : Fin 2) (0 : Fin 2)) w ∧
          cubeMatchingGraph.Adj (left (1 : Fin 2) (1 : Fin 2)) w) := by
-  decide
+  intro w
+  rcases w with ⟨side, ⟨i, a⟩⟩
+  cases side <;> fin_cases i <;> fin_cases a <;>
+    simp [cubeMatchingGraph, cubeMatchingAdj, left, right]
 
 /-- The cube is not an EPPA witness for the designated 2K₂.
 This replaces the computational exclusion in the last paragraph of
@@ -77,14 +88,24 @@ theorem cubeMatching_not_EPPA :
   intro hEPPA
   obtain ⟨q, hq, hExt⟩ :=
     hEPPA.2 Finset.univ swapSecond swapSecond_partial
+  have hP0 : swapSecond ((0 : Fin 2), (0 : Fin 2)) =
+      ((0 : Fin 2), (0 : Fin 2)) := by decide
+  have hP1 : swapSecond ((1 : Fin 2), (0 : Fin 2)) =
+      ((1 : Fin 2), (1 : Fin 2)) := by decide
   have hFix : q (left (0 : Fin 2) (0 : Fin 2)) =
       left (0 : Fin 2) (0 : Fin 2) := by
-    simpa [coverLeftEmbedding, swapSecond] using
-      (hExt ((0 : Fin 2), (0 : Fin 2)) (Finset.mem_univ _))
+    have hh := hExt ((0 : Fin 2), (0 : Fin 2)) (Finset.mem_univ _)
+    rw [hP0] at hh
+    change q (left (0 : Fin 2) (0 : Fin 2)) =
+      left (0 : Fin 2) (0 : Fin 2) at hh
+    exact hh
   have hSwap : q (left (1 : Fin 2) (0 : Fin 2)) =
       left (1 : Fin 2) (1 : Fin 2) := by
-    simpa [coverLeftEmbedding, swapSecond] using
-      (hExt ((1 : Fin 2), (0 : Fin 2)) (Finset.mem_univ _))
+    have hh := hExt ((1 : Fin 2), (0 : Fin 2)) (Finset.mem_univ _)
+    rw [hP1] at hh
+    change q (left (1 : Fin 2) (0 : Fin 2)) =
+      left (1 : Fin 2) (1 : Fin 2) at hh
+    exact hh
   have h₁ := (hq (left (0 : Fin 2) (0 : Fin 2))
     (right (0 : Fin 2) (0 : Fin 2))).mp common_for_first.1
   have h₂ := (hq (left (1 : Fin 2) (0 : Fin 2))
