@@ -268,4 +268,24 @@ for the complete hypotheses and proof details.
 to Lemma 3.12, close its Case 2 structural dependency,
 and justify the second-half partition before applying
 Lemma 3.7 in Proposition 3.23.
+
+\section*{Closed paper-level gap: complementary half of \(sK_t\)}
+\textbf{S3--04} (application of Lemma 3.7 in
+Proposition 3.23) now has an independent proof:
+for every \emph{non-homogeneous, vertex-transitive}
+EPPA witness \(H\) for \(G=sK_t\) with
+\(|H|=2st\), the induced graph on \(H\setminus G\)
+is also \(sK_t\). The proof distinguishes short
+wreath-product orbits of outside neighbourhood
+profiles from the true-twin case. It works without
+imprimitivity; the full argument is in
+\texttt{validation/partition-half-lemma.tex}.
+A checker confirms the orbit classification in
+52,368 finite cases. The graph-theoretic lemma
+itself still awaits Lean formalization.
+
+\textbf{S3--03} (complementary \(G\)) is then handled
+by complementing both \(G\) and \(H\) before applying
+the new lemma and Lemma 3.7. Lemma 3.3 is not
+used outside its hypotheses.
 \end{document}
