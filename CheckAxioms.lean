@@ -15,3 +15,5 @@ import EPPAIII
 #print axioms EPPAIII.full_diag_hits_every_right
 #print axioms EPPAIII.cubeMatching_left_induced
 #print axioms EPPAIII.cubeMatching_not_EPPA
+#print axioms EPPAIII.doubleTriangleAdjustment_sub
+#print axioms EPPAIII.doubleTriangleAdjustment_ne
