@@ -1,0 +1,169 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=29mm}
+\title{EPPA--III: a direct profile proof of the equal-clique case}
+\author{Independent optional validation; original manuscript unchanged}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Theorem (stronger than Lemma 3.7 for
+non-homogeneous witnesses).}
+Let \(G=sK_t\) be induced in a finite
+\emph{non-homogeneous vertex-transitive}
+EPPA witness \(H\), with \(|H|=2st\).
+Then \(H\) is a generalised clique cover
+of \(G\), or \(s=t=2\) and \(H\) is
+the Wagner graph. No imprimitivity or
+a priori decomposition of \(H\setminus G\)
+is assumed.
+
+\paragraph{Proof.}
+Put \(B=H\setminus G\), \(n=st\), and
+let \(C_1,\ldots,C_s\) be the components
+of \(G\). Regularity and the equality of
+the two part sizes imply
+\[
+             |E(H[B])|=|E(G)|=s\binom t2.
+             \tag{1}
+\]
+The result is immediate for \(s=1\) or \(t=1\);
+assume \(s,t\ge2\).
+For \(w\in B\) record its neighbourhood
+profile \(P(w)=(N_H(w)\cap C_i)_{i=1}^s\).
+Every permutation in
+\(W=\operatorname{Aut}(G)=S_t\wr S_s\)
+extends to an automorphism of \(H\)
+preserving \(G\) and \(B\). Therefore
+\[
+                      |W P(w)|\le st.
+                      \tag{2}
+\]
+
+Let \(p\) be the number of coordinates
+of \(P(w)\) whose sizes lie strictly between
+\(0\) and \(t\). If \(2\le p<s\),
+the orbit size is at least
+\(\binom sp t^p\ge st^2>st\).
+If \(p=s\ge2\), it is at least
+\(t^s>st\), unless \(s=t=2\).
+When \(p=1\), say its size is \(k\),
+and \(r\) of the other coordinates are
+full, the exact orbit size is
+\[
+        s\binom tk\binom{s-1}{r}.
+\]
+The bound (2) forces
+\(k\in\{1,t-1\}\), and the remaining
+coordinates are either all empty or all
+full. This orbit has exactly \(st\)
+points, so every vertex of \(B\) has
+one of these profiles, with each profile
+occurring exactly once. The action of \(W\)
+on \(B\) is its natural action on \(s\)
+blocks of \(t\) points. Its unordered
+pair-orbits are same-block and
+different-block pairs. Consequently
+\(H[B]\) is one of
+\(\varnothing,K_{st},sK_t,\overline{sK_t}\).
+Equation (1) leaves only \(H[B]=sK_t\).
+The cross-edges connect each \(D_i\)
+to exactly one \(C_i\) by a matching
+(or its complement), and to every other
+\(C_j\) uniformly by no edges or all
+edges. Thus \(H\) is a generalised
+clique cover.
+
+When \(s=t=2\) and \(p=2\), the four
+profiles instead choose one vertex from
+\emph{each} of \(C_1,C_2\): they are
+the four corners of a square.
+The \(W=S_2\wr S_2\) action on these
+corners has unordered pair-orbits of
+lengths four (sides) and two
+(opposite corners). Equation (1)
+forces \(H[B]\) to be the
+opposite-corner matching. Labelling
+the corners \((a,b)\in\{0,1\}^2\),
+take \(D_1=\{(0,0),(1,1)\}\) and
+\(D_2=\{(0,1),(1,0)\}\).
+With these orders the connection
+matrix is exactly
+\[
+ A=\begin{pmatrix}
+ M&M\\M&\overline M
+ \end{pmatrix},
+\]
+which is the Wagner graph.
+
+Finally suppose that \emph{every}
+outside profile has \(p=0\).
+Then every \(C_i\) is contained
+in a true-twin class of \(H\).
+These classes all have common size
+\(a\ge t\), since \(H\) is vertex-transitive.
+The quotient graph \(Q\) on twin
+classes is vertex-transitive,
+has \(2st/a\le2s\) vertices,
+and contains the \(s\) classes
+meeting \(G\) as an independent set.
+Since \(H\) is not homogeneous,
+\(Q\) is not edgeless. A
+positive-degree regular graph has no
+independent set larger than half its
+order. Thus \(a=t\) and
+\(Q\) has exactly \(2s\) vertices.
+The first \(s\) twin classes comprise
+\(G\), and the others comprise \(B\).
+Equation (1) implies no edges between
+distinct latter classes, so
+\(H[B]=sK_t\).
+
+Each \(D_j\), being one such twin
+class, is connected \emph{completely}
+to precisely \(r\) of the \(C_i\).
+Regularity makes \(r\) independent
+of \(j\). Permutations of the
+\(C_i\)'s extend to automorphisms
+of \(H\) and permute the \(D_j\)'s,
+so all \(\binom sr\) possible
+\(r\)-subsets of \([s]\) must be
+represented among the \(s\) cliques
+\(D_j\). Thus \(\binom sr\le s\),
+giving \(r\in\{0,1,s-1,s\}\).
+For \(r=0,s\), every cross-entry is
+constant. For \(r=1,s-1\), the
+\(s\) profiles are precisely all
+singletons or co-singletons, each
+once. Pair the \(C_i,D_i\)
+using their distinguished coordinate;
+all diagonal entries are equal to
+\(0\) or \(1\), and so are all
+off-diagonal entries. This again is a
+generalised clique cover. \(\square\)
+
+\paragraph{Why this is useful.}
+Together with the earlier complementary-half
+profile lemma, the proof certifies the
+\emph{conclusion} of Lemma 3.7 in
+the non-homogeneous setting without using
+any of Claims 3.8--3.11.
+It is optional: the short individual repair
+to Claim 3.9 and the Wagner paragraph can be
+kept if the authors prefer minimal changes.
+The proof also strengthens the conclusion
+by dispensing with imprimitive and complementary
+partition hypotheses.
+
+\paragraph{Validation status.}
+All short-profile orbit types are already
+tested by \texttt{checks/section3\_profiles.py}.
+A further independent exhaustive checker of
+the exceptional \(s=t=2\) case is in
+\texttt{checks/cover\_2k2\_all.py}.
+The theorem above is a fully spelled-out
+paper proof; its group-action and true-twin
+reduction are \emph{not yet proved in Lean}.
+No manuscript source has been edited.
+\end{document}
