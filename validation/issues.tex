@@ -358,8 +358,15 @@ The Boolean enumeration is in
 the transport of complementary neighbourhood
 profiles by EPPA automorphisms is formally
 proved in \texttt{EPPAIII/EPPA/ProfileAction.lean}.
-The graph-level double-cover rigidity and the
-complete clique-profile classification have
+A generic rigidity theorem for an invariant
+exceptional pair relation is also axiom-checked in
+\texttt{EPPAIII/DoubleCover/LayerRigidity.lean}:
+a fibre-preserving automorphism flips all
+fibres or none. Instantiating this principle
+with the actual one-edge/three-edge graph
+patterns remains to be formalized.
+The complete clique-profile classification
+and the graph-level double-cover theorem have
 paper-level proofs and finite corroborations,
 but are \emph{not} yet Lean-checked.
 These are alternative repairs, not edits to
