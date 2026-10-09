@@ -206,4 +206,52 @@ Proposition 3.23, provided \(H\) is non-homogeneous.
 For complementary \(G\), apply the lemma to
 \((\overline G,\overline H)\), not Lemma 3.3.
 The general lemma is not yet formalized in Lean.
+
+\section*{Case 2 of Lemma 3.12: pair-system structure repaired}
+The earlier appeal to Claims 3.5--3.6 can be
+replaced by two-point EPPA and vertex regularity.
+Once the invariant blocks are pairs
+\(\{x_0,x_1\}\), with \(G\) selecting one
+point per block, all ordered edges of \(G\)
+lie in one \(\operatorname{Aut}(H)\)-orbit, as
+do all ordered nonedges. Therefore the
+cross-layer adjacency bits \(c_E,c_N\)
+and top-layer bits \(e_T,n_T\) depend only
+on whether \(x,y\) are adjacent in \(G\);
+the within-fibre bit \(\varepsilon\) is constant
+by transitivity.
+For a vertex over a \(G\)-clique of size \(k\),
+regularity gives
+\[
+d_0(k)=k-1+\varepsilon+c_E(k-1)+c_N(n-k),
+\]
+whose coefficient of the varying \(k\)
+must vanish. Thus \(c_E=0,c_N=1\).
+Comparing top degrees
+\[
+d_1(k)=\varepsilon+e_T(k-1)+n_T(n-k)+(n-k)
+\]
+with \(d_0(k)=n-1+\varepsilon\)
+forces \(e_T=1,n_T=0\).
+This is exactly the Taylor double with
+optional matching between fibre mates.
+Claim 3.16 is then settled by the
+triangle count already recorded.
+The exact local manuscript replacement is
+\texttt{validation/repair-case2-pair-regularity.tex}.
+All 7,520 invariant binary-matrix patterns
+for unequal compositions of base orders
+\(3\le n\le8\) pass the independent
+degree calculation in
+\texttt{checks/section3\_pair\_regular.py}.
+
+\paragraph{Updated status of Lemma 3.12.}
+Under the necessary extra hypothesis that
+\(H\) is non-homogeneous, both cases have
+complete paper-level repair proofs, conditional
+only on the earlier valid block-invariance
+setup and Claims 3.13--3.14. No original
+manuscript wording has been changed.
+The statement and its full combinatorial
+proof have not yet been verified in Lean.
 \end{document}
