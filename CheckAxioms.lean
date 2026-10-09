@@ -27,3 +27,5 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.fibre_layer_complement
 #print axioms EPPAIII.DoubleCover.uniform_layer_of_exceptional
 #print axioms EPPAIII.DoubleCover.all_bottom_of_one_bottom
+
+#print axioms EPPAIII.DoubleCover.graph_uniform_layer_of_exceptional
