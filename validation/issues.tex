@@ -241,4 +241,31 @@ The two standard-library Python checkers are included in CI.
 Neither the manuscript nor the previously suggested Wagner
 repair has been modified.
 
+
+\section*{Further Section 3 validation: unequal clique sizes}
+\textbf{S3--05} (Claim 3.15) is now repaired at paper level:
+the block quotient is complete; all blocks are occupied;
+a uniform positive number \(r\) of neighbours in every
+other block gives \(k_ir=(m-k_j)r\).
+Unequal clique sizes force exactly two blocks.
+The cross-edge graph then decomposes into pieces on
+\(2k_1,2k_2\) vertices; EPPA and vertex-transitivity
+exclude \(r>1\), leaving a perfect matching.
+
+\textbf{S3--06} (Claim 3.16) admits a triangle-count
+repair: the difference between vertices above cliques
+\(i,j\) in the Taylor double is
+\((k_i-k_j)(n-k_i-k_j)\), unchanged by adding
+the matching between fibre mates. For at least
+three cliques with unequal sizes this contradicts
+vertex-transitivity. The formula passed 2,024
+exact finite double-graph checks and the polynomial
+difference is Lean-verified.
+
+See \texttt{validation/repair-claims-313-316.tex}
+for the complete hypotheses and proof details.
+\emph{Remaining:} add the non-homogeneous hypothesis
+to Lemma 3.12, close its Case 2 structural dependency,
+and justify the second-half partition before applying
+Lemma 3.7 in Proposition 3.23.
 \end{document}
