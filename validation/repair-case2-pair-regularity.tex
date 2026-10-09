@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,geometry}
+\geometry{margin=30mm}
+\title{EPPA--III Lemma 3.12, Case 2: a direct degree argument}
+\author{Source-local validation supplement}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+
+\noindent
+\textbf{Scope.} This replaces only the sentence in
+Case 2 that refers to Claims 3.5 and 3.6
+for the double-cover conclusion. The main manuscript
+is untouched. We assume that the preceding paragraph
+has correctly established \(n\) invariant fibre blocks
+of size two with exactly one point of \(G\) in each.
+
+\paragraph{Proof.}
+Write the fibres as \(\{x_0,x_1\}\)
+for \(x\in G=\dot\cup_i K_{k_i}\).
+The internal relation \(\varepsilon\in\{0,1\}\)
+between \(x_0\) and \(x_1\) is independent of
+\(x\), because \(H\) is vertex-transitive and
+the system of pairs is invariant.
+Every isomorphism between two ordered edges of
+\(G\) extends to an automorphism of \(H\);
+the same holds for ordered nonedges.
+Such an extension carries the mate of each
+domain vertex to the mate of its image.
+Therefore, for distinct \(x,y\), all four
+adjacencies between the two fibres depend only
+on whether \(x\sim_G y\). Reversing the two
+endpoints shows that the two off-diagonal
+cross-layer entries agree.
+
+Let \(c_E,c_N\in\{0,1\}\) denote these
+cross-layer entries above \(G\)-edges and
+\(G\)-nonedges, respectively.
+Let \(e_T,n_T\in\{0,1\}\) denote the
+top-layer entries above \(G\)-edges and
+\(G\)-nonedges. For a bottom vertex \(x_0\)
+above a clique of size \(k\), its degree is
+\[
+ d_0(k)=k-1+\varepsilon+c_E(k-1)+c_N(n-k).
+\]
+All vertices of \(H\) have equal degree.
+Since the clique sizes are unequal, comparing
+two different values of \(k\) gives
+\(1+c_E-c_N=0\). Thus \(c_E=0\) and
+\(c_N=1\). In particular,
+\[
+                       d_0(k)=n-1+\varepsilon.
+\]
+The top-layer vertex \(x_1\) has degree
+\[
+ d_1(k)=\varepsilon+e_T(k-1)+n_T(n-k)+(n-k).
+\]
+As \(d_1(k)=d_0(k)\) for two distinct
+clique sizes, subtraction gives
+\(e_T-n_T-1=0\).
+Hence \(e_T=1\) and \(n_T=0\).
+These four entries are exactly those of
+the Taylor double of \(G\), and
+\(\varepsilon=1\) adds precisely the
+matching between fibre mates.
+This proves the desired double-cover
+identification.
+
+\paragraph{Finishing Case 2.}
+With this explicit identification,
+the previously established triangle formula
+\[
+ T_i-T_j=(k_i-k_j)(n-k_i-k_j)
+\]
+excludes three or more cliques of unequal sizes,
+by vertex-transitivity. Hence \(s=2\).
+
+\paragraph{Verification.}
+The adjacency-matrix degree argument is
+independently checked for all 7,520
+cases obtained by choosing one of 32 possible
+matrix patterns and an unequal positive
+composition of \(n\), for \(3\le n\le8\).
+Only the two expected Taylor-double patterns
+are regular. See
+\texttt{checks/section3\_pair\_regular.py}.
+This is a complete paper-level proof of
+the reduction \emph{conditional on the previously
+established invariant pair system};
+it is not yet a full Lean formalization.
+\end{document}

@@ -241,4 +241,71 @@ The two standard-library Python checkers are included in CI.
 Neither the manuscript nor the previously suggested Wagner
 repair has been modified.
 
+
+\section*{Further Section 3 validation: unequal clique sizes}
+\textbf{S3--05} (Claim 3.15) is now repaired at paper level:
+the block quotient is complete; all blocks are occupied;
+a uniform positive number \(r\) of neighbours in every
+other block gives \(k_ir=(m-k_j)r\).
+Unequal clique sizes force exactly two blocks.
+The cross-edge graph then decomposes into pieces on
+\(2k_1,2k_2\) vertices; EPPA and vertex-transitivity
+exclude \(r>1\), leaving a perfect matching.
+
+\textbf{S3--06} (Claim 3.16) admits a triangle-count
+repair: the difference between vertices above cliques
+\(i,j\) in the Taylor double is
+\((k_i-k_j)(n-k_i-k_j)\), unchanged by adding
+the matching between fibre mates. For at least
+three cliques with unequal sizes this contradicts
+vertex-transitivity. The formula passed 2,024
+exact finite double-graph checks and the polynomial
+difference is Lean-verified.
+
+See \texttt{validation/repair-claims-313-316.tex}
+for the complete hypotheses and proof details.
+\emph{Remaining:} add the non-homogeneous hypothesis
+to Lemma 3.12, close its Case 2 structural dependency,
+and justify the second-half partition before applying
+Lemma 3.7 in Proposition 3.23.
+
+\section*{Closed paper-level gap: complementary half of \(sK_t\)}
+\textbf{S3--04} (application of Lemma 3.7 in
+Proposition 3.23) now has an independent proof:
+for every \emph{non-homogeneous, vertex-transitive}
+EPPA witness \(H\) for \(G=sK_t\) with
+\(|H|=2st\), the induced graph on \(H\setminus G\)
+is also \(sK_t\). The proof distinguishes short
+wreath-product orbits of outside neighbourhood
+profiles from the true-twin case. It works without
+imprimitivity; the full argument is in
+\texttt{validation/partition-half-lemma.tex}.
+A checker confirms the orbit classification in
+52,368 finite cases. The graph-theoretic lemma
+itself still awaits Lean formalization.
+
+\textbf{S3--03} (complementary \(G\)) is then handled
+by complementing both \(G\) and \(H\) before applying
+the new lemma and Lemma 3.7. Lemma 3.3 is not
+used outside its hypotheses.
+
+\section*{Case 2 of Lemma 3.12: closed at paper level}
+The sentence referring to Claims 3.5--3.6 to
+identify the double cover admits a direct
+replacement. With invariant two-point fibres,
+two-point EPPA makes all fibre-pair adjacency
+patterns uniform over ordered edges and
+ordered nonedges of \(G\).
+Comparing bottom degrees for two different
+clique sizes forces cross-layer bits
+\(c_E=0,c_N=1\). Comparing top degrees with
+bottom degrees forces \(e_T=1,n_T=0\).
+Thus \(H\) is exactly the Taylor double,
+optionally with the fibre matching. The
+triangle count then rules out \(s\ge3\).
+See \texttt{validation/repair-case2-pair-regularity.tex}.
+This leaves Lemma 3.12 fully repaired at the
+paper level \emph{after adding the necessary
+non-homogeneity assumption on \(H\)}.
+Its full graph statement is not Lean-verified.
 \end{document}

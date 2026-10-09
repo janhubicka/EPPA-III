@@ -1,0 +1,167 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,geometry}
+\geometry{margin=28mm}
+\title{EPPA--III: source-local repairs for Claims 3.15--3.16}
+\author{Validation supplement; manuscript unchanged}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Scope and necessary hypothesis.}
+The statement of Lemma 3.12 is false without excluding homogeneous
+witnesses: \(K_2\dot\cup K_1\subseteq 3K_2\) and
+\(K_3\dot\cup K_2\dot\cup K_1\subseteq4K_3\) are counterexamples.
+We work under the necessary additional hypothesis that \(H\) is
+\emph{non-homogeneous}. We use Claim 3.14, whose regularity/double-counting
+argument is valid once Claim 3.13 is in place. The original source is
+not modified.
+
+\section*{A short replacement for Claim 3.13}
+Let \(P\) be any invariant partition of the vertex set of a
+vertex-transitive graph into blocks of size \(m\).
+The setwise stabiliser of each block \(\Pi\) acts transitively
+on \(\Pi\), so \(H[\Pi]\) is vertex-transitive.
+In a finite regular graph of positive degree on \(m\) vertices,
+an independent set has size at most \(m/2\), by counting its
+incident edges. Thus a vertex-transitive graph having a clique
+of size \(>m/2\) must be complete.
+In Case 1, different components of \(G\) lie in different
+blocks: otherwise the EPPA action on an independent transversal
+would force all of \(G\) into one block.
+As \(|G|=bm/2\) and its occupied-block clique sizes are unequal,
+some block contains \(>m/2\) vertices of \(G\), forming a clique.
+Therefore that block, and by transitivity every block, is a clique.
+
+\section*{Replacement for the proof of Claim 3.15}
+
+Write \(b=|P|\), \(m=|\Pi|\), and let \(S\subseteq P\) be the
+\(s\) blocks meeting \(G\); put \(k_i=|G\cap\Pi_i|>0\).
+Since \(|G|=bm/2\) and the sizes \(k_i\) are unequal,
+we have \(s>b/2\).
+
+Let \(Q\) be the graph on \(P\) joining two blocks whenever
+\(H\) has an edge between them. Since \(H\) is not a disjoint
+union of cliques and all blocks induce cliques, \(Q\) is
+a positive-degree vertex-transitive graph.
+Permutations of an independent transversal of the
+\(s\) maximal cliques of \(G\) extend to automorphisms
+of \(H\), inducing every permutation of the occupied
+blocks \(S\). Hence \(Q[S]\) is either complete or
+edgeless. It cannot be edgeless, because in a positive-degree
+regular graph an independent set contains at most half
+the vertices. Thus \(Q[S]\) is complete.
+If \(Q\) were not complete, its complement would be
+a positive-degree vertex-transitive graph having the
+independent set \(S\) of size \(>b/2\). Therefore \(Q\)
+itself is complete.
+
+By Claim 3.14 there are no interblock edges between two
+blocks disjoint from \(G\). As \(Q\) is complete,
+there is at most one such block, say \(U\).
+If \(U\) exists, extending permutations of the
+independent transversal preserves \(U\) and is
+transitive on the occupied blocks; by varying the
+representatives, it is also transitive on \(V(G)\).
+Thus every vertex of \(G\) has the same number
+\(q>0\) of neighbours in \(U\), and the edge count
+\(e(H[\Pi_i,U])=k_iq\) is independent of \(i\).
+This forces all \(k_i\) to be equal, a contradiction.
+Consequently every block is occupied: \(b=s\).
+
+Fix \(x\in G\cap\Pi_i\). Extending permutations of an
+independent transversal which fix \(x\) and permute the
+other representatives shows that \(x\) has the same
+number of neighbours in each \(\Pi_j\) with \(j\ne i\).
+Since \(H\) is vertex-transitive, this number is a
+common \(r>0\) for every vertex of \(H\).
+For distinct blocks \(\Pi_i,\Pi_j\), Claim 3.14 says
+all edges between them go from \(G\cap\Pi_i\) to
+\(\Pi_j\setminus G\), or vice versa. Counting edges
+between \(G\cap\Pi_i\) and \(\Pi_j\setminus G\)
+from both sides therefore yields
+\[
+      k_i r=(m-k_j)r,\qquad\text{so}\qquad k_i+k_j=m.
+\]
+If \(s\ge3\), these equations force all the \(k_i\)'s
+equal (in fact \(m/2\)), contrary to assumption.
+Hence \(s=b=2\), as required. In particular, there
+are precisely two imprimitivity blocks.
+
+\section*{The next paragraph: the cross edges form a matching}
+
+Let \(B_1,B_2\) be these two cliques of size
+\(m=n\), and let \(G_i=G\cap B_i\) have unequal
+sizes \(k_i\), with \(k_1+k_2=m\).
+Let \(J\) be the graph consisting only of the edges
+of \(H\) between \(B_1\) and \(B_2\).
+It is \(r\)-regular for the positive \(r\) above
+and is invariant under \(\operatorname{Aut}(H)\).
+By Claim 3.14, it is the disjoint union of
+\(r\)-regular bipartite graphs
+\[
+ J_1=J[G_1,B_2\setminus G_2]
+ \quad\text{and}\quad
+ J_2=J[B_1\setminus G_1,G_2]
+\]
+on \(2k_1\) and \(2k_2\) vertices, respectively.
+Suppose \(r\ge2\). Some two points of \(G_1\)
+have a common neighbour in \(J_1\), so are in
+the same connected component of \(J\).
+EPPA extends all permutations of the clique \(G_1\);
+hence every two points of \(G_1\) lie in the same
+component. As \(J_1\) has no isolated vertices,
+\(J_1\) is connected. The same holds for \(J_2\).
+But \(J\) is vertex-transitive, so its connected
+components have equal size, contrary to
+\(2k_1\ne2k_2\). Thus \(r=1\), and the
+cross edges form a perfect matching.
+(If \(r=0\), \(H=2K_m\) is homogeneous,
+the already-listed trivial alternative.)
+This avoids the unsupported invocation of Claim 3.9
+for the entire \(m\times m\) cross relation.
+
+\section*{Replacement for Claim 3.16}
+
+Suppose we are in Case 2, so that the preceding
+double-cover argument has identified \(H\) as the
+Taylor double of
+\[
+ G=\dot\bigcup_{i=1}^s K_{k_i},\qquad
+ n=\sum_i k_i,
+\]
+possibly with the matching between fibre mates.
+Let \(T_i\) be the number of triangles of \(H\) through
+a vertex over the \(i\)-th clique. Separating
+neighbours in its own layer and in the opposite layer
+gives
+\[
+ T_i=\binom{k_i-1}{2}
+       +\sum_{j\ne i}\binom{k_j}{2}
+       +(k_i-1)(n-k_i)
+     =\sum_j\binom{k_j}{2}
+       +(k_i-1)(n-k_i-1).
+\]
+Fibre mates have no common neighbour, so adding the
+extra matching creates no triangles. Consequently
+\[
+ T_i-T_j=(k_i-k_j)(n-k_i-k_j).
+\]
+If \(s\ge3\), then \(n-k_i-k_j>0\) for every \(i\ne j\).
+The \(k_i\)'s are not all equal, so the triangle counts
+are not constant. This contradicts vertex-transitivity
+of \(H\). Therefore \(s=2\).
+
+\paragraph{Proof boundaries.}
+The new arguments above are paper-level deductions
+checked independently for logical consistency.
+The triangle formula was tested exhaustively for
+all 2,024 composition/double cases of base size
+\(3\le n\le10\); see
+\texttt{checks/section3\_triangle\_double.py}.
+They do \emph{not} by themselves prove the earlier
+assertion in Case 2 that the graph is indeed a
+Taylor double (possibly with a matching), nor the
+unconditional version of Lemma 3.12 in the manuscript.
+No original manuscript text has been changed.
+\end{document}

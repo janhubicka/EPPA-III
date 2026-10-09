@@ -120,4 +120,138 @@ checks 22 partial automorphisms for \(K_2\dot\cup K_1\),
 scripts are standard-library Python. No original TeX files
 have been modified, and the complete Section 3 classification
 is \emph{not} certified by Lean.
+
+\section*{Further repairs of Claims 3.13--3.16}
+\paragraph{S3--05, Claim 3.15 (paper-level repair; Lean pending).}
+A vertex-transitive, positive-degree block quotient and
+independent transversals of the unequal cliques show that
+every imprimitivity block meets \(G\).
+EPPA then makes the degree into each other block a
+constant \(r>0\); double-counting the cross edges gives
+\(k_ir=(m-k_j)r\) for every distinct \(i,j\), where
+\(k_i=|G\cap\Pi_i|\). Thus \(k_i+k_j=m\), forcing
+precisely two blocks if the \(k_i\)'s are unequal.
+The detailed rigorous proof is in
+\texttt{validation/repair-claims-313-316.tex}.
+
+\paragraph{Case 1: the cross relation is a matching.}
+For two blocks the interblock-edge graph splits into
+\(r\)-regular bipartite graphs on \(2k_1\) and \(2k_2\)
+vertices. If \(r\ge2\), EPPA and the shared-neighbour
+relation force both pieces to be connected. This violates
+vertex-transitivity since \(k_1\ne k_2\).
+Hence \(r=1\). The case \(r=0\) is homogeneous
+and must be handled separately.
+
+\paragraph{S3--06, Claim 3.16 (paper-level repair; Lean arithmetic checked).}
+For the Taylor double of \(\dot\cup_iK_{k_i}\), with or
+without the extra fibre matching, the triangle count
+at a vertex above the \(i\)-th clique is
+\[
+ \sum_j\binom{k_j}{2}+(k_i-1)(n-k_i-1).
+\]
+The difference for indices \(i,j\) equals
+\((k_i-k_j)(n-k_i-k_j)\). It cannot vanish
+for unequal \(k_i,k_j\) when \(s\ge3\).
+The formula passed 2,024 exhaustive finite graph tests;
+its algebraic difference is verified by Lean, but the
+graph-counting statement itself is not yet formalized.
+
+\paragraph{Proof boundary.}
+Lemma 3.12 still needs the added hypothesis
+that \(H\) is non-homogeneous. Case 2 still uses the
+previously asserted double-cover structure.
+Proposition 3.23 still needs the missing partition
+hypothesis for the invocation of Lemma 3.7.
+The original manuscript is unchanged.
+
+\section*{S3--04: complementary-half partition now proved at paper level}
+The missing hypothesis in the application of Lemma 3.7
+is supplied by a general lemma:
+if \(H\) is a non-homogeneous vertex-transitive
+EPPA witness for an induced \(G=sK_t\) with
+\(|H|=2st\), then \(H\setminus G\cong sK_t\).
+It does not require an imprimitivity assumption.
+
+For each vertex \(w\) outside \(G\), record the
+\(s\)-tuple \((N(w)\cap C_i)\).
+Its orbit under \(S_t\wr S_s\) is realised
+by vertices outside \(G\), so has size \(\le st\).
+The exact orbit formula forces either all coordinates
+empty/full, or a unique partial coordinate which is a
+singleton or co-singleton, with all remaining coordinates
+uniformly empty/full. The latter profiles form the
+natural \(st\)-point wreath-product action.
+In the only extra small case \(s=t=2\), profiles with
+one point from each clique give the square action.
+The induced outside graph is determined in each case
+by its edge count, which equals that of \(G\).
+
+If instead all profiles are unions of complete cliques,
+each \(C_i\) is a true-twin class subset in \(H\).
+Vertex-transitivity and the independent-set bound in the
+regular true-twin quotient force exactly \(2s\) twin
+classes of size \(t\); the selected \(s\) classes
+are exactly \(G\), and the other \(s\) form \(sK_t\)
+by the same edge count.
+
+The complete self-contained proof, including the
+trivial \(s=1\) and \(t=1\) cases, is in
+\texttt{validation/partition-half-lemma.tex}.
+The requisite small orbit calculations were independently
+checked for 52,368 profiles in
+\texttt{checks/section3\_profiles.py}.
+This repairs the missing hypothesis transfer in
+Proposition 3.23, provided \(H\) is non-homogeneous.
+For complementary \(G\), apply the lemma to
+\((\overline G,\overline H)\), not Lemma 3.3.
+The general lemma is not yet formalized in Lean.
+
+\section*{Case 2 of Lemma 3.12: pair-system structure repaired}
+The earlier appeal to Claims 3.5--3.6 can be
+replaced by two-point EPPA and vertex regularity.
+Once the invariant blocks are pairs
+\(\{x_0,x_1\}\), with \(G\) selecting one
+point per block, all ordered edges of \(G\)
+lie in one \(\operatorname{Aut}(H)\)-orbit, as
+do all ordered nonedges. Therefore the
+cross-layer adjacency bits \(c_E,c_N\)
+and top-layer bits \(e_T,n_T\) depend only
+on whether \(x,y\) are adjacent in \(G\);
+the within-fibre bit \(\varepsilon\) is constant
+by transitivity.
+For a vertex over a \(G\)-clique of size \(k\),
+regularity gives
+\[
+d_0(k)=k-1+\varepsilon+c_E(k-1)+c_N(n-k),
+\]
+whose coefficient of the varying \(k\)
+must vanish. Thus \(c_E=0,c_N=1\).
+Comparing top degrees
+\[
+d_1(k)=\varepsilon+e_T(k-1)+n_T(n-k)+(n-k)
+\]
+with \(d_0(k)=n-1+\varepsilon\)
+forces \(e_T=1,n_T=0\).
+This is exactly the Taylor double with
+optional matching between fibre mates.
+Claim 3.16 is then settled by the
+triangle count already recorded.
+The exact local manuscript replacement is
+\texttt{validation/repair-case2-pair-regularity.tex}.
+All 7,520 invariant binary-matrix patterns
+for unequal compositions of base orders
+\(3\le n\le8\) pass the independent
+degree calculation in
+\texttt{checks/section3\_pair\_regular.py}.
+
+\paragraph{Updated status of Lemma 3.12.}
+Under the necessary extra hypothesis that
+\(H\) is non-homogeneous, both cases have
+complete paper-level repair proofs, conditional
+only on the earlier valid block-invariance
+setup and Claims 3.13--3.14. No original
+manuscript wording has been changed.
+The statement and its full combinatorial
+proof have not yet been verified in Lean.
 \end{document}
