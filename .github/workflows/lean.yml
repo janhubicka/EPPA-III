@@ -50,6 +50,8 @@ jobs:
           set -euo pipefail
           lake env lean CheckAxioms.lean > axioms.log 2>&1
           python3 scripts/check_axioms.py axioms.log CheckAxioms.lean
+      - name: Check finite 2K2 matrices
+        run: python3 checks/cover_2k2.py
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then
