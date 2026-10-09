@@ -1,0 +1,58 @@
+name: Lean
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache Lean toolchain
+        uses: actions/cache@v5
+        with:
+          path: ~/.elan/toolchains
+          key: lean-toolchain-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}
+      - name: Cache Lake workspace
+        uses: actions/cache@v5
+        with:
+          path: .lake
+          key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: |
+            lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-
+      - name: Install elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Download Mathlib cache
+        run: lake exe cache get
+      - name: Build formalization
+        run: |
+          set -euo pipefail
+          if ! lake build > build.log 2>&1; then
+            sed -n '/error:/,$p' build.log
+            exit 1
+          fi
+          tail -10 build.log
+      - name: Audit theorem axioms
+        run: |
+          set -euo pipefail
+          lake env lean CheckAxioms.lean > axioms.log 2>&1
+          python3 scripts/check_axioms.py axioms.log CheckAxioms.lean
+      - name: Reject unsolved placeholders
+        run: |
+          if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then
+            echo "A placeholder or custom axiom is present."
+            exit 1
+          fi
