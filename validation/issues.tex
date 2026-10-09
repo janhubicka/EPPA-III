@@ -205,4 +205,35 @@ exceptional case to the exact finite computation.
 Only declarations explicitly listed in \texttt{CheckAxioms.lean}
 are considered verified when the GitHub Actions build and axiom audit
 are successful. Claims 3.8--3.11 and Lemma 3.7 are not yet on that list.
+\section*{Continuation: remainder of Section 3}
+A separate, detailed, source-numbered report is kept in
+\texttt{validation/section3-rest.tex}. Its confirmed findings are:
+\begin{itemize}
+\item \textbf{S3-01 (false statement):} Lemma 3.12 needs at least
+the hypothesis that \(H\) is non-homogeneous. Counterexamples
+\(K_2\dot\cup K_1\subset3K_2\) and
+\(K_3\dot\cup K_2\dot\cup K_1\subset4K_3\).
+\item \textbf{S3-02 (omitted cases):} Proposition 3.23 incorrectly calls
+\(2C_5\) and \(2R_3\) homogeneous and hence drops valid,
+non-homogeneous imprimitive witnesses. Include \(H=2G\)
+in its item (4), as in Theorem 1.2.
+\item \textbf{S3-03/S3-04:} Proposition 3.23 invokes Lemma 3.3
+outside its hypotheses and Lemma 3.7 without establishing
+the required partition of \(H\setminus G\) into equal cliques.
+\item \textbf{S3-05/S3-06:} the block-counting argument in
+Claim 3.15 and the action on fibres in Claim 3.16
+remain insufficiently justified.
+\item \textbf{S3-07:} a short \(C_5\)-orbit argument excludes
+the potential \(C_4\dot\cup C_6\) cross relation in Lemma 3.18.
+\item \textbf{S3-08:} exhaustive computation shows the partition
+hypothesis is automatic for the \(s=t=2\) case:
+none of the 96 transitive eight-vertex candidates with
+\(H\setminus G\cong P_3\dot\cup K_1\) satisfies EPPA.
+\item \textbf{S3-09:} justify the identification of the two
+\(R_3\)-actions in Lemma 3.20 for the two-nine-vertex-block case.
+\end{itemize}
+The two standard-library Python checkers are included in CI.
+Neither the manuscript nor the previously suggested Wagner
+repair has been modified.
+
 \end{document}
