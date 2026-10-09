@@ -69,4 +69,27 @@ pairing; the proof's reference to the degree-one
 matching argument does not justify it in degree four.
 Explain the induced subdirect action or provide a
 separate argument for this block system.
+\paragraph{S3-08, finite validation for the \(2K_2\) complement.}
+Suppose \(H\) is transitive on eight vertices and is EPPA
+for an induced \(G=2K_2\) occupying four vertices.
+Since \(H\) is regular and the halves have equal size,
+the two induced halves have the same number of edges.
+Thus \(H\setminus G\) has precisely two edges:
+\(2K_2\) or \(P_3\dot\cup K_1\).
+For the second possibility a standard-library exhaustive
+check finds 864 cross-edge matrices compatible with regularity,
+96 vertex-transitive ones, and \emph{zero} EPPA witnesses
+for the designated \(2K_2\). Therefore \(H\setminus G
+\cong2K_2\) in this finite case, without assuming it.
+See \texttt{checks/section3\_2k2\_complement.py}.
+This does not establish the corresponding general statement
+for arbitrary \(s,t\).
+\section*{Reproducibility and scope}
+The independent test \texttt{checks/section3\_counterexamples.py}
+checks 22 partial automorphisms for \(K_2\dot\cup K_1\),
+1465 for \(K_3\dot\cup K_2\dot\cup K_1\),
+286 for \(C_5\), and 34498 for \(R_3\). Both finite
+scripts are standard-library Python. No original TeX files
+have been modified, and the complete Section 3 classification
+is \emph{not} certified by Lean.
 \end{document}
