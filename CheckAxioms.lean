@@ -24,3 +24,6 @@ import EPPAIII
 #print axioms EPPAIII.lift_preserves_outside
 #print axioms EPPAIII.profile_equivariant
 #print axioms EPPAIII.eppa_profiles_transport
+#print axioms EPPAIII.DoubleCover.fibre_layer_complement
+#print axioms EPPAIII.DoubleCover.uniform_layer_of_exceptional
+#print axioms EPPAIII.DoubleCover.all_bottom_of_one_bottom
