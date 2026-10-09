@@ -1,0 +1,128 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,geometry}
+\geometry{margin=28mm}
+\title{EPPA--III validation log: generalised clique covers}
+\author{Independent audit and Lean formalisation}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Source and editing policy.}
+This log refers to the supplied manuscript source \texttt{main-new(6).tex},
+in particular Definitions 1.5--1.6, Lemma 3.7 and Claims 3.8--3.11.
+The manuscript is frozen: corrections are proposed here and NOT applied
+to its TeX. A successful Lean CI run does not certify any statement that
+has not actually been expressed and proved in Lean.
+
+\paragraph{Status.}
+The initial Lean module models the graph given by Definition 1.6 and
+proves its elementary induced-copy and adjacency properties.
+The full classification Lemma 3.7 is \textbf{not yet validated}.
+A separate exhaustive finite computation is complete for the
+exceptional \(s=t=2\) matrix family.
+
+\section*{Issues}
+
+\paragraph{GCC--01 (confirmed): Taylor-double identification.}
+The passage following Definition 1.6 says that, for \(G=K_t\),
+diagonal connection \(X=M\) gives exactly the Taylor double of \(K_t\).
+Definition 2.2 instead gives \(2K_t\), so the Taylor double corresponds
+to \(X=0\). The matching connection has \(t\) additional cross-edges.
+The analogous complement wording should also be revised.
+Lean target: \texttt{matching\_not\_taylor\_clique}.
+
+\paragraph{GCC--02 (proof repair required): Claim 3.8.}
+The argument with coloured cycles needs a canonical connection profile,
+not a profile dependent on arbitrary orderings of vertices inside the
+\(D_j\)'s. One possible repair is to use, for every \(D_j\), the vector
+whose \(i\)-th coordinate is the multiset of neighbourhoods of the
+vertices of \(D_j\) in \(C_i\). If an automorphism extending a
+transposition in \(C_i\) maps \(D_j\) to \(D_{j'}\), the coordinates other
+than \(i\) agree. Unequal degrees of the transposed vertices force
+the \(i\)-th coordinates to differ. Then the no-rainbow-cycle argument
+must be stated for these actual profiles. This is a proposed repair
+and has not been checked in Lean.
+
+\paragraph{GCC--03 (serious gap): Claim 3.9.}
+An extension of an arbitrary permutation of \(C_i\) may move the clique
+\(D_j\). Thus the assertion that every \(k\)-subset of \(C_i\) occurs
+as the neighbourhood of a vertex in this \emph{fixed} \(D_j\)
+does not follow. Consequently, \(\binom tk\leq t\) and the deduction
+\(k\in\{1,t-1\}\) are unproved. Counting neighbourhoods
+across \emph{all} \(s\) cliques only gives
+\(\binom tk\leq st\); this is generally insufficient. A genuine
+stabiliser analysis is needed.
+
+\paragraph{GCC--04 (gap): Claim 3.10.}
+The colour-count argument on the clique-adjacency graph requires a
+precisely identified action on the \(D_j\)'s. Its assertion of a
+common number \(k_m\) of colour-\(m\) neighbours for every \(D_j\)
+does not follow from transitivity on the \(C_i\)'s alone.
+Even when all bipartite entries are isomorphic matchings,
+independently reordering each \(D_j\) to turn every entry into
+the same literal matching requires compatibility of the relative
+permutations. A better strategy is to rule out off-diagonal
+matching cases first and then normalise only the diagonal matchings.
+
+\paragraph{GCC--05 (confirmed flaw): Claim 3.11 when \(s\geq3,t=2\).}
+The calculation of \(N(I)\cap(H\setminus G)\) omits diagonal
+connections. In particular, if \(X=1\), a transversal \(I\)
+choosing one vertex of each \(C_j\) is adjacent to every vertex
+of \(D_j\), for every \(j\). Hence
+\(N(I)\cap(H\setminus G)=H\setminus G\) independently of \(I\).
+The proof's claimed variation of this neighbourhood size therefore
+fails without first excluding \(X=1\). This is an objection to
+the \emph{argument}, not a counterexample to Lemma 3.7.
+Lean target: \texttt{full\_diag\_hits\_every\_right}.
+
+\paragraph{GCC--06 (gaps): remaining cases of Claim 3.11.}
+In the \(s\geq3,t\geq3\) case, an extension fixing \(C_1\)
+pointwise may permute the \(D_j\)'s; the proof assumes \(D_3\)
+is fixed setwise. In the \(s=2,t\geq3\) case, the sentence
+claiming that \emph{both} diagonal and off-diagonal entries
+are matchings is not a consequence of the preceding claim:
+the diagonal entries may still be \(0\) or \(1\).
+These possibilities must be handled.
+
+\paragraph{GCC--07 (confirmed, independent finite check): Claim 3.11.}
+The claim that the Hadamard/Wagner pattern is the only
+\emph{transitive} graph in the final \(s=t=2\) case is false.
+Enumerating the 64 choices of diagonal entries from
+\(\{0,1,M,\overline M\}\) and off-diagonal entries from
+\(\{M,\overline M\}\) yields 24 transitive matrices in four
+isomorphism classes. Exactly 16 matrices are EPPA witnesses
+for the embedded \(2K_2\). The classes are:
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Representative & Transitive matrices & EPPA matrices & Edges\\
+\midrule
+\(\left(\begin{smallmatrix}0&M\\M&0\end{smallmatrix}\right)\) &4&4&8\\
+\(\left(\begin{smallmatrix}1&M\\M&1\end{smallmatrix}\right)\) &4&4&16\\
+\(\left(\begin{smallmatrix}M&M\\M&M\end{smallmatrix}\right)\) &8&0&12\\
+\(\left(\begin{smallmatrix}M&M\\\overline M&M\end{smallmatrix}\right)\) &8&8&12\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first two are ordinary covers after reindexing, the third
+is the cube (fails EPPA for the designated copy), and the fourth
+is the Wagner graph. The reproducible exhaustive check is
+\texttt{checks/cover\_2k2.py}, written using Python's standard library.
+
+\section*{Next formalisation goals}
+\begin{enumerate}
+\item Define partial automorphisms of the distinguished induced \(sK_t\)
+and the exact EPPA condition for the inclusion in the cover graph.
+\item Formalise the action on \(D\)-cliques of extensions of
+\(\operatorname{Aut}(sK_t)\); validate the profile-cycle proof of Claim 3.8.
+\item Find a correct stabiliser proof or a counterexample for Claim 3.9.
+\item Establish the permitted matrix patterns, then reduce the small
+exceptional case to the exact finite computation.
+\end{enumerate}
+
+\paragraph{Lean audit boundary.}
+Only declarations explicitly listed in \texttt{CheckAxioms.lean}
+are considered verified when the GitHub Actions build and axiom audit
+are successful. Claims 3.8--3.11 and Lemma 3.7 are not yet on that list.
+\end{document}
