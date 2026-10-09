@@ -44,15 +44,42 @@ the \(i\)-th coordinates to differ. Then the no-rainbow-cycle argument
 must be stated for these actual profiles. This is a proposed repair
 and has not been checked in Lean.
 
-\paragraph{GCC--03 (serious gap): Claim 3.9.}
-An extension of an arbitrary permutation of \(C_i\) may move the clique
-\(D_j\). Thus the assertion that every \(k\)-subset of \(C_i\) occurs
-as the neighbourhood of a vertex in this \emph{fixed} \(D_j\)
-does not follow. Consequently, \(\binom tk\leq t\) and the deduction
-\(k\in\{1,t-1\}\) are unproved. Counting neighbourhoods
-across \emph{all} \(s\) cliques only gives
-\(\binom tk\leq st\); this is generally insufficient. A genuine
-stabiliser analysis is needed.
+\paragraph{GCC--03 (repaired at paper level; Lean pending): Claim 3.9.}
+The manuscript argues incorrectly that every \(k\)-subset of \(C_i\)
+occurs as the neighbourhood of a vertex of a \emph{fixed} \(D_j\).
+Extensions may move the \(D_j\)'s. There is, however, a stronger
+orbit-counting argument using \emph{all} vertices of \(H\setminus G\).
+
+Fix \(w\in H\setminus G\) and put
+\(P(w)=(N_H(w)\cap C_1,\ldots,N_H(w)\cap C_s)\).
+Every element of \(\operatorname{Aut}(G)=S_t\wr S_s\) extends to
+an automorphism of \(H\) which preserves \(G\) and \(H\setminus G\).
+It follows that the entire wreath-product orbit of \(P(w)\) is
+realised by profiles of the \(st\) vertices of \(H\setminus G\).
+
+Suppose one coordinate of \(P(w)\) has size \(k\), with
+\(1\leq k\leq t-1\), and let \(r\geq1\) be the number of coordinates
+having size \(k\). The action can choose the \(r\) positions among
+the \(s\) cliques and, independently, realise all
+\(\binom tk\) subsets in each selected coordinate. Consequently
+the orbit has size at least
+\[
+  \binom sr \binom tk^r \ \geq\ s\binom tk.
+\]
+The last inequality holds for \(r=1\) by equality; for
+\(1<r<s\) use \(\binom sr\geq s\);
+and for \(r=s\) use \(B^{s-1}\geq s\) for
+\(B=\binom tk\geq2\). Since the orbit fits in \(st\)
+available vertices, \(\binom tk\leq t\), which forces
+\(k\in\{1,t-1\}\).
+
+Assuming Claim 3.8 establishes that the bipartite block is
+\(k\)-regular on both sides, apply this argument to any
+\(w\in D_j\) to prove precisely the four connection possibilities
+of Claim 3.9. The orbit proof itself requires no stabilisation
+of \(D_j\). The proof is mathematically complete at this level,
+but is \textbf{not yet Lean-checked}. The missing two-sided
+regularity in Claim 3.8 remains a separate dependency.
 
 \paragraph{GCC--04 (gap): Claim 3.10.}
 The colour-count argument on the clique-adjacency graph requires a
