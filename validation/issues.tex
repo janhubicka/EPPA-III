@@ -288,4 +288,24 @@ itself still awaits Lean formalization.
 by complementing both \(G\) and \(H\) before applying
 the new lemma and Lemma 3.7. Lemma 3.3 is not
 used outside its hypotheses.
+
+\section*{Case 2 of Lemma 3.12: closed at paper level}
+The sentence referring to Claims 3.5--3.6 to
+identify the double cover admits a direct
+replacement. With invariant two-point fibres,
+two-point EPPA makes all fibre-pair adjacency
+patterns uniform over ordered edges and
+ordered nonedges of \(G\).
+Comparing bottom degrees for two different
+clique sizes forces cross-layer bits
+\(c_E=0,c_N=1\). Comparing top degrees with
+bottom degrees forces \(e_T=1,n_T=0\).
+Thus \(H\) is exactly the Taylor double,
+optionally with the fibre matching. The
+triangle count then rules out \(s\ge3\).
+See \texttt{validation/repair-case2-pair-regularity.tex}.
+This leaves Lemma 3.12 fully repaired at the
+paper level \emph{after adding the necessary
+non-homogeneity assumption on \(H\)}.
+Its full graph statement is not Lean-verified.
 \end{document}
