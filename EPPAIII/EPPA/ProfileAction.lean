@@ -40,7 +40,7 @@ theorem lift_preserves_outside {V W : Type*}
     simpa using hcompat (p.symm v)
   apply hw
   refine ⟨p.symm v, ?_⟩
-  exact q.injective (hv.symm.trans hh.symm)
+  exact q.injective (hh.trans hv)
 
 /-- The neighbourhood of an outside vertex in the distinguished copy. -/
 def neighbourhoodProfile {V W : Type*}
