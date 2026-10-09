@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=30mm]{geometry}
+\title{Minimal replacements for EPPA--III Claims 3.9 and 3.11}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+
+\noindent
+\textbf{Editorial rule.} These are suggested local substitutions in the
+circulation manuscript; the manuscript source remains unchanged.
+
+\subsection*{Claim 3.9 --- replace the incorrect neighbourhood sentence and binomial estimate}
+
+Fix \(w\in H\setminus G\) and consider its profile
+\(P(w)=(N_H(w)\cap C_i)_{i=1}^s\).
+Let \(r\geq 1\) be the number of its coordinates of size \(k\).
+As every automorphism of \(G\) extends to \(H\), the
+\(\operatorname{Sym}(t)\wr\operatorname{Sym}(s)\)-orbit of \(P(w)\)
+is realised by vertices of \(H\setminus G\). It contains at least
+\(\binom sr\binom tk^r\geq s\binom tk\) profiles.
+Since \(|H\setminus G|=st\), this gives \(\binom tk\leq t\),
+and hence \(k\in\{1,t-1\}\).
+
+\subsection*{Claim 3.11 --- replace only the final computational-check paragraph}
+
+Since \(H\) is regular and both off-diagonal entries are matchings,
+the two diagonal entries have the same bipartite degree.
+If this degree is \(0\) or \(2\), interchanging \(D_1\) and \(D_2\)
+gives case~(1). Otherwise all four entries are matchings.
+After reordering the vertices within the four cliques we may assume
+\[
+ A=\begin{pmatrix}M&M\\ M&Z\end{pmatrix},
+ \qquad Z\in\{M,\overline M\}.
+\]
+For \(Z=M\), one vertex of \(C_1\) has two common neighbours
+with one vertex of \(C_2\), and no common neighbour with
+the other. This contradicts EPPA, because exchanging the two
+vertices of \(C_2\) is an automorphism of \(G\).
+Thus \(Z=\overline M\), and \(H\) is the Wagner graph.
+
+\subsection*{Verification and scope}
+
+The last identification is literal: writing \(c_{i,a}\in C_i\) and
+\(d_{j,a}\in D_j\), the Wagner graph has the eight-cycle
+\[
+ c_{1,0},\,d_{1,0},\,c_{2,0},\,d_{2,1},\,
+ c_{1,1},\,d_{1,1},\,c_{2,1},\,d_{2,0},\,c_{1,0},
+\]
+and its four remaining edges join opposite vertices of this
+cycle. For \(Z=M\), the two cross-nonedges from \(c_{1,0}\) to
+\(c_{2,0}\) and \(c_{2,1}\) have, respectively, the common
+neighbour sets \(\{d_{1,0},d_{2,0}\}\) and \(\varnothing\).
+
+The first replacement uses the two-sided regularity of
+Claim~3.8; the second uses the structural reduction of Claim~3.10
+and the previously established \(s=t=2\). Neither of those
+dependencies is repaired here.
+
+\paragraph{Minor correction to the stated exceptional case.}
+The matrix with four matching entries has degree \(3\), whereas
+the complement of the Wagner graph has degree \(4\). Consequently
+the phrase \emph{or its complement} is not justified by this
+matrix description. The complemented result is obtained by
+complementing both \(H\) and the embedded \(G\), rather than
+by relabelling the same displayed matrix. Likewise,
+complementing all four matching signs preserves their parity
+and gives an isomorphic Wagner graph, \emph{not} the graph
+complement.
+
+\end{document}

@@ -18,7 +18,7 @@ has not actually been expressed and proved in Lean.
 \paragraph{Status.}
 The initial Lean module models the graph given by Definition 1.6 and
 proves its elementary induced-copy and adjacency properties.
-The full classification Lemma 3.7 is \textbf{not yet validated}.
+The full classification Lemma 3.7 is \textbf{not yet validated}.\nThe restricted Wagner reduction now has a short hand proof, and the\ncube EPPA obstruction has a separate Lean proof.
 A separate exhaustive finite computation is complete for the
 exceptional \(s=t=2\) matrix family.
 
@@ -112,7 +112,7 @@ are matchings is not a consequence of the preceding claim:
 the diagonal entries may still be \(0\) or \(1\).
 These possibilities must be handled.
 
-\paragraph{GCC--07 (confirmed, independent finite check): Claim 3.11.}
+\paragraph{GCC--07 (short hand repair identified): Claim 3.11.}
 The claim that the Hadamard/Wagner pattern is the only
 \emph{transitive} graph in the final \(s=t=2\) case is false.
 Enumerating the 64 choices of diagonal entries from
@@ -134,7 +134,17 @@ Representative & Transitive matrices & EPPA matrices & Edges\\
 \end{center}
 The first two are ordinary covers after reindexing, the third
 is the cube (fails EPPA for the designated copy), and the fourth
-is the Wagner graph. The reproducible exhaustive check is
+is the Wagner graph. The finite enumeration is no longer needed
+in the manuscript: equal vertex degrees force the two diagonal
+connection types to have the same bipartite degree. If that
+degree is (0) or (2), swap (D_1,D_2) to obtain a uniform cover.
+Otherwise all four entries are matchings; after independent
+relabeling, three are (M), leaving (Zin{M,overline M}).
+For (Z=M), a fixed vertex in (C_1) has two common neighbours
+with one vertex of (C_2), and none with its mate; swapping these
+two vertices in (G) violates EPPA. Thus (Z=overline M),
+the Wagner graph. The cube obstruction is separately proved
+in Lean as 	exttt{EPPAIII.cubeMatching_not_EPPA}. The reproducible exhaustive check is
 \texttt{checks/cover\_2k2.py}, written using Python's standard library.
 
 \paragraph{GCC--08 (confirmed full finite test): the whole \(s=t=2\) case.}
@@ -160,13 +170,33 @@ hypotheses, is independently verified. This is exhaustive
 Python verification, not Lean proof.
 Reproduction: \texttt{checks/cover\_2k2\_all.py}.
 
+\paragraph{GCC--09 (minor statement correction): graph complements.}
+The displayed exceptional connection matrix has all four
+cross-blocks of matching type, so every vertex has degree \(3\).
+The complement of the Wagner graph has degree \(4\).
+Consequently, the phrase \emph{or its complement} in the matrix
+case of Lemma~3.7 is not literally supported by that matrix:
+the complementary classification is obtained by complementing
+the entire pair \((G,H)\). Likewise, the assignment obtained
+by replacing each matching with its complementary matching
+is \emph{isomorphic} to the Wagner graph (the parity of the
+four matchings is unchanged); it is not the complement.
+
+\paragraph{Minimal textual patch (without changing the manuscript).}
+For a replacement requiring only two small local edits, see
+\texttt{validation/short-claim39-wagner.tex}.
+The proof of the Wagner reduction is purely combinatorial,
+and the bad cube case is independently certified by a Lean
+common-neighbour invariant; the remaining global steps of
+Claims~3.8,~3.10, and~3.11 still require validation.
+
 \section*{Next formalisation goals}
 \begin{enumerate}
 \item Define partial automorphisms of the distinguished induced \(sK_t\)
 and the exact EPPA condition for the inclusion in the cover graph.
 \item Formalise the action on \(D\)-cliques of extensions of
 \(\operatorname{Aut}(sK_t)\); validate the profile-cycle proof of Claim 3.8.
-\item Find a correct stabiliser proof or a counterexample for Claim 3.9.
+\item Formalise the corrected orbit-counting argument for Claim 3.9.
 \item Establish the permitted matrix patterns, then reduce the small
 exceptional case to the exact finite computation.
 \end{enumerate}

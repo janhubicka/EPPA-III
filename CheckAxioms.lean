@@ -13,3 +13,5 @@ import EPPAIII
 #print axioms EPPAIII.coverVertex_card
 #print axioms EPPAIII.matching_not_taylor_clique
 #print axioms EPPAIII.full_diag_hits_every_right
+#print axioms EPPAIII.cubeMatching_left_induced
+#print axioms EPPAIII.cubeMatching_not_EPPA
