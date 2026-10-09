@@ -168,6 +168,31 @@ The proof also strengthens the conclusion
 by dispensing with imprimitive and complementary
 partition hypotheses.
 
+\paragraph{The homogeneous case of Lemma 3.7.}
+By Gardiner's classification, a homogeneous graph of even order is
+a disjoint union of equal cliques or its complement (the two sporadic
+homogeneous graphs have odd orders five and nine).
+If \(H=mK_a\), each of the \(s\) selected \(K_t\)'s occupies
+a different host component. Since \(B=sK_t\), a host component
+contains either only outside vertices (forcing \(a=t\)), or
+exactly \(t\) selected and \(t\) outside vertices
+(forcing \(a=2t\)). These give \(H=2sK_t\) or
+\(H=sK_{2t}\), both uniform generalised covers.
+If \(H=\overline{mK_a}\), embedding \(sK_t\) requires
+\(s=1\) or \(t=1\): any two vertices from different
+selected components must lie in one multipartite part,
+which cannot simultaneously contain an edge of \(G\).
+For \(s=1\), both selected and outside halves are cliques,
+so every multipartite part has size at most two;
+thus \(H=K_{2t}\) or \(\overline{tK_2}\).
+For \(t=1\), both halves are independent,
+so \(H\) is edgeless or \(K_{s,s}\).
+All these are uniform generalised clique covers.
+This finishes the original Lemma 3.7 at paper level,
+under its stated partition hypothesis, including homogeneous hosts.
+Only the phrase ``or its complement'' next to the Wagner
+matrix needs correction: the displayed graph is 3-regular
+whereas its graph complement is 4-regular.
 \paragraph{Validation status.}
 All short-profile orbit types are already
 tested by \texttt{checks/section3\_profiles.py}.
