@@ -1,5 +1,8 @@
 import EPPAIII
 
+#print axioms EPPAIII.graphAuto_restricts
+#print axioms EPPAIII.coverLeftEmbedding_induced
+
 #print axioms EPPAIII.CrossType.rel_comm
 #print axioms EPPAIII.coverAdj_flip
 #print axioms EPPAIII.coverAdj_irrefl
