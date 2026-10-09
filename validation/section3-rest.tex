@@ -164,4 +164,46 @@ previously asserted double-cover structure.
 Proposition 3.23 still needs the missing partition
 hypothesis for the invocation of Lemma 3.7.
 The original manuscript is unchanged.
+
+\section*{S3--04: complementary-half partition now proved at paper level}
+The missing hypothesis in the application of Lemma 3.7
+is supplied by a general lemma:
+if \(H\) is a non-homogeneous vertex-transitive
+EPPA witness for an induced \(G=sK_t\) with
+\(|H|=2st\), then \(H\setminus G\cong sK_t\).
+It does not require an imprimitivity assumption.
+
+For each vertex \(w\) outside \(G\), record the
+\(s\)-tuple \((N(w)\cap C_i)\).
+Its orbit under \(S_t\wr S_s\) is realised
+by vertices outside \(G\), so has size \(\le st\).
+The exact orbit formula forces either all coordinates
+empty/full, or a unique partial coordinate which is a
+singleton or co-singleton, with all remaining coordinates
+uniformly empty/full. The latter profiles form the
+natural \(st\)-point wreath-product action.
+In the only extra small case \(s=t=2\), profiles with
+one point from each clique give the square action.
+The induced outside graph is determined in each case
+by its edge count, which equals that of \(G\).
+
+If instead all profiles are unions of complete cliques,
+each \(C_i\) is a true-twin class subset in \(H\).
+Vertex-transitivity and the independent-set bound in the
+regular true-twin quotient force exactly \(2s\) twin
+classes of size \(t\); the selected \(s\) classes
+are exactly \(G\), and the other \(s\) form \(sK_t\)
+by the same edge count.
+
+The complete self-contained proof, including the
+trivial \(s=1\) and \(t=1\) cases, is in
+\texttt{validation/partition-half-lemma.tex}.
+The requisite small orbit calculations were independently
+checked for 52,368 profiles in
+\texttt{checks/section3\_profiles.py}.
+This repairs the missing hypothesis transfer in
+Proposition 3.23, provided \(H\) is non-homogeneous.
+For complementary \(G\), apply the lemma to
+\((\overline G,\overline H)\), not Lemma 3.3.
+The general lemma is not yet formalized in Lean.
 \end{document}
