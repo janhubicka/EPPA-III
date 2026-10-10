@@ -33,16 +33,16 @@ ID & Anchor in supplied source & Evidence & Proposed action\\
 \midrule
 C01 & After \texttt{def:generalizedcover} & Confirmed & Taylor-double example\\
 C02 & \texttt{claim:taylorconclusion} & Confirmed & Mate-edge qualification\\
-C03 & \texttt{thm:sKt_witnesses}, alternative (2) & Confirmed & Wagner complement\\
+C03 & \texttt{thm:sKt\_witnesses}, alternative (2) & Confirmed & Wagner complement\\
 C04 & \texttt{claim:connections} & Paper-level & Orbit counting\\
-C05 & Claim 3.11 in \texttt{thm:sKt_witnesses} & Paper + finite & Wagner proof\\
+C05 & Claim 3.11 in \texttt{thm:sKt\_witnesses} & Paper + finite & Wagner proof\\
 C06 & Immediately before Claim 3.11 & Confirmed & Missing brace\\
-C07 & \texttt{lemma:different_cliques} & Confirmed & Hypothesis\\
-C08 & \texttt{prop:imprimitive_summary} & Confirmed & Restore \(2G\)\\
-C09 & End of \texttt{prop:imprimitive_summary} & Confirmed gap & Complement case\\
-C10 & Use of \texttt{thm:sKt_witnesses} & Paper-level & Partition lemma\\
-C11 & \texttt{lem:C5_10vertex} & Paper-level & Cross cycles\\
-C12 & \texttt{lem:R3_18vertex} & Paper + finite & Orbit proof\\
+C07 & \texttt{lemma:different\_cliques} & Confirmed & Hypothesis\\
+C08 & \texttt{prop:imprimitive\_summary} & Confirmed & Restore \(2G\)\\
+C09 & End of \texttt{prop:imprimitive\_summary} & Confirmed gap & Complement case\\
+C10 & Use of \texttt{thm:sKt\_witnesses} & Paper-level & Partition lemma\\
+C11 & \texttt{lem:C5\_10vertex} & Paper-level & Cross cycles\\
+C12 & \texttt{lem:R3\_18vertex} & Paper + finite & Orbit proof\\
 C13 & Claims 3.8, 3.10, 3.15, 3.16 & Pending & Proof alternatives\\
 \bottomrule
 \end{longtable}
@@ -89,7 +89,7 @@ Lemma~\texttt{lemma:doublecover}.
 
 \subsection*{C03. Wagner complement in Lemma 3.7}
 \textbf{Location:} alternative (2) of
-\texttt{thm:sKt_witnesses}, approximately source line 1225.
+\texttt{thm:sKt\_witnesses}, approximately source line 1225.
 
 \textbf{Action:} delete \emph{or its complement} after
 \emph{the Wagner graph}. The displayed matrix gives a
@@ -108,7 +108,7 @@ No mathematical change is involved.
 
 
 \subsection*{C07. Lemma 3.12 lacks a hypothesis}
-\textbf{Location:} \texttt{lemma:different_cliques},
+\textbf{Location:} \texttt{lemma:different\_cliques},
 approximately line 1357.
 
 \textbf{Problem (confirmed counterexamples).}
@@ -137,7 +137,7 @@ Do not mark the full graph theorem as Lean-certified.
 
 \subsection*{C08. Proposition 3.23 omits disjoint doubles}
 \textbf{Location:} alternative \texttt{case:homog} of
-\texttt{prop:imprimitive_summary}, approximately
+\texttt{prop:imprimitive\_summary}, approximately
 line 1590, and the proof at lines 1610--1612.
 
 \textbf{Problem (confirmed).} The proof erroneously
@@ -166,7 +166,7 @@ is handled separately in C09.
 
 \subsection*{C09. Invalid invocation of Lemma 3.3}
 \textbf{Location:} the last paragraph of
-\texttt{prop:imprimitive_summary},
+\texttt{prop:imprimitive\_summary},
 approximately source lines 1612--1614.
 
 Lemma~\texttt{lemma:doublecover} explicitly excludes
@@ -216,7 +216,7 @@ do not apply this change to source automatically.
 
 \subsection*{C05. Claim 3.11: Wagner without exhaustive enumeration}
 \textbf{Location:} the final exceptional case in the
-proof of \texttt{thm:sKt_witnesses}.
+proof of \texttt{thm:sKt\_witnesses}.
 The claim that vertex-transitivity alone leaves
 one eight-vertex isomorphism type is false.
 The finite test in \texttt{checks/cover\_2k2.py}
@@ -251,8 +251,8 @@ Claim~3.10 normalization argument.
 
 \subsection*{C10. The missing complementary-half hypothesis}
 \textbf{Location:} the use of
-\texttt{thm:sKt_witnesses} in the proof of
-\texttt{prop:imprimitive_summary}.
+\texttt{thm:sKt\_witnesses} in the proof of
+\texttt{prop:imprimitive\_summary}.
 
 \textbf{Problem.} Lemma~3.7 assumes that the
 second half of \(H\) is also \(sK_t\).
@@ -278,7 +278,7 @@ constitute a substantial editorial replacement.
 Neither graph-level result is yet fully Lean-proved.
 
 \subsection*{C11. Lemma 3.18: a missing bipartite-cycle exclusion}
-\textbf{Location:} \texttt{lem:C5_10vertex},
+\textbf{Location:} \texttt{lem:C5\_10vertex},
 the cross-degree-two case (approximately line 1519).
 
 A \(2\)-regular bipartite graph on two parts of size five
@@ -300,7 +300,7 @@ This is a paper-level repair; the rest of the
 case classification should be reviewed separately.
 
 \subsection*{C12. Lemma 3.20: correct the cross-degree argument}
-\textbf{Location:} \texttt{lem:R3_18vertex},
+\textbf{Location:} \texttt{lem:R3\_18vertex},
 the \(d_{\mathrm{cross}}\in\{2,3,4\}\) cases.
 
 For \(w\in H\setminus G\), the multiset of nine
@@ -327,5 +327,54 @@ with exact small-orbit checks in
 This eliminates an unjustified assumption that the
 actions on the two halves have already been
 identified equivariantly.
+
+
+\section*{Open proof decisions and optional alternatives}
+
+\subsection*{C13. Claims 3.8, 3.10, 3.15 and 3.16}
+The proof of Claim~3.8 refers to matching
+connection profiles without first defining an invariant
+profile under moving \(D_j\)'s. Claim~3.10 attempts
+to normalize several matchings simultaneously;
+normalizing one column need not normalize the others
+without a compatibility argument.
+
+\textbf{Current proposal:} retain these as unresolved
+proof dependencies if the original proof architecture
+is kept. Alternatively, the direct proof of the
+clique-cover classification in
+\texttt{validation/direct-clique-cover-proof.tex}
+can bypass Claims~3.8--3.11, but its integration
+requires an explicit editorial decision.
+
+For the unequal-clique case, more concise
+paper-level arguments for Claims~3.15--3.16 are in
+\texttt{validation/repair-claims-313-316.tex}.
+The Case~2 double-cover argument can be replaced by
+\texttt{validation/repair-case2-pair-regularity.tex}.
+Separate Lean modules already verify two-point
+partial-automorphism lifting and uniform
+inter-fibre adjacency matrices, but the complete
+graph-level classification is not yet fully
+formalized.
+
+\section*{How to maintain this register}
+For each new correction, record a source label,
+a minimal proposed modification, whether the
+error itself is established, and the exact
+proof/check on which the proposal depends.
+Use \textbf{accepted}, \textbf{declined}, or
+\textbf{still under review} as an additional
+editorial status only after the authors have
+made that decision. Until then, all entries in
+this file remain \textbf{proposed}.
+
+The extensive historical audit is retained in
+\texttt{validation/issues.tex} and
+\texttt{validation/section3-rest.tex}, with independent
+finite checks under \texttt{checks/}.
+This register is deliberately concise and
+actionable; it is not a substitute for those
+supporting reports.
 
 \end{document}
