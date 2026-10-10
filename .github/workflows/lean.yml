@@ -63,6 +63,7 @@ jobs:
           python3 checks/section3_profiles.py
           python3 checks/section3_pair_regular.py
           python3 checks/section3_fibre_patterns.py
+          python3 checks/section3_mate_matching.py
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then
