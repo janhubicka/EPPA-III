@@ -17,3 +17,4 @@ import EPPAIII.BlockSystems.Transversal
 import EPPAIII.BlockSystems.ClusterObstructions
 import EPPAIII.BlockSystems.FilledBlock
 import EPPAIII.BlockSystems.Size
+import EPPAIII.BlockSystems.TransitivePartition
