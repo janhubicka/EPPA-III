@@ -95,4 +95,88 @@ theorem fibreEdgeCount_nonedge {V : Type*}
   cases hc : p.crossNonedge <;> cases ht' : p.topNonedge <;>
     simp [PairPattern.nonedgeCount, hc, ht', Nat.add_assoc]
 
+/-- If the two inter-fibre matrix types have different edge counts,
+every fibre permutation induced by an automorphism of H is already
+an automorphism of the bottom graph G. -/
+theorem fibre_projection_automorphism_of_unequal_counts {V : Type*}
+    (G : SimpleGraph V) (H : SimpleGraph (Bool × V))
+    (p : PairPattern)
+    (he : IsInducedGraphEmbedding G H (bottomEmbedding V))
+    (hr : RepresentsPairPattern G H p)
+    (hunequal : p.edgeCount ≠ p.nonedgeCount)
+    (q : Equiv.Perm (Bool × V)) (σ : Equiv.Perm V)
+    (hq : IsGraphAutomorphism H q)
+    (hσ : ∀ b : Bool, ∀ x : V, (q (b,x)).2 = σ x) :
+    IsGraphAutomorphism G σ := by
+  intro x y
+  by_cases hxy : x = y
+  · subst y
+    simp
+  have hsxy : σ x ≠ σ y := σ.injective.ne hxy
+  have hinv := fibreEdgeCount_invariant H q σ hq hσ x y
+  constructor
+  · intro hE
+    by_contra hnE
+    have hleft := fibreEdgeCount_edge G H p he hr x y hE
+    have hright := fibreEdgeCount_nonedge G H p he hr (σ x) (σ y) hsxy hnE
+    exact hunequal (hleft.symm.trans (hinv.trans hright))
+  · intro hE
+    by_contra hnE
+    have hleft := fibreEdgeCount_nonedge G H p he hr x y hxy hnE
+    have hright := fibreEdgeCount_edge G H p he hr (σ x) (σ y) hE
+    exact hunequal (hright.symm.trans (hinv.symm.trans hleft))
+
+/-- Under genuine EPPA, unequal edge counts of the fibre-pair
+matrices would force the selected base graph to be homogeneous. -/
+theorem homogeneous_of_unequal_pair_counts {V : Type*}
+    [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) (H : SimpleGraph (Bool × V))
+    (heppa : IsEPPAEmbedding G H (bottomEmbedding V))
+    (hPairs : HasInvariantPairs H)
+    (p : PairPattern) (hr : RepresentsPairPattern G H p)
+    (hunequal : p.edgeCount ≠ p.nonedgeCount) :
+    IsHomogeneousGraph G := by
+  intro D f hpartial
+  obtain ⟨q,hq,hExt⟩ := heppa.2 D f hpartial
+  obtain ⟨σ,hσ⟩ := hPairs q hq
+  have hAut : IsGraphAutomorphism G σ :=
+    fibre_projection_automorphism_of_unequal_counts
+      G H p heppa.1 hr hunequal q σ hq hσ
+  refine ⟨σ,hAut,?_⟩
+  intro x hx
+  have hExtx := hExt x hx
+  have hSecond : (q (false,x)).2 = f x :=
+    congrArg Prod.snd hExtx
+  exact (hσ false x).symm.trans hSecond
+
+/-- The precise missing equality in the two-point proof of Lemma 3.3:
+non-homogeneity and EPPA imply that the two fibre matrix types
+have equal numbers of edges. -/
+theorem balanced_of_nonhomogeneous {V : Type*}
+    [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) (H : SimpleGraph (Bool × V))
+    (heppa : IsEPPAEmbedding G H (bottomEmbedding V))
+    (hPairs : HasInvariantPairs H)
+    (p : PairPattern) (hr : RepresentsPairPattern G H p)
+    (hNonHomogeneous : ¬ IsHomogeneousGraph G) :
+    p.edgeCount = p.nonedgeCount := by
+  by_contra hne
+  exact hNonHomogeneous
+    (homogeneous_of_unequal_pair_counts G H heppa hPairs p hr hne)
+
+/-- Combining the actual graph-level count lemma with the exhaustive
+four-Boolean arithmetic, the only possible matrix patterns for a
+non-homogeneous base are the one-edge, Taylor, and three-edge cases. -/
+theorem nonhomogeneous_pair_pattern_cases {V : Type*}
+    [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) (H : SimpleGraph (Bool × V))
+    (heppa : IsEPPAEmbedding G H (bottomEmbedding V))
+    (hPairs : HasInvariantPairs H)
+    (p : PairPattern) (hr : RepresentsPairPattern G H p)
+    (hNonHomogeneous : ¬ IsHomogeneousGraph G) :
+    p = oneEdge ∨ p = taylor ∨ p = threeEdges :=
+  balanced_cases p
+    (balanced_of_nonhomogeneous G H heppa hPairs p hr hNonHomogeneous)
+
+
 end EPPAIII.DoubleCover
