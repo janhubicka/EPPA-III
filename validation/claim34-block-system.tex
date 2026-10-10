@@ -57,13 +57,25 @@ an extension of a nonempty partial automorphism
 of \(G\) stabilizes \(\Pi\) and thus restricts
 to an automorphism of \(G\).
 \end{quote}
-\paragraph{Formalization boundary.}
-The current Lean results verify two-point block
-uniformity, transversality conditional on not
-all \(G\) lying in one block, and the block
-counting arithmetic. The one-block homogeneity
-argument, the conversion from cluster-graph
-exclusions to induced triples, and the
-construction of the canonical paired-fibre
-presentation are not yet Lean-verified.
+\paragraph{Updated formalization boundary.}
+The Lean modules \texttt{Basic.lean},
+\texttt{Transversal.lean},
+\texttt{ClusterObstructions.lean},
+\texttt{FilledBlock.lean} and
+\texttt{Size.lean} now verify the two-point
+block orbit statement, the equivalence between
+cluster-graph exclusions and induced triples,
+the whole-block homogeneity contradiction,
+and the conclusion that the selected graph
+is a transversal of \(n\) blocks of size two
+\emph{provided} the initial partition has
+uniform block size \(m\ge2\), at least two
+blocks, and satisfies the total size equation
+\(bm=2n\).
+Deriving those uniformity conditions from
+vertex-transitivity, and constructing the
+canonical paired-fibre identification
+\(W\simeq\{0,1\}\times V(G)\), are the
+remaining bridges. None of the initial manuscript
+TeX has been altered.
 \end{document}
