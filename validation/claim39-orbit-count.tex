@@ -1,0 +1,119 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=27mm}
+\title{EPPA--III: the complete neighbourhood-profile orbit count}
+\author{Independent validation supplement; manuscript frozen}
+\date{10 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Purpose and source.}
+This supplies an exact, self-contained justification of
+the replacement proposed for Claim~\texttt{claim:connections}
+(Claim~3.9) of \texttt{main-new(7).tex}.
+It is independent of any assumption that an EPPA extension
+stabilizes an individual complementary clique \(D_j\).
+No original manuscript text has been modified.
+
+\paragraph{The orbit formula.}
+Let \(G=sK_t\) with components \(C_1,\dots,C_s\).
+Fix a vertex \(w\in H\setminus G\) and write
+\[
+  P(w)=(P_1,\ldots,P_s),\qquad
+  P_i=N_H(w)\cap C_i.
+\]
+For \(0\le j\le t\), put
+\(m_j=|\{i:|P_i|=j\}|\), so that
+\(\sum_{j=0}^t m_j=s\).
+Then
+\[
+ \boxed{
+ \bigl|\operatorname{Aut}(G)\cdot P(w)\bigr|
+ =\frac{s!}{\prod_{j=0}^t m_j!}
+     \prod_{j=0}^t\binom tj^{m_j}.}
+ \tag{1}
+\]
+Indeed, \(\operatorname{Aut}(G)=S_t\wr S_s\) can
+permute the \(s\) clique positions arbitrarily
+and can permute vertices inside each clique
+independently. Two profiles belong to the
+same orbit if and only if their multisets
+of coordinate sizes agree. The multinomial
+factor chooses which positions have each size
+and the second factor independently chooses
+the actual subsets at those positions.
+This proves (1), not merely an upper bound.
+
+\paragraph{The Claim 3.9 estimate.}
+Suppose \(1\le k\le t-1\) and \(m_k=r\ge1\).
+Write \(B=\binom tk\ge2\).
+By (1), simply choosing the \(r\) positions
+whose coordinates have size \(k\), and the
+\(k\)-subsets in those positions, gives
+\[
+ |\operatorname{Aut}(G)\cdot P(w)|
+ \ge\binom sr B^r
+ \ge sB.
+ \tag{2}
+\]
+For the second inequality, if \(r<s\), use
+\(\binom sr\ge s\) and \(B^r\ge B\).
+If \(r=s\), use
+\(\binom ss=1\) and \(B^{s-1}\ge 2^{s-1}\ge s\).
+The last bound follows by induction on \(s\ge1\).
+
+Every automorphism of \(G\) extends to an
+automorphism of \(H\). Such an extension
+preserves \(G\) and \(H\setminus G\) setwise
+and takes \(P(w)\) to its translate.
+Even without choosing the extensions coherently,
+every profile in (1) is therefore realized
+by some vertex of \(H\setminus G\). Consequently,
+if \(|H\setminus G|=st\),
+\[
+          s\binom tk\le st,\qquad
+          \binom tk\le t.
+\]
+For \(2\le k\le t-2\), Pascal's identity
+implies \(\binom tk>t\): in the expansion
+\(\binom tk=\binom{t-1}{k-1}+
+\binom{t-1}{k}\), both terms are at least
+\(t-1\). Hence \(k=1\) or \(k=t-1\).
+
+\paragraph{What this does and does not repair.}
+The orbit argument itself does not use
+regularity of the bipartite graphs
+between \(C_i\) and \(D_j\); it proves
+an \emph{extreme-degree restriction on
+each outside vertex}. To conclude that
+each entire bipartite graph is a matching
+or co-matching, one still needs the
+two-sided regularity asserted in
+Claim~\texttt{claim:regularity}, or else
+a replacement proof of Lemma~3.7.
+The final paragraph of Claim~3.8
+is separately flagged as C14 in
+\texttt{validation/suggested-corrections.tex}.
+It is not silently repaired here.
+
+\paragraph{Independent verification.}
+Lean formally proves the general EPPA
+upper bound in
+\texttt{EPPAIII/EPPA/ProfileOrbitBound.lean}
+and the numerical inequalities in
+\texttt{EPPAIII/CliqueCovers/Claim39Arithmetic.lean}.
+The exact wreath-product group-action
+count (1) is currently a paper-level
+argument, \emph{not yet a Lean theorem}.
+An independently generated enumeration
+using elementary adjacent permutations,
+rather than (1), verifies the count and
+bounds for all profiles with \(st\le12\);
+see \texttt{checks/section3\_wreath\_orbits.py}.
+The checker covers 269 orbits, 19,724
+profiles and 257 nontrivial-coordinate
+checks. The unrestricted assertion
+remains on the Lean verification queue.
+
+\end{document}
