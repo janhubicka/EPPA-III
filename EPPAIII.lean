@@ -19,3 +19,5 @@ import EPPAIII.BlockSystems.FilledBlock
 import EPPAIII.BlockSystems.Size
 import EPPAIII.BlockSystems.TransitivePartition
 import EPPAIII.BlockSystems.CanonicalPairs
+import EPPAIII.BlockSystems.GraphTransport
+import EPPAIII.BlockSystems.FullDoubleCover
