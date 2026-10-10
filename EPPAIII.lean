@@ -7,3 +7,4 @@ import EPPAIII.EPPA.ProfileAction
 import EPPAIII.DoubleCover.LayerRigidity
 import EPPAIII.DoubleCover.TwoPointAction
 import EPPAIII.DoubleCover.RigidLayerHomogeneity
+import EPPAIII.DoubleCover.UniformPattern
