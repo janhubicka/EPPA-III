@@ -24,6 +24,7 @@ namespace EPPAIII.BlockSystems
 size at most n, it occupies the entire block. -/
 theorem fills_block_of_card_bound {V W B : Type*}
     [Fintype V] [Fintype W]
+    [DecidableEq B]
     (e : V ↪ W) (block : W → B) (b₀ : B)
     (hInside : ∀ x : V, block (e x) = b₀)
     (hBound :
@@ -74,7 +75,7 @@ theorem regular_block_size_le_half
 are in a single block. The proof uses no group-action homogeneity
 classification, only the actual EPPA embedding. -/
 theorem nonhomogeneous_not_whole_block {V W B : Type*}
-    [Fintype V] [DecidableEq V] [Fintype W]
+    [Fintype V] [DecidableEq V] [Fintype W] [DecidableEq B]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (heppa : IsEPPAEmbedding G H e)
     (block : W → B) (hBlocks : InvariantBlockMap H block)
@@ -103,7 +104,7 @@ invariant uniform block partition and the double-size equation.
 In a transitive graph those conditions follow from the action
 on the block partition. -/
 theorem invariant_blocks_are_pairs {V W B : Type*}
-    [Fintype V] [DecidableEq V] [Fintype W] [Fintype B]
+    [Fintype V] [DecidableEq V] [Fintype W] [DecidableEq B] [Fintype B]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (heppa : IsEPPAEmbedding G H e)
     (block : W → B) (hBlocks : InvariantBlockMap H block)
