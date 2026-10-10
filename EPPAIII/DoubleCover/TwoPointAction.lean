@@ -44,14 +44,13 @@ theorem exists_perm_of_two_maps {V : Type*}
   have hfy : f y ≠ u := by
     intro h
     apply hxy
-    apply f.injective
-    exact h.trans hfx.symm
+    exact (f.injective (h.trans hfx.symm)).symm
   let g : Equiv.Perm V := Equiv.swap (f y) v
   have hgu : g u = u := by
     change (Equiv.swap (f y) v) u = u
     apply Equiv.swap_apply_of_ne_of_ne
     · exact Ne.symm hfy
-    · exact Ne.symm huv
+    · exact huv
   refine ⟨f.trans g, ?_, ?_⟩
   · change g (f x) = u
     rw [hfx]
@@ -72,21 +71,12 @@ theorem partial_of_two_maps {V : Type*} [DecidableEq V]
   refine ⟨p, hx, hy, ?_⟩
   intro a b ha hb
   simp only [Finset.mem_insert, Finset.mem_singleton] at ha hb
-  rcases ha with rfl | rfl <;> rcases hb with rfl | rfl
-  · rw [hx]
-    constructor <;> intro h
-    · exact False.elim ((G.irrefl x) h)
-    · exact False.elim ((G.irrefl u) h)
-  · simpa [hx, hy] using hadj
-  · rw [hy, hx]
-    calc
-      G.Adj y x ↔ G.Adj x y := G.adj_comm
-      _ ↔ G.Adj u v := hadj
-      _ ↔ G.Adj v u := G.adj_comm
-  · rw [hy]
-    constructor <;> intro h
-    · exact False.elim ((G.irrefl y) h)
-    · exact False.elim ((G.irrefl v) h)
+  rcases ha with ha | ha <;> rcases hb with hb | hb
+  · simp [ha, hb, hx]
+  · simpa [ha, hb, hx, hy] using hadj
+  · simpa [ha, hb, hy, hx] using
+      ((G.adj_comm y x).trans (hadj.trans (G.adj_comm u v)))
+  · simp [ha, hb, hy]
 
 /-- A fibre-preserving permutation sends the mate of a bottom vertex
 to the mate of the image of that bottom vertex. -/
@@ -170,9 +160,9 @@ theorem eppa_cross_symmetric {V : Type*}
       H.Adj (true,x) (false,y) := by
   have hSwap :=
     (eppa_uniform_pair_entries G H heppa hPairs
-       x y y x hxy hxy.symm (G.adj_comm)).1
+       x y y x hxy hxy.symm (G.adj_comm x y)).1
   calc
     H.Adj (false,x) (true,y) ↔ H.Adj (false,y) (true,x) := hSwap
-    _ ↔ H.Adj (true,x) (false,y) := H.adj_comm
+    _ ↔ H.Adj (true,x) (false,y) := H.adj_comm (false,y) (true,x)
 
 end EPPAIII.DoubleCover
