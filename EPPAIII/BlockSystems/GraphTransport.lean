@@ -21,11 +21,13 @@ def pullbackGraph {X W : Type*}
     (H : SimpleGraph W) (φ : X ≃ W) : SimpleGraph X where
   Adj u v := H.Adj (φ u) (φ v)
   symm := by
+    change ∀ u v : X, H.Adj (φ u) (φ v) → H.Adj (φ v) (φ u)
     intro u v h
     exact H.symm h
   loopless := by
-    intro u h
-    exact H.loopless (φ u) h
+    change ∀ u : X, ¬ H.Adj (φ u) (φ u)
+    intro u
+    exact H.loopless (φ u)
 
 /-- EPPA is invariant under relabelling of the host along an
 equivalence which carries the canonical bottom embedding to e. -/
@@ -81,7 +83,7 @@ theorem invariant_pairs_of_pullback {V W B : Type*}
     rcases v with ⟨bv,y⟩
     change x = y ↔ block (φ (bu,x)) = block (φ (bv,y))
     rw [hPairBlock bu x, hPairBlock bv y]
-    exact ⟨fun h => congrArg (fun z => block (e z)) h, hBlockInject⟩
+    exact ⟨fun h => congrArg (fun z => block (e z)) h, fun h => hBlockInject h⟩
   intro q' hq'
   let qW : Equiv.Perm W :=
     (φ.symm.trans q').trans φ
