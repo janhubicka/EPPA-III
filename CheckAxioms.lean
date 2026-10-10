@@ -39,3 +39,6 @@ import EPPAIII
 
 #print axioms EPPAIII.DoubleCover.homogeneous_of_global_bottom
 #print axioms EPPAIII.DoubleCover.homogeneous_of_graph_exceptional
+
+#print axioms EPPAIII.DoubleCover.eppa_has_uniform_pair_pattern
+#print axioms EPPAIII.DoubleCover.induced_pair_bottom
