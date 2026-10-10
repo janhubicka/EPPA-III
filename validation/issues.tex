@@ -380,4 +380,33 @@ Lemma 3.7 is repaired at paper level even without adding a
 non-homogeneity hypothesis (subject to deleting the inaccurate
 ``or its complement'' after the exceptional Wagner matrix).
 The user's existing minimal manuscript patch is untouched.
+
+\section*{Fibre matching is genuinely possible (Claim 3.6)}
+For the non-homogeneous graph \(G=C_5\dot\cup K_1\), the
+Taylor double \(T(G)\) is the icosahedral graph.
+Adding the matching between fibre mates yields the
+6-regular graph \(H\cong\overline{\text{icosahedron}}\),
+which is a vertex-transitive imprimitive EPPA witness
+for the designated \(G\): exactly 957 partial automorphisms
+extend, \(|\operatorname{Aut}(H)|=120\), and the
+automorphism group preserves all six fibre pairs.
+The reproducible check is
+\texttt{checks/section3\_mate\_matching.py}.
+
+Consequently the literal wording of Claim~3.6,
+that \(H\) is the Taylor double of \(G\), is
+stronger than its proof establishes. It is important
+\emph{not} to delete the possibility of a uniform
+matching between mates. Lemma~3.3 already qualifies
+its conclusion as up to complementation within all
+blocks, plausibly intended to permit toggling exactly
+these six edges. The least intrusive correction is to
+make Claim~3.6's conclusion read:
+Between distinct blocks, \(H\) has exactly the
+adjacency of the Taylor double of \(G\). The adjacency
+within the blocks is uniform, so \(H\) is the Taylor
+double up to complementation within all blocks.
+This is a local clarification, not an objection
+to Lemma~3.3 when its stated qualification is respected.
+
 \end{document}
