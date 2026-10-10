@@ -45,6 +45,7 @@ C10 & Use of \texttt{thm:sKt\_witnesses} & Paper-level & Partition lemma\\
 C11 & \texttt{lem:C5\_10vertex} & Paper-level & Cross cycles\\
 C12 & \texttt{lem:R3\_18vertex} & Paper + finite & Orbit proof\\
 C13 & Claims 3.8, 3.10, 3.15, 3.16 & Pending & Proof alternatives\\
+C14 & \texttt{claim:regularity}, final paragraph & Pending & D-side regularity\\
 \bottomrule
 \end{longtable}
 
@@ -358,6 +359,30 @@ partial-automorphism lifting and uniform
 inter-fibre adjacency matrices, but the complete
 graph-level classification is not yet fully
 formalized.
+
+
+\subsection*{C14. Claim 3.8: missing D-side justification}
+\textbf{Location:} final paragraph of \texttt{claim:regularity}.
+The proof gives no symmetric action on each fixed \(D_j\).
+EPPA lifts of automorphisms of \(G\) permute the \(D_j\)
+cliques setwise, but do not provide arbitrary permutations
+within those cliques. The step from constant degrees on the
+\(C_i\)-side to \(k\)-regularity on both sides therefore
+needs a separate argument. This is an unclosed proof
+obligation, \emph{not a constructed counterexample}.
+Provide a proof of \(D_j\)-side regularity or use the
+direct profile classification instead. Lean's
+double-cover proof concerns a different setting and
+does not certify Claim~3.8.
+
+\paragraph{New Lean checkpoint.}
+The modules \texttt{FibreEdgeCount.lean},
+\texttt{TaylorClassification.lean}, and
+\texttt{OptionalMate.lean} derive, from exact EPPA and
+an already invariant two-point fibre system, the
+Taylor inter-fibre matrix and uniform optional mate
+matching. Claim~3.4 (existence of the invariant
+two-point block system) remains a separate obligation.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
