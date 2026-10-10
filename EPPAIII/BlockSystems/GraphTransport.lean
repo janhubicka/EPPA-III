@@ -23,11 +23,11 @@ def pullbackGraph {X W : Type*}
   symm := by
     constructor
     intro u v h
-    exact H.symm h
+    exact (H.adj_comm (φ u) (φ v)).mp h
   loopless := by
     constructor
     intro u h
-    exact H.loopless (φ u) h
+    exact (H.irrefl (φ u)) h
 
 /-- EPPA is invariant under relabelling of the host along an
 equivalence which carries the canonical bottom embedding to e. -/
