@@ -46,3 +46,8 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.fibreEdgeCount_invariant
 #print axioms EPPAIII.DoubleCover.fibreEdgeCount_edge
 #print axioms EPPAIII.DoubleCover.fibreEdgeCount_nonedge
+
+#print axioms EPPAIII.DoubleCover.fibre_projection_automorphism_of_unequal_counts
+#print axioms EPPAIII.DoubleCover.homogeneous_of_unequal_pair_counts
+#print axioms EPPAIII.DoubleCover.balanced_of_nonhomogeneous
+#print axioms EPPAIII.DoubleCover.nonhomogeneous_pair_pattern_cases
