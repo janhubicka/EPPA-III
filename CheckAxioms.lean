@@ -117,3 +117,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_eppa_host_interblock_status_orbit
 #print axioms EPPAIII.BlockSystems.transitive_eppa_host_interblock_edges
 #print axioms EPPAIII.BlockSystems.transitive_eppa_host_interblock_nonedges
+
+#print axioms EPPAIII.finite_profile_transport
+#print axioms EPPAIII.finite_profile_orbit_card_le_outside
