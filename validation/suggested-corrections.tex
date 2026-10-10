@@ -47,6 +47,7 @@ C12 & \texttt{lem:R3\_18vertex} & Paper + finite & Orbit proof\\
 C13 & Claims 3.8, 3.10, 3.15, 3.16 & Pending & Proof alternatives\\
 C14 & \texttt{claim:regularity}, final paragraph & Pending & D-side regularity\\
 C15 & Introduction after \texttt{def:generalizedcover} & Confirmed & Complement terminology\\
+C16 & Lemma 3.3, first claim (Claim 3.4) & Readability & One-block EPPA reasoning\\
 \bottomrule
 \end{longtable}
 
@@ -411,6 +412,38 @@ Wagner exception listed separately.
 \end{quote}
 This is compatible with C09, which repairs the
 corresponding proof invocation in Proposition~3.23.
+
+\subsection*{C16. Claim 3.4: explain why a whole block is an EPPA witness}
+\textbf{Location:} the first unnumbered claim in
+Lemma~\texttt{lemma:doublecover}, approximately
+lines 952--955 of \texttt{main-new(7).tex}.
+
+The draft argues that if both edges and nonedges of
+\(G\) lie within blocks, then one block \(\Pi\)
+is itself an EPPA witness for \(G\).
+This is correct but requires the observation that
+every nonempty partial-automorphism extension stabilizes
+\(\Pi\) setwise. We found no counterexample to this claim.
+
+\textbf{Suggested one-sentence insertion:}
+\begin{quote}
+Indeed, \(\Pi\) contains \(V(G)\) and
+\(|\Pi|\le n\), so \(\Pi=V(G)\);
+an extension of a nonempty partial automorphism
+of \(G\) stabilizes \(\Pi\), hence restricts
+to an automorphism of \(G\).
+\end{quote}
+
+An independent proof audit is in
+\texttt{validation/claim34-block-system.tex}.
+Lean now verifies the two-point block orbit
+step, cluster-obstruction reduction, the
+filled-block homogeneity argument, and the
+pair-count conclusion \emph{conditional on}
+uniform block sizes and the size equation
+\(bm=2n\). The derivation of uniformity from
+host transitivity and the canonical pairing
+remain separate formalization tasks.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,

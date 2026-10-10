@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=27mm}
+\title{EPPA--III: Claim 3.4 block-system audit}
+\date{10 October 2026}
+\begin{document}
+\maketitle
+\paragraph{Source anchor.}
+The first unnumbered claim of Lemma~\texttt{lemma:doublecover},
+source lines 947--964 in \texttt{main-new(7).tex},
+asserts that the nontrivial invariant partition of the
+\(2n\)-vertex host has \(n\) blocks of size two,
+and \(V(G)\) meets each block in precisely one vertex.
+\paragraph{Two-point orbit reduction.}
+Every isomorphism of ordered edges (and separately of
+ordered nonedges) of \(G\) extends to an automorphism of
+\(H\) which preserves the block relation. Thus each
+adjacency type of \(G\) has a uniform within-block
+or cross-block status. Lean verifies this in
+\texttt{EPPAIII/BlockSystems/Basic.lean}.
+\paragraph{Excluding the three unwanted cases.}
+If both types are internal, then \(G\) lies in one block.
+All blocks have equal size \(m\le n\), and that block
+contains \(n\) vertices of \(G\), so it equals \(V(G)\).
+An EPPA extension of any nonempty partial automorphism
+of \(G\) stabilizes the block, hence restricts to
+an automorphism of \(G\); the empty map extends trivially.
+Thus \(G\) would be homogeneous.
+If edges are internal and nonedges cross, \(G\) is
+a disjoint union of cliques. If nonedges are internal
+and edges cross, \(G\) is a complement of such a union.
+Both are excluded by the lemma hypotheses.
+\paragraph{Transversality via induced triples.}
+The exclusion of disjoint unions of cliques is
+equivalent to an induced \(P_3\), and its complement
+to an induced complement of \(P_3\).
+These two triples force distinct selected vertices
+to occupy distinct blocks, unless all \(G\) vertices
+are in one block. This intermediate implication is
+formalized in \texttt{BlockSystems/Transversal.lean}.
+\paragraph{Counting.}
+Let \(b\) denote the number of blocks and
+\(m\ge2\) their common size. Transversality gives
+\(b\ge n\). Therefore \(2n=bm\ge2b\ge2n\),
+so \(b=n\) and \(m=2\). The arithmetic implication
+is formalized in
+\texttt{BlockSystems.transversal\_double\_count}.
+\paragraph{C16: suggested one-sentence clarification.}
+The source proof compresses the case with all of
+\(G\) in one block into the assertion that
+this block is an EPPA witness. To justify it
+without changing the proof structure, insert:
+\begin{quote}
+Indeed, \(\Pi\) contains \(V(G)\) and
+\(|\Pi|\le n\), so \(\Pi=V(G)\);
+an extension of a nonempty partial automorphism
+of \(G\) stabilizes \(\Pi\) and thus restricts
+to an automorphism of \(G\).
+\end{quote}
+\paragraph{Updated formalization boundary.}
+The Lean modules \texttt{Basic.lean},
+\texttt{Transversal.lean},
+\texttt{ClusterObstructions.lean},
+\texttt{FilledBlock.lean} and
+\texttt{Size.lean} now verify the two-point
+block orbit statement, the equivalence between
+cluster-graph exclusions and induced triples,
+the whole-block homogeneity contradiction,
+and the conclusion that the selected graph
+is a transversal of \(n\) blocks of size two
+\emph{provided} the initial partition has
+uniform block size \(m\ge2\), at least two
+blocks, and satisfies the total size equation
+\(bm=2n\).
+Deriving those uniformity conditions from
+vertex-transitivity, and constructing the
+canonical paired-fibre identification
+\(W\simeq\{0,1\}\times V(G)\), are the
+remaining bridges. None of the initial manuscript
+TeX has been altered.
+\end{document}

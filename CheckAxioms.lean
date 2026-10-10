@@ -64,3 +64,22 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.homogeneous_of_complete
 #print axioms EPPAIII.DoubleCover.edge_and_nonedge_of_nonhomogeneous
 #print axioms EPPAIII.DoubleCover.eppa_taylor_double_up_to_mate
+
+#print axioms EPPAIII.BlockSystems.eppa_block_relation_two_point
+#print axioms EPPAIII.BlockSystems.eppa_edges_uniform_blocks
+#print axioms EPPAIII.BlockSystems.eppa_nonedges_uniform_blocks
+#print axioms EPPAIII.BlockSystems.transversal_double_count
+
+#print axioms EPPAIII.BlockSystems.edges_cross_of_induced_p3
+#print axioms EPPAIII.BlockSystems.nonedges_cross_of_induced_cop3
+#print axioms EPPAIII.BlockSystems.selected_vertices_transversal
+
+#print axioms EPPAIII.BlockSystems.not_cluster_iff_induced_p3
+#print axioms EPPAIII.BlockSystems.not_cocluster_iff_induced_cop3
+#print axioms EPPAIII.BlockSystems.transversal_of_noncluster
+#print axioms EPPAIII.BlockSystems.homogeneous_of_filled_invariant_block
+
+#print axioms EPPAIII.BlockSystems.fills_block_of_card_bound
+#print axioms EPPAIII.BlockSystems.regular_block_size_le_half
+#print axioms EPPAIII.BlockSystems.nonhomogeneous_not_whole_block
+#print axioms EPPAIII.BlockSystems.invariant_blocks_are_pairs
