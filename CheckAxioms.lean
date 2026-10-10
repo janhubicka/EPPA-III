@@ -78,3 +78,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.not_cocluster_iff_induced_cop3
 #print axioms EPPAIII.BlockSystems.transversal_of_noncluster
 #print axioms EPPAIII.BlockSystems.homogeneous_of_filled_invariant_block
+
+#print axioms EPPAIII.BlockSystems.fills_block_of_card_bound
+#print axioms EPPAIII.BlockSystems.regular_block_size_le_half
+#print axioms EPPAIII.BlockSystems.nonhomogeneous_not_whole_block
+#print axioms EPPAIII.BlockSystems.invariant_blocks_are_pairs
