@@ -24,6 +24,15 @@ noncomputable def finiteNeighbourhoodProfile {V W : Type*}
   classical
   exact Finset.univ.filter (fun v : V => H.Adj w (e v))
 
+/-- The translate of a profile by a base permutation, as a
+finite set. A separate definition fixes the classical decidability
+instance used to evaluate membership. -/
+noncomputable def translatedFiniteProfile {V W : Type*}
+    [Fintype V] (H : SimpleGraph W) (e : V ↪ W)
+    (w : W) (p : Equiv.Perm V) : Finset V := by
+  classical
+  exact Finset.univ.filter (fun v : V => H.Adj w (e (p.symm v)))
+
 /-- The orbit of the outside neighbourhood profile under all
 automorphisms of G. Each translate is the forward image of the
 original profile under the corresponding base permutation. -/
@@ -34,8 +43,7 @@ noncomputable def finiteProfileOrbit {V W : Type*}
   exact
     (Finset.univ.filter (fun p : Equiv.Perm V =>
       IsGraphAutomorphism G p)).image
-      (fun p =>
-        Finset.univ.filter (fun v : V => H.Adj w (e (p.symm v))))
+      (fun p => translatedFiniteProfile H e w p)
 
 /-- The finite set of host vertices outside the selected copy. -/
 noncomputable def finiteOutside {V W : Type*} [Fintype W]
@@ -53,12 +61,11 @@ theorem finite_profile_transport {V W : Type*}
     (hCompat : ∀ v : V, q (e v) = e (p v))
     (hq : IsGraphAutomorphism H q) :
     finiteNeighbourhoodProfile H e (q w) =
-      (Finset.univ : Finset V).filter
-        (fun v : V => H.Adj w (e (p.symm v))) := by
+      translatedFiniteProfile H e w p := by
   classical
   ext v
-  simp only [finiteNeighbourhoodProfile, Finset.mem_filter,
-    Finset.mem_univ, true_and]
+  simp only [finiteNeighbourhoodProfile, translatedFiniteProfile,
+    Finset.mem_filter, Finset.mem_univ, true_and]
   have h := profile_equivariant H e p q hq hCompat w (p.symm v)
   simpa [neighbourhoodProfile] using h.symm
 
@@ -89,7 +96,7 @@ theorem finite_profile_orbit_card_le_outside {V W : Type*}
     have hOutside' : q' w ∉ Set.range e :=
       lift_preserves_outside e p q' hCompat' w hw
     refine Finset.mem_image.mpr ⟨q' w, ?_, ?_⟩
-    · exact Finset.mem_filter.mpr ⟨Finset.mem_univ _,hOutside'⟩
+    · simpa [finiteOutside] using hOutside'
     · have hh :=
         finite_profile_transport H e w p q' hCompat' hq'
       exact hh.trans hProfile
