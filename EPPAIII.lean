@@ -32,3 +32,4 @@ import EPPAIII.CliqueCovers.ProfileChoices
 import EPPAIII.CliqueCovers.WreathSlices
 import EPPAIII.CliqueCovers.WreathChoiceTransitivity
 import EPPAIII.CliqueCovers.WreathOrbitCount
+import EPPAIII.EPPA.OutsideCardinality
