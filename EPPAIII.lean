@@ -13,3 +13,4 @@ import EPPAIII.DoubleCover.TaylorClassification
 import EPPAIII.DoubleCover.OptionalMate
 import EPPAIII.DoubleCover.CompleteTaylor
 import EPPAIII.BlockSystems.Basic
+import EPPAIII.BlockSystems.Transversal
