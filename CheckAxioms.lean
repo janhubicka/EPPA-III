@@ -102,3 +102,9 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.homogeneous_of_all_fibre_actions_preserve_base
 #print axioms EPPAIII.DoubleCover.exists_fibre_pair_type_change
 #print axioms EPPAIII.DoubleCover.eppa_fibre_action_two_transitive
+
+#print axioms EPPAIII.DoubleCover.taylor_top_adj_iff_base
+#print axioms EPPAIII.DoubleCover.taylor_cross_adj_iff_nonedge
+#print axioms EPPAIII.DoubleCover.taylor_interfibre_adj_iff
+#print axioms EPPAIII.DoubleCover.deckSwap_graph_automorphism
+#print axioms EPPAIII.DoubleCover.taylor_pair_same_status_eq_or_deck
