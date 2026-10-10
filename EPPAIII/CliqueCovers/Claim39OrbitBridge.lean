@@ -76,7 +76,8 @@ theorem wreathTransform_eq_map {s t : ℕ}
     obtain ⟨z,hz,hzu⟩ := Finset.mem_map.mp hu
     refine Finset.mem_map.mpr ⟨z,hz,?_⟩
     change innerPermutation inner (outerPermutation outer z) = v
-    rw [hzu]
+    have hOuter : outerPermutation outer z = u := hzu
+    rw [hOuter]
     exact huv
   · intro hv
     obtain ⟨z,hz,hzv⟩ := Finset.mem_map.mp hv
