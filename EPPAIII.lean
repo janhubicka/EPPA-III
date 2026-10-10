@@ -15,3 +15,4 @@ import EPPAIII.DoubleCover.CompleteTaylor
 import EPPAIII.BlockSystems.Basic
 import EPPAIII.BlockSystems.Transversal
 import EPPAIII.BlockSystems.ClusterObstructions
+import EPPAIII.BlockSystems.FilledBlock
