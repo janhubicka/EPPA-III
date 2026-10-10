@@ -436,9 +436,14 @@ to an automorphism of \(G\).
 
 An independent proof audit is in
 \texttt{validation/claim34-block-system.tex}.
-Lean currently checks the two-point orbit
-step and conditional transversality, but not yet
-the entire invariant-pair construction.
+Lean now verifies the two-point block orbit
+step, cluster-obstruction reduction, the
+filled-block homogeneity argument, and the
+pair-count conclusion \emph{conditional on}
+uniform block sizes and the size equation
+\(bm=2n\). The derivation of uniformity from
+host transitivity and the canonical pairing
+remain separate formalization tasks.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
