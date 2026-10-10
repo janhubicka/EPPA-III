@@ -29,3 +29,10 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.all_bottom_of_one_bottom
 
 #print axioms EPPAIII.DoubleCover.graph_uniform_layer_of_exceptional
+
+#print axioms EPPAIII.DoubleCover.exists_perm_of_two_maps
+#print axioms EPPAIII.DoubleCover.partial_of_two_maps
+#print axioms EPPAIII.DoubleCover.top_image_of_bottom_image
+#print axioms EPPAIII.DoubleCover.eppa_maps_two_fibres
+#print axioms EPPAIII.DoubleCover.eppa_uniform_pair_entries
+#print axioms EPPAIII.DoubleCover.eppa_cross_symmetric
