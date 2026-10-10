@@ -87,3 +87,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_block_fibres_equal
 #print axioms EPPAIII.BlockSystems.uniform_partition_card_formula
 #print axioms EPPAIII.BlockSystems.transitive_eppa_blocks_are_pairs
+
+#print axioms EPPAIII.BlockSystems.exists_canonical_pair_equiv
