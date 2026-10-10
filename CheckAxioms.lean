@@ -89,3 +89,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_eppa_blocks_are_pairs
 
 #print axioms EPPAIII.BlockSystems.exists_canonical_pair_equiv
+
+#print axioms EPPAIII.BlockSystems.eppa_pullback_bottom
+#print axioms EPPAIII.BlockSystems.invariant_pairs_of_pullback
