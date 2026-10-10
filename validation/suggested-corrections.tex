@@ -1,0 +1,381 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,longtable,geometry,hyperref}
+\geometry{margin=26mm}
+\title{EPPA--III: suggested manuscript corrections}
+\author{Independent validation register}
+\date{10 October 2026}
+\begin{document}
+\maketitle
+
+\noindent\textbf{Source and policy.}
+This is a register of proposed corrections to the manuscript
+\emph{Graphs with Small EPPA Witnesses}, referenced against the
+user-supplied snapshot \texttt{main-new(7).tex}.
+All anchors below use labels present in that source.
+The original manuscript is \textbf{frozen}: neither this report nor
+passing GitHub Actions authorizes an edit to its TeX.
+
+\paragraph{Evidence levels.}
+\textbf{Confirmed}: mathematical counterexample, exact definition
+comparison, or unambiguous textual error.
+\textbf{Paper-level}: a proposed mathematical proof, not yet
+completely certified in Lean.
+\textbf{Pending}: a proof dependency or author decision remains.
+The Lean CI build certifies only declarations explicitly included
+in \texttt{CheckAxioms.lean}; small exhaustive checks do not
+establish arbitrary-size results.
+
+\section*{Issue index}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{15mm}p{66mm}p{32mm}p{35mm}@{}}
+\toprule
+ID & Anchor in supplied source & Evidence & Proposed action\\
+\midrule
+C01 & After \texttt{def:generalizedcover} & Confirmed & Taylor-double example\\
+C02 & \texttt{claim:taylorconclusion} & Confirmed & Mate-edge qualification\\
+C03 & \texttt{thm:sKt\_witnesses}, alternative (2) & Confirmed & Wagner complement\\
+C04 & \texttt{claim:connections} & Paper-level & Orbit counting\\
+C05 & Claim 3.11 in \texttt{thm:sKt\_witnesses} & Paper + finite & Wagner proof\\
+C06 & Immediately before Claim 3.11 & Confirmed & Missing brace\\
+C07 & \texttt{lemma:different\_cliques} & Confirmed & Hypothesis\\
+C08 & \texttt{prop:imprimitive\_summary} & Confirmed & Restore \(2G\)\\
+C09 & End of \texttt{prop:imprimitive\_summary} & Confirmed gap & Complement case\\
+C10 & Use of \texttt{thm:sKt\_witnesses} & Paper-level & Partition lemma\\
+C11 & \texttt{lem:C5\_10vertex} & Paper-level & Cross cycles\\
+C12 & \texttt{lem:R3\_18vertex} & Paper + finite & Orbit proof\\
+C13 & Claims 3.8, 3.10, 3.15, 3.16 & Pending & Proof alternatives\\
+\bottomrule
+\end{longtable}
+
+\section*{Confirmed localized corrections}
+
+\subsection*{C01. Taylor double of a complete graph}
+\textbf{Location:} approximately source lines 522--523, immediately
+after Definition~\texttt{def:generalizedcover}.
+Definition~\texttt{def:doubles} makes the Taylor double of
+\(K_t\) equal to \(2K_t\), with no cross-edges. The connection
+type \(M\) adds a matching, and \(\overline M\) is not the
+graph complement of that Taylor double.
+
+\textbf{Proposed two-sentence replacement:}
+\begin{quote}
+For \(G\cong K_t\), the Taylor double is \(2K_t\),
+corresponding to connection type \(X=0\).
+Connection type \(X=M\) instead gives the Taylor double
+with an additional matching between corresponding vertices;
+this is another generalised clique cover.
+\end{quote}
+Keep the next paragraph about transversals of the matching
+edges as referring to \(X=M\).
+
+\subsection*{C02. Claim 3.6 and the mate matching}
+\textbf{Location:} \texttt{claim:taylorconclusion}.
+The argument concerns edges between distinct fibres, not
+the edge inside each fibre. For
+\(G=C_5\dot\cup K_1\), adding all mate edges to the
+Taylor double yields a genuine transitive imprimitive EPPA
+witness for \(G\) (see the exact finite test
+\texttt{checks/section3\_mate\_matching.py}).
+
+\textbf{Replacement statement:}
+\begin{quote}
+The edges of \(H\) between distinct blocks agree with those
+of the Taylor double of \(G\). Within each block, a
+uniform matching may additionally be present.
+\end{quote}
+This makes explicit the existing qualification
+\emph{up to complementation within all blocks} in
+Lemma~\texttt{lemma:doublecover}.
+
+\subsection*{C03. Wagner complement in Lemma 3.7}
+\textbf{Location:} alternative (2) of
+\texttt{thm:sKt\_witnesses}, approximately source line 1225.
+
+\textbf{Action:} delete \emph{or its complement} after
+\emph{the Wagner graph}. The displayed matrix gives a
+3-regular graph; its complement is 4-regular.
+The complemented classification is obtained by
+complementing the pair \((G,H)\), not by relabelling
+the same displayed matrix.
+
+\subsection*{C06. Missing brace before Claim 3.11}
+\textbf{Location:} approximately source line 1310.
+
+\textbf{Action:} replace the malformed
+\(Y\in\{M,\overline M\) with
+\(Y\in\{M,\overline M\}\).
+No mathematical change is involved.
+
+
+\subsection*{C07. Lemma 3.12 lacks a hypothesis}
+\textbf{Location:} \texttt{lemma:different\_cliques},
+approximately line 1357.
+
+\textbf{Problem (confirmed counterexamples).}
+Both of the following satisfy all the written size,
+transitivity, imprimitivity and EPPA assumptions:
+\[
+K_2\dot\cup K_1\subset 3K_2,\qquad
+K_3\dot\cup K_2\dot\cup K_1\subset 4K_3.
+\]
+Yet the first host is neither of the proposed graph types,
+and the second has three unequal clique components
+rather than \(s=2\). Both witnesses are homogeneous,
+which explains why they have EPPA for their induced
+subgraphs.
+
+\textbf{Minimal proposed edit:} add the word
+\emph{non-homogeneous} before \emph{transitive EPPA witness}
+in the lemma hypothesis, matching its use in
+Proposition~3.23. An alternative is to state an
+additional disjunct allowing homogeneous \(H\).
+The first edit is shorter and is the currently proposed
+default. Its proof is treated, at paper level, in
+\texttt{validation/repair-claims-313-316.tex} and
+\texttt{validation/repair-case2-pair-regularity.tex}.
+Do not mark the full graph theorem as Lean-certified.
+
+\subsection*{C08. Proposition 3.23 omits disjoint doubles}
+\textbf{Location:} alternative \texttt{case:homog} of
+\texttt{prop:imprimitive\_summary}, approximately
+line 1590, and the proof at lines 1610--1612.
+
+\textbf{Problem (confirmed).} The proof erroneously
+calls \(2C_5\) and \(2R_3\) homogeneous and removes them.
+They are non-homogeneous: a nonedge within one connected
+component cannot be interchanged with a nonedge between
+components by any automorphism. Nevertheless, both are
+transitive imprimitive EPPA witnesses for an embedded
+\(G=C_5\), respectively \(G=R_3\), because the single
+component \(G\) is itself homogeneous. The main
+classification already lists \(H=2G\).
+
+\textbf{Minimal replacement for alternative (4):}
+\begin{quote}
+\(G\) is homogeneous, and \(H\) is either \(2G\)
+or the Taylor double of \(G\).
+\end{quote}
+
+\textbf{Matching proof edits:}
+replace \emph{Excluding the homogeneous graph \(2C_5\)}
+by \emph{The graph \(2C_5\) belongs to Case (4); the
+other possibilities are} (adjust the surrounding
+sentence), and make the identical correction for \(2R_3\).
+Do not delete either witness. The complement case
+is handled separately in C09.
+
+\subsection*{C09. Invalid invocation of Lemma 3.3}
+\textbf{Location:} the last paragraph of
+\texttt{prop:imprimitive\_summary},
+approximately source lines 1612--1614.
+
+Lemma~\texttt{lemma:doublecover} explicitly excludes
+complements of unions of cliques, but is cited there
+for \(G=\overline{sK_t}\).
+
+\textbf{Suggested replacement:}
+\begin{quote}
+For \(G\cong\overline{sK_t}\), complement the EPPA
+pair \((G,H)\), apply the equal-clique case to
+\((\overline G,\overline H)\), and take complements
+again, as permitted in the proposition.
+\end{quote}
+This requires the complementary-half statement in C10
+before the existing conditional Lemma~3.7 can be used.
+The added \(2G\) alternative is accounted for by C08.
+
+
+\section*{Paper-level proof replacements: awaiting author decision}
+
+\subsection*{C04. Claim 3.9: global neighbourhood-profile count}
+\textbf{Location:} \texttt{claim:connections}.
+The sentence asserting that each \(k\)-subset of
+\(C_i\) occurs as the neighbourhood of a vertex in a
+\emph{fixed} \(D_j\) does not follow from EPPA:
+an extending automorphism may move \(D_j\).
+
+\textbf{Replace that sentence by:}
+\begin{quote}
+Fix \(w\in D_j\) and let \(r\) be the number of
+cliques \(C_h\) in which \(w\) has precisely
+\(k\) neighbours. Every automorphism of \(G\)
+extends to \(H\), so the orbit of the tuple
+\((N_H(w)\cap C_h)_{h=1}^{s}\) under
+\(\operatorname{Aut}(G)=S_t\wr S_s\) is represented
+by vertices of \(H\setminus G\). This orbit has at least
+\(\binom{s}{r}\binom{t}{k}^{r}
+\ge s\binom{t}{k}\) elements, while
+\(|H\setminus G|=st\).
+\end{quote}
+Keep the existing conclusion \(\binom tk\le t\).
+This argument does not need a stabilizer fixing
+any individual \(D_j\). It depends on the regularity
+already asserted in Claim~3.8.
+The author has been reviewing a separate Wagner patch;
+do not apply this change to source automatically.
+
+\subsection*{C05. Claim 3.11: Wagner without exhaustive enumeration}
+\textbf{Location:} the final exceptional case in the
+proof of \texttt{thm:sKt\_witnesses}.
+The claim that vertex-transitivity alone leaves
+one eight-vertex isomorphism type is false.
+The finite test in \texttt{checks/cover\_2k2.py}
+finds 24 transitive assignments in four types.
+
+\textbf{Preferred repair:}
+Reuse C04's orbit estimate to exclude all
+off-diagonal matching cases with \(s\ge3\);
+the \(s=2,t\ge3\) case reduces to an ordinary
+cover by reindexing. For \(s=t=2\),
+vertex regularity forces the diagonal entries
+to have equal bipartite degree. The degree
+zero and two cases also reindex to ordinary
+covers. In the remaining case all entries are
+matchings; normalize three and write
+\[
+ A=\begin{pmatrix}M&M\\M&Z\end{pmatrix},
+ \qquad Z\in\{M,\overline M\}.
+\]
+If \(Z=M\), fixing a vertex of \(C_1\)
+and exchanging the two vertices of \(C_2\)
+changes the number of common neighbours
+from two to zero. Such a partial automorphism
+cannot extend to \(H\). Hence \(Z=\overline M\),
+giving the Wagner graph.
+A source-local TeX paragraph is preserved in
+\texttt{validation/short-claim39-wagner.tex}.
+The cube obstruction has also been proved in Lean in
+\texttt{EPPAIII/CliqueCovers/WagnerReduction.lean}.
+This does \emph{not} itself validate the earlier
+Claim~3.10 normalization argument.
+
+\subsection*{C10. The missing complementary-half hypothesis}
+\textbf{Location:} the use of
+\texttt{thm:sKt\_witnesses} in the proof of
+\texttt{prop:imprimitive\_summary}.
+
+\textbf{Problem.} Lemma~3.7 assumes that the
+second half of \(H\) is also \(sK_t\).
+Proposition~3.23 does not establish that before
+invoking it. Equality of the two halves'
+edge counts alone would be insufficient.
+
+\textbf{Suggested auxiliary lemma:}
+\begin{quote}
+Suppose \(H\) is a non-homogeneous
+vertex-transitive EPPA witness for an
+induced \(G=sK_t\), and \(|H|=2st\).
+Then \(H[V(H)\setminus V(G)]\cong sK_t\).
+\end{quote}
+A self-contained \emph{paper-level} proof using
+short \(S_t\wr S_s\)-orbits of neighbourhood profiles
+and true-twin classes is given in
+\texttt{validation/partition-half-lemma.tex}.
+The stronger independent argument in
+\texttt{validation/direct-clique-cover-proof.tex}
+bypasses Claims~3.8--3.11 entirely but would
+constitute a substantial editorial replacement.
+Neither graph-level result is yet fully Lean-proved.
+
+\subsection*{C11. Lemma 3.18: a missing bipartite-cycle exclusion}
+\textbf{Location:} \texttt{lem:C5\_10vertex},
+the cross-degree-two case (approximately line 1519).
+
+A \(2\)-regular bipartite graph on two parts of size five
+could also be \(C_4\dot\cup C_6\);
+prime part size does not alone imply \(C_{10}\).
+
+\textbf{Insert the following two sentences:}
+\begin{quote}
+In the alternative \(C_4\dot\cup C_6\),
+the four-cycle singles out a unique pair of
+vertices of \(G=C_5\) with two common neighbours
+in \(H\setminus G\). Every automorphism of
+\(C_5\) extends to \(H\), preserving both halves,
+so this pair would be invariant under
+\(\operatorname{Aut}(C_5)\), which is impossible.
+\end{quote}
+Therefore the cross graph is a single \(C_{10}\).
+This is a paper-level repair; the rest of the
+case classification should be reviewed separately.
+
+\subsection*{C12. Lemma 3.20: correct the cross-degree argument}
+\textbf{Location:} \texttt{lem:R3\_18vertex},
+the \(d_{\mathrm{cross}}\in\{2,3,4\}\) cases.
+
+For \(w\in H\setminus G\), the multiset of nine
+subsets \(N_H(w)\cap V(G)\) is invariant under
+\(\operatorname{Aut}(R_3)\), irrespective of how
+the imprimitivity blocks intersect the halves.
+The subset orbit sizes are
+\[
+\begin{array}{c|l}
+k&\text{orbit sizes}\\ \hline
+2&18,18\\
+3&6,6,36,36\\
+4&9,9,36,36,36 .
+\end{array}
+\]
+Thus the first two sizes are impossible,
+and a \(4\)-regular cross graph must
+correspond to one of the two nine-element
+orbits, of neighbourhoods or non-neighbourhoods.
+See the full proposed replacement
+\texttt{validation/short-r3-cross.tex},
+with exact small-orbit checks in
+\texttt{checks/section3\_r3\_orbits.py}.
+This eliminates an unjustified assumption that the
+actions on the two halves have already been
+identified equivariantly.
+
+
+\section*{Open proof decisions and optional alternatives}
+
+\subsection*{C13. Claims 3.8, 3.10, 3.15 and 3.16}
+The proof of Claim~3.8 refers to matching
+connection profiles without first defining an invariant
+profile under moving \(D_j\)'s. Claim~3.10 attempts
+to normalize several matchings simultaneously;
+normalizing one column need not normalize the others
+without a compatibility argument.
+
+\textbf{Current proposal:} retain these as unresolved
+proof dependencies if the original proof architecture
+is kept. Alternatively, the direct proof of the
+clique-cover classification in
+\texttt{validation/direct-clique-cover-proof.tex}
+can bypass Claims~3.8--3.11, but its integration
+requires an explicit editorial decision.
+
+For the unequal-clique case, more concise
+paper-level arguments for Claims~3.15--3.16 are in
+\texttt{validation/repair-claims-313-316.tex}.
+The Case~2 double-cover argument can be replaced by
+\texttt{validation/repair-case2-pair-regularity.tex}.
+Separate Lean modules already verify two-point
+partial-automorphism lifting and uniform
+inter-fibre adjacency matrices, but the complete
+graph-level classification is not yet fully
+formalized.
+
+\section*{How to maintain this register}
+For each new correction, record a source label,
+a minimal proposed modification, whether the
+error itself is established, and the exact
+proof/check on which the proposal depends.
+Use \textbf{accepted}, \textbf{declined}, or
+\textbf{still under review} as an additional
+editorial status only after the authors have
+made that decision. Until then, all entries in
+this file remain \textbf{proposed}.
+
+The extensive historical audit is retained in
+\texttt{validation/issues.tex} and
+\texttt{validation/section3-rest.tex}, with independent
+finite checks under \texttt{checks/}.
+This register is deliberately concise and
+actionable; it is not a substitute for those
+supporting reports.
+
+\end{document}
