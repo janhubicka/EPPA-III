@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=28mm}
+\title{EPPA--III: a short orbit proof for Lemma 3.3}
+\author{Independent validation supplement; manuscript unchanged}
+\date{10 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Source anchor.}
+This note addresses the final orbit-transitivity assertion
+of Lemma~\texttt{lemma:doublecover}, immediately after
+Claim~\texttt{claim:taylorconclusion} in
+\texttt{main-new(7).tex} (about lines 1030--1035).
+The manuscript also proves a more elaborate claim
+\texttt{claim:orbit} using a maximal partial
+automorphism. The shorter route below is independent
+of that maximal-domain argument.
+
+\paragraph{Assumptions.}
+Let \(G\) be a finite non-homogeneous graph and
+\(H\) a transitive imprimitive EPPA witness with
+\(|H|=2|G|\).
+Assume the invariant two-element block system
+\(P=\{\{x_0,x_1\}:x\in V(G)\}\) has already been
+established. By the separate four-Boolean
+matrix argument, the inter-block adjacency is
+that of the Taylor double, with a matching
+between mates uniformly present or absent.
+
+\paragraph{Short proof of the quotient action.}
+Let \(K\le \operatorname{Sym}(V(G))\) be the
+permutation group induced by \(\operatorname{Aut}(H)\)
+on the invariant blocks. By the two-point EPPA
+property, \(K\) is transitive on ordered pairs
+\((x,y)\) with \(x\sim_G y\), and separately on
+ordered pairs with \(x\not\sim_G y\), \(x\ne y\).
+If these were distinct \(K\)-orbits, every
+element of \(K\) would preserve adjacency in
+\(G\); indeed \(K\le \operatorname{Aut}(G)\).
+Projecting any EPPA extension onto the blocks
+would then extend the original partial
+automorphism within \(G\). Consequently \(G\)
+would be homogeneous, a contradiction.
+Thus the two orbits coincide, and \(K\)
+is 2-transitive.
+
+\paragraph{Lifting to ordered edges and nonedges.}
+Between any two different blocks \(\{x_0,x_1\}\)
+and \(\{y_0,y_1\}\), the Taylor pattern has
+exactly two edges and two nonedges.
+The deck involution simultaneously swapping
+\(x_0\) with \(x_1\) for every \(x\) is an
+automorphism, even if the matching inside
+each block is present. This involution
+exchanges the two ordered edges over a fixed
+ordered pair of blocks, and likewise their
+two nonedges.
+Given any two ordered inter-block edges,
+2-transitivity of \(K\) first aligns their
+ordered blocks, and the deck involution
+then aligns the two ordered vertex pairs.
+The same argument works for nonedges.
+This is precisely the remaining assertion
+of Lemma~3.3.
+
+\paragraph{Formal verification.}
+The quotient 2-transitivity argument is
+verified in \texttt{DoubleCover/FibreOrbits.lean};
+the deck involution and pair-status
+classification in \texttt{DoubleCover/DeckSwap.lean};
+and the canonical ordered inter-fibre
+transitivity in \texttt{DoubleCover/InterblockOrbits.lean}.
+\texttt{BlockSystems/OrderedInterblockOrbits.lean}
+transports the orbit conclusion to the
+original host, with explicit invariance,
+EPPA and size hypotheses.
+The complete statements are axiom-audited.
+The use of Gardiner's classification to
+deduce non-homogeneity from the exact list
+of excluded graphs in the source lemma is
+still a paper-level dependency and is not
+implicitly proved by this Lean development.
+
+\paragraph{Editorial status.}
+This is an optional proof simplification
+and validation supplement, not an instruction
+to rewrite the existing manuscript.
+Retain the proposed Claim~3.6 clarification
+allowing uniform mate edges.
+\end{document}
