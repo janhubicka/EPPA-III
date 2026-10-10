@@ -92,3 +92,5 @@ import EPPAIII
 
 #print axioms EPPAIII.BlockSystems.eppa_pullback_bottom
 #print axioms EPPAIII.BlockSystems.invariant_pairs_of_pullback
+
+#print axioms EPPAIII.BlockSystems.transitive_eppa_double_cover_up_to_mate
