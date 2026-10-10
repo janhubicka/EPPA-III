@@ -184,4 +184,148 @@ This requires the complementary-half statement in C10
 before the existing conditional Lemma~3.7 can be used.
 The added \(2G\) alternative is accounted for by C08.
 
+
+\section*{Paper-level proof replacements: awaiting author decision}
+
+\subsection*{C04. Claim 3.9: global neighbourhood-profile count}
+\textbf{Location:} \texttt{claim:connections}.
+The sentence asserting that each \(k\)-subset of
+\(C_i\) occurs as the neighbourhood of a vertex in a
+\emph{fixed} \(D_j\) does not follow from EPPA:
+an extending automorphism may move \(D_j\).
+
+\textbf{Replace that sentence by:}
+\begin{quote}
+Fix \(w\in D_j\) and let \(r\) be the number of
+cliques \(C_h\) in which \(w\) has precisely
+\(k\) neighbours. Every automorphism of \(G\)
+extends to \(H\), so the orbit of the tuple
+\((N_H(w)\cap C_h)_{h=1}^{s}\) under
+\(\operatorname{Aut}(G)=S_t\wr S_s\) is represented
+by vertices of \(H\setminus G\). This orbit has at least
+\(\binom{s}{r}\binom{t}{k}^{r}
+\ge s\binom{t}{k}\) elements, while
+\(|H\setminus G|=st\).
+\end{quote}
+Keep the existing conclusion \(\binom tk\le t\).
+This argument does not need a stabilizer fixing
+any individual \(D_j\). It depends on the regularity
+already asserted in Claim~3.8.
+The author has been reviewing a separate Wagner patch;
+do not apply this change to source automatically.
+
+\subsection*{C05. Claim 3.11: Wagner without exhaustive enumeration}
+\textbf{Location:} the final exceptional case in the
+proof of \texttt{thm:sKt_witnesses}.
+The claim that vertex-transitivity alone leaves
+one eight-vertex isomorphism type is false.
+The finite test in \texttt{checks/cover\_2k2.py}
+finds 24 transitive assignments in four types.
+
+\textbf{Preferred repair:}
+Reuse C04's orbit estimate to exclude all
+off-diagonal matching cases with \(s\ge3\);
+the \(s=2,t\ge3\) case reduces to an ordinary
+cover by reindexing. For \(s=t=2\),
+vertex regularity forces the diagonal entries
+to have equal bipartite degree. The degree
+zero and two cases also reindex to ordinary
+covers. In the remaining case all entries are
+matchings; normalize three and write
+\[
+ A=\begin{pmatrix}M&M\\M&Z\end{pmatrix},
+ \qquad Z\in\{M,\overline M\}.
+\]
+If \(Z=M\), fixing a vertex of \(C_1\)
+and exchanging the two vertices of \(C_2\)
+changes the number of common neighbours
+from two to zero. Such a partial automorphism
+cannot extend to \(H\). Hence \(Z=\overline M\),
+giving the Wagner graph.
+A source-local TeX paragraph is preserved in
+\texttt{validation/short-claim39-wagner.tex}.
+The cube obstruction has also been proved in Lean in
+\texttt{EPPAIII/CliqueCovers/WagnerReduction.lean}.
+This does \emph{not} itself validate the earlier
+Claim~3.10 normalization argument.
+
+\subsection*{C10. The missing complementary-half hypothesis}
+\textbf{Location:} the use of
+\texttt{thm:sKt_witnesses} in the proof of
+\texttt{prop:imprimitive_summary}.
+
+\textbf{Problem.} Lemma~3.7 assumes that the
+second half of \(H\) is also \(sK_t\).
+Proposition~3.23 does not establish that before
+invoking it. Equality of the two halves'
+edge counts alone would be insufficient.
+
+\textbf{Suggested auxiliary lemma:}
+\begin{quote}
+Suppose \(H\) is a non-homogeneous
+vertex-transitive EPPA witness for an
+induced \(G=sK_t\), and \(|H|=2st\).
+Then \(H[V(H)\setminus V(G)]\cong sK_t\).
+\end{quote}
+A self-contained \emph{paper-level} proof using
+short \(S_t\wr S_s\)-orbits of neighbourhood profiles
+and true-twin classes is given in
+\texttt{validation/partition-half-lemma.tex}.
+The stronger independent argument in
+\texttt{validation/direct-clique-cover-proof.tex}
+bypasses Claims~3.8--3.11 entirely but would
+constitute a substantial editorial replacement.
+Neither graph-level result is yet fully Lean-proved.
+
+\subsection*{C11. Lemma 3.18: a missing bipartite-cycle exclusion}
+\textbf{Location:} \texttt{lem:C5_10vertex},
+the cross-degree-two case (approximately line 1519).
+
+A \(2\)-regular bipartite graph on two parts of size five
+could also be \(C_4\dot\cup C_6\);
+prime part size does not alone imply \(C_{10}\).
+
+\textbf{Insert the following two sentences:}
+\begin{quote}
+In the alternative \(C_4\dot\cup C_6\),
+the four-cycle singles out a unique pair of
+vertices of \(G=C_5\) with two common neighbours
+in \(H\setminus G\). Every automorphism of
+\(C_5\) extends to \(H\), preserving both halves,
+so this pair would be invariant under
+\(\operatorname{Aut}(C_5)\), which is impossible.
+\end{quote}
+Therefore the cross graph is a single \(C_{10}\).
+This is a paper-level repair; the rest of the
+case classification should be reviewed separately.
+
+\subsection*{C12. Lemma 3.20: correct the cross-degree argument}
+\textbf{Location:} \texttt{lem:R3_18vertex},
+the \(d_{\mathrm{cross}}\in\{2,3,4\}\) cases.
+
+For \(w\in H\setminus G\), the multiset of nine
+subsets \(N_H(w)\cap V(G)\) is invariant under
+\(\operatorname{Aut}(R_3)\), irrespective of how
+the imprimitivity blocks intersect the halves.
+The subset orbit sizes are
+\[
+\begin{array}{c|l}
+k&\text{orbit sizes}\\ \hline
+2&18,18\\
+3&6,6,36,36\\
+4&9,9,36,36,36 .
+\end{array}
+\]
+Thus the first two sizes are impossible,
+and a \(4\)-regular cross graph must
+correspond to one of the two nine-element
+orbits, of neighbourhoods or non-neighbourhoods.
+See the full proposed replacement
+\texttt{validation/short-r3-cross.tex},
+with exact small-orbit checks in
+\texttt{checks/section3\_r3\_orbits.py}.
+This eliminates an unjustified assumption that the
+actions on the two halves have already been
+identified equivariantly.
+
 \end{document}
