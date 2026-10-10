@@ -73,3 +73,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.edges_cross_of_induced_p3
 #print axioms EPPAIII.BlockSystems.nonedges_cross_of_induced_cop3
 #print axioms EPPAIII.BlockSystems.selected_vertices_transversal
+
+#print axioms EPPAIII.BlockSystems.not_cluster_iff_induced_p3
+#print axioms EPPAIII.BlockSystems.not_cocluster_iff_induced_cop3
+#print axioms EPPAIII.BlockSystems.transversal_of_noncluster
