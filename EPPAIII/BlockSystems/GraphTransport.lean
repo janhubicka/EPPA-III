@@ -21,13 +21,13 @@ def pullbackGraph {X W : Type*}
     (H : SimpleGraph W) (φ : X ≃ W) : SimpleGraph X where
   Adj u v := H.Adj (φ u) (φ v)
   symm := by
-    change ∀ u v : X, H.Adj (φ u) (φ v) → H.Adj (φ v) (φ u)
+    constructor
     intro u v h
     exact H.symm h
   loopless := by
-    change ∀ u : X, ¬ H.Adj (φ u) (φ u)
-    intro u
-    exact H.loopless (φ u)
+    constructor
+    intro u h
+    exact H.loopless (φ u) h
 
 /-- EPPA is invariant under relabelling of the host along an
 equivalence which carries the canonical bottom embedding to e. -/
