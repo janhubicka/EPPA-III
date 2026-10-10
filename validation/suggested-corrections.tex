@@ -213,9 +213,31 @@ by vertices of \(H\setminus G\). This orbit has at least
 \(|H\setminus G|=st\).
 \end{quote}
 Keep the existing conclusion \(\binom tk\le t\).
-This argument does not need a stabilizer fixing
-any individual \(D_j\). It depends on the regularity
-already asserted in Claim~3.8.
+The profile orbit estimate applies \emph{without}
+Claim~3.8's two-sided regularity and does not need
+a stabilizer fixing any particular \(D_j\).
+However, Claim~3.8 (or a replacement for it) is still
+needed to infer that each whole \(C_i\)--\(D_j\)
+bipartite graph is a matching or co-matching, rather
+than merely that each vertex has an extreme degree.
+
+\paragraph{Formalization evidence.}
+The global EPPA orbit upper bound is Lean-verified in
+\texttt{EPPAIII/EPPA/ProfileOrbitBound.lean}.
+The numerical estimate
+\(\binom{s}{r}\binom{t}{k}^{r}
+\ge s\binom{t}{k}\), including the case \(r=s\),
+and the resulting restriction to \(k=1,t-1\)
+are implemented in
+\texttt{EPPAIII/CliqueCovers/Claim39Arithmetic.lean}.
+An independent generator-based exhaustive orbit check
+for \(st\le12\) is in
+\texttt{checks/section3\_wreath\_orbits.py}.
+The \emph{general} wreath-product orbit lower bound
+\(\binom{s}{r}\binom{t}{k}^{r}\le
+|\operatorname{Aut}(G)\cdot P(w)|\) remains a separate
+Lean proof obligation. Thus Claim~3.9 itself should
+not yet be marked as fully Lean-verified.
 The author has been reviewing a separate Wagner patch;
 do not apply this change to source automatically.
 
