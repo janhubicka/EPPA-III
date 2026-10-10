@@ -103,9 +103,21 @@ upper bound in
 \texttt{EPPAIII/EPPA/ProfileOrbitBound.lean}
 and the numerical inequalities in
 \texttt{EPPAIII/CliqueCovers/Claim39Arithmetic.lean}.
-The exact wreath-product group-action
-count (1) is currently a paper-level
-argument, \emph{not yet a Lean theorem}.
+The general orbit \emph{lower bound} (2) is now
+proved in Lean in
+\texttt{EPPAIII/CliqueCovers/WreathOrbitCount.lean},
+using the explicit generators
+\texttt{WreathGenerators.lean},
+their action on slices
+\texttt{WreathSlices.lean},
+the independent-subset realizability
+\texttt{WreathChoiceTransitivity.lean}, and
+the cardinal calculation
+\texttt{ProfileChoices.lean}.
+The precise \emph{multinomial equality} (1)
+remains a paper-level derivation rather
+than a Lean theorem; this equality is not
+needed for Claim~3.9's numerical conclusion.
 An independently generated enumeration
 using elementary adjacent permutations,
 rather than (1), verifies the count and
@@ -113,7 +125,14 @@ bounds for all profiles with \(st\le12\);
 see \texttt{checks/section3\_wreath\_orbits.py}.
 The checker covers 269 orbits, 19,724
 profiles and 257 nontrivial-coordinate
-checks. The unrestricted assertion
-remains on the Lean verification queue.
+checks.
+
+The final transport from the generated
+wreath orbit into the EPPA profile orbit is
+prepared in \texttt{Claim39Orbit.lean}
+(PR~\#26), still awaiting CI at this
+checkpoint. This does not remove the
+separate Claim~3.8/C14 regularity dependency
+for the entire bipartite blocks.
 
 \end{document}
