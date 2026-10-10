@@ -70,13 +70,13 @@ theorem eppa_interfibre_pair_status_transitive {V : Type*}
       exact (hq u v).trans (hDeck (q u) (q v))
     · change (!(q (b,x)).1, (q (b,x)).2) = (d,z)
       apply Prod.ext
-      · change !bq = d
+      · change (!bq) = d
         rw [hb]
         cases d <;> rfl
       · exact (hσ b x).trans hxz
     · change (!(q (c,y)).1, (q (c,y)).2) = (e,w)
       apply Prod.ext
-      · change !cq = e
+      · change (!cq) = e
         rw [hc]
         cases e <;> rfl
       · exact (hσ c y).trans hyw
