@@ -42,3 +42,7 @@ import EPPAIII
 
 #print axioms EPPAIII.DoubleCover.eppa_has_uniform_pair_pattern
 #print axioms EPPAIII.DoubleCover.induced_pair_bottom
+
+#print axioms EPPAIII.DoubleCover.fibreEdgeCount_invariant
+#print axioms EPPAIII.DoubleCover.fibreEdgeCount_edge
+#print axioms EPPAIII.DoubleCover.fibreEdgeCount_nonedge
