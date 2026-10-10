@@ -436,14 +436,28 @@ to an automorphism of \(G\).
 
 An independent proof audit is in
 \texttt{validation/claim34-block-system.tex}.
-Lean now verifies the two-point block orbit
-step, cluster-obstruction reduction, the
-filled-block homogeneity argument, and the
-pair-count conclusion \emph{conditional on}
-uniform block sizes and the size equation
-\(bm=2n\). The derivation of uniformity from
-host transitivity and the canonical pairing
-remain separate formalization tasks.
+Lean now verifies the block-orbit step,
+cluster-obstruction reduction, whole-block
+homogeneity contradiction, the pair-count
+conclusion \emph{from vertex-transitivity},
+and construction of the canonical equivalence
+\(\{0,1\}\times V(G)\simeq V(H)\).
+The transport theorems preserve both EPPA
+and the invariant pair system, allowing the
+structural Taylor-double conclusion with
+uniform optional mate edges.
+This is proved in
+\texttt{BlockSystems/FullDoubleCover.lean},
+with the full axiom audit passing.
+The original lemma's additional statement
+about transitivity on ordered edges and
+nonedges between different blocks remains
+a separate Lean proof obligation.
+The translation from the manuscript's
+excluded graph list to non-homogeneity
+uses Gardiner's theorem, which appears
+earlier in the paper but is not formalized
+in Lean.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
