@@ -48,6 +48,7 @@ C13 & Claims 3.8, 3.10, 3.15, 3.16 & Pending & Proof alternatives\\
 C14 & \texttt{claim:regularity}, final paragraph & Pending & D-side regularity\\
 C15 & Introduction after \texttt{def:generalizedcover} & Confirmed & Complement terminology\\
 C16 & Lemma 3.3, first claim (Claim 3.4) & Readability & One-block EPPA reasoning\\
+C17 & Lemma 3.3, final orbit assertion & Optional & Short two-point proof\\
 \bottomrule
 \end{longtable}
 
@@ -449,15 +450,73 @@ uniform optional mate edges.
 This is proved in
 \texttt{BlockSystems/FullDoubleCover.lean},
 with the full axiom audit passing.
-The original lemma's additional statement
-about transitivity on ordered edges and
-nonedges between different blocks remains
-a separate Lean proof obligation.
+The original lemma's additional orbit
+statement on ordered inter-block edges
+and nonedges is now verified in
+\texttt{DoubleCover/InterblockOrbits.lean}
+and transported to the original host in
+\texttt{BlockSystems/OrderedInterblockOrbits.lean}.
+The proof uses two-point EPPA to obtain
+2-transitivity on fibres and the deck
+involution to align the two vertex-pair
+choices over each ordered pair of blocks.
 The translation from the manuscript's
 excluded graph list to non-homogeneity
 uses Gardiner's theorem, which appears
 earlier in the paper but is not formalized
 in Lean.
+
+
+\subsection*{C17. Lemma 3.3: optional short proof of inter-block orbit transitivity}
+\textbf{Location:} the paragraph immediately after
+Claim~\texttt{claim:taylorconclusion} in
+Lemma~\texttt{lemma:doublecover}, approximately
+lines 1030--1035 of \texttt{main-new(7).tex}.
+
+\textbf{Status: optional proof simplification, not a
+counterexample.} The source derives transitivity
+of ordered inter-block edges and nonedges from
+the more elaborate Claim~\texttt{claim:orbit}.
+There is a direct short argument once the Taylor
+inter-fibre pattern is available.
+
+\textbf{Suggested replacement paragraph:}
+\begin{quote}
+Let \(K\) denote the permutation group induced by
+\(\operatorname{Aut}(H)\) on the two-vertex blocks.
+By two-point EPPA, \(K\) is transitive on ordered
+pairs corresponding to edges of \(G\), and separately
+on those corresponding to its nonedges. If these
+orbits were distinct, every induced permutation
+would preserve \(G\), and EPPA would make \(G\)
+homogeneous, contrary to our assumption.
+Thus \(K\) is 2-transitive.
+In the Taylor double, each ordered pair of
+distinct blocks supports precisely two
+ordered edges and two ordered nonedges.
+The deck involution that exchanges the
+vertices of every block interchanges the
+two choices of each type.
+Therefore \(\operatorname{Aut}(H)\) is
+transitive on ordered inter-block edges
+and, separately, on ordered inter-block
+nonedges.
+\end{quote}
+
+The complete source-local argument is in
+\texttt{validation/short-lemma33-orbits.tex}.
+Its essential graph and group-action steps
+are now Lean-verified in
+\texttt{EPPAIII/DoubleCover/FibreOrbits.lean},
+\texttt{EPPAIII/DoubleCover/DeckSwap.lean},
+\texttt{EPPAIII/DoubleCover/InterblockOrbits.lean},
+and \texttt{EPPAIII/BlockSystems/OrderedInterblockOrbits.lean}.
+As elsewhere, the connection between the source
+lemma's list of excluded homogeneous graphs and
+the Lean non-homogeneity hypothesis uses the
+Gardiner classification at paper level.
+The original manuscript remains frozen;
+the paragraph above is an author-review option.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
