@@ -145,3 +145,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.mem_kPositions
 #print axioms EPPAIII.CliqueCovers.exists_outer_k_positions
 #print axioms EPPAIII.CliqueCovers.exists_inner_match_selected
+
+#print axioms EPPAIII.CliqueCovers.wreathTransform_mem_orbit
+#print axioms EPPAIII.CliqueCovers.kPositions_inner
+#print axioms EPPAIII.CliqueCovers.wreath_choice_realisable
+#print axioms EPPAIII.CliqueCovers.wreath_orbit_card_lower_bound
