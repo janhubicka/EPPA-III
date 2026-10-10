@@ -106,4 +106,82 @@ the same displayed matrix.
 \(Y\in\{M,\overline M\}\).
 No mathematical change is involved.
 
+
+\subsection*{C07. Lemma 3.12 lacks a hypothesis}
+\textbf{Location:} \texttt{lemma:different_cliques},
+approximately line 1357.
+
+\textbf{Problem (confirmed counterexamples).}
+Both of the following satisfy all the written size,
+transitivity, imprimitivity and EPPA assumptions:
+\[
+K_2\dot\cup K_1\subset 3K_2,\qquad
+K_3\dot\cup K_2\dot\cup K_1\subset 4K_3.
+\]
+Yet the first host is neither of the proposed graph types,
+and the second has three unequal clique components
+rather than \(s=2\). Both witnesses are homogeneous,
+which explains why they have EPPA for their induced
+subgraphs.
+
+\textbf{Minimal proposed edit:} add the word
+\emph{non-homogeneous} before \emph{transitive EPPA witness}
+in the lemma hypothesis, matching its use in
+Proposition~3.23. An alternative is to state an
+additional disjunct allowing homogeneous \(H\).
+The first edit is shorter and is the currently proposed
+default. Its proof is treated, at paper level, in
+\texttt{validation/repair-claims-313-316.tex} and
+\texttt{validation/repair-case2-pair-regularity.tex}.
+Do not mark the full graph theorem as Lean-certified.
+
+\subsection*{C08. Proposition 3.23 omits disjoint doubles}
+\textbf{Location:} alternative \texttt{case:homog} of
+\texttt{prop:imprimitive_summary}, approximately
+line 1590, and the proof at lines 1610--1612.
+
+\textbf{Problem (confirmed).} The proof erroneously
+calls \(2C_5\) and \(2R_3\) homogeneous and removes them.
+They are non-homogeneous: a nonedge within one connected
+component cannot be interchanged with a nonedge between
+components by any automorphism. Nevertheless, both are
+transitive imprimitive EPPA witnesses for an embedded
+\(G=C_5\), respectively \(G=R_3\), because the single
+component \(G\) is itself homogeneous. The main
+classification already lists \(H=2G\).
+
+\textbf{Minimal replacement for alternative (4):}
+\begin{quote}
+\(G\) is homogeneous, and \(H\) is either \(2G\)
+or the Taylor double of \(G\).
+\end{quote}
+
+\textbf{Matching proof edits:}
+replace \emph{Excluding the homogeneous graph \(2C_5\)}
+by \emph{The graph \(2C_5\) belongs to Case (4); the
+other possibilities are} (adjust the surrounding
+sentence), and make the identical correction for \(2R_3\).
+Do not delete either witness. The complement case
+is handled separately in C09.
+
+\subsection*{C09. Invalid invocation of Lemma 3.3}
+\textbf{Location:} the last paragraph of
+\texttt{prop:imprimitive_summary},
+approximately source lines 1612--1614.
+
+Lemma~\texttt{lemma:doublecover} explicitly excludes
+complements of unions of cliques, but is cited there
+for \(G=\overline{sK_t}\).
+
+\textbf{Suggested replacement:}
+\begin{quote}
+For \(G\cong\overline{sK_t}\), complement the EPPA
+pair \((G,H)\), apply the equal-clique case to
+\((\overline G,\overline H)\), and take complements
+again, as permitted in the proposition.
+\end{quote}
+This requires the complementary-half statement in C10
+before the existing conditional Lemma~3.7 can be used.
+The added \(2G\) alternative is accounted for by C08.
+
 \end{document}
