@@ -150,3 +150,10 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.kPositions_inner
 #print axioms EPPAIII.CliqueCovers.wreath_choice_realisable
 #print axioms EPPAIII.CliqueCovers.wreath_orbit_card_lower_bound
+
+#print axioms EPPAIII.CliqueCovers.translatedFiniteProfile_eq_map
+#print axioms EPPAIII.CliqueCovers.wreathPermutation_aut
+#print axioms EPPAIII.CliqueCovers.wreathTransform_eq_map
+#print axioms EPPAIII.CliqueCovers.wreathOrbit_subset_finiteProfileOrbit
+#print axioms EPPAIII.CliqueCovers.actual_profile_orbit_lower_bound
+#print axioms EPPAIII.CliqueCovers.eppa_clique_partial_degree_extreme
