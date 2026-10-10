@@ -64,3 +64,8 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.homogeneous_of_complete
 #print axioms EPPAIII.DoubleCover.edge_and_nonedge_of_nonhomogeneous
 #print axioms EPPAIII.DoubleCover.eppa_taylor_double_up_to_mate
+
+#print axioms EPPAIII.BlockSystems.eppa_block_relation_two_point
+#print axioms EPPAIII.BlockSystems.eppa_edges_uniform_blocks
+#print axioms EPPAIII.BlockSystems.eppa_nonedges_uniform_blocks
+#print axioms EPPAIII.BlockSystems.transversal_double_count
