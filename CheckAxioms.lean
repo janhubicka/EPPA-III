@@ -51,3 +51,8 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.homogeneous_of_unequal_pair_counts
 #print axioms EPPAIII.DoubleCover.balanced_of_nonhomogeneous
 #print axioms EPPAIII.DoubleCover.nonhomogeneous_pair_pattern_cases
+
+#print axioms EPPAIII.DoubleCover.oneEdge_forces_homogeneous
+#print axioms EPPAIII.DoubleCover.threeEdges_forces_homogeneous
+#print axioms EPPAIII.DoubleCover.nonhomogeneous_pair_pattern_is_taylor
+#print axioms EPPAIII.DoubleCover.eppa_taylor_interfibre
