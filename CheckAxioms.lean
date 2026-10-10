@@ -56,3 +56,6 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.threeEdges_forces_homogeneous
 #print axioms EPPAIII.DoubleCover.nonhomogeneous_pair_pattern_is_taylor
 #print axioms EPPAIII.DoubleCover.eppa_taylor_interfibre
+
+#print axioms EPPAIII.DoubleCover.eppa_mate_uniform
+#print axioms EPPAIII.DoubleCover.eppa_taylor_with_optional_mate
