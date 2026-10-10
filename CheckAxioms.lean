@@ -112,3 +112,8 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.eppa_interfibre_pair_status_transitive
 #print axioms EPPAIII.DoubleCover.eppa_interfibre_ordered_edges_transitive
 #print axioms EPPAIII.DoubleCover.eppa_interfibre_ordered_nonedges_transitive
+
+#print axioms EPPAIII.BlockSystems.pullback_automorphism_to_host
+#print axioms EPPAIII.BlockSystems.transitive_eppa_host_interblock_status_orbit
+#print axioms EPPAIII.BlockSystems.transitive_eppa_host_interblock_edges
+#print axioms EPPAIII.BlockSystems.transitive_eppa_host_interblock_nonedges
