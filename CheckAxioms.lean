@@ -36,3 +36,6 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.eppa_maps_two_fibres
 #print axioms EPPAIII.DoubleCover.eppa_uniform_pair_entries
 #print axioms EPPAIII.DoubleCover.eppa_cross_symmetric
+
+#print axioms EPPAIII.DoubleCover.homogeneous_of_global_bottom
+#print axioms EPPAIII.DoubleCover.homogeneous_of_graph_exceptional
