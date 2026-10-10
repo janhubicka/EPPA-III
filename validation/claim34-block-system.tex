@@ -57,25 +57,41 @@ an extension of a nonempty partial automorphism
 of \(G\) stabilizes \(\Pi\) and thus restricts
 to an automorphism of \(G\).
 \end{quote}
-\paragraph{Updated formalization boundary.}
-The Lean modules \texttt{Basic.lean},
+\paragraph{Updated formalization checkpoint.}
+The chain of Lean modules
+\texttt{Basic.lean},
 \texttt{Transversal.lean},
 \texttt{ClusterObstructions.lean},
-\texttt{FilledBlock.lean} and
-\texttt{Size.lean} now verify the two-point
-block orbit statement, the equivalence between
-cluster-graph exclusions and induced triples,
-the whole-block homogeneity contradiction,
-and the conclusion that the selected graph
-is a transversal of \(n\) blocks of size two
-\emph{provided} the initial partition has
-uniform block size \(m\ge2\), at least two
-blocks, and satisfies the total size equation
-\(bm=2n\).
-Deriving those uniformity conditions from
-vertex-transitivity, and constructing the
-canonical paired-fibre identification
-\(W\simeq\{0,1\}\times V(G)\), are the
-remaining bridges. None of the initial manuscript
-TeX has been altered.
+\texttt{FilledBlock.lean},
+\texttt{Size.lean} and
+\texttt{TransitivePartition.lean}
+proves Claim~3.4's invariant two-point partition
+directly from vertex-transitivity, EPPA,
+the nontrivial imprimitivity system, and
+the graph-class exclusions.
+\texttt{CanonicalPairs.lean}
+constructs the equivalence
+\(W\simeq\{0,1\}\times V(G)\) sending
+the bottom copy to the original embedding.
+\texttt{GraphTransport.lean} proves
+that the EPPA and invariant-block conditions
+transport through this equivalence.
+Finally,
+\texttt{FullDoubleCover.lean}
+establishes the structural Taylor-double
+conclusion with optional mate matching.
+All these theorems compile and pass the
+permitted-axiom check.
+
+\paragraph{Remaining scope.}
+The manuscript additionally asserts transitivity
+of \(\operatorname{Aut}(H)\) on ordered inter-block
+edges and nonedges, which is \emph{not}
+contained in the present structural theorem.
+Using the manuscript's exact exclusion of
+\(C_5\), \(R_3\), and clique unions to obtain
+the required non-homogeneity relies on
+the Gardiner classification in its introduction,
+not on a Lean proof of that classification.
+No original manuscript TeX has been modified.
 \end{document}
