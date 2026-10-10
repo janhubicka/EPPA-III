@@ -54,7 +54,9 @@ theorem taylor_interfibre_adj_iff {V : Type*}
     (b c : Bool) (x y : V) (hxy : x ≠ y) :
     H.Adj (b,x) (c,y) ↔ (b = c ↔ G.Adj x y) := by
   cases b <;> cases c
-  · simpa [bottomEmbedding] using (he x y).symm
+  · have hh := he x y
+    change G.Adj x y ↔ H.Adj (false,x) (false,y) at hh
+    simpa using hh.symm
   · simpa using (taylor_cross_adj_iff_nonedge G H hr x y hxy).1
   · simpa using (taylor_cross_adj_iff_nonedge G H hr x y hxy).2
   · simpa using taylor_top_adj_iff_base G H hr x y hxy
