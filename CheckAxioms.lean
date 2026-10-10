@@ -94,3 +94,11 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.invariant_pairs_of_pullback
 
 #print axioms EPPAIII.BlockSystems.transitive_eppa_double_cover_up_to_mate
+
+#print axioms EPPAIII.DoubleCover.fibrePairReach_refl
+#print axioms EPPAIII.DoubleCover.fibrePairReach_trans
+#print axioms EPPAIII.DoubleCover.fibrePairReach_symm
+#print axioms EPPAIII.DoubleCover.reach_of_same_base_type
+#print axioms EPPAIII.DoubleCover.homogeneous_of_all_fibre_actions_preserve_base
+#print axioms EPPAIII.DoubleCover.exists_fibre_pair_type_change
+#print axioms EPPAIII.DoubleCover.eppa_fibre_action_two_transitive
