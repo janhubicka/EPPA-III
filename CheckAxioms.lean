@@ -59,3 +59,8 @@ import EPPAIII
 
 #print axioms EPPAIII.DoubleCover.eppa_mate_uniform
 #print axioms EPPAIII.DoubleCover.eppa_taylor_with_optional_mate
+
+#print axioms EPPAIII.DoubleCover.homogeneous_of_edgeless
+#print axioms EPPAIII.DoubleCover.homogeneous_of_complete
+#print axioms EPPAIII.DoubleCover.edge_and_nonedge_of_nonhomogeneous
+#print axioms EPPAIII.DoubleCover.eppa_taylor_double_up_to_mate
