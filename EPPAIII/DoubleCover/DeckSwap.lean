@@ -54,7 +54,7 @@ theorem taylor_interfibre_adj_iff {V : Type*}
     (b c : Bool) (x y : V) (hxy : x ≠ y) :
     H.Adj (b,x) (c,y) ↔ (b = c ↔ G.Adj x y) := by
   cases b <;> cases c
-  · simpa using (he x y).symm
+  · simpa [bottomEmbedding] using (he x y).symm
   · simpa using (taylor_cross_adj_iff_nonedge G H hr x y hxy).1
   · simpa using (taylor_cross_adj_iff_nonedge G H hr x y hxy).2
   · simpa using taylor_top_adj_iff_base G H hr x y hxy
@@ -112,6 +112,6 @@ theorem taylor_pair_same_status_eq_or_deck {V : Type*}
       (b' = c' ↔ G.Adj x y) :=
     h1.symm.trans (hstatus.trans h2)
   cases b <;> cases c <;> cases b' <;> cases c' <;>
-    simp_all <;> tauto
+    simp_all
 
 end EPPAIII.DoubleCover
