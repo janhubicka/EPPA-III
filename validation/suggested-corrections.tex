@@ -234,10 +234,25 @@ An independent generator-based exhaustive orbit check
 for \(st\le12\) is in
 \texttt{checks/section3\_wreath\_orbits.py}.
 The \emph{general} wreath-product orbit lower bound
-\(\binom{s}{r}\binom{t}{k}^{r}\le
-|\operatorname{Aut}(G)\cdot P(w)|\) remains a separate
-Lean proof obligation. Thus Claim~3.9 itself should
-not yet be marked as fully Lean-verified.
+\[
+ \binom{s}{r}\binom{t}{k}^{r}\le
+ |\operatorname{Aut}(G)\cdot P(w)|
+\]
+is now Lean-verified in
+\texttt{EPPAIII/CliqueCovers/WreathOrbitCount.lean}.
+Its proof realizes every independent positional and
+subset choice using the actual outer and inner wreath
+permutations and counts those choices in
+\texttt{EPPAIII/CliqueCovers/ProfileChoices.lean}.
+The last connection from the generated wreath orbit
+to the actual EPPA orbit, and the resulting
+\(k=1\) or \(k=t-1\) conclusion, is in
+\texttt{EPPAIII/CliqueCovers/Claim39Orbit.lean}
+(PR~\#26; pending CI at this checkpoint).
+Even when that bridge is verified, the
+two-sided regularity required to identify full
+matching/co-matching blocks remains
+independent and open under C14.
 The author has been reviewing a separate Wagner patch;
 do not apply this change to source automatically.
 
