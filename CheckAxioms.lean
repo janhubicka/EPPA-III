@@ -77,3 +77,4 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.not_cluster_iff_induced_p3
 #print axioms EPPAIII.BlockSystems.not_cocluster_iff_induced_cop3
 #print axioms EPPAIII.BlockSystems.transversal_of_noncluster
+#print axioms EPPAIII.BlockSystems.homogeneous_of_filled_invariant_block
