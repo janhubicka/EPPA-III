@@ -139,3 +139,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.profileSlice_inner
 #print axioms EPPAIII.CliqueCovers.profileSlice_outer_card
 #print axioms EPPAIII.CliqueCovers.profileSlice_inner_card
+
+#print axioms EPPAIII.CliqueCovers.mem_kPositions
+#print axioms EPPAIII.CliqueCovers.exists_outer_k_positions
+#print axioms EPPAIII.CliqueCovers.exists_inner_match_selected
