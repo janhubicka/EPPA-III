@@ -133,3 +133,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.base_le_power
 #print axioms EPPAIII.CliqueCovers.choose_power_ge_linear
 #print axioms EPPAIII.CliqueCovers.only_singleton_or_cosingleton
+
+#print axioms EPPAIII.CliqueCovers.profileChoiceSpace_card
+#print axioms EPPAIII.CliqueCovers.mem_profileChoiceSpace_iff
