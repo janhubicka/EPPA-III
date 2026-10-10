@@ -157,3 +157,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreathOrbit_subset_finiteProfileOrbit
 #print axioms EPPAIII.CliqueCovers.actual_profile_orbit_lower_bound
 #print axioms EPPAIII.CliqueCovers.eppa_clique_partial_degree_extreme
+
+#print axioms EPPAIII.CliqueCovers.finiteOutside_card_add_base
+#print axioms EPPAIII.CliqueCovers.finiteOutside_card_of_double
+#print axioms EPPAIII.CliqueCovers.eppa_clique_degree_extreme_of_double
