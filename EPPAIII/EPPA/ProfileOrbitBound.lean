@@ -83,16 +83,8 @@ theorem finite_profile_orbit_card_le_outside {V W : Type*}
     obtain ⟨p,hp,hProfile⟩ := Finset.mem_image.mp hS
     have hpAuto : IsGraphAutomorphism G p := by
       exact (Finset.mem_filter.mp hp).2
-    obtain ⟨q,hq,hOutside,hTrans⟩ :=
-      eppa_profiles_transport G H e heppa p hpAuto w hw
-    have hCompat (v : V) : q (e v) = e (p v) := by
-      -- The packaged orbit transport theorem supplies the profile
-      -- identity but does not expose the compatibility witness;
-      -- choose a fresh total EPPA extension with that witness.
-      obtain ⟨q',hq',hcompat'⟩ := eppa_lifts_total G H e heppa p hpAuto
-      exact hcompat' v
-    -- Use one total extension consistently for compatibility,
-    -- the outside vertex, and the transported profile.
+    -- Choose one total EPPA extension consistently for
+    -- compatibility, outside preservation, and profile transport.
     obtain ⟨q',hq',hCompat'⟩ := eppa_lifts_total G H e heppa p hpAuto
     have hOutside' : q' w ∉ Set.range e :=
       lift_preserves_outside e p q' hCompat' w hw
