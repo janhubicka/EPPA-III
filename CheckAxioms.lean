@@ -17,3 +17,15 @@ import EPPAIII
 #print axioms EPPAIII.cubeMatching_not_EPPA
 #print axioms EPPAIII.doubleTriangleAdjustment_sub
 #print axioms EPPAIII.doubleTriangleAdjustment_ne
+#print axioms EPPAIII.DoubleCover.balanced_cases
+#print axioms EPPAIII.DoubleCover.taylor_balanced
+#print axioms EPPAIII.DoubleCover.exceptional_edge_counts
+#print axioms EPPAIII.eppa_lifts_total
+#print axioms EPPAIII.lift_preserves_outside
+#print axioms EPPAIII.profile_equivariant
+#print axioms EPPAIII.eppa_profiles_transport
+#print axioms EPPAIII.DoubleCover.fibre_layer_complement
+#print axioms EPPAIII.DoubleCover.uniform_layer_of_exceptional
+#print axioms EPPAIII.DoubleCover.all_bottom_of_one_bottom
+
+#print axioms EPPAIII.DoubleCover.graph_uniform_layer_of_exceptional

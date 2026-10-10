@@ -308,4 +308,76 @@ This leaves Lemma 3.12 fully repaired at the
 paper level \emph{after adding the necessary
 non-homogeneity assumption on \(H\)}.
 Its full graph statement is not Lean-verified.
+
+\section*{New optional simplification: two-point fibres and clique profiles}
+The full double-cover conclusion of Lemma 3.3, including
+the orbit transitivity asserted after Claims 3.5--3.6,
+has a short \emph{paper-level} replacement, conditional
+only on the already proved invariant pair system of
+Claim 3.4. For pairs above edges and nonedges of \(G\),
+two-point EPPA gives matrices
+\[
+ A_E=\begin{pmatrix}1&c_E\\c_E&e_T\end{pmatrix},
+ \quad
+ A_N=\begin{pmatrix}0&c_N\\c_N&n_T\end{pmatrix}.
+\]
+Non-homogeneity forces their edge counts to agree,
+otherwise their two edge-count types make every
+extension act on the fibres by an automorphism of \(G\).
+The resulting equality has just three Boolean solutions.
+In the two exceptional solutions each pair of distinct
+fibres has a unique edge or a unique nonedge, always
+joining vertices from the same layer. Consequently all
+fibres must be flipped together under any automorphism;
+an extension fixing a single bottom vertex must preserve
+all of \(G\), contradicting non-homogeneity.
+The third solution is the Taylor double, with optional
+mate matching. The induced group on the pairs is
+2-transitive, and the deck involution makes the
+inter-fibre edge and nonedge actions transitive.
+Details: \texttt{validation/two-point-fibres.tex}.
+
+There is also a \emph{direct complete profile proof}
+of the conclusion of Lemma 3.7 for non-homogeneous
+transitive \(H\), without using any of Claims
+3.8--3.11, and without assuming \(H\) imprimitive
+or assuming \(H\setminus G=sK_t\) in advance.
+After classifying short \(S_t\wr S_s\)-orbits of
+outside neighbourhood profiles, a one-partial-
+coordinate orbit yields the uniform cover,
+the exceptional \((s,t)=(2,2)\) two-partial-coordinate
+orbit yields exactly the Wagner graph, and the
+zero-partial-coordinate situation is handled by
+true-twin classes and the \(S_s\)-orbit of their
+clique-neighbourhood sets.
+Details: \texttt{validation/direct-clique-cover-proof.tex}.
+
+\paragraph{Validation boundary.}
+The Boolean enumeration is in
+\texttt{EPPAIII/DoubleCover/PairPatterns.lean};
+the transport of complementary neighbourhood
+profiles by EPPA automorphisms is formally
+proved in \texttt{EPPAIII/EPPA/ProfileAction.lean}.
+A generic rigidity theorem for an invariant
+exceptional pair relation is also axiom-checked in
+\texttt{EPPAIII/DoubleCover/LayerRigidity.lean}:
+a fibre-preserving automorphism flips all
+fibres or none. Instantiating this principle
+with the actual one-edge/three-edge graph
+patterns remains to be formalized.
+The complete clique-profile classification
+and the graph-level double-cover theorem have
+paper-level proofs and finite corroborations,
+but are \emph{not} yet Lean-checked.
+These are alternative repairs, not edits to
+the source of Claims 3.5 or 3.8--3.11.
+
+\paragraph{Full status of the optional Lemma 3.7 replacement.}
+The direct profile proof in \texttt{validation/direct-clique-cover-proof.tex}
+now includes a separate elementary treatment of homogeneous hosts,
+using Gardiner's classification. Hence the original statement of
+Lemma 3.7 is repaired at paper level even without adding a
+non-homogeneity hypothesis (subject to deleting the inaccurate
+``or its complement'' after the exceptional Wagner matrix).
+The user's existing minimal manuscript patch is untouched.
 \end{document}
