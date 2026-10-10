@@ -35,7 +35,7 @@ theorem choose_ge_self (s : ℕ) :
               have hSmall : r + 1 < s := by omega
               have hOld : s ≤ Nat.choose s (r + 1) :=
                 ih (r + 1) (by omega) hSmall
-              have hExtra : 0 < Nat.choose s (r + 2) :=
+              have hExtra : 0 < Nat.choose s (Nat.succ (r + 1)) :=
                 Nat.choose_pos (by omega)
               rw [Nat.choose_succ_succ s (r + 1)]
               omega
