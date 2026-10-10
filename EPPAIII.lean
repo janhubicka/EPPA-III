@@ -22,3 +22,4 @@ import EPPAIII.BlockSystems.CanonicalPairs
 import EPPAIII.BlockSystems.GraphTransport
 import EPPAIII.BlockSystems.FullDoubleCover
 import EPPAIII.DoubleCover.FibreOrbits
+import EPPAIII.DoubleCover.DeckSwap
