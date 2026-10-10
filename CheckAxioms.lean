@@ -134,12 +134,14 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.choose_power_ge_linear
 #print axioms EPPAIII.CliqueCovers.only_singleton_or_cosingleton
 
+#print axioms EPPAIII.CliqueCovers.profileChoiceSpace_card
+#print axioms EPPAIII.CliqueCovers.mem_profileChoiceSpace_iff
+
 #print axioms EPPAIII.CliqueCovers.profile_eq_of_slices
 #print axioms EPPAIII.CliqueCovers.profileSlice_outer
 #print axioms EPPAIII.CliqueCovers.profileSlice_inner
 #print axioms EPPAIII.CliqueCovers.profileSlice_outer_card
 #print axioms EPPAIII.CliqueCovers.profileSlice_inner_card
-
 #print axioms EPPAIII.CliqueCovers.mem_kPositions
 #print axioms EPPAIII.CliqueCovers.exists_outer_k_positions
 #print axioms EPPAIII.CliqueCovers.exists_inner_match_selected
