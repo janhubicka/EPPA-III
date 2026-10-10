@@ -10,3 +10,4 @@ import EPPAIII.DoubleCover.RigidLayerHomogeneity
 import EPPAIII.DoubleCover.UniformPattern
 import EPPAIII.DoubleCover.FibreEdgeCount
 import EPPAIII.DoubleCover.TaylorClassification
+import EPPAIII.DoubleCover.OptionalMate
