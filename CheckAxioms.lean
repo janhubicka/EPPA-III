@@ -108,3 +108,7 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylor_interfibre_adj_iff
 #print axioms EPPAIII.DoubleCover.deckSwap_graph_automorphism
 #print axioms EPPAIII.DoubleCover.taylor_pair_same_status_eq_or_deck
+
+#print axioms EPPAIII.DoubleCover.eppa_interfibre_pair_status_transitive
+#print axioms EPPAIII.DoubleCover.eppa_interfibre_ordered_edges_transitive
+#print axioms EPPAIII.DoubleCover.eppa_interfibre_ordered_nonedges_transitive
