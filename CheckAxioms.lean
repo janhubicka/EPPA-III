@@ -69,3 +69,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.eppa_edges_uniform_blocks
 #print axioms EPPAIII.BlockSystems.eppa_nonedges_uniform_blocks
 #print axioms EPPAIII.BlockSystems.transversal_double_count
+
+#print axioms EPPAIII.BlockSystems.edges_cross_of_induced_p3
+#print axioms EPPAIII.BlockSystems.nonedges_cross_of_induced_cop3
+#print axioms EPPAIII.BlockSystems.selected_vertices_transversal
