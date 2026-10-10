@@ -27,3 +27,4 @@ import EPPAIII.DoubleCover.InterblockOrbits
 import EPPAIII.BlockSystems.OrderedInterblockOrbits
 import EPPAIII.EPPA.ProfileOrbitBound
 import EPPAIII.CliqueCovers.WreathGenerators
+import EPPAIII.CliqueCovers.Claim39Arithmetic

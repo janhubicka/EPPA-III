@@ -126,3 +126,10 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.translate_in_finite_profile_orbit
 #print axioms EPPAIII.CliqueCovers.outer_profile_in_orbit
 #print axioms EPPAIII.CliqueCovers.inner_profile_in_orbit
+
+#print axioms EPPAIII.CliqueCovers.choose_ge_self
+#print axioms EPPAIII.CliqueCovers.choose_gt_self_interior
+#print axioms EPPAIII.CliqueCovers.power_dominates_succ
+#print axioms EPPAIII.CliqueCovers.base_le_power
+#print axioms EPPAIII.CliqueCovers.choose_power_ge_linear
+#print axioms EPPAIII.CliqueCovers.only_singleton_or_cosingleton
