@@ -27,7 +27,7 @@ def pullbackGraph {X W : Type*}
   loopless := by
     constructor
     intro u h
-    exact (H.irrefl (φ u)) h
+    exact H.irrefl h
 
 /-- EPPA is invariant under relabelling of the host along an
 equivalence which carries the canonical bottom embedding to e. -/
