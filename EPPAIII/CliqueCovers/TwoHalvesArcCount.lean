@@ -53,7 +53,10 @@ theorem sideCrossArcs_false_eq_true {V : Type*} [Fintype V]
           intro i _
           apply Finset.sum_congr rfl
           intro j _
-          rw [H.adj_comm]
+          by_cases h : H.Adj (false, i) (true, j)
+          · simp [h, h.symm]
+          · have h' : ¬ H.Adj (true, j) (false, i) := fun he => h he.symm
+            simp [h, h']
     _ = (∑ j : V, ∑ i : V,
         if H.Adj (true,j) (false,i) then 1 else 0) := Finset.sum_comm
 
