@@ -49,3 +49,12 @@ import EPPAIII.CliqueCovers.TwinClassSize
 import EPPAIII.CliqueCovers.TwinQuotientAdjacency
 import EPPAIII.CliqueCovers.RegularIndependentBound
 import EPPAIII.CliqueCovers.RegularGraphIndependent
+import EPPAIII.CliqueCovers.TwoHalvesArcCount
+import EPPAIII.CliqueCovers.SideGraphCount
+import EPPAIII.CliqueCovers.RegularHalfEdges
+import EPPAIII.CliqueCovers.TransitiveHalfEdges
+import EPPAIII.CliqueCovers.TwinQuotientGraph
+import EPPAIII.CliqueCovers.TwinQuotientAction
+import EPPAIII.CliqueCovers.TwinQuotientCount
+import EPPAIII.CliqueCovers.SelectedTwinIndependent
+import EPPAIII.CliqueCovers.TwinQuotientArithmetic
