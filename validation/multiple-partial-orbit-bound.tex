@@ -1,0 +1,94 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=29mm}
+\title{EPPA--III: excluding multiple partial neighbourhood coordinates}
+\author{Independent validation supplement; manuscript frozen}
+\date{11 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Purpose.}
+This is a source-local supporting argument for replacing the
+problematic regularity and simultaneous-matching discussion in
+Claims~3.8--3.11 of the supplied
+\texttt{main-new(7).tex}. It is \emph{not} a change to the
+manuscript and is \emph{not yet} a complete Lean proof of
+Lemma~3.7.
+
+\paragraph{Lemma.}
+Let \(G=sK_t\), with \(s,t\ge2\), be induced in an
+EPPA witness \(H\) on \(2st\) vertices.
+For \(w\in H\setminus G\), let
+\[
+ P_i=N_H(w)\cap C_i,\qquad
+ J=\{i:0<|P_i|<t\},\qquad p=|J|.
+\]
+If \(p\ge2\), then \(s=t=p=2\).
+
+\paragraph{Proof.}
+Write \(W=S_t\wr S_s=\operatorname{Aut}(G)\).
+For every \(p\)-subset \(R\subseteq[s]\), choose a
+permutation of the \(s\) clique indices taking \(J\)
+to \(R\). Under this permutation the \(p\) selected
+coordinates have some sizes \(k_i\in[1,t-1]\).
+For each \(i\in R\), independent permutations of
+the \(t\) vertices of \(C_i\) can take \(P_i\)
+to any \(k_i\)-subset. There are
+\(\binom{t}{k_i}\ge t\) such subsets.
+Fixing the index permutation for each \(R\)
+and varying these selected subsets gives at least
+\(t^p\) distinct profiles with \(J=R\).
+Different \(R\)'s yield disjoint profile families,
+because the set of partial-coordinate indices is
+recovered from the profile. Hence
+\[
+       |W\cdot P(w)|\ge\binom{s}{p}t^p. \tag{1}
+\]
+EPPA makes every translated profile realised by
+a vertex of \(H\setminus G\), giving
+\[
+       \binom{s}{p}t^p\le st. \tag{2}
+\]
+If \(2\le p<s\), then
+\(\binom{s}{p}\ge s\), while
+\(t^p>t\), contradicting (2).
+If \(p=s\), (2) becomes \(t^{s-1}\le s\).
+For \(s\ge3\) and \(t\ge2\),
+\[
+ t^{s-1}\ge 2^{s-1}\ge 2(s-1)>s,
+\]
+again a contradiction. For \(s=2\),
+\(t^{s-1}\le s\) gives \(t\le2\).
+Thus \(s=t=p=2\). \(\square\)
+
+\paragraph{Relationship to the Wagner exception.}
+When \(s=t=p=2\), the two partial coordinates
+each consist of a singleton. The corresponding
+profile orbit has four elements, naturally indexed
+by the four corners of a square.
+The induced graph on the other four vertices
+is then constrained by the equal-edge-count
+identity, recovering the exceptional Wagner
+pattern. The present lemma supplies the
+\emph{obstruction step}; the final four-vertex
+orbit classification is a separate argument.
+
+\paragraph{Verification status.}
+The EPPA profile-orbit upper bound is axiom-audited
+in \texttt{ProfileOrbitBound.lean}.
+The arithmetic implication from (2) is in
+\texttt{MultiplePartialArithmetic.lean}
+(PR~\#30), pending successful Lean CI.
+The general group-action lower bound (1)
+is currently a paper-level proof, \emph{not a Lean
+theorem}; its formalization will use the already
+verified outer/inner wreath generators and
+\texttt{ProfileChoices.lean}.
+This does not silently validate Claim~3.8's
+two-sided regularity or the simultaneous
+matching-coordinate normalization in Claim~3.10.
+Both remain explicit author-review issues in
+\texttt{validation/suggested-corrections.tex}.
+
+\end{document}
