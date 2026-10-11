@@ -177,3 +177,8 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.eppa_unique_partial_size_other_coordinates_trivial
 #print axioms EPPAIII.CliqueCovers.eppa_two_partial_coordinates_exception
+#print axioms EPPAIII.CliqueCovers.outer_map_mem_wreath_orbit
+#print axioms EPPAIII.CliqueCovers.kPositions_outer_map
+#print axioms EPPAIII.CliqueCovers.extractKChoice_outer_fixed
+#print axioms EPPAIII.CliqueCovers.saturated_profile_outer_rigidity
+#print axioms EPPAIII.CliqueCovers.saturated_profile_other_slices_equal
