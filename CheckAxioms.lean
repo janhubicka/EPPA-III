@@ -195,3 +195,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.different_cliques_not_same_closed_neighbourhood
 
 #print axioms EPPAIII.CliqueCovers.regular_symmetric_zero_block_le_half
+
+#print axioms EPPAIII.CliqueCovers.regular_graph_independent_card_le_half
