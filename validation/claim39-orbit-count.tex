@@ -97,23 +97,32 @@ is separately flagged as C14 in
 \texttt{validation/suggested-corrections.tex}.
 It is not silently repaired here.
 
-\paragraph{Independent verification.}
-Lean formally proves the general EPPA
-upper bound in
-\texttt{EPPAIII/EPPA/ProfileOrbitBound.lean}
-and the numerical inequalities in
-\texttt{EPPAIII/CliqueCovers/Claim39Arithmetic.lean}.
-The exact wreath-product group-action
-count (1) is currently a paper-level
-argument, \emph{not yet a Lean theorem}.
-An independently generated enumeration
-using elementary adjacent permutations,
-rather than (1), verifies the count and
-bounds for all profiles with \(st\le12\);
-see \texttt{checks/section3\_wreath\_orbits.py}.
-The checker covers 269 orbits, 19,724
-profiles and 257 nontrivial-coordinate
-checks. The unrestricted assertion
-remains on the Lean verification queue.
+\paragraph{Verification checkpoint (11 October 2026).}
+The exact multinomial identity (1) above remains an elementary
+paper-level count; formalizing it is not needed for Claim~3.9.
+The unrestricted lower bound in (2) is Lean-verified in
+\texttt{EPPAIII/CliqueCovers/WreathOrbitCount.lean}, using
+the actual wreath-product generators and a surjection onto
+the finite space of independent coordinate choices.
+Its inclusion into the genuine EPPA neighbourhood-profile orbit
+is Lean-verified in
+\texttt{EPPAIII/CliqueCovers/Claim39OrbitBridge.lean}
+(merged PR~\#29). Together with
+\texttt{ProfileOrbitBound.lean},
+\texttt{Claim39Arithmetic.lean}, and the exact
+outside-half cardinality in
+\texttt{OutsideCardinality.lean},
+this proves the extreme-degree restriction above without any
+regularity assumption on complementary cliques.
+The audited statement is
+\texttt{eppa\_clique\_degree\_extreme\_of\_double}.
+The original manuscript is unchanged.
+
+An independent generator-based enumeration confirms the
+full orbit formula for every profile with \(st\le12\):
+269 orbits, 19,724 profiles, and 257 nontrivial-coordinate checks
+in \texttt{checks/section3\_wreath\_orbits.py}.
+These finite checks are corroboration, not the reason the
+unrestricted extreme-degree theorem is verified.
 
 \end{document}
