@@ -164,3 +164,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_clique_degree_extreme_of_double
 
 #print axioms EPPAIII.CliqueCovers.multiple_partial_orbit_arithmetic
+
+#print axioms EPPAIII.CliqueCovers.extractKChoice_injOn_of_orbit_le_choices
+#print axioms EPPAIII.CliqueCovers.extractKChoice_injOn_of_eppa_double
