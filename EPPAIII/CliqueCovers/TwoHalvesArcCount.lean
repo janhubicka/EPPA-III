@@ -63,7 +63,7 @@ One can weaken the row condition to equality of the two *total*
 degree sums without changing this proof. -/
 theorem sideInternalArcs_eq_of_balanced_rows
     {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V))
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj]
     (hRows : ∀ i : V,
       ((∑ j : V, if H.Adj (false,i) (false,j) then 1 else 0) +
        (∑ j : V, if H.Adj (false,i) (true,j) then 1 else 0)) =
