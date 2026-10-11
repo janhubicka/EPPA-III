@@ -27,7 +27,7 @@ def HasTransitiveGraphAutomorphisms {W : Type*}
 /-- Graph automorphisms preserve finite vertex degrees. -/
 theorem graphAuto_preserves_degree
     {W : Type*} [Fintype W]
-    (H : SimpleGraph W)
+    (H : SimpleGraph W) [DecidableRel H.Adj]
     (q : Equiv.Perm W) (hq : EPPAIII.IsGraphAutomorphism H q)
     (u : W) :
     H.degree (q u) = H.degree u := by
@@ -59,7 +59,7 @@ theorem graphAuto_preserves_degree
 /-- Any finite nonempty vertex-transitive graph is regular. -/
 theorem regular_of_transitive_graph
     {W : Type*} [Fintype W] [Nonempty W]
-    (H : SimpleGraph W)
+    (H : SimpleGraph W) [DecidableRel H.Adj]
     (hT : HasTransitiveGraphAutomorphisms H) :
     ∃ d : ℕ, H.IsRegularOfDegree d := by
   classical
@@ -74,7 +74,7 @@ theorem regular_of_transitive_graph
 have identical induced edge counts. -/
 theorem sideEdges_equal_of_transitive_graph
     {V : Type*} [Fintype V] [Nonempty V]
-    (H : SimpleGraph (Bool × V))
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj]
     (hT : HasTransitiveGraphAutomorphisms H) :
     sideEdgeCount H false =
       sideEdgeCount H true := by
