@@ -48,7 +48,16 @@ theorem inner_map_mem_wreath_orbit {s t : ℕ}
     P.map (innerPermutation inner).toEmbedding ∈ wreathOrbit P := by
   classical
   have h := wreathTransform_mem_orbit P (Equiv.refl _) inner
-  simpa [wreathTransform, outerPermutation] using h
+  have hId :
+      (outerPermutation (Equiv.refl (Fin s))).toEmbedding =
+        Embedding.refl (Fin s × Fin t) := by
+    ext x
+    rfl
+  change
+    (P.map (outerPermutation (Equiv.refl (Fin s))).toEmbedding).map
+      (innerPermutation inner).toEmbedding ∈ wreathOrbit P at h
+  rw [hId, Finset.map_refl] at h
+  exact h
 
 /-- The initial profile also belongs to its concrete orbit. -/
 theorem self_mem_wreath_orbit {s t : ℕ}
@@ -56,7 +65,14 @@ theorem self_mem_wreath_orbit {s t : ℕ}
     P ∈ wreathOrbit P := by
   classical
   have h := inner_map_mem_wreath_orbit P (fun _ => Equiv.refl _)
-  simpa [innerPermutation] using h
+  have hId :
+      (innerPermutation (fun _ : Fin s => Equiv.refl (Fin t))).toEmbedding =
+        Embedding.refl (Fin s × Fin t) := by
+    ext x
+    cases x
+    rfl
+  rw [hId, Finset.map_refl] at h
+  exact h
 
 /-- When size-k choice data saturate the orbit cardinality,
 every inner permutation that preserves those selected slices
@@ -75,13 +91,19 @@ theorem saturated_profile_inner_rigidity {s t : ℕ}
     P.map (innerPermutation inner).toEmbedding
   have hPositions : kPositions Q k = kPositions P k :=
     kPositions_inner P inner k
+  have hSliceEq :
+      ∀ i (hi : i ∈ kPositions P k),
+        profileSlice Q i = profileSlice P i := by
+    intro i hi
+    rw [profileSlice_inner]
+    exact hFix i hi
   have hExtract : extractKChoice Q k = extractKChoice P k := by
     unfold extractKChoice
+    generalize hK : kPositions P k = R at hPositions ⊢
     cases hPositions
     congr 1
     funext i hi
-    rw [profileSlice_inner]
-    exact hFix i hi
+    exact hSliceEq i (by rw [hK]; exact hi)
   have hInjective :=
     extractKChoice_injOn_of_orbit_le_choices P r k hR hBound
   exact hInjective
