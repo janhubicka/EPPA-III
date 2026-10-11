@@ -235,9 +235,19 @@ for \(st\le12\) is in
 \texttt{checks/section3\_wreath\_orbits.py}.
 The \emph{general} wreath-product orbit lower bound
 \(\binom{s}{r}\binom{t}{k}^{r}\le
-|\operatorname{Aut}(G)\cdot P(w)|\) remains a separate
-Lean proof obligation. Thus Claim~3.9 itself should
-not yet be marked as fully Lean-verified.
+|\operatorname{Aut}(G)\cdot P(w)|\) is now Lean-verified
+in \texttt{EPPAIII/CliqueCovers/WreathOrbitCount.lean}.
+The bridge identifying this concrete wreath orbit
+with a subset of the EPPA neighbourhood-profile
+orbit, together with the exact \(|H|=2st\)
+cardinality hypothesis, is proposed in
+\texttt{EPPAIII/CliqueCovers/Claim39OrbitBridge.lean}
+and currently awaits CI verification.
+After that succeeds, the extreme-degree conclusion
+will be Lean-verified \emph{without} Claim~3.8;
+the separate two-sided regularity required to
+infer complete matching/co-matching blocks
+remains an independent proof obligation (C14).
 The author has been reviewing a separate Wagner patch;
 do not apply this change to source automatically.
 
@@ -403,11 +413,18 @@ does not certify Claim~3.8.
 \paragraph{New Lean checkpoint.}
 The modules \texttt{FibreEdgeCount.lean},
 \texttt{TaylorClassification.lean}, and
-\texttt{OptionalMate.lean} derive, from exact EPPA and
-an already invariant two-point fibre system, the
-Taylor inter-fibre matrix and uniform optional mate
-matching. Claim~3.4 (existence of the invariant
-two-point block system) remains a separate obligation.
+\texttt{OptionalMate.lean} derive the Taylor
+inter-fibre matrix and uniform optional mate matching.
+Claim~3.4's invariant two-point block system, its
+canonical coordinates, and transport of EPPA have
+since been Lean-verified in
+\texttt{BlockSystems/FullDoubleCover.lean};
+the final ordered inter-block orbit assertions
+are verified in
+\texttt{BlockSystems/OrderedInterblockOrbits.lean}.
+These results concern Lemma~3.3 and do not
+provide the missing \(D_j\)-side regularity
+in the separate equal-clique Claim~3.8.
 
 
 \subsection*{C15. Complement terminology after Definition 1.6}

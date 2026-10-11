@@ -154,3 +154,11 @@ import EPPAIII
 #print axioms EPPAIII.finiteOutside_eq_compl
 #print axioms EPPAIII.finiteOutside_card
 #print axioms EPPAIII.finiteOutside_card_clique_union
+
+#print axioms EPPAIII.CliqueCovers.translatedFiniteProfile_eq_map
+#print axioms EPPAIII.CliqueCovers.wreathPermutation_aut
+#print axioms EPPAIII.CliqueCovers.wreathTransform_eq_map
+#print axioms EPPAIII.CliqueCovers.wreathOrbit_subset_finiteProfileOrbit
+#print axioms EPPAIII.CliqueCovers.actual_profile_orbit_lower_bound
+#print axioms EPPAIII.CliqueCovers.eppa_clique_partial_degree_extreme
+#print axioms EPPAIII.CliqueCovers.eppa_clique_degree_extreme_of_double
