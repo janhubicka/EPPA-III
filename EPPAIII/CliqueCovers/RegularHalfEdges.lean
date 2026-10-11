@@ -47,7 +47,7 @@ theorem sideDegree_eq_two_row_sums {V : Type*} [Fintype V]
 same number of undirected edges in the two induced halves. -/
 theorem sideEdges_equal_of_equal_degrees
     {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V))
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj]
     (hDegree : ∀ i : V, H.degree (false,i) = H.degree (true,i)) :
     sideEdgeCount H false =
       sideEdgeCount H true := by
@@ -63,7 +63,7 @@ theorem sideEdges_equal_of_equal_degrees
 induced-half edge-count equality. -/
 theorem sideEdges_equal_of_regular_graph
     {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V)) (d : ℕ)
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj] (d : ℕ)
     (hReg : H.IsRegularOfDegree d) :
     sideEdgeCount H false =
       sideEdgeCount H true := by
