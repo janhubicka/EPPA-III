@@ -201,3 +201,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.closedTwinClass_card_of_vertex_transitive
 #print axioms EPPAIII.CliqueCovers.selected_clique_card_le_twin_class
 #print axioms EPPAIII.CliqueCovers.selected_clique_twin_classes_injective
+#print axioms EPPAIII.CliqueCovers.adj_iff_of_same_closed_neighbourhood_left
+#print axioms EPPAIII.CliqueCovers.distinct_representatives_of_distinct_twin_classes
+#print axioms EPPAIII.CliqueCovers.adj_iff_of_distinct_twin_classes
