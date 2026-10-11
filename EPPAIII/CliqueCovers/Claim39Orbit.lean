@@ -1,6 +1,7 @@
 import EPPAIII.CliqueCovers.WreathOrbitCount
 import EPPAIII.CliqueCovers.Claim39Arithmetic
 import EPPAIII.CliqueCovers.WreathGenerators
+import EPPAIII.EPPA.OutsideCardinality
 
 /-!
 # The full EPPA profile orbit lower bound for s disjoint t-cliques
@@ -157,5 +158,24 @@ theorem eppa_clique_union_partial_coordinate_extreme {s t : ℕ}
       _ = s * t := hOutside
   exact only_singleton_or_cosingleton s t r k
     hspos hrpos hrle hkpos hklt hOrb
+
+/-- Claim 3.9's profile-size conclusion under the manuscript's
+order hypothesis \(|H| = 2st\). The number of outside vertices
+is derived from injectivity of the embedded copy, not postulated. -/
+theorem eppa_clique_union_partial_coordinate_extreme_of_double_order {s t : ℕ}
+    {W : Type*} [Fintype W]
+    (H : SimpleGraph W) (e : (Fin s × Fin t) ↪ W)
+    (heppa : IsEPPAEmbedding (cliqueUnion s t) H e)
+    (hHostSize : Fintype.card W = 2 * s * t)
+    (w : W) (hw : w ∉ Set.range e)
+    (k r : ℕ)
+    (hr : (kPositions (finiteNeighbourhoodProfile H e w) k).card = r)
+    (hrpos : 0 < r)
+    (hkpos : 0 < k) (hklt : k < t) :
+    k = 1 ∨ k + 1 = t := by
+  exact eppa_clique_union_partial_coordinate_extreme H e heppa w hw
+    (finiteOutside_card_clique_union e hHostSize)
+    k r hr hrpos hkpos hklt
+
 
 end EPPAIII.CliqueCovers
