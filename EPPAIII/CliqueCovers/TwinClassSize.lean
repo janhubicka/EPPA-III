@@ -68,6 +68,8 @@ theorem selected_clique_twin_classes_injective {s t : ℕ}
   have hj : e (j,a) ∈ closedTwinClass H (e (j,a)) :=
     Finset.mem_filter.mpr ⟨Finset.mem_univ _, hSelf⟩
   have hi : e (j,a) ∈ closedTwinClass H (e (i,a)) := by
+    change closedTwinClass H (e (i,a)) =
+      closedTwinClass H (e (j,a)) at hEq
     rw [hEq]
     exact hj
   have hSame : SameClosedNeighbourhood H (e (i,a)) (e (j,a)) :=
