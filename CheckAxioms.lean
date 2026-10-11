@@ -161,3 +161,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreathOrbit_subset_finiteProfileOrbit
 #print axioms EPPAIII.CliqueCovers.finiteProfileOrbit_lower_bound
 #print axioms EPPAIII.CliqueCovers.eppa_clique_union_partial_coordinate_extreme
+
+#print axioms EPPAIII.CliqueCovers.eppa_clique_union_partial_coordinate_extreme_of_double_order
