@@ -193,3 +193,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.adjacent_of_same_closed_neighbourhood
 #print axioms EPPAIII.CliqueCovers.selected_clique_same_closed_neighbourhood
 #print axioms EPPAIII.CliqueCovers.different_cliques_not_same_closed_neighbourhood
+
+#print axioms EPPAIII.CliqueCovers.regular_symmetric_zero_block_le_half
