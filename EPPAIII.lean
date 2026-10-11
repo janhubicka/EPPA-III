@@ -35,3 +35,4 @@ import EPPAIII.CliqueCovers.WreathOrbitCount
 import EPPAIII.EPPA.OutsideCardinality
 import EPPAIII.CliqueCovers.Claim39OrbitBridge
 import EPPAIII.CliqueCovers.MultiplePartialArithmetic
+import EPPAIII.CliqueCovers.RepeatedPartialSize
