@@ -46,7 +46,7 @@ theorem regular_graph_independent_card_le_half {V : Type*}
     have hNo : ¬ G.Adj u v := by
       by_cases huv : u = v
       · subst v
-        exact G.irrefl _
+        exact G.irrefl
       · exact hIndependent hu hv huv
     simp [hNo]
   · exact hd
