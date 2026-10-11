@@ -151,6 +151,10 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_choice_realisable
 #print axioms EPPAIII.CliqueCovers.wreath_orbit_card_lower_bound
 
+#print axioms EPPAIII.finiteOutside_eq_compl
+#print axioms EPPAIII.finiteOutside_card
+#print axioms EPPAIII.finiteOutside_card_clique_union
+
 #print axioms EPPAIII.CliqueCovers.translatedFiniteProfile_eq_map
 #print axioms EPPAIII.CliqueCovers.combined_wreath_aut
 #print axioms EPPAIII.CliqueCovers.wreathTransform_eq_map
