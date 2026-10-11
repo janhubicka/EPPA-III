@@ -154,3 +154,5 @@ import EPPAIII
 #print axioms EPPAIII.finiteOutside_eq_compl
 #print axioms EPPAIII.finiteOutside_card
 #print axioms EPPAIII.finiteOutside_card_clique_union
+
+#print axioms EPPAIII.CliqueCovers.multiple_partial_orbit_arithmetic
