@@ -49,8 +49,8 @@ theorem sideEdges_equal_of_equal_degrees
     {V : Type*} [Fintype V]
     (H : SimpleGraph (Bool × V))
     (hDegree : ∀ i : V, H.degree (false,i) = H.degree (true,i)) :
-    (sideGraph H false).edgeFinset.card =
-      (sideGraph H true).edgeFinset.card := by
+    sideEdgeCount H false =
+      sideEdgeCount H true := by
   classical
   apply sideEdges_equal_of_balanced_rows H
   intro i
@@ -65,8 +65,8 @@ theorem sideEdges_equal_of_regular_graph
     {V : Type*} [Fintype V]
     (H : SimpleGraph (Bool × V)) (d : ℕ)
     (hReg : H.IsRegularOfDegree d) :
-    (sideGraph H false).edgeFinset.card =
-      (sideGraph H true).edgeFinset.card := by
+    sideEdgeCount H false =
+      sideEdgeCount H true := by
   apply sideEdges_equal_of_equal_degrees H
   intro i
   exact (hReg (false,i)).trans (hReg (true,i)).symm
