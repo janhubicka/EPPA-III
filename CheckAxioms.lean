@@ -175,3 +175,4 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.saturated_profile_inner_rigidity
 #print axioms EPPAIII.CliqueCovers.saturated_profile_other_coordinate_not_partial
 #print axioms EPPAIII.CliqueCovers.eppa_unique_partial_size_other_coordinates_trivial
+#print axioms EPPAIII.CliqueCovers.eppa_two_partial_coordinates_exception
