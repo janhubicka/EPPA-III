@@ -40,3 +40,4 @@ import EPPAIII.CliqueCovers.RepeatedPartialSize
 import EPPAIII.CliqueCovers.TwoHalvesArcCount
 import EPPAIII.CliqueCovers.SideGraphCount
 import EPPAIII.CliqueCovers.RegularHalfEdges
+import EPPAIII.CliqueCovers.TransitiveHalfEdges
