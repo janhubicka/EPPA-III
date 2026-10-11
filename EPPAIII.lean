@@ -44,3 +44,7 @@ import EPPAIII.CliqueCovers.OuterRigidity
 import EPPAIII.CliqueCovers.EppaOuterRigidity
 import EPPAIII.CliqueCovers.TrueTwins
 import EPPAIII.CliqueCovers.ClosedTwinClasses
+import EPPAIII.CliqueCovers.TwoHalvesArcCount
+import EPPAIII.CliqueCovers.SideGraphCount
+import EPPAIII.CliqueCovers.RegularHalfEdges
+import EPPAIII.CliqueCovers.TransitiveHalfEdges
