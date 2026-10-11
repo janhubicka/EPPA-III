@@ -20,7 +20,8 @@ open Finset
 
 /-- A graph vertex's degree splits exactly into the two labelled sides. -/
 theorem sideDegree_eq_two_row_sums {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V)) (side : Bool) (i : V) :
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj]
+    (side : Bool) (i : V) :
     H.degree (side,i) =
       (∑ j : V, if H.Adj (side,i) (false,j) then 1 else 0) +
       (∑ j : V, if H.Adj (side,i) (true,j) then 1 else 0) := by
@@ -50,6 +51,7 @@ theorem sideEdges_equal_of_equal_degrees
     (hDegree : ∀ i : V, H.degree (false,i) = H.degree (true,i)) :
     (sideGraph H false).edgeFinset.card =
       (sideGraph H true).edgeFinset.card := by
+  classical
   apply sideEdges_equal_of_balanced_rows H
   intro i
   have hl := sideDegree_eq_two_row_sums H false i
