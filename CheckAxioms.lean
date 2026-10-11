@@ -210,3 +210,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.liftTwinAutomorphism_mk
 #print axioms EPPAIII.CliqueCovers.liftTwinAutomorphism_graphAut
 #print axioms EPPAIII.CliqueCovers.closedTwinQuotient_transitive
+#print axioms EPPAIII.CliqueCovers.closedTwinQuotient_fiber_mk
+#print axioms EPPAIII.CliqueCovers.closedTwinQuotient_card_mul_class_card
+#print axioms EPPAIII.CliqueCovers.closedTwinQuotient_card_mul_class_of_transitive
