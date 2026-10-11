@@ -185,3 +185,6 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_other_slices_equal
 #print axioms EPPAIII.CliqueCovers.eppa_unique_partial_other_slices_equal
+
+#print axioms EPPAIII.CliqueCovers.outside_adj_uniform_of_no_partial
+#print axioms EPPAIII.CliqueCovers.selected_clique_true_twins_of_no_partial
