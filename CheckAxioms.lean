@@ -193,3 +193,11 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.adjacent_of_same_closed_neighbourhood
 #print axioms EPPAIII.CliqueCovers.selected_clique_same_closed_neighbourhood
 #print axioms EPPAIII.CliqueCovers.different_cliques_not_same_closed_neighbourhood
+#print axioms EPPAIII.CliqueCovers.graphAutomorphism_symm
+#print axioms EPPAIII.CliqueCovers.closedNeighbourhood_mem_automorphism
+#print axioms EPPAIII.CliqueCovers.sameClosedNeighbourhood_automorphism
+#print axioms EPPAIII.CliqueCovers.closedTwinClass_map_automorphism
+#print axioms EPPAIII.CliqueCovers.closedTwinClass_card_automorphism
+#print axioms EPPAIII.CliqueCovers.closedTwinClass_card_of_vertex_transitive
+#print axioms EPPAIII.CliqueCovers.selected_clique_card_le_twin_class
+#print axioms EPPAIII.CliqueCovers.selected_clique_twin_classes_injective
