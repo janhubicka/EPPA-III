@@ -182,3 +182,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.extractKChoice_outer_fixed
 #print axioms EPPAIII.CliqueCovers.saturated_profile_outer_rigidity
 #print axioms EPPAIII.CliqueCovers.saturated_profile_other_slices_equal
+
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_other_slices_equal
+#print axioms EPPAIII.CliqueCovers.eppa_unique_partial_other_slices_equal

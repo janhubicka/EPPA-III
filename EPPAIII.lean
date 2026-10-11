@@ -41,3 +41,4 @@ import EPPAIII.CliqueCovers.InnerRigidity
 import EPPAIII.CliqueCovers.UniquePartialSize
 import EPPAIII.CliqueCovers.TwoPartialCoordinates
 import EPPAIII.CliqueCovers.OuterRigidity
+import EPPAIII.CliqueCovers.EppaOuterRigidity
