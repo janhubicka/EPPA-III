@@ -38,3 +38,5 @@ import EPPAIII.CliqueCovers.MultiplePartialArithmetic
 import EPPAIII.CliqueCovers.ProfileSaturation
 import EPPAIII.CliqueCovers.RepeatedPartialSize
 import EPPAIII.CliqueCovers.InnerRigidity
+import EPPAIII.CliqueCovers.UniquePartialSize
+import EPPAIII.CliqueCovers.TwoPartialCoordinates
