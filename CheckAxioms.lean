@@ -162,3 +162,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.actual_profile_orbit_lower_bound
 #print axioms EPPAIII.CliqueCovers.eppa_clique_partial_degree_extreme
 #print axioms EPPAIII.CliqueCovers.eppa_clique_degree_extreme_of_double
+
+#print axioms EPPAIII.CliqueCovers.multiple_partial_orbit_arithmetic
