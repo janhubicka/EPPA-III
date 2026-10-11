@@ -164,3 +164,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_clique_degree_extreme_of_double
 
 #print axioms EPPAIII.CliqueCovers.multiple_partial_orbit_arithmetic
+
+#print axioms EPPAIII.CliqueCovers.repeated_partial_coordinate_exception
