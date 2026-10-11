@@ -169,3 +169,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.extractKChoice_injOn_of_eppa_double
 
 #print axioms EPPAIII.CliqueCovers.repeated_partial_coordinate_exception
+
+#print axioms EPPAIII.CliqueCovers.sideCrossArcs_false_eq_true
+#print axioms EPPAIII.CliqueCovers.sideInternalArcs_eq_of_balanced_rows
