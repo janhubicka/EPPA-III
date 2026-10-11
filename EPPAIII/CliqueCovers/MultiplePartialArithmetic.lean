@@ -54,7 +54,9 @@ theorem multiple_partial_orbit_arithmetic
       have hPowBound : (s - 1) * t ≤ t ^ (s - 1) :=
         hProd.trans_eq hPowerEq
       have hStrict : s < (s - 1) * t := by
-        nlinarith
+        have hTwice : (s - 1) * 2 ≤ (s - 1) * t :=
+          Nat.mul_le_mul_left (s - 1) ht
+        omega
       have hGt : s < t ^ (s - 1) :=
         hStrict.trans_le hPowBound
       have hGtTimes : s * t < t ^ (s - 1) * t :=
