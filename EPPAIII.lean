@@ -42,3 +42,7 @@ import EPPAIII.CliqueCovers.UniquePartialSize
 import EPPAIII.CliqueCovers.TwoPartialCoordinates
 import EPPAIII.CliqueCovers.OuterRigidity
 import EPPAIII.CliqueCovers.EppaOuterRigidity
+import EPPAIII.CliqueCovers.TwoHalvesArcCount
+import EPPAIII.CliqueCovers.SideGraphCount
+import EPPAIII.CliqueCovers.RegularHalfEdges
+import EPPAIII.CliqueCovers.TransitiveHalfEdges
