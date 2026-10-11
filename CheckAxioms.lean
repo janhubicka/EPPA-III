@@ -199,3 +199,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.closedTwinClass_map_automorphism
 #print axioms EPPAIII.CliqueCovers.closedTwinClass_card_automorphism
 #print axioms EPPAIII.CliqueCovers.closedTwinClass_card_of_vertex_transitive
+
+#print axioms EPPAIII.CliqueCovers.selected_clique_card_le_twin_class
+#print axioms EPPAIII.CliqueCovers.selected_clique_twin_classes_injective
