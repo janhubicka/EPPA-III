@@ -193,3 +193,13 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.adjacent_of_same_closed_neighbourhood
 #print axioms EPPAIII.CliqueCovers.selected_clique_same_closed_neighbourhood
 #print axioms EPPAIII.CliqueCovers.different_cliques_not_same_closed_neighbourhood
+#print axioms EPPAIII.CliqueCovers.sideCrossArcs_false_eq_true
+#print axioms EPPAIII.CliqueCovers.sideInternalArcs_eq_of_balanced_rows
+#print axioms EPPAIII.CliqueCovers.sideInternalArcs_eq_twice_sideEdges
+#print axioms EPPAIII.CliqueCovers.sideEdges_equal_of_balanced_rows
+#print axioms EPPAIII.CliqueCovers.sideDegree_eq_two_row_sums
+#print axioms EPPAIII.CliqueCovers.sideEdges_equal_of_equal_degrees
+#print axioms EPPAIII.CliqueCovers.sideEdges_equal_of_regular_graph
+#print axioms EPPAIII.CliqueCovers.graphAuto_preserves_degree
+#print axioms EPPAIII.CliqueCovers.regular_of_transitive_graph
+#print axioms EPPAIII.CliqueCovers.sideEdges_equal_of_transitive_graph
