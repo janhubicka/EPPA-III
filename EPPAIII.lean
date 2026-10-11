@@ -47,3 +47,5 @@ import EPPAIII.CliqueCovers.ClosedTwinClasses
 import EPPAIII.CliqueCovers.TwinClassTransport
 import EPPAIII.CliqueCovers.TwinClassSize
 import EPPAIII.CliqueCovers.TwinQuotientAdjacency
+import EPPAIII.CliqueCovers.RegularIndependentBound
+import EPPAIII.CliqueCovers.RegularGraphIndependent
