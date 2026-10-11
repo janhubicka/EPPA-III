@@ -82,12 +82,15 @@ theorem wreathOrbit_subset_finiteProfileOrbit {s t : ℕ}
       finiteProfileOrbit (cliqueUnion s t) H e w := by
   classical
   intro Q hQ
-  change Q ∈
-    (Finset.univ : Finset
-      (Equiv.Perm (Fin s) × (Fin s → Equiv.Perm (Fin t)))).image
-      (fun z => wreathTransform (finiteNeighbourhoodProfile H e w) z.1 z.2)
-    at hQ
-  obtain ⟨⟨outer,inner⟩,_,hImage⟩ := Finset.mem_image.mp hQ
+  have hWitness :
+      ∃ (outer : Equiv.Perm (Fin s))
+        (inner : Fin s → Equiv.Perm (Fin t)),
+        wreathTransform (finiteNeighbourhoodProfile H e w) outer inner = Q := by
+    simp only [wreathOrbit, Finset.mem_image,
+      Finset.mem_univ, true_and] at hQ
+    obtain ⟨⟨outer,inner⟩,_,hImage⟩ := hQ
+    exact ⟨outer,inner,hImage⟩
+  obtain ⟨outer,inner,hImage⟩ := hWitness
   let p := (outerPermutation outer).trans (innerPermutation inner)
   have hAuto : IsGraphAutomorphism (cliqueUnion s t) p :=
     combined_wreath_aut outer inner
@@ -139,14 +142,11 @@ theorem eppa_clique_union_partial_coordinate_extreme {s t : ℕ}
     (hkpos : 0 < k) (hklt : k < t) :
     k = 1 ∨ k + 1 = t := by
   classical
-  have hspos : 0 < s := by
-    have hle := Finset.card_le_univ
-      (kPositions (finiteNeighbourhoodProfile H e w) k)
-    simpa [Fintype.card_fin, hr] using Nat.lt_of_lt_of_le hrpos hle
   have hrle : r ≤ s := by
     have hle := Finset.card_le_univ
       (kPositions (finiteNeighbourhoodProfile H e w) k)
     simpa [Fintype.card_fin, hr] using hle
+  have hspos : 0 < s := lt_of_lt_of_le hrpos hrle
   have hLow :=
     finiteProfileOrbit_lower_bound H e w k r hr
   have hHigh :=
