@@ -76,8 +76,8 @@ theorem sideEdges_equal_of_transitive_graph
     {V : Type*} [Fintype V] [Nonempty V]
     (H : SimpleGraph (Bool × V))
     (hT : HasTransitiveGraphAutomorphisms H) :
-    (sideGraph H false).edgeFinset.card =
-      (sideGraph H true).edgeFinset.card := by
+    sideEdgeCount H false =
+      sideEdgeCount H true := by
   obtain ⟨d,hReg⟩ := regular_of_transitive_graph H hT
   exact sideEdges_equal_of_regular_graph H d hReg
 
