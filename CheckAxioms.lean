@@ -174,3 +174,4 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.self_mem_wreath_orbit
 #print axioms EPPAIII.CliqueCovers.saturated_profile_inner_rigidity
 #print axioms EPPAIII.CliqueCovers.saturated_profile_other_coordinate_not_partial
+#print axioms EPPAIII.CliqueCovers.eppa_unique_partial_size_other_coordinates_trivial
