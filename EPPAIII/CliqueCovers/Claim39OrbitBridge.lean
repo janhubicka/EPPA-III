@@ -2,6 +2,7 @@ import EPPAIII.CliqueCovers.WreathOrbitCount
 import EPPAIII.CliqueCovers.Claim39Arithmetic
 import EPPAIII.CliqueCovers.WreathGenerators
 import EPPAIII.EPPA.ProfileOrbitBound
+import EPPAIII.EPPA.OutsideCardinality
 
 /-!
 # Linking the wreath-product orbit to the actual EPPA profile orbit
@@ -172,55 +173,6 @@ theorem eppa_clique_partial_degree_extreme {s t : ℕ}
   exact hLower.trans (hUpper.trans hOutside)
 
 
-/-- Counting the vertices outside the image of a finite embedding.
-This makes the orbit theorem applicable directly to a host of order
-twice that of the selected graph, rather than requiring an assumed
-outside-cardinality inequality. -/
-theorem finiteOutside_card_add_base {V W : Type*}
-    [Fintype V] [Fintype W] (e : V ↪ W) :
-    (finiteOutside e).card + Fintype.card V = Fintype.card W := by
-  classical
-  have hImage :
-      ((Finset.univ : Finset W).filter
-        (fun w => w ∈ Set.range e)) =
-        (Finset.univ : Finset V).image e := by
-    ext w
-    simp [Set.mem_range, Finset.mem_image]
-  have hPartition :=
-    Finset.card_filter_add_card_filter_not
-      (s := (Finset.univ : Finset W))
-      (p := fun w : W => w ∈ Set.range e)
-  rw [hImage] at hPartition
-  have hImageCard :
-      ((Finset.univ : Finset V).image e).card =
-        Fintype.card V := by
-    simpa using
-      (Finset.card_image_of_injective
-        (Finset.univ : Finset V) e.injective)
-  rw [hImageCard] at hPartition
-  have hBasic :
-      Fintype.card V + (finiteOutside e).card =
-        Fintype.card W := by
-    simpa [finiteOutside] using hPartition
-  omega
-
-/-- When the host has twice the size of the selected sK_t, its
-complementary vertex set has exactly s*t elements. -/
-theorem finiteOutside_card_of_double {s t : ℕ}
-    {W : Type*} [Fintype W]
-    (e : (Fin s × Fin t) ↪ W)
-    (hOrder : Fintype.card W = 2 * s * t) :
-    (finiteOutside e).card = s * t := by
-  have hCard := finiteOutside_card_add_base e
-  have hBase : Fintype.card (Fin s × Fin t) = s * t := by
-    simp [Fintype.card_prod]
-  have hTotal : Fintype.card W = 2 * (s * t) := by
-    calc
-      Fintype.card W = 2 * s * t := hOrder
-      _ = 2 * (s * t) := by ring
-  rw [hBase, hTotal] at hCard
-  omega
-
 /-- **Claim 3.9, extreme neighbourhood conclusion for a genuine
 double-sized EPPA host.** If some outside vertex has k neighbours
 in any selected clique, where 0<k<t, then k=1 or k=t−1.
@@ -247,6 +199,6 @@ theorem eppa_clique_degree_extreme_of_double {s t : ℕ}
     Finset.card_pos.mpr ⟨i, hi⟩
   exact eppa_clique_partial_degree_extreme H e heppa
     w hw k hs hk hkt hPartial
-    (le_of_eq (finiteOutside_card_of_double e hOrder))
+    (le_of_eq (finiteOutside_card_clique_union e hOrder))
 
 end EPPAIII.CliqueCovers
