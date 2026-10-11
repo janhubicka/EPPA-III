@@ -17,7 +17,7 @@ namespace EPPAIII
 
 /-- A finite outside set is the complement of the embedded image. -/
 theorem finiteOutside_eq_compl {V W : Type*}
-    [Fintype V] [Fintype W]
+    [Fintype V] [Fintype W] [DecidableEq W]
     (e : V ↪ W) :
     finiteOutside e =
       ((Finset.univ : Finset V).image e)ᶜ := by
@@ -31,10 +31,9 @@ theorem finiteOutside_card {V W : Type*}
     [Fintype V] [Fintype W] (e : V ↪ W) :
     (finiteOutside e).card = Fintype.card W - Fintype.card V := by
   classical
+  letI : DecidableEq W := Classical.decEq W
   rw [finiteOutside_eq_compl, Finset.card_compl]
-  rw [Finset.card_image_of_injective]
-  · simp
-  · exact e.injective
+  simp [Finset.card_image_of_injective, e.injective]
 
 /-- In a double-size witness for sK_t, the outside has exactly st
 vertices. This discharges the size hypothesis in Claim 3.9. -/
@@ -45,6 +44,8 @@ theorem finiteOutside_card_clique_union {s t : ℕ}
     (finiteOutside e).card = s * t := by
   rw [finiteOutside_card]
   simp only [Fintype.card_prod, Fintype.card_fin, hHostSize]
-  nlinarith
+  have hDouble : 2 * s * t = s * t + s * t := by ring
+  rw [hDouble]
+  omega
 
 end EPPAIII
