@@ -26,8 +26,8 @@ theorem extractKChoice_injOn_of_orbit_le_choices {s t : ℕ}
     (hR : (kPositions P k).card = r)
     (hBound : (wreathOrbit P).card ≤
       (Nat.choose s r) * (Nat.choose t k)^r) :
-    Set.InjOn (fun Q => extractKChoice Q k)
-      ↑(wreathOrbit P) := by
+    Set.InjOn (fun (Q : Finset (Fin s × Fin t)) => extractKChoice Q k)
+      {Q | Q ∈ wreathOrbit P} := by
   classical
   have hSubset :
       profileChoiceSpace s t r k ⊆
@@ -68,8 +68,8 @@ theorem extractKChoice_injOn_of_eppa_double {s t : ℕ}
     (r k : ℕ)
     (hR : (kPositions (finiteNeighbourhoodProfile H e w) k).card = r)
     (hSat : (Nat.choose s r) * (Nat.choose t k)^r = s * t) :
-    Set.InjOn (fun Q => extractKChoice Q k)
-      ↑(wreathOrbit (finiteNeighbourhoodProfile H e w)) := by
+    Set.InjOn (fun (Q : Finset (Fin s × Fin t)) => extractKChoice Q k)
+      {Q | Q ∈ wreathOrbit (finiteNeighbourhoodProfile H e w)} := by
   apply extractKChoice_injOn_of_orbit_le_choices
     (finiteNeighbourhoodProfile H e w) r k hR
   calc
