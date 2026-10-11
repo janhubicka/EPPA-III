@@ -179,3 +179,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.sideDegree_eq_two_row_sums
 #print axioms EPPAIII.CliqueCovers.sideEdges_equal_of_equal_degrees
 #print axioms EPPAIII.CliqueCovers.sideEdges_equal_of_regular_graph
+
+#print axioms EPPAIII.CliqueCovers.graphAuto_preserves_degree
+#print axioms EPPAIII.CliqueCovers.regular_of_transitive_graph
+#print axioms EPPAIII.CliqueCovers.sideEdges_equal_of_transitive_graph
