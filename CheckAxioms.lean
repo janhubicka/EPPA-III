@@ -204,3 +204,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.adj_iff_of_same_closed_neighbourhood_left
 #print axioms EPPAIII.CliqueCovers.distinct_representatives_of_distinct_twin_classes
 #print axioms EPPAIII.CliqueCovers.adj_iff_of_distinct_twin_classes
+
+#print axioms EPPAIII.CliqueCovers.closedTwinQuotient_adj_mk
