@@ -206,3 +206,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.adj_iff_of_distinct_twin_classes
 #print axioms EPPAIII.CliqueCovers.regular_symmetric_zero_block_le_half
 #print axioms EPPAIII.CliqueCovers.regular_graph_independent_card_le_half
+
+#print axioms EPPAIII.CliqueCovers.twin_quotient_numerical_rigidity
