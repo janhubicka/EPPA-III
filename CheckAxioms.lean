@@ -172,3 +172,6 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.sideCrossArcs_false_eq_true
 #print axioms EPPAIII.CliqueCovers.sideInternalArcs_eq_of_balanced_rows
+
+#print axioms EPPAIII.CliqueCovers.sideInternalArcs_eq_twice_sideEdges
+#print axioms EPPAIII.CliqueCovers.sideEdges_equal_of_balanced_rows
