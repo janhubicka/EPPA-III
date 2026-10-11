@@ -41,7 +41,7 @@ theorem sideInternalArcs_eq_twice_sideEdges
         ((Finset.univ : Finset (V × V)).filter
           (fun xy => H.Adj (side,xy.1) (side,xy.2))).card := by
       unfold sideInternalArcs
-      simpa [Fintype.sum_prod_type] using
+      simpa only [Fintype.sum_prod_type, Nat.cast_id] using
         (Finset.sum_boole
           (p := fun xy : V × V => H.Adj (side,xy.1) (side,xy.2))
           (s := (Finset.univ : Finset (V × V))) (R := ℕ))
