@@ -22,7 +22,7 @@ namespace EPPAIII.CliqueCovers
 /-- The quotient fiber over the class of v is precisely
 the finite closed-neighbourhood class of v. -/
 theorem closedTwinQuotient_fiber_mk {W : Type*} [Fintype W]
-    (H : SimpleGraph W) (v : W) :
+    (H : SimpleGraph W) [DecidableEq (ClosedTwinQuotient H)] (v : W) :
     ((Finset.univ : Finset W).filter
       (fun w => Quotient.mk (closedTwinSetoid H) w =
         Quotient.mk (closedTwinSetoid H) v)) =
@@ -62,7 +62,7 @@ theorem closedTwinQuotient_card_mul_class_card {W : Type*}
         (fun w => Quotient.mk (closedTwinSetoid H) w =
           Quotient.mk (closedTwinSetoid H) v)).card =
             (closedTwinClass H u).card
-      rw [closedTwinQuotient_fiber_mk]
+      rw [closedTwinQuotient_fiber_mk H v]
       exact hUniform v
   have hCount :
       Fintype.card W =
