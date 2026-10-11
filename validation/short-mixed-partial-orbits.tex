@@ -99,4 +99,19 @@ is a paper-level argument, not yet Lean-checked.
 The original manuscript and its existing Wagner
 patch are untouched.
 
+\paragraph{Finite regression check.}
+The Python checker
+\texttt{checks/section3\_short\_profiles.py} enumerates all
+6,148 coordinate-size histograms with \(2\le s,t\le15\)
+and \(st\le30\). Among them, 5,076 contain at least
+two partial coordinates, and 1,160 have both singleton
+and co-singleton sizes with \(t\ge3\).
+Using the exact elementary wreath orbit formula, the
+only histogram with at least two partial coordinates
+and orbit size at most \(st\) is \(s=t=2\)
+with sizes \((1,1)\).
+This checks arithmetic and indexing only; it is
+not a substitute for the unrestricted paper proof.
+The script is run by GitHub Actions.
+
 \end{document}
