@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry,booktabs}
+\geometry{margin=27mm}
+\title{EPPA--III: remaining Lean obligations for the direct clique-cover proof}
+\author{Independent validation supplement; original manuscript frozen}
+\date{11 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Scope.}
+The source of \emph{Graphs with Small EPPA Witnesses} remains
+unchanged. This note identifies the exact residual graph-theoretic
+obligations after the orbit-count repairs to Claim~3.9.
+It distinguishes verified theorems from currently pending PRs.
+
+\paragraph{Current formal boundary.}
+The following statements have been axiom-audited and merged:
+the EPPA neighbourhood-profile orbit upper bound;
+the unrestricted \(S_t\wr S_s\) orbit lower bound for a fixed
+coordinate size \(k\); the inclusion of this wreath orbit in the
+actual EPPA profile orbit; the extreme-degree conclusion
+\(k=1\) or \(k=t-1\); saturation injectivity of the
+size-\(k\) coordinate projection; and the repeated-partial-size
+obstruction forcing \(s=t=2\).
+These are in the source modules
+\texttt{ProfileOrbitBound},
+\texttt{WreathOrbitCount},
+\texttt{Claim39OrbitBridge},
+\texttt{ProfileSaturation}, and
+\texttt{RepeatedPartialSize}.
+
+The independent-inner-movement theorem (PR~\#38),
+the unique-size EPPA consequence (PR~\#39),
+and the two-partial-coordinate exception (PR~\#40)
+are separate stacked formalizations,
+\emph{not counted as checked until their CI and axiom
+audits succeed}. Together they aim to prove:
+\[
+ \begin{gathered}
+ s,t\ge2,\quad H\supseteq_{\mathrm{ind}}sK_t,\quad
+ |H|=2st,\quad H\text{ EPPA for }sK_t;\\
+ \exists w\in H\setminus G,\quad
+ \exists i\ne j,\quad
+ 0<|N(w)\cap C_i|,\ |N(w)\cap C_j|<t\\
+ \Longrightarrow\quad s=t=2.
+ \end{gathered}
+\]
+Neither transitivity nor an outside clique partition is needed
+for this implication.
+
+\paragraph{Next obligation A: equal-edge-count identity.}
+For a vertex-transitive graph \(H\) on \(2st\) vertices, with
+an induced copy \(G=sK_t\) and complementary part \(B\) of
+the same order, regularity gives
+\[
+ |E(H[B])|=|E(H[G])|=s\binom t2.
+ \tag{A}
+\]
+This is a basic finite degree-sum and cross-edge identity;
+the graph-level Lean statement is still to be written.
+
+\paragraph{Next obligation B: one partial coordinate.}
+If a profile has exactly one partial coordinate of size \(k\),
+the group action implies
+\[
+ |W\cdot P|=s\binom tk\binom{s-1}{r},
+\]
+where \(r\) counts the remaining full coordinates.
+Together with the verified upper bound \(st\), one gets
+\(k\in\{1,t-1\}\), \(r=0\) or \(s-1\), and
+\(|W\cdot P|=st\). Hence all outside profiles are distinct
+and exhaust the complementary half.
+The resulting action on \(B\) is the standard imprimitive
+action on \(s\) blocks of \(t\) vertices.
+Its unordered pair orbits are the within-block
+and across-block pairs. Invariance of \(E(H[B])\),
+followed by (A), gives \(H[B]=sK_t\);
+the cross-edges are the required matching/co-matching
+diagonal with uniform off-diagonal entries.
+The exact action identification and pair-orbit argument,
+not merely the numerical restriction, are outstanding.
+
+\paragraph{Next obligation C: two partial coordinates.}
+Under the formally targeted \(s=t=2\) exception,
+all four profiles are the singleton choices in both
+selected \(K_2\)'s, indexed by the corners of a square.
+The unordered pair-orbits of the induced wreath action
+have sizes four (sides) and two (opposite corners).
+By (A), \(B\) has exactly two edges, forcing the opposite
+matching. Its cross-connection matrix then normalises to
+\[
+ \begin{pmatrix}
+ M&M\\M&\overline M
+ \end{pmatrix},
+\]
+the Wagner graph. This last eight-vertex orbit and
+edge-count implication is a small formalization target.
+The earlier Lean theorem excluding the cube remains available.
+
+\paragraph{Next obligation D: no partial coordinates.}
+All vertices within each \(C_i\) have equal closed
+neighbourhoods, hence belong to one true-twin class.
+Vertex-transitivity makes all twin classes have
+the same order \(a\ge t\). The quotient \(Q\)
+on twin classes has \(M=2st/a\le2s\) vertices
+and contains \(s\) independent vertices.
+For non-homogeneous \(H\), the quotient is
+a positive-degree vertex-transitive graph.
+Double-counting edges out of an independent set
+in a positive-degree regular graph gives
+\(\alpha(Q)\le M/2\).
+Thus \(M=2s\), \(a=t\).
+The \(s\) complementary twin classes already contain
+\(s\binom t2\) internal edges; (A) excludes additional
+edges, giving \(B=sK_t\).
+Finally, EPPA and the orbit count on the
+\(s\) complete/empty clique coordinates imply
+that all outside-clique neighbourhoods are uniform,
+or are exactly the singleton/co-singleton index orbit.
+These are precisely the uniform cross-block patterns
+of Definition~1.6. This quotient step is paper-level,
+not currently Lean-verified.
+
+\paragraph{Next obligation E: low parameters and homogeneous hosts.}
+The cases \(s=1\) or \(t=1\) admit direct small-profile
+proofs, and homogeneous \(H\) is handled separately
+using the finite homogeneous-graph classification.
+These are included at paper level in
+\texttt{direct-clique-cover-proof.tex}; they are not
+included in the statement of the two-partial-coordinate
+Lean obstruction, which assumes \(s,t\ge2\).
+
+\paragraph{Recommended validation order.}
+Complete PRs~\#38--\#40 with green Lean CI and
+permitted-axiom audit; prove (A), then (B) and (C),
+and finally the regular twin-quotient step (D).
+This establishes the direct proof of Lemma~3.7
+without reusing the unverified \(D_j\)-regularity
+step in Claim~3.8 or the simultaneous matching
+normalisation in Claim~3.10.
+Only then mark the graph theorem as fully verified.
+The author-facing minimal Wagner correction is unchanged.
+
+\end{document}
