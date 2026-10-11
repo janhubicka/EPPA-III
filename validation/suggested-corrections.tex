@@ -237,17 +237,18 @@ The \emph{general} wreath-product orbit lower bound
 \(\binom{s}{r}\binom{t}{k}^{r}\le
 |\operatorname{Aut}(G)\cdot P(w)|\) is now Lean-verified
 in \texttt{EPPAIII/CliqueCovers/WreathOrbitCount.lean}.
-The bridge identifying this concrete wreath orbit
-with a subset of the EPPA neighbourhood-profile
-orbit, together with the exact \(|H|=2st\)
-cardinality hypothesis, is proposed in
-\texttt{EPPAIII/CliqueCovers/Claim39OrbitBridge.lean}
-and currently awaits CI verification.
-After that succeeds, the extreme-degree conclusion
-will be Lean-verified \emph{without} Claim~3.8;
-the separate two-sided regularity required to
-infer complete matching/co-matching blocks
-remains an independent proof obligation (C14).
+The orbit-to-EPPA bridge and the exact \(|H|=2st\)
+cardinality specialization have now been Lean-verified
+and merged as PR~\#29 in
+\texttt{EPPAIII/CliqueCovers/Claim39OrbitBridge.lean}.
+In particular, the audited theorem
+\texttt{eppa\_clique\_degree\_extreme\_of\_double}
+proves the Claim~3.9 extreme-degree restriction
+\emph{without} Claim~3.8 or stabilization of a \(D_j\).
+The two-sided regularity for complete bipartite blocks
+is still an independent open proof issue (C14);
+\texttt{validation/short-mixed-partial-orbits.tex}
+records an alternative avoiding this dependency.
 The author has been reviewing a separate Wagner patch;
 do not apply this change to source automatically.
 

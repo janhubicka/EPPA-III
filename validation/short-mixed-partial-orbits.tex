@@ -1,0 +1,117 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=27mm}
+\title{EPPA--III: excluding mixed partial profiles by saturation}
+\author{Independent validation supplement; manuscript frozen}
+\date{11 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Statement.}
+Let \(G=sK_t\), where \(s,t\ge2\), be an induced subgraph
+of a finite EPPA witness \(H\) with \(|H|=2st\).
+Let \(w\in H\setminus G\), let \(P_i=N_H(w)\cap C_i\),
+and call coordinate \(i\) \emph{partial} if
+\(0<|P_i|<t\). If \(w\) has two or more partial
+coordinates, necessarily \(s=t=2\), and both partial
+coordinates have size \(1\).
+
+\paragraph{Proof (using the already verified Claim 3.9 bound).}
+Every automorphism of \(G\) extends to an automorphism of \(H\),
+so the full \(W=S_t\wr S_s\) orbit of \(P=(P_i)_{i=1}^s\)
+has size at most \(st\).
+The Lean-verified Claim~3.9 estimate says that
+each partial coordinate has size \(1\) or \(t-1\).
+If there are \(r\ge2\) coordinates of the same partial
+size \(k\), then the already Lean-verified lower bound gives
+\[
+ \binom sr\binom tk^r=\binom sr t^r
+ \ \le\ |W\cdot P|\ \le\ st.
+ \tag{1}
+\]
+The arithmetic theorem
+\texttt{multiple\_partial\_orbit\_arithmetic}
+forces \(s=t=r=2\).
+For \(t=2\) the only partial size is \(k=1\),
+so this handles all multiple-partial profiles.
+
+It remains to suppose \(t\ge3\) and that two
+partial coordinates have \emph{different} sizes.
+By the preceding paragraph, there must be exactly
+one singleton coordinate and exactly one
+co-singleton coordinate. Let \(i\) be the singleton
+coordinate.
+For any index \(j\) and singleton \(A\subseteq C_j\),
+an outer permutation taking \(i\) to \(j\), followed
+by an inner permutation, produces a profile \(Q\)
+in \(W\cdot P\) whose unique singleton coordinate is
+\(j\) and whose singleton is \(A\).
+Thus the map
+\[
+ \Phi:W\cdot P\longrightarrow
+ \{(j,A):j\in[s],\ A\in\binom{C_j}{1}\},
+ \qquad
+ Q\longmapsto(\hbox{its singleton index and subset})
+\]
+is surjective. The target has \(st\) elements,
+whereas the source has at most \(st\), so \(\Phi\)
+must be injective.
+
+However, choose a nontrivial permutation of the
+vertices in the co-singleton coordinate that
+moves its \(t-1\)-subset, acting identically on all
+other coordinates. This gives \(Q'\ne P\) in the
+same wreath orbit with \(\Phi(Q')=\Phi(P)\),
+a contradiction. Thus there are no mixed-size
+multiple-partial profiles. \(\square\)
+
+\paragraph{Consequence for Lemma 3.7.}
+This replaces the need for the more general
+multinomial estimate
+\(\binom{s}{p}t^p\le st\) in the
+direct classification: the existing single-size
+wreath-orbit bound, an elementary saturation
+argument, and independent inner permutations suffice.
+With at most one partial coordinate, the orbit
+of its profile has exactly
+\(s\binom tk\binom{s-1}{r}\) elements, where \(r\)
+is the number of other full coordinates.
+The same \(st\) bound forces \(r=0\) or \(s-1\);
+the orbit exhausts \(H\setminus G\).
+The latter is then \(sK_t\) by the edge-count
+identity under vertex-transitivity.
+When \(s=t=2\) and there are two partial
+coordinates, the four profiles yield precisely
+the Wagner exception. Profiles without any partial
+coordinates are handled by the true-twin quotient
+argument in \texttt{direct-clique-cover-proof.tex}.
+
+\paragraph{Formal status and scope.}
+The full \(W\)-orbit lower bound for a \emph{fixed}
+partial size, its transfer into the actual EPPA orbit,
+the extreme-degree restriction, and the arithmetic
+in (1) are Lean-verified (merged PRs~\#25, \#29, \#31).
+The injectivity of the saturated choice projection is
+the goal of PR~\#32; the final step selecting a
+nontrivial permutation on a second partial coordinate
+is a paper-level argument, not yet Lean-checked.
+The original manuscript and its existing Wagner
+patch are untouched.
+
+\paragraph{Finite regression check.}
+The Python checker
+\texttt{checks/section3\_short\_profiles.py} enumerates all
+6,148 coordinate-size histograms with \(2\le s,t\le15\)
+and \(st\le30\). Among them, 5,076 contain at least
+two partial coordinates, and 1,160 have both singleton
+and co-singleton sizes with \(t\ge3\).
+Using the exact elementary wreath orbit formula, the
+only histogram with at least two partial coordinates
+and orbit size at most \(st\) is \(s=t=2\)
+with sizes \((1,1)\).
+This checks arithmetic and indexing only; it is
+not a substitute for the unrestricted paper proof.
+The script is run by GitHub Actions.
+
+\end{document}

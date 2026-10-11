@@ -409,4 +409,30 @@ double up to complementation within all blocks.
 This is a local clarification, not an objection
 to Lemma~3.3 when its stated qualification is respected.
 
+
+\section*{11 October 2026: orbit and saturation checkpoint}
+The actual Claim~3.9 \emph{extreme-degree restriction} is now
+Lean-verified for an arbitrary finite double-sized EPPA witness
+(PR~\#29, merged). This combines:
+the general \(S_t\wr S_s\) orbit lower bound, its inclusion in the
+genuine EPPA profile orbit, the EPPA outside-profile upper bound,
+and the exact complement cardinality.
+No \(D_j\)-side regularity is used, so this result does not on its
+own assert that whole \(C_i\)--\(D_j\) blocks are matchings.
+
+The independent arithmetic obstruction
+\(\binom{s}{p}t^p\le st\), \(2\le p\le s\),
+implies \(s=t=p=2\); it is Lean-verified in
+\texttt{MultiplePartialArithmetic.lean} (merged PR~\#31).
+The remaining orbit estimate for \emph{different}
+partial coordinate sizes is still paper-level.
+An alternative avoiding that estimate uses saturation of the
+single-size lower bound and independent inner permutations;
+see \texttt{validation/short-mixed-partial-orbits.tex}.
+Its finite-set saturation-injectivity component is being
+formalized in \texttt{ProfileSaturation.lean} (PR~\#32;
+CI to be checked before merging).
+
+The original manuscript TeX is unchanged.
+
 \end{document}
