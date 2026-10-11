@@ -206,3 +206,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.adj_iff_of_distinct_twin_classes
 
 #print axioms EPPAIII.CliqueCovers.closedTwinQuotient_adj_mk
+#print axioms EPPAIII.CliqueCovers.sameClosedNeighbourhood_aut_iff
+#print axioms EPPAIII.CliqueCovers.liftTwinAutomorphism_mk
+#print axioms EPPAIII.CliqueCovers.liftTwinAutomorphism_graphAut
+#print axioms EPPAIII.CliqueCovers.closedTwinQuotient_transitive
