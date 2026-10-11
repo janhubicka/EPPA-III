@@ -167,3 +167,5 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.extractKChoice_injOn_of_orbit_le_choices
 #print axioms EPPAIII.CliqueCovers.extractKChoice_injOn_of_eppa_double
+
+#print axioms EPPAIII.CliqueCovers.repeated_partial_coordinate_exception
