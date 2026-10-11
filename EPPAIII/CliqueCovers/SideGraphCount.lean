@@ -46,7 +46,7 @@ theorem sideInternalArcs_eq_twice_sideEdges
 number of undirected edges in the two induced side graphs. -/
 theorem sideEdges_equal_of_balanced_rows
     {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V))
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj]
     (hRows : ∀ i : V,
       ((∑ j : V, if H.Adj (false,i) (false,j) then 1 else 0) +
        (∑ j : V, if H.Adj (false,i) (true,j) then 1 else 0)) =
