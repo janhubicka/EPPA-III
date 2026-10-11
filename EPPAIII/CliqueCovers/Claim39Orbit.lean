@@ -83,14 +83,11 @@ theorem wreathOrbit_subset_finiteProfileOrbit {s t : ℕ}
   classical
   intro Q hQ
   have hWitness :
-      ∃ (outer : Equiv.Perm (Fin s))
-        (inner : Fin s → Equiv.Perm (Fin t)),
-        wreathTransform (finiteNeighbourhoodProfile H e w) outer inner = Q := by
-    simp only [wreathOrbit, Finset.mem_image,
-      Finset.mem_univ, true_and] at hQ
-    obtain ⟨⟨outer,inner⟩,_,hImage⟩ := hQ
-    exact ⟨outer,inner,hImage⟩
-  obtain ⟨outer,inner,hImage⟩ := hWitness
+      ∃ z : Equiv.Perm (Fin s) × (Fin s → Equiv.Perm (Fin t)),
+        wreathTransform (finiteNeighbourhoodProfile H e w) z.1 z.2 = Q := by
+    simpa only [wreathOrbit, Finset.mem_image,
+      Finset.mem_univ, true_and] using hQ
+  obtain ⟨⟨outer,inner⟩,hImage⟩ := hWitness
   let p := (outerPermutation outer).trans (innerPermutation inner)
   have hAuto : IsGraphAutomorphism (cliqueUnion s t) p :=
     combined_wreath_aut outer inner
@@ -102,7 +99,6 @@ theorem wreathOrbit_subset_finiteProfileOrbit {s t : ℕ}
         wreathTransform (finiteNeighbourhoodProfile H e w) outer inner := by
     rw [translatedFiniteProfile_eq_map,
       wreathTransform_eq_map]
-    rfl
   rw [hEquals] at hMember
   exact hImage ▸ hMember
 
