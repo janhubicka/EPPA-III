@@ -39,3 +39,4 @@ import EPPAIII.CliqueCovers.ProfileSaturation
 import EPPAIII.CliqueCovers.RepeatedPartialSize
 import EPPAIII.CliqueCovers.TwoHalvesArcCount
 import EPPAIII.CliqueCovers.SideGraphCount
+import EPPAIII.CliqueCovers.RegularHalfEdges
