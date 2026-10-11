@@ -25,21 +25,21 @@ open Finset
 
 /-- The number of oriented edges with both endpoints in one side. -/
 noncomputable def sideInternalArcs {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V)) (side : Bool) : ℕ := by
-  classical
-  exact ∑ i : V, ∑ j : V,
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj]
+    (side : Bool) : ℕ :=
+  ∑ i : V, ∑ j : V,
     if H.Adj (side,i) (side,j) then 1 else 0
 
 /-- The number of oriented edges from the specified side to the other side. -/
 noncomputable def sideCrossArcs {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V)) (side : Bool) : ℕ := by
-  classical
-  exact ∑ i : V, ∑ j : V,
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj]
+    (side : Bool) : ℕ :=
+  ∑ i : V, ∑ j : V,
     if H.Adj (side,i) (!side,j) then 1 else 0
 
 /-- Both orientations of the same cross-edge set are counted equally. -/
 theorem sideCrossArcs_false_eq_true {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V)) :
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj] :
     sideCrossArcs H false = sideCrossArcs H true := by
   classical
   unfold sideCrossArcs
