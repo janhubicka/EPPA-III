@@ -44,7 +44,7 @@ theorem sideInternalArcs_eq_twice_sideEdges
       simpa only [Fintype.sum_prod_type] using
         (Finset.sum_boole
           (p := fun xy : V × V => H.Adj (side,xy.1) (side,xy.2))
-          (s := (Finset.univ : Finset (V × V))) (R := ℕ)).symm
+          (s := (Finset.univ : Finset (V × V))) (R := ℕ))
     _ = 2 * sideEdgeCount H side := by
       simpa [sideGraph, sideEdgeCount] using
         ((sideGraph H side).two_mul_card_edgeFinset).symm
