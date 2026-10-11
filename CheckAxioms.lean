@@ -169,3 +169,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.extractKChoice_injOn_of_eppa_double
 
 #print axioms EPPAIII.CliqueCovers.repeated_partial_coordinate_exception
+#print axioms EPPAIII.CliqueCovers.proper_subset_has_moving_permutation
+#print axioms EPPAIII.CliqueCovers.inner_map_mem_wreath_orbit
+#print axioms EPPAIII.CliqueCovers.self_mem_wreath_orbit
+#print axioms EPPAIII.CliqueCovers.saturated_profile_inner_rigidity
+#print axioms EPPAIII.CliqueCovers.saturated_profile_other_coordinate_not_partial
