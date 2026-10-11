@@ -51,7 +51,8 @@ theorem inner_map_mem_wreath_orbit {s t : ℕ}
   have hId :
       (outerPermutation (Equiv.refl (Fin s))).toEmbedding =
         Function.Embedding.refl (Fin s × Fin t) := by
-    ext x
+    apply Function.Embedding.ext
+    rintro ⟨i, a⟩
     rfl
   change
     (P.map (outerPermutation (Equiv.refl (Fin s))).toEmbedding).map
@@ -68,8 +69,8 @@ theorem self_mem_wreath_orbit {s t : ℕ}
   have hId :
       (innerPermutation (fun _ : Fin s => Equiv.refl (Fin t))).toEmbedding =
         Function.Embedding.refl (Fin s × Fin t) := by
-    ext x
-    cases x
+    apply Function.Embedding.ext
+    rintro ⟨i, a⟩
     rfl
   rw [hId, Finset.map_refl] at h
   exact h
