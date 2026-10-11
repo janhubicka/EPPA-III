@@ -49,3 +49,4 @@ import EPPAIII.CliqueCovers.TwinClassSize
 import EPPAIII.CliqueCovers.TwinQuotientAdjacency
 import EPPAIII.CliqueCovers.TwinQuotientGraph
 import EPPAIII.CliqueCovers.TwinQuotientAction
+import EPPAIII.CliqueCovers.TwinQuotientCount
