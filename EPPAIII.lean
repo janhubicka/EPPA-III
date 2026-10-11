@@ -43,3 +43,4 @@ import EPPAIII.CliqueCovers.TwoPartialCoordinates
 import EPPAIII.CliqueCovers.OuterRigidity
 import EPPAIII.CliqueCovers.EppaOuterRigidity
 import EPPAIII.CliqueCovers.TrueTwins
+import EPPAIII.CliqueCovers.ClosedTwinClasses
