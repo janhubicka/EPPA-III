@@ -206,3 +206,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.adj_iff_of_distinct_twin_classes
 
 #print axioms EPPAIII.CliqueCovers.closedTwinQuotient_adj_mk
+#print axioms EPPAIII.CliqueCovers.selectedTwinClassMap_injective
+#print axioms EPPAIII.CliqueCovers.selectedTwinClasses_card
+#print axioms EPPAIII.CliqueCovers.selectedTwinClasses_independent
