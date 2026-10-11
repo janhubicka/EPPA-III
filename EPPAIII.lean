@@ -45,3 +45,4 @@ import EPPAIII.CliqueCovers.EppaOuterRigidity
 import EPPAIII.CliqueCovers.TrueTwins
 import EPPAIII.CliqueCovers.ClosedTwinClasses
 import EPPAIII.CliqueCovers.RegularIndependentBound
+import EPPAIII.CliqueCovers.RegularGraphIndependent
