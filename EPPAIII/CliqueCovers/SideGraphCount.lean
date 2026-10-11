@@ -21,25 +21,32 @@ def sideGraph {V : Type*}
     (H : SimpleGraph (Bool × V)) (side : Bool) : SimpleGraph V :=
   H.comap (fun i => (side,i))
 
+/-- The number of undirected edges within one side, with a classical
+finite edge-set instance kept inside the definition rather than
+leaking into the theorem statement. -/
+noncomputable def sideEdgeCount {V : Type*} [Fintype V]
+    (H : SimpleGraph (Bool × V)) (side : Bool) : ℕ := by
+  classical
+  exact (sideGraph H side).edgeFinset.card
+
 /-- Each undirected internal edge contributes two oriented arcs. -/
 theorem sideInternalArcs_eq_twice_sideEdges
     {V : Type*} [Fintype V]
     (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj] (side : Bool) :
     sideInternalArcs H side =
-      2 * (sideGraph H side).edgeFinset.card := by
+      2 * sideEdgeCount H side := by
   classical
   calc
     sideInternalArcs H side =
         ((Finset.univ : Finset (V × V)).filter
           (fun xy => H.Adj (side,xy.1) (side,xy.2))).card := by
       unfold sideInternalArcs
-      rw [← Fintype.sum_prod_type]
-      simpa using
+      simpa only [Fintype.sum_prod_type] using
         (Finset.sum_boole
           (p := fun xy : V × V => H.Adj (side,xy.1) (side,xy.2))
-          (s := (Finset.univ : Finset (V × V))) (R := ℕ))
-    _ = 2 * (sideGraph H side).edgeFinset.card := by
-      simpa [sideGraph] using
+          (s := (Finset.univ : Finset (V × V))) (R := ℕ)).symm
+    _ = 2 * sideEdgeCount H side := by
+      simpa [sideGraph, sideEdgeCount] using
         ((sideGraph H side).two_mul_card_edgeFinset).symm
 
 /-- The row-balance identity is now an equality between the
@@ -52,8 +59,8 @@ theorem sideEdges_equal_of_balanced_rows
        (∑ j : V, if H.Adj (false,i) (true,j) then 1 else 0)) =
       ((∑ j : V, if H.Adj (true,i) (true,j) then 1 else 0) +
        (∑ j : V, if H.Adj (true,i) (false,j) then 1 else 0))) :
-    (sideGraph H false).edgeFinset.card =
-      (sideGraph H true).edgeFinset.card := by
+    sideEdgeCount H false =
+      sideEdgeCount H true := by
   have h := sideInternalArcs_eq_of_balanced_rows H hRows
   rw [sideInternalArcs_eq_twice_sideEdges,
       sideInternalArcs_eq_twice_sideEdges] at h
