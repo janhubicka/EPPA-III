@@ -188,3 +188,8 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.outside_adj_uniform_of_no_partial
 #print axioms EPPAIII.CliqueCovers.selected_clique_true_twins_of_no_partial
+#print axioms EPPAIII.CliqueCovers.closedNeighbourhood_eq_of_true_twins
+#print axioms EPPAIII.CliqueCovers.sameClosedNeighbourhood_equivalence
+#print axioms EPPAIII.CliqueCovers.adjacent_of_same_closed_neighbourhood
+#print axioms EPPAIII.CliqueCovers.selected_clique_same_closed_neighbourhood
+#print axioms EPPAIII.CliqueCovers.different_cliques_not_same_closed_neighbourhood
