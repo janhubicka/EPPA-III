@@ -24,7 +24,7 @@ def sideGraph {V : Type*}
 /-- Each undirected internal edge contributes two oriented arcs. -/
 theorem sideInternalArcs_eq_twice_sideEdges
     {V : Type*} [Fintype V]
-    (H : SimpleGraph (Bool × V)) (side : Bool) :
+    (H : SimpleGraph (Bool × V)) [DecidableRel H.Adj] (side : Bool) :
     sideInternalArcs H side =
       2 * (sideGraph H side).edgeFinset.card := by
   classical
