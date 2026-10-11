@@ -230,3 +230,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.twin_quotient_numerical_rigidity
 
 #print axioms EPPAIII.CliqueCovers.zero_partial_exact_twin_class_size
+#print axioms EPPAIII.CliqueCovers.cluster_of_edgeless_closed_twin_quotient
+#print axioms EPPAIII.CliqueCovers.closed_twin_quotient_has_edge_of_noncluster
+#print axioms EPPAIII.CliqueCovers.zero_partial_exact_twin_class_size_of_noncluster
