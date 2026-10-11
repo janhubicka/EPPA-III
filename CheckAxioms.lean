@@ -228,3 +228,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.selectedTwinClasses_card
 #print axioms EPPAIII.CliqueCovers.selectedTwinClasses_independent
 #print axioms EPPAIII.CliqueCovers.twin_quotient_numerical_rigidity
+
+#print axioms EPPAIII.CliqueCovers.zero_partial_exact_twin_class_size
