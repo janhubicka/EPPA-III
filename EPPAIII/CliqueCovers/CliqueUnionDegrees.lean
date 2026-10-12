@@ -34,8 +34,8 @@ theorem cliqueUnion_eq_compl_completeEquipartite (s t : ℕ) :
       SimpleGraph.completeEquipartiteGraph_adj, hij]
 
 /-- Every vertex of the disjoint-clique graph has degree t-1. -/
-theorem cliqueUnion_degree {s t : ℕ} (hs : 0 < s)
-    (v : Fin s × Fin t) :
+theorem cliqueUnion_degree {s t : ℕ} [DecidableRel (cliqueUnion s t).Adj]
+    (hs : 0 < s) (v : Fin s × Fin t) :
     (cliqueUnion s t).degree v = t - 1 := by
   classical
   rw [cliqueUnion_eq_compl_completeEquipartite,
@@ -50,7 +50,8 @@ theorem cliqueUnion_degree {s t : ℕ} (hs : 0 < s)
     omega
 
 /-- The canonical sK_t graph is regular. -/
-theorem cliqueUnion_regular {s t : ℕ} (hs : 0 < s) :
+theorem cliqueUnion_regular {s t : ℕ} [DecidableRel (cliqueUnion s t).Adj]
+    (hs : 0 < s) :
     (cliqueUnion s t).IsRegularOfDegree (t - 1) := by
   classical
   intro v
@@ -58,7 +59,8 @@ theorem cliqueUnion_regular {s t : ℕ} (hs : 0 < s) :
 
 /-- The complementary complete multipartite graph is regular
 of degree (s-1)t. -/
-theorem cliqueUnion_compl_regular {s t : ℕ} :
+theorem cliqueUnion_compl_regular {s t : ℕ}
+    [DecidableRel ((cliqueUnion s t)ᶜ).Adj] :
     (cliqueUnion s t)ᶜ.IsRegularOfDegree ((s - 1) * t) := by
   classical
   have hEq :
