@@ -77,9 +77,9 @@ theorem cliqueUnion_compl_regular {s t : ℕ}
       (cliqueUnion s t)ᶜ = SimpleGraph.completeEquipartiteGraph s t := by
     rw [cliqueUnion_eq_compl_completeEquipartite]
     simp
-  rw [hEq]
   intro v
-  exact SimpleGraph.degree_completeEquipartiteGraph v
+  simpa only [hEq] using
+    (SimpleGraph.degree_completeEquipartiteGraph (r := s) (t := t) v)
 
 /-- The four invariant graph patterns have pairwise distinguishable
 degrees at the degree t-1 of sK_t when s,t≥2. -/
