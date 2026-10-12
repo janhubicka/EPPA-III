@@ -246,3 +246,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_maps_same_block_pair
 #print axioms EPPAIII.CliqueCovers.exists_wreath_maps_pair_of_same_block_status
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_pair_uniform
+#print axioms EPPAIII.CliqueCovers.finite_profile_orbit_subset_outside_image
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_profile_bijection
+#print axioms EPPAIII.CliqueCovers.eppa_unique_partial_outside_profiles_bijective
