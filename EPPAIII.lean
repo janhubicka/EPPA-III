@@ -88,3 +88,4 @@ import EPPAIII.CliqueCovers.SingletonOutsideAction
 import EPPAIII.CliqueCovers.SingletonOutsideRigidity
 import EPPAIII.CliqueCovers.SingletonTransitiveConclusion
 import EPPAIII.CliqueCovers.SingletonCrossOrbit
+import EPPAIII.CliqueCovers.SingletonInitialUniform
