@@ -28,7 +28,7 @@ theorem perm_map_compl_singleton {t : ℕ}
   · rintro ⟨z, hza, hzb⟩
     intro hba
     apply hza
-    exact p.injective (hzb.trans hba.symm)
+    exact p.injective (hzb.trans hba)
   · intro hba
     refine ⟨p.symm b, ?_, p.apply_symm_apply b⟩
     intro hza
