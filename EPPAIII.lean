@@ -83,3 +83,4 @@ import EPPAIII.CliqueCovers.SingletonChoiceLabels
 import EPPAIII.CliqueCovers.CoSingletonChoiceLabels
 import EPPAIII.CliqueCovers.SingletonChoiceWreath
 import EPPAIII.CliqueCovers.SingletonOutsideAction
+import EPPAIII.CliqueCovers.SingletonOutsideRigidity
