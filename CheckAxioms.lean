@@ -232,3 +232,6 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.graph_eq_of_le_of_edge_card_eq
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_eq_of_le_of_edge_card_eq
+
+#print axioms EPPAIII.CliqueCovers.finite_profile_orbit_subset_outside_image
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_profile_bijection
