@@ -89,4 +89,48 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
       (by rw [hImageCard]; exact hOrbitLower)
   exact ⟨hInjective, hOrbitEq⟩
 
+
+/-- A single coordinate with proper nonzero neighbourhood size already
+saturates the outside profile budget: it must be a singleton or
+co-singleton, hence has exactly s*t translated choices.
+
+Therefore all outside vertices have pairwise distinct neighbourhood
+profiles and their profiles form precisely one base automorphism orbit. -/
+theorem eppa_unique_partial_outside_profiles_bijective {s t : ℕ}
+    {W : Type*} [Fintype W]
+    (H : SimpleGraph W)
+    (e : (Fin s × Fin t) ↪ W)
+    (heppa : IsEPPAEmbedding (cliqueUnion s t) H e)
+    (hOrder : Fintype.card W = 2 * s * t)
+    (w : W) (hw : w ∉ Set.range e)
+    (k : ℕ) (hs : 0 < s) (hk : 0 < k) (hkt : k < t)
+    (hUnique :
+      (kPositions (finiteNeighbourhoodProfile H e w) k).card = 1) :
+    Set.InjOn (finiteNeighbourhoodProfile H e)
+      {u | u ∈ finiteOutside e} ∧
+    finiteProfileOrbit (cliqueUnion s t) H e w =
+      (finiteOutside e).image (finiteNeighbourhoodProfile H e) := by
+  classical
+  have hPartial :
+      0 < (kPositions (finiteNeighbourhoodProfile H e w) k).card := by
+    rw [hUnique]
+    decide
+  have hExtreme : k = 1 ∨ k + 1 = t :=
+    eppa_clique_partial_degree_extreme H e heppa
+      w hw k hs hk hkt hPartial
+      (le_of_eq (finiteOutside_card_clique_union e hOrder))
+  have hChoose : Nat.choose t k = t := by
+    rcases hExtreme with hOne | hCo
+    · simpa [hOne] using (Nat.choose_one_right t)
+    · have hComplement : t - k = 1 := by omega
+      calc
+        Nat.choose t k = Nat.choose t (t - k) :=
+          (Nat.choose_symm (Nat.le_of_lt hkt)).symm
+        _ = Nat.choose t 1 := by rw [hComplement]
+        _ = t := Nat.choose_one_right t
+  have hSat : Nat.choose s 1 * (Nat.choose t k)^1 = s * t := by
+    simp [hChoose]
+  exact eppa_saturated_outside_profile_bijection
+    H e heppa hOrder w hw 1 k hUnique hSat
+
 end EPPAIII.CliqueCovers
