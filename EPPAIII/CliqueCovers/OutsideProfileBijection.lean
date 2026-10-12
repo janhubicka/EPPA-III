@@ -79,17 +79,10 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
   let image : Finset (Finset (Fin s × Fin t)) :=
     outside.image (finiteNeighbourhoodProfile H e)
   have hSubset : orbit ⊆ image := by
-    intro S hS
-    obtain ⟨p,hp,hProfile⟩ := Finset.mem_image.mp hS
-    have hpAuto : IsGraphAutomorphism (cliqueUnion s t) p :=
-      (Finset.mem_filter.mp hp).2
-    obtain ⟨q,hq,hCompat⟩ :=
-      eppa_lifts_total (cliqueUnion s t) H e heppa p hpAuto
-    have hwOutside : q w ∉ Set.range e :=
-      lift_preserves_outside e p q hCompat w hw
-    refine Finset.mem_image.mpr ⟨q w, ?_, ?_⟩
-    · simpa [outside, finiteOutside] using hwOutside
-    · exact (finite_profile_transport H e w p q hCompat hq).trans hProfile
+    change finiteProfileOrbit (cliqueUnion s t) H e w ⊆
+      finiteOutsideProfileImage H e
+    exact finite_profile_orbit_subset_outside_image
+      (cliqueUnion s t) H e heppa w hw
   have hOrbitLower : outside.card ≤ orbit.card := by
     calc
       outside.card = s * t :=
@@ -110,6 +103,7 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
       (by rw [hImageCard]; exact hOrbitLower)
   refine ⟨hInjective, ?_⟩
   intro u hu
+  change finiteNeighbourhoodProfile H e u ∈ orbit
   rw [hOrbitEq]
   exact Finset.mem_image.mpr ⟨u, hu, rfl⟩
 
