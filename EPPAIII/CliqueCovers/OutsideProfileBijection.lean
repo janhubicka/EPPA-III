@@ -78,9 +78,11 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
   let outside : Finset W := finiteOutside e
   let image : Finset (Finset (Fin s × Fin t)) :=
     outside.image (finiteNeighbourhoodProfile H e)
+  have hImageBridge : image = finiteOutsideProfileImage H e := by
+    ext S
+    simp [image, outside, finiteOutsideProfileImage, Finset.mem_image]
   have hSubset : orbit ⊆ image := by
-    change finiteProfileOrbit (cliqueUnion s t) H e w ⊆
-      finiteOutsideProfileImage H e
+    rw [hImageBridge]
     exact finite_profile_orbit_subset_outside_image
       (cliqueUnion s t) H e heppa w hw
   have hOrbitLower : outside.card ≤ orbit.card := by
