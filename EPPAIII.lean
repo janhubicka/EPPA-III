@@ -61,3 +61,4 @@ import EPPAIII.CliqueCovers.TwinQuotientArithmetic
 import EPPAIII.CliqueCovers.ZeroPartialClassSize
 import EPPAIII.CliqueCovers.SpanningEdgeRigidity
 import EPPAIII.CliqueCovers.OutsideProfileBijection
+import EPPAIII.CliqueCovers.CanonicalOutsideAction
