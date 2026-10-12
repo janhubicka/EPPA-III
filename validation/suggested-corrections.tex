@@ -621,15 +621,52 @@ in \texttt{CliqueCovers/CliqueUnionDegrees.lean}
   |E(B)|=|E(sK_t)|
   \quad\Longrightarrow\quad B=sK_t
 \]
-is being checked in
+is Lean-verified in
 \texttt{CliqueCovers/WreathEqualEdgeRigidity.lean}
-(PR~\#95); it must not be called verified until CI succeeds.
+(PR~\#95, merged with green CI). An equivariant abstract
+labelling of the actual outside graph is enough to apply
+this deduction by the Lean-verified
+\texttt{CliqueCovers/EquivariantWreathAssembly.lean}
+(PR~\#97, merged with green CI).
 Neither result by itself establishes that the \emph{actual}
 complementary half of the EPPA witness has the required
 natural wreath action. That transport and the final
 Wagner-corner graph assembly remain explicit obligations.
 No change to the author manuscript is proposed by this
 status note.
+
+
+\paragraph{Transport refinement.}
+The proof machinery now distinguishes two separate assertions:
+(i)~every base wreath permutation has some EPPA extension to the
+host (an existence statement), and
+(ii)~in the saturated case the outside choice labels determine
+that extension's action uniquely (the desired canonical statement).
+The equality
+\[
+  P(q u)=
+    \bigl(\operatorname{outer}\,\circ
+    \operatorname{inner}\bigr)P(u)
+\]
+must be read using the forward image convention for base
+permutations; the precise slice identity at \(i\) is
+\[
+  P_i(q u)=\operatorname{inner}_i
+     \bigl(P_{\operatorname{outer}^{-1}(i)}(u)\bigr).
+\]
+Its Lean translation and the host-automorphism conjugation to
+the saturated outside-choice graph are in
+\texttt{CliqueCovers/WreathProfileEquivariance.lean} and
+\texttt{CliqueCovers/OutsideLiftTransport.lean},
+respectively (consolidated verification PR pending).
+The further identification of one-position singleton and
+co-singleton choices with \([s]\times[t]\), compatibility with the
+natural wreath product in those coordinates, the complementary
+edge-count transport, and the zero-partial/Wagner final assembly
+remain outstanding. These conditions are not consequences of the
+abstract edge-count theorem alone.
+
+
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
