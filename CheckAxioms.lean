@@ -298,3 +298,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.coSingletonChoiceOfPair_surjective
 #print axioms EPPAIII.CliqueCovers.coSingletonChoiceEquiv
 #print axioms EPPAIII.CliqueCovers.coSingletonChoiceEquiv_apply
+#print axioms EPPAIII.CliqueCovers.extractKChoice_eq_singletonChoice
+#print axioms EPPAIII.CliqueCovers.extractKChoice_wreath_singleton
