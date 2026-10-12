@@ -242,3 +242,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.noncluster_has_edge_between_twin_classes
 #print axioms EPPAIII.CliqueCovers.noncluster_twin_quotient_has_edge
 #print axioms EPPAIII.CliqueCovers.zero_partial_exact_twin_size_of_noncluster
+#print axioms EPPAIII.CliqueCovers.wreath_maps_cross_block_pair
+#print axioms EPPAIII.CliqueCovers.wreath_maps_same_block_pair
+#print axioms EPPAIII.CliqueCovers.exists_wreath_maps_pair_of_same_block_status
+#print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_pair_uniform
