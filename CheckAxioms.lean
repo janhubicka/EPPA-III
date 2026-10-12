@@ -260,3 +260,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_regular
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_compl_regular
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_degree_distinct_of_nontrivial
+#print axioms EPPAIII.CliqueCovers.equal_degree_of_regular_equal_edges
+#print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_eq_cliqueUnion_of_edge_count
