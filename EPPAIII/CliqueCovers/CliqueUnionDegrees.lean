@@ -70,7 +70,7 @@ theorem cliqueUnion_regular {s t : ℕ} [DecidableRel (cliqueUnion s t).Adj]
 Derive this from Mathlib's complement-regularity identity to avoid
 rewriting graph equality through a dependent decidability instance. -/
 theorem cliqueUnion_compl_regular {s t : ℕ}
-    [DecidableRel ((cliqueUnion s t)ᶜ).Adj] :
+    [DecidableRel (cliqueUnion s t).Adj] :
     (cliqueUnion s t)ᶜ.IsRegularOfDegree ((s - 1) * t) := by
   classical
   intro v
