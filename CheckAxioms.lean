@@ -259,3 +259,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_wreath_equals_full_orbit
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_choice_injective
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_choice_existsUnique_outside
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_choice_image_eq
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_choice_mem
