@@ -261,3 +261,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_choice_existsUnique_outside
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_choice_image_eq
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_choice_mem
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_eq_compl_completeEquipartite
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_degree
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_regular
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_compl_regular
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_degree_distinct_of_nontrivial
