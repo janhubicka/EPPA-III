@@ -37,8 +37,8 @@ theorem outside_quotient_not_selected {s t : ℕ}
   unfold selectedTwinClasses at hMem
   obtain ⟨i, _, hi⟩ := Finset.mem_image.mp hMem
   have hSame : SameClosedNeighbourhood H (e (i,a)) w := by
-    apply Quotient.exact
-    simpa [selectedTwinClassMap] using hi
+    change (closedTwinSetoid H).r (e (i,a)) w
+    exact Quotient.exact (by simpa [selectedTwinClassMap] using hi)
   exact (outside_not_in_exact_selected_twin_class
     H e he hNoPartial i a (hSize i) w hw) hSame
 
