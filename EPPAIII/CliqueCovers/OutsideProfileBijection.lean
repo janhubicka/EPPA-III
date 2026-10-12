@@ -69,17 +69,27 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
     (hSat : Nat.choose s r * (Nat.choose t k)^r = s * t) :
     Set.InjOn (finiteNeighbourhoodProfile H e)
       {u | u ∈ finiteOutside e} ∧
-    finiteProfileOrbit (cliqueUnion s t) H e w =
-      finiteOutsideProfileImage H e := by
+    ∀ u : W, u ∈ finiteOutside e →
+      finiteNeighbourhoodProfile H e u ∈
+        finiteProfileOrbit (cliqueUnion s t) H e w := by
   classical
   let orbit : Finset (Finset (Fin s × Fin t)) :=
     finiteProfileOrbit (cliqueUnion s t) H e w
   let outside : Finset W := finiteOutside e
   let image : Finset (Finset (Fin s × Fin t)) :=
-    finiteOutsideProfileImage H e
-  have hSubset : orbit ⊆ image :=
-    finite_profile_orbit_subset_outside_image
-      (cliqueUnion s t) H e heppa w hw
+    outside.image (finiteNeighbourhoodProfile H e)
+  have hSubset : orbit ⊆ image := by
+    intro S hS
+    obtain ⟨p,hp,hProfile⟩ := Finset.mem_image.mp hS
+    have hpAuto : IsGraphAutomorphism (cliqueUnion s t) p :=
+      (Finset.mem_filter.mp hp).2
+    obtain ⟨q,hq,hCompat⟩ :=
+      eppa_lifts_total (cliqueUnion s t) H e heppa p hpAuto
+    have hwOutside : q w ∉ Set.range e :=
+      lift_preserves_outside e p q hCompat w hw
+    refine Finset.mem_image.mpr ⟨q w, ?_, ?_⟩
+    · simpa [outside, finiteOutside] using hwOutside
+    · exact (finite_profile_transport H e w p q hCompat hq).trans hProfile
   have hOrbitLower : outside.card ≤ orbit.card := by
     calc
       outside.card = s * t :=
@@ -88,9 +98,8 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
       _ ≤ orbit.card := actual_profile_orbit_lower_bound H e w r k hR
   have hImageLower : outside.card ≤ image.card :=
     hOrbitLower.trans (Finset.card_le_card hSubset)
-  have hImageUpper : image.card ≤ outside.card := by
-    dsimp [image, outside, finiteOutsideProfileImage]
-    exact Finset.card_image_le
+  have hImageUpper : image.card ≤ outside.card :=
+    Finset.card_image_le
   have hImageCard : image.card = outside.card :=
     Nat.le_antisymm hImageUpper hImageLower
   have hInjective :
@@ -99,7 +108,10 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
   have hOrbitEq : orbit = image :=
     Finset.eq_of_subset_of_card_le hSubset
       (by rw [hImageCard]; exact hOrbitLower)
-  exact ⟨hInjective, hOrbitEq⟩
+  refine ⟨hInjective, ?_⟩
+  intro u hu
+  rw [hOrbitEq]
+  exact Finset.mem_image.mpr ⟨u, hu, rfl⟩
 
 
 /-- A single coordinate with proper nonzero neighbourhood size already
@@ -120,8 +132,9 @@ theorem eppa_unique_partial_outside_profiles_bijective {s t : ℕ}
       (kPositions (finiteNeighbourhoodProfile H e w) k).card = 1) :
     Set.InjOn (finiteNeighbourhoodProfile H e)
       {u | u ∈ finiteOutside e} ∧
-    finiteProfileOrbit (cliqueUnion s t) H e w =
-      finiteOutsideProfileImage H e := by
+    ∀ u : W, u ∈ finiteOutside e →
+      finiteNeighbourhoodProfile H e u ∈
+        finiteProfileOrbit (cliqueUnion s t) H e w := by
   classical
   have hPartial :
       0 < (kPositions (finiteNeighbourhoodProfile H e w) k).card := by
