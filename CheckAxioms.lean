@@ -300,3 +300,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.coSingletonChoiceEquiv_apply
 #print axioms EPPAIII.CliqueCovers.extractKChoice_eq_singletonChoice
 #print axioms EPPAIII.CliqueCovers.extractKChoice_wreath_singleton
+#print axioms EPPAIII.CliqueCovers.balancedHostEquiv
+#print axioms EPPAIII.CliqueCovers.balancedHostEquiv_false
+#print axioms EPPAIII.CliqueCovers.balancedHostEquiv_true
+#print axioms EPPAIII.CliqueCovers.transitive_comap_equiv
+#print axioms EPPAIII.CliqueCovers.arbitrary_host_outside_edge_count_eq_base
