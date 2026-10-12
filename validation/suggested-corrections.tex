@@ -595,13 +595,41 @@ in \texttt{CliqueCovers/OutsideProfileBijection.lean} and
 (PR~\#90, merged with green CI).
 The exact equality between the finite image of the choice
 extraction map and the full combinatorial choice space
-is formalised in \texttt{CliqueCovers/OutsideChoiceImage.lean}
-(current branch; do not mark as validated until CI passes).
+is Lean-verified in \texttt{CliqueCovers/OutsideChoiceImage.lean}
+(PR~\#91, merged with green CI). A canonical equivalence of
+the outside-vertex type and the choice subtype is additionally
+verified in \texttt{CliqueCovers/OutsideChoiceEquiv.lean}
+(PR~\#92, merged with green CI).
 Identifying the one-partial choice space with
 \(\operatorname{Fin}(s)\times\operatorname{Fin}(t)\)
 and transporting the outside edge relation to the
 natural wreath action remain additional formal obligations.
 The separate Wagner reduction in C05 is unaffected.
+
+
+\paragraph{Formalization status note (12 October 2026).}
+For \(s,t\ge2\), the natural wreath action on
+\(\operatorname{Fin}(s)\times\operatorname{Fin}(t)\) has only the
+four invariant simple graphs
+\(\emptyset,\ sK_t,\ \overline{sK_t},\ K_{st}\).
+The degree computations for these four cases and the strict
+comparisons with \(t-1\) are Lean-verified and merged
+in \texttt{CliqueCovers/CliqueUnionDegrees.lean}
+(PR~\#94). The purely graph-theoretic deduction
+\[
+  B\text{ is wreath-invariant},\qquad
+  |E(B)|=|E(sK_t)|
+  \quad\Longrightarrow\quad B=sK_t
+\]
+is being checked in
+\texttt{CliqueCovers/WreathEqualEdgeRigidity.lean}
+(PR~\#95); it must not be called verified until CI succeeds.
+Neither result by itself establishes that the \emph{actual}
+complementary half of the EPPA witness has the required
+natural wreath action. That transport and the final
+Wagner-corner graph assembly remain explicit obligations.
+No change to the author manuscript is proposed by this
+status note.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
