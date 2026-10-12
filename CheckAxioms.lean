@@ -249,3 +249,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.finite_profile_orbit_subset_outside_image
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_profile_bijection
 #print axioms EPPAIII.CliqueCovers.eppa_unique_partial_outside_profiles_bijective
+#print axioms EPPAIII.CliqueCovers.saturated_lifts_agree_outside
+#print axioms EPPAIII.CliqueCovers.saturated_lifts_unique
+#print axioms EPPAIII.CliqueCovers.unique_partial_base_aut_has_unique_extension
+#print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_two_parameters
+#print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_adj_characterization
