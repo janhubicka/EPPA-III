@@ -31,7 +31,7 @@ theorem extractKChoice_eq_singletonChoice {s t : ℕ}
     (⟨kPositions P 1, fun j _ => profileSlice P j⟩ :
       Σ R : Finset (Fin s), ∀ j : Fin s, j ∈ R → Finset (Fin t)) =
     ⟨{i}, fun _j _hj => ({a} : Finset (Fin t))⟩
-  cases hPositions
+  rw [hPositions]
   congr 1
   funext j hj
   have hji : j = i := by simpa using hj
