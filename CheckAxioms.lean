@@ -317,3 +317,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_other_slices_uniform
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_singleton_other_slices_uniform
 #print axioms EPPAIII.CliqueCovers.eppa_unique_singleton_other_slices_uniform
+#print axioms EPPAIII.CliqueCovers.eppa_singleton_cross_slices_uniform
+#print axioms EPPAIII.CliqueCovers.eppa_singleton_cross_adj_uniform
