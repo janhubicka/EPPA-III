@@ -658,7 +658,7 @@ Its Lean translation and the host-automorphism conjugation to
 the saturated outside-choice graph are in
 \texttt{CliqueCovers/WreathProfileEquivariance.lean} and
 \texttt{CliqueCovers/OutsideLiftTransport.lean},
-respectively (consolidated verification PR pending).
+respectively (both merged with passing Lean CI in PR~\#99).
 The further identification of one-position singleton and
 co-singleton choices with \([s]\times[t]\), compatibility with the
 natural wreath product in those coordinates, the complementary
@@ -667,6 +667,31 @@ remain outstanding. These conditions are not consequences of the
 abstract edge-count theorem alone.
 
 
+
+
+\paragraph{One-partial-coordinate completion frontier (12 October 2026).}
+The formalization now provides the canonical indexing maps for
+both singleton and co-singleton choices in
+\texttt{SingletonChoiceLabels.lean} (PR~\#102) and
+\texttt{CoSingletonChoiceLabels.lean} (PR~\#105),
+with the first exact natural wreath action in
+\texttt{SingletonChoiceWreath.lean} (PR~\#106).
+The equal-internal-edge-count lemma for an arbitrary finite
+vertex-transitive host, with a chosen embedding of half its vertices
+and an explicit bijection of the complementary half, is proved in
+\texttt{ArbitraryHostHalfEdges.lean} (PR~\#110).
+The additional actual-outside action and graph-identification
+modules are awaiting consolidation and a final Lean check
+(PR~\#114 for the singleton outside clique conclusion,
+PRs~\#112--\#113 for the co-singleton continuation).
+These results must be distinguished from the \emph{full}
+generalised clique-cover conclusion: after identifying
+\(H\setminus G\cong sK_t\), one must still derive the
+uniform diagonal matching/co-matching and off-diagonal
+complete/empty cross-block patterns. The zero-partial and
+Wagner cases and the low-parameter/homogeneous reductions
+also remain separate formal obligations. No change to the
+author source is authorized by these validation updates.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
