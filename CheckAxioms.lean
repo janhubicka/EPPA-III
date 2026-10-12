@@ -271,3 +271,11 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_eq_cliqueUnion_of_edge_count
 #print axioms EPPAIII.CliqueCovers.equal_degree_of_regular_equal_edgeSet_ncard
 #print axioms EPPAIII.CliqueCovers.graph_eq_cliqueUnion_of_equivariant_wreath_label
+#print axioms EPPAIII.CliqueCovers.admissibleChoiceSlice
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair_positions
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair_slice
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair_injective
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair_surjective
+#print axioms EPPAIII.CliqueCovers.singletonChoiceEquiv
+#print axioms EPPAIII.CliqueCovers.singletonChoiceEquiv_apply
