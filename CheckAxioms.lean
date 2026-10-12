@@ -314,3 +314,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_singleton_outside_has_natural_wreath_action
 #print axioms EPPAIII.CliqueCovers.eppa_singleton_outside_eq_cliqueUnion_of_equal_edges
 #print axioms EPPAIII.CliqueCovers.eppa_singleton_outside_eq_cliqueUnion_of_transitive
+#print axioms EPPAIII.CliqueCovers.wreath_other_slices_uniform
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_singleton_other_slices_uniform
