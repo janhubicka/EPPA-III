@@ -39,11 +39,11 @@ theorem wreath_invariant_graph_two_parameters {s t : ℕ}
   have hi01 : i0 ≠ i1 := by
     intro h
     have hv := congrArg Fin.val h
-    omega
+    simp [i0,i1] at hv
   have ha01 : a0 ≠ a1 := by
     intro h
     have hv := congrArg Fin.val h
-    omega
+    simp [a0,a1] at hv
   have hWithinDistinct : (i0,a0) ≠ (i0,a1) := by
     intro h
     exact ha01 (congrArg Prod.snd h)
