@@ -312,3 +312,4 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.saturatedCoSingletonOutsideEquiv_choice
 #print axioms EPPAIII.CliqueCovers.saturatedCoSingletonOutsideEquiv_slice
 #print axioms EPPAIII.CliqueCovers.eppa_cosingleton_outside_has_natural_wreath_action
+#print axioms EPPAIII.CliqueCovers.eppa_cosingleton_outside_eq_cliqueUnion_of_equal_edges
