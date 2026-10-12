@@ -234,3 +234,11 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_eq_of_le_of_edge_card_eq
 #print axioms EPPAIII.CliqueCovers.choose_le_row_index_extreme
 #print axioms EPPAIII.CliqueCovers.nontrivial_choose_le_row_index
+#print axioms EPPAIII.CliqueCovers.selected_clique_fills_exact_twin_class
+#print axioms EPPAIII.CliqueCovers.outside_not_in_exact_selected_twin_class
+#print axioms EPPAIII.CliqueCovers.outside_quotient_not_selected
+#print axioms EPPAIII.CliqueCovers.nonselected_quotient_implies_outside
+#print axioms EPPAIII.CliqueCovers.outside_iff_quotient_not_selected
+#print axioms EPPAIII.CliqueCovers.noncluster_has_edge_between_twin_classes
+#print axioms EPPAIII.CliqueCovers.noncluster_twin_quotient_has_edge
+#print axioms EPPAIII.CliqueCovers.zero_partial_exact_twin_size_of_noncluster
