@@ -74,3 +74,4 @@ import EPPAIII.CliqueCovers.RegularEqualEdgeDegree
 import EPPAIII.CliqueCovers.OutsideChoiceEquivalence
 import EPPAIII.CliqueCovers.OutsideChoiceImage
 import EPPAIII.CliqueCovers.OutsideChoiceEquiv
+import EPPAIII.CliqueCovers.CliqueUnionDegrees
