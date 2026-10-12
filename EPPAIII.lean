@@ -87,3 +87,6 @@ import EPPAIII.CliqueCovers.CoSingletonChoiceWreath
 import EPPAIII.CliqueCovers.SingletonOutsideAction
 import EPPAIII.CliqueCovers.SingletonOutsideRigidity
 import EPPAIII.CliqueCovers.SingletonTransitiveConclusion
+import EPPAIII.CliqueCovers.CoSingletonOutsideAction
+import EPPAIII.CliqueCovers.CoSingletonOutsideRigidity
+import EPPAIII.CliqueCovers.CoSingletonTransitiveConclusion
