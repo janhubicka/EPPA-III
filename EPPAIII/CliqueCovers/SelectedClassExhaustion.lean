@@ -74,6 +74,6 @@ theorem outside_not_in_exact_selected_twin_class {s t : ℕ}
   rw [selected_clique_fills_exact_twin_class
       H e he hNoPartial i a hSize] at hMember
   obtain ⟨b, _, hwb⟩ := Finset.mem_image.mp hMember
-  exact hw ⟨(i,b), hwb.symm⟩
+  exact hw ⟨(i,b), hwb⟩
 
 end EPPAIII.CliqueCovers
