@@ -82,3 +82,4 @@ import EPPAIII.CliqueCovers.WreathProfileEquivariance
 import EPPAIII.CliqueCovers.SingletonChoiceLabels
 import EPPAIII.CliqueCovers.CoSingletonChoiceLabels
 import EPPAIII.CliqueCovers.SingletonChoiceWreath
+import EPPAIII.CliqueCovers.ArbitraryHostHalfEdges
