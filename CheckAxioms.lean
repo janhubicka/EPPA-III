@@ -271,3 +271,15 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_eq_cliqueUnion_of_edge_count
 #print axioms EPPAIII.CliqueCovers.equal_degree_of_regular_equal_edgeSet_ncard
 #print axioms EPPAIII.CliqueCovers.graph_eq_cliqueUnion_of_equivariant_wreath_label
+#print axioms EPPAIII.CliqueCovers.outsideInducedGraph
+#print axioms EPPAIII.CliqueCovers.outsideLiftPermutation
+#print axioms EPPAIII.CliqueCovers.outsideLiftPermutation_graphAut
+#print axioms EPPAIII.CliqueCovers.saturatedChoiceGraph
+#print axioms EPPAIII.CliqueCovers.saturatedChoiceLiftPermutation
+#print axioms EPPAIII.CliqueCovers.saturatedChoiceLiftPermutation_graphAut
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_choice_graph_lifts_base
+#print axioms EPPAIII.CliqueCovers.profileSlice_wreathTransform
+#print axioms EPPAIII.CliqueCovers.kPositions_wreathTransform
+#print axioms EPPAIII.CliqueCovers.finite_profile_wreath_lift
+#print axioms EPPAIII.CliqueCovers.profileSlice_of_wreath_lift
+#print axioms EPPAIII.CliqueCovers.kPositions_of_wreath_lift
