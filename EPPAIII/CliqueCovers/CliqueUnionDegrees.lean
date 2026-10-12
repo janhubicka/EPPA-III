@@ -78,7 +78,7 @@ theorem cliqueUnion_compl_regular {s t : ℕ}
     rw [cliqueUnion_eq_compl_completeEquipartite]
     simp
   intro v
-  simpa only [hEq] using
+  simpa only [← hEq] using
     (SimpleGraph.degree_completeEquipartiteGraph (r := s) (t := t) v)
 
 /-- The four invariant graph patterns have pairwise distinguishable
