@@ -115,9 +115,10 @@ theorem eppa_saturated_choice_existsUnique_outside {s t : ℕ}
   have hImage : Q ∈ finiteOutsideProfileImage H e :=
     (finite_profile_orbit_subset_outside_image
       (cliqueUnion s t) H e heppa w hw) hFullOrbit
-  change Q ∈ (finiteOutside e).image
-      (finiteNeighbourhoodProfile H e) at hImage
-  obtain ⟨u, huOutside, huProfile⟩ := Finset.mem_image.mp hImage
+  have hImage' : Q ∈ (finiteOutside e).image
+      (finiteNeighbourhoodProfile H e) := by
+    simpa [finiteOutsideProfileImage] using hImage
+  obtain ⟨u, huOutside, huProfile⟩ := Finset.mem_image.mp hImage'
   have huChoice :
       extractKChoice (finiteNeighbourhoodProfile H e u) k = choice := by
     rw [huProfile]
