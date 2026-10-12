@@ -69,4 +69,5 @@ import EPPAIII.CliqueCovers.WreathPairOrbits
 import EPPAIII.CliqueCovers.OutsideProfileBijection
 import EPPAIII.CliqueCovers.CanonicalOutsideAction
 import EPPAIII.CliqueCovers.WreathInvariantGraph
+import EPPAIII.CliqueCovers.WreathFourForms
 import EPPAIII.CliqueCovers.RegularEqualEdgeDegree
