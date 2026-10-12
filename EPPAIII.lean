@@ -65,3 +65,4 @@ import EPPAIII.CliqueCovers.SelectedClassExhaustion
 import EPPAIII.CliqueCovers.OutsideTwinClasses
 import EPPAIII.CliqueCovers.NonclusterQuotient
 import EPPAIII.CliqueCovers.ZeroPartialNoncluster
+import EPPAIII.CliqueCovers.WreathPairOrbits
