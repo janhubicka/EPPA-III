@@ -4,7 +4,7 @@
 \geometry{margin=26mm}
 \title{EPPA--III: suggested manuscript corrections}
 \author{Independent validation register}
-\date{10 October 2026}
+\date{12 October 2026}
 \begin{document}
 \maketitle
 
@@ -49,6 +49,7 @@ C14 & \texttt{claim:regularity}, final paragraph & Pending & D-side regularity\\
 C15 & Introduction after \texttt{def:generalizedcover} & Confirmed & Complement terminology\\
 C16 & Lemma 3.3, first claim (Claim 3.4) & Readability & One-block EPPA reasoning\\
 C17 & Lemma 3.3, final orbit assertion & Optional & Short two-point proof\\
+C18 & Claim 3.9, use in Lemma 3.7 & Paper-level + Lean & Saturated outside labels\\
 \bottomrule
 \end{longtable}
 
@@ -557,6 +558,50 @@ the Lean non-homogeneity hypothesis uses the
 Gardiner classification at paper level.
 The original manuscript remains frozen;
 the paragraph above is an author-review option.
+
+
+\subsection*{C18. Claim 3.9: explicitly justify the canonical outside labels}
+\textbf{Location:} after the neighbourhood-profile orbit estimate in
+Claim~\texttt{claim:connections}, when it is used for the
+one-partial-coordinate case of Lemma~3.7.
+
+\textbf{Status:} a source-local clarification, not a counterexample.
+Assume \(s,t\ge2\) and an EPPA witness \(H\) on \(2st\) vertices
+containing the induced \(sK_t\), and let \(w\) be an outside vertex.
+If a size-\(k\) coordinate occurs in \(r\) places and
+\[
+     \binom sr\binom tk^{\,r}=st,
+\]
+then the \(S_t\wr S_s\) orbit of \(P(w)\) saturates the entire
+outside-vertex budget. The profile map on the outside half is
+therefore injective, and every permitted assignment of \(r\)
+indices and their \(k\)-subsets is realised by exactly one
+outside vertex. This conclusion does \emph{not} need a coherent
+choice of EPPA automorphism extensions.
+
+\textbf{Suggested insertion (if retaining the original proof):}
+\begin{quote}
+In the equality case the orbit bound is saturated.
+Consequently every vertex outside \(G\) has a distinct
+neighbourhood in \(G\), and the outside vertices are
+canonically indexed by the corresponding wreath-orbit
+choices. Any extension of a base automorphism has
+the same action on these outside vertices.
+\end{quote}
+
+The injection and unique realisation are Lean-verified
+in \texttt{CliqueCovers/OutsideProfileBijection.lean} and
+\texttt{CliqueCovers/OutsideChoiceEquivalence.lean}
+(PR~\#90, merged with green CI).
+The exact equality between the finite image of the choice
+extraction map and the full combinatorial choice space
+is formalised in \texttt{CliqueCovers/OutsideChoiceImage.lean}
+(current branch; do not mark as validated until CI passes).
+Identifying the one-partial choice space with
+\(\operatorname{Fin}(s)\times\operatorname{Fin}(t)\)
+and transporting the outside edge relation to the
+natural wreath action remain additional formal obligations.
+The separate Wagner reduction in C05 is unaffected.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
