@@ -231,3 +231,7 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.selected_clique_fills_exact_twin_class
 #print axioms EPPAIII.CliqueCovers.outside_not_in_exact_selected_twin_class
+
+#print axioms EPPAIII.CliqueCovers.outside_quotient_not_selected
+#print axioms EPPAIII.CliqueCovers.nonselected_quotient_implies_outside
+#print axioms EPPAIII.CliqueCovers.outside_iff_quotient_not_selected
