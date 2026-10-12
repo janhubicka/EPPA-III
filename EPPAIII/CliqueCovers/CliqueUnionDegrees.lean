@@ -38,7 +38,7 @@ theorem cliqueUnion_degree {s t : ℕ} [DecidableRel (cliqueUnion s t).Adj]
     (hs : 0 < s) (v : Fin s × Fin t) :
     (cliqueUnion s t).degree v = t - 1 := by
   classical
-  rw [cliqueUnion_eq_compl_completeEquipartite,
+  simp only [cliqueUnion_eq_compl_completeEquipartite,
       SimpleGraph.degree_compl,
       SimpleGraph.degree_completeEquipartiteGraph]
   simp only [Fintype.card_prod, Fintype.card_fin]
@@ -68,9 +68,12 @@ theorem cliqueUnion_compl_regular {s t : ℕ}
         SimpleGraph.completeEquipartiteGraph s t := by
     rw [cliqueUnion_eq_compl_completeEquipartite]
     simp
-  rw [hEq]
   intro v
-  exact SimpleGraph.degree_completeEquipartiteGraph v
+  have hh :
+      (SimpleGraph.completeEquipartiteGraph s t).degree v =
+        (s - 1) * t :=
+    SimpleGraph.degree_completeEquipartiteGraph v
+  simpa only [hEq] using hh
 
 /-- The four invariant graph patterns have pairwise distinguishable
 degrees at the degree t-1 of sK_t when s,t≥2. -/
