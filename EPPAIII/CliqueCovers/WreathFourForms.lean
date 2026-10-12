@@ -39,12 +39,14 @@ theorem wreath_invariant_graph_four_forms {s t : ℕ}
   · by_cases hBetween : between
     · right; right; right
       apply SimpleGraph.ext
-      intro x y
+      funext x y
+      apply propext
       change B.Adj x y ↔ x ≠ y
       simpa [hWithin, hBetween] using hAdj x y
     · right; left
       apply SimpleGraph.ext
-      intro x y
+      funext x y
+      apply propext
       rcases x with ⟨i,a⟩
       rcases y with ⟨j,b⟩
       change B.Adj (i,a) (j,b) ↔ (i = j ∧ a ≠ b)
@@ -56,7 +58,8 @@ theorem wreath_invariant_graph_four_forms {s t : ℕ}
   · by_cases hBetween : between
     · right; right; left
       apply SimpleGraph.ext
-      intro x y
+      funext x y
+      apply propext
       rcases x with ⟨i,a⟩
       rcases y with ⟨j,b⟩
       have hCross :
@@ -73,7 +76,8 @@ theorem wreath_invariant_graph_four_forms {s t : ℕ}
       · simpa [hWithin, hBetween, hij] using h
     · left
       apply SimpleGraph.ext
-      intro x y
+      funext x y
+      apply propext
       change B.Adj x y ↔ False
       simpa [hWithin, hBetween] using hAdj x y
 
