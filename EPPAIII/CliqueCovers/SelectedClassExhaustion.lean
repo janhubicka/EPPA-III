@@ -18,7 +18,7 @@ namespace EPPAIII.CliqueCovers
 /-- Once a selected twin class has order t, it is precisely the
 corresponding selected clique. -/
 theorem selected_clique_fills_exact_twin_class {s t : ℕ}
-    {W : Type*} [Fintype W]
+    {W : Type*} [Fintype W] [DecidableEq W]
     (H : SimpleGraph W)
     (e : (Fin s × Fin t) ↪ W)
     (he : IsInducedGraphEmbedding (cliqueUnion s t) H e)
@@ -55,7 +55,7 @@ theorem selected_clique_fills_exact_twin_class {s t : ℕ}
 /-- The complement of the distinguished induced copy is disjoint
 from every selected closed-neighbourhood class of exact size t. -/
 theorem outside_not_in_exact_selected_twin_class {s t : ℕ}
-    {W : Type*} [Fintype W]
+    {W : Type*} [Fintype W] [DecidableEq W]
     (H : SimpleGraph W)
     (e : (Fin s × Fin t) ↪ W)
     (he : IsInducedGraphEmbedding (cliqueUnion s t) H e)
@@ -67,6 +67,7 @@ theorem outside_not_in_exact_selected_twin_class {s t : ℕ}
     (hSize : (closedTwinClass H (e (i,a))).card = t)
     (w : W) (hw : w ∉ Set.range e) :
     ¬ SameClosedNeighbourhood H (e (i,a)) w := by
+  classical
   intro hSame
   have hMember : w ∈ closedTwinClass H (e (i,a)) :=
     Finset.mem_filter.mpr ⟨Finset.mem_univ _, hSame⟩
