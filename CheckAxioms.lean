@@ -232,3 +232,5 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.noncluster_has_edge_between_twin_classes
 #print axioms EPPAIII.CliqueCovers.noncluster_twin_quotient_has_edge
+
+#print axioms EPPAIII.CliqueCovers.zero_partial_exact_twin_size_of_noncluster
