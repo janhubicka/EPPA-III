@@ -75,3 +75,4 @@ import EPPAIII.CliqueCovers.OutsideChoiceEquivalence
 import EPPAIII.CliqueCovers.OutsideChoiceImage
 import EPPAIII.CliqueCovers.OutsideChoiceEquiv
 import EPPAIII.CliqueCovers.CliqueUnionDegrees
+import EPPAIII.CliqueCovers.WreathEqualEdgeRigidity
