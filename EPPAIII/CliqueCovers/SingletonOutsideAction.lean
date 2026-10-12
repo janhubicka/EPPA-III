@@ -63,7 +63,7 @@ theorem saturatedSingletonOutsideEquiv_choice {s t : ℕ}
   have hActual :=
     saturatedOutsideChoiceEquiv_apply H e heppa hOrder
       w hw 1 1 hUnique (by simp) (label x)
-  exact (congrArg Subtype.val hLabel).symm.trans hActual
+  exact hActual.symm.trans (congrArg Subtype.val hLabel)
 
 /-- The canonical pair label determines the *full* singleton
 coordinate data needed by the pure wreath equivariance lemma. -/
@@ -89,13 +89,19 @@ theorem saturatedSingletonOutsideEquiv_slice {s t : ℕ}
   have hChoice :=
     saturatedSingletonOutsideEquiv_choice
       H e heppa hOrder w hw hUnique x
+  have hPositions :
+      kPositions
+        (finiteNeighbourhoodProfile H e
+          (saturatedSingletonOutsideEquiv
+            H e heppa hOrder w hw hUnique x).val) 1 = {x.1} :=
+    congrArg Sigma.fst hChoice
   constructor
-  · exact congrArg Sigma.fst hChoice
+  · exact hPositions
   · have hSlice := congrArg
       (fun (C : Σ R : Finset (Fin s),
         ∀ i : Fin s, i ∈ R → Finset (Fin t)) =>
           if hi : x.1 ∈ C.1 then C.2 x.1 hi else ∅) hChoice
-    simpa [extractKChoice, singletonChoiceOfPair] using hSlice
+    simpa [extractKChoice, singletonChoiceOfPair, hPositions] using hSlice
 
 /-- Every base wreath automorphism has an actual outside graph
 automorphism acting by the *natural* wreath permutation in the
