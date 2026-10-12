@@ -300,3 +300,10 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.coSingletonChoiceEquiv_apply
 #print axioms EPPAIII.CliqueCovers.extractKChoice_eq_singletonChoice
 #print axioms EPPAIII.CliqueCovers.extractKChoice_wreath_singleton
+#print axioms EPPAIII.CliqueCovers.perm_map_compl_singleton
+#print axioms EPPAIII.CliqueCovers.extractKChoice_eq_coSingletonChoice
+#print axioms EPPAIII.CliqueCovers.extractKChoice_wreath_coSingleton
+#print axioms EPPAIII.CliqueCovers.saturatedSingletonOutsideEquiv
+#print axioms EPPAIII.CliqueCovers.saturatedSingletonOutsideEquiv_choice
+#print axioms EPPAIII.CliqueCovers.saturatedSingletonOutsideEquiv_slice
+#print axioms EPPAIII.CliqueCovers.eppa_singleton_outside_has_natural_wreath_action
