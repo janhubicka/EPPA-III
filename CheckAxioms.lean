@@ -235,3 +235,4 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.finite_profile_orbit_subset_outside_image
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_profile_bijection
+#print axioms EPPAIII.CliqueCovers.eppa_unique_partial_outside_profiles_bijective
