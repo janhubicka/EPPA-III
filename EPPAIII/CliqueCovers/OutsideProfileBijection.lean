@@ -24,7 +24,7 @@ namespace EPPAIII.CliqueCovers
 /-- Each profile in the EPPA automorphism orbit of an outside
 vertex is realised by an actual outside vertex. -/
 theorem finite_profile_orbit_subset_outside_image {V W : Type*}
-    [Fintype V] [Fintype W]
+    [Fintype V] [Fintype W] [DecidableEq V]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (heppa : IsEPPAEmbedding G H e)
     (w : W) (hw : w ∉ Set.range e) :
