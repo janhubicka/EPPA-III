@@ -74,7 +74,7 @@ theorem singletonChoiceOfPair_injective (s t : ℕ) :
     have hs := congrArg
       (fun choice : AdmissibleProfileChoice s t 1 1 =>
         admissibleChoiceSlice choice i) h
-    simpa only [singletonChoiceOfPair_slice] using hs
+    simpa [admissibleChoiceSlice, singletonChoiceOfPair] using hs
   have hab : a = b := by
     have ha : a ∈ ({b} : Finset (Fin t)) := by
       rw [← hSlices]
@@ -105,8 +105,7 @@ theorem singletonChoiceOfPair_surjective (s t : ℕ) :
         ({a} : Finset (Fin t))⟩ :
       Σ R : Finset (Fin s), ∀ j : Fin s, j ∈ R → Finset (Fin t)) =
     ⟨{i},A⟩
-  apply Sigma.ext rfl
-  apply heq_of_eq
+  congr 1
   funext j hj
   have hji : j = i := by simpa using hj
   subst j
