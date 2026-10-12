@@ -246,3 +246,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_maps_same_block_pair
 #print axioms EPPAIII.CliqueCovers.exists_wreath_maps_pair_of_same_block_status
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_pair_uniform
+#print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_two_parameters
+#print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_adj_characterization
