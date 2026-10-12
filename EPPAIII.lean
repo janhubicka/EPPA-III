@@ -72,3 +72,4 @@ import EPPAIII.CliqueCovers.WreathInvariantGraph
 import EPPAIII.CliqueCovers.WreathFourForms
 import EPPAIII.CliqueCovers.RegularEqualEdgeDegree
 import EPPAIII.CliqueCovers.OutsideChoiceEquivalence
+import EPPAIII.CliqueCovers.OutsideChoiceImage
