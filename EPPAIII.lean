@@ -77,3 +77,4 @@ import EPPAIII.CliqueCovers.OutsideChoiceEquiv
 import EPPAIII.CliqueCovers.CliqueUnionDegrees
 import EPPAIII.CliqueCovers.WreathEqualEdgeRigidity
 import EPPAIII.CliqueCovers.EquivariantWreathAssembly
+import EPPAIII.CliqueCovers.SingletonChoiceLabels
