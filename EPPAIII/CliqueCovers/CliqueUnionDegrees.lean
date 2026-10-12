@@ -38,16 +38,25 @@ theorem cliqueUnion_degree {s t : ℕ} [DecidableRel (cliqueUnion s t).Adj]
     (hs : 0 < s) (v : Fin s × Fin t) :
     (cliqueUnion s t).degree v = t - 1 := by
   classical
-  simp only [cliqueUnion_eq_compl_completeEquipartite,
-      SimpleGraph.degree_compl,
-      SimpleGraph.degree_completeEquipartiteGraph]
-  simp only [Fintype.card_prod, Fintype.card_fin]
-  cases s with
-  | zero => omega
-  | succ m =>
-    change ((m + 1) * t - 1 - m * t) = t - 1
-    rw [Nat.add_mul]
-    omega
+  have hN :
+      (cliqueUnion s t).neighborFinset v =
+        ({v.1} : Finset (Fin s)) ×ˢ
+          ((Finset.univ : Finset (Fin t)).erase v.2) := by
+    ext z
+    rcases z with ⟨j,b⟩
+    simp only [SimpleGraph.mem_neighborFinset,
+      Finset.mem_product, Finset.mem_singleton,
+      Finset.mem_erase, Finset.mem_univ, and_true]
+    change (v.1 = j ∧ v.2 ≠ b) ↔ (j = v.1 ∧ b ≠ v.2)
+    exact ⟨fun h => ⟨h.1.symm, h.2.symm⟩,
+      fun h => ⟨h.1.symm, h.2.symm⟩⟩
+  calc
+    (cliqueUnion s t).degree v =
+        ((cliqueUnion s t).neighborFinset v).card := rfl
+    _ = ({v.1} : Finset (Fin s)).card *
+        ((Finset.univ : Finset (Fin t)).erase v.2).card := by
+      rw [hN, Finset.card_product]
+    _ = t - 1 := by simp
 
 /-- The canonical sK_t graph is regular. -/
 theorem cliqueUnion_regular {s t : ℕ} [DecidableRel (cliqueUnion s t).Adj]
@@ -63,17 +72,27 @@ theorem cliqueUnion_compl_regular {s t : ℕ}
     [DecidableRel ((cliqueUnion s t)ᶜ).Adj] :
     (cliqueUnion s t)ᶜ.IsRegularOfDegree ((s - 1) * t) := by
   classical
-  have hEq :
-      (cliqueUnion s t)ᶜ =
-        SimpleGraph.completeEquipartiteGraph s t := by
-    rw [cliqueUnion_eq_compl_completeEquipartite]
-    simp
   intro v
-  have hh :
-      (SimpleGraph.completeEquipartiteGraph s t).degree v =
-        (s - 1) * t :=
-    SimpleGraph.degree_completeEquipartiteGraph v
-  simpa only [hEq] using hh
+  have hN :
+      ((cliqueUnion s t)ᶜ).neighborFinset v =
+        ({v.1}ᶜ : Finset (Fin s)) ×ˢ
+          (Finset.univ : Finset (Fin t)) := by
+    ext z
+    rcases z with ⟨j,b⟩
+    by_cases hij : v.1 = j
+    · simp [SimpleGraph.mem_neighborFinset,
+        SimpleGraph.compl_adj, cliqueUnion,
+        Finset.mem_product, hij]
+    · simp [SimpleGraph.mem_neighborFinset,
+        SimpleGraph.compl_adj, cliqueUnion,
+        Finset.mem_product, hij]
+  calc
+    ((cliqueUnion s t)ᶜ).degree v =
+        (((cliqueUnion s t)ᶜ).neighborFinset v).card := rfl
+    _ = ({v.1}ᶜ : Finset (Fin s)).card *
+        (Finset.univ : Finset (Fin t)).card := by
+      rw [hN, Finset.card_product]
+    _ = (s - 1) * t := by simp [Finset.card_compl]
 
 /-- The four invariant graph patterns have pairwise distinguishable
 degrees at the degree t-1 of sK_t when s,t≥2. -/
