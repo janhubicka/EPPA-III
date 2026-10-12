@@ -261,3 +261,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_choice_existsUnique_outside
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_choice_image_eq
 #print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_choice_mem
+#print axioms EPPAIII.CliqueCovers.saturatedOutsideChoiceEquiv
+#print axioms EPPAIII.CliqueCovers.saturatedOutsideChoiceEquiv_apply
