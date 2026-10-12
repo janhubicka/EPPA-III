@@ -34,6 +34,7 @@ theorem eppa_saturated_outside_choice_image_eq {s t : ℕ}
       (fun u => extractKChoice (finiteNeighbourhoodProfile H e u) k) =
       profileChoiceSpace s t r k := by
   classical
+  symm
   apply Finset.eq_of_subset_of_card_le
   · intro choice hChoice
     obtain ⟨u, ⟨hu, hcu⟩, _⟩ :=
