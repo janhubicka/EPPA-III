@@ -122,14 +122,13 @@ theorem saturatedChoiceLiftPermutation_graphAut {s t : ℕ}
       (saturatedChoiceLiftPermutation H e heppa hOrder
         w hw r k hR hSat p q hCompat) := by
   intro x y
-  change
-    H.Adj
-      ((saturatedOutsideChoiceEquiv H e heppa hOrder w hw r k hR hSat).symm x).val
-      ((saturatedOutsideChoiceEquiv H e heppa hOrder w hw r k hR hSat).symm y).val ↔
-    H.Adj
-      (q ((saturatedOutsideChoiceEquiv H e heppa hOrder w hw r k hR hSat).symm x).val)
-      (q ((saturatedOutsideChoiceEquiv H e heppa hOrder w hw r k hR hSat).symm y).val)
-  exact hq _ _
+  have hOutside :=
+    outsideLiftPermutation_graphAut H e p q hCompat hq
+      ((saturatedOutsideChoiceEquiv H e heppa hOrder w hw r k hR hSat).symm x)
+      ((saturatedOutsideChoiceEquiv H e heppa hOrder w hw r k hR hSat).symm y)
+  simpa only [outsideInducedGraph, saturatedChoiceGraph,
+    saturatedChoiceLiftPermutation, SimpleGraph.comap_adj,
+    Equiv.trans_apply, Equiv.apply_symm_apply] using hOutside
 
 /-- EPPA supplies an automorphism of the choice graph for every
 automorphism of the base.  No coherent lifting assumption is used. -/
