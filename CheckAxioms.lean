@@ -255,3 +255,4 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_two_parameters
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_adj_characterization
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_four_forms
+#print axioms EPPAIII.CliqueCovers.equal_degree_of_regular_equal_edges
