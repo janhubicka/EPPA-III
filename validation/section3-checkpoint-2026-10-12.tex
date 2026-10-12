@@ -1,0 +1,171 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry,booktabs}
+\geometry{margin=27mm}
+\title{EPPA--III: Section 3 verification checkpoint}
+\author{Independent formalization audit; source manuscript frozen}
+\date{12 October 2026}
+\begin{document}
+\maketitle
+
+\section*{Purpose and verification boundary}
+
+This checkpoint concerns the direct alternative proof of
+Lemma~3.7 for a double-sized EPPA witness of
+\(G=sK_t\), with the exceptional Wagner graph when
+\(s=t=2\).  The original manuscript is frozen:
+all proposed corrections remain in the separate validation files.
+A successful Lean build and the repository's explicit permitted-axiom
+audit are required before a new theorem is called formally verified.
+
+\section*{Verified results merged into \texttt{main}}
+
+The following unrestricted mathematical statements have completed
+Lean CI and were merged (the PR numbers identify the audit trail).
+
+\begin{itemize}
+\item The full fixed-coordinate-size wreath-orbit bound and its
+  inclusion in the actual EPPA neighbourhood-profile orbit;
+  extreme partial sizes \(k=1,t-1\)
+  (PRs~\#29, \#32 and earlier prerequisites).
+\item Repeated partial-coordinate degrees force \(s=t=2\);
+  independent inner permutations and saturation exclude
+  mixed partial sizes; thus \emph{any two proper partial
+  coordinates imply \(s=t=2\)}
+  (PRs~\#35, \#38, \#46).
+\item Saturation under outer clique permutations forces the
+  unselected coordinate slices to agree; for a unique proper
+  partial coordinate those slices are uniformly empty or full
+  (PRs~\#47 and \#49).
+\item In the zero-partial case the selected cliques consist of
+  true twins and occupy pairwise distinct classes of equality
+  of closed neighbourhoods (PRs~\#50, \#54).
+  Host automorphisms carry these classes to one another,
+  so a transitive host has equal class sizes
+  (PR~\#56).
+\item The canonical true-twin quotient is a genuine loopless
+  simple graph with well-defined adjacency and descending
+  automorphisms. The selected clique classes form an
+  independent set of cardinal \(s\). All these quotient
+  interfaces, together with equality of the two induced
+  half-edge counts in a vertex-transitive labelled host,
+  were integrated in PR~\#68.
+\item A positive-degree \(d\)-regular graph has no independent
+  set greater than half its order (PR~\#62).
+  If the host has \(2st\) vertices and the quotient contains an edge,
+  quotient transitivity and double-counting then force
+  exactly \(2s\) twin classes of order \(t\)
+  (PR~\#71).
+\item If a spanning subgraph and its supergraph have equal
+  numbers of edges, they coincide. Its specialization to
+  \(sK_t\) is verified in PR~\#74.
+\end{itemize}
+
+These theorems do \emph{not} yet constitute a complete
+formal proof of Lemma~3.7. In particular the last graph
+classification, which passes from twin classes to the
+uniform connection matrix, remains a separate obligation.
+
+\section*{Current source branches}
+
+As of this checkpoint, the outstanding Lean checks include:
+\begin{itemize}
+\item PR~\#75: a non-cluster graph has an edge in its canonical
+  twin quotient, removing the positive-degree hypothesis
+  from the zero-partial counting theorem;
+  PR~\#76 composes this with PR~\#71.
+\item PR~\#73: a selected \(K_t\) exhausts any containing
+  twin class of size \(t\); PR~\#78 then identifies
+  the outside half with the unselected quotient fibers.
+\item PR~\#77: from \(\binom sr\le s\) deduce
+  \(r\in\{0,1,s-1,s\}\), uniformly in the parameters.
+\item PR~\#79: when a profile choice orbit saturates the
+  \(st\)-vertex budget, all outside vertices have distinct
+  profiles and the outside-profile image is precisely
+  that orbit. Its unique-proper-coordinate specialization
+  prepares the natural wreath action on the outside half.
+\end{itemize}
+The status of these PRs must be checked against CI before merging;
+an earlier green result does not certify a later rewritten branch.
+
+\section*{Remaining structural assembly}
+
+\paragraph{Zero partial coordinates.}
+Once the quotient has \(2s\) classes of size \(t\),
+each selected \(K_t\) fills one entire class.
+The remaining \(s\) classes partition the complementary half \(B\)
+and each induces \(K_t\). Because regularity gives
+\[
+    |E(H[B])|=|E(G)|=s\binom t2 ,
+\]
+there are no edges between these latter classes, hence
+\(H[B]\cong sK_t\).
+Every \(B\)--\(G\) connection block is complete or empty,
+as its endpoints lie in twin classes.
+Vertex-transitivity makes the number \(r\) of selected
+cliques met by a vertex of \(B\) independent of that vertex.
+The base-clique permutation subgroup, whose automorphisms
+extend by EPPA, produces all
+\(\binom sr\) masks; there are only \(s\) complementary
+twin classes. Thus \(\binom sr\le s\) and
+\(r\in\{0,1,s-1,s\}\).
+For \(r=1,s-1\), all singleton or co-singleton masks
+occur exactly once, producing the uniform diagonal/off-diagonal
+connection matrix. For \(r=0,s\), all cross entries are uniform.
+The classification of the graph from these observations
+is established on paper but the final Lean assembly is open.
+
+The assumption that the quotient has an edge is automatic if
+\(H\) is not a cluster graph. If \(H\) \emph{is} a cluster graph,
+vertex-transitivity makes every connected clique component
+equinumerous; hence \(H=mK_a\), a homogeneous graph.
+This supplies a short direct paper justification that a
+non-homogeneous vertex-transitive host is not a cluster graph,
+without invoking the full finite homogeneous graph classification.
+The corresponding homogeneity extension argument is not yet Lean-checked.
+
+\paragraph{One proper partial coordinate.}
+The fixed-size profile orbit has exactly \(st\) possible
+choices, and the unique outside profile corresponding to each
+choice must be established as a finite bijection (PR~\#79).
+The induced canonical action is the imprimitive
+\(S_t\wr S_s\)-action on \(s\) blocks of size \(t\);
+its unordered pair-orbits are the same-block and
+distinct-block pairs. By the equal-edge-count identity,
+\(H[B]\cong sK_t\), giving matching or co-matching diagonal
+connections and uniform off-diagonal connections.
+Formalization of the actual induced action and its pair-orbits
+is the key remaining step in this case.
+
+\paragraph{Wagner exception.}
+When \(s=t=2\) and two coordinates are partial,
+the four outside profiles form the corners of a square.
+The induced wreath group has two unordered-pair orbits:
+four sides and two opposite-corner pairs.
+The equal-edge count is two, so only the opposite
+matching can occur. It yields the Wagner graph and the
+connection matrix
+\[
+  \begin{pmatrix} M&M\\ M&\overline M\end{pmatrix}.
+\]
+The graph-level identification still requires a short Lean
+orbit-count argument; the earlier cube obstruction is
+already verified in \texttt{WagnerReduction.lean}.
+
+\paragraph{Low parameters and homogeneous hosts.}
+The \(s=1\) and \(t=1\) reductions, and the homogeneous
+exceptional cases, remain at paper level in
+\texttt{validation/direct-clique-cover-proof.tex}.
+They should not be included in the claim of complete
+Lean verification until independently certified.
+
+\section*{Editorial policy}
+Do not modify the author manuscript until a correction is
+reviewed. Preserve the short Wagner repair as the default
+localized suggestion; the alternative direct proof is
+recorded only as an independent validation route.
+For every future PR, keep the validated theorem statement,
+the hypotheses, its axiom report, and remaining dependencies
+clearly separated.
+
+\end{document}
