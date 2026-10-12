@@ -67,32 +67,19 @@ theorem cliqueUnion_regular {s t : ℕ} [DecidableRel (cliqueUnion s t).Adj]
   exact cliqueUnion_degree hs v
 
 /-- The complementary complete multipartite graph is regular
-of degree (s-1)t. -/
+of degree (s-1)t.  Use Mathlib's explicit equipartite degree formula
+rather than unfolding complement-neighbour set decidability. -/
 theorem cliqueUnion_compl_regular {s t : ℕ}
     [DecidableRel ((cliqueUnion s t)ᶜ).Adj] :
     (cliqueUnion s t)ᶜ.IsRegularOfDegree ((s - 1) * t) := by
   classical
+  have hEq :
+      (cliqueUnion s t)ᶜ = SimpleGraph.completeEquipartiteGraph s t := by
+    rw [cliqueUnion_eq_compl_completeEquipartite]
+    simp
+  rw [hEq]
   intro v
-  have hN :
-      ((cliqueUnion s t)ᶜ).neighborFinset v =
-        ({v.1}ᶜ : Finset (Fin s)) ×ˢ
-          (Finset.univ : Finset (Fin t)) := by
-    ext z
-    rcases z with ⟨j,b⟩
-    by_cases hij : v.1 = j
-    · simp [SimpleGraph.mem_neighborFinset,
-        SimpleGraph.compl_adj, cliqueUnion,
-        Finset.mem_product, hij]
-    · simp [SimpleGraph.mem_neighborFinset,
-        SimpleGraph.compl_adj, cliqueUnion,
-        Finset.mem_product, hij]
-  calc
-    ((cliqueUnion s t)ᶜ).degree v =
-        (((cliqueUnion s t)ᶜ).neighborFinset v).card := rfl
-    _ = ({v.1}ᶜ : Finset (Fin s)).card *
-        (Finset.univ : Finset (Fin t)).card := by
-      rw [hN, Finset.card_product]
-    _ = (s - 1) * t := by simp [Finset.card_compl]
+  exact SimpleGraph.degree_completeEquipartiteGraph v
 
 /-- The four invariant graph patterns have pairwise distinguishable
 degrees at the degree t-1 of sK_t when s,t≥2. -/
