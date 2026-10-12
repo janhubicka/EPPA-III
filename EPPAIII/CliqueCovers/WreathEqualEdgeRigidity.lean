@@ -24,6 +24,22 @@ transported to the canonical wreath action model.
 
 namespace EPPAIII.CliqueCovers
 
+/-- Equal intrinsic edge-set cardinalities force the same regular degree.
+Unlike the edgeFinset formulation, the hypothesis is independent of
+the particular Fintype instance selected for the edge set. -/
+theorem equal_degree_of_regular_equal_edgeSet_ncard
+    {V : Type*} [Fintype V]
+    (G H : SimpleGraph V)
+    [DecidableRel G.Adj] [DecidableRel H.Adj]
+    (dG dH : ℕ)
+    (hPos : 0 < Fintype.card V)
+    (hG : G.IsRegularOfDegree dG)
+    (hH : H.IsRegularOfDegree dH)
+    (hEdges : G.edgeSet.ncard = H.edgeSet.ncard) :
+    dG = dH := by
+  apply equal_degree_of_regular_equal_edges G H dG dH hPos hG hH
+  simpa only [← SimpleGraph.card_edgeSet, Set.fintypeCard_eq_ncard] using hEdges
+
 /-- A graph invariant under every natural wreath permutation, with
 the same number of edges as sK_t, must be precisely sK_t. -/
 theorem wreath_invariant_graph_eq_cliqueUnion_of_edge_count {s t : ℕ}
@@ -51,58 +67,46 @@ theorem wreath_invariant_graph_eq_cliqueUnion_of_edge_count {s t : ℕ}
     cliqueUnion_degree_distinct_of_nontrivial s t hs ht
   rcases wreath_invariant_graph_four_forms B hs ht hInvariant with
     hBot | hBase | hCross | hTop
-  · have hEdgeBot :
-        (cliqueUnion s t).edgeFinset.card =
-          (⊥ : SimpleGraph (Fin s × Fin t)).edgeFinset.card := by
-      have hSet :
-          (cliqueUnion s t).edgeSet.ncard =
-            (⊥ : SimpleGraph (Fin s × Fin t)).edgeSet.ncard := by
-        rw [hBot] at hSetEdges
-        exact hSetEdges.symm
-      simpa only [← SimpleGraph.card_edgeSet, Set.fintypeCard_eq_ncard] using hSet
+  · have hSetBot :
+        (cliqueUnion s t).edgeSet.ncard =
+          (⊥ : SimpleGraph (Fin s × Fin t)).edgeSet.ncard := by
+      rw [hBot] at hSetEdges
+      exact hSetEdges.symm
     have hBotReg :
         (⊥ : SimpleGraph (Fin s × Fin t)).IsRegularOfDegree 0 :=
       SimpleGraph.IsRegularOfDegree.bot
     have hDeg :=
-      equal_degree_of_regular_equal_edges
+      equal_degree_of_regular_equal_edgeSet_ncard
         (cliqueUnion s t) (⊥ : SimpleGraph (Fin s × Fin t))
-        (t - 1) 0 hPos hGReg hBotReg hEdgeBot
+        (t - 1) 0 hPos hGReg hBotReg hSetBot
     omega
   · exact hBase
-  · have hEdgeCross :
-        (cliqueUnion s t).edgeFinset.card =
-          ((cliqueUnion s t)ᶜ).edgeFinset.card := by
-      have hSet :
-          (cliqueUnion s t).edgeSet.ncard =
-            ((cliqueUnion s t)ᶜ).edgeSet.ncard := by
-        rw [hCross] at hSetEdges
-        exact hSetEdges.symm
-      simpa only [← SimpleGraph.card_edgeSet, Set.fintypeCard_eq_ncard] using hSet
+  · have hSetCross :
+        (cliqueUnion s t).edgeSet.ncard =
+          ((cliqueUnion s t)ᶜ).edgeSet.ncard := by
+      rw [hCross] at hSetEdges
+      exact hSetEdges.symm
     have hCrossReg :=
       cliqueUnion_compl_regular (s := s) (t := t)
     have hDeg :=
-      equal_degree_of_regular_equal_edges
+      equal_degree_of_regular_equal_edgeSet_ncard
         (cliqueUnion s t) ((cliqueUnion s t)ᶜ)
-        (t - 1) ((s - 1) * t) hPos hGReg hCrossReg hEdgeCross
+        (t - 1) ((s - 1) * t) hPos hGReg hCrossReg hSetCross
     omega
-  · have hEdgeTop :
-        (cliqueUnion s t).edgeFinset.card =
-          (⊤ : SimpleGraph (Fin s × Fin t)).edgeFinset.card := by
-      have hSet :
-          (cliqueUnion s t).edgeSet.ncard =
-            (⊤ : SimpleGraph (Fin s × Fin t)).edgeSet.ncard := by
-        rw [hTop] at hSetEdges
-        exact hSetEdges.symm
-      simpa only [← SimpleGraph.card_edgeSet, Set.fintypeCard_eq_ncard] using hSet
+  · have hSetTop :
+        (cliqueUnion s t).edgeSet.ncard =
+          (⊤ : SimpleGraph (Fin s × Fin t)).edgeSet.ncard := by
+      rw [hTop] at hSetEdges
+      exact hSetEdges.symm
     have hTopReg :
         (⊤ : SimpleGraph (Fin s × Fin t)).IsRegularOfDegree
           (s * t - 1) := by
       simpa only [Fintype.card_prod, Fintype.card_fin] using
         (SimpleGraph.IsRegularOfDegree.top (V := Fin s × Fin t))
     have hDeg :=
-      equal_degree_of_regular_equal_edges
+      equal_degree_of_regular_equal_edgeSet_ncard
         (cliqueUnion s t) (⊤ : SimpleGraph (Fin s × Fin t))
-        (t - 1) (s * t - 1) hPos hGReg hTopReg hEdgeTop
+        (t - 1) (s * t - 1) hPos hGReg hTopReg hSetTop
     omega
 
 end EPPAIII.CliqueCovers
