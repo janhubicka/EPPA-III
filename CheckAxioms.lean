@@ -256,3 +256,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_adj_characterization
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_four_forms
 #print axioms EPPAIII.CliqueCovers.equal_degree_of_regular_equal_edges
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_wreath_equals_full_orbit
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_outside_choice_injective
+#print axioms EPPAIII.CliqueCovers.eppa_saturated_choice_existsUnique_outside
