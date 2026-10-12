@@ -283,3 +283,11 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.finite_profile_wreath_lift
 #print axioms EPPAIII.CliqueCovers.profileSlice_of_wreath_lift
 #print axioms EPPAIII.CliqueCovers.kPositions_of_wreath_lift
+#print axioms EPPAIII.CliqueCovers.admissibleChoiceSlice
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair_positions
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair_slice
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair_injective
+#print axioms EPPAIII.CliqueCovers.singletonChoiceOfPair_surjective
+#print axioms EPPAIII.CliqueCovers.singletonChoiceEquiv
+#print axioms EPPAIII.CliqueCovers.singletonChoiceEquiv_apply
