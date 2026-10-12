@@ -1,4 +1,5 @@
 import EPPAIII.CliqueCovers.Claim39OrbitBridge
+import EPPAIII.CliqueCovers.OuterRigidity
 
 /-!
 # Exact coordinate equivariance under a lifted wreath automorphism
