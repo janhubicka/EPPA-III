@@ -37,12 +37,13 @@ theorem eppa_cosingleton_outside_eq_cliqueUnion_of_equal_edges {s t : ℕ}
       (saturatedCoSingletonOutsideEquiv
         H e heppa hOrder (by omega) w hw hUnique) = cliqueUnion s t := by
   classical
+  have htPositive : 0 < t := by omega
   apply graph_eq_cliqueUnion_of_equivariant_wreath_label
     (outsideInducedGraph H e)
     (saturatedCoSingletonOutsideEquiv H e heppa hOrder
-      (by omega) w hw hUnique) hs ht ?_ hEdges
+      htPositive w hw hUnique) hs ht ?_ hEdges
   intro outer inner
   exact eppa_cosingleton_outside_has_natural_wreath_action
-    H e heppa hOrder (by omega) w hw hUnique outer inner
+    H e heppa hOrder htPositive w hw hUnique outer inner
 
 end EPPAIII.CliqueCovers
