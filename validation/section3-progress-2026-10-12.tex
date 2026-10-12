@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\title{EPPA--III Section 3 verification checkpoint}
+\date{12 October 2026}
+\begin{document}
+\maketitle
+\paragraph{Frozen manuscript.} Only separate validation notes in the Lean repository are edited.
+\paragraph{Verified.} The EPPA profile orbit upper bound, fixed-size wreath lower bound,
+the $k=1$ or $k=t-1$ conclusion, and the $s=t=2$ two-partial obstruction
+are proved in Lean. Saturated profiles biject with outside choices (PRs \#90--\#92).
+Wreath-invariant graphs with $|E|=s\binom t2$ equal $sK_t$ (PR \#95),
+and this result transfers under an equivariant labelling (PR \#97).
+EPPA lifts act on the outside graph and transport neighbourhood slices correctly (PR \#99).
+\paragraph{Localized Claim 3.9 correction.} For $r\ge1$ coordinates of
+the proper size $0<k<t$, the wreath orbit of the neighbourhood profile
+has at least $\binom sr\binom tk^r\ge s\binom tk$ elements.
+EPPA realizes all these among exactly $st$ outside vertices, so
+$\binom tk\le t$ and $k=1$ or $k=t-1$. At saturation outside profiles
+are distinct, hence extension actions there are uniquely determined.
+\paragraph{Localized Wagner correction.} After the separate matching-block
+normalisation, write $A=\left(\begin{smallmatrix}M&M\\M&Z\end{smallmatrix}\right)$,
+with $Z\in\{M,\overline M\}$. If $Z=M$, the two vertices of one selected
+$K_2$ have respectively two and zero common neighbours with a fixed
+vertex of the other selected $K_2$, contradicting extension of their swap.
+Thus $Z=\overline M$ is Wagner. The cube obstruction is verified in
+WagnerReduction.lean; the preceding normalisation is not certified.
+Delete the phrase or its complement from the displayed Wagner matrix case,
+which is $3$-regular; the complement is $4$-regular.
+\paragraph{Still open.} Explicit singleton/co-singleton labels and their
+equivariance (singleton labels in PR \#100, pending CI), general host
+equal-half edge transport, final four-corner Wagner orbit count,
+zero-partial twin quotient cross-matrix assembly, and low/homogeneous cases.
+No complete Section 3 verification or author manuscript change is claimed.
+\end{document}
