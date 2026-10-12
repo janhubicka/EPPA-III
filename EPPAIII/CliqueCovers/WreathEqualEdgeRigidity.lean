@@ -29,6 +29,7 @@ the same number of edges as sK_t, must be precisely sK_t. -/
 theorem wreath_invariant_graph_eq_cliqueUnion_of_edge_count {s t : ℕ}
     (B : SimpleGraph (Fin s × Fin t))
     [DecidableRel B.Adj]
+    [DecidableRel (cliqueUnion s t).Adj]
     (hs : 2 ≤ s) (ht : 2 ≤ t)
     (hInvariant : ∀ (outer : Equiv.Perm (Fin s))
       (inner : Fin s → Equiv.Perm (Fin t)),
@@ -38,6 +39,9 @@ theorem wreath_invariant_graph_eq_cliqueUnion_of_edge_count {s t : ℕ}
       (cliqueUnion s t).edgeFinset.card) :
     B = cliqueUnion s t := by
   classical
+  have hSetEdges :
+      B.edgeSet.ncard = (cliqueUnion s t).edgeSet.ncard := by
+    simpa only [← SimpleGraph.card_edgeSet, Set.fintypeCard_eq_ncard] using hEdges
   have hPos : 0 < Fintype.card (Fin s × Fin t) := by
     simp only [Fintype.card_prod, Fintype.card_fin]
     exact Nat.mul_pos (by omega) (by omega)
@@ -50,8 +54,12 @@ theorem wreath_invariant_graph_eq_cliqueUnion_of_edge_count {s t : ℕ}
   · have hEdgeBot :
         (cliqueUnion s t).edgeFinset.card =
           (⊥ : SimpleGraph (Fin s × Fin t)).edgeFinset.card := by
-      rw [hBot] at hEdges
-      exact hEdges.symm
+      have hSet :
+          (cliqueUnion s t).edgeSet.ncard =
+            (⊥ : SimpleGraph (Fin s × Fin t)).edgeSet.ncard := by
+        rw [hBot] at hSetEdges
+        exact hSetEdges.symm
+      simpa only [← SimpleGraph.card_edgeSet, Set.fintypeCard_eq_ncard] using hSet
     have hBotReg :
         (⊥ : SimpleGraph (Fin s × Fin t)).IsRegularOfDegree 0 :=
       SimpleGraph.IsRegularOfDegree.bot
@@ -64,8 +72,12 @@ theorem wreath_invariant_graph_eq_cliqueUnion_of_edge_count {s t : ℕ}
   · have hEdgeCross :
         (cliqueUnion s t).edgeFinset.card =
           ((cliqueUnion s t)ᶜ).edgeFinset.card := by
-      rw [hCross] at hEdges
-      exact hEdges.symm
+      have hSet :
+          (cliqueUnion s t).edgeSet.ncard =
+            ((cliqueUnion s t)ᶜ).edgeSet.ncard := by
+        rw [hCross] at hSetEdges
+        exact hSetEdges.symm
+      simpa only [← SimpleGraph.card_edgeSet, Set.fintypeCard_eq_ncard] using hSet
     have hCrossReg :=
       cliqueUnion_compl_regular (s := s) (t := t)
     have hDeg :=
@@ -76,8 +88,12 @@ theorem wreath_invariant_graph_eq_cliqueUnion_of_edge_count {s t : ℕ}
   · have hEdgeTop :
         (cliqueUnion s t).edgeFinset.card =
           (⊤ : SimpleGraph (Fin s × Fin t)).edgeFinset.card := by
-      rw [hTop] at hEdges
-      exact hEdges.symm
+      have hSet :
+          (cliqueUnion s t).edgeSet.ncard =
+            (⊤ : SimpleGraph (Fin s × Fin t)).edgeSet.ncard := by
+        rw [hTop] at hSetEdges
+        exact hSetEdges.symm
+      simpa only [← SimpleGraph.card_edgeSet, Set.fintypeCard_eq_ncard] using hSet
     have hTopReg :
         (⊤ : SimpleGraph (Fin s × Fin t)).IsRegularOfDegree
           (s * t - 1) := by
