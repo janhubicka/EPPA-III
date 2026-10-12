@@ -30,9 +30,9 @@ theorem wreath_other_slices_uniform {s t : ℕ}
     intro h
     apply hj
     have heq := congrArg outer h
-    simpa using heq.symm
+    simpa using heq
   rw [hOther (outer.symm j) hDiff]
-  cases b <;> simp [Finset.map_univ_equiv]
+  cases b <;> simp
 
 /-- Saturation propagates a uniform complete/empty off-diagonal
 relation to every actual outside vertex, with the exceptional index
