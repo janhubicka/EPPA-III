@@ -81,3 +81,4 @@ import EPPAIII.CliqueCovers.OutsideLiftTransport
 import EPPAIII.CliqueCovers.WreathProfileEquivariance
 import EPPAIII.CliqueCovers.SingletonChoiceLabels
 import EPPAIII.CliqueCovers.CoSingletonChoiceLabels
+import EPPAIII.CliqueCovers.CoSingletonChoiceWreath
