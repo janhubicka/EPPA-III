@@ -21,17 +21,28 @@ No coherent choice of EPPA automorphism lifts is assumed.
 
 namespace EPPAIII.CliqueCovers
 
+/-- The finite collection of actual neighbourhood profiles of
+vertices outside the designated induced copy. The decidability
+choice is encapsulated, as for finiteNeighbourhoodProfile itself. -/
+noncomputable def finiteOutsideProfileImage {V W : Type*}
+    [Fintype V] [Fintype W]
+    (H : SimpleGraph W) (e : V ↪ W) : Finset (Finset V) := by
+  classical
+  exact (finiteOutside e).image (finiteNeighbourhoodProfile H e)
+
+
 /-- Each profile in the EPPA automorphism orbit of an outside
 vertex is realised by an actual outside vertex. -/
 theorem finite_profile_orbit_subset_outside_image {V W : Type*}
-    [Fintype V] [Fintype W] [DecidableEq V]
+    [Fintype V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (heppa : IsEPPAEmbedding G H e)
     (w : W) (hw : w ∉ Set.range e) :
     finiteProfileOrbit G H e w ⊆
-      (finiteOutside e).image (finiteNeighbourhoodProfile H e) := by
+      finiteOutsideProfileImage H e := by
   classical
   intro S hS
+  change S ∈ (finiteOutside e).image (finiteNeighbourhoodProfile H e)
   obtain ⟨p,hp,hProfile⟩ := Finset.mem_image.mp hS
   have hpAuto : IsGraphAutomorphism G p :=
     (Finset.mem_filter.mp hp).2
@@ -59,13 +70,13 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
     Set.InjOn (finiteNeighbourhoodProfile H e)
       {u | u ∈ finiteOutside e} ∧
     finiteProfileOrbit (cliqueUnion s t) H e w =
-      (finiteOutside e).image (finiteNeighbourhoodProfile H e) := by
+      finiteOutsideProfileImage H e := by
   classical
   let orbit : Finset (Finset (Fin s × Fin t)) :=
     finiteProfileOrbit (cliqueUnion s t) H e w
   let outside : Finset W := finiteOutside e
   let image : Finset (Finset (Fin s × Fin t)) :=
-    outside.image (finiteNeighbourhoodProfile H e)
+    finiteOutsideProfileImage H e
   have hSubset : orbit ⊆ image :=
     finite_profile_orbit_subset_outside_image
       (cliqueUnion s t) H e heppa w hw
@@ -77,8 +88,9 @@ theorem eppa_saturated_outside_profile_bijection {s t : ℕ}
       _ ≤ orbit.card := actual_profile_orbit_lower_bound H e w r k hR
   have hImageLower : outside.card ≤ image.card :=
     hOrbitLower.trans (Finset.card_le_card hSubset)
-  have hImageUpper : image.card ≤ outside.card :=
-    Finset.card_image_le
+  have hImageUpper : image.card ≤ outside.card := by
+    dsimp [image, outside, finiteOutsideProfileImage]
+    exact Finset.card_image_le
   have hImageCard : image.card = outside.card :=
     Nat.le_antisymm hImageUpper hImageLower
   have hInjective :
@@ -109,7 +121,7 @@ theorem eppa_unique_partial_outside_profiles_bijective {s t : ℕ}
     Set.InjOn (finiteNeighbourhoodProfile H e)
       {u | u ∈ finiteOutside e} ∧
     finiteProfileOrbit (cliqueUnion s t) H e w =
-      (finiteOutside e).image (finiteNeighbourhoodProfile H e) := by
+      finiteOutsideProfileImage H e := by
   classical
   have hPartial :
       0 < (kPositions (finiteNeighbourhoodProfile H e w) k).card := by
@@ -121,7 +133,7 @@ theorem eppa_unique_partial_outside_profiles_bijective {s t : ℕ}
       (le_of_eq (finiteOutside_card_clique_union e hOrder))
   have hChoose : Nat.choose t k = t := by
     rcases hExtreme with hOne | hCo
-    · simpa [hOne] using (Nat.choose_one_right t)
+    · simp [hOne]
     · have hComplement : t - k = 1 := by omega
       calc
         Nat.choose t k = Nat.choose t (t - k) :=
