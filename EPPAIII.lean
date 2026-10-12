@@ -66,3 +66,4 @@ import EPPAIII.CliqueCovers.OutsideTwinClasses
 import EPPAIII.CliqueCovers.NonclusterQuotient
 import EPPAIII.CliqueCovers.ZeroPartialNoncluster
 import EPPAIII.CliqueCovers.WreathPairOrbits
+import EPPAIII.CliqueCovers.WreathInvariantGraph
