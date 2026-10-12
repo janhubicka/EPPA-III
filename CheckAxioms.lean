@@ -255,3 +255,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_two_parameters
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_adj_characterization
 #print axioms EPPAIII.CliqueCovers.wreath_invariant_graph_four_forms
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_eq_compl_completeEquipartite
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_degree
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_regular
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_compl_regular
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_degree_distinct_of_nontrivial
