@@ -232,3 +232,5 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.graph_eq_of_le_of_edge_card_eq
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_eq_of_le_of_edge_card_eq
+#print axioms EPPAIII.CliqueCovers.choose_le_row_index_extreme
+#print axioms EPPAIII.CliqueCovers.nontrivial_choose_le_row_index
