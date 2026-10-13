@@ -56,12 +56,40 @@ instance squareCornerGraph_decidableAdj (side opposite : Bool) :
   unfold squareCornerAdj
   infer_instance
 
+/-- Every corner has two possible side-neighbours and one
+opposite corner, so its degree is controlled by the two bits. -/
+theorem squareCornerGraph_degree (side opposite : Bool) (v : Bool × Bool) :
+    (squareCornerGraph side opposite).degree v =
+      (if side then 2 else 0) + (if opposite then 1 else 0) := by
+  rcases v with ⟨a,b⟩
+  cases a <;> cases b <;> cases side <;> cases opposite <;> decide
+
 /-- The four sides contribute four edges and the opposite matching
-contributes two edges, independently of their Boolean statuses. -/
+contributes two. Use degree-sum rather than evaluating Sym2 edgeFinsets
+directly, because the quotient edge-set instance is noncomputable. -/
 theorem squareCornerGraph_edge_count (side opposite : Bool) :
     (squareCornerGraph side opposite).edgeFinset.card =
       (if side then 4 else 0) + (if opposite then 2 else 0) := by
-  cases side <;> cases opposite <;> native_decide
+  classical
+  let d : ℕ := (if side then 2 else 0) + (if opposite then 1 else 0)
+  have hReg : (squareCornerGraph side opposite).IsRegularOfDegree d := by
+    intro v
+    exact squareCornerGraph_degree side opposite v
+  have hSum :
+      (∑ v : Bool × Bool, (squareCornerGraph side opposite).degree v) =
+        4 * d := by
+    calc
+      _ = ∑ _v : Bool × Bool, d := by
+        apply Finset.sum_congr rfl
+        intro v _
+        exact hReg v
+      _ = 4 * d := by simp [Fintype.card_prod, d]
+  have hDouble := (squareCornerGraph side opposite).sum_degrees_eq_twice_card_edges
+  have hArith :
+      2 * d =
+        (if side then 4 else 0) + (if opposite then 2 else 0) := by
+    cases side <;> cases opposite <;> norm_num [d]
+  omega
 
 /-- Exactly two edges force all sides absent and both opposite-corner
 edges present. This is the numerical kernel of the Wagner exception. -/
@@ -74,6 +102,6 @@ theorem squareCornerGraph_two_edges (side opposite : Bool)
 /-- Opposite corners form a matching of precisely two edges. -/
 theorem squareOppositeMatching_edge_count :
     (squareCornerGraph false true).edgeFinset.card = 2 := by
-  native_decide
+  simpa using (squareCornerGraph_edge_count false true)
 
 end EPPAIII.CliqueCovers
