@@ -338,3 +338,5 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.outerMaskOrbit_size_extreme
 #print axioms EPPAIII.CliqueCovers.outsideTwinQuotientClasses
 #print axioms EPPAIII.CliqueCovers.outsideTwinQuotientClasses_card
+#print axioms EPPAIII.CliqueCovers.outside_cliqueUnion_le_of_twin_fibre_label
+#print axioms EPPAIII.CliqueCovers.outside_eq_cliqueUnion_of_transitive_twin_fibres
