@@ -25,6 +25,7 @@ closed-twin class of a specified anchor vertex. -/
 theorem closedTwinQuotient_fibre_card_of_transitive {W : Type*}
     [Fintype W]
     (H : SimpleGraph W)
+    [DecidableEq (ClosedTwinQuotient H)]
     (hTransitive : ∀ u v : W,
       ∃ q : Equiv.Perm W,
         EPPAIII.IsGraphAutomorphism H q ∧ q u = v)
@@ -48,7 +49,7 @@ theorem closedTwinQuotient_fibre_card_of_transitive {W : Type*}
         ((Finset.univ : Finset W).filter
           (fun w => Quotient.mk (closedTwinSetoid H) w =
             Quotient.mk (closedTwinSetoid H) v)).card := by
-          simp only [Fintype.card_subtype]
+          simp [Fintype.card_subtype]
       _ = (closedTwinClass H v).card :=
         congrArg Finset.card hFiber
       _ = (closedTwinClass H anchor).card :=
@@ -60,6 +61,7 @@ so does every fibre of the quotient, including outside fibres. -/
 theorem closedTwinQuotient_fibre_card_eq_t {s t : ℕ}
     {W : Type*} [Fintype W]
     (H : SimpleGraph W)
+    [DecidableEq (ClosedTwinQuotient H)]
     (e : (Fin s × Fin t) ↪ W)
     (i : Fin s) (a : Fin t)
     (hTransitive : ∀ u v : W,
@@ -78,6 +80,7 @@ rather than choosing an unverified isomorphism. -/
 noncomputable def finEquivClosedTwinFibre {s t : ℕ}
     {W : Type*} [Fintype W]
     (H : SimpleGraph W)
+    [DecidableEq (ClosedTwinQuotient H)]
     (e : (Fin s × Fin t) ↪ W)
     (i : Fin s) (a : Fin t)
     (hTransitive : ∀ u v : W,
