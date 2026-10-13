@@ -117,3 +117,6 @@ import EPPAIII.CliqueCovers.WagnerOutsideMatching
 import EPPAIII.CliqueCovers.MaskCoverDegree
 import EPPAIII.CliqueCovers.MaskCoverNormalForms
 import EPPAIII.CliqueCovers.MaskCoverReindex
+import EPPAIII.CliqueCovers.ZeroPartialMaskCoverage
+import EPPAIII.CliqueCovers.ZeroPartialHostMaskGraph
+import EPPAIII.CliqueCovers.ZeroPartialFullCover
