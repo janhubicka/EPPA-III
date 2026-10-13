@@ -47,6 +47,14 @@ def squareCornerGraph (side opposite : Bool) :
       · exact hDiff rfl
       · exact hDiff rfl
 
+/-- Computable adjacency for the finite square patterns, so their
+edge counts can be checked without a noncomputable decidability choice. -/
+instance squareCornerGraph_decidableAdj (side opposite : Bool) :
+    DecidableRel (squareCornerGraph side opposite).Adj := by
+  intro x y
+  change Decidable (squareCornerAdj side opposite x y)
+  infer_instance
+
 /-- The four sides contribute four edges and the opposite matching
 contributes two edges, independently of their Boolean statuses. -/
 theorem squareCornerGraph_edge_count (side opposite : Bool) :
