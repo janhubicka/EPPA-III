@@ -50,8 +50,8 @@ theorem eppa_singleton_host_is_uniform_cover {s t : ℕ}
   apply SimpleGraph.ext
   funext x y
   rcases x with ⟨bx,⟨i,a⟩⟩
-  rcases y with ⟨by,⟨j,c⟩⟩
-  cases bx <;> cases by
+  rcases y with ⟨cy,⟨j,c⟩⟩
+  cases bx <;> cases cy
   · change H.Adj (e (i,a)) (e (j,c)) ↔
       (coverGraph s t .matching b).Adj
         (false,(i,a)) (false,(j,c))
