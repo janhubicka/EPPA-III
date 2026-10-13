@@ -357,3 +357,11 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.finEquivClosedTwinFibre
 #print axioms EPPAIII.CliqueCovers.exists_outside_twin_fibre_label
 #print axioms EPPAIII.CliqueCovers.zero_partial_outside_eq_cliqueUnion_of_noncluster
+#print axioms EPPAIII.CliqueCovers.squareChoiceOfPair
+#print axioms EPPAIII.CliqueCovers.squareChoiceOfPair_first
+#print axioms EPPAIII.CliqueCovers.squareChoiceOfPair_second
+#print axioms EPPAIII.CliqueCovers.squareChoiceOfPair_injective
+#print axioms EPPAIII.CliqueCovers.squareChoiceSpace_card
+#print axioms EPPAIII.CliqueCovers.squareChoiceOfPair_bijective
+#print axioms EPPAIII.CliqueCovers.squareChoiceEquiv
+#print axioms EPPAIII.CliqueCovers.squareChoiceEquiv_apply
