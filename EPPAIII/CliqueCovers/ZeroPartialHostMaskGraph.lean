@@ -169,7 +169,22 @@ theorem zero_partial_outside_masks_uniform_of_transitive {s t : ℕ}
       (maskCoverGraph s t
         (zeroPartialOutsideMask H e anchor label)).IsRegularOfDegree d := by
     intro v
-    simpa only [← hEqGraph] using hReg v
+    have hNeighbours :
+        (maskCoverGraph s t
+          (zeroPartialOutsideMask H e anchor label)).neighborFinset v =
+          (H.comap phi).neighborFinset v := by
+      ext u
+      simp only [SimpleGraph.mem_neighborFinset]
+      have hAdj :=
+        congrArg
+          (fun G : SimpleGraph (CoverVertex s t) => G.Adj v u)
+          hEqGraph
+      exact Iff.of_eq hAdj.symm
+    change
+      ((maskCoverGraph s t
+        (zeroPartialOutsideMask H e anchor label)).neighborFinset v).card = d
+    rw [hNeighbours]
+    exact hReg v
   exact maskCoverGraph_regular_forces_equal_mask_cards
     (zeroPartialOutsideMask H e anchor label) ht hRegMask i j
 
