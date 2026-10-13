@@ -397,3 +397,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_right_degree
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_regular_forces_equal_mask_cards
+#print axioms EPPAIII.CliqueCovers.zeroPartialOutsideMask
+#print axioms EPPAIII.CliqueCovers.zero_partial_cross_adj_iff_mask
+#print axioms EPPAIII.CliqueCovers.zero_partial_host_eq_maskCoverGraph
+#print axioms EPPAIII.CliqueCovers.zero_partial_outside_masks_uniform_of_transitive
