@@ -365,3 +365,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.squareChoiceOfPair_bijective
 #print axioms EPPAIII.CliqueCovers.squareChoiceEquiv
 #print axioms EPPAIII.CliqueCovers.squareChoiceEquiv_apply
+#print axioms EPPAIII.CliqueCovers.singleton_mask_family_reindex
+#print axioms EPPAIII.CliqueCovers.cosingleton_mask_family_reindex
+#print axioms EPPAIII.CliqueCovers.full_mask_family_four_normal_forms
