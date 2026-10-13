@@ -374,3 +374,4 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_outer_mask_orbit_realized
 #print axioms EPPAIII.CliqueCovers.eppa_actual_mask_orbit_le_outside_classes
 #print axioms EPPAIII.CliqueCovers.eppa_actual_mask_card_extreme
+#print axioms EPPAIII.CliqueCovers.zero_partial_outside_twin_fibres_of_noncluster
