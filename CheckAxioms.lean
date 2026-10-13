@@ -403,3 +403,10 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_outside_twin_mask_family_covers_orbit
 #print axioms EPPAIII.CliqueCovers.eppa_outside_mask_family_covers_all_fixed_size
 #print axioms EPPAIII.CliqueCovers.eppa_outside_twin_mask_family_four_forms
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_one_left_eq_top
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_one_right_eq_bot
+#print axioms EPPAIII.CliqueCovers.balancedOutsideEquiv
+#print axioms EPPAIII.CliqueCovers.graph_eq_cliqueUnion_one_left_of_edge_count
+#print axioms EPPAIII.CliqueCovers.graph_eq_cliqueUnion_one_right_of_edge_count
+#print axioms EPPAIII.CliqueCovers.outside_of_transitive_one_clique
+#print axioms EPPAIII.CliqueCovers.outside_of_transitive_one_vertex_cliques
