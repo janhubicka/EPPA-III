@@ -352,3 +352,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.squareAction_graphAut
 #print axioms EPPAIII.CliqueCovers.square_invariant_graph_two_parameters
 #print axioms EPPAIII.CliqueCovers.square_invariant_two_edges_is_opposite_matching
+#print axioms EPPAIII.CliqueCovers.closedTwinQuotient_fibre_card_of_transitive
+#print axioms EPPAIII.CliqueCovers.closedTwinQuotient_fibre_card_eq_t
+#print axioms EPPAIII.CliqueCovers.finEquivClosedTwinFibre
+#print axioms EPPAIII.CliqueCovers.exists_outside_twin_fibre_label
+#print axioms EPPAIII.CliqueCovers.zero_partial_outside_eq_cliqueUnion_of_noncluster
