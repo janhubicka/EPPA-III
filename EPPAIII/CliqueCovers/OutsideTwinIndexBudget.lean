@@ -42,7 +42,7 @@ theorem outsideTwinQuotientClasses_card {s t : ℕ}
     selectedTwinClasses_card H e he a
   unfold outsideTwinQuotientClasses
   rw [Finset.card_sdiff]
-  simp only [Finset.univ_inter, Finset.card_univ]
+  simp only [Finset.inter_univ, Finset.card_univ]
   rw [hSelected, hCount]
   omega
 
