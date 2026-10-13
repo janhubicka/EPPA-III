@@ -56,8 +56,8 @@ theorem eppa_singleton_host_is_uniform_cover {s t : ℕ}
   · change H.Adj (e (i,a)) (e (j,c)) ↔
       (coverGraph s t .matching b).Adj
         (false,(i,a)) (false,(j,c))
-    rw [left_induced]
-    exact (heppa.1 (i,a) (j,c)).symm
+    simpa [coverGraph, coverAdj, cliqueUnion] using
+      (heppa.1 (i,a) (j,c)).symm
   · change H.Adj (e (i,a)) (label (j,c)).val ↔
       (coverGraph s t .matching b).Adj
         (false,(i,a)) (true,(j,c))
@@ -75,9 +75,12 @@ theorem eppa_singleton_host_is_uniform_cover {s t : ℕ}
   · change H.Adj (label (i,a)).val (label (j,c)).val ↔
       (coverGraph s t .matching b).Adj
         (true,(i,a)) (true,(j,c))
-    rw [right_induced]
-    change ((outsideInducedGraph H e).comap label).Adj (i,a) (j,c) ↔
-      (cliqueUnion s t).Adj (i,a) (j,c)
-    rw [hOutside]
+    have hRight :
+        H.Adj (label (i,a)).val (label (j,c)).val ↔
+          (cliqueUnion s t).Adj (i,a) (j,c) := by
+      change ((outsideInducedGraph H e).comap label).Adj (i,a) (j,c) ↔
+        (cliqueUnion s t).Adj (i,a) (j,c)
+      rw [hOutside]
+    simpa [coverGraph, coverAdj, cliqueUnion] using hRight
 
 end EPPAIII.CliqueCovers
