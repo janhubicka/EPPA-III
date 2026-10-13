@@ -394,3 +394,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_wagner_outside_swapCoordinates
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_two_two_edge_count
 #print axioms EPPAIII.CliqueCovers.eppa_wagner_outside_is_opposite_matching
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_right_degree
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_regular_forces_equal_mask_cards
