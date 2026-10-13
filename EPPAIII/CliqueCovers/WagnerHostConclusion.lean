@@ -40,6 +40,7 @@ def wagnerCanonicalAdj (x y : CoverVertex 2 2) : Prop :=
 def wagnerCanonicalGraph : SimpleGraph (CoverVertex 2 2) where
   Adj := wagnerCanonicalAdj
   symm := by
+    constructor
     intro x y h
     rcases h with ⟨hx,hy,hi,ha⟩ | ⟨hx,hy,hi,ha⟩ |
       ⟨hx,hy,hcross⟩ | ⟨hx,hy,hcross⟩
@@ -48,6 +49,7 @@ def wagnerCanonicalGraph : SimpleGraph (CoverVertex 2 2) where
     · exact Or.inr (Or.inr (Or.inr ⟨hy,hx,hcross⟩))
     · exact Or.inr (Or.inr (Or.inl ⟨hy,hx,hcross⟩))
   loopless := by
+    constructor
     intro x h
     rcases h with ⟨_,_,_,ha⟩ | ⟨_,_,hi,_⟩ |
       ⟨hf,ht,_⟩ | ⟨ht,hf,_⟩
