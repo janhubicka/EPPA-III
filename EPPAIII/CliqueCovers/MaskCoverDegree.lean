@@ -81,11 +81,13 @@ theorem maskCoverGraph_right_degree {s t : ℕ}
     ext z
     rcases z with ⟨side,⟨i,b⟩⟩
     cases side
-    · change maskCoverAdj mask (true,(j,a)) (false,(i,b)) ↔
+    · simp only [SimpleGraph.mem_neighborFinset]
+      change maskCoverAdj mask (true,(j,a)) (false,(i,b)) ↔
         (false,(i,b)) ∈ T ∪ F
       simp [T,F,maskCoverAdj,Finset.mem_product,
         Finset.mem_union,Finset.mem_erase,eq_comm,ne_comm]
-    · change maskCoverAdj mask (true,(j,a)) (true,(i,b)) ↔
+    · simp only [SimpleGraph.mem_neighborFinset]
+      change maskCoverAdj mask (true,(j,a)) (true,(i,b)) ↔
         (true,(i,b)) ∈ T ∪ F
       simp [T,F,maskCoverAdj,Finset.mem_product,
         Finset.mem_union,Finset.mem_erase,eq_comm,ne_comm,
