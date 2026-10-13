@@ -365,3 +365,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.squareChoiceOfPair_bijective
 #print axioms EPPAIII.CliqueCovers.squareChoiceEquiv
 #print axioms EPPAIII.CliqueCovers.squareChoiceEquiv_apply
+#print axioms EPPAIII.CliqueCovers.outsideIndexMask
+#print axioms EPPAIII.CliqueCovers.outsideIndexMask_eq_of_closed_twins
+#print axioms EPPAIII.CliqueCovers.outsideIndexMask_outer_lift
+#print axioms EPPAIII.CliqueCovers.eppa_outer_mask_orbit_realized
