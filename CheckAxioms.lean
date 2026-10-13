@@ -368,3 +368,16 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.singleton_mask_family_reindex
 #print axioms EPPAIII.CliqueCovers.cosingleton_mask_family_reindex
 #print axioms EPPAIII.CliqueCovers.full_mask_family_four_normal_forms
+#print axioms EPPAIII.CliqueCovers.wagner_square_choice_saturation
+#print axioms EPPAIII.CliqueCovers.saturatedWagnerOutsideEquiv
+#print axioms EPPAIII.CliqueCovers.saturatedWagnerOutsideEquiv_choice
+#print axioms EPPAIII.CliqueCovers.saturatedWagnerOutsideEquiv_first
+#print axioms EPPAIII.CliqueCovers.saturatedWagnerOutsideEquiv_second
+#print axioms EPPAIII.CliqueCovers.squareProfile_flipFirst
+#print axioms EPPAIII.CliqueCovers.squareProfile_flipSecond
+#print axioms EPPAIII.CliqueCovers.squareProfile_swapCoordinates
+#print axioms EPPAIII.CliqueCovers.saturatedWagnerOutsideEquiv_profile
+#print axioms EPPAIII.CliqueCovers.eppa_wagner_outside_generator
+#print axioms EPPAIII.CliqueCovers.eppa_wagner_outside_flipFirst
+#print axioms EPPAIII.CliqueCovers.eppa_wagner_outside_flipSecond
+#print axioms EPPAIII.CliqueCovers.eppa_wagner_outside_swapCoordinates
