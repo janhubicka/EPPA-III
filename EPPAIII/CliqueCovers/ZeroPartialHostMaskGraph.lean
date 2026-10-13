@@ -165,8 +165,12 @@ theorem zero_partial_outside_masks_uniform_of_transitive {s t : ℕ}
         (zeroPartialOutsideMask H e anchor label) :=
     zero_partial_host_eq_maskCoverGraph
       H e he hNoPartial anchor label hFibre hOutside
-  rw [hEqGraph] at hReg
+  have hRegMask :
+      (maskCoverGraph s t
+        (zeroPartialOutsideMask H e anchor label)).IsRegularOfDegree d := by
+    intro v
+    simpa only [← hEqGraph] using hReg v
   exact maskCoverGraph_regular_forces_equal_mask_cards
-    (zeroPartialOutsideMask H e anchor label) ht hReg i j
+    (zeroPartialOutsideMask H e anchor label) ht hRegMask i j
 
 end EPPAIII.CliqueCovers
