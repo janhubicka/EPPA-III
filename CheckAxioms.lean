@@ -340,3 +340,15 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.outsideTwinQuotientClasses_card
 #print axioms EPPAIII.CliqueCovers.outside_cliqueUnion_le_of_twin_fibre_label
 #print axioms EPPAIII.CliqueCovers.outside_eq_cliqueUnion_of_transitive_twin_fibres
+#print axioms EPPAIII.CliqueCovers.squareCornerGraph
+#print axioms EPPAIII.CliqueCovers.squareCornerGraph_edge_count
+#print axioms EPPAIII.CliqueCovers.squareCornerGraph_two_edges
+#print axioms EPPAIII.CliqueCovers.squareOppositeMatching_edge_count
+#print axioms EPPAIII.CliqueCovers.squareFlipFirst
+#print axioms EPPAIII.CliqueCovers.squareFlipSecond
+#print axioms EPPAIII.CliqueCovers.squareSwapCoordinates
+#print axioms EPPAIII.CliqueCovers.squareAction_side_transitive
+#print axioms EPPAIII.CliqueCovers.squareAction_opposite_transitive
+#print axioms EPPAIII.CliqueCovers.squareAction_graphAut
+#print axioms EPPAIII.CliqueCovers.square_invariant_graph_two_parameters
+#print axioms EPPAIII.CliqueCovers.square_invariant_two_edges_is_opposite_matching
