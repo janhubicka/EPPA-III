@@ -87,7 +87,10 @@ theorem saturatedWagnerOutsideEquiv_first
         (saturatedWagnerOutsideEquiv H e heppa hOrder
           w hw hBoth x).val) 1 = Finset.univ := by
     have hPos := congrArg Sigma.fst hChoice
-    simpa [squareChoiceOfPair] using hPos
+    change kPositions (finiteNeighbourhoodProfile H e
+      (saturatedWagnerOutsideEquiv H e heppa hOrder
+        w hw hBoth x).val) 1 = Finset.univ at hPos
+    exact hPos
   have hSlice := congrArg
     (fun C : Σ R : Finset (Fin 2),
       ∀ i : Fin 2, i ∈ R → Finset (Fin 2) =>
@@ -117,7 +120,10 @@ theorem saturatedWagnerOutsideEquiv_second
         (saturatedWagnerOutsideEquiv H e heppa hOrder
           w hw hBoth x).val) 1 = Finset.univ := by
     have hPos := congrArg Sigma.fst hChoice
-    simpa [squareChoiceOfPair] using hPos
+    change kPositions (finiteNeighbourhoodProfile H e
+      (saturatedWagnerOutsideEquiv H e heppa hOrder
+        w hw hBoth x).val) 1 = Finset.univ at hPos
+    exact hPos
   have hSlice := congrArg
     (fun C : Σ R : Finset (Fin 2),
       ∀ i : Fin 2, i ∈ R → Finset (Fin 2) =>
