@@ -119,3 +119,4 @@ import EPPAIII.CliqueCovers.ZeroPartialMaskCoverage
 import EPPAIII.CliqueCovers.MaskCoverDegree
 import EPPAIII.CliqueCovers.MaskCoverNormalForms
 import EPPAIII.CliqueCovers.MaskCoverReindex
+import EPPAIII.CliqueCovers.ProperPartialPositions
