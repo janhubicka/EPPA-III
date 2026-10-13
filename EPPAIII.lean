@@ -111,3 +111,4 @@ import EPPAIII.CliqueCovers.FullMaskNormalForms
 import EPPAIII.CliqueCovers.WagnerOutsideLabels
 import EPPAIII.CliqueCovers.WagnerProfileGenerators
 import EPPAIII.CliqueCovers.WagnerOutsideAction
+import EPPAIII.CliqueCovers.WagnerOutsideMatching
