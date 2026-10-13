@@ -87,7 +87,8 @@ theorem outsideIndexMask_outer_lift {s t : ℕ} {W : Type*}
       | simpa only [Equiv.toEmbedding_apply] using hji
       | simpa only [Equiv.toEmbedding_apply] using hji.symm
     have hNew' : H.Adj (q u) (e (p j,a)) := by
-      simpa only [outerPermutation] using hNew
+      change H.Adj (q u) (e (p j,a)) at hNew
+      exact hNew
     exact hpj ▸ hNew'
 
 /-- Every mask in the full permutation orbit of an outside
