@@ -91,7 +91,7 @@ theorem maskCoverGraph_right_degree {s t : ℕ}
         (true,(i,b)) ∈ T ∪ F
       simp [T,F,maskCoverAdj,Finset.mem_product,
         Finset.mem_union,Finset.mem_erase,eq_comm,ne_comm,
-        and_comm,and_left_comm,and_assoc]
+        and_comm,and_left_comm,and_assoc] <;> tauto
   have hDisjoint : Disjoint T F := by
     apply Finset.disjoint_left.mpr
     intro z hzT hzF
