@@ -170,16 +170,26 @@ theorem square_invariant_graph_two_parameters
     simp [squareCornerAdj]
   by_cases hOpposite : squareOppositeStatus x y
   · have h := hOpp x y hOpposite
+    have hNoSide :
+        ¬ ((x.1 = y.1 ∧ x.2 ≠ y.2) ∨
+           (x.1 ≠ y.1 ∧ x.2 = y.2)) := by
+      rintro (⟨heq,_⟩ | ⟨_,heq⟩)
+      · exact hOpposite.1 heq
+      · exact hOpposite.2 heq
     simpa [squareCornerAdj, squareOppositeStatus,
-      hOpposite] using h
+      hOpposite.1, hOpposite.2, hNoSide] using h
   · have hIsSide : squareSideStatus x y := by
       rcases x with ⟨x₁,x₂⟩
       rcases y with ⟨y₁,y₂⟩
       cases x₁ <;> cases x₂ <;> cases y₁ <;> cases y₂ <;>
         simp_all [squareSideStatus, squareOppositeStatus]
     have h := hSide x y hIsSide
-    simpa [squareCornerAdj, squareSideStatus,
-      squareOppositeStatus, hOpposite, hIsSide] using h
+    have hNoOpp :
+        ¬ (x.1 ≠ y.1 ∧ x.2 ≠ y.2) := hOpposite
+    have hYesSide :
+        (x.1 = y.1 ∧ x.2 ≠ y.2) ∨
+        (x.1 ≠ y.1 ∧ x.2 = y.2) := hIsSide
+    simpa [squareCornerAdj, hNoOpp, hYesSide] using h
 
 /-- If the square action preserves a graph with two edges, the graph
 is exactly the opposite-corner matching. -/
