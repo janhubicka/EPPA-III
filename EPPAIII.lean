@@ -95,3 +95,4 @@ import EPPAIII.CliqueCovers.SingletonCrossOrbit
 import EPPAIII.CliqueCovers.SingletonInitialUniform
 import EPPAIII.CliqueCovers.SingletonCrossConnections
 import EPPAIII.CliqueCovers.WagnerSquareOrbits
+import EPPAIII.CliqueCovers.WagnerSquareAction
