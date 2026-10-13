@@ -52,6 +52,15 @@ def maskCoverGraph (s t : ℕ)
     · exact Bool.false_ne_true (hf.symm.trans ht)
     · exact Bool.false_ne_true (hf.symm.trans ht)
 
+/-- Concrete decidability of the complete/empty block adjacency. -/
+instance maskCoverGraph_decidableAdj {s t : ℕ}
+    (mask : Fin s → Finset (Fin s)) :
+    DecidableRel (maskCoverGraph s t mask).Adj := by
+  intro x y
+  change Decidable (maskCoverAdj mask x y)
+  unfold maskCoverAdj
+  infer_instance
+
 /-- Every outside vertex in clique j has t−1 internal neighbours
 and exactly t neighbours per selected base clique in mask(j). -/
 theorem maskCoverGraph_right_degree {s t : ℕ}
@@ -71,10 +80,16 @@ theorem maskCoverGraph_right_degree {s t : ℕ}
       (maskCoverGraph s t mask).neighborFinset (true,(j,a)) = T ∪ F := by
     ext z
     rcases z with ⟨side,⟨i,b⟩⟩
-    cases side <;>
-      simp [T,F,maskCoverGraph,maskCoverAdj,
-        SimpleGraph.mem_neighborFinset,Finset.mem_product,
+    cases side
+    · change maskCoverAdj mask (true,(j,a)) (false,(i,b)) ↔
+        (false,(i,b)) ∈ T ∪ F
+      simp [T,F,maskCoverAdj,Finset.mem_product,
         Finset.mem_union,Finset.mem_erase,eq_comm,ne_comm]
+    · change maskCoverAdj mask (true,(j,a)) (true,(i,b)) ↔
+        (true,(i,b)) ∈ T ∪ F
+      simp [T,F,maskCoverAdj,Finset.mem_product,
+        Finset.mem_union,Finset.mem_erase,eq_comm,ne_comm,
+        and_comm,and_left_comm,and_assoc]
   have hDisjoint : Disjoint T F := by
     apply Finset.disjoint_left.mpr
     intro z hzT hzF
