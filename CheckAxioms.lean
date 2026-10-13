@@ -352,3 +352,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.squareAction_graphAut
 #print axioms EPPAIII.CliqueCovers.square_invariant_graph_two_parameters
 #print axioms EPPAIII.CliqueCovers.square_invariant_two_edges_is_opposite_matching
+#print axioms EPPAIII.CliqueCovers.singleton_mask_family_reindex
+#print axioms EPPAIII.CliqueCovers.cosingleton_mask_family_reindex
+#print axioms EPPAIII.CliqueCovers.full_mask_family_four_normal_forms
