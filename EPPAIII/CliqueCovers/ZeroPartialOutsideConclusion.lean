@@ -28,7 +28,7 @@ namespace EPPAIII.CliqueCovers
 
 /-- The no-partial-neighbourhood case automatically gives an
 outside decomposition into s complete graphs of order t. -/
-theorem zero_partial_outside_eq_cliqueUnion_of_noncluster {s t : ℕ}
+theorem zero_partial_outside_twin_fibres_of_noncluster {s t : ℕ}
     {W : Type*} [Fintype W]
     (H : SimpleGraph W) [DecidableRel H.Adj]
     (e : (Fin s × Fin t) ↪ W)
@@ -42,6 +42,8 @@ theorem zero_partial_outside_eq_cliqueUnion_of_noncluster {s t : ℕ}
     (hTransitive : HasTransitiveGraphAutomorphisms H)
     (hNonCluster : ¬ EPPAIII.BlockSystems.IsClusterGraph H) :
     ∃ label : (Fin s × Fin t) ≃ {w : W // w ∈ finiteOutside e},
+      (∀ (i : Fin s) (a b : Fin t),
+        SameClosedNeighbourhood H (label (i,a)).val (label (i,b)).val) ∧
       (outsideInducedGraph H e).comap label = cliqueUnion s t := by
   classical
   let i : Fin s := ⟨0,hs⟩
@@ -65,8 +67,31 @@ theorem zero_partial_outside_eq_cliqueUnion_of_noncluster {s t : ℕ}
   obtain ⟨label,hFibre⟩ :=
     exists_outside_twin_fibre_label
       H e he hNoPartial a hAllSelected hOutCount fibre
-  refine ⟨label, ?_⟩
+  refine ⟨label, hFibre, ?_⟩
   exact outside_eq_cliqueUnion_of_transitive_twin_fibres
     H e he hs ht hTransitive label hFibre
+
+
+/-- The previously verified outside-clique conclusion, kept with its
+original statement and name for downstream Lean clients. -/
+theorem zero_partial_outside_eq_cliqueUnion_of_noncluster {s t : ℕ}
+    {W : Type*} [Fintype W]
+    (H : SimpleGraph W) [DecidableRel H.Adj]
+    (e : (Fin s × Fin t) ↪ W)
+    (he : IsInducedGraphEmbedding (cliqueUnion s t) H e)
+    (hNoPartial : ∀ w : W, w ∉ Set.range e →
+      ∀ j : Fin s,
+        (profileSlice (finiteNeighbourhoodProfile H e w) j).card = 0 ∨
+        (profileSlice (finiteNeighbourhoodProfile H e w) j).card = t)
+    (hs : 0 < s) (ht : 0 < t)
+    (hOrder : Fintype.card W = 2 * s * t)
+    (hTransitive : HasTransitiveGraphAutomorphisms H)
+    (hNonCluster : ¬ EPPAIII.BlockSystems.IsClusterGraph H) :
+    ∃ label : (Fin s × Fin t) ≃ {w : W // w ∈ finiteOutside e},
+      (outsideInducedGraph H e).comap label = cliqueUnion s t := by
+  obtain ⟨label,_,hGraph⟩ :=
+    zero_partial_outside_twin_fibres_of_noncluster
+      H e he hNoPartial hs ht hOrder hTransitive hNonCluster
+  exact ⟨label,hGraph⟩
 
 end EPPAIII.CliqueCovers

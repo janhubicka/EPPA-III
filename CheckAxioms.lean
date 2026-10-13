@@ -397,3 +397,9 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph
 #print axioms EPPAIII.CliqueCovers.saturatedWagner_cross_iff
 #print axioms EPPAIII.CliqueCovers.eppa_two_partial_host_is_wagner
+#print axioms EPPAIII.CliqueCovers.zero_partial_outside_twin_fibres_of_noncluster
+#print axioms EPPAIII.CliqueCovers.outsideMaskFamily
+#print axioms EPPAIII.CliqueCovers.outside_mask_in_twin_family
+#print axioms EPPAIII.CliqueCovers.eppa_outside_twin_mask_family_covers_orbit
+#print axioms EPPAIII.CliqueCovers.eppa_outside_mask_family_covers_all_fixed_size
+#print axioms EPPAIII.CliqueCovers.eppa_outside_twin_mask_family_four_forms
