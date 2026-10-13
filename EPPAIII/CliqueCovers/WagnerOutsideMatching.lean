@@ -27,7 +27,7 @@ namespace EPPAIII.CliqueCovers
 
 /-- The designated 2K₂ has exactly two edges. -/
 theorem cliqueUnion_two_two_edge_count :
-    (cliqueUnion 2 2).edgeFinset.card = 2 := by
+    (cliqueUnion 2 2).edgeSet.ncard = 2 := by
   classical
   have hReg : (cliqueUnion 2 2).IsRegularOfDegree 1 :=
     cliqueUnion_regular (by decide)
@@ -40,7 +40,9 @@ theorem cliqueUnion_two_two_edge_count :
         exact hReg v
       _ = 4 := by decide
   have hDouble := (cliqueUnion 2 2).sum_degrees_eq_twice_card_edges
-  omega
+  have hEdges : (cliqueUnion 2 2).edgeFinset.card = 2 := by omega
+  simpa only [← SimpleGraph.card_edgeSet,
+    Set.fintypeCard_eq_ncard] using hEdges
 
 /-- If the host is vertex-transitive and its double-partial
 profile orbit saturates the complementary half, the outside
@@ -91,19 +93,31 @@ theorem eppa_wagner_outside_is_opposite_matching
         (label (squareSwapCoordinates y)).val
     rw [← hCCompat x, ← hCCompat y]
     exact hQC (label x) (label y)
+  let phi : (Fin 2 × Fin 2) ≃ Bool × Bool :=
+    Equiv.prodCongr finTwoEquiv finTwoEquiv
+  let labelFin : (Fin 2 × Fin 2) ≃ {u : W // u ∈ finiteOutside e} :=
+    phi.trans label
   have hIntrinsic :
-      B.edgeSet.ncard = (cliqueUnion 2 2).edgeSet.ncard :=
+      ((outsideInducedGraph H e).comap labelFin).edgeSet.ncard =
+        (cliqueUnion 2 2).edgeSet.ncard :=
     arbitrary_host_outside_edge_count_eq_base
-      (cliqueUnion 2 2) H e heppa.1 label hTransitive
-  have hEdges : B.edgeFinset.card = 2 := by
-    have hBaseIntrinsic :
-        (cliqueUnion 2 2).edgeSet.ncard = 2 := by
-      simpa only [← SimpleGraph.card_edgeSet,
-        Set.fintypeCard_eq_ncard] using cliqueUnion_two_two_edge_count
-    have hEdgeIntrinsic : B.edgeSet.ncard = 2 :=
-      hIntrinsic.trans hBaseIntrinsic
+      (cliqueUnion 2 2) H e heppa.1 labelFin hTransitive
+  let iso :
+      ((outsideInducedGraph H e).comap labelFin) ≃g B :=
+    { toEquiv := phi
+      map_rel_iff' := by
+        intro x y
+        rfl }
+  have hReindex :
+      ((outsideInducedGraph H e).comap labelFin).edgeFinset.card =
+        B.edgeFinset.card :=
+    iso.card_edgeFinset_eq
+  have hFinEdges :
+      ((outsideInducedGraph H e).comap labelFin).edgeFinset.card = 2 := by
+    have hIntrinsicTwo := hIntrinsic.trans cliqueUnion_two_two_edge_count
     simpa only [← SimpleGraph.card_edgeSet,
-      Set.fintypeCard_eq_ncard] using hEdgeIntrinsic
+      Set.fintypeCard_eq_ncard] using hIntrinsicTwo
+  have hEdges : B.edgeFinset.card = 2 := hReindex.symm.trans hFinEdges
   exact square_invariant_two_edges_is_opposite_matching
     B hA hB hC hEdges
 
