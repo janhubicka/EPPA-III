@@ -96,8 +96,8 @@ theorem full_mask_family_four_normal_forms {s r : ℕ}
   classical
   let i0 : Fin s := ⟨0, hs⟩
   have hrs : r ≤ s := by
-    rw [← hCard i0]
-    exact Finset.card_le_univ _
+    have h := Finset.card_le_univ (mask i0)
+    simpa [hCard i0] using h
   obtain hZero | hOne | hPrev | hAll :=
     choose_le_row_index_extreme s r hrs hBound
   · left
