@@ -50,6 +50,7 @@ C15 & Introduction after \texttt{def:generalizedcover} & Confirmed & Complement 
 C16 & Lemma 3.3, first claim (Claim 3.4) & Readability & One-block EPPA reasoning\\
 C17 & Lemma 3.3, final orbit assertion & Optional & Short two-point proof\\
 C18 & Claim 3.9, use in Lemma 3.7 & Paper-level + Lean & Saturated outside labels\\
+C19 & Lemma 3.7 and Proposition 3.23 & Lean frontier & Partition and Wagner classification\\
 \bottomrule
 \end{longtable}
 
@@ -600,10 +601,11 @@ is Lean-verified in \texttt{CliqueCovers/OutsideChoiceImage.lean}
 the outside-vertex type and the choice subtype is additionally
 verified in \texttt{CliqueCovers/OutsideChoiceEquiv.lean}
 (PR~\#92, merged with green CI).
-Identifying the one-partial choice space with
-\(\operatorname{Fin}(s)\times\operatorname{Fin}(t)\)
-and transporting the outside edge relation to the
-natural wreath action remain additional formal obligations.
+The subsequent singleton and co-singleton identification of this
+choice space with \(\operatorname{Fin}(s)\times\operatorname{Fin}(t)\),
+and transport of the outside relation under genuine EPPA lifts,
+were verified in the one-partial host classification
+(PR~\#128, merged green).
 The separate Wagner reduction in C05 is unaffected.
 
 
@@ -628,10 +630,11 @@ labelling of the actual outside graph is enough to apply
 this deduction by the Lean-verified
 \texttt{CliqueCovers/EquivariantWreathAssembly.lean}
 (PR~\#97, merged with green CI).
-Neither result by itself establishes that the \emph{actual}
-complementary half of the EPPA witness has the required
-natural wreath action. That transport and the final
-Wagner-corner graph assembly remain explicit obligations.
+These abstract results do not on their own imply equivariance
+of the \emph{actual} complementary half. This additional step is
+now formally proved for one-partial profiles (PR~\#128)
+and for the exceptional two-partial Wagner profiles
+(PRs~\#152 and \#155, all green and merged).
 No change to the author manuscript is proposed by this
 status note.
 
@@ -659,11 +662,13 @@ the saturated outside-choice graph are in
 \texttt{CliqueCovers/WreathProfileEquivariance.lean} and
 \texttt{CliqueCovers/OutsideLiftTransport.lean},
 respectively (both merged with passing Lean CI in PR~\#99).
-The further identification of one-position singleton and
-co-singleton choices with \([s]\times[t]\), compatibility with the
-natural wreath product in those coordinates, the complementary
-edge-count transport, and the zero-partial/Wagner final assembly
-remain outstanding. These conditions are not consequences of the
+These prerequisites are now proved in Lean, and the Wagner
+eight-vertex host classification is completed (PR~\#155).
+The zero-partial outside true-twin quotient, mask-orbit bound and
+finite normal forms are also verified (PRs~\#140, \#148,
+\#161 and \#163); their full-host assembly has passed
+on the development branch PR~\#162 but is not marked merged
+until its clean integration is green. These conditions are not consequences of the
 abstract edge-count theorem alone.
 
 
@@ -721,6 +726,47 @@ status is unchanged. This Lean completion does not validate
 the original manuscript's separate \(D_j\)-side
 regularity step in Claim~3.8 or simultaneous matching
 normalisation in Claim~3.10.
+
+
+\subsection*{C19. Lemma 3.7 and Proposition 3.23: current Lean proof boundary}
+\textbf{Location:} \texttt{thm:sKt\_witnesses} and its use in
+\texttt{prop:imprimitive\_summary}.
+
+The classification of a vertex-transitive double-sized EPPA
+witness for induced \(sK_t\), assuming \(s,t\ge 2\), is now
+completely Lean-verified in the one-partial cases
+(PR~\#128) and the two-partial \(s=t=2\) Wagner exception
+(PR~\#155). These proofs neither posit an outside clique
+partition nor assume coherent choices of extension automorphisms.
+
+For the non-cluster zero-partial case, the outside true-twin
+quotient has been labelled canonically and the complementary
+induced graph \(H\setminus G\cong sK_t\) established (PR~\#140);
+the actual EPPA action bounds the orbit of the full-clique
+neighbourhood mask and forces its size to be \(0,1,s-1\)
+or \(s\) (PR~\#148). The subsequent mask regularity and
+four-cover identification are individually verified in
+development PRs~\#162 and \#163, with clean integration
+under review. Do not claim full main-branch Lean
+certification for this case until those integrations pass.
+
+The complementary-half partition for the degenerate parameters
+\(s=1\) or \(t=1\) also has a separate Lean proof (PR~\#164,
+under integration). The complete low-parameter
+cross-block classification and the homogeneous-host case remain
+unverified in Lean. Lemma~3.12 (under its necessary
+non-homogeneity correction), the \(C_5\) and \(R_3\)
+exceptions, and Proposition~3.23 require additional
+formalization, despite available paper-level repairs.
+
+\textbf{Editorial action.}
+Keep the direct original proof prose frozen.
+The earlier minimal Claim~3.9 insertion and Wagner
+matrix correction remain the proposed localized substitutions;
+none has been accepted or applied to the author manuscript.
+Passing Lean CI for the alternative direct classification
+does not automatically validate every inference in Claims
+3.8--3.11 as currently written.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
