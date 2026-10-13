@@ -107,15 +107,21 @@ theorem squareAction_graphAut
   have ha :
       IsGraphAutomorphism B
         (if a then squareFlipFirst else Equiv.refl _) := by
-    cases a <;> simpa using (if _ : True then hId else hA)
+    cases a
+    · simpa using hId
+    · simpa using hA
   have hb :
       IsGraphAutomorphism B
         (if b then squareFlipSecond else Equiv.refl _) := by
-    cases b <;> simpa using (if _ : True then hId else hB)
+    cases b
+    · simpa using hId
+    · simpa using hB
   have hc :
       IsGraphAutomorphism B
         (if c then squareSwapCoordinates else Equiv.refl _) := by
-    cases c <;> simpa using (if _ : True then hId else hSwap)
+    cases c
+    · simpa using hId
+    · simpa using hSwap
   exact graphAutomorphism_trans B _ _ hc
     (graphAutomorphism_trans B _ _ ha hb)
 
@@ -166,14 +172,14 @@ theorem square_invariant_graph_two_parameters
   · have h := hOpp x y hOpposite
     simpa [squareCornerAdj, squareOppositeStatus,
       hOpposite] using h
-  · have hSide : squareSideStatus x y := by
+  · have hIsSide : squareSideStatus x y := by
       rcases x with ⟨x₁,x₂⟩
       rcases y with ⟨y₁,y₂⟩
       cases x₁ <;> cases x₂ <;> cases y₁ <;> cases y₂ <;>
         simp_all [squareSideStatus, squareOppositeStatus]
-    have h := hSide x y hSide
+    have h := hSide x y hIsSide
     simpa [squareCornerAdj, squareSideStatus,
-      squareOppositeStatus, hOpposite, hSide] using h
+      squareOppositeStatus, hOpposite, hIsSide] using h
 
 /-- If the square action preserves a graph with two edges, the graph
 is exactly the opposite-corner matching. -/
@@ -188,11 +194,16 @@ theorem square_invariant_two_edges_is_opposite_matching
   classical
   obtain ⟨side,opposite,hEq⟩ :=
     square_invariant_graph_two_parameters B hA hB hSwap
-  subst B
+  have hIntrinsic : B.edgeSet.ncard = 2 := by
+    simpa only [← SimpleGraph.card_edgeSet,
+      Set.fintypeCard_eq_ncard] using hEdges
+  rw [hEq] at hIntrinsic
+  have hPattern :
+      (squareCornerGraph side opposite).edgeFinset.card = 2 := by
+    simpa only [← SimpleGraph.card_edgeSet,
+      Set.fintypeCard_eq_ncard] using hIntrinsic
   obtain ⟨hs,ho⟩ :=
-    squareCornerGraph_two_edges side opposite hEdges
-  subst side
-  subst opposite
-  rfl
+    squareCornerGraph_two_edges side opposite hPattern
+  simpa [hs,ho] using hEq
 
 end EPPAIII.CliqueCovers
