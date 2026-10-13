@@ -106,3 +106,4 @@ import EPPAIII.CliqueCovers.WagnerSquareAction
 import EPPAIII.CliqueCovers.TwinQuotientFibres
 import EPPAIII.CliqueCovers.OutsideTwinFibreLabel
 import EPPAIII.CliqueCovers.ZeroPartialOutsideConclusion
+import EPPAIII.CliqueCovers.WagnerSquareChoiceLabels
