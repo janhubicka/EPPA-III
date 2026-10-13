@@ -90,3 +90,4 @@ import EPPAIII.CliqueCovers.SingletonTransitiveConclusion
 import EPPAIII.CliqueCovers.CoSingletonOutsideAction
 import EPPAIII.CliqueCovers.CoSingletonOutsideRigidity
 import EPPAIII.CliqueCovers.CoSingletonTransitiveConclusion
+import EPPAIII.CliqueCovers.CoSingletonInitialUniform

@@ -321,3 +321,4 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_cosingleton_outside_has_natural_wreath_action
 #print axioms EPPAIII.CliqueCovers.eppa_cosingleton_outside_eq_cliqueUnion_of_equal_edges
 #print axioms EPPAIII.CliqueCovers.eppa_cosingleton_outside_eq_cliqueUnion_of_transitive
+#print axioms EPPAIII.CliqueCovers.eppa_unique_cosingleton_other_slices_uniform
