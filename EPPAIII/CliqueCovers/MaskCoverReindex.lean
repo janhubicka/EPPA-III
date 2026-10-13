@@ -44,9 +44,21 @@ theorem maskCoverGraph_comap_rightCliqueReindex {s t : ℕ}
   apply propext
   rcases x with ⟨bx,⟨i,a⟩⟩
   rcases y with ⟨cy,⟨j,b⟩⟩
-  cases bx <;> cases cy <;>
-    simp [rightCliqueReindex,maskCoverGraph,maskCoverAdj,
-      Equiv.apply_eq_iff_eq,eq_comm,ne_comm]
+  cases bx <;> cases cy
+  · change maskCoverAdj mask (false,(i,a)) (false,(j,b)) ↔
+        maskCoverAdj (fun k => mask (p k)) (false,(i,a)) (false,(j,b))
+    simp [maskCoverAdj]
+  · change maskCoverAdj mask (false,(i,a)) (true,(p j,b)) ↔
+        maskCoverAdj (fun k => mask (p k)) (false,(i,a)) (true,(j,b))
+    simp [maskCoverAdj]
+  · change maskCoverAdj mask (true,(p i,a)) (false,(j,b)) ↔
+        maskCoverAdj (fun k => mask (p k)) (true,(i,a)) (false,(j,b))
+    simp [maskCoverAdj]
+  · change maskCoverAdj mask (true,(p i,a)) (true,(p j,b)) ↔
+        maskCoverAdj (fun k => mask (p k)) (true,(i,a)) (true,(j,b))
+    simp only [maskCoverAdj, Bool.true_eq_false, Bool.false_eq_true,
+      false_and, false_or, true_and, and_false,
+      p.injective.eq_iff]
 
 /-- A family in any of the four normal forms is a uniform
 generalized clique cover, after reindexing only the outside half.
