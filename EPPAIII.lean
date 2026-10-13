@@ -121,3 +121,5 @@ import EPPAIII.CliqueCovers.MaskCoverNormalForms
 import EPPAIII.CliqueCovers.MaskCoverReindex
 import EPPAIII.CliqueCovers.ZeroPartialHostMaskGraph
 import EPPAIII.CliqueCovers.ZeroPartialFullCover
+import EPPAIII.CliqueCovers.ProperPartialPositions
+import EPPAIII.CliqueCovers.NonclusterEqualCliqueConclusion

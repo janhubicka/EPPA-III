@@ -416,3 +416,9 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.zero_partial_host_eq_maskCoverGraph
 #print axioms EPPAIII.CliqueCovers.zero_partial_outside_masks_uniform_of_transitive
 #print axioms EPPAIII.CliqueCovers.eppa_zero_partial_noncluster_host_is_uniform_cover
+#print axioms EPPAIII.CliqueCovers.properPartialPositions
+#print axioms EPPAIII.CliqueCovers.mem_properPartialPositions
+#print axioms EPPAIII.CliqueCovers.eppa_two_proper_partial_positions_exception
+#print axioms EPPAIII.CliqueCovers.unique_proper_partial_gives_unique_k
+#print axioms EPPAIII.CliqueCovers.eppa_proper_partial_trichotomy
+#print axioms EPPAIII.CliqueCovers.eppa_noncluster_equal_clique_full_classification
