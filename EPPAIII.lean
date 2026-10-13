@@ -110,3 +110,7 @@ import EPPAIII.CliqueCovers.WagnerSquareChoiceLabels
 import EPPAIII.CliqueCovers.FullMaskNormalForms
 import EPPAIII.CliqueCovers.OutsideMaskAction
 import EPPAIII.CliqueCovers.ActualMaskOrbitBudget
+import EPPAIII.CliqueCovers.WagnerOutsideLabels
+import EPPAIII.CliqueCovers.WagnerProfileGenerators
+import EPPAIII.CliqueCovers.WagnerOutsideAction
+import EPPAIII.CliqueCovers.WagnerOutsideMatching
