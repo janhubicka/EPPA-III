@@ -101,7 +101,7 @@ theorem squareChoiceOfPair_bijective :
     squareChoiceOfPair).2
   constructor
   · exact squareChoiceOfPair_injective
-  · simpa [squareChoiceSpace_card]
+  · norm_num [profileChoiceSpace_card]
 
 /-- Canonical four-corner equivalence, independent of any EPPA
 extension choices. -/
