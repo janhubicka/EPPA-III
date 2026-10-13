@@ -4,7 +4,7 @@
 \geometry{margin=26mm}
 \title{EPPA--III: suggested manuscript corrections}
 \author{Independent validation register}
-\date{12 October 2026}
+\date{13 October 2026}
 \begin{document}
 \maketitle
 
@@ -669,29 +669,58 @@ abstract edge-count theorem alone.
 
 
 
-\paragraph{One-partial-coordinate completion frontier (12 October 2026).}
-The formalization now provides the canonical indexing maps for
-both singleton and co-singleton choices in
-\texttt{SingletonChoiceLabels.lean} (PR~\#102) and
-\texttt{CoSingletonChoiceLabels.lean} (PR~\#105),
-with the first exact natural wreath action in
-\texttt{SingletonChoiceWreath.lean} (PR~\#106).
-The equal-internal-edge-count lemma for an arbitrary finite
-vertex-transitive host, with a chosen embedding of half its vertices
-and an explicit bijection of the complementary half, is proved in
-\texttt{ArbitraryHostHalfEdges.lean} (PR~\#110).
-The additional actual-outside action and graph-identification
-modules are awaiting consolidation and a final Lean check
-(PR~\#114 for the singleton outside clique conclusion,
-PRs~\#112--\#113 for the co-singleton continuation).
-These results must be distinguished from the \emph{full}
-generalised clique-cover conclusion: after identifying
-\(H\setminus G\cong sK_t\), one must still derive the
-uniform diagonal matching/co-matching and off-diagonal
-complete/empty cross-block patterns. The zero-partial and
-Wagner cases and the low-parameter/homogeneous reductions
-also remain separate formal obligations. No change to the
-author source is authorized by these validation updates.
+\paragraph{One-partial-coordinate case completed in Lean (13 October 2026).}
+The canonical singleton and omitted-point co-singleton coordinate
+labellings, their genuine EPPA-induced wreath actions, and the
+arbitrary-host equal-half edge-count identity have now been
+assembled into a complete graph classification for both
+one-partial-coordinate cases. The original source is frozen.
+The final merged, green-CI PR~\#128, with all
+theorems in \texttt{CheckAxioms.lean}, includes:
+\[
+  \begin{aligned}
+  &s,t\ge2,\quad |H|=2st,\quad
+    H\text{ vertex-transitive and EPPA for induced }sK_t;\\
+  &\text{one unique size-1 coordinate}\quad
+    \Longrightarrow\quad
+    H\cong\operatorname{coverGraph}(s,t,M,b),\\
+  &\text{one unique size-}(t-1)\text{ coordinate}\quad
+    \Longrightarrow\quad
+    H\cong\operatorname{coverGraph}(s,t,\overline M,b),
+  \end{aligned}
+\]
+where \(b\in\{0,1\}\) is one common off-diagonal block
+parameter. The equivalence to the corresponding generalised
+clique cover preserves the distinguished induced copy of \(G\).
+The complementary half \(H\setminus G\cong sK_t\) is a
+\emph{conclusion}, not a hypothesis. No coherent choice of
+EPPA lifts is assumed. The relevant final modules are
+\texttt{SingletonCoverConclusion.lean} and
+\texttt{CoSingletonCoverConclusion.lean}, together with their
+supporting cross-orbit and cross-adjacency modules.
+
+\paragraph{Residual boundaries for Lemma 3.7.}
+The proof for two partial coordinates still needs the
+four-corner square-action orbit classification and final
+identification with the Wagner graph. The all-empty/full
+(no-partial-coordinate) branch still needs the quotient-class
+orbit and uniform cross-matrix assembly, although the exact
+true-twin class sizes and the selected/outside class
+separation are already verified. Low parameters
+\(s=1\), \(t=1\) and homogeneous hosts require independent
+formalization. The supporting finite Wagner square count
+and zero-partial whole-index-mask orbit arithmetic are being
+worked on separately. These facts are \emph{not} yet the
+full Lemma~3.7, let alone Section~3.
+
+\paragraph{Editorial status.}
+The proposed localized Claim~3.9 orbit replacement and
+Wagner paragraph remain available as the least intrusive
+suggestions for the frozen manuscript. Their review
+status is unchanged. This Lean completion does not validate
+the original manuscript's separate \(D_j\)-side
+regularity step in Claim~3.8 or simultaneous matching
+normalisation in Claim~3.10.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
