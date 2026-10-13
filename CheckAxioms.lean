@@ -340,3 +340,4 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.outsideTwinQuotientClasses_card
 #print axioms EPPAIII.CliqueCovers.outside_cliqueUnion_le_of_twin_fibre_label
 #print axioms EPPAIII.CliqueCovers.outside_eq_cliqueUnion_of_transitive_twin_fibres
+#print axioms EPPAIII.CliqueCovers.exists_outside_twin_fibre_label
