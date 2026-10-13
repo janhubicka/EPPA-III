@@ -413,3 +413,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.rightCliqueReindex
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_comap_rightCliqueReindex
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_four_forms_up_to_right_reindex
+#print axioms EPPAIII.CliqueCovers.zero_partial_host_eq_maskCoverGraph
+#print axioms EPPAIII.CliqueCovers.zero_partial_outside_masks_uniform_of_transitive
+#print axioms EPPAIII.CliqueCovers.eppa_zero_partial_noncluster_host_is_uniform_cover
