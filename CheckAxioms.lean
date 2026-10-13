@@ -368,3 +368,9 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.singleton_mask_family_reindex
 #print axioms EPPAIII.CliqueCovers.cosingleton_mask_family_reindex
 #print axioms EPPAIII.CliqueCovers.full_mask_family_four_normal_forms
+#print axioms EPPAIII.CliqueCovers.outsideIndexMask
+#print axioms EPPAIII.CliqueCovers.outsideIndexMask_eq_of_closed_twins
+#print axioms EPPAIII.CliqueCovers.outsideIndexMask_outer_lift
+#print axioms EPPAIII.CliqueCovers.eppa_outer_mask_orbit_realized
+#print axioms EPPAIII.CliqueCovers.eppa_actual_mask_orbit_le_outside_classes
+#print axioms EPPAIII.CliqueCovers.eppa_actual_mask_card_extreme
