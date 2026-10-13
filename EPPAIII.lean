@@ -100,3 +100,5 @@ import EPPAIII.CliqueCovers.CoSingletonCrossConnections
 import EPPAIII.CliqueCovers.CoSingletonCoverConclusion
 import EPPAIII.CliqueCovers.FullMaskOrbit
 import EPPAIII.CliqueCovers.OutsideTwinIndexBudget
+import EPPAIII.CliqueCovers.WagnerSquareOrbits
+import EPPAIII.CliqueCovers.WagnerSquareAction
