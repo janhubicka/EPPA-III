@@ -397,3 +397,4 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph
 #print axioms EPPAIII.CliqueCovers.saturatedWagner_cross_iff
 #print axioms EPPAIII.CliqueCovers.eppa_two_partial_host_is_wagner
+#print axioms EPPAIII.CliqueCovers.zero_partial_outside_twin_fibres_of_noncluster
