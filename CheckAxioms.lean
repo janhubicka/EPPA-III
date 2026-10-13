@@ -368,3 +368,11 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.singleton_mask_family_reindex
 #print axioms EPPAIII.CliqueCovers.cosingleton_mask_family_reindex
 #print axioms EPPAIII.CliqueCovers.full_mask_family_four_normal_forms
+#print axioms EPPAIII.CliqueCovers.squareProfile
+#print axioms EPPAIII.CliqueCovers.squareProfile_eq_of_slices
+#print axioms EPPAIII.CliqueCovers.squareBaseFlipFirst_graphAut
+#print axioms EPPAIII.CliqueCovers.squareBaseFlipSecond_graphAut
+#print axioms EPPAIII.CliqueCovers.squareBaseSwapCoordinates_graphAut
+#print axioms EPPAIII.CliqueCovers.squareProfile_flipFirst
+#print axioms EPPAIII.CliqueCovers.squareProfile_flipSecond
+#print axioms EPPAIII.CliqueCovers.squareProfile_swapCoordinates
