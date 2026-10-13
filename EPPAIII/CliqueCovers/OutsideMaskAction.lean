@@ -42,10 +42,10 @@ theorem outsideIndexMask_eq_of_closed_twins {s t : ℕ}
   ext i
   have hNeU : e (i,a) ≠ u := by
     intro h
-    exact hu ⟨(i,a),h.symm⟩
+    exact hu ⟨(i,a),h⟩
   have hNeV : e (i,a) ≠ v := by
     intro h
-    exact hv ⟨(i,a),h.symm⟩
+    exact hv ⟨(i,a),h⟩
   have hMem := congrArg
     (fun S : Set W => e (i,a) ∈ S) hSame
   simpa [outsideIndexMask, closedNeighbourhood,
@@ -102,6 +102,6 @@ theorem eppa_outer_mask_orbit_realized {s t : ℕ}
       (outerPermutation p) (outerPermutation_aut p)
   refine ⟨q w, lift_preserves_outside e
     (outerPermutation p) q hCompat w hw, ?_⟩
-  exact (outsideIndexMask_outer_lift H e a w p q hq hCompat).trans hpR.symm
+  exact (outsideIndexMask_outer_lift H e a w p q hq hCompat).trans hpR
 
 end EPPAIII.CliqueCovers
