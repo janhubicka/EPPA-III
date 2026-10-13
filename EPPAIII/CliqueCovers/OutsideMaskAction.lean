@@ -82,7 +82,13 @@ theorem outsideIndexMask_outer_lift {s t : ℕ} {W : Type*}
       simpa [outsideIndexMask] using hj
     have hNew := (hq u (e (j,a))).mp hjAdj
     rw [hCompat (j,a)] at hNew
-    simpa [outerPermutation, hji] using hNew
+    have hpj : p j = i := by
+      first
+      | simpa only [Equiv.toEmbedding_apply] using hji
+      | simpa only [Equiv.toEmbedding_apply] using hji.symm
+    have hNew' : H.Adj (q u) (e (p j,a)) := by
+      simpa only [outerPermutation] using hNew
+    exact hpj ▸ hNew'
 
 /-- Every mask in the full permutation orbit of an outside
 vertex's mask is realized by another genuine outside vertex. -/
