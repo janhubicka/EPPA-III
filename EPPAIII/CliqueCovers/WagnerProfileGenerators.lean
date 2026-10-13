@@ -1,4 +1,4 @@
-import EPPAIII.CliqueCovers.WagnerOutsideLabels
+import EPPAIII.CliqueCovers.WagnerSquareChoiceLabels
 import EPPAIII.CliqueCovers.WagnerSquareAction
 import EPPAIII.CliqueCovers.WreathProfileEquivariance
 
