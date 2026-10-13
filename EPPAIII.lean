@@ -94,3 +94,6 @@ import EPPAIII.CliqueCovers.CoSingletonInitialUniform
 import EPPAIII.CliqueCovers.SingletonCrossOrbit
 import EPPAIII.CliqueCovers.SingletonInitialUniform
 import EPPAIII.CliqueCovers.SingletonCrossConnections
+import EPPAIII.CliqueCovers.CoSingletonCrossOrbit
+import EPPAIII.CliqueCovers.CoSingletonCrossConnections
+import EPPAIII.CliqueCovers.CoSingletonCoverConclusion
