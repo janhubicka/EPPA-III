@@ -327,3 +327,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_unique_singleton_other_slices_uniform
 #print axioms EPPAIII.CliqueCovers.eppa_singleton_cross_slices_uniform
 #print axioms EPPAIII.CliqueCovers.eppa_singleton_cross_adj_uniform
+#print axioms EPPAIII.CliqueCovers.squareCornerGraph
+#print axioms EPPAIII.CliqueCovers.squareCornerGraph_edge_count
+#print axioms EPPAIII.CliqueCovers.squareCornerGraph_two_edges
+#print axioms EPPAIII.CliqueCovers.squareOppositeMatching_edge_count
