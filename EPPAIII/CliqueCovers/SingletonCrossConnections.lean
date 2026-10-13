@@ -84,11 +84,22 @@ theorem eppa_singleton_cross_adj_uniform {s t : ℕ}
     simp [profileSlice, finiteNeighbourhoodProfile]
   by_cases hj : j = x.1
   · subst j
-    have hDiag :=
+    have hDiag :
+        profileSlice (finiteNeighbourhoodProfile H e u.val) x.1 =
+          ({x.2} : Finset (Fin t)) :=
       (saturatedSingletonOutsideEquiv_slice
         H e heppa hOrder w hw hUnique x).2
-    simpa [hDiag] using hMem
-  · have hOff := hSlices x j hj
-    cases b <;> simpa [hj, hOff] using hMem
+    have hMem' : H.Adj u.val (e (x.1,a)) ↔ a = x.2 := by
+      rw [hMem, hDiag]
+      simp
+    simpa [u] using hMem'
+  · have hOff :
+        profileSlice (finiteNeighbourhoodProfile H e u.val) j =
+          if b then (Finset.univ : Finset (Fin t)) else ∅ :=
+      hSlices x j hj
+    have hMem' : H.Adj u.val (e (j,a)) ↔ b = true := by
+      rw [hMem, hOff]
+      cases b <;> simp
+    simpa [hj, u] using hMem'
 
 end EPPAIII.CliqueCovers
