@@ -413,3 +413,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.rightCliqueReindex
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_comap_rightCliqueReindex
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_four_forms_up_to_right_reindex
+#print axioms EPPAIII.CliqueCovers.properPartialPositions
+#print axioms EPPAIII.CliqueCovers.mem_properPartialPositions
+#print axioms EPPAIII.CliqueCovers.eppa_two_proper_partial_positions_exception
+#print axioms EPPAIII.CliqueCovers.unique_proper_partial_gives_unique_k
+#print axioms EPPAIII.CliqueCovers.eppa_proper_partial_trichotomy
