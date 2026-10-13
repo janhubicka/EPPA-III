@@ -1,4 +1,5 @@
 import EPPAIII.CliqueCovers.OutsideChoiceEquiv
+import EPPAIII.CliqueCovers.SingletonChoiceLabels
 import EPPAIII.CliqueCovers.OutsideLiftTransport
 
 /-!
