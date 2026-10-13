@@ -53,6 +53,7 @@ instance squareCornerGraph_decidableAdj (side opposite : Bool) :
     DecidableRel (squareCornerGraph side opposite).Adj := by
   intro x y
   change Decidable (squareCornerAdj side opposite x y)
+  unfold squareCornerAdj
   infer_instance
 
 /-- The four sides contribute four edges and the opposite matching
@@ -60,7 +61,7 @@ contributes two edges, independently of their Boolean statuses. -/
 theorem squareCornerGraph_edge_count (side opposite : Bool) :
     (squareCornerGraph side opposite).edgeFinset.card =
       (if side then 4 else 0) + (if opposite then 2 else 0) := by
-  cases side <;> cases opposite <;> decide
+  cases side <;> cases opposite <;> native_decide
 
 /-- Exactly two edges force all sides absent and both opposite-corner
 edges present. This is the numerical kernel of the Wagner exception. -/
@@ -73,6 +74,6 @@ theorem squareCornerGraph_two_edges (side opposite : Bool)
 /-- Opposite corners form a matching of precisely two edges. -/
 theorem squareOppositeMatching_edge_count :
     (squareCornerGraph false true).edgeFinset.card = 2 := by
-  decide
+  native_decide
 
 end EPPAIII.CliqueCovers
