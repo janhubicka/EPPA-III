@@ -143,7 +143,8 @@ theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
           intro hkLt
           exact hjNot
             ((mem_properPartialPositions P j).mpr ⟨hkPos,hkLt⟩)
-        exact Or.inr (by omega)
+        have hkEq : k = t := by omega
+        exact Or.inr hkEq
     obtain ⟨phi,X,Y,hEq⟩ :=
       eppa_zero_partial_noncluster_host_is_uniform_cover
         H e heppa hNoPartial (by omega) (by omega)
