@@ -100,8 +100,8 @@ theorem exists_outside_twin_fibre_label {s t : ℕ}
     exact Prod.ext rfl hbc
   have hSurj : Function.Surjective g := by
     intro w
-    have hwOut : w.val ∉ Set.range e :=
-      (Finset.mem_filter.mp w.property).2
+    have hwOut : w.val ∉ Set.range e := by
+      simpa [finiteOutside] using w.property
     have hNotSelected :
         Quotient.mk (closedTwinSetoid H) w.val ∉
           (selectedTwinClasses H e a : Set (ClosedTwinQuotient H)) :=
