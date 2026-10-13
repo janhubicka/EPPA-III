@@ -30,6 +30,7 @@ theorem squareProfile_first (x : Bool × Bool) :
     profileSlice (squareProfile x) (0 : Fin 2) =
       {finTwoEquiv.symm x.1} := by
   classical
+  ext z
   simp [squareProfile, profileSlice]
 
 /-- The second designated clique has the second selected point. -/
@@ -37,6 +38,7 @@ theorem squareProfile_second (x : Bool × Bool) :
     profileSlice (squareProfile x) (1 : Fin 2) =
       {finTwoEquiv.symm x.2} := by
   classical
+  ext z
   simp [squareProfile, profileSlice]
 
 /-- A full two-partial profile is determined by its two singleton slices. -/
@@ -84,23 +86,20 @@ theorem squareProfile_flipFirst (x : Bool × Bool) :
       squareProfile (squareFlipFirst x) := by
   rcases x with ⟨a,b⟩
   cases a <;> cases b <;>
-    norm_decide [squareProfile, squareBaseFlipFirst,
-      innerPermutation, squareFlipFirst, finTwoEquiv]
+    decide
 
 theorem squareProfile_flipSecond (x : Bool × Bool) :
     (squareProfile x).map squareBaseFlipSecond.toEmbedding =
       squareProfile (squareFlipSecond x) := by
   rcases x with ⟨a,b⟩
   cases a <;> cases b <;>
-    norm_decide [squareProfile, squareBaseFlipSecond,
-      innerPermutation, squareFlipSecond, finTwoEquiv]
+    decide
 
 theorem squareProfile_swapCoordinates (x : Bool × Bool) :
     (squareProfile x).map squareBaseSwapCoordinates.toEmbedding =
       squareProfile (squareSwapCoordinates x) := by
   rcases x with ⟨a,b⟩
   cases a <;> cases b <;>
-    norm_decide [squareProfile, squareBaseSwapCoordinates,
-      outerPermutation, squareSwapCoordinates, finTwoEquiv]
+    decide
 
 end EPPAIII.CliqueCovers
