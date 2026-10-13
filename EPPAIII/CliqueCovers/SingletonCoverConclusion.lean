@@ -49,6 +49,7 @@ theorem eppa_singleton_host_is_uniform_cover {s t : ℕ}
   refine ⟨b, ?_⟩
   apply SimpleGraph.ext
   funext x y
+  apply propext
   rcases x with ⟨bx,⟨i,a⟩⟩
   rcases y with ⟨cy,⟨j,c⟩⟩
   cases bx <;> cases cy
