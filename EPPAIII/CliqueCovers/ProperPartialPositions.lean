@@ -55,9 +55,12 @@ theorem eppa_two_proper_partial_positions_exception {s t : ℕ}
   classical
   let P := finiteNeighbourhoodProfile H e w
   let S := properPartialPositions P
+  have hTwoS : 2 ≤ S.card := hTwo
+  have hOneLt : 1 < S.card :=
+    lt_of_lt_of_le (by decide : 1 < 2) hTwoS
   have hPair :
       ∃ i ∈ S, ∃ j ∈ S, i ≠ j :=
-    Finset.one_lt_card.mp (by omega : 1 < S.card)
+    Finset.one_lt_card.mp hOneLt
   obtain ⟨i,hi,j,hj,hij⟩ := hPair
   have hiPartial := (mem_properPartialPositions P i).mp hi
   have hjPartial := (mem_properPartialPositions P j).mp hj
