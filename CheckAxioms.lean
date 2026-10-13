@@ -403,3 +403,10 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_outside_twin_mask_family_covers_orbit
 #print axioms EPPAIII.CliqueCovers.eppa_outside_mask_family_covers_all_fixed_size
 #print axioms EPPAIII.CliqueCovers.eppa_outside_twin_mask_family_four_forms
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_right_degree
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_regular_forces_equal_mask_cards
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_empty_eq_coverGraph
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_full_eq_coverGraph
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_singleton_eq_coverGraph
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_cosingleton_eq_coverGraph
