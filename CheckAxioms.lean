@@ -401,3 +401,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_full_eq_coverGraph
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_singleton_eq_coverGraph
 #print axioms EPPAIII.CliqueCovers.maskCoverGraph_cosingleton_eq_coverGraph
+#print axioms EPPAIII.CliqueCovers.rightCliqueReindex
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_comap_rightCliqueReindex
+#print axioms EPPAIII.CliqueCovers.maskCoverGraph_four_forms_up_to_right_reindex
