@@ -98,3 +98,5 @@ import EPPAIII.CliqueCovers.SingletonCoverConclusion
 import EPPAIII.CliqueCovers.CoSingletonCrossOrbit
 import EPPAIII.CliqueCovers.CoSingletonCrossConnections
 import EPPAIII.CliqueCovers.CoSingletonCoverConclusion
+import EPPAIII.CliqueCovers.FullMaskOrbit
+import EPPAIII.CliqueCovers.OutsideTwinIndexBudget
