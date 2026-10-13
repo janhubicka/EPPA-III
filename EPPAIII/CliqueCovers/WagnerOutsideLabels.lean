@@ -82,12 +82,18 @@ theorem saturatedWagnerOutsideEquiv_first
   classical
   have hChoice := saturatedWagnerOutsideEquiv_choice
     H e heppa hOrder w hw hBoth x
+  have hPositions :
+      kPositions (finiteNeighbourhoodProfile H e
+        (saturatedWagnerOutsideEquiv H e heppa hOrder
+          w hw hBoth x).val) 1 = Finset.univ := by
+    have hPos := congrArg Sigma.fst hChoice
+    simpa [squareChoiceOfPair] using hPos
   have hSlice := congrArg
     (fun C : Σ R : Finset (Fin 2),
       ∀ i : Fin 2, i ∈ R → Finset (Fin 2) =>
         if hi : (0 : Fin 2) ∈ C.1 then C.2 0 hi else ∅) hChoice
   simpa [extractKChoice, squareChoiceOfPair,
-    admissibleChoiceSlice] using hSlice
+    admissibleChoiceSlice, hPositions] using hSlice
 
 /-- Same, for the second designated clique. -/
 theorem saturatedWagnerOutsideEquiv_second
@@ -106,11 +112,17 @@ theorem saturatedWagnerOutsideEquiv_second
   classical
   have hChoice := saturatedWagnerOutsideEquiv_choice
     H e heppa hOrder w hw hBoth x
+  have hPositions :
+      kPositions (finiteNeighbourhoodProfile H e
+        (saturatedWagnerOutsideEquiv H e heppa hOrder
+          w hw hBoth x).val) 1 = Finset.univ := by
+    have hPos := congrArg Sigma.fst hChoice
+    simpa [squareChoiceOfPair] using hPos
   have hSlice := congrArg
     (fun C : Σ R : Finset (Fin 2),
       ∀ i : Fin 2, i ∈ R → Finset (Fin 2) =>
         if hi : (1 : Fin 2) ∈ C.1 then C.2 1 hi else ∅) hChoice
   simpa [extractKChoice, squareChoiceOfPair,
-    admissibleChoiceSlice] using hSlice
+    admissibleChoiceSlice, hPositions] using hSlice
 
 end EPPAIII.CliqueCovers
