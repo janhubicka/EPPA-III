@@ -176,8 +176,17 @@ theorem square_invariant_graph_two_parameters
       rintro (⟨heq,_⟩ | ⟨_,heq⟩)
       · exact hOpposite.1 heq
       · exact hOpposite.2 heq
-    simpa [squareCornerAdj, squareOppositeStatus,
-      hOpposite.1, hOpposite.2, hNoSide] using h
+    change B.Adj x y ↔
+      (x.1 ≠ y.1 ∧ x.2 ≠ y.2 ∧ opposite = true) ∨
+      (((x.1 = y.1 ∧ x.2 ≠ y.2) ∨
+        (x.1 ≠ y.1 ∧ x.2 = y.2)) ∧ side = true)
+    constructor
+    · intro hAdj
+      exact Or.inl ⟨hOpposite.1, hOpposite.2, h.mp hAdj⟩
+    · intro hCorner
+      rcases hCorner with hOppPart | hSidePart
+      · exact h.mpr hOppPart.2.2
+      · exact False.elim (hNoSide hSidePart.1)
   · have hIsSide : squareSideStatus x y := by
       rcases x with ⟨x₁,x₂⟩
       rcases y with ⟨y₁,y₂⟩
@@ -189,7 +198,17 @@ theorem square_invariant_graph_two_parameters
     have hYesSide :
         (x.1 = y.1 ∧ x.2 ≠ y.2) ∨
         (x.1 ≠ y.1 ∧ x.2 = y.2) := hIsSide
-    simpa [squareCornerAdj, hNoOpp, hYesSide] using h
+    change B.Adj x y ↔
+      (x.1 ≠ y.1 ∧ x.2 ≠ y.2 ∧ opposite = true) ∨
+      (((x.1 = y.1 ∧ x.2 ≠ y.2) ∨
+        (x.1 ≠ y.1 ∧ x.2 = y.2)) ∧ side = true)
+    constructor
+    · intro hAdj
+      exact Or.inr ⟨hYesSide, h.mp hAdj⟩
+    · intro hCorner
+      rcases hCorner with hOppPart | hSidePart
+      · exact False.elim (hNoOpp ⟨hOppPart.1, hOppPart.2.1⟩)
+      · exact h.mpr hSidePart.2
 
 /-- If the square action preserves a graph with two edges, the graph
 is exactly the opposite-corner matching. -/
