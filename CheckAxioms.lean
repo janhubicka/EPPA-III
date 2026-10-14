@@ -459,3 +459,12 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.exists_outside_in_partly_selected_block
 #print axioms EPPAIII.BlockSystems.unequal_occupied_sizes_give_outside
 #print axioms EPPAIII.BlockSystems.eppa_unequal_occupied_quotient_complete
+#print axioms EPPAIII.BlockSystems.BlockFiber
+#print axioms EPPAIII.BlockSystems.inducedBlockGraph
+#print axioms EPPAIII.BlockSystems.transitive_block_stabiliser
+#print axioms EPPAIII.BlockSystems.restrictBlockAutomorphism
+#print axioms EPPAIII.BlockSystems.induced_block_transitive
+#print axioms EPPAIII.BlockSystems.induced_block_complete_of_majority_clique
+#print axioms EPPAIII.BlockSystems.block_complete_of_induced_top
+#print axioms EPPAIII.BlockSystems.complete_block_propagates
+#print axioms EPPAIII.BlockSystems.all_blocks_complete_of_one_majority_clique

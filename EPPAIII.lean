@@ -128,3 +128,4 @@ import EPPAIII.CliqueCovers.MajorityQuotientRigidity
 import EPPAIII.BlockSystems.OccupiedBlockAction
 import EPPAIII.BlockSystems.UnequalCliqueBaseBlocks
 import EPPAIII.BlockSystems.OccupiedBlockMajority
+import EPPAIII.BlockSystems.BlockStabilizerMajority
