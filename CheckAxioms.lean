@@ -533,3 +533,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.reachable_of_common_neighbour
 #print axioms EPPAIII.BlockSystems.reachable_of_shared_pairs
 #print axioms EPPAIII.BlockSystems.shared_pairs_connected_union
+#print axioms EPPAIII.BlockSystems.mixedCrossPiece
+#print axioms EPPAIII.BlockSystems.mem_mixedCrossPiece_iff
+#print axioms EPPAIII.BlockSystems.mixedCrossPiece_edge_closed
+#print axioms EPPAIII.BlockSystems.mixedCrossPiece_card_twice_selected
