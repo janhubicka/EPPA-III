@@ -468,3 +468,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.block_complete_of_induced_top
 #print axioms EPPAIII.BlockSystems.complete_block_propagates
 #print axioms EPPAIII.BlockSystems.all_blocks_complete_of_one_majority_clique
+#print axioms EPPAIII.BlockSystems.nonconstant_half_mean_has_large_entry
+#print axioms EPPAIII.BlockSystems.selectedInBlock_sum
+#print axioms EPPAIII.BlockSystems.selectedInBlock_double_sum
+#print axioms EPPAIII.BlockSystems.unequal_selected_blocks_give_majority
