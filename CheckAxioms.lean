@@ -503,3 +503,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.exists_independent_transversal_with_two
 #print axioms EPPAIII.BlockSystems.swap_partial_on_independent_finset
 #print axioms EPPAIII.BlockSystems.eppa_fixed_unoccupied_lift_between_blocks
+#print axioms EPPAIII.BlockSystems.neighboursInBlock
+#print axioms EPPAIII.BlockSystems.neighboursInBlock_aut
+#print axioms EPPAIII.BlockSystems.eppa_selected_block_neighbour_count_eq
