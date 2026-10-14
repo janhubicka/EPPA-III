@@ -139,3 +139,4 @@ import EPPAIII.BlockSystems.UnoccupiedTouchSupport
 import EPPAIII.BlockSystems.IndependentTransversalLifts
 import EPPAIII.BlockSystems.CrossBlockNeighbourCounts
 import EPPAIII.BlockSystems.Case1NoUnoccupied
+import EPPAIII.BlockSystems.UniformCrossBlockDegrees
