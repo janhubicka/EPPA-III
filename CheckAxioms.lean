@@ -549,3 +549,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.outside_block_vertex_touches_selected
 #print axioms EPPAIII.BlockSystems.mixedCrossPiece_connected_of_degree_two
 #print axioms EPPAIII.BlockSystems.unequal_two_block_cross_degree_eq_one
+#print axioms EPPAIII.BlockSystems.labels_exhaust_card_two
+#print axioms EPPAIII.BlockSystems.eppa_case1_cross_degree_eq_one
