@@ -477,3 +477,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.selectedBlockPoints_clique
 #print axioms EPPAIII.BlockSystems.blockFiber_card_eq_filter
 #print axioms EPPAIII.BlockSystems.eppa_case1_all_blocks_complete
+#print axioms EPPAIII.BlockSystems.complementary_unequal_sizes_exactly_two
+#print axioms EPPAIII.BlockSystems.eppa_occupied_complementary_unequal_exactly_two
+#print axioms EPPAIII.BlockSystems.complete_quotient_at_most_one_unoccupied
+#print axioms EPPAIII.BlockSystems.all_occupied_complementary_unequal_two_blocks

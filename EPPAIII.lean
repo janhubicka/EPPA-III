@@ -131,3 +131,4 @@ import EPPAIII.BlockSystems.OccupiedBlockMajority
 import EPPAIII.BlockSystems.BlockStabilizerMajority
 import EPPAIII.BlockSystems.SelectedBlockArithmetic
 import EPPAIII.BlockSystems.UnequalCliqueClaim313
+import EPPAIII.BlockSystems.UnequalCase1Arithmetic
