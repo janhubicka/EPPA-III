@@ -513,3 +513,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.positive_common_cross_block_degree
 #print axioms EPPAIII.BlockSystems.neighbour_filter_card_as_sum
 #print axioms EPPAIII.BlockSystems.symmetric_bipartite_regular_card_eq
+#print axioms EPPAIII.BlockSystems.eppa_base_transversal_of_crossing_edge
+#print axioms EPPAIII.BlockSystems.transitive_eppa_crossing_edge_blocks_are_pairs
+#print axioms EPPAIII.BlockSystems.transitive_eppa_crossing_edge_taylor_up_to_mate
