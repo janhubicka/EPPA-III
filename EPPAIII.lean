@@ -148,3 +148,4 @@ import EPPAIII.BlockSystems.SharedCrossNeighbours
 import EPPAIII.BlockSystems.SharedNeighbourConnectivity
 import EPPAIII.BlockSystems.MixedCrossPieces
 import EPPAIII.BlockSystems.TransitiveComponentSizes
+import EPPAIII.BlockSystems.ClosedConnectedComponents

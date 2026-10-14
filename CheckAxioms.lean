@@ -542,3 +542,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.reachableVertices
 #print axioms EPPAIII.BlockSystems.reachableVertices_image_aut
 #print axioms EPPAIII.BlockSystems.transitive_connected_component_card_eq
+#print axioms EPPAIII.BlockSystems.reachable_mem_of_adj_closed
+#print axioms EPPAIII.BlockSystems.reachableVertices_eq_of_closed_connected
+#print axioms EPPAIII.BlockSystems.transitive_closed_connected_sets_card_eq
