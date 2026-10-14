@@ -33,8 +33,11 @@ noncomputable def selectedBlockPoints {V W B : Type*}
     Finset (BlockFiber block b) := by
   classical
   exact (selectedInBlock e block b).attach.image
-    (fun x => (⟨e x.1,
-      (Finset.mem_filter.mp x.2).2⟩ : BlockFiber block b))
+    (fun (x : {z : V // z ∈ selectedInBlock e block b}) =>
+      (⟨e x.1,
+        (Finset.mem_filter.mp
+          (show x.1 ∈ selectedInBlock e block b from x.2)).2⟩ :
+        BlockFiber block b))
 
 /-- Retyping along an injective embedding preserves the size
 of the selected part of a block. -/
@@ -46,7 +49,8 @@ theorem selectedBlockPoints_card {V W B : Type*}
   classical
   let f : {x : V // x ∈ selectedInBlock e block b} →
       BlockFiber block b := fun x =>
-        ⟨e x.1, (Finset.mem_filter.mp x.2).2⟩
+        ⟨e x.1, (Finset.mem_filter.mp
+          (show x.1 ∈ selectedInBlock e block b from x.2)).2⟩
   have hInject : Function.Injective f := by
     intro x y hxy
     apply Subtype.ext
@@ -134,7 +138,9 @@ theorem eppa_case1_all_blocks_complete {V W B : Type*}
     unequal_selected_blocks_give_majority
       e block m hUniform hDouble b c hDifferent
   let S : Finset V := selectedInBlock e block b₀
-  have hPositive : 0 < S.card := by omega
+  have hPositive : 0 < S.card := by
+    change 0 < (selectedInBlock e block b₀).card
+    omega
   obtain ⟨x,hx⟩ := Finset.card_pos.mp hPositive
   have hxBlock : block (e x) = b₀ :=
     (Finset.mem_filter.mp hx).2
@@ -144,8 +150,12 @@ theorem eppa_case1_all_blocks_complete {V W B : Type*}
     exact selectedBlockPoints_card e block b₀
   have hBcard : Fintype.card (BlockFiber block b₀) = m :=
     (blockFiber_card_eq_filter block b₀).trans (hUniform b₀)
+  have hLargeS : m < 2 * S.card := by
+    change m < 2 * (selectedInBlock e block b₀).card
+    exact hLarge
   have hMajority : Fintype.card (BlockFiber block b₀) < 2 * T.card := by
-    omega
+    rw [hBcard, hTcard]
+    exact hLargeS
   have hSame : ∀ y z : V,
       block (e y) = block (e z) ↔ y = z ∨ G.Adj y z :=
     eppa_base_same_block_iff_eq_or_adj
