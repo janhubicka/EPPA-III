@@ -472,3 +472,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.selectedInBlock_sum
 #print axioms EPPAIII.BlockSystems.selectedInBlock_double_sum
 #print axioms EPPAIII.BlockSystems.unequal_selected_blocks_give_majority
+#print axioms EPPAIII.BlockSystems.selectedBlockPoints
+#print axioms EPPAIII.BlockSystems.selectedBlockPoints_card
+#print axioms EPPAIII.BlockSystems.selectedBlockPoints_clique
+#print axioms EPPAIII.BlockSystems.blockFiber_card_eq_filter
+#print axioms EPPAIII.BlockSystems.eppa_case1_all_blocks_complete
