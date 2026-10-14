@@ -493,3 +493,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cross_block_edges_are_mixed
 #print axioms EPPAIII.BlockSystems.eppa_transversal_lift_preserves_occupied
 #print axioms EPPAIII.BlockSystems.eppa_transversal_lift_fixes_unique_unoccupied
+#print axioms EPPAIII.BlockSystems.TouchesBlock
+#print axioms EPPAIII.BlockSystems.touchesBlock_aut_iff
+#print axioms EPPAIII.BlockSystems.touchedInBlock
+#print axioms EPPAIII.BlockSystems.touchedInBlock_eq_selected_image
+#print axioms EPPAIII.BlockSystems.touchedInBlock_card_eq_selected
+#print axioms EPPAIII.BlockSystems.touchedInBlock_image_aut
+#print axioms EPPAIII.BlockSystems.no_unoccupied_block_of_fixedU_selected_transitivity
