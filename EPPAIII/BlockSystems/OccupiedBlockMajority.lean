@@ -1,4 +1,5 @@
 import EPPAIII.BlockSystems.OccupiedBlockAction
+import EPPAIII.BlockSystems.UnequalCliqueBaseBlocks
 
 /-!
 # Counting occupied blocks and excluding the empty quotient
@@ -154,21 +155,6 @@ theorem occupied_blocks_strict_majority_of_nonfilled {V W B : Type*}
     omega
   exact hMajority
 
-/-- EPPA already makes all base edges internal to their selected
-blocks as soon as one such edge is internal. -/
-theorem eppa_all_base_edges_internal_of_one {V W B : Type*}
-    [Fintype V] [DecidableEq V]
-    (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
-    (heppa : IsEPPAEmbedding G H e)
-    (block : W → B) (hBlocks : InvariantBlockMap H block)
-    (hSome : ∃ x y : V,
-      G.Adj x y ∧ block (e x) = block (e y)) :
-    ∀ x y : V, G.Adj x y → block (e x) = block (e y) := by
-  obtain ⟨u,v,huv,hSame⟩ := hSome
-  intro x y hxy
-  exact (eppa_edges_uniform_blocks
-    G H e heppa block hBlocks u v x y huv hxy).mp hSame
-
 /-- If every host block induces a clique and no two different
 blocks are joined by an edge, the entire host is a disjoint
 union of cliques. Hence non-cluster H forces an inter-block edge. -/
@@ -220,7 +206,7 @@ theorem eppa_noncluster_occupied_quotient_complete {V W B : Type*}
   classical
   have hInternal : ∀ x y : V, G.Adj x y →
       block (e x) = block (e y) :=
-    eppa_all_base_edges_internal_of_one
+    eppa_base_edges_internal_of_one
       G H e heppa block hBlocks hSomeInternalEdge
   have hMajority : Fintype.card B <
       2 * (occupiedBlocks e block).card :=
