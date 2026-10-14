@@ -491,3 +491,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.at_most_one_unoccupied_of_complete_quotient
 #print axioms EPPAIII.BlockSystems.eppa_case1_quotient_and_unoccupied_bound
 #print axioms EPPAIII.BlockSystems.cross_block_edges_are_mixed
+#print axioms EPPAIII.BlockSystems.eppa_transversal_lift_preserves_occupied
+#print axioms EPPAIII.BlockSystems.eppa_transversal_lift_fixes_unique_unoccupied
