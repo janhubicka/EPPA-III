@@ -429,3 +429,10 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.graph_eq_cliqueUnion_one_right_of_edge_count
 #print axioms EPPAIII.CliqueCovers.outside_of_transitive_one_clique
 #print axioms EPPAIII.CliqueCovers.outside_of_transitive_one_vertex_cliques
+#print axioms EPPAIII.CliqueCovers.regular_majority_clique_eq_top
+#print axioms EPPAIII.CliqueCovers.regular_majority_independent_eq_bot
+#print axioms EPPAIII.CliqueCovers.regular_majority_uniform_block_dichotomy
+#print axioms EPPAIII.CliqueCovers.regular_majority_uniform_block_nonempty_top
+#print axioms EPPAIII.CliqueCovers.transitive_majority_uniform_block_nonempty_top
+#print axioms EPPAIII.CliqueCovers.pair_transitive_block_uniform
+#print axioms EPPAIII.CliqueCovers.transitive_majority_pair_action_nonempty_top
