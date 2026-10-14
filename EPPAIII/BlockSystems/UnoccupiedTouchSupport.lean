@@ -57,7 +57,7 @@ noncomputable def touchedInBlock {W B : Type*}
 cross-block edges, and all selected vertices touch U, the touching
 vertices in any different block are precisely its selected points. -/
 theorem touchedInBlock_eq_selected_image {V W B : Type*}
-    [Fintype V] [Fintype W] [DecidableEq B]
+    [Fintype V] [Fintype W] [DecidableEq W] [DecidableEq B]
     (H : SimpleGraph W) (e : V ↪ W) (block : W → B)
     (U b : B) (hU : U ∉ occupiedBlocks e block) (hbU : b ≠ U)
     (hSelectedTouch : ∀ x : V, TouchesBlock H block U (e x))
@@ -70,8 +70,9 @@ theorem touchedInBlock_eq_selected_image {V W B : Type*}
   constructor
   · intro hw
     have hwParts :
-        block w = b ∧ TouchesBlock H block U w :=
-      (Finset.mem_filter.mp hw).2
+        block w = b ∧ TouchesBlock H block U w := by
+      simpa only [touchedInBlock, Finset.mem_filter,
+        Finset.mem_univ, true_and] using hw
     obtain ⟨z,hzU,hAdj⟩ := hwParts.2
     have hzOutside : z ∉ Set.range e := by
       rintro ⟨x,hx⟩
@@ -96,13 +97,13 @@ theorem touchedInBlock_eq_selected_image {V W B : Type*}
     have hwTouch : TouchesBlock H block U w := by
       rw [← hxw]
       exact hSelectedTouch x
-    exact Finset.mem_filter.mpr
-      ⟨Finset.mem_univ _,⟨hwBlock,hwTouch⟩⟩
+    simp only [touchedInBlock, Finset.mem_filter, Finset.mem_univ, true_and]
+    exact ⟨hwBlock,hwTouch⟩
 
 /-- The support in an occupied block has exactly that block's
 selected occupancy size. -/
 theorem touchedInBlock_card_eq_selected {V W B : Type*}
-    [Fintype V] [Fintype W] [DecidableEq B]
+    [Fintype V] [Fintype W] [DecidableEq W] [DecidableEq B]
     (H : SimpleGraph W) (e : V ↪ W) (block : W → B)
     (U b : B) (hU : U ∉ occupiedBlocks e block) (hbU : b ≠ U)
     (hSelectedTouch : ∀ x : V, TouchesBlock H block U (e x))
@@ -119,7 +120,7 @@ theorem touchedInBlock_card_eq_selected {V W B : Type*}
 /-- A block-preserving graph automorphism transports touching
 vertices from one indicated block to its image. -/
 theorem touchedInBlock_image_aut {W B : Type*}
-    [Fintype W]
+    [Fintype W] [DecidableEq W]
     (H : SimpleGraph W) (block : W → B) (U b c : B)
     (q : Equiv.Perm W) (hq : IsGraphAutomorphism H q)
     (hFixU : ∀ w : W, block w = U ↔ block (q w) = U)
@@ -131,35 +132,40 @@ theorem touchedInBlock_image_aut {W B : Type*}
   constructor
   · intro hw
     obtain ⟨z,hz,hzw⟩ := Finset.mem_image.mp hw
-    have hParts : block z = b ∧ TouchesBlock H block U z :=
-      (Finset.mem_filter.mp hz).2
+    have hParts : block z = b ∧ TouchesBlock H block U z := by
+      simpa only [touchedInBlock, Finset.mem_filter,
+        Finset.mem_univ, true_and] using hz
     have hBlock : block w = c := by
       rw [← hzw]
       exact (hBC z).mp hParts.1
     have hTouches : TouchesBlock H block U w := by
       rw [← hzw]
       exact (touchesBlock_aut_iff H block U q hq hFixU z).mp hParts.2
-    exact Finset.mem_filter.mpr
-      ⟨Finset.mem_univ _,⟨hBlock,hTouches⟩⟩
+    simp only [touchedInBlock, Finset.mem_filter, Finset.mem_univ, true_and]
+    exact ⟨hBlock,hTouches⟩
   · intro hw
-    have hParts : block w = c ∧ TouchesBlock H block U w :=
-      (Finset.mem_filter.mp hw).2
-    refine Finset.mem_image.mpr ⟨q.symm w, ?_, by simp⟩
-    have hb : block (q.symm w) = b := by
-      apply (hBC (q.symm w)).mpr
-      simpa using hParts.1
-    have hTouch : TouchesBlock H block U (q.symm w) := by
-      apply (touchesBlock_aut_iff H block U q hq hFixU (q.symm w)).mpr
-      simpa using hParts.2
-    exact Finset.mem_filter.mpr
-      ⟨Finset.mem_univ _,⟨hb,hTouch⟩⟩
+    have hParts : block w = c ∧ TouchesBlock H block U w := by
+      simpa only [touchedInBlock, Finset.mem_filter,
+        Finset.mem_univ, true_and] using hw
+    apply Finset.mem_image.mpr
+    refine ⟨q.symm w, ?_, ?_⟩
+    · simp only [touchedInBlock, Finset.mem_filter,
+        Finset.mem_univ, true_and]
+      have hb : block (q.symm w) = b := by
+        apply (hBC (q.symm w)).mpr
+        simpa using hParts.1
+      have hTouch : TouchesBlock H block U (q.symm w) := by
+        apply (touchesBlock_aut_iff H block U q hq hFixU (q.symm w)).mpr
+        simpa using hParts.2
+      exact ⟨hb,hTouch⟩
+    · exact q.apply_symm_apply w
 
 /-- If all selected vertices can be moved to one another by
 genuine host automorphisms stabilizing a block U, then the
 block U cannot be unoccupied in a complete block-connection
 graph with unequal selected occupancy sizes. -/
 theorem no_unoccupied_block_of_fixedU_selected_transitivity {V W B : Type*}
-    [Fintype V] [Nonempty V] [Fintype W] [DecidableEq B]
+    [Fintype V] [Nonempty V] [Fintype W] [DecidableEq W] [DecidableEq B]
     (H : SimpleGraph W) (e : V ↪ W) (block : W → B)
     (U : B) (hU : U ∉ occupiedBlocks e block)
     (hComplete : blockConnectionGraph H block = ⊤)
