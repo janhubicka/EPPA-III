@@ -452,7 +452,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.occupiedHostVertices
 #print axioms EPPAIII.BlockSystems.occupiedHostVertices_card
 #print axioms EPPAIII.BlockSystems.occupied_blocks_strict_majority_of_nonfilled
-#print axioms EPPAIII.BlockSystems.eppa_all_base_edges_internal_of_one
 #print axioms EPPAIII.BlockSystems.blockConnectionGraph_nonempty_of_noncluster
 #print axioms EPPAIII.BlockSystems.eppa_noncluster_occupied_quotient_complete
 #print axioms EPPAIII.BlockSystems.selectedInBlock
