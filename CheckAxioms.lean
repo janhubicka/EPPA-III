@@ -481,3 +481,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.eppa_occupied_complementary_unequal_exactly_two
 #print axioms EPPAIII.BlockSystems.complete_quotient_at_most_one_unoccupied
 #print axioms EPPAIII.BlockSystems.all_occupied_complementary_unequal_two_blocks
+#print axioms EPPAIII.BlockSystems.crossBlockGraph
+#print axioms EPPAIII.BlockSystems.crossBlockGraph_graphAut
+#print axioms EPPAIII.BlockSystems.crossBlockGraph_transitive
+#print axioms EPPAIII.BlockSystems.graph_eq_bot_of_edgeSet_ncard_zero
+#print axioms EPPAIII.BlockSystems.balancedOutsideEquivGeneral
+#print axioms EPPAIII.BlockSystems.crossBlockGraph_outside_bot
+#print axioms EPPAIII.BlockSystems.no_outside_cross_block_edges
