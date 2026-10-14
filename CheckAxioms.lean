@@ -537,3 +537,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.mem_mixedCrossPiece_iff
 #print axioms EPPAIII.BlockSystems.mixedCrossPiece_edge_closed
 #print axioms EPPAIII.BlockSystems.mixedCrossPiece_card_twice_selected
+#print axioms EPPAIII.BlockSystems.graphAutomorphismHom
+#print axioms EPPAIII.BlockSystems.graphAutomorphism_reachable_iff
+#print axioms EPPAIII.BlockSystems.reachableVertices
+#print axioms EPPAIII.BlockSystems.reachableVertices_image_aut
+#print axioms EPPAIII.BlockSystems.transitive_connected_component_card_eq
