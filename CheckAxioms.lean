@@ -506,3 +506,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.neighboursInBlock
 #print axioms EPPAIII.BlockSystems.neighboursInBlock_aut
 #print axioms EPPAIII.BlockSystems.eppa_selected_block_neighbour_count_eq
+#print axioms EPPAIII.BlockSystems.eppa_fixedU_transitive_on_selected
+#print axioms EPPAIII.BlockSystems.eppa_case1_all_host_blocks_occupied
