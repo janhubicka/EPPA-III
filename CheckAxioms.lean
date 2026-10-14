@@ -553,3 +553,4 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.eppa_case1_cross_degree_eq_one
 #print axioms EPPAIII.BlockSystems.unique_neighbour_in_block_of_degree_one
 #print axioms EPPAIII.BlockSystems.two_block_cross_graph_perfect_matching
+#print axioms EPPAIII.BlockSystems.eppa_case1_exactly_two_blocks_with_matching
