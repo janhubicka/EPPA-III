@@ -132,10 +132,14 @@ theorem eppa_case1_quotient_and_unoccupied_bound {V W B : Type*}
     eppa_case1_all_blocks_complete
       G H e heppa block hBlocks hSurj hTrans
       hOneEdge hNotWhole m hUniform hDouble i j hDifferent
+  have hBlockClique : ∀ u v : W, u ≠ v →
+      block u = block v → H.Adj u v := by
+    intro u v huv heq
+    exact hAllBlocks (block u) u v huv rfl heq.symm
   have hComplete : blockConnectionGraph H block = ⊤ :=
     eppa_unequal_occupied_quotient_complete
       G H e heppa block hBlocks hSurj hTrans
-      hOneEdge hAllBlocks hNonCluster m hUniform
+      hOneEdge hBlockClique hNonCluster m hUniform
       hDouble i j hi hj hDifferent
   have hSelectedInside : ∀ x y : V, G.Adj x y →
       block (e x) = block (e y) :=
