@@ -445,3 +445,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.mem_occupiedBlocks
 #print axioms EPPAIII.BlockSystems.eppa_occupied_blocks_pair_transitive
 #print axioms EPPAIII.BlockSystems.eppa_majority_occupied_blocks_complete
+#print axioms EPPAIII.BlockSystems.eppa_base_edges_internal_of_one
+#print axioms EPPAIII.BlockSystems.eppa_base_nonedges_external_of_internal_edge
+#print axioms EPPAIII.BlockSystems.eppa_base_same_block_iff_eq_or_adj
+#print axioms EPPAIII.BlockSystems.eppa_base_cluster_of_internal_edge
