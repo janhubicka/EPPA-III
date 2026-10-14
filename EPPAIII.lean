@@ -142,3 +142,4 @@ import EPPAIII.BlockSystems.Case1NoUnoccupied
 import EPPAIII.BlockSystems.UniformCrossBlockDegrees
 import EPPAIII.BlockSystems.BipartiteDoubleCount
 import EPPAIII.BlockSystems.UnequalCase2Taylor
+import EPPAIII.BlockSystems.CrossBlockSizeEquation
