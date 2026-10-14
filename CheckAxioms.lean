@@ -516,3 +516,13 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.eppa_base_transversal_of_crossing_edge
 #print axioms EPPAIII.BlockSystems.transitive_eppa_crossing_edge_blocks_are_pairs
 #print axioms EPPAIII.BlockSystems.transitive_eppa_crossing_edge_taylor_up_to_mate
+#print axioms EPPAIII.BlockSystems.selectedHostBlock
+#print axioms EPPAIII.BlockSystems.mem_selectedHostBlock_iff
+#print axioms EPPAIII.BlockSystems.selectedHostBlock_card
+#print axioms EPPAIII.BlockSystems.outsideHostBlock
+#print axioms EPPAIII.BlockSystems.mem_outsideHostBlock_iff
+#print axioms EPPAIII.BlockSystems.selected_outside_host_block_card
+#print axioms EPPAIII.BlockSystems.selected_cross_neighbours_outside
+#print axioms EPPAIII.BlockSystems.outside_cross_neighbours_selected
+#print axioms EPPAIII.BlockSystems.selected_eq_outside_cross_card
+#print axioms EPPAIII.BlockSystems.selected_occupied_pairwise_complementary
