@@ -107,10 +107,12 @@ def blockConnectionGraph {W B : Type*}
   Adj := fun a b =>
     a ≠ b ∧ ∃ u v : W, block u = a ∧ block v = b ∧ H.Adj u v
   symm := by
+    constructor
     intro a b h
     obtain ⟨hab,u,v,hu,hv,hadj⟩ := h
     exact ⟨hab.symm,v,u,hv,hu,hadj.symm⟩
   loopless := by
+    constructor
     intro a h
     exact h.1 rfl
 
