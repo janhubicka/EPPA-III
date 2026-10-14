@@ -4,7 +4,7 @@
 \geometry{margin=26mm}
 \title{EPPA--III: suggested manuscript corrections}
 \author{Independent validation register}
-\date{13 October 2026}
+\date{14 October 2026}
 \begin{document}
 \maketitle
 
@@ -315,7 +315,11 @@ The stronger independent argument in
 \texttt{validation/direct-clique-cover-proof.tex}
 bypasses Claims~3.8--3.11 entirely but would
 constitute a substantial editorial replacement.
-Neither graph-level result is yet fully Lean-proved.
+For non-cluster witnesses with \(s,t\ge2\), the complementary-half
+conclusion is now Lean-verified as part of the unified theorem
+(PR~\#171, merged). The degenerate \(s=1\) and \(t=1\) partition
+cases are also proved (PR~\#168, merged). This does not certify the
+original proofs of Claims~3.8--3.11 word for word.
 
 \subsection*{C11. Lemma 3.18: a missing bipartite-cycle exclusion}
 \textbf{Location:} \texttt{lem:C5\_10vertex},
@@ -664,12 +668,13 @@ the saturated outside-choice graph are in
 respectively (both merged with passing Lean CI in PR~\#99).
 These prerequisites are now proved in Lean, and the Wagner
 eight-vertex host classification is completed (PR~\#155).
-The zero-partial outside true-twin quotient, mask-orbit bound and
-finite normal forms are also verified (PRs~\#140, \#148,
-\#161 and \#163); their full-host assembly has passed
-on the development branch PR~\#162 but is not marked merged
-until its clean integration is green. These conditions are not consequences of the
-abstract edge-count theorem alone.
+The zero-partial outside true-twin quotient, mask-orbit bound,
+finite normal forms and full-host graph identification are now
+verified and merged (PRs~\#140, \#148, \#161, \#163,
+and final integration PR~\#169). Their combination with the
+one- and two-partial branches is certified in merged PR~\#171.
+These results are not consequences of the abstract
+edge-count theorem alone.
 
 
 
@@ -705,18 +710,16 @@ EPPA lifts is assumed. The relevant final modules are
 supporting cross-orbit and cross-adjacency modules.
 
 \paragraph{Residual boundaries for Lemma 3.7.}
-The proof for two partial coordinates still needs the
-four-corner square-action orbit classification and final
-identification with the Wagner graph. The all-empty/full
-(no-partial-coordinate) branch still needs the quotient-class
-orbit and uniform cross-matrix assembly, although the exact
-true-twin class sizes and the selected/outside class
-separation are already verified. Low parameters
-\(s=1\), \(t=1\) and homogeneous hosts require independent
-formalization. The supporting finite Wagner square count
-and zero-partial whole-index-mask orbit arithmetic are being
-worked on separately. These facts are \emph{not} yet the
-full Lemma~3.7, let alone Section~3.
+For \(s,t\ge2\) and a non-cluster vertex-transitive EPPA host,
+the full zero-, one- and two-partial profile classification is
+now Lean-verified and merged (PR~\#171). The eight-vertex
+two-partial exception is identified with the canonical Wagner
+graph (PR~\#155). Complementary-half partition statements for
+\(s=1\) and \(t=1\) are proved and merged (PR~\#168), but the
+complete cross-adjacency classification at low parameters and
+the homogeneous/cluster-host alternative are not yet assembled.
+The original manuscript's separate argument remains subject
+to the corrections in C04, C05, C13, C14 and C18.
 
 \paragraph{Editorial status.}
 The proposed localized Claim~3.9 orbit replacement and
@@ -732,32 +735,32 @@ normalisation in Claim~3.10.
 \textbf{Location:} \texttt{thm:sKt\_witnesses} and its use in
 \texttt{prop:imprimitive\_summary}.
 
-The classification of a vertex-transitive double-sized EPPA
-witness for induced \(sK_t\), assuming \(s,t\ge 2\), is now
-completely Lean-verified in the one-partial cases
-(PR~\#128) and the two-partial \(s=t=2\) Wagner exception
-(PR~\#155). These proofs neither posit an outside clique
-partition nor assume coherent choices of extension automorphisms.
+For a non-cluster vertex-transitive EPPA witness of an induced
+\(sK_t\) with \(s,t\ge2\) and \(2st\) vertices, the complete
+classification has now been proved in Lean and merged
+(PR~\#171). It combines the one-partial cases (PR~\#128),
+the two-partial \(s=t=2\) Wagner exception (PR~\#155), and
+the full zero-partial generalized clique-cover conclusion
+(PR~\#169). The complementary induced graph
+\(H\setminus G\cong sK_t\) is a conclusion of these proofs.
+Neither an outside clique partition nor coherent choices
+of automorphism extensions are assumed.
 
-For the non-cluster zero-partial case, the outside true-twin
-quotient has been labelled canonically and the complementary
-induced graph \(H\setminus G\cong sK_t\) established (PR~\#140);
-the actual EPPA action bounds the orbit of the full-clique
-neighbourhood mask and forces its size to be \(0,1,s-1\)
-or \(s\) (PR~\#148). The subsequent mask regularity and
-four-cover identification are individually verified in
-development PRs~\#162 and \#163, with clean integration
-under review. Do not claim full main-branch Lean
-certification for this case until those integrations pass.
+For \(s=1\) or \(t=1\), the complementary-half partition
+has been verified from vertex transitivity and exact edge
+counts (PR~\#168, merged). This does not yet classify every
+cross-block graph at these degenerate parameters. The
+homogeneous/cluster-host alternative, the corrected
+unequal-clique Lemma~3.12, the \(C_5\) and \(R_3\)
+exceptions, and Proposition~3.23 remain to be formalized.
 
-The complementary-half partition for the degenerate parameters
-\(s=1\) or \(t=1\) also has a separate Lean proof (PR~\#164,
-under integration). The complete low-parameter
-cross-block classification and the homogeneous-host case remain
-unverified in Lean. Lemma~3.12 (under its necessary
-non-homogeneity correction), the \(C_5\) and \(R_3\)
-exceptions, and Proposition~3.23 require additional
-formalization, despite available paper-level repairs.
+For unequal cliques, the regular-quotient majority argument
+of Claim~3.15 has been isolated in development PR~\#172:
+the quotient's completeness follows from vertex transitivity,
+ordered-pair transitivity on a majority of occupied blocks,
+and a nonempty edge relation. Even if its CI succeeds, this
+is a conditional quotient lemma, not the full construction of
+the quotient action from EPPA, nor a full proof of Lemma~3.12.
 
 \textbf{Editorial action.}
 Keep the direct original proof prose frozen.
