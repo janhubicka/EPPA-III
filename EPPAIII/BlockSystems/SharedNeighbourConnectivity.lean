@@ -44,6 +44,7 @@ theorem reachable_of_shared_pairs {W : Type*}
 neighbours for every distinct pair and every T-vertex
 has at least one S-neighbour. -/
 theorem shared_pairs_connected_union {W : Type*}
+    [DecidableEq W]
     (J : SimpleGraph W) (S T : Finset W)
     (hShared : ∀ u ∈ S, ∀ v ∈ S, u ≠ v →
       HasCommonNeighbour J u v)
