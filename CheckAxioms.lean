@@ -527,3 +527,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.selected_eq_outside_cross_card
 #print axioms EPPAIII.BlockSystems.selected_occupied_pairwise_complementary
 #print axioms EPPAIII.BlockSystems.eppa_case1_exactly_two_host_blocks
+#print axioms EPPAIII.BlockSystems.HasCommonNeighbour
+#print axioms EPPAIII.BlockSystems.graphAutomorphism_common_neighbour
+#print axioms EPPAIII.BlockSystems.eppa_common_cross_neighbour_pair_invariant
