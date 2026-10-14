@@ -422,3 +422,10 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.unique_proper_partial_gives_unique_k
 #print axioms EPPAIII.CliqueCovers.eppa_proper_partial_trichotomy
 #print axioms EPPAIII.CliqueCovers.eppa_noncluster_equal_clique_full_classification
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_one_left_eq_top
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_one_right_eq_bot
+#print axioms EPPAIII.CliqueCovers.balancedOutsideEquiv
+#print axioms EPPAIII.CliqueCovers.graph_eq_cliqueUnion_one_left_of_edge_count
+#print axioms EPPAIII.CliqueCovers.graph_eq_cliqueUnion_one_right_of_edge_count
+#print axioms EPPAIII.CliqueCovers.outside_of_transitive_one_clique
+#print axioms EPPAIII.CliqueCovers.outside_of_transitive_one_vertex_cliques
