@@ -39,6 +39,7 @@ theorem labels_exhaust_card_two {B : Type*}
     calc
       (Finset.univ : Finset B).card = 2 := by simpa using hCard
       _ = ({i,j} : Finset B).card := hPairCard.symm
+      _ ≤ ({i,j} : Finset B).card := le_refl _
   have hUniverse : ({i,j} : Finset B) = Finset.univ :=
     Finset.eq_of_subset_of_card_le hSubset hCardLe
   intro b
