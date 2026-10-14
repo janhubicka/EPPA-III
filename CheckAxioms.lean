@@ -488,3 +488,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.balancedOutsideEquivGeneral
 #print axioms EPPAIII.BlockSystems.crossBlockGraph_outside_bot
 #print axioms EPPAIII.BlockSystems.no_outside_cross_block_edges
+#print axioms EPPAIII.BlockSystems.at_most_one_unoccupied_of_complete_quotient
+#print axioms EPPAIII.BlockSystems.eppa_case1_quotient_and_unoccupied_bound
+#print axioms EPPAIII.BlockSystems.cross_block_edges_are_mixed
