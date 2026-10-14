@@ -549,5 +549,9 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.outside_block_vertex_touches_selected
 #print axioms EPPAIII.BlockSystems.mixedCrossPiece_connected_of_degree_two
 #print axioms EPPAIII.BlockSystems.unequal_two_block_cross_degree_eq_one
+#print axioms EPPAIII.DoubleCover.taylorTriangleLocalScore
+#print axioms EPPAIII.DoubleCover.taylorTriangleScore
+#print axioms EPPAIII.DoubleCover.taylorTriangleScore_difference
+#print axioms EPPAIII.DoubleCover.taylorTriangleScore_ne_of_third_component
 #print axioms EPPAIII.DoubleCover.taylor_mates_no_common_neighbour
 #print axioms EPPAIII.DoubleCover.taylor_no_triangle_containing_mate_edge

@@ -152,4 +152,5 @@ import EPPAIII.BlockSystems.ClosedConnectedComponents
 import EPPAIII.BlockSystems.DegreeTwoSharedNeighbours
 import EPPAIII.BlockSystems.MixedPieceConnectivity
 import EPPAIII.BlockSystems.CrossDegreeOne
+import EPPAIII.DoubleCover.TaylorTriangleScore
 import EPPAIII.DoubleCover.TaylorMateTriangles

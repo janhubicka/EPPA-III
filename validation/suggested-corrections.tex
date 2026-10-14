@@ -4,7 +4,7 @@
 \geometry{margin=26mm}
 \title{EPPA--III: suggested manuscript corrections}
 \author{Independent validation register}
-\date{14 October 2026}
+\date{15 October 2026}
 \begin{document}
 \maketitle
 
@@ -754,13 +754,35 @@ homogeneous/cluster-host alternative, the corrected
 unequal-clique Lemma~3.12, the \(C_5\) and \(R_3\)
 exceptions, and Proposition~3.23 remain to be formalized.
 
-For unequal cliques, the regular-quotient majority argument
-of Claim~3.15 has now been Lean-verified and merged
-(PR~\#172): the quotient's completeness follows from vertex
-transitivity, ordered-pair transitivity on a majority of
-occupied blocks, and a nonempty edge relation. This is a
-conditional quotient lemma, not the full construction of
-the quotient action from EPPA, nor a full proof of Lemma~3.12.
+For unequal cliques, the original Claim~3.15 is being
+replaced in Lean by a direct argument on the actual EPPA host.
+Genuine EPPA-induced block permutations are verified (PR~\#174);
+the majority and block-clique rigidity arguments are merged
+(PRs~\#175--\#179), as are the no-outside-cross-edge Claim~3.14
+(PR~\#181), the final exclusion of unoccupied blocks
+(PR~\#186), the uniform positive inter-block degree (PR~\#188),
+the pairwise size equation \(k_i+k_j=m\) (PR~\#190),
+and the conclusion of exactly two host blocks (PR~\#192).
+The shared-neighbour transport and connected-component argument
+exclude degree \(r\ge2\) for unequal positive occupancies
+(PRs~\#193--\#199 and \#201, merged).
+The composition proving \(r=1\) from the complete Case~1 EPPA
+hypotheses (PR~\#202), the unit-degree matching result
+(PR~\#200), and the final two-block perfect-matching theorem
+(PR~\#203) are committed but \emph{not counted as validated or
+merged until their new CI builds succeed}.
+
+For the crossing-edge Case~2, the pair-fibre reduction and
+Taylor double with optional matching are now Lean-verified and
+merged (PR~\#191). The triangle-count formula required to
+exclude three or more unequal clique components remains a
+graph-level Lean obligation. Its score difference and
+nonconstancy are isolated in pending PR~\#204; this is
+\emph{only an algebraic sublemma}, not the triangle-count
+formula itself. The homogeneous-host alternative,
+\(C_5\) and \(R_3\) exceptions, and Proposition~3.23
+remain open. Therefore the complete corrected Lemma~3.12
+and all of Section~3 are \emph{not} yet certified in Lean.
 
 \textbf{Editorial action.}
 Keep the direct original proof prose frozen.
