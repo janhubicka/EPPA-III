@@ -511,3 +511,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.eppa_selected_cross_block_degree_uniform
 #print axioms EPPAIII.BlockSystems.host_cross_block_degree_uniform
 #print axioms EPPAIII.BlockSystems.positive_common_cross_block_degree
+#print axioms EPPAIII.BlockSystems.neighbour_filter_card_as_sum
+#print axioms EPPAIII.BlockSystems.symmetric_bipartite_regular_card_eq
