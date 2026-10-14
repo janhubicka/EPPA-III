@@ -530,3 +530,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.HasCommonNeighbour
 #print axioms EPPAIII.BlockSystems.graphAutomorphism_common_neighbour
 #print axioms EPPAIII.BlockSystems.eppa_common_cross_neighbour_pair_invariant
+#print axioms EPPAIII.BlockSystems.reachable_of_common_neighbour
+#print axioms EPPAIII.BlockSystems.reachable_of_shared_pairs
+#print axioms EPPAIII.BlockSystems.shared_pairs_connected_union
