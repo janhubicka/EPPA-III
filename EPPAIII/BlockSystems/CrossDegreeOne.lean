@@ -108,9 +108,13 @@ theorem unequal_two_block_cross_degree_eq_one {V W B : Type*}
       (Or.inl ⟨hx,⟨x,rfl⟩⟩)
   have hClosedP : ∀ a ∈ P, ∀ b : W, J.Adj a b → b ∈ P :=
     mixedCrossPiece_edge_closed H e block i j hTwo hMixed
+  have hSwapTwo : ∀ b : B, b = j ∨ b = i := by
+    intro b
+    rcases hTwo b with h | h
+    · exact Or.inr h
+    · exact Or.inl h
   have hClosedQ : ∀ a ∈ Q, ∀ b : W, J.Adj a b → b ∈ Q :=
-    mixedCrossPiece_edge_closed H e block j i
-      (fun b => (hTwo b).symm) hMixed
+    mixedCrossPiece_edge_closed H e block j i hSwapTwo hMixed
   have hConnectedP :
       ∀ a ∈ P, ∀ b ∈ P, J.Reachable a b :=
     mixedCrossPiece_connected_of_degree_two
