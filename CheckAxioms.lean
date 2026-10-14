@@ -545,3 +545,4 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.reachable_mem_of_adj_closed
 #print axioms EPPAIII.BlockSystems.reachableVertices_eq_of_closed_connected
 #print axioms EPPAIII.BlockSystems.transitive_closed_connected_sets_card_eq
+#print axioms EPPAIII.BlockSystems.eppa_shared_cross_neighbour_of_degree_two
