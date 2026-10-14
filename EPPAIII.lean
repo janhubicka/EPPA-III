@@ -144,3 +144,4 @@ import EPPAIII.BlockSystems.BipartiteDoubleCount
 import EPPAIII.BlockSystems.UnequalCase2Taylor
 import EPPAIII.BlockSystems.CrossBlockSizeEquation
 import EPPAIII.BlockSystems.UnequalCase1TwoBlocks
+import EPPAIII.BlockSystems.SharedCrossNeighbours
