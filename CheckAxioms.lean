@@ -436,3 +436,12 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.transitive_majority_uniform_block_nonempty_top
 #print axioms EPPAIII.CliqueCovers.pair_transitive_block_uniform
 #print axioms EPPAIII.CliqueCovers.transitive_majority_pair_action_nonempty_top
+#print axioms EPPAIII.BlockSystems.liftBlockAutomorphism
+#print axioms EPPAIII.BlockSystems.liftBlockAutomorphism_vertex
+#print axioms EPPAIII.BlockSystems.blockConnectionGraph
+#print axioms EPPAIII.BlockSystems.liftBlockAutomorphism_graphAuto
+#print axioms EPPAIII.BlockSystems.blockConnectionGraph_transitive
+#print axioms EPPAIII.BlockSystems.occupiedBlocks
+#print axioms EPPAIII.BlockSystems.mem_occupiedBlocks
+#print axioms EPPAIII.BlockSystems.eppa_occupied_blocks_pair_transitive
+#print axioms EPPAIII.BlockSystems.eppa_majority_occupied_blocks_complete
