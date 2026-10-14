@@ -508,3 +508,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.eppa_selected_block_neighbour_count_eq
 #print axioms EPPAIII.BlockSystems.eppa_fixedU_transitive_on_selected
 #print axioms EPPAIII.BlockSystems.eppa_case1_all_host_blocks_occupied
+#print axioms EPPAIII.BlockSystems.eppa_selected_cross_block_degree_uniform
+#print axioms EPPAIII.BlockSystems.host_cross_block_degree_uniform
+#print axioms EPPAIII.BlockSystems.positive_common_cross_block_degree
