@@ -136,3 +136,4 @@ import EPPAIII.BlockSystems.Claim314CrossEdges
 import EPPAIII.BlockSystems.Case1UnoccupiedBound
 import EPPAIII.BlockSystems.TransversalLiftBlocks
 import EPPAIII.BlockSystems.UnoccupiedTouchSupport
+import EPPAIII.BlockSystems.IndependentTransversalLifts

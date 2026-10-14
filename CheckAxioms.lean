@@ -500,3 +500,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.touchedInBlock_card_eq_selected
 #print axioms EPPAIII.BlockSystems.touchedInBlock_image_aut
 #print axioms EPPAIII.BlockSystems.no_unoccupied_block_of_fixedU_selected_transitivity
+#print axioms EPPAIII.BlockSystems.exists_independent_transversal_with_two
+#print axioms EPPAIII.BlockSystems.swap_partial_on_independent_finset
+#print axioms EPPAIII.BlockSystems.eppa_fixed_unoccupied_lift_between_blocks
