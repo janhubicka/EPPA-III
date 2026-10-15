@@ -159,3 +159,4 @@ import EPPAIII.BlockSystems.UnitCrossMatching
 import EPPAIII.BlockSystems.UnequalCase1Matching
 import EPPAIII.DoubleCover.TaylorTriangleLayerCases
 import EPPAIII.DoubleCover.ClusterMixedTriangleCount
+import EPPAIII.DoubleCover.ClusterNeighbourPartition

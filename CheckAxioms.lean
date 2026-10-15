@@ -571,3 +571,7 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.cluster_neighbour_strict_nonneighbour_nonedge
 #print axioms EPPAIII.DoubleCover.cluster_base_mixed_triangle_pairs_eq_product
 #print axioms EPPAIII.DoubleCover.cluster_base_mixed_triangle_pairs_card
+#print axioms EPPAIII.DoubleCover.cluster_base_neighbour_partition
+#print axioms EPPAIII.DoubleCover.cluster_base_neighbours_disjoint_non_neighbours
+#print axioms EPPAIII.DoubleCover.cluster_base_neighbour_partition_card
+#print axioms EPPAIII.DoubleCover.cluster_base_mixed_triangle_pairs_card_closed_neighbourhood
