@@ -59,7 +59,7 @@ theorem cluster_base_mixed_triangle_pairs_eq_product {V : Type*}
     (hCluster : BlockSystems.IsClusterGraph G)
     (x : V) :
     clusterBaseMixedTrianglePairs G x =
-      (clusterBaseNeighbours G x).product
+      (clusterBaseNeighbours G x) ×ˢ
         (clusterBaseStrictNonneighbours G x) := by
   classical
   ext ⟨y,z⟩
