@@ -27,7 +27,7 @@ namespace EPPAIII.BlockSystems
 /-- The profile of a top vertex detects its adjacency to each
 selected base vertex, using the undirected host relation. -/
 theorem rook_cross_edge_iff_profile_member
-    {W : Type*}
+    {W : Type*} [Fintype W]
     (H : SimpleGraph W)
     (e : rookVertex ↪ W) (w : W) (x : rookVertex) :
     H.Adj (e x) w ↔ x ∈ finiteNeighbourhoodProfile H e w := by
@@ -36,7 +36,7 @@ theorem rook_cross_edge_iff_profile_member
 
 /-- Actual base rook profiles determine the forward cross layer. -/
 theorem rook_cross_edge_open_profile
-    {W : Type*}
+    {W : Type*} [Fintype W]
     (H : SimpleGraph W) (e : rookVertex ↪ W)
     (f : rookVertex ≃ {w : W // w ∈ finiteOutside e})
     (hOpen : ∀ y : rookVertex,
@@ -54,7 +54,7 @@ theorem rook_cross_edge_open_profile
 /-- Strict nonneighbourhood cross profiles encode the rook nonedges
 on distinct indices. -/
 theorem rook_cross_edge_strict_non_profile
-    {W : Type*}
+    {W : Type*} [Fintype W]
     (H : SimpleGraph W) (e : rookVertex ↪ W)
     (f : rookVertex ≃ {w : W // w ∈ finiteOutside e})
     (hNon : ∀ y : rookVertex,

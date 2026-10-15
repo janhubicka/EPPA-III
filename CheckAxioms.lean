@@ -718,3 +718,13 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_cross_edge_open_profile
 #print axioms EPPAIII.BlockSystems.rook_cross_edge_strict_non_profile
 #print axioms EPPAIII.BlockSystems.rook_actual_host_eq_canonical_double
+#print axioms EPPAIII.BlockSystems.translated_finite_profile_eq_image
+#print axioms EPPAIII.BlockSystems.finite_profile_image_under_host_automorphism
+#print axioms EPPAIII.BlockSystems.canonical_outside_graph_automorphism
+#print axioms EPPAIII.BlockSystems.rook_open_neighbourhood_equivariant
+#print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_equivariant
+#print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_invariant
+#print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_four_forms
+#print axioms EPPAIII.BlockSystems.rookThreeGraph_edge_count_eighteen
+#print axioms EPPAIII.BlockSystems.rookNineComplete_edge_count_thirtysix
+#print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_two_forms
