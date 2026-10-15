@@ -69,7 +69,8 @@ theorem rook_eppa_degree_four_host_is_rook_double
     | true =>
         have hBad : IsVertexTransitive
             (rookDoubleGraph true crossNonrook) := by
-          simpa only [hGraph] using hTransPullback
+          rw [← hGraph]
+          exact hTransPullback
         exact False.elim
           (rookDouble_complement_top_not_transitive crossNonrook hBad)
   refine ⟨φ,crossNonrook,?_,?_⟩
