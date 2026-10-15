@@ -178,3 +178,4 @@ import EPPAIII.BlockSystems.UnequalThreeComponents
 import EPPAIII.BlockSystems.UnequalCaseCoP3
 import EPPAIII.BlockSystems.OutsideCommonPairOrbits
 import EPPAIII.BlockSystems.CycleFiveTransitivity
+import EPPAIII.BlockSystems.CanonicalC4C6Cross
