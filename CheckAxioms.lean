@@ -557,3 +557,5 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylor_no_triangle_containing_mate_edge
 #print axioms EPPAIII.BlockSystems.labels_exhaust_card_two
 #print axioms EPPAIII.BlockSystems.eppa_case1_cross_degree_eq_one
+#print axioms EPPAIII.BlockSystems.unique_neighbour_in_block_of_degree_one
+#print axioms EPPAIII.BlockSystems.two_block_cross_graph_perfect_matching
