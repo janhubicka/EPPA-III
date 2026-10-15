@@ -169,3 +169,4 @@ import EPPAIII.DoubleCover.TaylorLayerSum
 import EPPAIII.DoubleCover.TaylorThreeLayerCount
 import EPPAIII.DoubleCover.TaylorCountArithmetic
 import EPPAIII.DoubleCover.TaylorActualTriangleCount
+import EPPAIII.DoubleCover.TaylorUnequalCliqueObstruction

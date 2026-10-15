@@ -604,3 +604,4 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.clusterBaseComponent_card
 #print axioms EPPAIII.DoubleCover.taylor_ordered_triangle_count_arithmetic
 #print axioms EPPAIII.DoubleCover.taylor_ordered_triangle_count_exact
+#print axioms EPPAIII.DoubleCover.taylor_unequal_cliques_three_components_not_transitive
