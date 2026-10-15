@@ -175,3 +175,4 @@ import EPPAIII.BlockSystems.UnequalCase2WithoutHomogeneity
 import EPPAIII.BlockSystems.UnequalCase1FromDegrees
 import EPPAIII.BlockSystems.UnequalCase2ThirdClique
 import EPPAIII.BlockSystems.UnequalThreeComponents
+import EPPAIII.BlockSystems.UnequalCaseCoP3
