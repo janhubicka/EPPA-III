@@ -585,3 +585,6 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.clusterBaseTopTopPairs
 #print axioms EPPAIII.DoubleCover.clusterBaseInternalOrderedEdges_eq_offDiag
 #print axioms EPPAIII.DoubleCover.clusterBaseOrderedEdges_card_split
+#print axioms EPPAIII.DoubleCover.orderedTrianglePairsAt
+#print axioms EPPAIII.DoubleCover.orderedTrianglePairsAt_card_graphAut
+#print axioms EPPAIII.DoubleCover.orderedTrianglePairsAt_card_transitive
