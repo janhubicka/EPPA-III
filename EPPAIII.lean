@@ -154,5 +154,10 @@ import EPPAIII.BlockSystems.MixedPieceConnectivity
 import EPPAIII.BlockSystems.CrossDegreeOne
 import EPPAIII.DoubleCover.TaylorTriangleScore
 import EPPAIII.DoubleCover.TaylorMateTriangles
+import EPPAIII.BlockSystems.UnequalCase1DegreeOne
+import EPPAIII.BlockSystems.UnitCrossMatching
+import EPPAIII.BlockSystems.UnequalCase1Matching
+import EPPAIII.DoubleCover.TaylorTriangleLayerCases
 import EPPAIII.DoubleCover.ClusterMixedTriangleCount
+import EPPAIII.DoubleCover.ClusterNeighbourPartition
 import EPPAIII.DoubleCover.ClusterComponentEdges
