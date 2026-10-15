@@ -1,0 +1,115 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=27mm}
+\title{EPPA--III Section 3: exceptional \(C_5\) and \(R_3\) validation}
+\author{Independent Lean validation supplement}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+\noindent\textbf{Policy.} The author manuscript
+\texttt{main-new(7).tex} is frozen. This note records
+proposed local proof replacements and formalisation
+boundaries; no manuscript text is edited.
+
+\section*{Lemma 3.18: neighbourhood-pair orbit argument}
+Only the cross-degree-two case is addressed.
+Write \(G=C_5\) and \(B=V(H)\setminus V(G)\), so
+\(|B|=5\), and assume \(|N_H(w)\cap V(G)|=2\) for
+every \(w\in B\). The cyclic order-five subgroup of
+\(\operatorname{Aut}(G)\) has two orbits on two-element
+subsets of \(V(G)\), each of size five:
+the edges and the diagonals of \(C_5\).
+Every base automorphism lifts to an automorphism of
+\(H\) preserving \(B\), so the multiplicity
+\(m(S)=|\{w\in B:N_H(w)\cap V(G)=S\}|\) is constant
+along these orbits.
+As \(\sum_{|S|=2}m(S)=5\), the two orbit multiplicities
+are \(1,0\) in one order or the other.
+Thus the profiles are pairwise distinct and precisely
+one orbit occurs. This excludes a \(C_4\dot\cup C_6\)
+cross-incidence, which necessarily repeats a profile.
+Unlike the original prime-part-size shortcut, the
+argument uses the \emph{actual EPPA profile multiset},
+not a presumed action on an indexed outside half.
+
+\paragraph{Lean coverage.}
+The modules \texttt{CycleFivePairProfileOrbits.lean},
+\texttt{CycleFiveOutsideProfileSaturation.lean}, and
+\texttt{CycleFiveOutsideEquiv.lean} establish, under
+these hypotheses, the two pair orbits, their multiplicity
+saturation, a genuine equivalence
+\(V(C_5)\simeq B\), and injectivity of the outside profile
+map. \texttt{CycleFiveInvariantFourForms.lean}
+independently proves that a five-vertex graph invariant
+under all cyclic shifts is empty, \(C_5\), its
+complement, or complete.
+
+\paragraph{Still outstanding.}
+The classification of \(H[B]\) under its
+\emph{actual} induced action, edge-count elimination
+and any remaining cross-degree branches of Lemma~3.18
+are not claimed by these modules. The complete
+Lemma~3.18 is not yet certified.
+
+\section*{Lemma 3.20: canonical degree-four rook conclusion}
+Let \(R_3\) denote the \(3\times3\) rook graph.
+Suppose \(e:R_3\hookrightarrow H\) is an
+induced EPPA embedding, \(|H|=18\), \(H\) is
+vertex-transitive, and
+\[
+  |N_H(w)\cap e(V(R_3))|=4
+  \qquad(w\in H\setminus e(V(R_3))).
+\]
+The orbit-multiplicity argument leaves exactly one
+of the two nine-element orbits of 4-subsets, the
+rook open neighbourhoods or strict nonneighbourhoods.
+Each profile is realised once, giving an \emph{actual}
+equivalence from rook vertices to \(B\).
+Genuine EPPA lifts show that the complementary
+graph is invariant under the rook automorphisms,
+hence has one of four forms. Vertex-transitivity
+and equal internal edge counts eliminate empty
+and complete forms. The complementary-rook
+top graph contradicts equality of triangle counts
+across the two halves; the two remaining graphs
+are the permitted doubles.
+
+\paragraph{Exact Lean theorem.}
+\texttt{rook\_eppa\_degree\_four\_host\_is\_rook\_double}
+produces an equivalence
+\(\phi:\{0,1\}\times V(R_3)\simeq V(H)\)
+fixing the designated bottom copy and identifying
+the whole graph with one of
+\(\texttt{rookDoubleGraph false crossNonrook}\).
+It does not assume a pre-indexed second half,
+coherent lifts or a triangle-count formula.
+
+\paragraph{Still outstanding.}
+The theorem assumes the outside cross-degree is
+exactly four. To complete Lemma~3.20 one must
+derive or classify the other possible degrees
+under the \emph{actual} hypotheses, then connect
+the explicit rook doubles to the author's named
+alternatives. The homogeneous-host and final
+Proposition~3.23 cases are not implied by this
+conditional theorem.
+
+\section*{Minimal source-facing edits}
+For Lemma~3.18, replace only the claim that
+the prime size of the bipartition forces one
+cycle by the two-orbit multiset count above.
+For Lemma~3.20, replace the assumed
+simultaneous action on both halves by the
+profile-multiplicity argument before identifying
+the canonical doubles. See the shorter existing
+\texttt{validation/short-r3-cross.tex}.
+Retain the author's prose elsewhere pending review.
+
+\paragraph{Certification rule.}
+Count the named Lean declarations as verified only
+after the consolidated GitHub Actions build and
+\texttt{CheckAxioms.lean} audit pass. The earlier
+independent successful PR runs do not automatically
+validate imports in combination.
+\end{document}

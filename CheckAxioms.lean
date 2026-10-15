@@ -737,3 +737,28 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rookThreeGraph_edge_count_eighteen
 #print axioms EPPAIII.BlockSystems.rookNineComplete_edge_count_thirtysix
 #print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_two_forms
+
+-- Section 3 exceptional C5/R3 consolidation (2026-10-16)
+#print axioms EPPAIII.BlockSystems.cycleFiveSubsetOrbit
+#print axioms EPPAIII.BlockSystems.cycleFiveEdgePair
+#print axioms EPPAIII.BlockSystems.cycleFiveDiagonalPair
+#print axioms EPPAIII.BlockSystems.cycleFive_pair_orbit_size
+#print axioms EPPAIII.BlockSystems.cycleFive_edge_pair_orbit_card
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_pair_orbit_card
+#print axioms EPPAIII.BlockSystems.cycleFive_pair_orbits_disjoint
+#print axioms EPPAIII.BlockSystems.cycleFive_pair_orbits_partition
+#print axioms EPPAIII.BlockSystems.cycleFive_outside_profile_multiplicity_invariant
+#print axioms EPPAIII.BlockSystems.cycleFive_orbit_weight_sum
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_pair_profile_classification
+#print axioms EPPAIII.BlockSystems.cycleFiveEdgePairShift
+#print axioms EPPAIII.BlockSystems.cycleFiveDiagonalPairShift
+#print axioms EPPAIII.BlockSystems.cycleFive_edge_pair_shift_injective
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_pair_shift_injective
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_equiv_of_two_neighbours
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_no_repeated_outside_pair_profiles
+#print axioms EPPAIII.BlockSystems.cycleFive_edge_oriented_pair_action
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_oriented_pair_action
+#print axioms EPPAIII.BlockSystems.cycleFive_invariant_graph_edge_value
+#print axioms EPPAIII.BlockSystems.cycleFive_invariant_graph_diagonal_value
+#print axioms EPPAIII.BlockSystems.cycleFive_invariant_graph_four_forms
+#print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_host_is_rook_double

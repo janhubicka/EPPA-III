@@ -4,7 +4,7 @@
 \geometry{margin=26mm}
 \title{EPPA--III: suggested manuscript corrections}
 \author{Independent validation register}
-\date{15 October 2026}
+\date{16 October 2026}
 \begin{document}
 \maketitle
 
@@ -864,6 +864,46 @@ none has been accepted or applied to the author manuscript.
 Passing Lean CI for the alternative direct classification
 does not automatically validate every inference in Claims
 3.8--3.11 as currently written.
+
+\section*{16 October 2026: exceptional-case Lean checkpoint}
+\textbf{Manuscript unchanged; suggested repairs remain proposed.}
+The new consolidated Lean imports are
+\texttt{CycleFivePairProfileOrbits.lean},
+\texttt{CycleFiveOutsideProfileSaturation.lean},
+\texttt{CycleFiveOutsideEquiv.lean},
+\texttt{CycleFiveInvariantFourForms.lean}, and
+\texttt{RookThreeDegreeFourConclusion.lean}.
+Their individual development branches are PRs \#254--\#258;
+a consolidated branch must pass its own Lean and axiom audit
+before its new declarations count as integrated.
+
+\paragraph{C11: a shorter orbit replacement.}
+Within the cross-degree-two case, let
+\(P_w=N_H(w)\cap V(C_5)\) for each of the five outside vertices.
+The ten two-element subsets of \(V(C_5)\) split under the cyclic
+automorphisms into two disjoint orbits of size five (edges and
+diagonals). EPPA makes the number of vertices with each profile
+constant along either orbit. Since the total multiplicity is five,
+one orbit occurs once at each of its five profiles and the other
+does not occur at all. The outside profile map is injective,
+excluding the \(C_4\dot\cup C_6\) cross pattern, whose four-cycle
+has two distinct outside vertices with the same selected pair.
+This proof does not assume coherent lifts or outside coordinates.
+Its conclusion includes a genuine outside equivalence induced by
+profiles, as formalised in \texttt{CycleFiveOutsideEquiv.lean}.
+
+\paragraph{C12: exact conditional rook conclusion.}
+For an induced EPPA embedding of \(R_3\) in an eighteen-vertex,
+vertex-transitive graph \(H\), \emph{provided every outside
+vertex has exactly four neighbours in \(R_3\)}, the theorem
+\texttt{rook\_eppa\_degree\_four\_host\_is\_rook\_double}
+constructs an actual graph equivalence of the two halves
+fixing the distinguished bottom copy and identifies the host
+with one of the two admissible rook doubles. This derives the
+outside labelling from profile multiplicities and eliminates
+the complementary-top possibilities by triangle counts.
+It does \emph{not} derive the four-neighbour condition.
+The remaining degree cases and Proposition~3.23 are open.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
