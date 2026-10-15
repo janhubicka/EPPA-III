@@ -788,3 +788,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFiveDouble_graph_eq_of_layer_data
 #print axioms EPPAIII.BlockSystems.cycleFive_actual_host_eq_canonical_double
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_degree_two_host_is_cyclic_double
+
+-- C5 any nontrivial outside profile orbit, 16 October 2026
+#print axioms EPPAIII.BlockSystems.cycleFive_proper_subset_orbit_size
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_proper_profile_saturates_outside
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_profile_dichotomy

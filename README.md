@@ -14,6 +14,8 @@ paper-level proof repairs, and unresolved dependencies. All entries are
 
 The [16 October exceptional-case checkpoint](validation/section3-exceptional-checkpoint-2026-10-16.tex) records current C5/R3 proof boundaries and source-local repairs.
 
+The [general C5 profile dichotomy note](validation/section3-c5-proper-profile-dichotomy.tex) records a stronger orbit-saturation proof that avoids assuming uniform cross-degree.
+
 The fuller historical audit remains in
 [validation/issues.tex](validation/issues.tex), with a focused
 [Section 3 report](validation/section3-rest.tex) and supporting
