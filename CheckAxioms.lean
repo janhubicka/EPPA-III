@@ -732,3 +732,9 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_outside_profile_multiplicity_invariant
 #print axioms EPPAIII.BlockSystems.cycleFive_orbit_weight_sum
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_pair_profile_classification
+#print axioms EPPAIII.BlockSystems.cycleFiveEdgePairShift
+#print axioms EPPAIII.BlockSystems.cycleFiveDiagonalPairShift
+#print axioms EPPAIII.BlockSystems.cycleFive_edge_pair_shift_injective
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_pair_shift_injective
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_equiv_of_two_neighbours
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_no_repeated_outside_pair_profiles
