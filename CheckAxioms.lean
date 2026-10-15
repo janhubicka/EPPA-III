@@ -688,3 +688,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_outside_card_nine
 #print axioms EPPAIII.BlockSystems.rook_profile_weight_invariance
 #print axioms EPPAIII.BlockSystems.rook_profile_total_nine
+#print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_two_impossible
+#print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_three_impossible
+#print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_four_profile_classification
