@@ -684,6 +684,13 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_base_automorphism
 #print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_sum
 #print axioms EPPAIII.BlockSystems.rook_outside_profile_multiplicity_invariant
+#print axioms EPPAIII.BlockSystems.outside_profile_fixed_size_sum
+#print axioms EPPAIII.BlockSystems.rook_outside_card_nine
+#print axioms EPPAIII.BlockSystems.rook_profile_weight_invariance
+#print axioms EPPAIII.BlockSystems.rook_profile_total_nine
+#print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_two_impossible
+#print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_three_impossible
+#print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_four_profile_classification
 #print axioms EPPAIII.BlockSystems.rookOpenNeighbourhood
 #print axioms EPPAIII.BlockSystems.rookStrictNonneighbours
 #print axioms EPPAIII.BlockSystems.rook_open_neighbourhood_card
