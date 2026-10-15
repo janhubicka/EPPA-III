@@ -201,3 +201,4 @@ import EPPAIII.BlockSystems.RookThreeOutsideAction
 import EPPAIII.BlockSystems.RookThreeTriangleCertificates
 import EPPAIII.BlockSystems.RookThreeDoubleAdjacency
 import EPPAIII.BlockSystems.RookThreeHostDoubleIdentification
+import EPPAIII.BlockSystems.CycleFiveInvariantFourForms
