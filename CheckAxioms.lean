@@ -560,3 +560,4 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.orderedTrianglePairsAt
 #print axioms EPPAIII.DoubleCover.orderedTrianglePairsAt_card_graphAut
 #print axioms EPPAIII.DoubleCover.orderedTrianglePairsAt_card_transitive
+#print axioms EPPAIII.DoubleCover.unequal_taylor_scores_contradict_host_transitivity
