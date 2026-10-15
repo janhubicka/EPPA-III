@@ -71,9 +71,16 @@ theorem rook_canonical_outside_graph_two_forms
         rookThreeGraph.edgeSet.ncard :=
     CliqueCovers.arbitrary_host_outside_edge_count_eq_base
       rookThreeGraph H e heppa.1 f hTrans
+  have hSideGraph :
+      (CliqueCovers.outsideInducedGraph H e).comap f =
+        H.comap outside := by
+    apply SimpleGraph.ext
+    funext x y
+    rfl
   have hEdges : (H.comap outside).edgeSet.ncard =
       rookThreeGraph.edgeSet.ncard := by
-    simpa only [outside, CliqueCovers.outsideInducedGraph] using hSide
+    rw [hSideGraph] at hSide
+    exact hSide
   have hCount : (H.comap outside).edgeSet.ncard = 18 :=
     hEdges.trans rookThreeGraph_edge_count_eighteen
   rcases hFour with hBot | hRook | hCompl | hTop
