@@ -35,7 +35,7 @@ theorem taylor_ordered_triangle_count_arithmetic
     omega
   have hTZ :
       (T : ℤ) + (d : ℤ) =
-        (d : ℤ) * (d : ℤ) + 2 * (d : ℤ) * (s : ℤ) + (t : ℤ) := by
+        (d : ℤ) * (d : ℤ) + 2 * ((d : ℤ) * (s : ℤ)) + (t : ℤ) := by
     exact_mod_cast hTrianglePlus
   have hEZ :
       (E : ℤ) + (k : ℤ) =
