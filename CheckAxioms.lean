@@ -691,3 +691,11 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_two_impossible
 #print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_three_impossible
 #print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_four_profile_classification
+#print axioms EPPAIII.BlockSystems.rookOpenNeighbourhood
+#print axioms EPPAIII.BlockSystems.rookStrictNonneighbours
+#print axioms EPPAIII.BlockSystems.rook_open_neighbourhood_card
+#print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_card
+#print axioms EPPAIII.BlockSystems.rook_nine_orbit_eq_neighbourhoods
+#print axioms EPPAIII.BlockSystems.rook_other_nine_orbit_eq_nonneighbourhoods
+#print axioms EPPAIII.BlockSystems.rook_open_neighbourhood_injective
+#print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_injective
