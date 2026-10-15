@@ -603,3 +603,4 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.ordered_triangle_pairs_card_three_layers
 #print axioms EPPAIII.DoubleCover.clusterBaseComponent_card
 #print axioms EPPAIII.DoubleCover.taylor_ordered_triangle_count_arithmetic
+#print axioms EPPAIII.DoubleCover.taylor_ordered_triangle_count_exact
