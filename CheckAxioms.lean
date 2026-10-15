@@ -607,3 +607,7 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylor_unequal_cliques_three_components_not_transitive
 #print axioms EPPAIII.BlockSystems.vertex_transitive_pullback
 #print axioms EPPAIII.BlockSystems.transitive_eppa_case2_unequal_three_components_impossible
+#print axioms EPPAIII.BlockSystems.graph_automorphism_preserves_base_neighbour_card
+#print axioms EPPAIII.BlockSystems.homogeneous_graph_vertex_transitive
+#print axioms EPPAIII.BlockSystems.nonhomogeneous_of_unequal_base_degrees
+#print axioms EPPAIII.BlockSystems.transitive_eppa_case2_unequal_three_components
