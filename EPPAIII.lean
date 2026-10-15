@@ -192,4 +192,7 @@ import EPPAIII.BlockSystems.RookThreeEppaCrossDegree
 import EPPAIII.BlockSystems.RookThreeNeighbourhoodOrbits
 import EPPAIII.BlockSystems.RookThreePairTransitivity
 import EPPAIII.BlockSystems.RookThreeInvariantFourForms
+import EPPAIII.BlockSystems.OutsideProfileCanonicalIndexing
+import EPPAIII.BlockSystems.OutsideProfileEquiv
+import EPPAIII.BlockSystems.RookThreeEppaCanonicalOutside
 import EPPAIII.BlockSystems.OutsideProfileCanonicalAction
