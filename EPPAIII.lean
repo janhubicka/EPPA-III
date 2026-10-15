@@ -198,3 +198,7 @@ import EPPAIII.BlockSystems.RookThreeHostDoubleIdentification
 import EPPAIII.BlockSystems.OutsideProfileCanonicalAction
 import EPPAIII.BlockSystems.RookThreeOutsideAction
 import EPPAIII.BlockSystems.RookThreeOutsideEqualEdges
+import EPPAIII.BlockSystems.OutsideProfileCanonicalIndexing
+import EPPAIII.BlockSystems.OutsideProfileEquiv
+import EPPAIII.BlockSystems.RookThreeEppaCanonicalOutside
+import EPPAIII.BlockSystems.RookThreeOutsideEquiv
