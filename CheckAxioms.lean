@@ -798,3 +798,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_proper_outside_degree_uniform
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_one_outside_pair_forces_uniform
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_one_outside_pair_host_classification
+
+-- Generic EPPA outside orbit saturation
+#print axioms EPPAIII.BlockSystems.eppa_outside_orbit_saturation_of_card
