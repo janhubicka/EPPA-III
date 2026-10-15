@@ -705,3 +705,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_nonedge_value
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_adj_characterization
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_four_forms
+#print axioms EPPAIII.BlockSystems.outside_profile_canonical_image_of_unit_multiplicities
+#print axioms EPPAIII.BlockSystems.outside_profile_unique_of_unit_multiplicities
