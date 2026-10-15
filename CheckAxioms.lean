@@ -728,3 +728,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rookDouble_bad_triangle_counts
 #print axioms EPPAIII.BlockSystems.rookDouble_surviving_triangle_counts
 #print axioms EPPAIII.BlockSystems.rookDouble_complement_top_not_transitive
+#print axioms EPPAIII.BlockSystems.rookDoubleGraph_adj_iff
+#print axioms EPPAIII.BlockSystems.rookDouble_graph_eq_of_layer_data
