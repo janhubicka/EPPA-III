@@ -730,3 +730,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_pair_orbits_disjoint
 #print axioms EPPAIII.BlockSystems.cycleFive_pair_orbits_partition
 #print axioms EPPAIII.BlockSystems.cycleFive_outside_profile_multiplicity_invariant
+#print axioms EPPAIII.BlockSystems.cycleFive_orbit_weight_sum
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_pair_profile_classification
