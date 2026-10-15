@@ -202,3 +202,9 @@ import EPPAIII.BlockSystems.RookThreeTriangleCertificates
 import EPPAIII.BlockSystems.RookThreeDoubleAdjacency
 import EPPAIII.BlockSystems.RookThreeHostDoubleIdentification
 import EPPAIII.BlockSystems.RookThreeOutsideEqualEdges
+
+import EPPAIII.BlockSystems.CycleFivePairProfileOrbits
+import EPPAIII.BlockSystems.CycleFiveOutsideProfileSaturation
+import EPPAIII.BlockSystems.CycleFiveOutsideEquiv
+import EPPAIII.BlockSystems.CycleFiveInvariantFourForms
+import EPPAIII.BlockSystems.RookThreeDegreeFourConclusion

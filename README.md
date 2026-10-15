@@ -12,6 +12,8 @@ It distinguishes confirmed errors, proposed localized replacement wording,
 paper-level proof repairs, and unresolved dependencies. All entries are
 *proposed* until the authors review them; no original manuscript TeX is changed.
 
+The [16 October exceptional-case checkpoint](validation/section3-exceptional-checkpoint-2026-10-16.tex) records current C5/R3 proof boundaries and source-local repairs.
+
 The fuller historical audit remains in
 [validation/issues.tex](validation/issues.tex), with a focused
 [Section 3 report](validation/section3-rest.tex) and supporting
