@@ -184,5 +184,7 @@ import EPPAIII.BlockSystems.RookThreeBase
 import EPPAIII.BlockSystems.RookThreeSubsetAction
 import EPPAIII.BlockSystems.RookThreeSmallSubsetOrbits
 import EPPAIII.BlockSystems.RookThreeFourSubsetOrbits
+import EPPAIII.BlockSystems.RookThreeOrbitWeights
+import EPPAIII.BlockSystems.RookThreeFourOrbitWeights
 import EPPAIII.BlockSystems.OutsideProfileMultiplicity
 import EPPAIII.BlockSystems.RookThreeProfileSum
