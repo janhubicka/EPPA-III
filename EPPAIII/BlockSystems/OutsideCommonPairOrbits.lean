@@ -57,9 +57,9 @@ theorem outside_common_neighbour_card_base_automorphism
       refine ⟨p.symm v,?_⟩
       apply q.injective
       calc
-        q w = e v := hv.symm
-        _ = e (p (p.symm v)) := by simp
-        _ = q (e (p.symm v)) := (hImage _).symm
+        q (e (p.symm v)) = e (p (p.symm v)) := hImage _
+        _ = e v := by simp
+        _ = q w := hv
   have hIff (w : W) :
       w ∈ outsideCommonNeighbourFinset H e x y ↔
         q w ∈ outsideCommonNeighbourFinset H e (p x) (p y) := by
@@ -72,12 +72,10 @@ theorem outside_common_neighbour_card_base_automorphism
       · simpa only [hImage y] using (hq (e y) w).mp hy
     · rintro ⟨hw,hx,hy⟩
       refine ⟨(not_congr (hSelected w)).mpr hw,?_,?_⟩
-      · have hh := (hq (e x) w).mpr
-        (by simpa only [hImage x] using hx)
-        exact hh
-      · have hh := (hq (e y) w).mpr
-        (by simpa only [hImage y] using hy)
-        exact hh
+      · apply (hq (e x) w).mpr
+        simpa only [hImage x] using hx
+      · apply (hq (e y) w).mpr
+        simpa only [hImage y] using hy
   refine Finset.card_bij'
     (fun w _ => q w) (fun w _ => q.symm w) ?_ ?_ ?_ ?_
   · intro w hw
