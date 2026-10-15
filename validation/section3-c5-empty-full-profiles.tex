@@ -1,0 +1,112 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=26mm}
+\title{EPPA--III, Claim 3.19: the empty/full complementary profiles}
+\author{Validation supplement; author manuscript frozen}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Context.}
+Let \(H\) be a vertex-transitive graph on ten vertices,
+and let the designated induced subgraph \(G\) be \(C_5\).
+Write \(B=V(H)\setminus V(G)\) and
+\(P_b=N_H(b)\cap V(G)\) for \(b\in B\).
+The already verified proper-profile case (PR~\#265)
+proves \(H[B]\cong C_5\) if some
+\(\varnothing\subsetneq P_b\subsetneq V(G)\).
+It remains to treat
+\[
+       P_b\in\{\varnothing,V(G)\}\qquad(b\in B).
+\]
+This case needs no EPPA hypothesis: graph regularity is enough.
+
+\section*{Lemma: empty and full profiles cannot coexist}
+If \(P_u=V(G)\), then \(u\) has at least five neighbours
+in \(G\), so \(\deg_H(u)\ge5\).
+If \(P_v=\varnothing\), then all neighbours of \(v\)
+lie among the other four vertices of \(B\); hence
+\(\deg_H(v)\le4\). This contradicts vertex-transitivity.
+Therefore either \emph{every} outside profile is empty
+or \emph{every} outside profile is full.
+
+The two degree estimates and the no-mixed-profiles
+conclusion are the main targets of
+\texttt{EPPAIII/BlockSystems/CycleFiveEmptyFullRigidity.lean}.
+They are stated for an arbitrary vertex type \(W\)
+with an actual induced copy \(e:\mathrm{Fin}\,5\hookrightarrow W\).
+There is no assumed imprimitivity system or
+equivariant labelling of \(B\).
+
+\section*{Lemma: the induced outside graph is a five-cycle}
+First suppose every \(P_b\) is empty.
+Then there are no edges between \(G\) and \(B\).
+Since \(G=C_5\) is connected, \(V(G)\) is an entire
+connected component of \(H\).
+Choose \(x\in V(G)\) and \(b\in B\).
+Vertex-transitivity gives \(q\in\operatorname{Aut}(H)\)
+with \(q(x)=b\); the image \(q(V(G))\) is the connected
+component of \(b\). This component is disjoint from
+\(V(G)\), has five vertices, and thus equals \(B\).
+Consequently \(H[B]\cong H[G]\cong C_5\).
+
+If every \(P_b\) is full, apply the preceding
+argument to the \emph{complement} \(\overline H\),
+which is again vertex-transitive and has no cross
+edges. The selected induced graph is
+\(\overline{C_5}\), which is connected and isomorphic
+to \(C_5\). It follows that
+\(\overline{H[B]}\cong\overline{C_5}\),
+so again \(H[B]\cong C_5\).
+
+\paragraph{Alternative numeric proof.}
+In either uniform case, every vertex of \(G\)
+has total degree \(2+\varepsilon 5\),
+where \(\varepsilon=0\) for empty and \(1\) for full
+profiles. Every outside vertex has the same
+\(\varepsilon 5\) cross-neighbours.
+By regularity, its degree within \(B\) is \(2\).
+A simple \(2\)-regular graph on five vertices
+is necessarily a single five-cycle
+(a disconnected \(2\)-regular graph would have
+at least three vertices in each component).
+This is an alternative to formalizing component
+transport and may yield a shorter Lean proof.
+
+\section*{Consequence for Claim 3.19}
+Combining this argument with the already verified
+nonempty-proper-profile proof establishes
+\[
+\boxed{\begin{gathered}
+ |V(H)|=10,\quad H\text{ vertex-transitive},\\
+ e:C_5\hookrightarrow H\text{ an induced EPPA embedding}
+ \quad\Longrightarrow\quad H[B]\cong C_5 .
+\end{gathered}}
+\]
+No imprimitivity hypothesis is needed for
+\emph{this complementary-half conclusion}.
+It remains essential in the broader host
+classification of Lemma~3.18: for instance
+the Petersen graph is a primitive possibility.
+The argument above is a \emph{paper-level proof};
+the full Lean graph-isomorphism conclusion must
+not be marked certified until the connected-component
+or \(2\)-regular-five-vertex step is formally checked.
+
+\section*{Minimal suggested insertion}
+After splitting the outside profiles into proper and
+empty/full cases, insert just:
+\begin{quote}
+If all outside neighbourhood profiles are empty or full,
+they must be uniform: a vertex with a full profile has
+degree at least five, whereas one with an empty profile
+has degree at most four. Thus either \(H\) or
+\(\overline H\) has no edges across the two halves.
+Transitivity then identifies the two connected
+components, so \(H[B]\cong C_5\).
+\end{quote}
+The established proper-profile proof handles the other
+case independently. Leave the rest of the
+author's manuscript unchanged.
+\end{document}

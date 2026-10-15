@@ -52,7 +52,8 @@ C17 & Lemma 3.3, final orbit assertion & Optional & Short two-point proof\\
 C18 & Claim 3.9, use in Lemma 3.7 & Paper-level + Lean & Saturated outside labels\\
 C19 & Lemma 3.7 and Proposition 3.23 & Lean frontier & Partition and Wagner classification\\
 C20 & Lemma 3.18, before case split & Lean-verified & Proper-profile saturation\\
-C21 & Claim 3.19 in Lemma 3.18 & Proposed Lean & Outside cycle from proper profile\\
+C21 & Claim 3.19 in Lemma 3.18 & Lean-verified & Outside cycle from proper profile\\
+C22 & Claim 3.19, empty/full profiles & Proposed Lean & Complement/component argument\\
 \bottomrule
 \end{longtable}
 
@@ -1040,6 +1041,48 @@ it is a primitive transitive EPPA witness for the chosen
 \(C_5\), not one of the imprimitive alternatives.
 The present proper-profile argument does not accidentally
 rule it out.
+
+\subsection*{C22. Empty/full profiles in Claim 3.19}
+\textbf{Location:} \texttt{lem:C5\_10vertex}, the complementary
+induced five-cycle claim. Together with the proved
+proper-profile case, this gives a short \emph{paper-level}
+proof of the full Claim~3.19.
+
+Suppose every vertex of \(B=H\setminus G\) has
+neighbourhood in \(G=C_5\) equal to \(\varnothing\)
+or all of \(G\). A full-profile vertex has host degree
+at least five; an empty-profile vertex has degree
+at most four. By transitivity they cannot coexist.
+If all profiles are empty, \(G\) is a complete connected
+component. A host automorphism carrying a vertex
+of \(G\) to \(B\) identifies the entire component
+\(G\) with \(B\), hence \(H[B]\cong C_5\).
+If all profiles are full, apply the same argument to
+\(\overline H\), then complement back.
+Thus, even without assuming an imprimitivity partition,
+\(H[B]\cong C_5\) in this final profile case.
+
+\textbf{Localized proposed wording:}
+\begin{quote}
+If all outside profiles are empty or full, they
+are uniform by degree regularity: full gives degree
+at least five, empty gives degree at most four.
+In the empty case the selected \(C_5\) is a complete
+connected component, and transitivity identifies
+the other component with it. The full case follows
+by taking complements.
+\end{quote}
+
+\textbf{Lean boundary:} the finite outside cardinal,
+degree bounds, and no-mixed-profile dichotomy
+are targeted in
+\texttt{EPPAIII/BlockSystems/CycleFiveEmptyFullRigidity.lean}.
+The final connected-component identification
+and its graph-isomorphism conclusion are still to be
+checked in Lean. See
+\texttt{validation/section3-c5-empty-full-profiles.tex}.
+Do not mark the full Claim~3.19 Lean-verified until
+those exact last steps have passed the axiom audit.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
