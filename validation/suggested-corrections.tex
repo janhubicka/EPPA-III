@@ -925,6 +925,26 @@ triangle-count route), and identify the
 surviving actual host graphs. It is not a
 proof of all cross-degree cases.
 
+\paragraph{Conditional final \(C_5\) cross-degree-two result.}
+The follow-up module \texttt{CycleFiveDoubleClassification.lean}
+defines the four explicit cyclic double graphs. Its finite
+ordered-triangle certificates show that the two configurations
+with the complementary five-cycle in the outside half have
+different ordered-triangle counts at a selected vertex and
+an outside vertex (respectively \(4,2\) or \(2,4\)).
+Therefore neither can be vertex-transitive.
+The graph-level theorem
+\texttt{cycleFive\_eppa\_degree\_two\_host\_is\_cyclic\_double}
+then constructs an equivalence
+\(\phi:\{0,1\}\times V(C_5)\simeq V(H)\) fixing the selected
+copy and identifies the entire actual host with one of the
+two remaining explicitly specified doubles.
+The hypothesis that every outside vertex has exactly two
+selected neighbours remains essential; this does not
+classify other cross-degrees or the whole Lemma~3.18.
+Certification is pending the exact stacked PR's
+Lean build and permitted-axiom audit.
+
 \section*{How to maintain this register}
 For each new correction, record a source label,
 a minimal proposed modification, whether the
