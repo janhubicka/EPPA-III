@@ -712,3 +712,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_profile_unit_on_orbit
 #print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_outside_profile_orbit
 #print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_canonical_outside_labels
+#print axioms EPPAIII.BlockSystems.outside_profile_label_family_equiv
+#print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_outside_equiv

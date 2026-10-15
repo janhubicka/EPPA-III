@@ -195,3 +195,4 @@ import EPPAIII.BlockSystems.RookThreeInvariantFourForms
 import EPPAIII.BlockSystems.OutsideProfileCanonicalIndexing
 import EPPAIII.BlockSystems.OutsideProfileEquiv
 import EPPAIII.BlockSystems.RookThreeEppaCanonicalOutside
+import EPPAIII.BlockSystems.RookThreeOutsideEquiv
