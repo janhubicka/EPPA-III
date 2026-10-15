@@ -57,7 +57,7 @@ theorem outside_common_neighbour_card_base_automorphism
       refine ⟨p.symm v,?_⟩
       apply q.injective
       calc
-        q w = e v := hv
+        q w = e v := hv.symm
         _ = e (p (p.symm v)) := by simp
         _ = q (e (p.symm v)) := (hImage _).symm
   have hIff (w : W) :
