@@ -622,6 +622,12 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_three_cliques_impossible
 #print axioms EPPAIII.BlockSystems.cluster_unequal_degrees_has_induced_cop3
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_three_cliques
+#print axioms EPPAIII.BlockSystems.outsideCommonNeighbourFinset
+#print axioms EPPAIII.BlockSystems.outside_common_neighbour_card_base_automorphism
+#print axioms EPPAIII.BlockSystems.invariant_nonempty_finset_of_vertex_transitive
+#print axioms EPPAIII.BlockSystems.no_unique_outside_double_common_pair_of_transitive_eppa
+#print axioms EPPAIII.BlockSystems.cycleFive_translate_graph_automorphism
+#print axioms EPPAIII.BlockSystems.cycleFive_vertex_transitive
 #print axioms EPPAIII.BlockSystems.canonicalC4C6Cross
 #print axioms EPPAIII.BlockSystems.canonicalC4C6CommonCount
 #print axioms EPPAIII.BlockSystems.canonicalC4C6_cross_regular
