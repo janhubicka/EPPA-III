@@ -83,8 +83,8 @@ theorem rookParameterizedAut_graph_automorphism
       exact (ht u v).trans
         (hq ((Equiv.prodComm (Fin 3) (Fin 3)) u)
             ((Equiv.prodComm (Fin 3) (Fin 3)) v))
-    simpa only [rookParameterizedAut, hp, dite_true, ite_true, q] using hComp
-  · simpa only [rookParameterizedAut, hp, dite_false, ite_false, q] using hq
+    simpa [rookParameterizedAut, hp, q] using hComp
+  · simpa [rookParameterizedAut, hp, q] using hq
 
 /-- The finite subset orbit induced by the 72 genuine automorphisms. -/
 def rookSubsetOrbit (S : Finset (Fin 3 × Fin 3)) :
