@@ -611,3 +611,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.homogeneous_graph_vertex_transitive
 #print axioms EPPAIII.BlockSystems.nonhomogeneous_of_unequal_base_degrees
 #print axioms EPPAIII.BlockSystems.transitive_eppa_case2_unequal_three_components
+#print axioms EPPAIII.BlockSystems.eppa_case1_selected_block_eq_component
+#print axioms EPPAIII.BlockSystems.eppa_case1_selected_block_card_eq_degree_add_one
+#print axioms EPPAIII.BlockSystems.eppa_case1_unequal_base_degrees_force_matching
