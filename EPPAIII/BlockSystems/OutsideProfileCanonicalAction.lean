@@ -19,7 +19,7 @@ namespace EPPAIII.BlockSystems
 /-- The translated profile defined using p.symm is precisely the
 forward image of the finite neighbourhood set under p. -/
 theorem translated_finite_profile_eq_image {V W : Type*}
-    [Fintype V]
+    [Fintype V] [DecidableEq V]
     (H : SimpleGraph W) (e : V ↪ W)
     (w : W) (p : Equiv.Perm V) :
     translatedFiniteProfile H e w p =
@@ -51,7 +51,7 @@ theorem translated_finite_profile_eq_image {V W : Type*}
 /-- An actual EPPA-compatible host automorphism acts on finite
 selected neighbourhood profiles by applying p to the profile. -/
 theorem finite_profile_image_under_host_automorphism
-    {V W : Type*} [Fintype V]
+    {V W : Type*} [Fintype V] [DecidableEq V]
     (H : SimpleGraph W) (e : V ↪ W)
     (p : Equiv.Perm V) (q : Equiv.Perm W)
     (hq : IsGraphAutomorphism H q)
@@ -71,7 +71,7 @@ with the base automorphism p, one actual EPPA lift transports each
 outside label x to p x. Hence the actual outside graph is p-invariant. -/
 theorem canonical_outside_graph_automorphism
     {V W : Type*}
-    [Fintype V] [Fintype W]
+    [Fintype V] [DecidableEq V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W)
     (e : V ↪ W) (heppa : IsEPPAEmbedding G H e)
     (p : Equiv.Perm V) (hp : IsGraphAutomorphism G p)
