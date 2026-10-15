@@ -734,3 +734,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_cross_edge_open_profile
 #print axioms EPPAIII.BlockSystems.rook_cross_edge_strict_non_profile
 #print axioms EPPAIII.BlockSystems.rook_actual_host_eq_canonical_double
+#print axioms EPPAIII.BlockSystems.rookThreeGraph_edge_count_eighteen
+#print axioms EPPAIII.BlockSystems.rookNineComplete_edge_count_thirtysix
+#print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_two_forms
