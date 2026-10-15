@@ -707,3 +707,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_four_forms
 #print axioms EPPAIII.BlockSystems.outside_profile_canonical_image_of_unit_multiplicities
 #print axioms EPPAIII.BlockSystems.outside_profile_unique_of_unit_multiplicities
+#print axioms EPPAIII.BlockSystems.exists_outside_profile_equiv_of_image_injective
+#print axioms EPPAIII.BlockSystems.exists_outside_profile_equiv_of_unit_multiplicities
