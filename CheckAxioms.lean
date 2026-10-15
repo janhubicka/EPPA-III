@@ -646,3 +646,17 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rookParameterizedAut_graph_automorphism
 #print axioms EPPAIII.BlockSystems.rookSubsetOrbit
 #print axioms EPPAIII.BlockSystems.rookSubsetOrbit_card_preserved
+#print axioms EPPAIII.BlockSystems.rookTwoAdjacent
+#print axioms EPPAIII.BlockSystems.rookTwoNonadjacent
+#print axioms EPPAIII.BlockSystems.rookThreeClique
+#print axioms EPPAIII.BlockSystems.rookThreeIndependent
+#print axioms EPPAIII.BlockSystems.rookThreeCorner
+#print axioms EPPAIII.BlockSystems.rookThreeSingleEdge
+#print axioms EPPAIII.BlockSystems.rookTwoAdjacent_orbit_card
+#print axioms EPPAIII.BlockSystems.rookTwoNonadjacent_orbit_card
+#print axioms EPPAIII.BlockSystems.rookThreeClique_orbit_card
+#print axioms EPPAIII.BlockSystems.rookThreeIndependent_orbit_card
+#print axioms EPPAIII.BlockSystems.rookThreeCorner_orbit_card
+#print axioms EPPAIII.BlockSystems.rookThreeSingleEdge_orbit_card
+#print axioms EPPAIII.BlockSystems.rook_two_subsets_orbit_partition
+#print axioms EPPAIII.BlockSystems.rook_three_subsets_orbit_partition
