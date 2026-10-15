@@ -167,3 +167,4 @@ import EPPAIII.DoubleCover.TaylorTriangleFibres
 import EPPAIII.DoubleCover.TaylorLayerBasePairs
 import EPPAIII.DoubleCover.TaylorLayerSum
 import EPPAIII.DoubleCover.TaylorThreeLayerCount
+import EPPAIII.DoubleCover.TaylorCountArithmetic
