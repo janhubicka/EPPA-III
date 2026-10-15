@@ -737,3 +737,4 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_canonical_outside_labels
 #print axioms EPPAIII.BlockSystems.outside_profile_label_family_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_outside_equiv
+#print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_host_is_rook_double
