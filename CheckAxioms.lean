@@ -793,3 +793,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_proper_subset_orbit_size
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_proper_profile_saturates_outside
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_profile_dichotomy
+
+-- C5 single two-neighbour outside vertex suffices
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_proper_outside_degree_uniform
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_one_outside_pair_forces_uniform
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_one_outside_pair_host_classification
