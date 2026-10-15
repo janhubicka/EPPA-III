@@ -714,6 +714,13 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_canonical_outside_labels
 #print axioms EPPAIII.BlockSystems.outside_profile_label_family_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_outside_equiv
+#print axioms EPPAIII.BlockSystems.translated_finite_profile_eq_image
+#print axioms EPPAIII.BlockSystems.finite_profile_image_under_host_automorphism
+#print axioms EPPAIII.BlockSystems.canonical_outside_graph_automorphism
+#print axioms EPPAIII.BlockSystems.rook_open_neighbourhood_equivariant
+#print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_equivariant
+#print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_invariant
+#print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_four_forms
 #print axioms EPPAIII.BlockSystems.rookDoubleRelation
 #print axioms EPPAIII.BlockSystems.rookDoubleGraph
 #print axioms EPPAIII.BlockSystems.rookDoubleOrderedTriangles
