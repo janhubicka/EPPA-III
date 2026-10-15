@@ -27,7 +27,7 @@ namespace EPPAIII.BlockSystems
 /-- The profile of a top vertex detects its adjacency to each
 selected base vertex, using the undirected host relation. -/
 theorem rook_cross_edge_iff_profile_member
-    {W : Type*} [Fintype rookVertex]
+    {W : Type*}
     (H : SimpleGraph W)
     (e : rookVertex ↪ W) (w : W) (x : rookVertex) :
     H.Adj (e x) w ↔ x ∈ finiteNeighbourhoodProfile H e w := by
