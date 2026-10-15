@@ -789,19 +789,28 @@ layer correspondences (PRs~\#213--\#214), the layer
 sum (PR~\#215), and the reduction to three layer
 cardinalities (PR~\#216) are likewise verified and merged.
 
-The final numerical normalisation (PR~\#217),
-the \emph{actual graph-level} Taylor ordered-triangle
-formula (PR~\#218), its unequal-clique transitivity
-contradiction (PR~\#219), and the integration with
-the genuine Case~2 EPPA block construction (PR~\#220)
-have been committed but must \emph{not} be counted as
-validated until their latest CI runs succeed.
-These are not assumptions of the expected triangle-count
-formula: the latter is the proposed conclusion of
-PR~\#218. The homogeneous-host alternative,
-\(C_5\) and \(R_3\) exceptions, and Proposition~3.23
-remain open. Thus the full corrected Lemma~3.12 and
-all of Section~3 are \emph{not} yet certified in Lean.
+The numerical normalisation (PR~\#217), the
+\emph{actual graph-level} Taylor ordered-triangle formula
+(PR~\#218), its unequal-clique transitivity contradiction
+(PR~\#219), and the integration with genuine EPPA and the
+invariant block construction (PR~\#220) have now all
+passed CI and permitted-axiom audits and been merged.
+Thus the non-homogeneous unequal-clique Case~2
+triangle obstruction is certified under the explicit
+cluster, induced co-\(P_3\), crossing-edge and
+nontrivial-block hypotheses in its Lean statement.
+No triangle-count equation, second-half partition,
+or coherent EPPA lifts are assumed.
+
+Both corrected unequal-clique branches are verified
+under their stated hypotheses. Removing surplus
+hypotheses, treating homogeneous host alternatives,
+the \(C_5\) and \(R_3\) exceptions, and the remaining
+Proposition~3.23 assembly are still open.
+The unmodified manuscript statement of Lemma~3.12
+is also false without the necessary homogeneous-host
+qualification, so the original full Section~3 cannot
+yet be called certified in Lean.
 
 \textbf{Editorial action.}
 Keep the direct original proof prose frozen.
