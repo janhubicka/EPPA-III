@@ -29,7 +29,7 @@ noncomputable def outsideProfileMultiplicity {V W : Type*}
 /-- Each full base automorphism preserves all multiplicities
 of outside profiles, even without coherent EPPA extensions. -/
 theorem outside_profile_multiplicity_base_automorphism
-    {V W : Type*} [Fintype V] [Fintype W]
+    {V W : Type*} [Fintype V] [DecidableEq V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W)
     (e : V ↪ W) (heppa : IsEPPAEmbedding G H e)
     (p : Equiv.Perm V) (hp : IsGraphAutomorphism G p)
@@ -103,7 +103,7 @@ theorem outside_profile_multiplicity_base_automorphism
 /-- The total multiplicity of all occurring outside profiles
 is precisely the number of vertices outside the selected copy. -/
 theorem outside_profile_multiplicity_sum
-    {V W : Type*} [Fintype V] [Fintype W]
+    {V W : Type*} [Fintype V] [DecidableEq V] [Fintype W]
     (H : SimpleGraph W) (e : V ↪ W) :
     (∑ S ∈ (finiteOutside e).image
       (finiteNeighbourhoodProfile H e),
