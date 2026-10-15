@@ -200,3 +200,4 @@ import EPPAIII.BlockSystems.OutsideProfileCanonicalAction
 import EPPAIII.BlockSystems.RookThreeOutsideAction
 import EPPAIII.BlockSystems.CycleFivePairProfileOrbits
 import EPPAIII.BlockSystems.CycleFiveOutsideProfileSaturation
+import EPPAIII.BlockSystems.CycleFiveOutsideEquiv
