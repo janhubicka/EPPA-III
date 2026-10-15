@@ -87,18 +87,29 @@ theorem outside_profile_multiplicity_base_automorphism
       exact Finset.mem_filter.mpr
         ⟨(hOutside w).mpr hOut,
           (Finset.image_injective p.injective) hEqual⟩
-  change L.card = R.card
-  refine Finset.card_bij'
-    (fun w _ => q w) (fun w _ => q.symm w) ?_ ?_ ?_ ?_
-  · intro w hw
-    exact (hIff w).mp hw
-  · intro w hw
-    apply (hIff (q.symm w)).mpr
-    simpa using hw
-  · intro w hw
-    simp
-  · intro w hw
-    simp
+  have hL : outsideProfileMultiplicity H e S = L.card := by
+    unfold outsideProfileMultiplicity
+    congr 1
+    ext w
+    simp [L]
+  have hR : outsideProfileMultiplicity H e (S.image p) = R.card := by
+    unfold outsideProfileMultiplicity
+    congr 1
+    ext w
+    simp [R]
+  have hCard : L.card = R.card := by
+    refine Finset.card_bij'
+      (fun w _ => q w) (fun w _ => q.symm w) ?_ ?_ ?_ ?_
+    · intro w hw
+      exact (hIff w).mp hw
+    · intro w hw
+      apply (hIff (q.symm w)).mpr
+      simpa using hw
+    · intro w hw
+      simp
+    · intro w hw
+      simp
+  exact hL.trans (hCard.trans hR.symm)
 
 /-- The total multiplicity of all occurring outside profiles
 is precisely the number of vertices outside the selected copy. -/
@@ -110,9 +121,26 @@ theorem outside_profile_multiplicity_sum
         outsideProfileMultiplicity H e S) =
       (finiteOutside e).card := by
   classical
-  simpa [outsideProfileMultiplicity] using
-    (Finset.card_eq_sum_card_image
-      (finiteNeighbourhoodProfile H e) (finiteOutside e)).symm
+  have hSummand (S : Finset V) :
+      outsideProfileMultiplicity H e S =
+        ((finiteOutside e).filter
+          (fun w => finiteNeighbourhoodProfile H e w = S)).card := by
+    unfold outsideProfileMultiplicity
+    congr 1
+    ext w
+    simp
+  calc
+    (∑ S ∈ (finiteOutside e).image (finiteNeighbourhoodProfile H e),
+        outsideProfileMultiplicity H e S) =
+      ∑ S ∈ (finiteOutside e).image (finiteNeighbourhoodProfile H e),
+        ((finiteOutside e).filter
+          (fun w => finiteNeighbourhoodProfile H e w = S)).card := by
+          apply Finset.sum_congr rfl
+          intro S _
+          exact hSummand S
+    _ = (finiteOutside e).card :=
+      (Finset.card_eq_sum_card_image
+        (finiteNeighbourhoodProfile H e) (finiteOutside e)).symm
 
 /-- Apply the preceding multiset invariant to the 72 explicit,
 genuine automorphisms of the nine-vertex rook graph. -/
