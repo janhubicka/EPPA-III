@@ -19,12 +19,8 @@ def rookThreeGraph : SimpleGraph (Fin 3 × Fin 3) where
   Adj u v := u ≠ v ∧ (u.1 = v.1 ∨ u.2 = v.2)
   symm := by
     constructor
-    intro u v
-    constructor
-    · rintro ⟨hne,h⟩
-      exact ⟨hne.symm,h.elim (fun h => Or.inl h.symm) (fun h => Or.inr h.symm)⟩
-    · rintro ⟨hne,h⟩
-      exact ⟨hne.symm,h.elim (fun h => Or.inl h.symm) (fun h => Or.inr h.symm)⟩
+    intro u v h
+    exact ⟨h.1.symm, h.2.elim (fun z => Or.inl z.symm) (fun z => Or.inr z.symm)⟩
   loopless := by
     constructor
     intro u h
