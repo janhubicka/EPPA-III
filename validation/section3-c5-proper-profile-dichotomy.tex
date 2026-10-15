@@ -1,0 +1,95 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=27mm}
+\title{Section 3: a free-orbit proof for the exceptional five-cycle}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+\noindent\textbf{Policy.}
+The author manuscript \texttt{main-new(7).tex} remains frozen.
+All statements and modifications in this note are proposed
+source-local replacements, not edits to the circulated TeX.
+
+\section*{A stronger neighbourhood-profile lemma}
+Let \(H\) have ten vertices, let \(e:C_5\hookrightarrow H\)
+be an induced EPPA embedding and write \(B=V(H)\setminus e(V(C_5))\).
+No transitivity or imprimitivity of \(H\) is assumed at this stage.
+For \(b\in B\), write
+\(P_b=\{v\in V(C_5): b\sim_H e(v)\}\).
+
+The five rotations of \(C_5\) preserve the multiplicities of the
+profiles \(P_b\): for each rotation \(\rho\), the number of
+outside vertices with profile \(\rho(P)\) equals the number
+with profile \(P\). This follows by lifting the particular
+rotation via EPPA; the lifts need not be coherent.
+
+Every nonempty proper subset \(P\subsetneq V(C_5)\)
+has five distinct images under the rotations. Indeed, the
+rotation group has prime order five, and a nonidentity
+rotation fixes no nonempty proper subset. Therefore, if
+any outside vertex \(b\) has such a profile \(P_b\), all five
+different rotations of \(P_b\) occur at least once.
+But \(|B|=5\); hence they occur \emph{exactly once},
+and there are no other outside profiles.
+
+\[
+\boxed{
+\begin{aligned}
+&\exists b\in B:\quad \varnothing\ne P_b\ne V(C_5)\\
+&\Longrightarrow
+\quad \{P_c:c\in B\}
+   =\{\rho(P_b):\rho\in C_5\},\\[-2pt]
+&\hspace{38mm} c\longmapsto P_c
+  \text{ is injective}.
+\end{aligned}}
+\]
+
+In particular every outside vertex has the same number
+\(|P_b|\in\{1,2,3,4\}\) of selected neighbours.
+The only complementary case is that \emph{all}
+outside profiles are empty or full, possibly with
+different multiplicities of these two fixed profiles.
+
+\section*{Consequences for Lemma 3.18}
+The existing proposed correction C11 treated the
+cross-degree-two case by the two five-element pair orbits.
+The new lemma removes the need to assume uniform
+cross-degree in advance: a single outside vertex with
+two selected neighbours forces all five profiles to
+belong to one pair orbit and to occur once each.
+The disconnected \(C_4\dot\cup C_6\) cross-incidence
+has a repeated outside pair profile, hence is impossible
+even before imposing the vertex-transitivity of \(H\).
+
+A similar rigidity argument is now available for
+cross-degree \(1,3,4\): once any such profile occurs,
+all five outside vertices have that cross-degree and
+are canonically indexed by one cyclic orbit.
+To obtain the full Lemma~3.18 one must still
+classify these distinct degree cases and the
+all-empty/full-profile case. The present lemma
+does \emph{not} claim those cases are excluded.
+
+\section*{Lean formalisation and certification boundary}
+The proposed reusable source module is
+\texttt{EPPAIII/BlockSystems/CycleFiveProperProfileSaturation.lean}.
+Its principal declarations are
+\texttt{cycleFive\_proper\_subset\_orbit\_size},
+\texttt{cycleFive\_eppa\_proper\_profile\_saturates\_outside},
+and \texttt{cycleFive\_eppa\_outside\_profile\_dichotomy}.
+The first is a kernel-checked finite-set calculation;
+the others use actual EPPA profile-multiplicity
+invariance, the five-vertex outside budget and
+finite-set cardinality rigidity. A claim of
+Lean certification requires successful compilation
+and a permitted-axiom audit of all three declarations.
+
+\paragraph{Smallest author-facing correction.}
+Rather than reworking the proof architecture around
+blocks of imprimitivity, insert the profile argument
+immediately before the cross-degree case split.
+It simultaneously justifies constant proper
+cross-degree and excludes the repeated-pair
+alternative in the degree-two case.
+\end{document}

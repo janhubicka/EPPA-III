@@ -51,6 +51,7 @@ C16 & Lemma 3.3, first claim (Claim 3.4) & Readability & One-block EPPA reasonin
 C17 & Lemma 3.3, final orbit assertion & Optional & Short two-point proof\\
 C18 & Claim 3.9, use in Lemma 3.7 & Paper-level + Lean & Saturated outside labels\\
 C19 & Lemma 3.7 and Proposition 3.23 & Lean frontier & Partition and Wagner classification\\
+C20 & Lemma 3.18, before case split & Proposed Lean & Proper-profile saturation\\
 \bottomrule
 \end{longtable}
 
@@ -942,8 +943,51 @@ two remaining explicitly specified doubles.
 The hypothesis that every outside vertex has exactly two
 selected neighbours remains essential; this does not
 classify other cross-degrees or the whole Lemma~3.18.
-Certification is pending the exact stacked PR's
-Lean build and permitted-axiom audit.
+This conditional theorem passed GitHub Actions and permitted-axiom
+audit, and was merged via PR~\#261 on 16 October 2026.
+
+\subsection*{C20. Stronger \(C_5\) profile saturation (16 October 2026)}
+\textbf{Location:} Lemma~3.18, immediately before the
+cross-degree case split. This is an optional \emph{shortening}
+of the proof; it is not a correction of the statement itself.
+
+The hypothesis of constant outside cross-degree can be dispensed
+with whenever one outside vertex has a nonempty proper
+selected neighbourhood. Under the order-ten EPPA assumption,
+all five rotations of that proper subset occur as outside
+neighbourhoods and must be different. Hence they exhaust the
+five outside vertices, with multiplicity one. The only remaining
+case consists entirely of empty/full outside profiles.
+In particular a single outside vertex with two selected
+neighbours already forces all outside vertices to have
+two selected neighbours and excludes \(C_4\dot\cup C_6\)
+without presupposing an outside labelling.
+
+\textbf{Suggested source-local insertion:}
+\begin{quote}
+The five rotations of \(C_5\) have orbit size five
+on every nonempty proper subset of \(V(C_5)\).
+By EPPA their orbit occurs among the outside
+neighbourhood profiles. Since there are only
+five outside vertices, one proper profile
+already accounts for all of them, once each.
+Thus, unless every outside profile is empty
+or full, the outside cross-degree is constant,
+and the profile map is injective.
+\end{quote}
+This avoids assuming coherent lifts, transitively
+indexed outside vertices, or a fixed outside block.
+
+\textbf{Validation target:}
+\texttt{CycleFiveProperProfileSaturation.lean},
+including \texttt{cycleFive\_proper\_subset\_orbit\_size},
+\texttt{cycleFive\_eppa\_proper\_profile\_saturates\_outside}
+and \texttt{cycleFive\_eppa\_outside\_profile\_dichotomy}.
+See \texttt{validation/section3-c5-proper-profile-dichotomy.tex}.
+The argument for the all-empty/full case and the remaining
+cross-degree values still needs a separate classification.
+Do not mark these new declarations as Lean-certified
+until their branch passes GitHub Actions and the axiom audit.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
