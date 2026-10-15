@@ -70,7 +70,7 @@ theorem transitive_eppa_unequal_three_cliques_impossible
   classical
   have hNonHomogeneous : ¬ DoubleCover.IsHomogeneousGraph G :=
     nonhomogeneous_of_unequal_base_degrees G x y hDifferent
-  obtain ⟨b₀,_hb₀⟩ := hNontrivial
+  obtain ⟨b₀,hb₀⟩ := hNontrivial
   let m : ℕ :=
     ((Finset.univ : Finset W).filter (fun w => block w = b₀)).card
   have hUniform : ∀ b : B,
@@ -142,7 +142,7 @@ theorem transitive_eppa_unequal_three_cliques_impossible
   · exact transitive_eppa_case2_three_clique_representatives
       G H e heppa block hBlocks hSurj hTrans
       hCluster hCoP3 ⟨a,b,hab,hInside⟩ hManyBlocks
-      ⟨b₀,_hb₀⟩ hHostSize x y z hDifferent
+      ⟨b₀,hb₀⟩ hHostSize x y z hDifferent
       hxz hyz hnxz hnyz
 
 end EPPAIII.BlockSystems
