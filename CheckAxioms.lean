@@ -801,3 +801,11 @@ import EPPAIII
 
 -- Generic EPPA outside orbit saturation
 #print axioms EPPAIII.BlockSystems.eppa_outside_orbit_saturation_of_card
+
+-- C5 actual outside graph under a single proper neighbourhood profile
+#print axioms EPPAIII.BlockSystems.cycleFive_proper_shift_injective
+#print axioms EPPAIII.BlockSystems.cycleFive_shift_profile_equivariant
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_proper_profile_outside_equiv
+#print axioms EPPAIII.BlockSystems.cycleFive_proper_outside_graph_rotations
+#print axioms EPPAIII.BlockSystems.cycleFive_invariant_five_edges_two_forms
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_proper_outside_two_forms

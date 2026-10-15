@@ -16,6 +16,8 @@ The [16 October exceptional-case checkpoint](validation/section3-exceptional-che
 
 The [general C5 profile dichotomy note](validation/section3-c5-proper-profile-dichotomy.tex) records a stronger orbit-saturation proof that avoids assuming uniform cross-degree.
 
+The [proper-profile C5 outside graph note](validation/section3-c5-proper-outside-cycle.tex) records a conditional direct proof of the complementary five-cycle, and a warning about the primitive Petersen case.
+
 The fuller historical audit remains in
 [validation/issues.tex](validation/issues.tex), with a focused
 [Section 3 report](validation/section3-rest.tex) and supporting

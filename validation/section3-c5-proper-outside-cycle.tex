@@ -1,0 +1,93 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=27mm}
+\title{Section 3: the complementary five-cycle from one proper profile}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+\noindent\textbf{Manuscript policy.}
+This is a source-local validation supplement only.
+Do not modify the author manuscript.
+
+\section*{An alternative proof for the nondegenerate case of Claim 3.19}
+Let \(H\) be a vertex-transitive graph on ten vertices,
+\(e:C_5\hookrightarrow H\) an induced EPPA embedding,
+and \(B=V(H)\setminus e(V(C_5))\).
+Suppose some \(b\in B\) has a nonempty proper
+selected neighbourhood \(P\subset V(C_5)\).
+
+By the five-cycle free-orbit lemma, the five selected
+neighbourhoods of the vertices in \(B\) are
+\(\{P+d:d\in\mathbb Z/5\mathbb Z\}\), each exactly once.
+Thus the profile map is injective, and we can canonically
+index the actual vertices of \(B\) by \(d\in\mathbb Z/5\mathbb Z\)
+via \(P_d=P+d\).
+
+For any rotation \(t\) of the selected five-cycle,
+choose an EPPA lift of that single automorphism.
+The lift preserves \(B\) and sends selected-neighbourhood
+profiles \(P_d\) to \(P_d+t=P_{d+t}\).
+Injectivity forces this lift to act on \(B\) by
+\(d\mapsto d+t\). No coherent family of extensions is needed.
+Consequently the induced graph \(H[B]\), in these canonical
+coordinates, is invariant under the cyclic translations.
+
+There are exactly two orbits of the rotation group on
+unordered pairs of distinct labels, consecutive pairs and
+diagonals. Therefore \(H[B]\) is empty, the standard
+\(C_5\), its complementary \(C_5\), or complete.
+Vertex-transitivity of \(H\) implies equal numbers of edges
+in the two equal halves:
+\[
+  |E(H[B])|=|E(C_5)|=5.
+\]
+Thus the empty and complete possibilities are excluded;
+\(H[B]\) is \(C_5\) or \(\overline{C_5}\) in the
+specified coordinates. Since multiplication by two
+identifies \(C_5\) with its complement,
+\[
+       H[B]\cong C_5.
+\]
+
+\paragraph{Scope.}
+This argument does not use the imprimitivity of \(H\)
+or a prior assertion that \(H[B]\) is vertex-transitive.
+It proves the complementary five-cycle only when
+at least one outside profile is nonempty and proper.
+If all outside profiles are empty or full,
+a separate graph-theoretic argument remains necessary.
+
+\section*{Warning: imprimitivity is still essential for the full theorem}
+The larger classification must \emph{not} simply drop the
+imprimitivity hypothesis on \(H\).
+For example, the two-layer graph with bottom \(C_5\),
+top \(\overline{C_5}\), and a perfect matching between
+equal labels is the Petersen graph. It is transitive,
+primitive, and extends all automorphisms of the designated
+\(C_5\). The base \(C_5\) is homogeneous, so it is
+also an EPPA witness for that copy. This additional
+primitive host is not among the imprimitive alternatives
+of Lemma~3.18. This observation is a \emph{boundary
+check}, not a counterexample to the manuscript lemma.
+
+\section*{Formalisation target}
+The new module
+\texttt{EPPAIII/BlockSystems/CycleFiveProperOutsideAction.lean}
+constructs the actual outside equivalence, proves
+rotation-equivariance from genuine EPPA lifts,
+and derives the four-form reduction and five-edge
+conclusion. The principal final declaration is
+\texttt{cycleFive\_eppa\_proper\_outside\_two\_forms}.
+Certification requires the consolidated Lean CI
+and axiom audit; this note does not claim the
+full Lemma~3.18 is formalised.
+
+\paragraph{Suggested one-paragraph substitution.}
+After introducing outside neighbourhood profiles,
+use the orbit-budget argument to obtain their canonical
+cyclic labels whenever a proper profile occurs;
+then derive \(H[B]\cong C_5\) from the cyclic
+pair-orbit classification and equal half-edge counts.
+The all-empty/full case should be addressed separately.
+\end{document}
