@@ -37,7 +37,7 @@ theorem rook_open_neighbourhood_equivariant
     have hBase : rookThreeGraph.Adj x u := (hq x u).mpr (by
       simpa [u] using hAdj)
     exact Finset.mem_image.mpr
-      ⟨u, by simpa [rookOpenNeighbourhood] using hBase, by simp [u]⟩
+      ⟨u, by simpa [rookOpenNeighbourhood] using hBase, by change q u = y; exact q.apply_symm_apply y⟩
   · intro hy
     obtain ⟨u,hu,huy⟩ := Finset.mem_image.mp hy
     have hAdj : rookThreeGraph.Adj x u := by
@@ -73,7 +73,7 @@ theorem rook_strict_nonneighbours_equivariant
       exact hInfo.2 (by simpa [u] using (hq x u).mp h)
     exact Finset.mem_image.mpr
       ⟨u, by simpa [rookStrictNonneighbours] using
-        (And.intro huNe huNo), by simp [u]⟩
+        (And.intro huNe huNo), by change q u = y; exact q.apply_symm_apply y⟩
   · intro hy
     obtain ⟨u,hu,huy⟩ := Finset.mem_image.mp hy
     have hInfo : u ≠ x ∧ ¬ rookThreeGraph.Adj x u := by
