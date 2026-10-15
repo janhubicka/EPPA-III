@@ -43,7 +43,7 @@ theorem cluster_unequal_degrees_has_induced_cop3
       subst z
       exact hnxy hyz.symm
     exact ⟨y,x,z,hxy.symm,hxNeZ,G.ne_of_adj hyz,
-      hnxy.symm,hxz,hyz⟩
+      (fun h => hnxy h.symm),hxz,hyz⟩
   · have hxPos : 0 < (DoubleCover.clusterBaseNeighbours G x).card := by
       omega
     obtain ⟨z,hz⟩ := Finset.card_pos.mp hxPos
