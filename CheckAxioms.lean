@@ -703,3 +703,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_ordered_nonedge_pair_transitive
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_edge_value
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_nonedge_value
+#print axioms EPPAIII.BlockSystems.rook_invariant_graph_adj_characterization
+#print axioms EPPAIII.BlockSystems.rook_invariant_graph_four_forms
