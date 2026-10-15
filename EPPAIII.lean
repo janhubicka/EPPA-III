@@ -194,3 +194,4 @@ import EPPAIII.BlockSystems.RookThreePairTransitivity
 import EPPAIII.BlockSystems.RookThreeInvariantFourForms
 import EPPAIII.BlockSystems.RookThreeTriangleCertificates
 import EPPAIII.BlockSystems.RookThreeDoubleAdjacency
+import EPPAIII.BlockSystems.RookThreeHostDoubleIdentification
