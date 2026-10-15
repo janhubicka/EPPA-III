@@ -38,7 +38,7 @@ theorem rook_profile_unit_on_orbit
   calc
     outsideProfileMultiplicity H e T =
         outsideProfileMultiplicity H e
-          (S.image (rookParameterizedAut p)) := by rw [hEq]
+          (S.image (rookParameterizedAut p)) := by rw [← hEq]
     _ = outsideProfileMultiplicity H e S :=
       (rook_outside_profile_multiplicity_invariant
         H e heppa S p).symm
