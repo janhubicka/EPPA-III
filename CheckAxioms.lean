@@ -734,3 +734,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_cross_edge_open_profile
 #print axioms EPPAIII.BlockSystems.rook_cross_edge_strict_non_profile
 #print axioms EPPAIII.BlockSystems.rook_actual_host_eq_canonical_double
+#print axioms EPPAIII.BlockSystems.cycleFive_edge_oriented_pair_action
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_oriented_pair_action
+#print axioms EPPAIII.BlockSystems.cycleFive_invariant_graph_edge_value
+#print axioms EPPAIII.BlockSystems.cycleFive_invariant_graph_diagonal_value
+#print axioms EPPAIII.BlockSystems.cycleFive_invariant_graph_four_forms
