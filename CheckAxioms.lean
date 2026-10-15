@@ -699,3 +699,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_other_nine_orbit_eq_nonneighbourhoods
 #print axioms EPPAIII.BlockSystems.rook_open_neighbourhood_injective
 #print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_injective
+#print axioms EPPAIII.BlockSystems.rook_ordered_edge_pair_transitive
+#print axioms EPPAIII.BlockSystems.rook_ordered_nonedge_pair_transitive
+#print axioms EPPAIII.BlockSystems.rook_invariant_graph_edge_value
+#print axioms EPPAIII.BlockSystems.rook_invariant_graph_nonedge_value
