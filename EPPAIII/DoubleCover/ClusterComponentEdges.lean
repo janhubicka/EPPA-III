@@ -22,8 +22,9 @@ namespace EPPAIII.DoubleCover
 /-- The clique component containing x, represented by its closed
 neighbourhood, when the base is a union of cliques. -/
 noncomputable def clusterBaseComponent {V : Type*} [Fintype V]
-    (G : SimpleGraph V) (x : V) : Finset V :=
-  insert x (clusterBaseNeighbours G x)
+    (G : SimpleGraph V) (x : V) : Finset V := by
+  classical
+  exact insert x (clusterBaseNeighbours G x)
 
 theorem mem_clusterBaseComponent_iff {V : Type*} [Fintype V]
     (G : SimpleGraph V) (x y : V) :
