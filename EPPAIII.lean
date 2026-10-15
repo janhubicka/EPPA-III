@@ -191,3 +191,4 @@ import EPPAIII.BlockSystems.RookThreeProfileSum
 import EPPAIII.BlockSystems.RookThreeEppaCrossDegree
 import EPPAIII.BlockSystems.RookThreeNeighbourhoodOrbits
 import EPPAIII.BlockSystems.OutsideProfileCanonicalIndexing
+import EPPAIII.BlockSystems.OutsideProfileEquiv
