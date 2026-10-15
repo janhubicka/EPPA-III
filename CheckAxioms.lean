@@ -709,3 +709,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.outside_profile_unique_of_unit_multiplicities
 #print axioms EPPAIII.BlockSystems.exists_outside_profile_equiv_of_image_injective
 #print axioms EPPAIII.BlockSystems.exists_outside_profile_equiv_of_unit_multiplicities
+#print axioms EPPAIII.BlockSystems.rook_profile_unit_on_orbit
+#print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_outside_profile_orbit
+#print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_canonical_outside_labels
