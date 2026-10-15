@@ -598,3 +598,6 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylor_top_top_layer_eq_base_outside
 #print axioms EPPAIII.DoubleCover.ordered_triangle_layer_fibre_card
 #print axioms EPPAIII.DoubleCover.ordered_triangle_pairs_card_sum_layers
+#print axioms EPPAIII.DoubleCover.taylor_triangle_layer_card_swap
+#print axioms EPPAIII.DoubleCover.ordered_triangle_pairs_card_four_layers
+#print axioms EPPAIII.DoubleCover.ordered_triangle_pairs_card_three_layers
