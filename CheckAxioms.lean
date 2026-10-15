@@ -662,6 +662,17 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rookThreeSingleEdge_orbit_card
 #print axioms EPPAIII.BlockSystems.rook_two_subsets_orbit_partition
 #print axioms EPPAIII.BlockSystems.rook_three_subsets_orbit_partition
+#print axioms EPPAIII.BlockSystems.rookFourSquare
+#print axioms EPPAIII.BlockSystems.rookFourNineOther
+#print axioms EPPAIII.BlockSystems.rookFourLinePlus
+#print axioms EPPAIII.BlockSystems.rookFourCornerPlus
+#print axioms EPPAIII.BlockSystems.rookFourCornerDiagonal
+#print axioms EPPAIII.BlockSystems.rookFourSquare_orbit_card
+#print axioms EPPAIII.BlockSystems.rookFourNineOther_orbit_card
+#print axioms EPPAIII.BlockSystems.rookFourLinePlus_orbit_card
+#print axioms EPPAIII.BlockSystems.rookFourCornerPlus_orbit_card
+#print axioms EPPAIII.BlockSystems.rookFourCornerDiagonal_orbit_card
+#print axioms EPPAIII.BlockSystems.rook_four_subsets_orbit_partition
 #print axioms EPPAIII.BlockSystems.outsideProfileMultiplicity
 #print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_base_automorphism
 #print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_sum

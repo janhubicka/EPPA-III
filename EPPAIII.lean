@@ -183,4 +183,5 @@ import EPPAIII.BlockSystems.CycleFiveC4C6Exclusion
 import EPPAIII.BlockSystems.RookThreeBase
 import EPPAIII.BlockSystems.RookThreeSubsetAction
 import EPPAIII.BlockSystems.RookThreeSmallSubsetOrbits
+import EPPAIII.BlockSystems.RookThreeFourSubsetOrbits
 import EPPAIII.BlockSystems.OutsideProfileMultiplicity
