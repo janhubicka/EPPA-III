@@ -680,3 +680,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_triple_weight_total_ne_nine
 #print axioms EPPAIII.BlockSystems.rook_four_orbits_disjoint
 #print axioms EPPAIII.BlockSystems.rook_four_weight_total_nine_classification
+#print axioms EPPAIII.BlockSystems.outsideProfileMultiplicity
+#print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_base_automorphism
+#print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_sum
+#print axioms EPPAIII.BlockSystems.rook_outside_profile_multiplicity_invariant
