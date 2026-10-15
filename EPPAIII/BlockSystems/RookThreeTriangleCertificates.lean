@@ -97,4 +97,27 @@ theorem rookDouble_surviving_triangle_counts :
     rookDoubleOrderedTriangles false true (true,(0,0)) = 28 := by
   decide
 
+
+/-- A double with the complementary rook graph as its outside half
+cannot be vertex-transitive, regardless of which degree-four cross
+neighbourhood orbit is used. -/
+theorem rookDouble_complement_top_not_transitive
+    (crossNonrook : Bool) :
+    ¬ IsVertexTransitive (rookDoubleGraph true crossNonrook) := by
+  intro hTrans
+  have hEqual :=
+    DoubleCover.orderedTrianglePairsAt_card_transitive
+      (rookDoubleGraph true crossNonrook) hTrans
+      (false,(0,0)) (true,(0,0))
+  obtain ⟨h1,h2,h3,h4⟩ := rookDouble_bad_triangle_counts
+  cases crossNonrook with
+  | false =>
+      rw [← rookDoubleOrderedTriangles_eq_actual true false (false,(0,0)),
+          ← rookDoubleOrderedTriangles_eq_actual true false (true,(0,0))] at hEqual
+      omega
+  | true =>
+      rw [← rookDoubleOrderedTriangles_eq_actual true true (false,(0,0)),
+          ← rookDoubleOrderedTriangles_eq_actual true true (true,(0,0))] at hEqual
+      omega
+
 end EPPAIII.BlockSystems
