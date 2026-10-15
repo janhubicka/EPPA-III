@@ -712,3 +712,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_equivariant
 #print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_four_forms
+#print axioms EPPAIII.BlockSystems.rookThreeGraph_edge_count_eighteen
+#print axioms EPPAIII.BlockSystems.rookNineComplete_edge_count_thirtysix
+#print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_two_forms
