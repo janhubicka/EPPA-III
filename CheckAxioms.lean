@@ -553,6 +553,8 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylorTriangleScore
 #print axioms EPPAIII.DoubleCover.taylorTriangleScore_difference
 #print axioms EPPAIII.DoubleCover.taylorTriangleScore_ne_of_third_component
+#print axioms EPPAIII.DoubleCover.taylor_mates_no_common_neighbour
+#print axioms EPPAIII.DoubleCover.taylor_no_triangle_containing_mate_edge
 #print axioms EPPAIII.DoubleCover.taylor_bottom_top_iff_nonedge
 #print axioms EPPAIII.DoubleCover.taylor_top_top_iff_edge
 #print axioms EPPAIII.DoubleCover.taylor_triangle_bottom_bottom_iff
