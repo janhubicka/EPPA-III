@@ -705,3 +705,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_nonedge_value
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_adj_characterization
 #print axioms EPPAIII.BlockSystems.rook_invariant_graph_four_forms
+#print axioms EPPAIII.BlockSystems.translated_finite_profile_eq_image
+#print axioms EPPAIII.BlockSystems.finite_profile_image_under_host_automorphism
+#print axioms EPPAIII.BlockSystems.canonical_outside_graph_automorphism
