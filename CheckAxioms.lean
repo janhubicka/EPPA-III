@@ -593,3 +593,6 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylor_triangle_other_fibres_distinct
 #print axioms EPPAIII.DoubleCover.taylorTriangleLayerPairs
 #print axioms EPPAIII.DoubleCover.mem_taylorTriangleLayerPairs
+#print axioms EPPAIII.DoubleCover.taylor_bottom_bottom_layer_eq_offDiag
+#print axioms EPPAIII.DoubleCover.taylor_bottom_top_layer_eq_base_mixed
+#print axioms EPPAIII.DoubleCover.taylor_top_top_layer_eq_base_outside
