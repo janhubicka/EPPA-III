@@ -762,3 +762,13 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_invariant_graph_diagonal_value
 #print axioms EPPAIII.BlockSystems.cycleFive_invariant_graph_four_forms
 #print axioms EPPAIII.BlockSystems.rook_eppa_degree_four_host_is_rook_double
+
+-- C5 actual outside adjacency (section 3)
+#print axioms EPPAIII.BlockSystems.cycleFive_edge_shift_equivariant
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_shift_equivariant
+#print axioms EPPAIII.BlockSystems.cycleFive_canonical_outside_graph_invariant
+#print axioms EPPAIII.BlockSystems.cycleFive_canonical_outside_graph_four_forms
+#print axioms EPPAIII.BlockSystems.cycleFive_edge_count_five
+#print axioms EPPAIII.BlockSystems.cycleFive_complete_edge_count_ten
+#print axioms EPPAIII.BlockSystems.cycleFive_canonical_outside_graph_two_forms
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_degree_two_outside_two_forms
