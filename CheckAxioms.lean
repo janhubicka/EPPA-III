@@ -730,3 +730,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rookDouble_complement_top_not_transitive
 #print axioms EPPAIII.BlockSystems.rookDoubleGraph_adj_iff
 #print axioms EPPAIII.BlockSystems.rookDouble_graph_eq_of_layer_data
+#print axioms EPPAIII.BlockSystems.rook_cross_edge_iff_profile_member
+#print axioms EPPAIII.BlockSystems.rook_cross_edge_open_profile
+#print axioms EPPAIII.BlockSystems.rook_cross_edge_strict_non_profile
+#print axioms EPPAIII.BlockSystems.rook_actual_host_eq_canonical_double

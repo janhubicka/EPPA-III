@@ -200,3 +200,4 @@ import EPPAIII.BlockSystems.OutsideProfileCanonicalAction
 import EPPAIII.BlockSystems.RookThreeOutsideAction
 import EPPAIII.BlockSystems.RookThreeTriangleCertificates
 import EPPAIII.BlockSystems.RookThreeDoubleAdjacency
+import EPPAIII.BlockSystems.RookThreeHostDoubleIdentification
