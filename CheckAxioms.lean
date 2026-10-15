@@ -721,3 +721,12 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_equivariant
 #print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_four_forms
+#print axioms EPPAIII.BlockSystems.cycleFiveSubsetOrbit
+#print axioms EPPAIII.BlockSystems.cycleFiveEdgePair
+#print axioms EPPAIII.BlockSystems.cycleFiveDiagonalPair
+#print axioms EPPAIII.BlockSystems.cycleFive_pair_orbit_size
+#print axioms EPPAIII.BlockSystems.cycleFive_edge_pair_orbit_card
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_pair_orbit_card
+#print axioms EPPAIII.BlockSystems.cycleFive_pair_orbits_disjoint
+#print axioms EPPAIII.BlockSystems.cycleFive_pair_orbits_partition
+#print axioms EPPAIII.BlockSystems.cycleFive_outside_profile_multiplicity_invariant
