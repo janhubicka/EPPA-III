@@ -34,11 +34,8 @@ theorem outside_profile_canonical_image_of_unit_multiplicities
       ∃ w : W, w ∈ finiteOutside e ∧
         finiteNeighbourhoodProfile H e w = S := by
     have hc := hOnce S hS
-    unfold outsideProfileMultiplicity at hc
-    have hPositive :
-        0 < ((finiteOutside e).filter
-          (fun w => finiteNeighbourhoodProfile H e w = S)).card := by
-      omega
+    have hPositive : 0 < outsideProfileMultiplicity H e S := by omega
+    unfold outsideProfileMultiplicity at hPositive
     obtain ⟨w,hw⟩ := Finset.card_pos.mp hPositive
     obtain ⟨hwOut,hwProfile⟩ := Finset.mem_filter.mp hw
     exact ⟨w,hwOut,hwProfile⟩
