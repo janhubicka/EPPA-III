@@ -21,7 +21,7 @@ canonical model.
 namespace EPPAIII.BlockSystems
 
 /-- The C4 ⊔ C6 cross relation between two five-vertex layers. -/
-def canonicalC4C6Cross (x z : Fin 5) : Prop :=
+abbrev canonicalC4C6Cross (x z : Fin 5) : Prop :=
   (x.val < 2 ∧ z.val < 2) ∨
   (x.val = 2 ∧ (z.val = 2 ∨ z.val = 3)) ∨
   (x.val = 3 ∧ (z.val = 3 ∨ z.val = 4)) ∨
