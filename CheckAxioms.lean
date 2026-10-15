@@ -575,3 +575,13 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.cluster_base_neighbours_disjoint_non_neighbours
 #print axioms EPPAIII.DoubleCover.cluster_base_neighbour_partition_card
 #print axioms EPPAIII.DoubleCover.cluster_base_mixed_triangle_pairs_card_closed_neighbourhood
+#print axioms EPPAIII.DoubleCover.clusterBaseComponent
+#print axioms EPPAIII.DoubleCover.mem_clusterBaseComponent_iff
+#print axioms EPPAIII.DoubleCover.clusterBaseComponent_complete
+#print axioms EPPAIII.DoubleCover.clusterBaseComponent_closed_under_edges
+#print axioms EPPAIII.DoubleCover.clusterBaseComponent_edge_iff
+#print axioms EPPAIII.DoubleCover.clusterBaseOrderedEdges
+#print axioms EPPAIII.DoubleCover.clusterBaseInternalOrderedEdges
+#print axioms EPPAIII.DoubleCover.clusterBaseTopTopPairs
+#print axioms EPPAIII.DoubleCover.clusterBaseInternalOrderedEdges_eq_offDiag
+#print axioms EPPAIII.DoubleCover.clusterBaseOrderedEdges_card_split
