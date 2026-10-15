@@ -684,3 +684,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_base_automorphism
 #print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_sum
 #print axioms EPPAIII.BlockSystems.rook_outside_profile_multiplicity_invariant
+#print axioms EPPAIII.BlockSystems.outside_profile_canonical_image_of_unit_multiplicities
+#print axioms EPPAIII.BlockSystems.outside_profile_unique_of_unit_multiplicities
