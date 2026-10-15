@@ -626,3 +626,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.outside_common_neighbour_card_base_automorphism
 #print axioms EPPAIII.BlockSystems.invariant_nonempty_finset_of_vertex_transitive
 #print axioms EPPAIII.BlockSystems.no_unique_outside_double_common_pair_of_transitive_eppa
+#print axioms EPPAIII.BlockSystems.cycleFive_translate_graph_automorphism
+#print axioms EPPAIII.BlockSystems.cycleFive_vertex_transitive

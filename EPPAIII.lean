@@ -177,3 +177,4 @@ import EPPAIII.BlockSystems.UnequalCase2ThirdClique
 import EPPAIII.BlockSystems.UnequalThreeComponents
 import EPPAIII.BlockSystems.UnequalCaseCoP3
 import EPPAIII.BlockSystems.OutsideCommonPairOrbits
+import EPPAIII.BlockSystems.CycleFiveTransitivity
