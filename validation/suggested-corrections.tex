@@ -905,6 +905,26 @@ the complementary-top possibilities by triangle counts.
 It does \emph{not} derive the four-neighbour condition.
 The remaining degree cases and Proposition~3.23 are open.
 
+\paragraph{Continuation: actual \(C_5\) outside adjacency.}
+The new \texttt{CycleFiveOutsideAction.lean} theorem
+\texttt{cycleFive\_eppa\_degree\_two\_outside\_two\_forms}
+combines the saturated orbit labels with genuine
+EPPA transport of rotations, then uses
+vertex-transitivity and the equality of internal
+edge counts to show that the \emph{actual}
+complementary induced graph is \(C_5\) or its
+complement. The identification is through an
+outside equivalence \emph{constructed} from the
+profiles, not assumed at the outset.
+Pending consolidated Lean CI and axiom audit,
+this is a proposed certification milestone.
+To finish the cross-degree-two case, exclude
+the complementary-top configuration when it
+is incompatible with host transitivity (the
+triangle-count route), and identify the
+surviving actual host graphs. It is not a
+proof of all cross-degree cases.
+
 \section*{How to maintain this register}
 For each new correction, record a source label,
 a minimal proposed modification, whether the

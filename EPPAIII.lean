@@ -208,3 +208,5 @@ import EPPAIII.BlockSystems.CycleFiveOutsideProfileSaturation
 import EPPAIII.BlockSystems.CycleFiveOutsideEquiv
 import EPPAIII.BlockSystems.CycleFiveInvariantFourForms
 import EPPAIII.BlockSystems.RookThreeDegreeFourConclusion
+
+import EPPAIII.BlockSystems.CycleFiveOutsideAction
