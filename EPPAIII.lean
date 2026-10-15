@@ -181,3 +181,4 @@ import EPPAIII.BlockSystems.CycleFiveTransitivity
 import EPPAIII.BlockSystems.CanonicalC4C6Cross
 import EPPAIII.BlockSystems.RookThreeBase
 import EPPAIII.BlockSystems.RookThreeSubsetAction
+import EPPAIII.BlockSystems.RookThreeSmallSubsetOrbits
