@@ -560,3 +560,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.unique_neighbour_in_block_of_degree_one
 #print axioms EPPAIII.BlockSystems.two_block_cross_graph_perfect_matching
 #print axioms EPPAIII.BlockSystems.eppa_case1_exactly_two_blocks_with_matching
+#print axioms EPPAIII.DoubleCover.taylor_bottom_top_iff_nonedge
+#print axioms EPPAIII.DoubleCover.taylor_top_top_iff_edge
+#print axioms EPPAIII.DoubleCover.taylor_triangle_bottom_bottom_iff
+#print axioms EPPAIII.DoubleCover.taylor_triangle_bottom_mixed_iff
+#print axioms EPPAIII.DoubleCover.taylor_triangle_bottom_top_top_iff
