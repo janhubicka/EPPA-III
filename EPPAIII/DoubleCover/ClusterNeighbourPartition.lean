@@ -18,6 +18,7 @@ namespace EPPAIII.DoubleCover
 /-- Neighbours and strict nonneighbours, together with the root,
 exhaust the finite base vertex set. -/
 theorem cluster_base_neighbour_partition {V : Type*} [Fintype V]
+    [DecidableEq V]
     (G : SimpleGraph V) (x : V) :
     insert x (clusterBaseNeighbours G x ∪
       clusterBaseStrictNonneighbours G x) = Finset.univ := by
