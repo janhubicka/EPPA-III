@@ -721,3 +721,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_equivariant
 #print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_canonical_outside_graph_four_forms
+#print axioms EPPAIII.BlockSystems.rookDoubleRelation
+#print axioms EPPAIII.BlockSystems.rookDoubleGraph
+#print axioms EPPAIII.BlockSystems.rookDoubleOrderedTriangles
+#print axioms EPPAIII.BlockSystems.rookDoubleOrderedTriangles_eq_actual
+#print axioms EPPAIII.BlockSystems.rookDouble_bad_triangle_counts
+#print axioms EPPAIII.BlockSystems.rookDouble_surviving_triangle_counts
+#print axioms EPPAIII.BlockSystems.rookDouble_complement_top_not_transitive
