@@ -54,7 +54,6 @@ theorem cycleFive_eppa_proper_profile_saturates_outside
       Set.InjOn (finiteNeighbourhoodProfile H e)
         (finiteOutside e : Set W) := by
   classical
-  letI : DecidableEq (Fin 5) := Classical.decEq _
   let S : Finset (Fin 5) := finiteNeighbourhoodProfile H e w
   have hOrbitCard : (cycleFiveSubsetOrbit S).card = 5 :=
     cycleFive_proper_subset_orbit_size S hNonempty hNonfull
@@ -63,6 +62,7 @@ theorem cycleFive_eppa_proper_profile_saturates_outside
     have hBase : Fintype.card (Fin 5) = 5 := by decide
     omega
   have hSPositive : 0 < outsideProfileMultiplicity H e S := by
+    letI : DecidableEq (Fin 5) := Classical.decEq _
     unfold outsideProfileMultiplicity
     apply Finset.card_pos.mpr
     exact ⟨w, Finset.mem_filter.mpr ⟨hw,rfl⟩⟩
@@ -75,9 +75,14 @@ theorem cycleFive_eppa_proper_profile_saturates_outside
       rw [← hd, cycleFive_outside_profile_multiplicity_invariant
         H e heppa S d]
       exact hSPositive
-    unfold outsideProfileMultiplicity at hTPositive
-    obtain ⟨v,hv⟩ := Finset.card_pos.mp hTPositive
-    obtain ⟨hvOut,hvProfile⟩ := Finset.mem_filter.mp hv
+    have hExists : ∃ v : W, v ∈ finiteOutside e ∧
+        finiteNeighbourhoodProfile H e v = T := by
+      letI : DecidableEq (Fin 5) := Classical.decEq _
+      unfold outsideProfileMultiplicity at hTPositive
+      obtain ⟨v,hv⟩ := Finset.card_pos.mp hTPositive
+      obtain ⟨hvOut,hvProfile⟩ := Finset.mem_filter.mp hv
+      exact ⟨v,hvOut,hvProfile⟩
+    obtain ⟨v,hvOut,hvProfile⟩ := hExists
     exact Finset.mem_image.mpr ⟨v,hvOut,hvProfile⟩
   have hImageBound :
       ((finiteOutside e).image (finiteNeighbourhoodProfile H e)).card
