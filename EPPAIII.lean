@@ -193,3 +193,4 @@ import EPPAIII.BlockSystems.RookThreeNeighbourhoodOrbits
 import EPPAIII.BlockSystems.RookThreePairTransitivity
 import EPPAIII.BlockSystems.RookThreeInvariantFourForms
 import EPPAIII.BlockSystems.OutsideProfileCanonicalAction
+import EPPAIII.BlockSystems.RookThreeOutsideAction
