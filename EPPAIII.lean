@@ -155,3 +155,4 @@ import EPPAIII.BlockSystems.CrossDegreeOne
 import EPPAIII.DoubleCover.TaylorTriangleScore
 import EPPAIII.DoubleCover.TaylorMateTriangles
 import EPPAIII.DoubleCover.ClusterMixedTriangleCount
+import EPPAIII.DoubleCover.ClusterComponentEdges
