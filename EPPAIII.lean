@@ -173,3 +173,4 @@ import EPPAIII.DoubleCover.TaylorUnequalCliqueObstruction
 import EPPAIII.BlockSystems.UnequalCase2Triangle
 import EPPAIII.BlockSystems.UnequalCase2WithoutHomogeneity
 import EPPAIII.BlockSystems.UnequalCase1FromDegrees
+import EPPAIII.BlockSystems.UnequalCase2ThirdClique
