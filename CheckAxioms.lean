@@ -677,3 +677,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_base_automorphism
 #print axioms EPPAIII.BlockSystems.outside_profile_multiplicity_sum
 #print axioms EPPAIII.BlockSystems.rook_outside_profile_multiplicity_invariant
+#print axioms EPPAIII.BlockSystems.outside_profile_fixed_size_sum
+#print axioms EPPAIII.BlockSystems.rook_outside_card_nine
+#print axioms EPPAIII.BlockSystems.rook_profile_weight_invariance
+#print axioms EPPAIII.BlockSystems.rook_profile_total_nine
