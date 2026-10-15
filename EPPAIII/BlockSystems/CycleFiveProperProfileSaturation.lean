@@ -1,4 +1,5 @@
 import EPPAIII.BlockSystems.CycleFivePairProfileOrbits
+import EPPAIII.EPPA.OutsideCardinality
 
 /-!
 # Saturation by any nontrivial C5 outside profile
@@ -53,6 +54,7 @@ theorem cycleFive_eppa_proper_profile_saturates_outside
       Set.InjOn (finiteNeighbourhoodProfile H e)
         (finiteOutside e : Set W) := by
   classical
+  letI : DecidableEq (Fin 5) := Classical.decEq _
   let S : Finset (Fin 5) := finiteNeighbourhoodProfile H e w
   have hOrbitCard : (cycleFiveSubsetOrbit S).card = 5 :=
     cycleFive_proper_subset_orbit_size S hNonempty hNonfull
@@ -106,7 +108,7 @@ theorem cycleFive_eppa_outside_profile_dichotomy
       finiteNeighbourhoodProfile H e w = ∅ ∨
       finiteNeighbourhoodProfile H e w =
         (Finset.univ : Finset (Fin 5))) ∨
-    ∃ (w : W) (hw : w ∈ finiteOutside e),
+    ∃ (w : W), w ∈ finiteOutside e ∧
       (finiteOutside e).image (finiteNeighbourhoodProfile H e) =
         cycleFiveSubsetOrbit (finiteNeighbourhoodProfile H e w) ∧
       Set.InjOn (finiteNeighbourhoodProfile H e)
