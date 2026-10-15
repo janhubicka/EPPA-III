@@ -622,3 +622,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_three_cliques_impossible
 #print axioms EPPAIII.BlockSystems.cluster_unequal_degrees_has_induced_cop3
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_three_cliques
+#print axioms EPPAIII.BlockSystems.cycleFive_translate_graph_automorphism
+#print axioms EPPAIII.BlockSystems.cycleFive_vertex_transitive
