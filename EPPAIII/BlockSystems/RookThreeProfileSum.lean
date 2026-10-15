@@ -39,11 +39,28 @@ theorem outside_profile_fixed_size_sum
     intro w hw
     exact (Finset.mem_powersetCard).mpr
       ⟨Finset.subset_univ _,hSize w hw⟩
-  simpa [outsideProfileMultiplicity] using
-    (Finset.card_eq_sum_card_fiberwise
-      (s := finiteOutside e)
-      (t := (Finset.univ : Finset V).powersetCard k)
-      (f := finiteNeighbourhoodProfile H e) hMaps).symm
+  have hFibres (S : Finset V) :
+      outsideProfileMultiplicity H e S =
+        ((finiteOutside e).filter
+          (fun w => finiteNeighbourhoodProfile H e w = S)).card := by
+    unfold outsideProfileMultiplicity
+    congr 1
+    ext w
+    simp
+  calc
+    (∑ S ∈ (Finset.univ : Finset V).powersetCard k,
+        outsideProfileMultiplicity H e S) =
+      ∑ S ∈ (Finset.univ : Finset V).powersetCard k,
+        ((finiteOutside e).filter
+          (fun w => finiteNeighbourhoodProfile H e w = S)).card := by
+            apply Finset.sum_congr rfl
+            intro S _
+            exact hFibres S
+    _ = (finiteOutside e).card :=
+      (Finset.card_eq_sum_card_fiberwise
+        (s := finiteOutside e)
+        (t := (Finset.univ : Finset V).powersetCard k)
+        (f := finiteNeighbourhoodProfile H e) hMaps).symm
 
 /-- The complementary half of an 18-vertex host containing
 an induced nine-vertex rook graph has exactly nine points. -/
