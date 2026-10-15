@@ -71,6 +71,20 @@ classify these distinct degree cases and the
 all-empty/full-profile case. The present lemma
 does \emph{not} claim those cases are excluded.
 
+\paragraph{Removing the last degree-two uniformity premise.}
+Once the above orbit-saturation lemma is formalised, its
+constancy-of-cardinality corollary says that the five
+outside vertices have identical proper cross-degree.
+Consequently, the verified canonical cyclic-double conclusion
+for the degree-two case requires only \emph{one} outside
+vertex with two neighbours in the distinguished five-cycle.
+The new theorem
+\texttt{cycleFive\_eppa\_one\_outside\_pair\_host\_classification}
+constructs the same actual host equivalence as the earlier
+degree-two theorem, without assuming uniformity of all
+outside degrees. This is a proof-shortening, not a change to
+the theorem statement or its imprimitive hypothesis.
+
 \section*{Lean formalisation and certification boundary}
 The proposed reusable source module is
 \texttt{EPPAIII/BlockSystems/CycleFiveProperProfileSaturation.lean}.

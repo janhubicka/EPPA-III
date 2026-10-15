@@ -989,6 +989,20 @@ cross-degree values still needs a separate classification.
 Do not mark these new declarations as Lean-certified
 until their branch passes GitHub Actions and the axiom audit.
 
+\paragraph{Removing the last degree-two uniformity premise.}
+Once the above orbit-saturation lemma is formalised, its
+constancy-of-cardinality corollary says that the five
+outside vertices have identical proper cross-degree.
+Consequently, the verified canonical cyclic-double conclusion
+for the degree-two case requires only \emph{one} outside
+vertex with two neighbours in the distinguished five-cycle.
+The new theorem
+\texttt{cycleFive\_eppa\_one\_outside\_pair\_host\_classification}
+constructs the same actual host equivalence as the earlier
+degree-two theorem, without assuming uniformity of all
+outside degrees. This is a proof-shortening, not a change to
+the theorem statement or its imprimitive hypothesis.
+
 \section*{How to maintain this register}
 For each new correction, record a source label,
 a minimal proposed modification, whether the
