@@ -73,7 +73,7 @@ theorem ordered_triangle_pairs_card_sum_layers {V : Type*}
         ∑ ab : Bool × Bool,
           ((orderedTrianglePairsAt H (false,x)).filter
             (fun p => f p = ab)).card := by
-    simpa only [Finset.sum_univ] using
+    simpa only [f] using
       (Finset.card_eq_sum_card_fiberwise
         (s := orderedTrianglePairsAt H (false,x))
         (t := (Finset.univ : Finset (Bool × Bool)))
