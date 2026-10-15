@@ -766,23 +766,42 @@ and the conclusion of exactly two host blocks (PR~\#192).
 The shared-neighbour transport and connected-component argument
 exclude degree \(r\ge2\) for unequal positive occupancies
 (PRs~\#193--\#199 and \#201, merged).
-The composition proving \(r=1\) from the complete Case~1 EPPA
-hypotheses (PR~\#202), the unit-degree matching result
-(PR~\#200), and the final two-block perfect-matching theorem
-(PR~\#203) are committed but \emph{not counted as validated or
-merged until their new CI builds succeed}.
+The composition proving \(r=1\) from the genuine Case~1
+EPPA hypotheses (PR~\#202), the unit-degree-to-matching
+theorem (PR~\#200), and the final two-block
+perfect-matching theorem (PR~\#203) have all passed
+Lean CI and axiom audits and have been merged.
+This formally certifies the repaired Case~1 matching
+reduction under its explicit invariant-block hypotheses,
+but not the full corrected Lemma~3.12.
 
-For the crossing-edge Case~2, the pair-fibre reduction and
-Taylor double with optional matching are now Lean-verified and
-merged (PR~\#191). The triangle-count formula required to
-exclude three or more unequal clique components remains a
-graph-level Lean obligation. Its score difference and
-nonconstancy are isolated in pending PR~\#204; this is
-\emph{only an algebraic sublemma}, not the triangle-count
-formula itself. The homogeneous-host alternative,
+For crossing-edge Case~2, the genuine EPPA pair-fibre
+reduction and Taylor double with optional mate edges
+(PR~\#191) are merged. The triangle-score difference
+(PR~\#204), mate-edge exclusion (PR~\#206), exact
+three-layer adjacency patterns and mixed-clique counts
+(PRs~\#207--\#209), transport of ordered triangle
+counts by automorphisms (PR~\#210), outside-component
+edge counts (PR~\#211), and the conditional score
+obstruction (PR~\#212) are all merged with green CI.
+The removal of repeated fibres and the exact finite
+layer correspondences (PRs~\#213--\#214), the layer
+sum (PR~\#215), and the reduction to three layer
+cardinalities (PR~\#216) are likewise verified and merged.
+
+The final numerical normalisation (PR~\#217),
+the \emph{actual graph-level} Taylor ordered-triangle
+formula (PR~\#218), its unequal-clique transitivity
+contradiction (PR~\#219), and the integration with
+the genuine Case~2 EPPA block construction (PR~\#220)
+have been committed but must \emph{not} be counted as
+validated until their latest CI runs succeed.
+These are not assumptions of the expected triangle-count
+formula: the latter is the proposed conclusion of
+PR~\#218. The homogeneous-host alternative,
 \(C_5\) and \(R_3\) exceptions, and Proposition~3.23
-remain open. Therefore the complete corrected Lemma~3.12
-and all of Section~3 are \emph{not} yet certified in Lean.
+remain open. Thus the full corrected Lemma~3.12 and
+all of Section~3 are \emph{not} yet certified in Lean.
 
 \textbf{Editorial action.}
 Keep the direct original proof prose frozen.
