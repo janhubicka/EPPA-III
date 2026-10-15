@@ -165,3 +165,4 @@ import EPPAIII.DoubleCover.TriangleTransport
 import EPPAIII.DoubleCover.TaylorTriangleObstruction
 import EPPAIII.DoubleCover.TaylorTriangleFibres
 import EPPAIII.DoubleCover.TaylorLayerBasePairs
+import EPPAIII.DoubleCover.TaylorLayerSum
