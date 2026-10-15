@@ -37,8 +37,8 @@ theorem outside_profile_canonical_image_of_unit_multiplicities
     have hPositive : 0 < outsideProfileMultiplicity H e S := by omega
     unfold outsideProfileMultiplicity at hPositive
     obtain ⟨w,hw⟩ := Finset.card_pos.mp hPositive
-    obtain ⟨hwOut,hwProfile⟩ := Finset.mem_filter.mp hw
-    exact ⟨w,hwOut,hwProfile⟩
+    simp only [Finset.mem_filter] at hw
+    exact ⟨w,hw.1,hw.2⟩
   have hSubset :
       E ⊆ (finiteOutside e).image (finiteNeighbourhoodProfile H e) := by
     intro S hS
