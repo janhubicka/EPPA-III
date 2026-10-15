@@ -638,3 +638,11 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rookThreeTranslation
 #print axioms EPPAIII.BlockSystems.rookThree_translation_graph_automorphism
 #print axioms EPPAIII.BlockSystems.rookThreeGraph_vertex_transitive
+#print axioms EPPAIII.BlockSystems.rookSmallPerm
+#print axioms EPPAIII.BlockSystems.rookAutParameter
+#print axioms EPPAIII.BlockSystems.rookParameterizedAut
+#print axioms EPPAIII.BlockSystems.rook_product_perm_graph_automorphism
+#print axioms EPPAIII.BlockSystems.rook_transpose_graph_automorphism
+#print axioms EPPAIII.BlockSystems.rookParameterizedAut_graph_automorphism
+#print axioms EPPAIII.BlockSystems.rookSubsetOrbit
+#print axioms EPPAIII.BlockSystems.rookSubsetOrbit_card_preserved
