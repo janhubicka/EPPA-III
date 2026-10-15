@@ -61,7 +61,7 @@ theorem cycleFive_eppa_outside_equiv_of_two_neighbours
   · have hImage :
         (finiteOutside e).image (finiteNeighbourhoodProfile H e) =
           (Finset.univ : Finset (Fin 5)).image cycleFiveEdgePairShift := by
-      simpa [cycleFiveSubsetOrbit,cycleFiveEdgePairShift] using hEdge
+      simpa only [cycleFiveSubsetOrbit,cycleFiveEdgePairShift] using hEdge
     obtain ⟨f,hf⟩ := outside_profile_label_family_equiv
       H e cycleFiveEdgePairShift
       cycleFive_edge_pair_shift_injective hImage hInjective
@@ -69,7 +69,7 @@ theorem cycleFive_eppa_outside_equiv_of_two_neighbours
   · have hImage :
         (finiteOutside e).image (finiteNeighbourhoodProfile H e) =
           (Finset.univ : Finset (Fin 5)).image cycleFiveDiagonalPairShift := by
-      simpa [cycleFiveSubsetOrbit,cycleFiveDiagonalPairShift] using hDiagonal
+      simpa only [cycleFiveSubsetOrbit,cycleFiveDiagonalPairShift] using hDiagonal
     obtain ⟨f,hf⟩ := outside_profile_label_family_equiv
       H e cycleFiveDiagonalPairShift
       cycleFive_diagonal_pair_shift_injective hImage hInjective
