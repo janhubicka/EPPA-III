@@ -622,3 +622,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_three_cliques_impossible
 #print axioms EPPAIII.BlockSystems.cluster_unequal_degrees_has_induced_cop3
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_three_cliques
+#print axioms EPPAIII.BlockSystems.canonicalC4C6Cross
+#print axioms EPPAIII.BlockSystems.canonicalC4C6CommonCount
+#print axioms EPPAIII.BlockSystems.canonicalC4C6_cross_regular
+#print axioms EPPAIII.BlockSystems.canonicalC4C6_component_separation
+#print axioms EPPAIII.BlockSystems.canonicalC4C6_unique_double_common_pair
