@@ -185,3 +185,4 @@ import EPPAIII.BlockSystems.RookThreeSubsetAction
 import EPPAIII.BlockSystems.RookThreeSmallSubsetOrbits
 import EPPAIII.BlockSystems.RookThreeFourSubsetOrbits
 import EPPAIII.BlockSystems.RookThreeOrbitWeights
+import EPPAIII.BlockSystems.RookThreeFourOrbitWeights

@@ -678,3 +678,5 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_triple_orbits_disjoint
 #print axioms EPPAIII.BlockSystems.rook_pair_weight_total_ne_nine
 #print axioms EPPAIII.BlockSystems.rook_triple_weight_total_ne_nine
+#print axioms EPPAIII.BlockSystems.rook_four_orbits_disjoint
+#print axioms EPPAIII.BlockSystems.rook_four_weight_total_nine_classification
