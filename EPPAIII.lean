@@ -189,4 +189,5 @@ import EPPAIII.BlockSystems.RookThreeFourOrbitWeights
 import EPPAIII.BlockSystems.OutsideProfileMultiplicity
 import EPPAIII.BlockSystems.RookThreeProfileSum
 import EPPAIII.BlockSystems.RookThreeEppaCrossDegree
+import EPPAIII.BlockSystems.RookThreeNeighbourhoodOrbits
 import EPPAIII.BlockSystems.RookThreePairTransitivity
