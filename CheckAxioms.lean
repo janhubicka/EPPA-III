@@ -589,3 +589,7 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.orderedTrianglePairsAt_card_graphAut
 #print axioms EPPAIII.DoubleCover.orderedTrianglePairsAt_card_transitive
 #print axioms EPPAIII.DoubleCover.unequal_taylor_scores_contradict_host_transitivity
+#print axioms EPPAIII.DoubleCover.taylor_triangle_avoids_root_fibre
+#print axioms EPPAIII.DoubleCover.taylor_triangle_other_fibres_distinct
+#print axioms EPPAIII.DoubleCover.taylorTriangleLayerPairs
+#print axioms EPPAIII.DoubleCover.mem_taylorTriangleLayerPairs
