@@ -691,3 +691,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_two_impossible
 #print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_three_impossible
 #print axioms EPPAIII.BlockSystems.rook_eppa_outside_cross_degree_four_profile_classification
+#print axioms EPPAIII.BlockSystems.rook_ordered_edge_pair_transitive
+#print axioms EPPAIII.BlockSystems.rook_ordered_nonedge_pair_transitive
+#print axioms EPPAIII.BlockSystems.rook_invariant_graph_edge_value
+#print axioms EPPAIII.BlockSystems.rook_invariant_graph_nonedge_value
