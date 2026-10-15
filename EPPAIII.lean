@@ -164,3 +164,4 @@ import EPPAIII.DoubleCover.ClusterComponentEdges
 import EPPAIII.DoubleCover.TriangleTransport
 import EPPAIII.DoubleCover.TaylorTriangleObstruction
 import EPPAIII.DoubleCover.TaylorTriangleFibres
+import EPPAIII.DoubleCover.TaylorLayerBasePairs
