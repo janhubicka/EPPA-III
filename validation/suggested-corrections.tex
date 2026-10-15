@@ -802,15 +802,59 @@ nontrivial-block hypotheses in its Lean statement.
 No triangle-count equation, second-half partition,
 or coherent EPPA lifts are assumed.
 
-Both corrected unequal-clique branches are verified
-under their stated hypotheses. Removing surplus
-hypotheses, treating homogeneous host alternatives,
-the \(C_5\) and \(R_3\) exceptions, and the remaining
-Proposition~3.23 assembly are still open.
-The unmodified manuscript statement of Lemma~3.12
-is also false without the necessary homogeneous-host
-qualification, so the original full Section~3 cannot
-yet be called certified in Lean.
+The two branches of corrected unequal-clique
+Lemma~3.12 are now integrated further. The Case~1
+selected-block occupancies equal the intrinsic base clique
+orders (PR~\#223, merged), and the presence of an actual
+third distinct component supplies the required strict
+Taylor triangle-count inequality (PR~\#224, merged).
+Their combined genuine EPPA internal-edge/crossing-edge
+dichotomy excludes three distinct clique components of
+which two have unequal orders (PR~\#225, merged).
+The induced co-\(P_3\) hypothesis follows automatically
+from unequal component orders (PR~\#226, merged).
+These are corrections under the explicit non-cluster
+host and nontrivial invariant-block assumptions.
+The original manuscript statement of Lemma~3.12 remains
+false without accounting for homogeneous hosts.
+
+For the exceptional \(C_5\) argument, genuine EPPA
+preservation of common-outside-neighbour counts is verified
+(PR~\#227). The concrete five-cycle transitivity
+(PR~\#228), canonical \(C_4\dot\cup C_6\) incidence
+certificate (PR~\#229), and exclusion of any EPPA
+cross relation equipped with such canonical labels
+(PR~\#230) are merged and axiom-audited.
+The arbitrary disconnected 2-regular bipartite
+\(5+5\) graph still requires a Lean proof reducing
+it to that canonical configuration.
+
+For the exceptional \(R_3\) argument, the rook graph
+and 72 genuine row/column/transpose automorphisms
+(PRs~\#231--\#232) are merged, along with
+the complete subset-orbit tables
+\(18,18\), \(6,6,36,36\), and
+\(9,9,36,36,36\) (PRs~\#233--\#234).
+Genuine EPPA preserves multiplicities of the outside
+neighbourhood profiles (PR~\#235), and the fixed-size
+outside profile weights sum to nine (PR~\#238).
+The orbit arithmetic (PRs~\#236--\#237) and
+its EPPA application (PR~\#240) exclude cross-degrees
+two and three and identify precisely one size-nine
+profile orbit in cross-degree four. The two nine-element
+orbits are identified with the rook open-neighbourhood
+and strict-nonneighbourhood families (PR~\#239).
+All these PRs are merged with green Lean CI.
+Constructing the final canonical outside equivalence
+(PRs~\#241--\#242 and related work), classifying
+its induced adjacency and checking the final triangle
+obstruction remain separate pending steps.
+
+The homogeneous-host alternatives, remaining \(C_5\)
+and \(R_3\) graph classifications, and the exact
+Proposition~3.23 assembly are still open. Hence the
+original full Section~3 is \emph{not} yet certified
+in Lean. No author manuscript TeX has been edited.
 
 \textbf{Editorial action.}
 Keep the direct original proof prose frozen.
