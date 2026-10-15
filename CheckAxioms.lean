@@ -699,3 +699,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_other_nine_orbit_eq_nonneighbourhoods
 #print axioms EPPAIII.BlockSystems.rook_open_neighbourhood_injective
 #print axioms EPPAIII.BlockSystems.rook_strict_nonneighbours_injective
+#print axioms EPPAIII.BlockSystems.rookDoubleRelation
+#print axioms EPPAIII.BlockSystems.rookDoubleGraph
+#print axioms EPPAIII.BlockSystems.rookDoubleOrderedTriangles
+#print axioms EPPAIII.BlockSystems.rookDoubleOrderedTriangles_eq_actual
+#print axioms EPPAIII.BlockSystems.rookDouble_bad_triangle_counts
+#print axioms EPPAIII.BlockSystems.rookDouble_surviving_triangle_counts
+#print axioms EPPAIII.BlockSystems.rookDouble_complement_top_not_transitive
