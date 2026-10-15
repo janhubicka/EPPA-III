@@ -19,10 +19,9 @@ theorem cycleFive_translate_graph_automorphism (d : Fin 5) :
   intro u v
   change (SimpleGraph.cycleGraph 5).Adj u v ↔
     (SimpleGraph.cycleGraph 5).Adj (u + d) (v + d)
-  rw [show (5 : ℕ) = 4 + 1 by omega,
-    SimpleGraph.cycleGraph_eq_circulantGraph]
-  exact (SimpleGraph.circulantGraph_adj_translate
-    (s := ({1} : Set (Fin 5))) (u := u) (v := v) (d := d)).symm
+  simpa only [SimpleGraph.cycleGraph_eq_circulantGraph] using
+    (SimpleGraph.circulantGraph_adj_translate
+      (s := ({1} : Set (Fin 5))) (u := u) (v := v) (d := d)).symm
 
 /-- The canonical C5 is vertex-transitive, without appealing
 to any finite graph classification. -/
