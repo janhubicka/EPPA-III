@@ -605,3 +605,5 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylor_ordered_triangle_count_arithmetic
 #print axioms EPPAIII.DoubleCover.taylor_ordered_triangle_count_exact
 #print axioms EPPAIII.DoubleCover.taylor_unequal_cliques_three_components_not_transitive
+#print axioms EPPAIII.BlockSystems.vertex_transitive_pullback
+#print axioms EPPAIII.BlockSystems.transitive_eppa_case2_unequal_three_components_impossible
