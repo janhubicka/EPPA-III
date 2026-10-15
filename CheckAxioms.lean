@@ -772,3 +772,19 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_complete_edge_count_ten
 #print axioms EPPAIII.BlockSystems.cycleFive_canonical_outside_graph_two_forms
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_degree_two_outside_two_forms
+
+-- C5 finite double triangle and genuine host classification
+#print axioms EPPAIII.BlockSystems.cycleFiveExplicitAdjacent
+#print axioms EPPAIII.BlockSystems.cycleFiveExplicitAdjacent_iff
+#print axioms EPPAIII.BlockSystems.cycleFiveDoubleRelation
+#print axioms EPPAIII.BlockSystems.cycleFiveDoubleGraph
+#print axioms EPPAIII.BlockSystems.cycleFiveDoubleGraph_adj_iff
+#print axioms EPPAIII.BlockSystems.cycleFiveDoubleOrderedTriangles
+#print axioms EPPAIII.BlockSystems.cycleFiveDoubleOrderedTriangles_eq_actual
+#print axioms EPPAIII.BlockSystems.cycleFiveDouble_bad_triangle_counts
+#print axioms EPPAIII.BlockSystems.cycleFiveDouble_surviving_triangle_counts
+#print axioms EPPAIII.BlockSystems.cycleFiveDouble_complement_top_not_transitive
+#print axioms EPPAIII.BlockSystems.cycleFive_cross_iff_profile_member
+#print axioms EPPAIII.BlockSystems.cycleFiveDouble_graph_eq_of_layer_data
+#print axioms EPPAIII.BlockSystems.cycleFive_actual_host_eq_canonical_double
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_degree_two_host_is_cyclic_double
