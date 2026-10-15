@@ -633,6 +633,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.canonicalC4C6_cross_regular
 #print axioms EPPAIII.BlockSystems.canonicalC4C6_component_separation
 #print axioms EPPAIII.BlockSystems.canonicalC4C6_unique_double_common_pair
+#print axioms EPPAIII.BlockSystems.canonical_c4c6_cross_common_neighbour_table
+#print axioms EPPAIII.BlockSystems.cycleFive_not_eppa_with_c4c6_cross_matrix
 #print axioms EPPAIII.BlockSystems.rookThreeGraph
 #print axioms EPPAIII.BlockSystems.rookThreeGraph_degree_four
 #print axioms EPPAIII.BlockSystems.rookThreeTranslation
