@@ -156,3 +156,4 @@ import EPPAIII.DoubleCover.TaylorTriangleScore
 import EPPAIII.DoubleCover.TaylorMateTriangles
 import EPPAIII.BlockSystems.UnequalCase1DegreeOne
 import EPPAIII.DoubleCover.TriangleTransport
+import EPPAIII.DoubleCover.TaylorTriangleObstruction
