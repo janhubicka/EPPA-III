@@ -553,6 +553,8 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylorTriangleScore
 #print axioms EPPAIII.DoubleCover.taylorTriangleScore_difference
 #print axioms EPPAIII.DoubleCover.taylorTriangleScore_ne_of_third_component
+#print axioms EPPAIII.DoubleCover.taylor_mates_no_common_neighbour
+#print axioms EPPAIII.DoubleCover.taylor_no_triangle_containing_mate_edge
 #print axioms EPPAIII.DoubleCover.clusterBaseNeighbours
 #print axioms EPPAIII.DoubleCover.clusterBaseStrictNonneighbours
 #print axioms EPPAIII.DoubleCover.clusterBaseMixedTrianglePairs
