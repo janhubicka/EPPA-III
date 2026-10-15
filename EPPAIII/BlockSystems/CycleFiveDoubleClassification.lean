@@ -24,6 +24,11 @@ namespace EPPAIII.BlockSystems
 def cycleFiveExplicitAdjacent (x y : Fin 5) : Prop :=
   x + 1 = y ∨ y + 1 = x
 
+instance : DecidableRel cycleFiveExplicitAdjacent := by
+  intro x y
+  unfold cycleFiveExplicitAdjacent
+  infer_instance
+
 /-- This finite predicate is exactly Mathlib's five-cycle adjacency. -/
 theorem cycleFiveExplicitAdjacent_iff :
     ∀ x y : Fin 5,
@@ -48,6 +53,14 @@ def cycleFiveDoubleRelation (topComplement diagonal : Bool)
   else
     v.2 ∈ (if diagonal then
       cycleFiveDiagonalPairShift u.2 else cycleFiveEdgePairShift u.2)
+
+/-- Computing adjacency of the finite relation uses only finite
+arithmetic and finset membership. -/
+instance (topComplement diagonal : Bool) :
+    DecidableRel (cycleFiveDoubleRelation topComplement diagonal) := by
+  intro u v
+  unfold cycleFiveDoubleRelation
+  infer_instance
 
 /-- The canonical graph is genuinely undirected and loopless. -/
 def cycleFiveDoubleGraph (topComplement diagonal : Bool) :
