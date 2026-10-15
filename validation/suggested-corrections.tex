@@ -51,7 +51,8 @@ C16 & Lemma 3.3, first claim (Claim 3.4) & Readability & One-block EPPA reasonin
 C17 & Lemma 3.3, final orbit assertion & Optional & Short two-point proof\\
 C18 & Claim 3.9, use in Lemma 3.7 & Paper-level + Lean & Saturated outside labels\\
 C19 & Lemma 3.7 and Proposition 3.23 & Lean frontier & Partition and Wagner classification\\
-C20 & Lemma 3.18, before case split & Proposed Lean & Proper-profile saturation\\
+C20 & Lemma 3.18, before case split & Lean-verified & Proper-profile saturation\\
+C21 & Claim 3.19 in Lemma 3.18 & Proposed Lean & Outside cycle from proper profile\\
 \bottomrule
 \end{longtable}
 
@@ -986,8 +987,11 @@ and \texttt{cycleFive\_eppa\_outside\_profile\_dichotomy}.
 See \texttt{validation/section3-c5-proper-profile-dichotomy.tex}.
 The argument for the all-empty/full case and the remaining
 cross-degree values still needs a separate classification.
-Do not mark these new declarations as Lean-certified
-until their branch passes GitHub Actions and the axiom audit.
+The three declarations in PR~\#262 have passed GitHub Actions
+and the permitted-axiom audit and were merged on
+16 October 2026. The associated one-profile-degree
+corollaries passed the same checks and merged via PR~\#263.
+Their source-facing prose remains proposed until author review.
 
 \paragraph{Removing the last degree-two uniformity premise.}
 Once the above orbit-saturation lemma is formalised, its
@@ -1002,6 +1006,40 @@ constructs the same actual host equivalence as the earlier
 degree-two theorem, without assuming uniformity of all
 outside degrees. This is a proof-shortening, not a change to
 the theorem statement or its imprimitive hypothesis.
+
+\subsection*{C21. A shorter proof of Claim 3.19 for proper profiles}
+\textbf{Location:} the complementary-\(C_5\) assertion
+within \texttt{lem:C5\_10vertex}, before the cross-incidence
+classification. This is a proposed independent simplification.
+
+When an outside vertex has a nonempty proper neighbourhood
+in the selected \(C_5\), EPPA and the five-element orbit budget
+canonically index all outside vertices by their distinct
+cyclic translated profiles. An actual lift of each base rotation
+acts on those labels by the same rotation. Thus the outside
+graph is cyclic-invariant and is one of
+\(\varnothing,C_5,\overline{C_5},K_5\).
+Vertex-transitivity gives exactly five internal outside edges,
+leaving \(C_5\) and \(\overline{C_5}\), which are isomorphic.
+Neither a coherent action on the outside half nor
+a fixed imprimitivity partition is assumed.
+
+\textbf{Validation target:}
+\texttt{CycleFiveProperOutsideAction.lean},
+with final theorem
+\texttt{cycleFive\_eppa\_proper\_outside\_two\_forms}.
+See \texttt{validation/section3-c5-proper-outside-cycle.tex}.
+The all-empty/full-profile case remains to be treated.
+This is not a verification of all Lemma~3.18.
+
+\textbf{Scope warning.} Imprimitivity is still essential
+to the \emph{full} list of possible hosts.
+The graph with bottom \(C_5\), top \(\overline{C_5}\)
+and a matching across equal labels is the Petersen graph:
+it is a primitive transitive EPPA witness for the chosen
+\(C_5\), not one of the imprimitive alternatives.
+The present proper-profile argument does not accidentally
+rule it out.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,
