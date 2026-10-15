@@ -596,3 +596,5 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.taylor_bottom_bottom_layer_eq_offDiag
 #print axioms EPPAIII.DoubleCover.taylor_bottom_top_layer_eq_base_mixed
 #print axioms EPPAIII.DoubleCover.taylor_top_top_layer_eq_base_outside
+#print axioms EPPAIII.DoubleCover.ordered_triangle_layer_fibre_card
+#print axioms EPPAIII.DoubleCover.ordered_triangle_pairs_card_sum_layers
