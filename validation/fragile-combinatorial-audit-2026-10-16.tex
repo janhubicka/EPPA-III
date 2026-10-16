@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=27mm}
+\title{EPPA III: fragile combinatorial arguments (first audit)}
+\date{16 October 2026}
+\begin{document}\maketitle
+\paragraph{Scope.}
+Source: \texttt{main-new(20261016-172438).tex}. We accept external
+Gardiner, rank-three, and local-recognition classifications as inputs.
+These are paper-level checks, not new Lean certificates.
+The original manuscript is unchanged.
+
+\paragraph{1. Lemma 7.6: lift of partial automorphisms.}
+The displayed map $\widehat\alpha(i,d)=(i,\alpha(d))$ need not
+take its values in the selected $\widehat G$.
+For example, in a two-clique extension of $H=P_4$, select only
+$(1,v),(2,w)$ over adjacent $v,w$. The transposition of
+$v,w$ sends $(1,v)$ to the unselected $(1,w)$.
+The lemma can be repaired without changing its statement:
+choose a vertex $s(v)\in\widehat G$ above each occupied
+$v\in\pi(\widehat G)$. Lift any partial automorphism
+$\alpha$ by $s(v)\mapsto s(\alpha v)$. This is a partial
+automorphism of $\widehat G$ because relations between
+distinct fibres depend only on their projections.
+An EPPA extension preserves the true-twin fibres of
+$\widehat H$; as $H$ has no twins these classes are
+exactly $[l]\times\{v\}$ (singletons if $l=1$).
+The induced automorphism of $H$ extends $\alpha$.
+In the preceding paragraph, $\pi(S)$ is an induced subgraph
+of $H$, not of $G$.
+
+\paragraph{2. Example 8.4: arithmetic.}
+The local graph $T(24)$ has order $\binom{24}{2}=276$,
+not $138$. Excluding $|G_1|\ge134$ gives $|G_1|\le133$,
+not $<133$. Then
+\[
+ |G_2|\ge1024-1-133=890>(2048-1-276)/2=|H_2|/2.
+\]
+For $|G_1|\ge134>24$, Remark 4.1 also supplies the
+triangle-free line-graph hypothesis of Theorem 4.7.
+These repairs preserve the intended contradiction.
+
+\paragraph{3. Lemma 7.9: strongly regular generalised covers.}
+The conclusion is supported, but the original proof contains
+false identifications. For $s=1$, $X=\overline M$ gives
+$\overline{tK_2}$ for all $t$, not only $t\le2$.
+For $t=1$, $X=Y=1$ gives $K_{s,s}$, not $sK_2$.
+Here is a complete short replacement proof.
+
+Assume $s,t\ge2$. Let $q$ be the number of common
+neighbours in $D_i$ of two distinct vertices of $C_i$.
+For $X=0,1,M,\overline M$, the values are $0,t,0,t-2$.
+If $Y=0$, two vertices in distinct $C_i$ have no
+common neighbours, so $\mu=0$. If $X$ is $M$ or
+$\overline M$, a missing edge inside $C_i\cup D_i$
+has a common neighbour, contradicting $\mu=0$.
+Hence $X=0$ or $1$, giving $2sK_t$ or $sK_{2t}$.
+
+If $Y=1$, two adjacent vertices of $C_i$ have
+$t-2+q+(s-1)t$ common neighbours, whereas an edge
+between $C_i$ and $D_j$, $j\ne i$, has $2(t-1)$.
+Therefore
+\[
+ t-2+q+(s-1)t=2(t-1),\quad q=(2-s)t.
+\]
+Hence $s=2$ and $q=0$. The only possibilities are
+$X=0$, $X=M$, or $X=\overline M$ for $t=2$.
+The latter two have a diagonal matching edge
+with zero common neighbours, contradicting the
+$2t-2>0$ common neighbours of an off-diagonal edge.
+Thus $X=0$, giving $2K_{2t}$.
+
+For $s=1$, the candidates are $2K_t$, $K_{2t}$,
+$\overline{tK_2}$, and two cliques joined by a matching.
+In the last case strong regularity forces $t\le2$.
+For $t=1$, the host is bipartite with empty,
+complete, matching, or complementary matching cross edges.
+The first three are homogeneous; the last is strongly
+regular only when $s\le2$, and is then also homogeneous.
+Complementing yields the complementary case.
+
+\paragraph{4. Example 8.3: EPPA orbit justification.}
+A stabilizer acting on the set of non-neighbours does not
+alone justify division by the cardinality of the set.
+EPPA gives the missing transitivity: vertices of $G$
+nonadjacent to all chosen independent selected vertices
+are conjugate by a pointwise-stabilizing automorphism.
+Thus the successive orbit sizes are at least $76,50,24$.
+After choosing $n_1,n_2$, the stabilizer has order
+at most $17280/(76\cdot50)<5$, whereas the next orbit
+has at least 24 elements, a contradiction.
+
+\paragraph{5. Lemma 5.2: partial two-graph switching.}
+The original induction requests a previously selected
+pair $(u,fu)$ even when starting the first nonperiodic
+path. An alternative parity proof uses only the cited
+Mallows--Sloane theorem.
+For a base adjacency indicator $e(x,y)\in\mathbb F_2$,
+put $\delta(x,y)=e(x,y)+e(fx,fy)$ on the domain $D$.
+Preservation of the two-graph gives zero sum around
+each triple, hence $\delta(x,y)=h(x)+h(y)$ for some
+$h:D\to\mathbb F_2$.
+On the cyclic points of $f$, Mallows--Sloane yields a
+switching $s$ and a constant $c$ with
+$s(x)+s(fx)=h(x)+c$. Choose $c$ arbitrarily if
+there are no cycles. Extend $s$ over each remaining
+directed path by the same equation, choosing its
+first value freely. Then the switched adjacency
+satisfies $e_s(x,y)=e_s(fx,fy)$ for all $x,y\in D$.
+An exhaustive finite audit on five labelled vertices
+tests 98,944 partial bijections across all 64 two-graphs;
+all 44,104 partial two-graph automorphisms admit
+a compatible switching. This is not Lean verification.
+
+\paragraph{Follow-up.}
+Fix Lemma 7.6, Example 8.4, Lemma 7.9, and the
+EPPA-orbit wording in Example 8.3 first.
+The remaining imprimitive classification obligations
+are tracked separately.
+\end{document}
