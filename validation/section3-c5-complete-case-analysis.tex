@@ -1,0 +1,90 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,geometry}
+\geometry{margin=26mm}
+\title{EPPA--III: remaining cyclic host alternatives for Lemma 3.18}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Scope and proof boundary.}
+This is an independent finite audit and proposed
+source-local proof simplification. It is not a complete
+Lean validation of Lemma~3.18; the original manuscript
+remains frozen.
+
+Write \(P_w=N_H(w)\cap V(C_5)\) for outside vertices.
+The verified cyclic profile-saturation theorem shows that
+either all profiles are empty/full, or the five profiles
+are exactly the five translates of one nonempty proper
+subset and the cross-degree \(k=|P_w|\) is uniform.
+The empty/full case gives \(2C_5\) or its complement
+by degree-rigidity and connected-component transport.
+Complementing the entire EPPA pair, and relabelling
+\(\overline{C_5}\cong C_5\) by multiplication by two,
+sends \(k\) to \(5-k\). Thus the proper cases reduce,
+up to permitted complementation, to \(k=1,2\).
+
+For \(k=1\), the cross edges form a perfect matching.
+The complementary half is \(C_5\) or \(\overline{C_5}\).
+The two hosts are the prism and Petersen graphs,
+respectively; the Petersen graph is primitive and
+is excluded by the manuscript's imprimitive hypothesis.
+For \(k=2\), profiles are the five translated adjacent
+pairs or the five translated diagonal pairs. The verified
+degree-two host theorem reduces the actual host to
+the two surviving canonical cyclic doubles; the
+complementary-top alternatives violate triangle-count
+equality. Their isomorphisms with the named Taylor-double
+and complemented clique-extension models are still Lean
+obligations.
+
+\paragraph{Finite adversarial certificate.}
+The standard-library script
+\texttt{checks/section3\_c5\_host\_patterns.py}
+enumerates the automorphisms of the eight labelled
+graphs below, all \(286\) partial isomorphisms of the
+selected \(C_5\), and every possible invariant block
+of size two or five containing vertex zero.
+\[
+\begin{array}{lrrrc}
+\toprule
+\text{Host}&|E|&|\operatorname{Aut}|&
+\#\text{blocks of sizes }2,5&\text{transitive}\\
+\midrule
+2C_5&10&200&(0,1)&\mathrm{yes}\\
+\text{all cross edges}&35&200&(0,1)&\mathrm{yes}\\
+\text{matching/top }C_5&15&20&(1,1)&\mathrm{yes}\\
+\text{matching/top }\overline{C_5}&15&120&(0,0)&\mathrm{yes}\\
+\text{adjacent pairs/top }C_5&20&20&(1,1)&\mathrm{yes}\\
+\text{diagonal pairs/top }C_5&20&320&(1,0)&\mathrm{yes}\\
+\text{adjacent pairs/top }\overline{C_5}&20&10&(1,1)&\mathrm{no}\\
+\text{diagonal pairs/top }\overline{C_5}&20&10&(1,1)&\mathrm{no}\\
+\bottomrule
+\end{array}
+\]
+Each of the eight graph models extends all \(286\)
+partial automorphisms of the designated \(C_5\).
+The last two fail vertex transitivity.
+
+\paragraph{Short Petersen primitivity argument.}
+In the model as the two-subsets of a five-element set,
+with edges between disjoint subsets, its automorphism
+group is transitive on its \(15\) edges and on its
+\(30\) nonedges. An invariant partition into
+size-two or size-five blocks would contribute
+respectively \(5\) or \(20\) unordered vertex pairs
+inside blocks. Neither is a union of orbits of
+sizes \(15,30\), so neither partition exists.
+The script independently verifies primitivity by
+enumerating the action on all candidate blocks.
+
+\paragraph{Remaining formalisation.}
+After completion of Claim~3.19, formalise the
+matching case and Petersen primitive obstruction;
+identify the two existing degree-two canonical
+doubles with the manuscript's named alternatives;
+and transport the complement cases.
+This avoids the unsupported inference that prime
+part size alone forces a single bipartite cycle.
+\end{document}
