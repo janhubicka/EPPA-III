@@ -918,3 +918,7 @@ import EPPAIII
 
 -- Unequal-clique matching Case 1 becomes an invariant Taylor double
 #print axioms EPPAIII.BlockSystems.eppa_case1_perfect_matching_is_taylor_up_to_mate
+
+-- Complete unequal-clique Taylor adjacency and two-component result
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_clique_actual_host_is_taylor
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_and_taylor
