@@ -905,3 +905,6 @@ import EPPAIII
 -- Single selected clique; no imprimitive or complementary-half assumption
 #print axioms EPPAIII.CliqueCovers.complement_comap_equiv
 #print axioms EPPAIII.CliqueCovers.eppa_one_clique_double_classification
+
+-- Full Lemma 6.1: all positive s,t, fixed embedded copy, no imprimitive requirement
+#print axioms EPPAIII.CliqueCovers.eppa_all_positive_clique_double_classification

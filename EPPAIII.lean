@@ -251,3 +251,5 @@ import EPPAIII.EPPA.BaseRelabel
 import EPPAIII.CliqueCovers.OneCliqueDuality
 
 import EPPAIII.CliqueCovers.OneCliqueConclusion
+
+import EPPAIII.CliqueCovers.AllParametersClassification
