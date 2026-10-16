@@ -883,3 +883,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.cluster_cross_block_complete
 #print axioms EPPAIII.CliqueCovers.cluster_cross_block_row_unique
 #print axioms EPPAIII.CliqueCovers.cluster_cross_block_col_unique
+
+-- Strong form: cluster host from EPPA and both specified halves
+#print axioms EPPAIII.CliqueCovers.eppa_cluster_host_full_or_empty
