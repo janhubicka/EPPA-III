@@ -109,7 +109,7 @@ theorem rook_eppa_zero_cross_host_is_two_rook_graphs
       exact hSeparated (f y).val (f y).property x h.symm
     · change H.Adj (f x).val (e y) ↔
         (true = false ∧ rookThreeGraph.Adj x y)
-      simp only [Bool.true_ne_false, false_and, iff_false]
+      simp only [Bool.true_eq_false, false_and, iff_false]
       intro h
       exact hSeparated (f x).val (f x).property y h
     · change H.Adj (f x).val (f y).val ↔
