@@ -889,3 +889,7 @@ import EPPAIII
 
 -- Degenerate t=1 noncluster case; complementary partition not assumed
 #print axioms EPPAIII.CliqueCovers.eppa_noncluster_independent_half_is_cover
+
+-- Exact selected-copy alignment and two-half Lemma 6.1 classification
+#print axioms EPPAIII.CliqueCovers.eppa_cluster_actual_host_is_uniform_cover
+#print axioms EPPAIII.CliqueCovers.eppa_equal_clique_double_classification
