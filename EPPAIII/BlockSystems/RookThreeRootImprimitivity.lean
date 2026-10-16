@@ -1,4 +1,4 @@
-import EPPAIII.BlockSystems.RookThreeSubsetAction
+import EPPAIII.BlockSystems.RookThreeSmallSubsetOrbits
 
 /-!
 # A finite obstruction to nontrivial rook imprimitivity blocks
