@@ -816,3 +816,9 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_empty_profile_degree_le_four
 #print axioms EPPAIII.BlockSystems.cycleFive_no_mixed_empty_full_profiles
 #print axioms EPPAIII.BlockSystems.cycleFive_transitive_empty_full_profiles_uniform
+
+-- Generic connected-component transport for separated transitive halves
+#print axioms EPPAIII.BlockSystems.graphAutomorphism_complement
+#print axioms EPPAIII.BlockSystems.transitive_complement
+#print axioms EPPAIII.BlockSystems.induced_embedding_complement
+#print axioms EPPAIII.BlockSystems.transitive_outside_equiv_of_connected_separated
