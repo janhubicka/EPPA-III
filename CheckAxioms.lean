@@ -865,3 +865,11 @@ import EPPAIII
 #print axioms EPPAIII.partial_complement_implies_original
 #print axioms EPPAIII.partial_original_implies_complement
 #print axioms EPPAIII.eppa_embedding_complement
+
+-- R3 canonical outside singleton matching and graph forms
+#print axioms EPPAIII.BlockSystems.rook_singleton_translation_orbit_eq_labels
+#print axioms EPPAIII.BlockSystems.rook_singleton_translation_orbit_card
+#print axioms EPPAIII.BlockSystems.rook_eppa_one_singleton_profile_saturates
+#print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
+#print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
+#print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms

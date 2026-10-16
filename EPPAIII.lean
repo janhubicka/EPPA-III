@@ -236,3 +236,5 @@ import EPPAIII.BlockSystems.CycleFivePetersenPrimitivity
 import EPPAIII.BlockSystems.CycleFiveMatchingImprimitive
 
 import EPPAIII.EPPA.ComplementTransport
+
+import EPPAIII.BlockSystems.RookThreeSingletonOutside
