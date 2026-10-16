@@ -885,3 +885,6 @@ import EPPAIII
 -- Current Lemma 6.14: zero-cross case of R3
 #print axioms EPPAIII.BlockSystems.rookThreeGraph_preconnected
 #print axioms EPPAIII.BlockSystems.rook_eppa_zero_cross_host_is_two_rook_graphs
+
+-- Current Lemma 6.14: all uniform rook cross degrees through four
+#print axioms EPPAIII.BlockSystems.rook_eppa_small_uniform_cross_degree_classification
