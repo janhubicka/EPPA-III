@@ -53,6 +53,12 @@ private theorem cluster_outside_separate {s t : ℕ}
   intro hab
   exact hij ((hRight i j a b).mp hab).1
 
+/-- Incidence of outside and selected clique blocks. -/
+noncomputable def clusterPartnerMask {s t : ℕ}
+    (H : SimpleGraph (CoverVertex s t)) : Fin s → Finset (Fin s) := by
+  classical
+  exact fun j => Finset.univ.filter (fun i => HasCrossBlockEdge H i j)
+
 /-- The cross incidence becomes a full/empty mask model. -/
 private theorem cluster_host_eq_maskCover {s t : ℕ}
     (H : SimpleGraph (CoverVertex s t))
@@ -62,21 +68,23 @@ private theorem cluster_host_eq_maskCover {s t : ℕ}
       H.Adj (right i a) (right j b) ↔
         i = j ∧ a ≠ b)
     (hCluster : EPPAIII.BlockSystems.IsClusterGraph H) :
-    H = maskCoverGraph s t
-      (fun j => Finset.univ.filter (fun i => HasCrossBlockEdge H i j)) := by
+    H = maskCoverGraph s t (clusterPartnerMask H) := by
   classical
-  let mask : Fin s → Finset (Fin s) :=
-    fun j => Finset.univ.filter (fun i => HasCrossBlockEdge H i j)
+  let mask : Fin s → Finset (Fin s) := clusterPartnerMask H
   have hCross (i j : Fin s) (a b : Fin t) :
       H.Adj (left i a) (right j b) ↔ i ∈ mask j := by
     constructor
     · intro hab
-      exact Finset.mem_filter.mpr ⟨Finset.mem_univ _,⟨a,b,hab⟩⟩
+      change i ∈ clusterPartnerMask H j
+      simp only [clusterPartnerMask,Finset.mem_filter,Finset.mem_univ,true_and]
+      exact ⟨a,b,hab⟩
     · intro hi
+      have hCross : HasCrossBlockEdge H i j := by
+        simpa [mask,clusterPartnerMask] using hi
       exact cluster_cross_block_complete H hCluster
         (cluster_selected_within H he)
         (cluster_outside_within H hRight)
-        i j (Finset.mem_filter.mp hi).2 a b
+        i j hCross a b
   apply SimpleGraph.ext
   funext x y
   apply propext
@@ -115,7 +123,9 @@ private theorem cluster_cross_row_exists_of_eppa {s t : ℕ}
   obtain ⟨j,a,b,hab⟩ := h
   have hLeft : q (left i₀ a) = left i a := by
     have hh := hCompat (i₀,a)
-    simpa [coverLeftEmbedding,left,outerPermutation,p] using hh
+    change q (left i₀ a) = left (p i₀) a at hh
+    have hp : p i₀ = i := by simp [p]
+    simpa only [hp] using hh
   have hOutside : right j b ∉ Set.range (coverLeftEmbedding s t) := by
     rintro ⟨⟨k,c⟩,hk⟩
     exact Bool.false_ne_true (congrArg Prod.fst hk)
@@ -127,11 +137,11 @@ private theorem cluster_cross_row_exists_of_eppa {s t : ℕ}
   | false =>
       exfalso
       apply hAfter
-      exact ⟨(k,c),by simpa [coverLeftEmbedding] using hImage.symm⟩
+      exact ⟨(k,c),hImage.symm⟩
   | true =>
       refine ⟨k,a,c,?_⟩
       have hEdge := (hq (left i₀ a) (right j b)).mp hab
-      simpa [hLeft,hImage,left,right] using hEdge
+      simpa only [hLeft,hImage] using hEdge
 
 /-- The exact cluster-host normal forms, preserving the chosen copy
 of sK_t. In fact EPPA replaces vertex-transitivity in this case. -/
@@ -179,8 +189,8 @@ theorem eppa_cluster_host_full_or_empty {s t : ℕ}
       ext k
       constructor
       · intro hk
-        have hki : HasCrossBlockEdge H k (f i) :=
-          (Finset.mem_filter.mp hk).2
+        have hki : HasCrossBlockEdge H k (f i) := by
+          simpa [mask,clusterPartnerMask,p] using hk
         have hEq := cluster_cross_block_col_unique H hCluster
           (cluster_selected_within H heppa.1)
           (cluster_outside_within H hRight)
@@ -190,8 +200,7 @@ theorem eppa_cluster_host_full_or_empty {s t : ℕ}
       · intro hk
         have hki : k = i := Finset.mem_singleton.mp hk
         subst k
-        exact Finset.mem_filter.mpr
-          ⟨Finset.mem_univ _,hf i⟩
+        simpa [mask,clusterPartnerMask,p] using (hf i)
     refine ⟨p,?_⟩
     rw [hMasked,maskCoverGraph_comap_rightCliqueReindex]
     have hMask : (fun j : Fin s => mask (p j)) =
@@ -200,13 +209,12 @@ theorem eppa_cluster_host_full_or_empty {s t : ℕ}
     rw [hMask]
     exact maskCoverGraph_singleton_eq_coverGraph s t
   · left
+    have hNone (i j : Fin s) : ¬ HasCrossBlockEdge H i j :=
+      fun hij => hSome ⟨i,j,hij⟩
     have hEmpty : mask = fun _ => ∅ := by
       funext j
       ext i
-      simp only [mask,Finset.mem_filter,Finset.mem_univ,true_and,
-        Finset.not_mem_empty,iff_false]
-      intro hij
-      exact hSome ⟨i,j,hij⟩
+      simp [mask,clusterPartnerMask,hNone]
     rw [hMasked,hEmpty]
     exact maskCoverGraph_empty_eq_coverGraph s t
 
