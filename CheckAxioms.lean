@@ -908,3 +908,7 @@ import EPPAIII
 
 -- Full Lemma 6.1: all positive s,t, fixed embedded copy, no imprimitive requirement
 #print axioms EPPAIII.CliqueCovers.eppa_all_positive_clique_double_classification
+
+-- Current Lemma 6.6: two actual-host cases, and exactly two base cliques
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_clique_actual_host_dichotomy
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_base_components
