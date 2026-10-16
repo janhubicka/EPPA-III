@@ -240,3 +240,5 @@ import EPPAIII.EPPA.ComplementTransport
 import EPPAIII.BlockSystems.RookThreeSingletonOutside
 
 import EPPAIII.BlockSystems.RookThreeMatchingModels
+
+import EPPAIII.BlockSystems.RookThreeZeroCrossConclusion

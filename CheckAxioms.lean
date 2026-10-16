@@ -881,3 +881,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rookMatchingGraph_eq_of_layers
 #print axioms EPPAIII.BlockSystems.rook_actual_singleton_host_eq_matching_graph
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_host_two_matching_graphs
+
+-- Current Lemma 6.14: zero-cross case of R3
+#print axioms EPPAIII.BlockSystems.rookThreeGraph_preconnected
+#print axioms EPPAIII.BlockSystems.rook_eppa_zero_cross_host_is_two_rook_graphs
