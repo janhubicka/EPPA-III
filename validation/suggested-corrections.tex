@@ -1274,6 +1274,34 @@ See \texttt{validation/section3-c5-actual-host-primitive-exclusion.tex}.
 This remains proposed until green combined Lean CI and
 axiom audit. Do not edit the original manuscript.
 
+\subsection*{C29. Complementing both graphs preserves EPPA}
+\textbf{Location:} Section 3 passages invoking
+complementary-graph cases, in particular Lemma~3.18,
+Lemma~3.20 and Proposition~3.23.
+
+The complement transfer must apply to \emph{both}
+the selected base graph and the host, not to the host
+alone. The same partial permutation preserves the
+complement of the selected graph exactly when it preserves
+the selected graph; a full host automorphism also preserves
+its complement. Thus
+\[
+        G\hookrightarrow H\text{ EPPA}\quad\Longrightarrow
+        \overline G\hookrightarrow\overline H\text{ EPPA},
+\]
+with the same embedding and extension permutations.
+This is formalized as
+\texttt{EPPAIII.eppa\_embedding\_complement},
+together with both directions of partial-automorphism
+transport, in \texttt{EPPAIII/EPPA/ComplementTransport.lean}.
+The proof should be invoked when reducing the
+\(C_5\) outside cross-degree \(k=3,4\) to
+\(k=2,1\), respectively. The self-complementarity
+of \(C_5\) requires a further explicit relabelling.
+Do not change the author manuscript until this
+is reviewed.
+
+
 \section*{How to maintain this register}
 For each new correction, record a source label,
 a minimal proposed modification, whether the
