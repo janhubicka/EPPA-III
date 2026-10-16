@@ -54,6 +54,8 @@ C19 & Lemma 3.7 and Proposition 3.23 & Lean frontier & Partition and Wagner clas
 C20 & Lemma 3.18, before case split & Lean-verified & Proper-profile saturation\\
 C21 & Claim 3.19 in Lemma 3.18 & Lean-verified & Outside cycle from proper profile\\
 C22 & Claim 3.19, empty/full profiles & Proposed Lean & Complement/component argument\\
+C23 & Claim 3.19, final assembly & Proposed Lean & Exact outside cycle equivalence\\
+C24 & Lemma 3.18, remaining alternatives & Paper + finite & Matchings and cyclic doubles\\
 \bottomrule
 \end{longtable}
 
@@ -1083,6 +1085,74 @@ checked in Lean. See
 \texttt{validation/section3-c5-empty-full-profiles.tex}.
 Do not mark the full Claim~3.19 Lean-verified until
 those exact last steps have passed the axiom audit.
+
+\subsection*{C23. Final assembly of the complementary \(C_5\) claim}
+\textbf{Location:} Claim~3.19 in \texttt{lem:C5\_10vertex}.
+The proposed final Lean module
+\texttt{CycleFiveEmptyFullConclusion.lean} combines
+the verified proper-profile orbit reduction with
+the empty/full degree dichotomy and the separated
+connected-half transport theorem.
+
+For every ten-vertex vertex-transitive \(H\) with an
+induced EPPA embedding \(C_5\hookrightarrow H\), it constructs
+an actual equivalence from \(\mathrm{Fin}\,5\) onto
+\(H\setminus C_5\) under which the complementary induced
+graph is \emph{exactly} the standard five-cycle.
+The self-complementarity of \(C_5\) is certified
+by multiplication by two on \(\mathbb Z/5\mathbb Z\);
+the proof does not assume imprimitivity or coherent lifts.
+
+\textbf{Proof boundaries.}
+The graph-theoretic separated-component transport is reusable
+and assumes only a connected induced half, no cross edges,
+and host transitivity. For the all-full case apply it
+to the complement graph and complement back.
+The new final declaration is
+\texttt{cycleFive\_eppa\_outside\_is\_cycle}.
+It is \emph{pending} until its combined Lean CI
+and permitted-axiom audit pass; only then should
+Claim~3.19 be marked completely Lean-verified.
+Even a proof of Claim~3.19 does \emph{not} certify
+all possible cross-degree configurations of Lemma~3.18.
+
+\subsection*{C24. Remaining host alternatives in Lemma 3.18}
+\textbf{Location:} \texttt{lem:C5\_10vertex} after
+Claim~3.19. The already verified proper-profile orbit
+saturation and the proposed complete Claim~3.19 reduce
+the graph classification to two cross-degree cases,
+up to complementing both the selected graph and host.
+
+If the profiles are empty/full, degree regularity
+and transitive component transport give \(2C_5\)
+or its complement. Otherwise all five outside
+profiles lie in one cyclic orbit, of uniform size
+\(1\le k\le4\). Complementing the entire EPPA pair
+and relabelling the self-complementary \(C_5\)
+reduces to \(k=1\) or \(k=2\).
+
+At \(k=1\) the cross graph is a matching. The
+outside graph is \(C_5\) or \(\overline{C_5}\),
+giving respectively the prism or Petersen graph.
+The Petersen graph is primitive and so cannot
+appear in the imprimitive manuscript classification.
+At \(k=2\), the two possible pair orbits and
+the actual graph-level triangle certificate
+reduce to the already verified pair of cyclic doubles.
+Their named graph-isomorphism identifications
+remain to be formally checked.
+
+\textbf{Independent finite check:}
+\texttt{checks/section3\_c5\_host\_patterns.py}
+enumerates all actual automorphisms of eight candidate
+ten-vertex matrices, verifies extension of all \(286\)
+partial isomorphisms of the selected \(C_5\),
+tests both possible nontrivial imprimitivity
+block sizes, and confirms the two complementary-top
+degree-two candidates are nontransitive.
+Details: \texttt{validation/section3-c5-complete-case-analysis.tex}.
+This check does not replace the general Lean proof
+of the full Lemma~3.18.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,

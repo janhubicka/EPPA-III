@@ -822,3 +822,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_complement
 #print axioms EPPAIII.BlockSystems.induced_embedding_complement
 #print axioms EPPAIII.BlockSystems.transitive_outside_equiv_of_connected_separated
+
+-- Exact C5 complementary-half conclusion of Claim 3.19
+#print axioms EPPAIII.BlockSystems.cycleFiveDoubleIndex
+#print axioms EPPAIII.BlockSystems.cycleFive_doubleIndex_complement_adj
+#print axioms EPPAIII.BlockSystems.cycleFive_complement_preconnected
+#print axioms EPPAIII.BlockSystems.cycleFive_empty_full_outside_is_cycle
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_is_cycle

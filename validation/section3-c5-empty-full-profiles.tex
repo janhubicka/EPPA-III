@@ -109,4 +109,19 @@ components, so \(H[B]\cong C_5\).
 The established proper-profile proof handles the other
 case independently. Leave the rest of the
 author's manuscript unchanged.
+\section*{Exact Lean assembly target}
+The proposed \texttt{CycleFiveEmptyFullConclusion.lean}
+module combines
+\texttt{CycleFiveEmptyFullRigidity.lean} and
+\texttt{TransitiveSeparatedHalf.lean}.
+Its final theorem constructs an actual equivalence
+\(\mathrm{Fin}\,5\simeq V(H)\setminus V(C_5)\) and proves
+graph equality after pullback, rather than asserting a
+mere edge-count identity. The complement \(C_5\) is
+connected and isomorphic to \(C_5\) by the explicit
+multiplication-by-two permutation.
+The source-anchored register entry is C23.
+No full Lean certification may be recorded until
+the combined workflow passes.
+
 \end{document}
