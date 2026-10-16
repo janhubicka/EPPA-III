@@ -102,9 +102,9 @@ theorem rook_eppa_singleton_outside_equiv
   have hLabelInj : Function.Injective
       (fun x : rookVertex => ({x} : Finset rookVertex)) := by
     intro x y hxy
-    have hx : x ∈ ({y} : Finset rookVertex) := by
-      rw [← hxy]
-      simp
+    have hSing : ({x} : Finset rookVertex) = {y} := hxy
+    have hx : x ∈ ({x} : Finset rookVertex) := by simp
+    rw [hSing] at hx
     simpa using hx
   exact outside_profile_label_family_equiv
     H e (fun x => ({x} : Finset rookVertex))
