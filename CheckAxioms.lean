@@ -878,3 +878,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base
 #print axioms EPPAIII.CliqueCovers.eppa_two_partial_host_is_wagner_fixed_base
 #print axioms EPPAIII.CliqueCovers.eppa_noncluster_equal_clique_full_classification_fixed_base
+
+-- Cluster-host cross-block matching skeleton, Lemma 6.1
+#print axioms EPPAIII.CliqueCovers.cluster_cross_block_complete
+#print axioms EPPAIII.CliqueCovers.cluster_cross_block_row_unique
+#print axioms EPPAIII.CliqueCovers.cluster_cross_block_col_unique
