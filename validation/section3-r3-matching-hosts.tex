@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\section*{EPPA--III, Lemma 3.20: actual matching rook hosts}
+\textbf{Policy.} Source-local validation note only;
+the circulated manuscript stays frozen.
+
+For an eighteen-vertex vertex-transitive EPPA witness
+\(H\) of the nine-vertex rook graph \(R_3\), a single
+outside singleton profile forces a unique matching
+between the designated rook vertices and all outside
+vertices. This is a \emph{conclusion} of EPPA, not an
+assumed identification of the two halves.
+
+The outside induced graph is \(R_3\) or its complement
+under those singleton labels. Thus the entire host is
+one of the two graphs on \(\{0,1\}\times V(R_3)\):
+\[
+\begin{aligned}
+ (0,x)\sim(0,y)&\iff x\sim_{R_3}y,\\
+ (1,x)\sim(1,y)&\iff
+    \begin{cases}x\sim_{R_3}y&\text{model 0},\\
+    x\ne y,\; x\nsim_{R_3}y&\text{model 1},\end{cases}\\
+ (0,x)\sim(1,y)&\iff x=y.
+\end{aligned}
+\]
+The proposed Lean module
+\texttt{RookThreeMatchingModels.lean} constructs an
+actual equivalence \(\varphi:\{0,1\}\times V(R_3)
+\simeq V(H)\) fixing the original embedded copy
+and proves equality of the transported adjacency
+with exactly one of these explicit matching graphs.
+
+These models correspond to the two actions on paired
+halves considered in the manuscript, but the precise
+isomorphism with each named alternative must be
+checked rather than assumed from an informal description.
+The degree-zero/full and complementary cross-degree
+branches of Lemma~3.20 also remain separate.
+
+\paragraph{Localized proposed wording.}
+In the cross-degree-one case, index the outside
+vertices by their unique selected neighbour.
+Genuine EPPA lifts force the rook automorphism action
+on these labels. Their matching cross relation and the
+two invariant top graphs then determine the entire host,
+without presupposing equivariant outside labels.
+\end{document}

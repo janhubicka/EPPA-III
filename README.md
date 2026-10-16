@@ -33,3 +33,5 @@ Build with `lake update && lake exe cache get && lake build`, and audit with `la
 
 A green build validates only the declarations listed in `CheckAxioms.lean`; the manuscript's classification claims remain open until their exact mathematical statements have Lean proofs.
 The [R3 singleton outside matching note](validation/section3-r3-singleton-matching.tex) derives canonical matching coordinates without a preselected action on the outside half.
+
+The [R3 matching host models note](validation/section3-r3-matching-hosts.tex) records the two explicit rook matching graph alternatives.

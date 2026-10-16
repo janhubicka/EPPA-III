@@ -849,3 +849,11 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Actual R3 matching graph identification from one singleton profile
+#print axioms EPPAIII.BlockSystems.rookMatchingRelation
+#print axioms EPPAIII.BlockSystems.rookMatchingGraph
+#print axioms EPPAIII.BlockSystems.rookMatchingGraph_adj_iff
+#print axioms EPPAIII.BlockSystems.rookMatchingGraph_eq_of_layers
+#print axioms EPPAIII.BlockSystems.rook_actual_singleton_host_eq_matching_graph
+#print axioms EPPAIII.BlockSystems.rook_eppa_singleton_host_two_matching_graphs
