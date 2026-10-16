@@ -855,3 +855,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.petersenRootAut_no_two_or_five_invariant_set
 #print axioms EPPAIII.BlockSystems.petersen_root_block_not_two_or_five
 #print axioms EPPAIII.BlockSystems.petersen_no_nontrivial_invariant_partition
+
+-- Petersen primitive obstruction transported to actual EPPA host
+#print axioms EPPAIII.BlockSystems.invariantBlockMap_comap_equiv
+#print axioms EPPAIII.BlockSystems.block_fibre_ge_two_of_equal_pair
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_imprimitive_host_is_prism
