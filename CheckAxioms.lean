@@ -893,3 +893,6 @@ import EPPAIII
 -- Exact selected-copy alignment and two-half Lemma 6.1 classification
 #print axioms EPPAIII.CliqueCovers.eppa_cluster_actual_host_is_uniform_cover
 #print axioms EPPAIII.CliqueCovers.eppa_equal_clique_double_classification
+
+-- Entire t=1 case of Lemma 6.1, with fixed selected embedding
+#print axioms EPPAIII.CliqueCovers.eppa_independent_double_classification

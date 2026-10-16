@@ -1,6 +1,7 @@
 import EPPAIII.CliqueCovers.ClusterHostClassification
 import EPPAIII.CliqueCovers.NonclusterEqualCliqueConclusion
 import EPPAIII.CliqueCovers.DegenerateOutside
+import EPPAIII.CliqueCovers.NonclusterIndependentHalf
 import EPPAIII.BlockSystems.GraphTransport
 
 /-!
@@ -100,5 +101,29 @@ theorem eppa_equal_clique_double_classification {s t : ℕ}
       H e heppa hCluster outside hOutside
   · exact eppa_noncluster_equal_clique_full_classification_fixed_base
       H e heppa hs ht hOrder hTransitive hCluster
+
+/-- The independent-base case t=1 under the manuscript's two-half
+hypothesis. The non-cluster branch even omits that outside hypothesis. -/
+theorem eppa_independent_double_classification {s : ℕ}
+    {W : Type*} [Fintype W]
+    (H : SimpleGraph W) [DecidableRel H.Adj]
+    (e : (Fin s × Fin 1) ↪ W)
+    (heppa : IsEPPAEmbedding (cliqueUnion s 1) H e)
+    (hs : 0 < s)
+    (hOrder : Fintype.card W = 2 * s)
+    (hTransitive : HasTransitiveGraphAutomorphisms H)
+    (outside : (Fin s × Fin 1) ≃
+      {w : W // w ∈ finiteOutside e})
+    (hOutside : (outsideInducedGraph H e).comap outside =
+      cliqueUnion s 1) :
+    ∃ (phi : CoverVertex s 1 ≃ W) (X : CrossType) (Y : Bool),
+      (∀ x : Fin s × Fin 1, phi (false,x) = e x) ∧
+      H.comap phi = coverGraph s 1 X Y := by
+  classical
+  by_cases hCluster : EPPAIII.BlockSystems.IsClusterGraph H
+  · exact eppa_cluster_actual_host_is_uniform_cover
+      H e heppa hCluster outside hOutside
+  · exact eppa_noncluster_independent_half_is_cover
+      H e heppa hs hOrder hTransitive hCluster
 
 end EPPAIII.CliqueCovers
