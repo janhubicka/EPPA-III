@@ -246,3 +246,6 @@ import EPPAIII.CliqueCovers.ClusterHostClassification
 import EPPAIII.CliqueCovers.NonclusterIndependentHalf
 
 import EPPAIII.CliqueCovers.ActualHostConclusion
+
+import EPPAIII.EPPA.BaseRelabel
+import EPPAIII.CliqueCovers.OneCliqueDuality
