@@ -896,3 +896,15 @@ import EPPAIII
 
 -- Entire t=1 case of Lemma 6.1, with fixed selected embedding
 #print axioms EPPAIII.CliqueCovers.eppa_independent_double_classification
+
+-- Low-parameter transfer through graph and base complements
+#print axioms EPPAIII.eppa_relabel_base
+#print axioms EPPAIII.CliqueCovers.oneCliqueBaseSwap_complement
+#print axioms EPPAIII.CliqueCovers.oneCliqueDualCoverGraph
+
+-- Single selected clique; no imprimitive or complementary-half assumption
+#print axioms EPPAIII.CliqueCovers.complement_comap_equiv
+#print axioms EPPAIII.CliqueCovers.eppa_one_clique_double_classification
+
+-- Full Lemma 6.1: all positive s,t, fixed embedded copy, no imprimitive requirement
+#print axioms EPPAIII.CliqueCovers.eppa_all_positive_clique_double_classification
