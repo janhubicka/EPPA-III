@@ -93,7 +93,8 @@ private theorem cluster_host_eq_maskCover {s t : ℕ}
   cases sx <;> cases sy
   · change H.Adj (left i a) (left j b) ↔
         maskCoverAdj mask (false,(i,a)) (false,(j,b))
-    simpa [maskCoverAdj,cliqueUnion] using (he (i,a) (j,b)).symm
+    simpa [maskCoverAdj,cliqueUnion,left,coverLeftEmbedding] using
+      (he (i,a) (j,b)).symm
   · change H.Adj (left i a) (right j b) ↔
         maskCoverAdj mask (false,(i,a)) (true,(j,b))
     simpa [maskCoverAdj] using hCross i j a b
@@ -141,7 +142,7 @@ private theorem cluster_cross_row_exists_of_eppa {s t : ℕ}
   | true =>
       refine ⟨k,a,c,?_⟩
       have hEdge := (hq (left i₀ a) (right j b)).mp hab
-      simpa only [hLeft,hImage] using hEdge
+      simpa only [hLeft,hImage,right] using hEdge
 
 /-- The exact cluster-host normal forms, preserving the chosen copy
 of sK_t. In fact EPPA replaces vertex-transitivity in this case. -/

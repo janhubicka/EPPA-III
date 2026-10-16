@@ -886,3 +886,6 @@ import EPPAIII
 
 -- Strong form: cluster host from EPPA and both specified halves
 #print axioms EPPAIII.CliqueCovers.eppa_cluster_host_full_or_empty
+
+-- Degenerate t=1 noncluster case; complementary partition not assumed
+#print axioms EPPAIII.CliqueCovers.eppa_noncluster_independent_half_is_cover

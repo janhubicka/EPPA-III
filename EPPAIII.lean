@@ -242,3 +242,5 @@ import EPPAIII.BlockSystems.RookThreeSingletonOutside
 import EPPAIII.CliqueCovers.ClusterHostBlocks
 
 import EPPAIII.CliqueCovers.ClusterHostClassification
+
+import EPPAIII.CliqueCovers.NonclusterIndependentHalf
