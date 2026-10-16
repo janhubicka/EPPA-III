@@ -57,7 +57,8 @@ C22 & Claim 3.19, empty/full profiles & Proposed Lean & Complement/component arg
 C23 & Claim 3.19, final assembly & Proposed Lean & Exact outside cycle equivalence\\
 C24 & Lemma 3.18, remaining alternatives & Paper + finite & Matchings and cyclic doubles\\
 C25 & Lemma 3.18, cross-degree one & Lean-verified & Canonical matching from profiles\\
-C26 & Lemma 3.18, matching host models & Proposed Lean & Full adjacency identification\\
+C26 & Lemma 3.18, matching host models & Lean-verified & Full adjacency identification\\
+C27 & Lemma 3.18, Petersen exclusion & Proposed Lean & One-automorphism certificate\\
 \bottomrule
 \end{longtable}
 
@@ -1208,6 +1209,38 @@ primitive-action certificate remains to be formalised.
 \textbf{Proof and local wording:}
 \texttt{validation/section3-c5-matching-models.tex}.
 The original author manuscript has not been changed.
+
+\subsection*{C27. A one-automorphism Petersen primitivity certificate}
+\textbf{Location:} Lemma~3.18, matching-case Petersen exclusion.
+The explicit canonical matching host is Lean-verified
+and merged via PR~\#270.
+In that model, number bottom vertices \(0,\dots,4\)
+and top vertices \(5,\dots,9\).
+The permutation
+\(\sigma=(1\ 4\ 5)(2\ 3\ 8\ 6\ 9\ 7)\)
+fixes \(0\) and is an automorphism of the
+Petersen matching graph. Its three vertex orbits
+have sizes \(1,3,6\). Any imprimitivity block
+containing \(0\) must be invariant under \(\sigma\),
+and hence is a union of these orbits; its possible
+sizes are \(1,4,7,10\).
+But in a transitive action on ten points every
+nontrivial block has order \(2\) or \(5\).
+The contradiction proves primitivity without
+computing the entire automorphism group.
+
+\textbf{Lean target:}
+\texttt{CycleFivePetersenPrimitivity.lean}.
+The finite automorphism and invariant-set certificates
+are calculated by Lean kernel reduction.
+The general block conclusion combines these
+with the already verified transitive fibre-count
+and uniform-partition identities.
+It remains to transport this fixed-model result
+to arbitrary actual EPPA hosts via the previously
+constructed matching-host equivalence.
+See \texttt{validation/section3-c5-petersen-primitivity.tex}.
+The manuscript is unchanged.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,

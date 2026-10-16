@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\section*{EPPA--III, Lemma 3.18: a one-automorphism Petersen primitivity certificate}
+The author manuscript is frozen. This is a proposed local proof
+of the remaining primitive/imprimitive distinction in the matching case.
+
+Use the canonical matching model on
+\(V=\{0,1\}\times\mathbb Z/5\mathbb Z\).
+The bottom layer is \(C_5\), the top is
+\(\overline{C_5}\), and the cross edges form a perfect
+matching. Number the vertices by \(0,\ldots,4\)
+on the bottom and \(5,\ldots,9\) on the top.
+
+A direct ten-by-ten adjacency check shows that
+\[
+   \sigma=(1\ 4\ 5)(2\ 3\ 8\ 6\ 9\ 7)
+\]
+(with \(0\) fixed) is an automorphism of this
+matching graph. Its orbits are of sizes \(1,3,6\).
+Any imprimitivity block containing \(0\) is fixed
+setwise by \(\sigma\), because \(\sigma(0)=0\) and
+images of blocks are equal or disjoint.
+Thus such a block must be a union of the three
+orbits and its size is one of
+\[
+                   1,\ 4,\ 7,\ 10.
+\]
+In any transitive action on ten vertices, a
+nontrivial invariant partition has block size
+\(2\) or \(5\). Neither occurs, so the Petersen
+matching graph is primitive.
+
+This is considerably shorter than enumerating
+the \(120\) graph automorphisms or proving the full
+permutation-group identification with \(S_5\).
+It requires only one explicit automorphism,
+one calculation on at most \(2^{10}=1024\) subsets,
+and the ordinary equal-fibre cardinality lemma
+already formalized for Section 3.
+
+\paragraph{Lean target.}
+The proposed module
+\texttt{CycleFivePetersenPrimitivity.lean}
+uses an explicit computable permutation of
+the ten canonical vertices, proves its graph
+automorphism property, and certifies by finite
+kernel reduction that no root-containing invariant
+subset can have size two or five.
+It then composes this certificate with the
+already verified \texttt{transitive\_block\_fibres\_equal}
+and \texttt{uniform\_partition\_card\_formula}.
+The resulting theorem
+\texttt{petersen\_no\_nontrivial\_invariant\_partition}
+assumes vertex-transitivity and excludes a nontrivial
+invariant block partition.
+
+\paragraph{Still needed after this certificate.}
+Transport any given invariant block map of the actual
+host along the canonical graph equivalence from
+\texttt{cycleFive\_eppa\_singleton\_host\_two\_matching\_graphs}.
+This leaves the host exclusion as a short corollary and
+then permits the full imprimitive matching case of
+Lemma~3.18 to be assembled.
+
+\paragraph{Suggested source-local insertion.}
+The Petersen alternative is primitive: in the
+matching coordinates the automorphism
+\((1\ 4\ 5)(2\ 3\ 8\ 6\ 9\ 7)\) fixes vertex \(0\).
+A block containing \(0\) has order \(1,4,7\), or
+\(10\), whereas transitivity on ten vertices
+forces any nontrivial block to have order \(2\) or \(5\).
+\end{document}
