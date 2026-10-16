@@ -22,7 +22,7 @@ The [empty/full C5 profile proof](validation/section3-c5-empty-full-profiles.tex
 
 The [canonical C5 matching case](validation/section3-c5-matching-profiles.tex) develops the cross-degree-one proof without assuming any outside labels, keeping the primitive Petersen obstruction separate.
 
-The fuller historical audit remains in
+The [canonical matching host graph identification](validation/section3-c5-matching-models.tex) records the two explicit ten-vertex models and the remaining primitive Petersen exclusion.\n\nThe fuller historical audit remains in
 [validation/issues.tex](validation/issues.tex), with a focused
 [Section 3 report](validation/section3-rest.tex) and supporting
 [finite verification scripts](checks/).
