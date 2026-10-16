@@ -1,4 +1,4 @@
-import EPPAIII.CliqueCovers.Basic
+import EPPAIII.CliqueCovers.DegenerateOutside
 import EPPAIII.EPPA.BaseRelabel
 
 /-!
