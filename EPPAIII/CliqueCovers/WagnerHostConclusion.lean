@@ -99,7 +99,7 @@ theorem saturatedWagner_cross_iff
 /-- The whole host in the two-partial case is the explicit
 eight-vertex Wagner graph, not merely a graph with the right
 outside orbit cardinality. -/
-theorem eppa_two_partial_host_is_wagner
+theorem eppa_two_partial_host_is_wagner_fixed_base
     {W : Type*} [Fintype W]
     (H : SimpleGraph W) [DecidableRel H.Adj]
     (e : (Fin 2 × Fin 2) ↪ W)
@@ -109,6 +109,7 @@ theorem eppa_two_partial_host_is_wagner
     (hBoth : (kPositions (finiteNeighbourhoodProfile H e w) 1).card = 2)
     (hTransitive : HasTransitiveGraphAutomorphisms H) :
     ∃ phi : CoverVertex 2 2 ≃ W,
+      (∀ x : Fin 2 × Fin 2, phi (false,x) = e x) ∧
       H.comap phi = wagnerCanonicalGraph := by
   classical
   let rho : (Fin 2 × Fin 2) ≃ Bool × Bool :=
@@ -120,44 +121,63 @@ theorem eppa_two_partial_host_is_wagner
   let phi : CoverVertex 2 2 ≃ W := balancedHostEquiv e outsideFin
   have hOut := eppa_wagner_outside_is_opposite_matching
     H e heppa hOrder w hw hBoth hTransitive
-  refine ⟨phi, ?_⟩
-  apply SimpleGraph.ext
-  funext x y
-  apply propext
-  rcases x with ⟨bx,⟨i,a⟩⟩
-  rcases y with ⟨cy,⟨j,c⟩⟩
-  cases bx <;> cases cy
-  · change H.Adj (e (i,a)) (e (j,c)) ↔
-      wagnerCanonicalAdj (false,(i,a)) (false,(j,c))
-    simpa [wagnerCanonicalAdj,cliqueUnion] using
-      (heppa.1 (i,a) (j,c)).symm
-  · change H.Adj (e (i,a)) (outside (rho (j,c))).val ↔
-      wagnerCanonicalAdj (false,(i,a)) (true,(j,c))
-    have hCross := saturatedWagner_cross_iff
-      H e heppa hOrder w hw hBoth (rho (j,c)) i a
-    have hSym :
-        H.Adj (e (i,a)) (outside (rho (j,c))).val ↔
-          H.Adj (outside (rho (j,c))).val (e (i,a)) :=
-      H.adj_comm _ _
-    simpa [wagnerCanonicalAdj,rho] using hSym.trans hCross
-  · change H.Adj (outside (rho (i,a))).val (e (j,c)) ↔
-      wagnerCanonicalAdj (true,(i,a)) (false,(j,c))
-    have hCross := saturatedWagner_cross_iff
-      H e heppa hOrder w hw hBoth (rho (i,a)) j c
-    simpa [wagnerCanonicalAdj,rho] using hCross
-  · change
-      H.Adj (outside (rho (i,a))).val
-        (outside (rho (j,c))).val ↔
-      wagnerCanonicalAdj (true,(i,a)) (true,(j,c))
-    have hB :
+  refine ⟨phi, ?_, ?_⟩
+  · intro x
+    exact balancedHostEquiv_false e outsideFin x
+  · apply SimpleGraph.ext
+    funext x y
+    apply propext
+    rcases x with ⟨bx,⟨i,a⟩⟩
+    rcases y with ⟨cy,⟨j,c⟩⟩
+    cases bx <;> cases cy
+    · change H.Adj (e (i,a)) (e (j,c)) ↔
+        wagnerCanonicalAdj (false,(i,a)) (false,(j,c))
+      simpa [wagnerCanonicalAdj,cliqueUnion] using
+        (heppa.1 (i,a) (j,c)).symm
+    · change H.Adj (e (i,a)) (outside (rho (j,c))).val ↔
+        wagnerCanonicalAdj (false,(i,a)) (true,(j,c))
+      have hCross := saturatedWagner_cross_iff
+        H e heppa hOrder w hw hBoth (rho (j,c)) i a
+      have hSym :
+          H.Adj (e (i,a)) (outside (rho (j,c))).val ↔
+            H.Adj (outside (rho (j,c))).val (e (i,a)) :=
+        H.adj_comm _ _
+      simpa [wagnerCanonicalAdj,rho] using hSym.trans hCross
+    · change H.Adj (outside (rho (i,a))).val (e (j,c)) ↔
+        wagnerCanonicalAdj (true,(i,a)) (false,(j,c))
+      have hCross := saturatedWagner_cross_iff
+        H e heppa hOrder w hw hBoth (rho (i,a)) j c
+      simpa [wagnerCanonicalAdj,rho] using hCross
+    · change
         H.Adj (outside (rho (i,a))).val
           (outside (rho (j,c))).val ↔
-        (squareCornerGraph false true).Adj (rho (i,a)) (rho (j,c)) := by
-      change ((outsideInducedGraph H e).comap outside).Adj
-        (rho (i,a)) (rho (j,c)) ↔
-        (squareCornerGraph false true).Adj (rho (i,a)) (rho (j,c))
-      rw [hOut]
-    simpa [wagnerCanonicalAdj,squareCornerGraph,
-      squareCornerAdj,rho] using hB
+        wagnerCanonicalAdj (true,(i,a)) (true,(j,c))
+      have hB :
+          H.Adj (outside (rho (i,a))).val
+            (outside (rho (j,c))).val ↔
+          (squareCornerGraph false true).Adj (rho (i,a)) (rho (j,c)) := by
+        change ((outsideInducedGraph H e).comap outside).Adj
+          (rho (i,a)) (rho (j,c)) ↔
+          (squareCornerGraph false true).Adj (rho (i,a)) (rho (j,c))
+        rw [hOut]
+      simpa [wagnerCanonicalAdj,squareCornerGraph,
+        squareCornerAdj,rho] using hB
+
+/-- Previously exported Wagner theorem, derived from the aligned model. -/
+theorem eppa_two_partial_host_is_wagner
+    {W : Type*} [Fintype W]
+    (H : SimpleGraph W) [DecidableRel H.Adj]
+    (e : (Fin 2 × Fin 2) ↪ W)
+    (heppa : IsEPPAEmbedding (cliqueUnion 2 2) H e)
+    (hOrder : Fintype.card W = 2 * 2 * 2)
+    (w : W) (hw : w ∉ Set.range e)
+    (hBoth : (kPositions (finiteNeighbourhoodProfile H e w) 1).card = 2)
+    (hTransitive : HasTransitiveGraphAutomorphisms H) :
+    ∃ phi : CoverVertex 2 2 ≃ W,
+      H.comap phi = wagnerCanonicalGraph := by
+  obtain ⟨phi,_,hEq⟩ :=
+    eppa_two_partial_host_is_wagner_fixed_base
+      H e heppa hOrder w hw hBoth hTransitive
+  exact ⟨phi,hEq⟩
 
 end EPPAIII.CliqueCovers

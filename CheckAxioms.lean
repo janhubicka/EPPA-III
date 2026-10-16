@@ -873,3 +873,26 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Connection matrices in the selected embedding (current Lemma 6.1)
+#print axioms EPPAIII.CliqueCovers.eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base
+#print axioms EPPAIII.CliqueCovers.eppa_two_partial_host_is_wagner_fixed_base
+#print axioms EPPAIII.CliqueCovers.eppa_noncluster_equal_clique_full_classification_fixed_base
+
+-- Cluster-host cross-block matching skeleton, Lemma 6.1
+#print axioms EPPAIII.CliqueCovers.cluster_cross_block_complete
+#print axioms EPPAIII.CliqueCovers.cluster_cross_block_row_unique
+#print axioms EPPAIII.CliqueCovers.cluster_cross_block_col_unique
+
+-- Strong form: cluster host from EPPA and both specified halves
+#print axioms EPPAIII.CliqueCovers.eppa_cluster_host_full_or_empty
+
+-- Degenerate t=1 noncluster case; complementary partition not assumed
+#print axioms EPPAIII.CliqueCovers.eppa_noncluster_independent_half_is_cover
+
+-- Exact selected-copy alignment and two-half Lemma 6.1 classification
+#print axioms EPPAIII.CliqueCovers.eppa_cluster_actual_host_is_uniform_cover
+#print axioms EPPAIII.CliqueCovers.eppa_equal_clique_double_classification
+
+-- Entire t=1 case of Lemma 6.1, with fixed selected embedding
+#print axioms EPPAIII.CliqueCovers.eppa_independent_double_classification
