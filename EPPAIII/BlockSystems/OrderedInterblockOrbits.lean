@@ -12,7 +12,7 @@ The earlier theorems established:
 
 This module transports the last orbit statement back to the *actual*
 finite vertex type W of the original host. It contains the full
-additional orbit conclusion of Lemma 3.3, with the same explicit
+additional orbit conclusion of Lemma 5.12, with the same explicit
 non-homogeneity and non-cluster hypotheses as the previously verified
 structural theorem.
 -/

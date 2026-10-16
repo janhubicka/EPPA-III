@@ -1,7 +1,7 @@
 import Mathlib
 
 /-!
-# Two-point fibre patterns for Section 3 of EPPA--III
+# Two-point fibre patterns for Lemma 5.12 of EPPA--III
 
 An invariant pair system, together with two-point EPPA, reduces
 inter-fibre adjacency matrices to four binary parameters. The
