@@ -43,8 +43,11 @@ theorem eppa_noncluster_equal_clique_full_classification_fixed_base {s t : ℕ}
     (∃ (phi : CoverVertex s t ≃ W) (X : CrossType) (Y : Bool),
        (∀ x : Fin s × Fin t, phi (false,x) = e x) ∧
        H.comap phi = coverGraph s t X Y) ∨
-    (s = 2 ∧ t = 2 ∧
-      ∃ phi : CoverVertex 2 2 ≃ W,
+    (∃ (hS : s = 2) (hT : t = 2)
+        (phi : CoverVertex 2 2 ≃ W),
+        (∀ x : Fin 2 × Fin 2,
+          phi (false,x) =
+            e (Fin.cast hS.symm x.1, Fin.cast hT.symm x.2)) ∧
         H.comap phi = wagnerCanonicalGraph) := by
   classical
   by_cases hSome :
@@ -89,7 +92,8 @@ theorem eppa_noncluster_equal_clique_full_classification_fixed_base {s t : ℕ}
         eppa_two_partial_host_is_wagner_fixed_base
           H e heppa hOrder w hw hBoth hTransitive
       right
-      exact ⟨rfl,rfl,phi,hPhi⟩
+      refine ⟨rfl,rfl,phi,?_,hPhi⟩
+      simpa using hFixed
     · have hOne : S.card = 1 := by omega
       obtain ⟨j,k,hkPos,hkProper,hSlice,hUnique⟩ :=
         unique_proper_partial_gives_unique_k P hOne
@@ -175,7 +179,7 @@ theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
       H e heppa hs ht hOrder hTransitive hNonCluster with hCover | hWagner
   · rcases hCover with ⟨phi,X,Y,_,hEq⟩
     exact Or.inl ⟨phi,X,Y,hEq⟩
-  · rcases hWagner with ⟨hs2,ht2,phi,hEq⟩
+  · rcases hWagner with ⟨hs2,ht2,phi,_,hEq⟩
     exact Or.inr ⟨hs2,ht2,phi,hEq⟩
 
 end EPPAIII.CliqueCovers
