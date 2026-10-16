@@ -222,3 +222,5 @@ import EPPAIII.BlockSystems.OutsideOrbitSaturation
 import EPPAIII.BlockSystems.CycleFiveProperOutsideAction
 
 import EPPAIII.BlockSystems.CycleFiveEmptyFullRigidity
+
+import EPPAIII.BlockSystems.TransitiveSeparatedHalf
