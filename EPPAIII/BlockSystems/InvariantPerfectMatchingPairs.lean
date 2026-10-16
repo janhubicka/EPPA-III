@@ -49,7 +49,7 @@ theorem invariant_perfect_matching_yields_pairs
   have hMate (u : W) : J.Adj u (mate u) :=
     (Classical.choose_spec (hMatch u)).1
   have hMateInv (u : W) : mate (mate u) = u :=
-    (Classical.choose_spec (hMatch (mate u))).2 u (hMate u).symm
+    ((Classical.choose_spec (hMatch (mate u))).2 u (hMate u).symm).symm
   have hOut (x : V) : mate (e x) ∈ finiteOutside e := by
     have hNot : mate (e x) ∉ Set.range e := by
       rintro ⟨y,hy⟩
