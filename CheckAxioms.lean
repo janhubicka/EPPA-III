@@ -915,3 +915,6 @@ import EPPAIII
 
 -- General canonical-pair construction from invariant perfect matching
 #print axioms EPPAIII.BlockSystems.invariant_perfect_matching_yields_pairs
+
+-- Unequal-clique matching Case 1 becomes an invariant Taylor double
+#print axioms EPPAIII.BlockSystems.eppa_case1_perfect_matching_is_taylor_up_to_mate
