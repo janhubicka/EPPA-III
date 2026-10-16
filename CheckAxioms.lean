@@ -829,3 +829,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_complement_preconnected
 #print axioms EPPAIII.BlockSystems.cycleFive_empty_full_outside_is_cycle
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_outside_is_cycle
+
+-- C5 genuine singleton profile canonical matching labels
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_outside_equiv
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_outside_graph_two_forms

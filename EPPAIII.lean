@@ -226,3 +226,5 @@ import EPPAIII.BlockSystems.CycleFiveEmptyFullRigidity
 import EPPAIII.BlockSystems.TransitiveSeparatedHalf
 
 import EPPAIII.BlockSystems.CycleFiveEmptyFullConclusion
+
+import EPPAIII.BlockSystems.CycleFiveSingletonOutside
