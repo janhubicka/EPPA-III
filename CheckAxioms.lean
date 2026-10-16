@@ -901,3 +901,7 @@ import EPPAIII
 #print axioms EPPAIII.eppa_relabel_base
 #print axioms EPPAIII.CliqueCovers.oneCliqueBaseSwap_complement
 #print axioms EPPAIII.CliqueCovers.oneCliqueDualCoverGraph
+
+-- Single selected clique; no imprimitive or complementary-half assumption
+#print axioms EPPAIII.CliqueCovers.complement_comap_equiv
+#print axioms EPPAIII.CliqueCovers.eppa_one_clique_double_classification
