@@ -860,3 +860,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.invariantBlockMap_comap_equiv
 #print axioms EPPAIII.BlockSystems.block_fibre_ge_two_of_equal_pair
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_imprimitive_host_is_prism
+
+-- Exact EPPA transport under simultaneous graph complements
+#print axioms EPPAIII.partial_complement_implies_original
+#print axioms EPPAIII.partial_original_implies_complement
+#print axioms EPPAIII.eppa_embedding_complement
