@@ -1,0 +1,80 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry}
+\geometry{margin=26mm}
+\title{EPPA--III Section 3: canonical matching labels in Lemma 3.18}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+\paragraph{Scope.}
+Let \(H\) be a ten-vertex vertex-transitive graph with an
+induced EPPA embedding \(e:C_5\hookrightarrow H\).
+Assume \emph{one} vertex outside \(e(C_5)\) has exactly
+one selected neighbour. No outside block partition,
+equivariant labels or uniform cross-degree are assumed.
+The source is frozen; these are proposed local
+proof replacements only.
+
+\section*{The matching is a conclusion of EPPA}
+The five nonempty singleton subsets of \(V(C_5)\)
+form one rotation orbit of size five. By EPPA all five
+occur as profiles of outside vertices. Since the
+complement contains exactly five vertices, they each
+occur once. Equivalently, there is a unique outside
+vertex \(b_x\) with selected-neighbourhood profile
+\(P_{b_x}=\{x\}\) for every \(x\in V(C_5)\).
+These vertices give a genuine outside equivalence
+\(f:\mathrm{Fin}\,5\simeq B\), and the entire cross graph
+is the perfect matching
+\[
+     H(e(x),f(y))\quad\Longleftrightarrow\quad x=y.
+\]
+Every rotation \(\rho\in\operatorname{Aut}(C_5)\) has
+an EPPA lift preserving the selected and outside halves.
+The lift necessarily maps \(b_x\) to \(b_{\rho(x)}\),
+because their selected-neighbourhood profiles are unique.
+Thus the outside graph in these coordinates is invariant
+under the cyclic rotations. The four possibilities are
+empty, \(C_5\), complementary \(C_5\) or complete.
+Vertex-transitivity and the equality of the internal
+edge counts of the two equal halves leave exactly the
+two five-cycle possibilities.
+
+\paragraph{Next structural distinction.}
+If the top graph is \(C_5\) under these labels,
+the host is the prism \(C_5\square K_2\).
+If the top graph is complementary \(C_5\),
+the host is the Petersen graph; this host is primitive
+and hence excluded from Lemma~3.18, which assumes
+imprimitivity. This last exclusion can be certified
+independently by checking the invariant blocks under
+the ten-vertex Petersen automorphism group, as in
+\texttt{checks/section3\_c5\_host\_patterns.py}.
+
+\section*{Lean status}
+The proposed module
+\texttt{EPPAIII/BlockSystems/CycleFiveSingletonOutside.lean}
+constructs the actual canonical outside equivalence
+and proves its induced graph is \(C_5\) or
+\(\overline{C_5}\), rather than assuming these labels.
+The final host-isomorphism and primitive exclusion are
+separate remaining formalisation obligations.
+All named theorem declarations must pass GitHub Lean
+CI and the permitted-axiom audit before being marked
+verified.
+
+\paragraph{Proposed local wording.}
+\begin{quote}
+If the cross-degree is one, EPPA carries any
+singleton neighbourhood to all five singleton
+profiles, each represented by a unique outside
+vertex. Indexing the outside by its singleton
+neighbour gives a perfect matching between the
+halves. This indexing is preserved by the lifts
+of base rotations. The induced outside graph
+has five edges and is rotation-invariant, hence
+is \(C_5\) or its complement. The corresponding
+hosts are the prism and Petersen graph; the
+latter is primitive and does not occur here.
+\end{quote}
+\end{document}

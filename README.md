@@ -20,6 +20,8 @@ The [proper-profile C5 outside graph note](validation/section3-c5-proper-outside
 
 The [empty/full C5 profile proof](validation/section3-c5-empty-full-profiles.tex) handles the last profile alternative in Claim 3.19 and tracks its Lean boundary.\n\nThe [C5 remaining host-case audit](validation/section3-c5-complete-case-analysis.tex) includes reproducible primitive/imprimitive finite certificates and a short list of remaining Lean identifications.
 
+The [canonical C5 matching case](validation/section3-c5-matching-profiles.tex) develops the cross-degree-one proof without assuming any outside labels, keeping the primitive Petersen obstruction separate.
+
 The fuller historical audit remains in
 [validation/issues.tex](validation/issues.tex), with a focused
 [Section 3 report](validation/section3-rest.tex) and supporting
