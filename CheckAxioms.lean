@@ -912,3 +912,6 @@ import EPPAIII
 -- Current Lemma 6.6: two actual-host cases, and exactly two base cliques
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_clique_actual_host_dichotomy
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_base_components
+
+-- General canonical-pair construction from invariant perfect matching
+#print axioms EPPAIII.BlockSystems.invariant_perfect_matching_yields_pairs
