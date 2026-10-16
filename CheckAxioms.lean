@@ -873,3 +873,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Explicit point-stabilizer certificate for current Claim 6.15
+#print axioms EPPAIII.BlockSystems.rook_root_invariant_subset_not_three
