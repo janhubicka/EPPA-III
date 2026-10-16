@@ -841,3 +841,17 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFiveMatchingGraph_eq_of_layers
 #print axioms EPPAIII.BlockSystems.cycleFive_actual_singleton_host_eq_matching_graph
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_host_two_matching_graphs
+
+-- C5 matching Petersen primitivity via a single root stabilizer
+#print axioms EPPAIII.BlockSystems.petersenVertexIndex
+#print axioms EPPAIII.BlockSystems.petersenVertexFromIndex
+#print axioms EPPAIII.BlockSystems.petersenVertexEquiv
+#print axioms EPPAIII.BlockSystems.petersenIndexMove
+#print axioms EPPAIII.BlockSystems.petersenIndexUnmove
+#print axioms EPPAIII.BlockSystems.petersenIndexAut
+#print axioms EPPAIII.BlockSystems.petersenRootAut
+#print axioms EPPAIII.BlockSystems.petersenRootAut_fixes_root
+#print axioms EPPAIII.BlockSystems.petersenRootAut_graph_automorphism
+#print axioms EPPAIII.BlockSystems.petersenRootAut_no_two_or_five_invariant_set
+#print axioms EPPAIII.BlockSystems.petersen_root_block_not_two_or_five
+#print axioms EPPAIII.BlockSystems.petersen_no_nontrivial_invariant_partition
