@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\section*{Section 3, Lemma 3.20: deriving the rook matching coordinates}
+\textbf{Manuscript frozen.} This separate note proposes only
+a local correction to the \(R_3\) cross-degree-one case.
+
+Let \(G=R_3\) be the nine-vertex rook graph. Suppose an
+eighteen-vertex EPPA host \(H\) contains the designated
+induced copy of \(G\), and a vertex \(w\) outside it
+has exactly one neighbour in \(G\).
+The nine translations of the \(3\times3\) grid are
+genuine automorphisms of \(R_3\). Their orbit on
+a singleton neighbourhood has precisely nine elements.
+By EPPA all these profiles occur outside the selected
+copy. Since there are only nine outside vertices,
+each singleton occurs exactly once and no other profile
+occurs. The cross graph is therefore a \emph{matching},
+not merely a bipartite relation on two halves
+which were previously labelled by hand.
+
+Under the resulting canonical equivalence
+\(f:V(R_3)\simeq V(H)\setminus V(G)\), every
+automorphism of the rook graph has an EPPA lift
+which sends \(f(x)\) to \(f(p(x))\).
+This needs no coherent family of lifts:
+profile uniqueness forces the action.
+Since the full rook automorphism group has exactly
+two orbits on unordered distinct vertex pairs,
+the induced graph on the outside is
+\(\varnothing,R_3,\overline{R_3}\), or \(K_9\).
+Vertex-transitivity of \(H\) forces the two halves
+to have equal numbers of edges (18), leaving only
+\(R_3\) and \(\overline{R_3}\).
+
+\paragraph{Lean target.}
+\texttt{RookThreeSingletonOutside.lean} uses the
+reusable generic EPPA outside-orbit saturation lemma
+and explicit \(72\) rook-automorphism action to derive
+the actual outside equivalence and two graph forms.
+The principal statement is
+\texttt{rook\_eppa\_singleton\_outside\_graph\_two\_forms}.
+The theorem assumes only one singleton outside profile,
+not uniform cross-degree, an outside partition or a
+coherent lift action.
+
+The remaining graph-identification step is to construct
+the matching-layer equivalence of the whole actual host
+and connect its two canonical variants to the named
+alternatives in Lemma~3.20.
+The original source is unchanged until author review.
+\end{document}

@@ -841,3 +841,11 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFiveMatchingGraph_eq_of_layers
 #print axioms EPPAIII.BlockSystems.cycleFive_actual_singleton_host_eq_matching_graph
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_host_two_matching_graphs
+
+-- R3 singleton profile orbit and actual outside matching coordinates
+#print axioms EPPAIII.BlockSystems.rook_singleton_translation_orbit_eq_labels
+#print axioms EPPAIII.BlockSystems.rook_singleton_translation_orbit_card
+#print axioms EPPAIII.BlockSystems.rook_eppa_one_singleton_profile_saturates
+#print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
+#print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
+#print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms

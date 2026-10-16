@@ -32,3 +32,4 @@ First target: generalised clique covers (Definitions 1.5--1.6, Lemma 3.7 and Cla
 Build with `lake update && lake exe cache get && lake build`, and audit with `lake env lean CheckAxioms.lean` followed by `python3 scripts/check_axioms.py axioms.log CheckAxioms.lean`.
 
 A green build validates only the declarations listed in `CheckAxioms.lean`; the manuscript's classification claims remain open until their exact mathematical statements have Lean proofs.
+The [R3 singleton outside matching note](validation/section3-r3-singleton-matching.tex) derives canonical matching coordinates without a preselected action on the outside half.
