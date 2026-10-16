@@ -84,14 +84,13 @@ theorem cycleFive_empty_profile_degree_le_four
           simpa only [finiteNeighbourhoodProfile, Finset.mem_filter,
             Finset.mem_univ, true_and] using hAdj
         rw [hEmpty] at hx
-        exact Finset.not_mem_empty x hx
+        simpa using hx
       simpa only [finiteOutside, Finset.mem_filter,
         Finset.mem_univ, true_and] using hNotRange
     exact Finset.mem_erase.mpr
       ⟨(H.ne_of_adj hAdj).symm,hOutside⟩
   have hEraseCard : ((finiteOutside e).erase w).card = 4 := by
     rw [Finset.card_erase_of_mem hw, hOutsideCard]
-    decide
   have hLE := Finset.card_le_card hSubset
   simpa only [SimpleGraph.degree, hEraseCard] using hLE
 
@@ -134,7 +133,7 @@ theorem cycleFive_transitive_empty_full_profiles_uniform
       finiteNeighbourhoodProfile H e w =
         (Finset.univ : Finset (Fin 5))) := by
   classical
-  letI : Nonempty W := ⟨e (0 : Fin 5)⟩
+  haveI : Nonempty W := ⟨e (0 : Fin 5)⟩
   obtain ⟨d,hReg⟩ := CliqueCovers.regular_of_transitive_graph H hTrans
   by_cases hExistsFull : ∃ w : W, w ∈ finiteOutside e ∧
       finiteNeighbourhoodProfile H e w =
