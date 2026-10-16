@@ -59,6 +59,7 @@ C24 & Lemma 3.18, remaining alternatives & Paper + finite & Matchings and cyclic
 C25 & Lemma 3.18, cross-degree one & Lean-verified & Canonical matching from profiles\\
 C26 & Lemma 3.18, matching host models & Lean-verified & Full adjacency identification\\
 C27 & Lemma 3.18, Petersen exclusion & Proposed Lean & One-automorphism certificate\\
+C28 & Lemma 3.18, actual host matching case & Proposed Lean & Pullback invariant partition\\
 \bottomrule
 \end{longtable}
 
@@ -1241,6 +1242,37 @@ to arbitrary actual EPPA hosts via the previously
 constructed matching-host equivalence.
 See \texttt{validation/section3-c5-petersen-primitivity.tex}.
 The manuscript is unchanged.
+
+\subsection*{C28. Transporting Petersen primitivity to the actual host}
+\textbf{Location:} the degree-one case of Lemma~3.18.
+
+The concrete matching graph has already been identified from
+actual outside singleton neighbourhood profiles.
+To apply the fixed-model primitivity certificate to an
+arbitrary host, conjugate each graph automorphism along
+the genuine host equivalence
+\(\varphi:\{0,1\}\times V(C_5)\simeq V(H)\).
+An invariant surjective block map \(b:V(H)\to B\)
+pulls back to \(b\circ\varphi\). Its invariant-fibre
+relation and host transitivity are preserved.
+Two distinct vertices sharing an original block yield
+two distinct canonical vertices sharing a pulled-back
+block. The one-automorphism Petersen certificate then
+contradicts the existence of a nontrivial partition,
+leaving the prism matching model.
+
+\textbf{Lean target:}
+\texttt{CycleFiveMatchingImprimitive.lean}, with reusable
+\texttt{invariantBlockMap\_comap\_equiv} and final
+\texttt{cycleFive\_eppa\_singleton\_imprimitive\_host\_is\_prism}.
+The latter takes an actual nontrivial invariant partition
+and one outside singleton profile, and constructs an
+equivalence fixing the selected \(C_5\), identifying the
+host with the prism. The finite primitive obstruction is
+in the independent preceding module.
+See \texttt{validation/section3-c5-actual-host-primitive-exclusion.tex}.
+This remains proposed until green combined Lean CI and
+axiom audit. Do not edit the original manuscript.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,

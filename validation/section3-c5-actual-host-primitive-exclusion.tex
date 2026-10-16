@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\section*{Section 3, \(C_5\): excluding Petersen in the actual imprimitive host}
+\textbf{Manuscript policy:} this note is stored only in the
+Lean verification repository.
+
+The matching branch of Lemma~3.18 starts with an actual
+order-ten transitive EPPA host \(H\) of the designated
+\(C_5\), with at least one singleton outside profile.
+The established graph-level theorem gives an actual
+equivalence \(\varphi:\{0,1\}\times\mathrm{Fin}\,5
+\longrightarrow V(H)\), fixing the selected copy, under
+which \(H\) is one of the two canonical matching models.
+The prism is admissible; the other model is Petersen.
+
+Suppose \(H\) has a nontrivial invariant partition
+\(\pi:V(H)\twoheadrightarrow B\). Define
+\(\pi'(x)=\pi(\varphi(x))\) on the canonical vertex type.
+Every automorphism of the transported graph is conjugate
+under \(\varphi\) to an automorphism of \(H\), hence
+\(\pi'\) is invariant. Vertex transitivity and surjectivity
+also transport. The numbers of blocks and their fibre
+sizes are preserved exactly.
+
+For the Petersen alternative, the previously certified
+root-fixing automorphism has vertex orbits of orders
+\(1,3,6\). Consequently every block containing the root
+has size \(1,4,7\), or \(10\). A nontrivial invariant
+partition of a transitive ten-vertex graph has all
+blocks of size \(2\) or \(5\); contradiction.
+Thus the actual host must be the prism.
+
+The proposed reusable Lean lemma
+\texttt{invariantBlockMap\_comap\_equiv} transports
+arbitrary invariant block maps along graph equivalences.
+The main application
+\texttt{cycleFive\_eppa\_singleton\_imprimitive\_host\_is\_prism}
+proves the prism conclusion under the exact formal
+partition hypotheses (surjective invariant block map,
+at least two blocks and a block containing distinct
+vertices). It assumes no predetermined outside indexing
+and no coherent EPPA extensions.
+
+\paragraph{Minimal author-facing replacement.}
+In the degree-one case, deduce the matching from the
+singleton outside profiles. The two resulting hosts
+are prism and Petersen. The latter is primitive by the
+one-automorphism orbit argument, so the imprimitive
+hypothesis leaves only the prism.
+
+No complete Lean verification is claimed until the
+compiled theorem and its permitted-axiom audit pass.
+\end{document}

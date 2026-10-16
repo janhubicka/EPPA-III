@@ -24,6 +24,8 @@ The [canonical C5 matching case](validation/section3-c5-matching-profiles.tex) d
 
 The [canonical matching host graph identification](validation/section3-c5-matching-models.tex) records the two explicit ten-vertex models and the remaining primitive Petersen exclusion.\n\nThe [Petersen primitivity note](validation/section3-c5-petersen-primitivity.tex) gives a one-automorphism proof of the primitive exception in Lemma 3.18, with corresponding Lean certificate.
 
+The [actual-host primitive obstruction note](validation/section3-c5-actual-host-primitive-exclusion.tex) transports the Petersen certificate through the verified matching-host equivalence.
+
 The fuller historical audit remains in
 [validation/issues.tex](validation/issues.tex), with a focused
 [Section 3 report](validation/section3-rest.tex) and supporting

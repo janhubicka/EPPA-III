@@ -232,3 +232,5 @@ import EPPAIII.BlockSystems.CycleFiveSingletonOutside
 import EPPAIII.BlockSystems.CycleFiveMatchingModels
 
 import EPPAIII.BlockSystems.CycleFivePetersenPrimitivity
+
+import EPPAIII.BlockSystems.CycleFiveMatchingImprimitive
