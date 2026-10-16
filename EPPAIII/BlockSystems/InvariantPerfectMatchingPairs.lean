@@ -54,8 +54,7 @@ theorem invariant_perfect_matching_yields_pairs
     have hNot : mate (e x) ∉ Set.range e := by
       rintro ⟨y,hy⟩
       exact hSelected x y (by
-        rw [←hy]
-        exact hMate (e x))
+        simpa [hy] using hMate (e x))
     simpa [finiteOutside] using hNot
   let outsideMap : V → {w : W // w ∈ finiteOutside e} :=
     fun x => ⟨mate (e x),hOut x⟩
