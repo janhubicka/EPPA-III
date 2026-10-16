@@ -33,7 +33,7 @@ private theorem right_ne_left {s t : ℕ}
     (i j : Fin s) (a b : Fin t) :
     right i a ≠ left j b := by
   intro h
-  exact Bool.true_ne_false (congrArg Prod.fst h)
+  exact Bool.false_ne_true (congrArg Prod.fst h).symm
 
 /-- Cluster transitivity propagates any one edge between two clique
 fibres to all pairs of their vertices. -/
@@ -73,12 +73,12 @@ theorem cluster_cross_block_row_unique {s t : ℕ}
     (hIJ : HasCrossBlockEdge H i j)
     (hIK : HasCrossBlockEdge H i k) : j = k := by
   by_contra hjk
-  obtain ⟨a,b,_⟩ := hIJ
-  obtain ⟨_,c,_⟩ := hIK
+  obtain ⟨a,b,hAB⟩ := hIJ
+  obtain ⟨a',c,hAC⟩ := hIK
   have hab := cluster_cross_block_complete H hCluster hLeft hRight
-    i j hIJ a b
+    i j ⟨a,b,hAB⟩ a b
   have hac := cluster_cross_block_complete H hCluster hLeft hRight
-    i k hIK a c
+    i k ⟨a',c,hAC⟩ a c
   have hDifferent : right j b ≠ right k c := by
     intro hEq
     apply hjk
@@ -102,12 +102,12 @@ theorem cluster_cross_block_col_unique {s t : ℕ}
     (hIJ : HasCrossBlockEdge H i j)
     (hKJ : HasCrossBlockEdge H k j) : i = k := by
   by_contra hik
-  obtain ⟨a,b,_⟩ := hIJ
-  obtain ⟨c,_,_⟩ := hKJ
+  obtain ⟨a,b,hAB⟩ := hIJ
+  obtain ⟨c,b',hCB⟩ := hKJ
   have hab := cluster_cross_block_complete H hCluster hLeft hRight
-    i j hIJ a b
+    i j ⟨a,b,hAB⟩ a b
   have hcb := cluster_cross_block_complete H hCluster hLeft hRight
-    k j hKJ c b
+    k j ⟨c,b',hCB⟩ c b
   have hDifferent : left i a ≠ left k c := by
     intro hEq
     apply hik
