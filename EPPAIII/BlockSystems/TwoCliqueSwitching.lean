@@ -35,9 +35,13 @@ def seidelSwitchGraph {V : Type*}
     refine ⟨h.1.symm, ?_⟩
     by_cases hm : mask u = mask v
     · have hm' : mask v = mask u := hm.symm
-      simpa [hm, hm', H.adj_comm u v] using h.2
+      have hu : H.Adj u v := by simpa only [if_pos hm] using h.2
+      have hv : H.Adj v u := hu.symm
+      simpa only [if_pos hm'] using hv
     · have hm' : mask v ≠ mask u := fun h' => hm h'.symm
-      simpa [hm, hm', H.adj_comm u v] using h.2
+      have hu : ¬ H.Adj u v := by simpa only [if_neg hm] using h.2
+      have hv : ¬ H.Adj v u := fun h' => hu h'.symm
+      simpa only [if_neg hm'] using hv
   loopless := by
     constructor
     intro u h
