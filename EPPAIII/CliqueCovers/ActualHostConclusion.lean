@@ -93,7 +93,6 @@ theorem eppa_equal_clique_double_classification {s t : ℕ}
       H.comap phi = coverGraph s t X Y) ∨
     (s = 2 ∧ t = 2 ∧
       ∃ phi : CoverVertex 2 2 ≃ W,
-        (∀ x : Fin 2 × Fin 2, phi (false,x) = e x) ∧
         H.comap phi = wagnerCanonicalGraph) := by
   by_cases hCluster : EPPAIII.BlockSystems.IsClusterGraph H
   · left
