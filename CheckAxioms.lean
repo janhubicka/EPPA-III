@@ -922,3 +922,7 @@ import EPPAIII
 -- Complete unequal-clique Taylor adjacency and two-component result
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_clique_actual_host_is_taylor
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_and_taylor
+
+-- Switching-class assertion in current Lemma 6.6
+#print axioms EPPAIII.BlockSystems.twoCliqueGraph_switch_to_any_twoClique
+#print axioms EPPAIII.BlockSystems.twoCliqueGraph_switch_to_complete
