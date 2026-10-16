@@ -56,7 +56,8 @@ C21 & Claim 3.19 in Lemma 3.18 & Lean-verified & Outside cycle from proper profi
 C22 & Claim 3.19, empty/full profiles & Proposed Lean & Complement/component argument\\
 C23 & Claim 3.19, final assembly & Proposed Lean & Exact outside cycle equivalence\\
 C24 & Lemma 3.18, remaining alternatives & Paper + finite & Matchings and cyclic doubles\\
-C25 & Lemma 3.18, cross-degree one & Proposed Lean & Canonical matching from profiles\\
+C25 & Lemma 3.18, cross-degree one & Lean-verified & Canonical matching from profiles\\
+C26 & Lemma 3.18, matching host models & Proposed Lean & Full adjacency identification\\
 \bottomrule
 \end{longtable}
 
@@ -1182,6 +1183,31 @@ identification and the primitive Petersen obstruction
 are additional obligations. See
 \texttt{validation/section3-c5-matching-profiles.tex}.
 No changes have been applied to the manuscript.
+
+\subsection*{C26. Explicit host identification in the singleton \(C_5\) case}
+\textbf{Location:} \texttt{lem:C5\_10vertex},
+cross-degree-one/matching case.
+The canonical outside indexing by singleton neighbourhoods
+is Lean-verified and merged in PR~\#269.
+The next proposed module
+\texttt{CycleFiveMatchingModels.lean} identifies the entire actual
+host via an equivalence fixing the original selected cycle,
+with one of the two concrete two-layer matching graphs.
+Its top graph is respectively \(C_5\) (prism)
+or \(\overline{C_5}\) (Petersen).
+No predetermined matching or outside coordinate system
+is a hypothesis. Its proof only uses the earlier
+certified outside profile classification.
+
+\textbf{Important boundary:} the Petersen possibility
+cannot be ruled out by EPPA and vertex transitivity alone.
+Its elimination in Lemma~3.18 requires the stated
+imprimitivity assumption. The separate explicit
+primitive-action certificate remains to be formalised.
+
+\textbf{Proof and local wording:}
+\texttt{validation/section3-c5-matching-models.tex}.
+The original author manuscript has not been changed.
 
 \section*{How to maintain this register}
 For each new correction, record a source label,

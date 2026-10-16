@@ -833,3 +833,11 @@ import EPPAIII
 -- C5 genuine singleton profile canonical matching labels
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_outside_graph_two_forms
+
+-- C5 full actual matching host models, 16 October 2026
+#print axioms EPPAIII.BlockSystems.cycleFiveMatchingRelation
+#print axioms EPPAIII.BlockSystems.cycleFiveMatchingGraph
+#print axioms EPPAIII.BlockSystems.cycleFiveMatchingGraph_adj_iff
+#print axioms EPPAIII.BlockSystems.cycleFiveMatchingGraph_eq_of_layers
+#print axioms EPPAIII.BlockSystems.cycleFive_actual_singleton_host_eq_matching_graph
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_singleton_host_two_matching_graphs

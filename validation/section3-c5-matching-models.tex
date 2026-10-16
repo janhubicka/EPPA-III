@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\section*{EPPA--III Section 3: explicit matching host models}
+\textbf{Policy.} The author manuscript remains frozen.
+This note refines the correction register C25.
+
+Suppose an order-ten transitive EPPA host \(H\) of \(C_5\)
+has one outside vertex with exactly one selected neighbour.
+The verified cyclic saturation theorem gives a unique outside
+vertex \(b_x\) with selected-neighbourhood profile \(\{x\}\).
+No identification of the two halves is assumed.
+
+In these coordinates the outside graph is \(C_5\) or
+\(\overline{C_5}\) by the genuine action of EPPA rotation lifts
+and equality of the two internal edge counts. Hence the whole
+host has one of the following two explicit adjacency patterns:
+\[
+\begin{split}
+ (0,i)\sim(0,j)&\iff j-i\equiv\pm1\pmod5,\\
+ (1,i)\sim(1,j)&\iff
+ \begin{cases}j-i\equiv\pm1\pmod5&\text{prism},\\
+ j-i\equiv\pm2\pmod5&\text{Petersen},\end{cases}\\
+ (0,i)\sim(1,j)&\iff i=j .
+\end{split}
+\]
+
+The module \texttt{CycleFiveMatchingModels.lean} constructs the
+actual equivalence identifying the host with a canonical model.
+Its main declaration is
+\texttt{cycleFive\_eppa\_singleton\_host\_two\_matching\_graphs}.
+The new declaration counts as certified only upon successful
+GitHub Lean CI and permitted-axiom audit.
+
+\paragraph{Still open.}
+The top-complement case is the Petersen graph. It is a
+transitive EPPA witness for the selected \(C_5\), so its
+exclusion really requires the manuscript's imprimitivity
+hypothesis. Formalise a direct finite certificate for its
+primitivity in the ten-vertex canonical model.
+
+\paragraph{Minimal source-facing insertion.}
+The singleton profiles give an equivariant canonical bijection
+between the outside and selected vertices, and the cross
+graph is a perfect matching. Thus the two possible matching
+hosts have outside graph \(C_5\) or \(\overline{C_5}\).
+The latter is excluded only under imprimitivity.
+\end{document}
