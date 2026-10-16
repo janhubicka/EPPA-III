@@ -39,3 +39,5 @@ A green build validates only the declarations listed in `CheckAxioms.lean`; the 
 The exact complement-transport theorem is in `EPPAIII/EPPA/ComplementTransport.lean`; it complements both selected graph and host.
 
 The [R3 singleton matching proof](validation/section3-r3-singleton-matching.tex) constructs the actual outside labels and induced graph forms without an assumed block action.
+
+The [R3 matching models note](validation/section3-r3-matching-hosts.tex) identifies the two complete matching hosts in canonical outside coordinates.

@@ -1331,6 +1331,28 @@ graph identification. See the separate note
 \texttt{validation/section3-r3-singleton-matching.tex}.
 No original manuscript source is modified.
 
+\subsection*{C31. Actual matching rook-host models}
+\textbf{Location:} Lemma~3.20, cross-degree-one case.
+
+Once singleton outside profiles label the complementary
+rook vertices uniquely, the cross edges are an actual
+perfect matching. The induced outside graph is the
+rook graph or its complement by EPPA and transitivity.
+These determine the \emph{entire} host graph up to an
+equivalence fixing the selected nine-vertex copy.
+The proposed \texttt{RookThreeMatchingModels.lean}
+defines the two Boolean-layer matching graphs and
+proves the complete host identification directly.
+The theorem is
+\texttt{rook\_eppa\_singleton\_host\_two\_matching\_graphs}.
+This neither assumes compatible automorphism actions
+on separately indexed halves nor needs coherent lifts.
+Precise correspondences to the named alternatives in
+the manuscript and the other cross-degree cases
+are further obligations.
+See \texttt{validation/section3-r3-matching-hosts.tex}.
+The author manuscript remains unchanged.
+
 \section*{How to maintain this register}
 For each new correction, record a source label,
 a minimal proposed modification, whether the
