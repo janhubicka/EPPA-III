@@ -232,3 +232,5 @@ import EPPAIII.BlockSystems.CycleFiveSingletonOutside
 import EPPAIII.BlockSystems.CycleFiveMatchingModels
 
 import EPPAIII.BlockSystems.RookThreeSingletonOutside
+
+import EPPAIII.BlockSystems.RookThreeMatchingModels
