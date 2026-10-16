@@ -29,7 +29,7 @@ namespace EPPAIII.CliqueCovers
 /-- Full noncluster zero-partial statement of Lemma 3.7:
 the entire host is a generalised clique cover in the canonical
 selected/outside labelling, up to permuting outside classes. -/
-theorem eppa_zero_partial_noncluster_host_is_uniform_cover {s t : ℕ}
+theorem eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base {s t : ℕ}
     {W : Type*} [Fintype W]
     (H : SimpleGraph W) [DecidableRel H.Adj]
     (e : (Fin s × Fin t) ↪ W)
@@ -43,6 +43,7 @@ theorem eppa_zero_partial_noncluster_host_is_uniform_cover {s t : ℕ}
     (hTransitive : HasTransitiveGraphAutomorphisms H)
     (hNonCluster : ¬ EPPAIII.BlockSystems.IsClusterGraph H) :
     ∃ (phi : CoverVertex s t ≃ W) (X : CrossType) (Y : Bool),
+      (∀ x : Fin s × Fin t, phi (false,x) = e x) ∧
       H.comap phi = coverGraph s t X Y := by
   classical
   obtain ⟨label,hFibre,hOutside⟩ :=
@@ -78,10 +79,35 @@ theorem eppa_zero_partial_noncluster_host_is_uniform_cover {s t : ℕ}
     maskCoverGraph_four_forms_up_to_right_reindex mask hForms
   let phi : CoverVertex s t ≃ W :=
     (rightCliqueReindex p).trans (balancedHostEquiv e label)
-  refine ⟨phi,X,Y,?_⟩
-  change (H.comap (balancedHostEquiv e label)).comap
-    (rightCliqueReindex p) = coverGraph s t X Y
-  rw [hGraph]
-  exact hReindex
+  refine ⟨phi,X,Y,?_,?_⟩
+  · intro x
+    change balancedHostEquiv e label (rightCliqueReindex p (false,x)) = e x
+    simp [rightCliqueReindex]
+  · change (H.comap (balancedHostEquiv e label)).comap
+      (rightCliqueReindex p) = coverGraph s t X Y
+    rw [hGraph]
+    exact hReindex
+
+/-- Original theorem, preserving the older API. The fixed-base form is
+preferred for manuscript applications. -/
+theorem eppa_zero_partial_noncluster_host_is_uniform_cover {s t : ℕ}
+    {W : Type*} [Fintype W]
+    (H : SimpleGraph W) [DecidableRel H.Adj]
+    (e : (Fin s × Fin t) ↪ W)
+    (heppa : IsEPPAEmbedding (cliqueUnion s t) H e)
+    (hNoPartial : ∀ w : W, w ∉ Set.range e →
+      ∀ j : Fin s,
+        (profileSlice (finiteNeighbourhoodProfile H e w) j).card = 0 ∨
+        (profileSlice (finiteNeighbourhoodProfile H e w) j).card = t)
+    (hs : 0 < s) (ht : 0 < t)
+    (hOrder : Fintype.card W = 2 * s * t)
+    (hTransitive : HasTransitiveGraphAutomorphisms H)
+    (hNonCluster : ¬ EPPAIII.BlockSystems.IsClusterGraph H) :
+    ∃ (phi : CoverVertex s t ≃ W) (X : CrossType) (Y : Bool),
+      H.comap phi = coverGraph s t X Y := by
+  obtain ⟨phi,X,Y,_,hEq⟩ :=
+    eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base
+      H e heppa hNoPartial hs ht hOrder hTransitive hNonCluster
+  exact ⟨phi,X,Y,hEq⟩
 
 end EPPAIII.CliqueCovers

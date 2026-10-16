@@ -873,3 +873,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Connection matrices in the selected embedding (current Lemma 6.1)
+#print axioms EPPAIII.CliqueCovers.eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base
+#print axioms EPPAIII.CliqueCovers.eppa_two_partial_host_is_wagner_fixed_base
+#print axioms EPPAIII.CliqueCovers.eppa_noncluster_equal_clique_full_classification_fixed_base
