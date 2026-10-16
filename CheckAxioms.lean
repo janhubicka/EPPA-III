@@ -809,3 +809,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFive_proper_outside_graph_rotations
 #print axioms EPPAIII.BlockSystems.cycleFive_invariant_five_edges_two_forms
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_proper_outside_two_forms
+
+-- Section 3 C5 complementary half, empty/full cross profiles
+#print axioms EPPAIII.BlockSystems.cycleFive_outside_card_five
+#print axioms EPPAIII.BlockSystems.cycleFive_full_profile_degree_ge_five
+#print axioms EPPAIII.BlockSystems.cycleFive_empty_profile_degree_le_four
+#print axioms EPPAIII.BlockSystems.cycleFive_no_mixed_empty_full_profiles
+#print axioms EPPAIII.BlockSystems.cycleFive_transitive_empty_full_profiles_uniform
