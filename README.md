@@ -39,3 +39,7 @@ A green build validates only the declarations listed in `CheckAxioms.lean`; the 
 The exact complement-transport theorem is in `EPPAIII/EPPA/ComplementTransport.lean`; it complements both selected graph and host.
 
 The [R3 singleton matching proof](validation/section3-r3-singleton-matching.tex) constructs the actual outside labels and induced graph forms without an assumed block action.
+
+## Reorganised manuscript (16 October 2026)
+
+The double-cover reduction is now Lemma 5.12 in §5.3 and the remaining imprimitive classification is in §6 (Proposition 6.17). See [source map](validation/section5-6-source-map.tex) and [validation changelog](validation/CHANGELOG.md). The original manuscript remains frozen. New Lean assembled theorem: `EPPAIII.BlockSystems.transitive_eppa_double_cover_classification`.

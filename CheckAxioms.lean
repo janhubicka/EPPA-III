@@ -873,3 +873,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Current Lemma 5.12, assembled double-cover classification
+#print axioms EPPAIII.BlockSystems.transitive_eppa_double_cover_classification
