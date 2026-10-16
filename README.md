@@ -37,3 +37,5 @@ Build with `lake update && lake exe cache get && lake build`, and audit with `la
 
 A green build validates only the declarations listed in `CheckAxioms.lean`; the manuscript's classification claims remain open until their exact mathematical statements have Lean proofs.
 The exact complement-transport theorem is in `EPPAIII/EPPA/ComplementTransport.lean`; it complements both selected graph and host.
+
+The [R3 singleton matching proof](validation/section3-r3-singleton-matching.tex) constructs the actual outside labels and induced graph forms without an assumed block action.
