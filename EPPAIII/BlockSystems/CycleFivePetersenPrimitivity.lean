@@ -88,6 +88,10 @@ really is an automorphism of the Petersen matching model. -/
 theorem petersenRootAut_graph_automorphism :
     IsGraphAutomorphism (cycleFiveMatchingGraph true)
       petersenRootAut := by
+  change ∀ u v : Bool × Fin 5,
+    (cycleFiveMatchingGraph true).Adj u v ↔
+    (cycleFiveMatchingGraph true).Adj
+      (petersenRootAut u) (petersenRootAut v)
   decide
 
 /-- Exhaustive finite certificate on just the 1024 vertex subsets:
