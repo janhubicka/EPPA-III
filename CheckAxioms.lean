@@ -873,3 +873,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Named-model identifications for C5 and R3 exceptions
+#print axioms EPPAIII.BlockSystems.rook_double_nonneighbour_is_taylor
+#print axioms EPPAIII.BlockSystems.rook_double_neighbour_is_matefree_blowup
+#print axioms EPPAIII.BlockSystems.cycleFiveUpperShift_bijective
+#print axioms EPPAIII.BlockSystems.cycleFive_adjacent_pair_double_is_taylor
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_pair_double_is_matefree_blowup
