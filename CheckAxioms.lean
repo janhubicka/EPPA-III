@@ -883,3 +883,8 @@ import EPPAIII
 -- C5 complement and actual selected EPPA relabel (current Lemma 6.12)
 #print axioms EPPAIII.BlockSystems.cycleFiveComplementIndex_comap_back
 #print axioms EPPAIII.BlockSystems.cycleFive_complement_reindexed_eppa
+
+-- C5 actual profile complementation and k+(5-k)=5
+#print axioms EPPAIII.BlockSystems.cycleFive_complement_reindexed_profile_eq
+#print axioms EPPAIII.BlockSystems.cycleFive_complement_reindexed_profile_card_sum_five
+#print axioms EPPAIII.BlockSystems.cycleFive_relabel_outside_eq
