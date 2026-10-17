@@ -240,3 +240,5 @@ import EPPAIII.EPPA.ComplementTransport
 import EPPAIII.BlockSystems.RookThreeSingletonOutside
 
 import EPPAIII.BlockSystems.CycleFiveUniformCrossDegree
+
+import EPPAIII.BlockSystems.CycleFiveActualCrossDegree
