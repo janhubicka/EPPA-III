@@ -242,3 +242,5 @@ import EPPAIII.BlockSystems.RookThreeSingletonOutside
 import EPPAIII.BlockSystems.CycleFiveUniformCrossDegree
 
 import EPPAIII.BlockSystems.CycleFiveActualCrossDegree
+
+import EPPAIII.BlockSystems.CycleFiveSmallCrossConclusion
