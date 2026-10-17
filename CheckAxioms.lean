@@ -879,3 +879,7 @@ import EPPAIII
 
 -- Actual C5 EPPA host: uniform outside cross-degree without imprimitivity
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_actual_uniform_cross_degree
+
+-- C5 complement and actual selected EPPA relabel (current Lemma 6.12)
+#print axioms EPPAIII.BlockSystems.cycleFiveComplementIndex_comap_back
+#print axioms EPPAIII.BlockSystems.cycleFive_complement_reindexed_eppa
