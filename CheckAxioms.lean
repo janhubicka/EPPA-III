@@ -882,3 +882,6 @@ import EPPAIII
 
 -- C5 imprimitive low cross-degree cases k = 0,1,2
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_imprimitive_small_cross_classification
+
+-- Full C5 imprimitive ten-vertex EPPA classification, current Lemma 6.12
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_imprimitive_models_up_to_complement

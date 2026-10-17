@@ -244,3 +244,7 @@ import EPPAIII.BlockSystems.CycleFiveUniformCrossDegree
 import EPPAIII.BlockSystems.CycleFiveActualCrossDegree
 
 import EPPAIII.BlockSystems.CycleFiveSmallCrossConclusion
+
+import EPPAIII.BlockSystems.CycleFiveComplementEppa
+import EPPAIII.BlockSystems.CycleFiveComplementProfile
+import EPPAIII.BlockSystems.CycleFiveFinalImprimitiveClassification
