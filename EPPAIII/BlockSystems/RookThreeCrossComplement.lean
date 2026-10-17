@@ -28,7 +28,8 @@ theorem rook_cross_degree_complement_sum_nine
       (1 : ℕ) := by
     have hNe : (true,x) ≠ (false,y) := by
       intro hh
-      exact Bool.true_ne_false (congrArg Prod.fst hh)
+      have hFalse : (true : Bool) = false := congrArg Prod.fst hh
+      cases hFalse
     by_cases h : H.Adj (true,x) (false,y)
     · simp [SimpleGraph.compl_adj,hNe,h]
     · simp [SimpleGraph.compl_adj,hNe,h]
