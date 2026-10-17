@@ -876,3 +876,7 @@ import EPPAIII
 
 -- Explicit point-stabilizer certificate for current Claim 6.15
 #print axioms EPPAIII.BlockSystems.rook_root_invariant_subset_not_three
+
+-- Full rook primitivity and selected-block transversal from genuine EPPA
+#print axioms EPPAIII.BlockSystems.rook_invariant_equivalence_trivial
+#print axioms EPPAIII.BlockSystems.rook_eppa_selected_block_transversal_or_single
