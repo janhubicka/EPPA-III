@@ -884,3 +884,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_nontrivial_imprimitive_block_sizes
 #print axioms EPPAIII.BlockSystems.rook_eppa_nine_block_outside_is_rook
 #print axioms EPPAIII.BlockSystems.rook_eppa_imprimitive_outside_is_rook
+
+-- Uniform outside cross degree from exact R3 imprimitive host hypotheses
+#print axioms EPPAIII.BlockSystems.rook_eppa_imprimitive_uniform_cross_degree

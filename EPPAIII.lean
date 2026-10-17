@@ -249,3 +249,5 @@ import EPPAIII.BlockSystems.FilledInvariantHalf
 import EPPAIII.BlockSystems.RookThreeNineBlockOutside
 import EPPAIII.BlockSystems.RookThreeComplementIso
 import EPPAIII.BlockSystems.RookThreeImprimitiveOutsideConclusion
+
+import EPPAIII.BlockSystems.RookThreeActualCrossDegree
