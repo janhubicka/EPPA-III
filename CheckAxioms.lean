@@ -879,3 +879,6 @@ import EPPAIII
 
 -- Uniform outside rook cross degree from transitivity and valency four
 #print axioms EPPAIII.BlockSystems.rook_paired_outside_uniform_cross_degree
+
+-- R3 cross-degree complementation: k + (9-k) = 9
+#print axioms EPPAIII.BlockSystems.rook_cross_degree_complement_sum_nine
