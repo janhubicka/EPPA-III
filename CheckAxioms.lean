@@ -877,3 +877,7 @@ import EPPAIII
 -- Explicit self-complementarity of R3 (Claim 6.16)
 #print axioms EPPAIII.BlockSystems.rookComplementIndex_adj
 #print axioms EPPAIII.BlockSystems.rookComplementIndex_comap
+
+-- Transport actual R3 EPPA embedding across complement and index relabelling
+#print axioms EPPAIII.BlockSystems.rook_complement_reindexed_eppa
+#print axioms EPPAIII.BlockSystems.finiteOutside_relabelEmbedding
