@@ -1,4 +1,5 @@
 import EPPAIII.BlockSystems.RookThreeComplementIso
+import EPPAIII.BlockSystems.RookThreeSmallSubsetOrbits
 import EPPAIII.EPPA.BaseRelabel
 import EPPAIII.EPPA.ComplementTransport
 
