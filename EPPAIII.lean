@@ -242,3 +242,10 @@ import EPPAIII.BlockSystems.RookThreeSingletonOutside
 import EPPAIII.BlockSystems.RookThreePairOutsideGraph
 
 import EPPAIII.BlockSystems.RookThreeTwoPointBlockOutside
+
+import EPPAIII.BlockSystems.RookThreePrimitivePartition
+import EPPAIII.BlockSystems.RookThreeActualBlocks
+import EPPAIII.BlockSystems.FilledInvariantHalf
+import EPPAIII.BlockSystems.RookThreeNineBlockOutside
+import EPPAIII.BlockSystems.RookThreeComplementIso
+import EPPAIII.BlockSystems.RookThreeImprimitiveOutsideConclusion

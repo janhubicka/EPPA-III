@@ -879,3 +879,8 @@ import EPPAIII
 
 -- Actual pair-block branch of Claim 6.16 with no outside labels
 #print axioms EPPAIII.BlockSystems.rook_eppa_two_point_blocks_outside_graph_two_forms
+
+-- Full actual-host claims 6.15 and 6.16
+#print axioms EPPAIII.BlockSystems.rook_eppa_nontrivial_imprimitive_block_sizes
+#print axioms EPPAIII.BlockSystems.rook_eppa_nine_block_outside_is_rook
+#print axioms EPPAIII.BlockSystems.rook_eppa_imprimitive_outside_is_rook
