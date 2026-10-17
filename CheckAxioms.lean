@@ -886,3 +886,6 @@ import EPPAIII
 
 -- Filled invariant half transported by genuine vertex transitivity
 #print axioms EPPAIII.BlockSystems.transitive_outside_equiv_of_filled_invariant_half
+
+-- R3 9+9 imprimitivity branch, actual complementary induced R3
+#print axioms EPPAIII.BlockSystems.rook_eppa_nine_block_outside_is_rook

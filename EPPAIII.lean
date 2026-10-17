@@ -246,3 +246,5 @@ import EPPAIII.BlockSystems.RookThreePrimitivePartition
 import EPPAIII.BlockSystems.RookThreeActualBlocks
 
 import EPPAIII.BlockSystems.FilledInvariantHalf
+
+import EPPAIII.BlockSystems.RookThreeNineBlockOutside
