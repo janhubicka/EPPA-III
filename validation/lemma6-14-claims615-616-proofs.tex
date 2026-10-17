@@ -1,0 +1,42 @@
+% Author-facing replacement for the proofs of Claims 6.15 and 6.16.
+% Current labels: claim:R3_blocks and claim:R3_Vprime.
+% Do not apply until the full actual-host integration theorem is CI green.
+% No external Gardiner or rank-three classification is used.
+
+% Claim 6.15: replace only the proof body by:
+\begin{proof}
+Since every automorphism of $G$ extends to an automorphism of~$H$
+preserving $V(G)$, the intersections of the imprimitivity blocks
+with $V(G)$ form a block system for $\Aut(G)$. The rook action is
+primitive. Indeed, the stabiliser of a vertex has two orbits of
+size four on the remaining vertices. A nontrivial block containing
+that vertex would have size dividing~$9$, hence size~$3$, which
+cannot be a union of the stabiliser orbits.
+Thus the intersections are either singletons or all of $V(G)$.
+In the first case at least nine host blocks are needed, and since
+$|H|=18$ and every block has size at least two, all have size~$2$.
+In the second case one block contains all nine selected vertices;
+since the partition is nontrivial, all blocks have size~$9$.
+\end{proof}
+
+% Claim 6.16: replace only the proof body by:
+\begin{proof}
+If the blocks have size~$9$, the selected graph fills one block,
+and $V'$ is the other. Vertex-transitivity gives an automorphism
+taking a vertex of $G$ into $V'$. Invariance of the partition then
+maps the whole first block onto the second, yielding
+$H[V']\cong G$.
+
+If the blocks have size~$2$, each consists of a selected vertex
+and its unique outside mate. Every automorphism of $G$ extends to
+an automorphism of $H$ preserving these pairs, so it acts on the
+mates by the same permutation. Consequently, $H[V']$ is invariant
+under the natural $\Aut(\gridth)$-action. This action has two
+orbits on unordered pairs of distinct vertices: the edges and
+non-edges of $\gridth$. Therefore $H[V']$ is empty, complete,
+$\gridth$, or its complement. Since $H$ is regular and
+$|V'|=|V(G)|$, counting degrees over the two halves gives
+$|E(H[V'])|=|E(G)|=18$; the empty and complete cases are excluded.
+Finally, $\gridth$ is self-complementary, as witnessed by
+$(i,j)\mapsto(i+j,i-j)$ over $\mathbb F_3$.
+\end{proof}
