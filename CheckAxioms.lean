@@ -881,3 +881,7 @@ import EPPAIII
 -- Transport actual R3 EPPA embedding across complement and index relabelling
 #print axioms EPPAIII.BlockSystems.rook_complement_reindexed_eppa
 #print axioms EPPAIII.BlockSystems.finiteOutside_relabelEmbedding
+
+-- Complemented actual R3 profiles, cardinality k↦9-k
+#print axioms EPPAIII.BlockSystems.rook_complement_reindexed_profile_eq
+#print axioms EPPAIII.BlockSystems.rook_complement_reindexed_profile_card_sum_nine

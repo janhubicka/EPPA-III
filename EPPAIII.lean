@@ -242,3 +242,5 @@ import EPPAIII.BlockSystems.RookThreeSingletonOutside
 import EPPAIII.BlockSystems.RookThreeComplementIso
 
 import EPPAIII.BlockSystems.RookThreeComplementEppa
+
+import EPPAIII.BlockSystems.RookThreeComplementProfile
