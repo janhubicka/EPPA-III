@@ -16,10 +16,11 @@ namespace EPPAIII.BlockSystems
 
 /-- The concrete 9-point bijection that exchanges rook edges and
 rook nonedges. -/
-def rookComplementIndex : (Fin 3 × Fin 3) ≃ (Fin 3 × Fin 3) :=
-  Equiv.ofBijective
-    (fun x : Fin 3 × Fin 3 => (x.1 + x.2, x.1 - x.2))
-    (by decide)
+def rookComplementIndex : (Fin 3 × Fin 3) ≃ (Fin 3 × Fin 3) where
+  toFun x := (x.1 + x.2, x.1 - x.2)
+  invFun x := (2 * (x.1 + x.2), 2 * (x.1 - x.2))
+  left_inv := by decide
+  right_inv := by decide
 
 /-- Every rook edge becomes a rook nonedge and conversely. -/
 theorem rookComplementIndex_adj :
