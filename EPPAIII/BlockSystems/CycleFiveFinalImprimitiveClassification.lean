@@ -76,7 +76,9 @@ theorem cycleFive_eppa_imprimitive_models_up_to_complement
         cycleFive_complement_reindexed_profile_card_sum_five
           H e w hwOld
       have hOld := hDegree w hwOld
-      change (finiteNeighbourhoodProfile Hᶜ e' w).card = 5-k
+      have hSum' :
+          (finiteNeighbourhoodProfile Hᶜ e' w).card + k = 5 := by
+        simpa only [hOld] using hSum
       omega
     have hSmallC : 5-k ≤ 2 := by omega
     exact cycleFive_eppa_imprimitive_small_cross_classification
