@@ -70,18 +70,14 @@ theorem rook_paired_eppa_outside_graph_two_forms
     CliqueCovers.sideEdges_equal_of_transitive_graph H hTrans
   have hTopEdges : K.edgeSet.ncard = 18 := by
     have hCounts :
-        (CliqueCovers.sideGraph H false).edgeFinset.card =
-          (CliqueCovers.sideGraph H true).edgeFinset.card := by
+        (CliqueCovers.sideGraph H false).edgeSet.ncard =
+          (CliqueCovers.sideGraph H true).edgeSet.ncard := by
       change (CliqueCovers.sideGraph H false).edgeFinset.card =
         (CliqueCovers.sideGraph H true).edgeFinset.card at hSides
-      exact hSides
+      simpa only [← SimpleGraph.card_edgeSet,
+        Set.fintypeCard_eq_ncard] using hSides
     rw [hBottomGraph] at hCounts
-    have hBaseEdges : rookThreeGraph.edgeFinset.card = 18 := by
-      decide
-    have hTopCard : K.edgeFinset.card = 18 :=
-      hCounts.symm.trans hBaseEdges
-    simpa only [← SimpleGraph.card_edgeSet,
-      Set.fintypeCard_eq_ncard] using hTopCard
+    exact hCounts.symm.trans rookThreeGraph_edge_count_eighteen
   rcases hFour with hEmpty | hRook | hComplement | hFull
   · have hZero : K.edgeSet.ncard = 0 := by
       rw [hEmpty]
