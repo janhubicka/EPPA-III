@@ -873,3 +873,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- C5 zero-cross actual-host graph model, current Lemma 6.12
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_zero_cross_host_is_two_cycles
