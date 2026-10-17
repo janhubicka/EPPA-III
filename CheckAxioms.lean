@@ -876,3 +876,6 @@ import EPPAIII
 
 -- C5 regular-half cross-degree lemma, current Lemma 6.12
 #print axioms EPPAIII.BlockSystems.cycleFive_paired_outside_uniform_cross_degree
+
+-- Actual C5 EPPA host: uniform outside cross-degree without imprimitivity
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_actual_uniform_cross_degree
