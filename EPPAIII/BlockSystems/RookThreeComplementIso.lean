@@ -44,6 +44,10 @@ theorem rookComplementIndex_comap_back :
   apply SimpleGraph.ext
   funext u v
   apply propext
-  decide
+  have h : ∀ x y : Fin 3 × Fin 3,
+      rookThreeGraphᶜ.Adj (rookComplementIndex x)
+        (rookComplementIndex y) ↔ rookThreeGraph.Adj x y := by
+    decide
+  exact h u v
 
 end EPPAIII.BlockSystems
