@@ -63,7 +63,7 @@ theorem rook_paired_outside_uniform_cross_degree
     simpa using
       (Finset.sum_boole
         (p := fun y : rookVertex => H.Adj (true,x) (false,y))
-        (s := Finset.univ) (R := ℕ)).symm
+        (s := Finset.univ) (R := ℕ))
   have hInsideSum (x : rookVertex) :
       (∑ y : rookVertex,
           if H.Adj (true,x) (true,y) then 1 else 0) = 4 := by
@@ -73,7 +73,7 @@ theorem rook_paired_outside_uniform_cross_degree
             simpa using
               (Finset.sum_boole
                 (p := fun y : rookVertex => H.Adj (true,x) (true,y))
-                (s := Finset.univ) (R := ℕ))
+                (s := Finset.univ) (R := ℕ)).symm
       _ = (CliqueCovers.sideGraph H true).degree x := by
             rw [SimpleGraph.degree,
               (CliqueCovers.sideGraph H true).neighborFinset_eq_filter]
@@ -83,7 +83,7 @@ theorem rook_paired_outside_uniform_cross_degree
       rookOutsideCrossDegree H x + 4 = D := by
     have hDeg : H.degree (true,x) = D := hReg (true,x)
     have hSplit := CliqueCovers.sideDegree_eq_two_row_sums H true x
-    rw [hCrossSum x, hInsideSum x] at *
+    rw [← hCrossSum x, hInsideSum x] at hSplit
     omega
   refine ⟨D - 4,?_,?_⟩
   · have hSmall :
