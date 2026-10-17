@@ -887,3 +887,6 @@ import EPPAIII
 
 -- Uniform outside cross degree from exact R3 imprimitive host hypotheses
 #print axioms EPPAIII.BlockSystems.rook_eppa_imprimitive_uniform_cross_degree
+
+-- Full actual R3 imprimitive classification up to complement, current Lemma 6.14
+#print axioms EPPAIII.BlockSystems.rook_eppa_imprimitive_models_up_to_complement

@@ -251,3 +251,10 @@ import EPPAIII.BlockSystems.RookThreeComplementIso
 import EPPAIII.BlockSystems.RookThreeImprimitiveOutsideConclusion
 
 import EPPAIII.BlockSystems.RookThreeActualCrossDegree
+
+import EPPAIII.BlockSystems.RookThreeMatchingModels
+import EPPAIII.BlockSystems.RookThreeZeroCrossConclusion
+import EPPAIII.BlockSystems.RookThreeSmallCrossConclusion
+import EPPAIII.BlockSystems.RookThreeComplementEppa
+import EPPAIII.BlockSystems.RookThreeComplementProfile
+import EPPAIII.BlockSystems.RookThreeFinalImprimitiveClassification
