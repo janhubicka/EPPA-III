@@ -46,7 +46,11 @@ theorem rook_complement_reindexed_profile_eq
       Finset.mem_filter, Finset.mem_univ,true_and]
     change Hᶜ.Adj w (e (p x)) ↔
       ¬ H.Adj w (e (p x))
-    simpa only [SimpleGraph.compl_adj,hNe,true_and]
+    constructor
+    · intro h
+      exact ((SimpleGraph.compl_adj H w (e (p x))).mp h).2
+    · intro h
+      exact (SimpleGraph.compl_adj H w (e (p x))).mpr ⟨hNe,h⟩
   change T = (Sᶜ).image p.symm
   ext x
   constructor
@@ -81,6 +85,7 @@ theorem rook_complement_reindexed_profile_card_sum_nine
       (Sᶜ).card :=
     Finset.card_image_of_injective _ rookComplementIndex.symm.injective
   rw [hProfile,hImageCard]
+  change (Sᶜ).card + S.card = 9
   have hBound : S.card ≤ Fintype.card rookVertex := by
     simpa using Finset.card_le_univ S
   rw [Finset.card_compl]
