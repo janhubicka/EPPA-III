@@ -883,3 +883,6 @@ import EPPAIII
 
 -- Full current Claim 6.15: actual imprimitive R3 host blocks 2 or 9
 #print axioms EPPAIII.BlockSystems.rook_eppa_nontrivial_imprimitive_block_sizes
+
+-- Filled invariant half transported by genuine vertex transitivity
+#print axioms EPPAIII.BlockSystems.transitive_outside_equiv_of_filled_invariant_half

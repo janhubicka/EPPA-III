@@ -244,3 +244,5 @@ import EPPAIII.BlockSystems.RookThreeRootImprimitivity
 import EPPAIII.BlockSystems.RookThreePrimitivePartition
 
 import EPPAIII.BlockSystems.RookThreeActualBlocks
+
+import EPPAIII.BlockSystems.FilledInvariantHalf
