@@ -36,4 +36,14 @@ theorem rookComplementIndex_comap :
   apply propext
   exact rookComplementIndex_adj u v
 
+
+/-- The same concrete index map also transports the complementary
+rook graph back to the original rook graph. -/
+theorem rookComplementIndex_comap_back :
+    rookThreeGraphᶜ.comap rookComplementIndex = rookThreeGraph := by
+  apply SimpleGraph.ext
+  funext u v
+  apply propext
+  decide
+
 end EPPAIII.BlockSystems
