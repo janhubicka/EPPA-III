@@ -873,3 +873,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- C5 regular-half cross-degree lemma, current Lemma 6.12
+#print axioms EPPAIII.BlockSystems.cycleFive_paired_outside_uniform_cross_degree
