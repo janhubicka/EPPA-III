@@ -242,3 +242,5 @@ import EPPAIII.BlockSystems.RookThreeSingletonOutside
 import EPPAIII.BlockSystems.RookThreeRootImprimitivity
 
 import EPPAIII.BlockSystems.RookThreePrimitivePartition
+
+import EPPAIII.BlockSystems.RookThreeActualBlocks
