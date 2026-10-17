@@ -32,10 +32,9 @@ theorem rook_complement_reindexed_eppa
     rookThreeGraphᶜ Hᶜ e hComplement
       rookComplementIndex rookThreeGraph
   intro x y
-  have hEq := congrArg
-    (fun J : SimpleGraph rookVertex => J.Adj x y)
-    rookComplementIndex_comap_back
-  exact hEq.symm
+  change rookThreeGraph.Adj x y ↔
+    (rookThreeGraphᶜ.comap rookComplementIndex).Adj x y
+  rw [rookComplementIndex_comap_back]
 
 /-- A relabelling of a selected EPPA copy does not change
 the actual set of vertices outside that copy. -/
