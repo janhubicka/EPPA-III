@@ -123,7 +123,9 @@ theorem rook_eppa_imprimitive_outside_is_rook
       apply SimpleGraph.ext
       funext x y
       apply propext
-      simpa only [hTopVal x,hTopVal y]
+      change H.Adj (f x).val (f y).val ↔
+        H.Adj (φ (true,x)) (φ (true,y))
+      rw [hTopVal x,hTopVal y]
     rcases hTop with hRook | hComplement
     · exact ⟨f,by rw [hTopGraph,hRook]⟩
     · let f' : rookVertex ≃ {w : W // w ∈ finiteOutside e} :=
