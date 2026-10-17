@@ -34,13 +34,13 @@ theorem rookThreeGraph_preconnected : rookThreeGraph.Preconnected := by
     change u ≠ w ∧ (u.1 = w.1 ∨ u.2 = w.2)
     constructor
     · intro h
-      exact hCol (congrArg Prod.snd h)
+      exact hCol (by simpa [w] using congrArg Prod.snd h)
     · exact Or.inl rfl
   have hwv : rookThreeGraph.Adj w v := by
     change w ≠ v ∧ (w.1 = v.1 ∨ w.2 = v.2)
     constructor
     · intro h
-      exact hRow (congrArg Prod.fst h)
+      exact hRow (by simpa [w] using congrArg Prod.fst h)
     · exact Or.inr rfl
   exact (SimpleGraph.Adj.reachable huw).trans
     (SimpleGraph.Adj.reachable hwv)
@@ -104,7 +104,7 @@ theorem rook_eppa_zero_cross_host_is_two_rook_graphs
       simpa using (heppa.1 x y).symm
     · change H.Adj (e x) (f y).val ↔
         (false = true ∧ rookThreeGraph.Adj x y)
-      simp only [Bool.false_ne_true, false_and, iff_false]
+      simp only [Bool.false_eq_true, false_and, iff_false]
       intro h
       exact hSeparated (f y).val (f y).property x h.symm
     · change H.Adj (f x).val (e y) ↔
