@@ -79,7 +79,8 @@ theorem rook_paired_outside_uniform_cross_degree
       rookOutsideCrossDegree H x + 4 = D := by
     have hDeg : H.degree (true,x) = D := hReg (true,x)
     have hSplit := CliqueCovers.sideDegree_eq_two_row_sums H true x
-    dsimp [rookOutsideCrossDegree]
+    have hWithin := hInsideFour x
+    unfold rookOutsideCrossDegree
     omega
   refine ⟨D - 4,?_,?_⟩
   · have hAtMostNine :
