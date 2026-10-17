@@ -879,3 +879,6 @@ import EPPAIII
 
 -- Actual C5 EPPA host: uniform outside cross-degree without imprimitivity
 #print axioms EPPAIII.BlockSystems.cycleFive_eppa_actual_uniform_cross_degree
+
+-- C5 imprimitive low cross-degree cases k = 0,1,2
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_imprimitive_small_cross_classification
