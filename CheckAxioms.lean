@@ -873,3 +873,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Claim 6.16: outside rook graph in an invariant pair host
+#print axioms EPPAIII.BlockSystems.rook_paired_eppa_outside_graph_two_forms
