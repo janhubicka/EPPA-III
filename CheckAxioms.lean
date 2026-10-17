@@ -908,3 +908,6 @@ import EPPAIII
 
 -- Full Lemma 6.1: all positive s,t, fixed embedded copy, no imprimitive requirement
 #print axioms EPPAIII.CliqueCovers.eppa_all_positive_clique_double_classification
+
+-- Equal-clique branch of Proposition 6.17, no outside-half assumption
+#print axioms EPPAIII.CliqueCovers.eppa_noncluster_clique_double_all_positive
