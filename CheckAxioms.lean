@@ -873,3 +873,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Explicit self-complementarity of R3 (Claim 6.16)
+#print axioms EPPAIII.BlockSystems.rookComplementIndex_adj
+#print axioms EPPAIII.BlockSystems.rookComplementIndex_comap
