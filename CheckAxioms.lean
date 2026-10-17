@@ -873,3 +873,13 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_equiv
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_invariant
 #print axioms EPPAIII.BlockSystems.rook_eppa_singleton_outside_graph_two_forms
+
+-- Explicit point-stabilizer certificate for current Claim 6.15
+#print axioms EPPAIII.BlockSystems.rook_root_invariant_subset_not_three
+
+-- Full rook primitivity and selected-block transversal from genuine EPPA
+#print axioms EPPAIII.BlockSystems.rook_invariant_equivalence_trivial
+#print axioms EPPAIII.BlockSystems.rook_eppa_selected_block_transversal_or_single
+
+-- Full current Claim 6.15: actual imprimitive R3 host blocks 2 or 9
+#print axioms EPPAIII.BlockSystems.rook_eppa_nontrivial_imprimitive_block_sizes
