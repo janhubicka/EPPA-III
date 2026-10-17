@@ -240,3 +240,5 @@ import EPPAIII.EPPA.ComplementTransport
 import EPPAIII.BlockSystems.RookThreeSingletonOutside
 
 import EPPAIII.BlockSystems.RookThreePairOutsideGraph
+
+import EPPAIII.BlockSystems.RookThreeTwoPointBlockOutside

@@ -876,3 +876,6 @@ import EPPAIII
 
 -- Claim 6.16: outside rook graph in an invariant pair host
 #print axioms EPPAIII.BlockSystems.rook_paired_eppa_outside_graph_two_forms
+
+-- Actual pair-block branch of Claim 6.16 with no outside labels
+#print axioms EPPAIII.BlockSystems.rook_eppa_two_point_blocks_outside_graph_two_forms
