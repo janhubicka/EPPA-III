@@ -876,3 +876,6 @@ import EPPAIII
 
 -- Claim 6.16: outside rook graph in an invariant pair host
 #print axioms EPPAIII.BlockSystems.rook_paired_eppa_outside_graph_two_forms
+
+-- Uniform outside rook cross degree from transitivity and valency four
+#print axioms EPPAIII.BlockSystems.rook_paired_outside_uniform_cross_degree
