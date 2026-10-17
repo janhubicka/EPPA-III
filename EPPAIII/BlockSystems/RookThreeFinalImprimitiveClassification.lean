@@ -92,7 +92,9 @@ theorem rook_eppa_imprimitive_models_up_to_complement
         rook_complement_reindexed_profile_card_sum_nine
           H e w hwOld
       have hOld := hDegree w hwOld
-      change (finiteNeighbourhoodProfile Hᶜ e' w).card = 9 - k
+      have hSum' :
+          (finiteNeighbourhoodProfile Hᶜ e' w).card + k = 9 := by
+        simpa only [hOld] using hSum
       omega
     have hSmallC : 9 - k ≤ 4 := by omega
     exact rook_eppa_small_uniform_cross_degree_classification
