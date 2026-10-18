@@ -3,7 +3,7 @@ import EPPAIII.DoubleCover.DeckSwap
 /-!
 # Ordered inter-fibre edge and nonedge transitivity
 
-The final assertion of Lemma 3.3 follows from two verified facts:
+The final assertion of Lemma 5.12 follows from two verified facts:
 (1) the induced action of actual host automorphisms on the fibres
     is 2-transitive for a non-homogeneous base (FibreOrbits);
 (2) the Taylor pattern has exactly two vertex-pairs of each
@@ -17,7 +17,7 @@ status* are conjugate under a graph automorphism of the host.
 
 namespace EPPAIII.DoubleCover
 
-/-- The missing ordered-edge/nonedge orbit assertion of Lemma 3.3,
+/-- The missing ordered-edge/nonedge orbit assertion of Lemma 5.12,
 expressed directly for a graph in its canonical two-layer coordinates.
 There is no assumption of a coherent family of EPPA extensions. -/
 theorem eppa_interfibre_pair_status_transitive {V : Type*}

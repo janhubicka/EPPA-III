@@ -3,7 +3,7 @@ import EPPAIII.BlockSystems.FullDoubleCover
 /-!
 # Two-transitivity on the quotient of a two-point imprimitivity system
 
-This is the first part of the last assertion of Lemma 3.3.
+This is the first part of the last assertion of Lemma 5.12.
 EPPA provides a transitive action of fibre-preserving host
 automorphisms on ordered base edges and separately on ordered base
 nonedges. If these two orbits did not coincide, every induced fibre

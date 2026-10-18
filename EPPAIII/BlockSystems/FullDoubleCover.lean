@@ -3,7 +3,7 @@ import EPPAIII.BlockSystems.GraphTransport
 /-!
 # From a transitive imprimitivity system to a Taylor double
 
-This closes the structural implication of Lemma 3.3 without assuming
+This closes the structural implication of Lemma 5.12 without assuming
 the host is already presented as Bool × V.
 
 The inputs express:
@@ -13,12 +13,12 @@ The inputs express:
 * non-homogeneity of G and exclusion of unions of cliques and their
   complements.
 
-Claim 3.4 supplies the two-point block system; CanonicalPairs constructs
+Claim 5.13 supplies the two-point block system; CanonicalPairs constructs
 a genuine equivalence φ : Bool × V ≃ W; GraphTransport carries EPPA
 and block invariance across φ; CompleteTaylor forces the Taylor
 inter-fibre structure with optional matching of mates.
 
-This is the structural half of Lemma 3.3. The additional assertion
+This is the structural half of Lemma 5.12. The additional assertion
 about transitivity on ordered inter-block edges and nonedges is not
 included here and remains an explicit separate obligation.
 -/
