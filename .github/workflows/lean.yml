@@ -71,6 +71,7 @@ jobs:
         run: |
           python3 checks/section5_partial_twograph_audit.py
           python3 checks/section7_srg_cover_audit.py
+          python3 checks/section6_cover_sufficiency.py
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then

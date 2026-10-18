@@ -291,3 +291,5 @@ import EPPAIII.BlockSystems.UnequalNamedActualHost
 import EPPAIII.DoubleCover.HomogeneityComplement
 
 import EPPAIII.CliqueCovers.CliqueUnionHomogeneity
+
+import EPPAIII.CliqueCovers.CoverAutomorphismLift
