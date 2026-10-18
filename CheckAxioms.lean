@@ -960,3 +960,13 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_transitive_via_swaps
 #print axioms EPPAIII.CliqueCovers.coverSideSwap_graphAut
 #print axioms EPPAIII.CliqueCovers.uniform_cover_vertex_transitive
+
+-- Wagner exceptional graph EPPA sufficiency for selected 2K2
+#print axioms EPPAIII.CliqueCovers.wagnerCycleVertex_bijective
+#print axioms EPPAIII.CliqueCovers.wagnerIndexMap_bijective
+#print axioms EPPAIII.CliqueCovers.wagnerSymmetry_graphAut
+#print axioms EPPAIII.CliqueCovers.wagner_partial_extends
+#print axioms EPPAIII.CliqueCovers.wagner_left_induced
+#print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph_isEPPA
+#print axioms EPPAIII.CliqueCovers.wagner_rotations_transitive
+#print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph_vertexTransitive
