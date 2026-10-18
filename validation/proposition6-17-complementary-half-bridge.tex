@@ -22,12 +22,15 @@ Suppose $s,t\ge2$. For $w\in B$, let
 \]
 The extensions of $\Aut(G)=S_t\wr S_s$ show that the orbit
 of every such profile is represented in $B$, and hence has
-size at most $st$. If a profile has a partial coordinate,
-the orbit bound forces exactly one partial coordinate of
-size $1$ or $t-1$, with all other coordinates uniformly
-empty or full, except when $s=t=2$ and both coordinates
-are partial. In each case the orbit has precisely $st$
-elements and gives canonical labels of all vertices of $B$.
+size at most $st$. If $p$ coordinates are partial, the orbit
+has size at least $\binom sp t^p$. This exceeds $st$ for
+$p\ge2$, except when $s=t=p=2$. When $p=1$, with $k$
+neighbours in the partial coordinate and $r$ full coordinates,
+the exact orbit size is
+$s\binom tk\binom{s-1}r\le st$. Hence
+$k\in\{1,t-1\}$ and $r\in\{0,s-1\}$.
+In both cases the orbit has precisely $st$ elements,
+and gives canonical labels of all vertices of $B$.
 The induced action on $B$ has two orbits on unordered pairs
 (the two pairs of opposite corners in the exceptional square
 case). The equality of internal edge counts therefore gives
