@@ -5,7 +5,7 @@
 
 ## Evidence boundary
 
-A green Lean CI run establishes the displayed formal theorem and its declared hypotheses, **not** the original prose in Claims 6.2–6.5 or 6.7–6.10. Verified branch heads remain unmerged and must not be presented as an integrated proof on `main`. The lean.yml workflow builds the project, prints all listed theorem axioms, rejects nonstandard axioms and `sorry` placeholders, and runs finite regressions. The exact theorem signatures were independently checked.
+A green Lean CI run establishes the displayed formal theorem and its declared hypotheses, **not** the original prose in Claims 6.2–6.5 or 6.7–6.10. The Section 6 proof branches are now incorporated into `main` through merged PR #309, with full CI and axiom audit on merged commit `a584870fa30b2721a9b1a7a45f43a750dca62e12` (run 39120421081). Historical PR numbers below identify provenance, not ongoing unmerged dependencies. The lean.yml workflow builds the project, prints all listed theorem axioms, rejects nonstandard axioms and `sorry` placeholders, and runs finite regressions. The exact theorem signatures were independently checked.
 
 | Manuscript target | Checked theorem or module | PR | Latest checked CI |
 |---|---|---|---|
@@ -49,7 +49,7 @@ In the Taylor inter-fibre pattern every pair of distinct vertices in `P` is adja
 
 **Independent finite check:** `checks/section6_unequal_taylor_named.py` verifies the displayed adjacency identity for **110,000 ordered vertex pairs**, all `1<=a,b<=10`, with and without the mate matching. This is corroboration, not a proof for unbounded orders; the displayed argument is the general proof.
 
-**Validation:** inter-fibre structure Lean-checked #283; the final named-model identification has a complete paper proof and finite test, but no separate generic Lean theorem yet.
+**Validation:** the actual inter-fibre structure is Lean-checked in #283 and merged via #309. The all-order Boolean graph-name identity is Lean-certified and merged in #311 (`twoCliqueTaylorGraph_eq_matched`); the remaining *actual-host-to-identity* implication is being checked separately in PR #312 (`twoClique_actual_taylor_is_matched`). The 110,000-pair finite test remains a secondary regression check.
 
 ### S6-04 — **Incorrect wording**, Lemma 6.1 Wagner case (priority A, one deletion)
 The displayed Wagner connection matrix is 3-regular; the complement of that graph is 4-regular. Delete “or its complement” directly after the Wagner exception. Complementation of the **pair** `(G,H)`, used elsewhere, is a distinct operation. Confirmed mathematically; #279/#307 formally identify the three-regular canonical model.
@@ -71,7 +71,16 @@ Lemma 7.9 (“strongly regular generalized clique covers are homogeneous, up to 
 
 ## Adversarial sign-off boundary
 
-1. **Mathematical combinatorial core:** the equal-clique theorem with no outside-half hypothesis, the unequal-clique Taylor core, the C5/R3 exceptional imprimitive host classifications, and named finite C5/R3 identities are axiom-audited on their respective PR heads.
+1. **Mathematical combinatorial core:** the equal-clique theorem without an outside-half hypothesis, the unequal-clique Taylor core, the C5/R3 exceptional imprimitive classifications and their finite-model naming identities are integrated in green `main` through #309 and #310; #311 additionally certifies the all-order named two-clique Taylor identity.
 2. **Remaining source-level work:** reconcile exact source hypotheses and arguments (S6-01/S6-02), include the short unequal host name proof (S6-03), make the few local corrections (S6-04–07), then update validation markers deliberately.
-3. **Not claimed:** published proof validated verbatim; whole Proposition 6.17 independent of external classifications; all PRs merged into main; Gardiner/rank-three theorems formalized.
+3. **Not claimed:** the printed proof has been validated verbatim; Proposition 6.17 has been proved independently of the external classifications; the unrelated draft review PR is merged; Gardiner/rank-three classification theorems have been formalized.
 4. **Editorial boundary:** collect only. Do not modify the frozen manuscript or send the comments before the author's post-interview review.
+
+
+## 18 October continuation — repository cleanup and validation boundary
+
+- **Merged:** #276, #277, #278, #309, #310 and #311. Main CI after #309 was green, and #310 separately added the two missing complement-extension axiom-audit entries. The #311 build and axiom audit were green after fixing Lean's `Std.Symm`/`Std.Irrefl` constructor proof syntax; the named two-clique identity holds for arbitrary vertex types.
+- **Obsolete PRs:** superseded proof branches were closed with explanations, retaining git history for the unused intermediate lemmas. **This draft #308 is intentionally the surviving author-review packet** and must not be sent or merged before the post-interview review.
+- **Active validation:** #312 seeks to turn the exact output of the actual Taylor EPPA witness classification (selected bottom copy + all inter-fibre Taylor adjacency entries + uniform mate bit) into equality with the canonical two-clique matched-double model. Treat this interface as pending until its integrated CI succeeds.
+- **Remaining manuscript issues:** the source's missing complementary-half hypothesis in Proposition 6.17 and the non-homogeneous-to-non-cluster bridge still need explicit *paper-level* text. The separate short insertion proposal is `validation/proposition6-17-complementary-half-bridge.tex`. The original Claims 6.2–6.5 and 6.7–6.10 were not certified verbatim; the replacement conclusions are checked independently.
+- **External boundary:** Gardiner and the primitive rank-three classification, together with the strict inequality branch of Proposition 6.17, remain classification inputs rather than new Lean theorems. The frozen source is untouched.
