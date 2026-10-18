@@ -936,3 +936,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.twoCliqueMatchedGraph_false_is_cluster
 #print axioms EPPAIII.BlockSystems.twoClique_matched_noncluster_forces_mate
 #print axioms EPPAIII.BlockSystems.twoClique_actual_taylor_noncluster_is_matched
+
+-- Canonical Boolean colouring from two covered clique components
+#print axioms EPPAIII.BlockSystems.cluster_two_components_has_twoClique_colouring
