@@ -6,4 +6,4 @@ The canonical Wagner graph is a Möbius ladder whose cyclic order in the source'
 
 The new Lean theorem is `EPPAIII.CliqueCovers.wagnerCanonicalGraph_isEPPA`. The author manuscript is not edited. This does not validate the original proof prose verbatim, nor any external graph classification.
 
-This record is pending until fresh Lean build and permitted-axiom audit pass.
+The EPPA proof passed the full Lean build, permitted-axiom audit, and finite checks in CI run 39156609457. The additional exact vertex-transitivity certificate uses only the eight cyclic rotations of the canonical Wagner graph and is audited on the same branch (new CI pending). The source manuscript is unchanged.
