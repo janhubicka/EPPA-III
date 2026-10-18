@@ -240,3 +240,8 @@ import EPPAIII.EPPA.ComplementTransport
 import EPPAIII.BlockSystems.RookThreeSingletonOutside
 
 import EPPAIII.BlockSystems.ImprimitiveClassification
+
+import EPPAIII.CliqueCovers.ClusterHostBlocks
+import EPPAIII.CliqueCovers.ClusterHostClassification
+import EPPAIII.CliqueCovers.NonclusterIndependentHalf
+import EPPAIII.CliqueCovers.ActualHostConclusion
