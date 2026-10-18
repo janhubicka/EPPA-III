@@ -293,3 +293,5 @@ import EPPAIII.DoubleCover.HomogeneityComplement
 import EPPAIII.CliqueCovers.CliqueUnionHomogeneity
 
 import EPPAIII.CliqueCovers.CoverAutomorphismLift
+
+import EPPAIII.CliqueCovers.WagnerSufficiency
