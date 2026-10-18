@@ -955,3 +955,11 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.coverLiftBase_graphAut
 #print axioms EPPAIII.CliqueCovers.uniform_cover_eppa_of_base_homogeneous
 #print axioms EPPAIII.CliqueCovers.uniform_cover_isEPPA
+
+-- Wagner exceptional graph EPPA sufficiency for selected 2K2
+#print axioms EPPAIII.CliqueCovers.wagnerCycleVertex_bijective
+#print axioms EPPAIII.CliqueCovers.wagnerIndexMap_bijective
+#print axioms EPPAIII.CliqueCovers.wagnerSymmetry_graphAut
+#print axioms EPPAIII.CliqueCovers.wagner_partial_extends
+#print axioms EPPAIII.CliqueCovers.wagner_left_induced
+#print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph_isEPPA
