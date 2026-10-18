@@ -955,3 +955,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.coverLiftBase_graphAut
 #print axioms EPPAIII.CliqueCovers.uniform_cover_eppa_of_base_homogeneous
 #print axioms EPPAIII.CliqueCovers.uniform_cover_isEPPA
+
+-- All uniform generalized clique covers are vertex-transitive
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_transitive_via_swaps
+#print axioms EPPAIII.CliqueCovers.coverSideSwap_graphAut
+#print axioms EPPAIII.CliqueCovers.uniform_cover_vertex_transitive
