@@ -942,3 +942,7 @@ import EPPAIII
 
 -- Final actual-host unequal-clique classification, selected copy fixed
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_named_host
+
+-- Host homogeneity is invariant under graph complementation
+#print axioms EPPAIII.DoubleCover.homogeneous_complement_iff
+#print axioms EPPAIII.DoubleCover.nonhomogeneous_complement_iff
