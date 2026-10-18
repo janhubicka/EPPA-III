@@ -920,3 +920,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFiveUpperShift_bijective
 #print axioms EPPAIII.BlockSystems.cycleFive_adjacent_pair_double_is_taylor
 #print axioms EPPAIII.BlockSystems.cycleFive_diagonal_pair_double_is_matefree_blowup
+
+-- Complete named-model complement-extension axiom coverage
+#print axioms EPPAIII.BlockSystems.rook_matefree_is_complement_of_anti_rook_extension
+#print axioms EPPAIII.BlockSystems.cycleFive_matefree_is_complement_extension
