@@ -91,7 +91,8 @@ theorem uniform_cover_vertex_transitive (s t : ℕ)
     refine ⟨r,hr,?_⟩
     change (!u.1,p u.2) = v
     have hFlip : !u.1 = v.1 := by
-      cases hu : u.1 <;> cases hv : v.1 <;> simp_all
+      cases hu : u.1 <;> cases hv : v.1 <;>
+        simp [hu, hv] at hs ⊢
     exact Prod.ext hFlip hpMap
 
 end EPPAIII.CliqueCovers
