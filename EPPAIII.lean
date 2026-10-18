@@ -283,3 +283,7 @@ import EPPAIII.BlockSystems.TwoCliqueTaylorNamed
 import EPPAIII.BlockSystems.TwoCliqueActualTaylorNamed
 
 import EPPAIII.BlockSystems.TwoCliqueNonclusterMate
+
+import EPPAIII.BlockSystems.TwoCliqueColourFromComponents
+
+import EPPAIII.BlockSystems.UnequalNamedActualHost
