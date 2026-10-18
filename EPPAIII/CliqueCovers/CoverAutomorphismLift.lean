@@ -136,6 +136,7 @@ theorem uniform_cover_eppa_of_base_homogeneous {s t : ℕ}
   obtain ⟨q,hq,hExtend⟩ := hHom D p hp
   refine ⟨coverLiftBase q, coverLiftBase_graphAut X Y q hq, ?_⟩
   intro v hv
-  simpa [coverLiftBase,coverLeftEmbedding] using (hExtend v hv)
+  change (false, q v) = (false, p v)
+  exact congrArg (fun x => (false, x)) (hExtend v hv)
 
 end EPPAIII.CliqueCovers
