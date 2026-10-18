@@ -35,7 +35,7 @@ The printed hypotheses say **non-homogeneous** transitive host; the final Lean t
 
 **Proof:** A finite vertex-transitive disjoint union of cliques has equally sized components. Every partial automorphism sends portions of distinct occupied components to portions of distinct target components. Extend its finite injective map on components to a permutation of all components, and then extend each partial bijection inside a component to a full bijection (equal component sizes). Thus a transitive cluster graph is homogeneous. Contrapositively a non-homogeneous transitive host is non-cluster.
 
-**Validation:** complete paper proof; generic bridge not yet an exported Lean theorem. This is not an additional classification assumption.
+**Validation:** complete paper proof; the one-paragraph, source-local insertion is in `validation/section6-nonhomogeneous-noncluster-bridge.tex`. The generic cluster-to-homogeneous implication is not yet exported as a Lean theorem. This is not an additional classification assumption.
 
 ### S6-03 — **Close the named unequal-clique host**, Lemma 6.6 (priority A, short proof)
 The machine-checked result gives a canonical Taylor pair pattern with an *optional uniform mate matching*. For `G=K_a \sqcup K_b`, `a,b>=1` and `a!=b`, the exact graph name follows without any group classification.
@@ -84,3 +84,5 @@ Lemma 7.9 (“strongly regular generalized clique covers are homogeneous, up to 
 - **Active validation:** #312 seeks to turn the exact output of the actual Taylor EPPA witness classification (selected bottom copy + all inter-fibre Taylor adjacency entries + uniform mate bit) into equality with the canonical two-clique matched-double model. Treat this interface as pending until its integrated CI succeeds.
 - **Remaining manuscript issues:** the source's missing complementary-half hypothesis in Proposition 6.17 and the non-homogeneous-to-non-cluster bridge still need explicit *paper-level* text. The separate short insertion proposal is `validation/proposition6-17-complementary-half-bridge.tex`. The original Claims 6.2–6.5 and 6.7–6.10 were not certified verbatim; the replacement conclusions are checked independently.
 - **External boundary:** Gardiner and the primitive rank-three classification, together with the strict inequality branch of Proposition 6.17, remain classification inputs rather than new Lean theorems. The frozen source is untouched.
+
+- **Further 18 October progress:** #312 passed the full Lean build and axiom audit and was merged. Its theorem `twoClique_actual_taylor_is_matched` proves the actual-host-to-named-model interface for every Boolean two-clique base. PR #313 is validating the final implication that, with the host non-cluster, the mate bit must be present. Once green, S6-03 is machine-certified up to the elementary non-homogeneous/non-cluster input sentence.
