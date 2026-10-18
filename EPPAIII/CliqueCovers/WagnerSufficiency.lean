@@ -205,4 +205,20 @@ theorem wagnerCanonicalGraph_isEPPA :
   exact ⟨wagnerSymmetry a flip,
     wagnerSymmetry_graphAut a flip, hExt⟩
 
+
+/-- Cyclic rotations already act transitively on the eight vertices
+in the canonical Möbius-ladder order. -/
+theorem wagner_rotations_transitive :
+    ∀ u v : CoverVertex 2 2,
+      ∃ a : Fin 8, wagnerSymmetry a false u = v := by
+  decide
+
+/-- The exceptional Wagner witness is vertex-transitive. -/
+theorem wagnerCanonicalGraph_vertexTransitive :
+    HasTransitiveGraphAutomorphisms wagnerCanonicalGraph := by
+  intro u v
+  obtain ⟨a,ha⟩ := wagner_rotations_transitive u v
+  exact ⟨wagnerSymmetry a false,
+    wagnerSymmetry_graphAut a false,ha⟩
+
 end EPPAIII.CliqueCovers
