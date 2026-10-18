@@ -98,12 +98,21 @@ theorem wagnerSymmetry_graphAut :
     infer_instance
   decide
 
-/-- Fully computational certificate over the 256 maps of four points.
-We avoid attempting to enumerate equivalence structures directly:
-injectivity and adjacency preservation are checked as explicit
-finite predicates on an ordinary function. -/
-theorem wagner_full_function_extension :
-    ∀ f : (Fin 2 × Fin 2) → (Fin 2 × Fin 2),
+/-- A map of the four base points specified by its four values. -/
+def wagnerFourPointMap
+    (w00 w01 w10 w11 : Fin 2 × Fin 2)
+    (v : Fin 2 × Fin 2) : Fin 2 × Fin 2 :=
+  if v.1 = (0 : Fin 2) then
+    if v.2 = (0 : Fin 2) then w00 else w01
+  else
+    if v.2 = (0 : Fin 2) then w10 else w11
+
+/-- Kernel-check the 256 assignments of images to the four points.
+Only eight satisfy injectivity and the two-clique graph relation;
+each extends to a symmetry of the canonical Wagner graph. -/
+theorem wagner_full_tuple_extension :
+    ∀ (w00 w01 w10 w11 : Fin 2 × Fin 2),
+      let f := wagnerFourPointMap w00 w01 w10 w11
       (∀ u v : Fin 2 × Fin 2, f u = f v → u = v) →
       (∀ u v : Fin 2 × Fin 2,
         (u.1 = v.1 ∧ u.2 ≠ v.2) ↔
@@ -111,6 +120,38 @@ theorem wagner_full_function_extension :
       ∃ a : Fin 8, ∃ flip : Bool, ∀ v : Fin 2 × Fin 2,
         wagnerSymmetry a flip (false,v) = (false,f v) := by
   decide
+
+/-- The tuple certificate applies to any function by evaluating
+it on the four possible base vertices. -/
+theorem wagner_full_function_extension
+    (f : (Fin 2 × Fin 2) → (Fin 2 × Fin 2))
+    (hInj : ∀ u v : Fin 2 × Fin 2, f u = f v → u = v)
+    (hAdj : ∀ u v : Fin 2 × Fin 2,
+      (u.1 = v.1 ∧ u.2 ≠ v.2) ↔
+        ((f u).1 = (f v).1 ∧ (f u).2 ≠ (f v).2)) :
+    ∃ a : Fin 8, ∃ flip : Bool, ∀ v : Fin 2 × Fin 2,
+      wagnerSymmetry a flip (false,v) = (false,f v) := by
+  let g := wagnerFourPointMap (f (0,0)) (f (0,1))
+    (f (1,0)) (f (1,1))
+  have hg (v : Fin 2 × Fin 2) : g v = f v := by
+    rcases v with ⟨i,j⟩
+    fin_cases i <;> fin_cases j <;> rfl
+  have hgInj : ∀ u v : Fin 2 × Fin 2,
+      g u = g v → u = v := by
+    intro u v h
+    exact hInj u v ((hg u).symm.trans (h.trans (hg v)))
+  have hgAdj : ∀ u v : Fin 2 × Fin 2,
+      (u.1 = v.1 ∧ u.2 ≠ v.2) ↔
+        ((g u).1 = (g v).1 ∧ (g u).2 ≠ (g v).2) := by
+    intro u v
+    rw [hg u,hg v]
+    exact hAdj u v
+  obtain ⟨a,flip,hExt⟩ :=
+    wagner_full_tuple_extension (f (0,0)) (f (0,1))
+      (f (1,0)) (f (1,1)) hgInj hgAdj
+  refine ⟨a,flip,?_⟩
+  intro v
+  exact (hExt v).trans (congrArg (fun z => (false,z)) (hg v))
 
 /-- Any partial base automorphism first extends inside the
 homogeneous two-clique base and then extends via a Wagner symmetry.
