@@ -87,6 +87,14 @@ theorem wagnerSymmetry_graphAut :
     ∀ a : Fin 8, ∀ flip : Bool,
       IsGraphAutomorphism wagnerCanonicalGraph
         (wagnerSymmetry a flip) := by
+  change ∀ a : Fin 8, ∀ flip : Bool, ∀ u v : CoverVertex 2 2,
+    wagnerCanonicalAdj u v ↔
+      wagnerCanonicalAdj (wagnerSymmetry a flip u)
+        (wagnerSymmetry a flip v)
+  letI : DecidableRel wagnerCanonicalAdj := by
+    intro u v
+    unfold wagnerCanonicalAdj
+    infer_instance
   decide
 
 /-- Exact sixteen-permutation certificate for all partial base
@@ -99,11 +107,26 @@ theorem wagner_partial_extends :
           v ∈ D →
           wagnerSymmetry a flip (coverLeftEmbedding 2 2 v) =
             coverLeftEmbedding 2 2 (p v) := by
+  change ∀ (D : Finset (Fin 2 × Fin 2))
+      (p : Equiv.Perm (Fin 2 × Fin 2)),
+    (∀ u v : Fin 2 × Fin 2, u ∈ D → v ∈ D →
+      ((u.1 = v.1 ∧ u.2 ≠ v.2) ↔
+        ((p u).1 = (p v).1 ∧ (p u).2 ≠ (p v).2))) →
+      ∃ a : Fin 8, ∃ flip : Bool, ∀ v : Fin 2 × Fin 2,
+        v ∈ D → wagnerSymmetry a flip (coverLeftEmbedding 2 2 v) =
+          coverLeftEmbedding 2 2 (p v)
   decide
 
 theorem wagner_left_induced :
     IsInducedGraphEmbedding (cliqueUnion 2 2)
       wagnerCanonicalGraph (coverLeftEmbedding 2 2) := by
+  change ∀ u v : Fin 2 × Fin 2,
+    (u.1 = v.1 ∧ u.2 ≠ v.2) ↔
+      wagnerCanonicalAdj (false,u) (false,v)
+  letI : DecidableRel wagnerCanonicalAdj := by
+    intro u v
+    unfold wagnerCanonicalAdj
+    infer_instance
   decide
 
 /-- The exceptional Wagner graph itself is an EPPA witness. -/
