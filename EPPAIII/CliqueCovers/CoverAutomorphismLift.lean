@@ -1,4 +1,5 @@
 import EPPAIII.EPPA.Definitions
+import EPPAIII.CliqueCovers.CliqueUnionHomogeneity
 import EPPAIII.DoubleCover.RigidLayerHomogeneity
 
 /-!
@@ -138,5 +139,12 @@ theorem uniform_cover_eppa_of_base_homogeneous {s t : ℕ}
   intro v hv
   change (false, q v) = (false, p v)
   exact congrArg (fun x => (false, x)) (hExtend v hv)
+
+/-- Every uniform generalized clique cover really is an EPPA witness
+for its selected disjoint union of equally sized cliques. -/
+theorem uniform_cover_isEPPA (s t : ℕ) (X : CrossType) (Y : Bool) :
+    CoverIsEPPA s t X Y :=
+  uniform_cover_eppa_of_base_homogeneous (s := s) (t := t)
+    X Y (cliqueUnion_isHomogeneous s t)
 
 end EPPAIII.CliqueCovers

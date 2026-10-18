@@ -947,7 +947,11 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.homogeneous_complement_iff
 #print axioms EPPAIII.DoubleCover.nonhomogeneous_complement_iff
 
--- Uniform generalized-cover sufficiency: no coherent choices needed
+-- Homogeneity of all finite unions of equal cliques
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_isHomogeneous
+
+-- Uniform generalized clique-cover base lifts and EPPA sufficiency
 #print axioms EPPAIII.CliqueCovers.base_aut_preserves_clique_index
 #print axioms EPPAIII.CliqueCovers.coverLiftBase_graphAut
 #print axioms EPPAIII.CliqueCovers.uniform_cover_eppa_of_base_homogeneous
+#print axioms EPPAIII.CliqueCovers.uniform_cover_isEPPA
