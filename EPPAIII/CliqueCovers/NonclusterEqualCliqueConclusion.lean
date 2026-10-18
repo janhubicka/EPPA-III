@@ -31,7 +31,7 @@ namespace EPPAIII.CliqueCovers
 /-- Main non-cluster equal-clique classification, with neither
 an assumed complementary-half partition nor an imprimitivity
 hypothesis. -/
-theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
+theorem eppa_noncluster_equal_clique_full_classification_fixed_base {s t : ℕ}
     {W : Type*} [Fintype W]
     (H : SimpleGraph W) [DecidableRel H.Adj]
     (e : (Fin s × Fin t) ↪ W)
@@ -41,9 +41,13 @@ theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
     (hTransitive : HasTransitiveGraphAutomorphisms H)
     (hNonCluster : ¬ EPPAIII.BlockSystems.IsClusterGraph H) :
     (∃ (phi : CoverVertex s t ≃ W) (X : CrossType) (Y : Bool),
+       (∀ x : Fin s × Fin t, phi (false,x) = e x) ∧
        H.comap phi = coverGraph s t X Y) ∨
-    (s = 2 ∧ t = 2 ∧
-      ∃ phi : CoverVertex 2 2 ≃ W,
+    (∃ (hS : s = 2) (hT : t = 2)
+        (phi : CoverVertex 2 2 ≃ W),
+        (∀ x : Fin 2 × Fin 2,
+          phi (false,x) =
+            e (Fin.cast hS.symm x.1, Fin.cast hT.symm x.2)) ∧
         H.comap phi = wagnerCanonicalGraph) := by
   classical
   by_cases hSome :
@@ -84,11 +88,12 @@ theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
           (kPositions (finiteNeighbourhoodProfile H e w) 1).card = 2 := by
         rw [hK]
         decide
-      obtain ⟨phi,hPhi⟩ :=
-        eppa_two_partial_host_is_wagner
+      obtain ⟨phi,hFixed,hPhi⟩ :=
+        eppa_two_partial_host_is_wagner_fixed_base
           H e heppa hOrder w hw hBoth hTransitive
       right
-      exact ⟨rfl,rfl,phi,hPhi⟩
+      refine ⟨rfl,rfl,phi,?_,hPhi⟩
+      simpa using hFixed
     · have hOne : S.card = 1 := by omega
       obtain ⟨j,k,hkPos,hkProper,hSlice,hUnique⟩ :=
         unique_proper_partial_gives_unique_k P hOne
@@ -104,10 +109,12 @@ theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
           eppa_singleton_host_is_uniform_cover
             H e heppa hOrder w hw hUniqueOne hs ht hTransitive
         left
-        exact ⟨balancedHostEquiv e
+        refine ⟨balancedHostEquiv e
           (saturatedSingletonOutsideEquiv
             H e heppa hOrder w hw hUniqueOne),
-            .matching,b,hEq⟩
+            .matching,b,?_,hEq⟩
+        intro x
+        simp
       · have hkCosingleton : k = t - 1 := by omega
         have hUniqueCo :
             (kPositions
@@ -117,10 +124,12 @@ theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
           eppa_cosingleton_host_is_uniform_cover
             H e heppa hOrder w hw hUniqueCo hs ht hTransitive
         left
-        exact ⟨balancedHostEquiv e
+        refine ⟨balancedHostEquiv e
           (saturatedCoSingletonOutsideEquiv
             H e heppa hOrder (by omega) w hw hUniqueCo),
-            .coMatching,b,hEq⟩
+            .coMatching,b,?_,hEq⟩
+        intro x
+        simp
   · have hNoPartial :
         ∀ w : W, w ∉ Set.range e →
           ∀ j : Fin s,
@@ -145,10 +154,32 @@ theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
             ((mem_properPartialPositions P j).mpr ⟨hkPos,hkLt⟩)
         have hkEq : k = t := by omega
         exact Or.inr hkEq
-    obtain ⟨phi,X,Y,hEq⟩ :=
-      eppa_zero_partial_noncluster_host_is_uniform_cover
+    obtain ⟨phi,X,Y,hFixed,hEq⟩ :=
+      eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base
         H e heppa hNoPartial (by omega) (by omega)
         hOrder hTransitive hNonCluster
+    exact Or.inl ⟨phi,X,Y,hFixed,hEq⟩
+
+/-- The old public theorem follows by forgetting the fixed base copy. -/
+theorem eppa_noncluster_equal_clique_full_classification {s t : ℕ}
+    {W : Type*} [Fintype W]
+    (H : SimpleGraph W) [DecidableRel H.Adj]
+    (e : (Fin s × Fin t) ↪ W)
+    (heppa : IsEPPAEmbedding (cliqueUnion s t) H e)
+    (hs : 2 ≤ s) (ht : 2 ≤ t)
+    (hOrder : Fintype.card W = 2 * s * t)
+    (hTransitive : HasTransitiveGraphAutomorphisms H)
+    (hNonCluster : ¬ EPPAIII.BlockSystems.IsClusterGraph H) :
+    (∃ (phi : CoverVertex s t ≃ W) (X : CrossType) (Y : Bool),
+       H.comap phi = coverGraph s t X Y) ∨
+    (s = 2 ∧ t = 2 ∧
+      ∃ phi : CoverVertex 2 2 ≃ W,
+        H.comap phi = wagnerCanonicalGraph) := by
+  rcases eppa_noncluster_equal_clique_full_classification_fixed_base
+      H e heppa hs ht hOrder hTransitive hNonCluster with hCover | hWagner
+  · rcases hCover with ⟨phi,X,Y,_,hEq⟩
     exact Or.inl ⟨phi,X,Y,hEq⟩
+  · rcases hWagner with ⟨hs2,ht2,phi,_,hEq⟩
+    exact Or.inr ⟨hs2,ht2,phi,hEq⟩
 
 end EPPAIII.CliqueCovers
