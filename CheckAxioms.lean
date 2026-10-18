@@ -877,20 +877,46 @@ import EPPAIII
 -- Current Lemma 5.12, assembled double-cover classification
 #print axioms EPPAIII.BlockSystems.transitive_eppa_double_cover_classification
 
--- Connection matrices in the selected embedding (current Lemma 6.1)
+-- Combined Section 6 proof-branch axiom audit (source manuscript frozen)
 #print axioms EPPAIII.CliqueCovers.eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base
 #print axioms EPPAIII.CliqueCovers.eppa_two_partial_host_is_wagner_fixed_base
 #print axioms EPPAIII.CliqueCovers.eppa_noncluster_equal_clique_full_classification_fixed_base
--- Cluster-host cross-block matching skeleton, Lemma 6.1
 #print axioms EPPAIII.CliqueCovers.cluster_cross_block_complete
 #print axioms EPPAIII.CliqueCovers.cluster_cross_block_row_unique
 #print axioms EPPAIII.CliqueCovers.cluster_cross_block_col_unique
--- Strong form: cluster host from EPPA and both specified halves
 #print axioms EPPAIII.CliqueCovers.eppa_cluster_host_full_or_empty
--- Degenerate t=1 noncluster case; complementary partition not assumed
 #print axioms EPPAIII.CliqueCovers.eppa_noncluster_independent_half_is_cover
--- Exact selected-copy alignment and two-half Lemma 6.1 classification
 #print axioms EPPAIII.CliqueCovers.eppa_cluster_actual_host_is_uniform_cover
 #print axioms EPPAIII.CliqueCovers.eppa_equal_clique_double_classification
--- Entire t=1 case of Lemma 6.1, with fixed selected embedding
 #print axioms EPPAIII.CliqueCovers.eppa_independent_double_classification
+#print axioms EPPAIII.eppa_relabel_base
+#print axioms EPPAIII.CliqueCovers.oneCliqueBaseSwap_complement
+#print axioms EPPAIII.CliqueCovers.oneCliqueDualCoverGraph
+#print axioms EPPAIII.CliqueCovers.complement_comap_equiv
+#print axioms EPPAIII.CliqueCovers.eppa_one_clique_double_classification
+#print axioms EPPAIII.CliqueCovers.eppa_all_positive_clique_double_classification
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_clique_actual_host_dichotomy
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_base_components
+#print axioms EPPAIII.BlockSystems.invariant_perfect_matching_yields_pairs
+#print axioms EPPAIII.BlockSystems.eppa_case1_perfect_matching_is_taylor_up_to_mate
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_clique_actual_host_is_taylor
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_and_taylor
+#print axioms EPPAIII.BlockSystems.twoCliqueGraph_switch_to_any_twoClique
+#print axioms EPPAIII.BlockSystems.twoCliqueGraph_switch_to_complete
+#print axioms EPPAIII.CliqueCovers.eppa_noncluster_clique_double_all_positive
+#print axioms EPPAIII.BlockSystems.rook_paired_eppa_outside_graph_two_forms
+#print axioms EPPAIII.BlockSystems.rook_eppa_two_point_blocks_outside_graph_two_forms
+#print axioms EPPAIII.BlockSystems.rook_eppa_nontrivial_imprimitive_block_sizes
+#print axioms EPPAIII.BlockSystems.rook_eppa_nine_block_outside_is_rook
+#print axioms EPPAIII.BlockSystems.rook_eppa_imprimitive_outside_is_rook
+#print axioms EPPAIII.BlockSystems.rook_eppa_imprimitive_uniform_cross_degree
+#print axioms EPPAIII.BlockSystems.rook_eppa_imprimitive_models_up_to_complement
+#print axioms EPPAIII.BlockSystems.cycleFive_paired_outside_uniform_cross_degree
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_actual_uniform_cross_degree
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_imprimitive_small_cross_classification
+#print axioms EPPAIII.BlockSystems.cycleFive_eppa_imprimitive_models_up_to_complement
+#print axioms EPPAIII.BlockSystems.rook_double_nonneighbour_is_taylor
+#print axioms EPPAIII.BlockSystems.rook_double_neighbour_is_matefree_blowup
+#print axioms EPPAIII.BlockSystems.cycleFiveUpperShift_bijective
+#print axioms EPPAIII.BlockSystems.cycleFive_adjacent_pair_double_is_taylor
+#print axioms EPPAIII.BlockSystems.cycleFive_diagonal_pair_double_is_matefree_blowup

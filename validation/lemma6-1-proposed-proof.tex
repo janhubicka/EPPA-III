@@ -1,0 +1,102 @@
+% Proposed replacement for the proof of Lemma \ref{thm:sKt_witnesses}.
+% Mathematical proof verified via EPPAIII/CliqueCovers/AllParametersClassification.lean.
+% Source manuscript intentionally unchanged.
+\begin{proof}
+Put $B=V(H)\setminus V(G)$. Since $H$ is regular and
+$|B|=|G|$, counting edges between the two halves gives
+\[
+ |E(H[B])|=|E(G)|=s\binom t2.                    \tag{*}
+\]
+We first dispose of two simple cases. If $s=1$, then
+$H[B]\cong K_t$. All vertices of $B$ have the same number
+$k$ of neighbours in $G$, and the extensions of
+$\Aut(G)=\Sym(t)$ show that $\binom tk\le t$.
+Thus $k\in\{0,1,t-1,t\}$. In the middle two cases the
+$t$ neighbourhoods are all distinct, giving a matching
+or its complement; in the other cases the cross-edges
+are empty or complete. If $t=1$, then $H[B]$ is empty
+by~(*). Applying the same argument to the symmetric
+action on the $s$ independent vertices of $G$ gives
+the four cross-relations in the statement.
+
+Now assume $s,t\ge2$. If $H$ is a disjoint union of
+cliques, an edge between $C_i$ and $D_j$ forces
+$C_i\cup D_j$ to be a clique. Since the two halves
+are each partitioned into maximal cliques of size $t$,
+the nonempty cross-relations form a matching between
+the $C_i$ and $D_j$, and each is complete. By EPPA,
+all permutations of the $C_i$ extend to automorphisms
+of $H$, so this matching is either empty or perfect.
+Both alternatives have the required connection matrix.
+
+We may therefore suppose that $H$ is not a disjoint
+union of cliques. For $w\in B$, record the profile
+\[
+ P(w)=(N_H(w)\cap C_1,\ldots,N_H(w)\cap C_s).
+\]
+Every permutation in
+$\Aut(G)=\Sym(t)\wr\Sym(s)$ extends to an automorphism
+of $H$ preserving $G$ and $B$. Thus the orbit of
+$P(w)$ is realised by profiles of vertices of $B$,
+and has size at most $st$. No coherent choice of
+extensions is needed.
+
+Call a coordinate \emph{partial} if its size is strictly
+between $0$ and $t$, and let $p$ be the number of such
+coordinates. If $2\le p<s$, the profile orbit has size at least
+$\binom sp t^p>st$. If $p=s\ge2$, its size is at least
+$t^s>st$, except when $s=t=2$. Hence there is at most
+one partial coordinate, unless $s=t=2$.
+
+Suppose that a profile has exactly one partial
+coordinate of size $k$, and that $r$ of its other
+coordinates are full. Its orbit has size
+\[
+  s\binom tk\binom{s-1}{r}\le st.
+\]
+It follows that $k\in\{1,t-1\}$ and
+$r\in\{0,s-1\}$. In particular the orbit consists of
+exactly $st$ distinct profiles and exhausts $B$.
+The induced action on $B$ is then the natural action
+of $\Sym(t)\wr\Sym(s)$ on $s$ blocks of size $t$.
+Its orbits on unordered pairs are the pairs within
+one block and those between different blocks.
+Together with~(*), this forces $H[B]\cong sK_t$.
+The partial coordinate gives a matching or its
+complement on the diagonal, and all off-diagonal
+entries are uniformly empty or complete.
+
+If $s=t=p=2$, the four outside profiles are the
+four choices of one vertex from each $C_i$.
+Their pair orbits have sizes $4$ and $2$.
+By~(*) the outside graph has two edges, so these
+are the two opposite-corner edges. The resulting
+graph is the Wagner graph, with the displayed matrix.
+
+It remains to assume that no profile has a partial
+coordinate. Then all vertices of each $C_i$ are
+true twins in $H$. By transitivity their twin
+classes have a common size $a\ge t$.
+The vertex-transitive quotient on the twin classes
+has at most $2s$ vertices and contains the $s$
+selected classes as an independent set.
+It has positive degree, since $H$ is not a disjoint
+union of cliques. A regular graph of positive degree
+has no independent set larger than half its order.
+Consequently there are exactly $2s$ twin classes,
+all of size $t$, and $B$ consists of the remaining
+$s$ classes. Equation~(*) shows that no edges join
+distinct classes contained in $B$.
+
+Each outside class is connected completely to a
+subset of the selected classes. These subsets have
+a common size $r$ by regularity of $H$, and
+permutations of the selected $C_i$ realise all
+$\binom sr$ such subsets. Since there are only
+$s$ outside classes, $\binom sr\le s$, whence
+$r\in\{0,1,s-1,s\}$. For $r=1$ or $s-1$, pairing
+outside classes with their distinguished $C_i$
+gives a uniform diagonal and off-diagonal relation.
+For $r=0$ or $s$, all cross-relations are equal.
+This gives case~(1) and completes the proof.
+\end{proof}
