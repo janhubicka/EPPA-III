@@ -34,6 +34,7 @@ def twoCliqueMatchedGraph {V : Type*} (c : V → Bool)
     (mate : Bool) : SimpleGraph (Bool × V) where
   Adj := twoCliqueMatchedRel c mate
   symm := by
+    constructor
     intro u v h
     change u ≠ v ∧
       (Bool.xor u.1 (c u.2) = Bool.xor v.1 (c v.2) ∨
@@ -46,6 +47,7 @@ def twoCliqueMatchedGraph {V : Type*} (c : V → Bool)
     · exact Or.inl heq.symm
     · exact Or.inr ⟨hmate.1, hmate.2.symm⟩
   loopless := by
+    constructor
     intro u h
     exact h.1 rfl
 
