@@ -67,6 +67,10 @@ jobs:
           python3 checks/section3_wreath_orbits.py
           python3 checks/section3_short_profiles.py
           python3 checks/section3_c5_host_patterns.py
+      - name: Check fragile combinatorial screens
+        run: |
+          python3 checks/section5_partial_twograph_audit.py
+          python3 checks/section7_srg_cover_audit.py
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then

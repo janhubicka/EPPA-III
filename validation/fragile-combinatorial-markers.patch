@@ -1,0 +1,47 @@
+--- a/main-new(20261016-172438).tex
++++ b/main-new(20261016-172438).tex
+@@ -1120,6 +1120,8 @@
+ Let $f$ be a partial automorphism of a two-graph $(X,\Delta)$. Then there is a graph~$G$ in the switching class associated with~$\Delta$ such that $f$ is a partial automorphism of $G$.
+ \label{lemma:gtg}
+ \end{lemma}
++% Independent combinatorial audit, 2026-10-16: proof repair noted separately.
++\leanpending{partial 2-graph}%
+ 
+ \begin{proof}
+ We consider the structure on $X$ given by iteration of~$f$, an oriented graph with edges $(f^{i}x, f^{i+1}x)$ for any $x \in X$ and  $i \in \omega$. This consists of
+@@ -2785,6 +2787,8 @@
+ \begin{lemma}\label{lemma:cliqueextension}
+ Let $l \geq 1$. Let~$H$ be a graph without twins, and $\hat{H}$ its $l$-clique extension. If $\hat{H}$ is an EPPA witness for an induced subgraph~$\hat{G}$, then~$H$ is an EPPA witness for $\pi(\hat{G})$.
+ \end{lemma}
++% Independent combinatorial audit, 2026-10-16: proof repair noted separately.
++\leanpending{clique lift}%
+ 
+ \begin{proof}
+ Let $\alpha$ be a partial automorphism of $\pi(\hat{G})$ with domain $D \subseteq V(\pi(\hat{G}))$. For $i \in [l]$ and $d \in D$ such that $(i,d) \in V(\hat{G})$, we define $\hat{\alpha}\left((i,d)\right) = (i,\alpha(d))$. We claim that this defines a partial isomorphism of~$\hat{G}$. Clearly, $\hat{\alpha}$ is injective as $\alpha$ is injective. Let $d, d' \in D$ and $i,j \in [l]$. If $(i,d)\sim (j,d')$, then either $d \sim d'$ in $H$ or $i \neq j$ and $d = d'$. In the first case, we have $\alpha(d) \sim \alpha(d')$ in $H$ and hence $\hat{\alpha}((i,d)) = (i,\alpha(d)) \sim (j, \alpha(d')) = \hat{\alpha}((j,d))$. In the second case, we have $\hat{\alpha}((i,d)) = (i,\alpha(d)) \sim (j, \alpha(d)) = \hat{\alpha}((j,d))$. 
+@@ -2862,6 +2866,8 @@
+ A strongly regular generalised clique cover, or the complement of one, is
+ homogeneous.
+ \end{lemma}
++% Independent combinatorial audit, 2026-10-16: proof repair noted separately.
++\leanpending{SRG covers}%
+ 
+ \begin{proof}
+ Let $H$ be a strongly regular generalised clique cover of $s K_t$ for $s,t \in \mathbb{N}$, so $|H| = 2st$.
+@@ -3138,6 +3144,8 @@
+ Pick such a vertex $n_2$. Then $|\Aut(\hc)_{(v,w,n_1,n_2)}| \leq 225/50 < 5$. 
+ Repeating this argument once more yields a contradiction. 
+ \end{Example}
++% Independent combinatorial audit, 2026-10-16: proof repair noted separately.
++\leanpending{EPPA orbits}%
+ 
+ \begin{Example}[$2^{11}.M_{24}$ graph on 2048 vertices]\label{ex:m24}
+ Assume that $\hc$ is the $2^{11}.M_{24}$ graph on 2048 vertices (see~\cite[Section~10.84]{BRO22}) with point stabilisers isomorphic to the Mathieu group $M_{24}$.
+@@ -3152,6 +3160,8 @@
+ All three possibilities can be excluded from the parameters. 
+ This is a contradiction.
+ \end{Example}
++% Independent combinatorial audit, 2026-10-16: proof repair noted separately.
++\leanpending{T24 order}%
+ 
+ 
+ \begin{lemma}\label{lem:no-triangular-subconstituent}
