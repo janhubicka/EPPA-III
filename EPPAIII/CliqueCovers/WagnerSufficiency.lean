@@ -15,6 +15,19 @@ namespace EPPAIII.CliqueCovers
 set_option maxRecDepth 8192
 set_option maxHeartbeats 0
 
+/-- A computable adjacency decision for the finite canonical graph. -/
+private instance : DecidableRel wagnerCanonicalGraph.Adj := by
+  intro u v
+  change Decidable (wagnerCanonicalAdj u v)
+  unfold wagnerCanonicalAdj
+  infer_instance
+
+/-- Computable base adjacency on the designated two disjoint edges. -/
+private instance : DecidableRel (cliqueUnion 2 2).Adj := by
+  intro u v
+  change Decidable (u.1 = v.1 ∧ u.2 ≠ v.2)
+  infer_instance
+
 /-- Enumerate the Wagner Möbius ladder in cyclic order. -/
 def wagnerCycleVertex (k : Fin 8) : CoverVertex 2 2 :=
   match k.val with
@@ -74,10 +87,6 @@ theorem wagnerSymmetry_graphAut :
     ∀ a : Fin 8, ∀ flip : Bool,
       IsGraphAutomorphism wagnerCanonicalGraph
         (wagnerSymmetry a flip) := by
-  change ∀ a : Fin 8, ∀ flip : Bool, ∀ u v : CoverVertex 2 2,
-    wagnerCanonicalAdj u v ↔
-      wagnerCanonicalAdj (wagnerSymmetry a flip u)
-        (wagnerSymmetry a flip v)
   decide
 
 /-- Exact sixteen-permutation certificate for all partial base
@@ -95,9 +104,6 @@ theorem wagner_partial_extends :
 theorem wagner_left_induced :
     IsInducedGraphEmbedding (cliqueUnion 2 2)
       wagnerCanonicalGraph (coverLeftEmbedding 2 2) := by
-  change ∀ u v : Fin 2 × Fin 2,
-    (cliqueUnion 2 2).Adj u v ↔
-      wagnerCanonicalAdj (false,u) (false,v)
   decide
 
 /-- The exceptional Wagner graph itself is an EPPA witness. -/
