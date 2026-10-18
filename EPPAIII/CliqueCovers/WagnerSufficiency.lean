@@ -115,6 +115,7 @@ theorem wagner_partial_extends :
       ∃ a : Fin 8, ∃ flip : Bool, ∀ v : Fin 2 × Fin 2,
         v ∈ D → wagnerSymmetry a flip (coverLeftEmbedding 2 2 v) =
           coverLeftEmbedding 2 2 (p v)
+  letI : Fintype (Equiv.Perm (Fin 2 × Fin 2)) := fintypePerm
   decide
 
 theorem wagner_left_induced :
