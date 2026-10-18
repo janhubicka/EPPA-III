@@ -963,3 +963,6 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wagner_partial_extends
 #print axioms EPPAIII.CliqueCovers.wagner_left_induced
 #print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph_isEPPA
+
+#print axioms EPPAIII.CliqueCovers.wagner_rotations_transitive
+#print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph_vertexTransitive
