@@ -1,0 +1,19 @@
+% Source-local optional insertion for the first use of the
+% non-homogeneous-host assumption in Lemma 6.6 / Proposition 6.17.
+% Independent author review only. The circulated manuscript is frozen.
+
+If $H$ were a disjoint union of cliques, vertex-transitivity
+would force all its components to have the same order.
+Such a graph is homogeneous: any partial automorphism induces
+an injection between the components meeting its domain
+and those meeting its image. This extends to a permutation
+of the components, and the prescribed partial bijections
+extend inside them since the components have equal order.
+Consequently the non-homogeneous graph $H$ is not a
+disjoint union of cliques.
+
+% Rationale: the source assumes non-homogeneous vertex-transitive H,
+% while the strongest Lean version of the generalized-cover and
+% unequal-clique theorems assumes non-cluster H. The displayed
+% elementary implication supplies the exact logical bridge.
+% This is a paper proof, not yet an exported generic Lean theorem.
