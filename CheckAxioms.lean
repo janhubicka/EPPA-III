@@ -946,3 +946,6 @@ import EPPAIII
 -- Host homogeneity is invariant under graph complementation
 #print axioms EPPAIII.DoubleCover.homogeneous_complement_iff
 #print axioms EPPAIII.DoubleCover.nonhomogeneous_complement_iff
+
+-- Homogeneity of all finite unions of equal cliques
+#print axioms EPPAIII.CliqueCovers.cliqueUnion_isHomogeneous
