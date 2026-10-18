@@ -289,3 +289,5 @@ import EPPAIII.BlockSystems.TwoCliqueColourFromComponents
 import EPPAIII.BlockSystems.UnequalNamedActualHost
 
 import EPPAIII.DoubleCover.HomogeneityComplement
+
+import EPPAIII.CliqueCovers.CliqueUnionHomogeneity
