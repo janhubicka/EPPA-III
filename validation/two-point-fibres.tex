@@ -119,22 +119,24 @@ ordered nonedges connecting different fibres.
 
 \paragraph{Consequences.}
 This replaces the maximal-partial-automorphism
-argument in Claim 3.5 and the ensuing counting
-in Claim 3.6 with an elementary two-point
+argument in Claim 5.14 and the ensuing counting
+in Claim 5.15 with an elementary two-point
 orbit calculation. It also gives the Case~2
 double-cover identification in Lemma 3.12
 \emph{without using regularity or unequal
 clique sizes}, once the pair system is known.
-For Lemma 3.3, Claim 3.4 remains the separate
+For Lemma 5.12, Claim 5.13 remains the separate
 step establishing that invariant pair system.
 
 \paragraph{Verification boundary.}
-The three binary configurations are exhaustively
-checked and encoded in Lean in
-\texttt{EPPAIII/DoubleCover/PairPatterns.lean}.
-The logical implication from an invariant pair
-system and EPPA to the uniform matrices, and
-the layer-rigidity implication, remain to be
-fully formalized. The source manuscript has
+The binary configurations, the uniform matrices
+derived from EPPA, and the layer-rigidity
+argument have been formalised in Lean.
+The actual-host two-point blocks, Taylor
+normal form with optional mate edges, and
+ordered inter-block orbits are assembled in
+\texttt{EPPAIII/BlockSystems/ImprimitiveClassification.lean}.
+The source statement's Gardiner-classification
+bridge is a separate obligation. The source manuscript has
 not been changed.
 \end{document}

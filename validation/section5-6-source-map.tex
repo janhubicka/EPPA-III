@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,geometry,booktabs}
+\geometry{margin=25mm}
+\title{EPPA--III: new manuscript numbering and double-cover checkpoint}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Source and policy.}
+The authoritative numbered version is \texttt{main-new(3).pdf},
+corresponding to the new organisation in \texttt{main-new(8).tex}.
+The former Sections~3 and~5 are now mainly Sections~5 and~6.
+The author's manuscript is frozen until validation is complete;
+all patches are proposals kept in the Lean repository.
+
+\paragraph{Cross-reference map.}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Former numbering & Current numbering\\
+\midrule
+Lemma 3.3 & Lemma 5.12 (\texttt{lemma:doublecover})\\
+Claims 3.4--3.6 & Claims 5.13--5.15\\
+Lemma 3.7 & Lemma 6.1 (\texttt{thm:sKt\_witnesses})\\
+Claims 3.8--3.11 & Claims 6.2--6.5\\
+Lemma 3.12 & Lemma 6.6 (\texttt{lemma:different\_cliques})\\
+Claims 3.13--3.16 & Claims 6.7--6.10\\
+Lemma 3.18, Claim 3.19 & Lemma 6.12, Claim 6.13\\
+Lemma 3.20, Claims 3.21--3.22 & Lemma 6.14, Claims 6.15--6.16\\
+Proposition 3.23 & Proposition 6.17\\
+\bottomrule
+\end{tabular}
+\end{center}
+The TeX labels remain stable, so no theorem or module in Lean is
+renamed and historical validation filenames are preserved.
+
+\paragraph{Double-cover core.}
+The theorem
+\texttt{transitive\_eppa\_double\_cover\_classification}
+combines the actual-host two-point block reduction, a canonical
+equivalence $\{0,1\}\times V(G)\simeq V(H)$ fixing the embedded copy,
+Taylor adjacency between distinct fibres, optional uniform mate edges,
+and transitivity on ordered inter-block edges and nonedges.
+It assumes a non-homogeneous base, the non-cluster exclusions,
+and an actual transitive imprimitive EPPA host; no coherent lifts or
+pre-indexed outside layer.
+
+\paragraph{Verification boundary.}
+The source statement excludes Gardiner's homogeneous graph families,
+rather than explicitly assuming non-homogeneity of $G$.
+That bridge is not part of this Lean theorem. The shorter verified
+two-point proof does not certify every line of the original
+maximal-partial-map argument in Claim~5.14.
+
+\paragraph{Priority.}
+Finish the former Section~3 in order: Lemma~5.12;
+Lemmas~6.1 and~6.6; exceptions 6.12 and~6.14;
+and final Proposition~6.17. Only then apply reviewed
+minimal source corrections.
+\end{document}
