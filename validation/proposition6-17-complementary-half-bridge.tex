@@ -1,0 +1,56 @@
+% EPPA-III Section 6 / Proposition 6.17.
+% An optional minimal source-local bridge; NOT an edit to the frozen manuscript.
+% Mathematical conclusion separately checked by the stronger Lean theorem
+% EPPAIII.CliqueCovers.eppa_noncluster_clique_double_all_positive, PR #307.
+% The paragraph below supplies the missing outside-half hypothesis of Lemma 6.1
+% without changing the proof of that lemma. Author review pending.
+
+\paragraph{The complementary half in the equal-clique case.}
+Suppose that $H$ is non-homogeneous and vertex-transitive,
+$|H|=2st$, and $G\cong sK_t$ is an induced subgraph for which
+$H$ is an EPPA witness. Put $B=H\setminus G$ and denote the
+cliques of $G$ by $C_1,\ldots,C_s$. We claim that
+$B\cong sK_t$, so that Lemma~\ref{thm:sKt_witnesses} applies.
+
+Since $H$ is regular and the two halves have the same order,
+counting their internal and crossing edges gives
+$|E(B)|=|E(G)|=s\binom t2$.
+The cases $s=1$ and $t=1$ follow immediately.
+Suppose $s,t\ge2$. For $w\in B$, let
+\[
+  P(w)=\bigl(N_H(w)\cap C_i\bigr)_{i=1}^{s}.
+\]
+The extensions of $\Aut(G)=S_t\wr S_s$ show that the orbit
+of every such profile is represented in $B$, and hence has
+size at most $st$. If a profile has a partial coordinate,
+the orbit bound forces exactly one partial coordinate of
+size $1$ or $t-1$, with all other coordinates uniformly
+empty or full, except when $s=t=2$ and both coordinates
+are partial. In each case the orbit has precisely $st$
+elements and gives canonical labels of all vertices of $B$.
+The induced action on $B$ has two orbits on unordered pairs
+(the two pairs of opposite corners in the exceptional square
+case). The equality of internal edge counts therefore gives
+$B\cong sK_t$.
+
+It remains to assume that every profile has only empty
+or full coordinates. Then each $C_i$ consists of true twins
+of $H$. By vertex-transitivity the true-twin classes all
+have the same order $a\ge t$. The quotient on these classes
+has at most $2s$ vertices and contains an independent
+set of $s$ vertices. It has positive degree, since a
+vertex-transitive disjoint union of cliques is homogeneous.
+A regular graph of positive degree has no independent
+set of more than half of its vertices. Consequently
+$a=t$ and the quotient has exactly $2s$ vertices.
+The $s$ remaining classes constitute $B$, and the
+internal edge count forces them to be pairwise
+nonadjacent. Again $B\cong sK_t$, as claimed.
+
+% Rationale: Proposition 6.17 currently invokes Lemma 6.1 before
+% establishing its complementary-half hypothesis. This local claim
+% supplies precisely that missing premise while preserving the lemma.
+% It uses no Gardiner or rank-three classification, and makes no
+% choice of coherent EPPA extensions. The complete profile argument
+% is verified at theorem level in PR #307; this compact paper
+% argument must still be reviewed against the source's local notation.
