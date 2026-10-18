@@ -924,3 +924,7 @@ import EPPAIII
 -- Complete named-model complement-extension axiom coverage
 #print axioms EPPAIII.BlockSystems.rook_matefree_is_complement_of_anti_rook_extension
 #print axioms EPPAIII.BlockSystems.cycleFive_matefree_is_complement_extension
+
+-- Arbitrary-size two-clique Taylor named graph identification
+#print axioms EPPAIII.BlockSystems.twoCliqueTaylorRel_iff_matched
+#print axioms EPPAIII.BlockSystems.twoCliqueTaylorGraph_eq_matched
