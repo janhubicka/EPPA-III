@@ -939,3 +939,6 @@ import EPPAIII
 
 -- Canonical Boolean colouring from two covered clique components
 #print axioms EPPAIII.BlockSystems.cluster_two_components_has_twoClique_colouring
+
+-- Final actual-host unequal-clique classification, selected copy fixed
+#print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_named_host
