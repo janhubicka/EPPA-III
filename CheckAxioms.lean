@@ -928,3 +928,6 @@ import EPPAIII
 -- Arbitrary-size two-clique Taylor named graph identification
 #print axioms EPPAIII.BlockSystems.twoCliqueTaylorRel_iff_matched
 #print axioms EPPAIII.BlockSystems.twoCliqueTaylorGraph_eq_matched
+
+-- Final actual Taylor-pair host identification, all clique orders
+#print axioms EPPAIII.BlockSystems.twoClique_actual_taylor_is_matched
