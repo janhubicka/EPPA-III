@@ -277,3 +277,9 @@ import EPPAIII.BlockSystems.CycleFiveComplementEppa
 import EPPAIII.BlockSystems.CycleFiveComplementProfile
 import EPPAIII.BlockSystems.CycleFiveFinalImprimitiveClassification
 import EPPAIII.BlockSystems.ExceptionalNamedModels
+
+import EPPAIII.BlockSystems.TwoCliqueTaylorNamed
+
+import EPPAIII.BlockSystems.TwoCliqueActualTaylorNamed
+
+import EPPAIII.BlockSystems.TwoCliqueNonclusterMate

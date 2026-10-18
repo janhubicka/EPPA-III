@@ -920,3 +920,19 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cycleFiveUpperShift_bijective
 #print axioms EPPAIII.BlockSystems.cycleFive_adjacent_pair_double_is_taylor
 #print axioms EPPAIII.BlockSystems.cycleFive_diagonal_pair_double_is_matefree_blowup
+
+-- Complete named-model complement-extension axiom coverage
+#print axioms EPPAIII.BlockSystems.rook_matefree_is_complement_of_anti_rook_extension
+#print axioms EPPAIII.BlockSystems.cycleFive_matefree_is_complement_extension
+
+-- Arbitrary-size two-clique Taylor named graph identification
+#print axioms EPPAIII.BlockSystems.twoCliqueTaylorRel_iff_matched
+#print axioms EPPAIII.BlockSystems.twoCliqueTaylorGraph_eq_matched
+
+-- Final actual Taylor-pair host identification, all clique orders
+#print axioms EPPAIII.BlockSystems.twoClique_actual_taylor_is_matched
+
+-- Non-cluster elimination of mate-free two-clique Taylor host
+#print axioms EPPAIII.BlockSystems.twoCliqueMatchedGraph_false_is_cluster
+#print axioms EPPAIII.BlockSystems.twoClique_matched_noncluster_forces_mate
+#print axioms EPPAIII.BlockSystems.twoClique_actual_taylor_noncluster_is_matched
