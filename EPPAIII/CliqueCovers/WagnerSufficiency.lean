@@ -119,7 +119,9 @@ theorem wagner_full_tuple_extension :
           ((f u).1 = (f v).1 ∧ (f u).2 ≠ (f v).2)) →
       ∃ a : Fin 8, ∃ flip : Bool, ∀ v : Fin 2 × Fin 2,
         wagnerSymmetry a flip (false,v) = (false,f v) := by
-  decide
+  rintro ⟨a,b⟩ ⟨c,d⟩ ⟨e,f⟩ ⟨g,h⟩
+  fin_cases a <;> fin_cases b <;> fin_cases c <;> fin_cases d <;>
+    fin_cases e <;> fin_cases f <;> fin_cases g <;> fin_cases h <;> decide
 
 /-- The tuple certificate applies to any function by evaluating
 it on the four possible base vertices. -/
