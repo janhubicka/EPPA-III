@@ -960,3 +960,7 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.cliqueUnion_transitive_via_swaps
 #print axioms EPPAIII.CliqueCovers.coverSideSwap_graphAut
 #print axioms EPPAIII.CliqueCovers.uniform_cover_vertex_transitive
+
+-- Exceptional Wagner witness: finite generator-certified sufficiency
+#print axioms EPPAIII.CliqueCovers.wagnerCanonical_vertexTransitive
+#print axioms EPPAIII.CliqueCovers.wagnerCanonical_isEPPA
