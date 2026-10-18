@@ -1,5 +1,6 @@
 import EPPAIII.CliqueCovers.WagnerHostConclusion
 import EPPAIII.EPPA.Definitions
+import EPPAIII.CliqueCovers.CliqueUnionHomogeneity
 
 /-!
 # The Wagner graph is an EPPA witness for the selected 2K₂
@@ -97,8 +98,23 @@ theorem wagnerSymmetry_graphAut :
     infer_instance
   decide
 
-/-- Exact sixteen-permutation certificate for all partial base
-automorphisms of the designated two disjoint edges. -/
+/-- Fully computational certificate over the 256 maps of four points.
+We avoid attempting to enumerate equivalence structures directly:
+injectivity and adjacency preservation are checked as explicit
+finite predicates on an ordinary function. -/
+theorem wagner_full_function_extension :
+    ∀ f : (Fin 2 × Fin 2) → (Fin 2 × Fin 2),
+      (∀ u v : Fin 2 × Fin 2, f u = f v → u = v) →
+      (∀ u v : Fin 2 × Fin 2,
+        (u.1 = v.1 ∧ u.2 ≠ v.2) ↔
+          ((f u).1 = (f v).1 ∧ (f u).2 ≠ (f v).2)) →
+      ∃ a : Fin 8, ∃ flip : Bool, ∀ v : Fin 2 × Fin 2,
+        wagnerSymmetry a flip (false,v) = (false,f v) := by
+  decide
+
+/-- Any partial base automorphism first extends inside the
+homogeneous two-clique base and then extends via a Wagner symmetry.
+The only finite exhaustive step concerns full maps of four points. -/
 theorem wagner_partial_extends :
     ∀ (D : Finset (Fin 2 × Fin 2))
       (p : Equiv.Perm (Fin 2 × Fin 2)),
@@ -107,16 +123,22 @@ theorem wagner_partial_extends :
           v ∈ D →
           wagnerSymmetry a flip (coverLeftEmbedding 2 2 v) =
             coverLeftEmbedding 2 2 (p v) := by
-  change ∀ (D : Finset (Fin 2 × Fin 2))
-      (p : Equiv.Perm (Fin 2 × Fin 2)),
-    (∀ u v : Fin 2 × Fin 2, u ∈ D → v ∈ D →
-      ((u.1 = v.1 ∧ u.2 ≠ v.2) ↔
-        ((p u).1 = (p v).1 ∧ (p u).2 ≠ (p v).2))) →
-      ∃ a : Fin 8, ∃ flip : Bool, ∀ v : Fin 2 × Fin 2,
-        v ∈ D → wagnerSymmetry a flip (coverLeftEmbedding 2 2 v) =
-          coverLeftEmbedding 2 2 (p v)
-  letI : Fintype (Equiv.Perm (Fin 2 × Fin 2)) := fintypePerm
-  decide
+  intro D p hp
+  obtain ⟨sigma, hAut, hAgree⟩ :=
+    cliqueUnion_isHomogeneous 2 2 D p hp
+  have hAdj (u v : Fin 2 × Fin 2) :
+      (u.1 = v.1 ∧ u.2 ≠ v.2) ↔
+        ((sigma u).1 = (sigma v).1 ∧
+          (sigma u).2 ≠ (sigma v).2) := hAut u v
+  obtain ⟨a,flip,hAll⟩ :=
+    wagner_full_function_extension sigma sigma.injective hAdj
+  refine ⟨a,flip,?_⟩
+  intro v hv
+  change wagnerSymmetry a flip (false,v) = (false,p v)
+  calc
+    wagnerSymmetry a flip (false,v) = (false,sigma v) := hAll v
+    _ = (false,p v) :=
+      congrArg (fun z => (false,z)) (hAgree v hv)
 
 theorem wagner_left_induced :
     IsInducedGraphEmbedding (cliqueUnion 2 2)
