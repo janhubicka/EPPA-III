@@ -26,6 +26,8 @@ The printed Lemma 6.1 assumes that the graph induced by `H\G` is another `sK_t`,
 
 **Repair:** Use the directly verified stronger theorem #307: for every positive `s,t`, a non-cluster, vertex-transitive double-sized EPPA host of the designated `sK_t` is a uniform generalized clique cover or the Wagner exception, **without assuming the outside half is a clique union**. One can (i) replace the old proof of Lemma 6.1 by the compact independent profile argument in `validation/lemma6-1-proposed-proof.tex`, or (ii) add a separate stronger lemma/corollary with that argument before the application. Do not repair merely by saying that regularity makes the outside half isomorphic.
 
+**Most localized alternative (18 October):** retain the existing Lemma 6.1 exactly as written and insert the self-contained complementary-half argument in `validation/proposition6-17-complementary-half-bridge.tex` immediately before invoking it in Proposition 6.17. The proof uses only profile orbit saturation, the true-twin quotient and equality of half-edge counts. This supplies the missing hypothesis `H\G ≅ sK_t` without rewriting Claims 6.2–6.5. The paragraph itself remains proposed source prose until Sofia reviews it.
+
 **Validation:** conclusion Lean-checked #307; exact manuscript prose/placement pending author review.
 
 ### S6-02 — **Elementary hypothesis bridge**, Lemma 6.6 and Proposition 6.17 (priority A)
