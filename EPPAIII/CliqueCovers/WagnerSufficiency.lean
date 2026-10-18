@@ -31,8 +31,22 @@ theorem wagnerCycleVertex_bijective :
     Function.Bijective wagnerCycleVertex := by
   decide
 
-def wagnerCycleEquiv : Fin 8 ≃ CoverVertex 2 2 :=
-  Equiv.ofBijective wagnerCycleVertex wagnerCycleVertex_bijective
+/-- Explicit inverse labelling, so all certificates compute by reduction. -/
+def wagnerCycleIndex (u : CoverVertex 2 2) : Fin 8 :=
+  if u = (false, (0, 0)) then 0
+  else if u = (true, (0, 0)) then 1
+  else if u = (false, (1, 0)) then 2
+  else if u = (true, (1, 0)) then 3
+  else if u = (false, (0, 1)) then 4
+  else if u = (true, (1, 1)) then 5
+  else if u = (false, (1, 1)) then 6
+  else 7
+
+def wagnerCycleEquiv : Fin 8 ≃ CoverVertex 2 2 where
+  toFun := wagnerCycleVertex
+  invFun := wagnerCycleIndex
+  left_inv := by decide
+  right_inv := by decide
 
 /-- Rotations and reflections modulo eight. -/
 def wagnerIndexMap (a : Fin 8) (flip : Bool) (k : Fin 8) : Fin 8 :=
@@ -42,9 +56,13 @@ theorem wagnerIndexMap_bijective (a : Fin 8) (flip : Bool) :
     Function.Bijective (wagnerIndexMap a flip) := by
   fin_cases a <;> cases flip <;> decide
 
-def wagnerIndexPerm (a : Fin 8) (flip : Bool) : Equiv.Perm (Fin 8) :=
-  Equiv.ofBijective (wagnerIndexMap a flip)
-    (wagnerIndexMap_bijective a flip)
+def wagnerIndexPerm (a : Fin 8) (flip : Bool) : Equiv.Perm (Fin 8) where
+  toFun := wagnerIndexMap a flip
+  invFun := fun k => if flip then a - k else k - a
+  left_inv := by
+    fin_cases a <;> cases flip <;> decide
+  right_inv := by
+    fin_cases a <;> cases flip <;> decide
 
 /-- A dihedral permutation transported along the cyclic labelling. -/
 def wagnerSymmetry (a : Fin 8) (flip : Bool) :
@@ -56,6 +74,10 @@ theorem wagnerSymmetry_graphAut :
     ∀ a : Fin 8, ∀ flip : Bool,
       IsGraphAutomorphism wagnerCanonicalGraph
         (wagnerSymmetry a flip) := by
+  change ∀ a : Fin 8, ∀ flip : Bool, ∀ u v : CoverVertex 2 2,
+    wagnerCanonicalAdj u v ↔
+      wagnerCanonicalAdj (wagnerSymmetry a flip u)
+        (wagnerSymmetry a flip v)
   decide
 
 /-- Exact sixteen-permutation certificate for all partial base
@@ -73,6 +95,9 @@ theorem wagner_partial_extends :
 theorem wagner_left_induced :
     IsInducedGraphEmbedding (cliqueUnion 2 2)
       wagnerCanonicalGraph (coverLeftEmbedding 2 2) := by
+  change ∀ u v : Fin 2 × Fin 2,
+    (cliqueUnion 2 2).Adj u v ↔
+      wagnerCanonicalAdj (false,u) (false,v)
   decide
 
 /-- The exceptional Wagner graph itself is an EPPA witness. -/
