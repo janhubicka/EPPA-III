@@ -121,4 +121,55 @@ theorem taylor_mates_three_step {V : Type*}
       simp_all [EvenTriple]
   exact ⟨c,d,⟨hxy,h1⟩,⟨hyz,h2⟩,⟨hxz,h3⟩⟩
 
+
+/-- Under the even-triple coverage hypothesis the two lifts of
+any base point have a three-edge walk but no shorter walk.
+This isolates the entire mate-distance part of fibre rigidity. -/
+theorem taylor_mates_three_and_not_shorter {V : Type*}
+    [Nontrivial V]
+    (G : SimpleGraph V)
+    (hCoverage : ∀ x y : V, x ≠ y →
+      ∃ z : V, x ≠ z ∧ y ≠ z ∧ EvenTriple G x y z)
+    (b : Bool) (x : V) :
+    (∃ p q : Bool × V,
+      (taylorPairGraph G).Adj (b,x) p ∧
+      (taylorPairGraph G).Adj p q ∧
+      (taylorPairGraph G).Adj q (!b,x)) ∧
+    ¬ (taylorPairGraph G).Adj (b,x) (!b,x) ∧
+    ¬ ∃ p : Bool × V,
+      (taylorPairGraph G).Adj (b,x) p ∧
+      (taylorPairGraph G).Adj (!b,x) p := by
+  classical
+  obtain ⟨y, hyx⟩ := exists_ne x
+  have hxy : x ≠ y := hyx.symm
+  obtain ⟨z,hxz,hyz,hEven⟩ := hCoverage x y hxy
+  obtain ⟨c,d,h1,h2,h3⟩ :=
+    taylor_mates_three_step G x y z b hxy hxz hyz hEven
+  constructor
+  · refine ⟨(c,y),(d,z),h1,h2,?_⟩
+    exact ((taylorPairGraph G).adj_comm _ _).mpr h3
+  constructor
+  · exact taylor_mates_not_adj G b x
+  · exact taylor_mates_no_common_neighbour G b x
+
+/-- Under the same hypothesis, any two vertices from different
+fibres have distance at most two (an edge or a common neighbour). -/
+theorem taylor_other_fibres_at_most_two {V : Type*}
+    (G : SimpleGraph V)
+    (hCoverage : ∀ x y : V, x ≠ y →
+      ∃ z : V, x ≠ z ∧ y ≠ z ∧ EvenTriple G x y z)
+    (b c : Bool) (x y : V) (hxy : x ≠ y) :
+    (taylorPairGraph G).Adj (b,x) (c,y) ∨
+      ∃ w : Bool × V,
+        (taylorPairGraph G).Adj (b,x) w ∧
+          (taylorPairGraph G).Adj w (c,y) := by
+  by_cases hadj : (taylorPairGraph G).Adj (b,x) (c,y)
+  · exact Or.inl hadj
+  · obtain ⟨z,hxz,hyz,hEven⟩ := hCoverage x y hxy
+    obtain ⟨d,h1,h2⟩ :=
+      taylor_different_fibres_two_step
+        G x y z b c hxy hxz hyz hEven hadj
+    exact Or.inr ⟨(d,z),h1,
+      ((taylorPairGraph G).adj_comm _ _).mpr h2⟩
+
 end EPPAIII.TwoGraphs
