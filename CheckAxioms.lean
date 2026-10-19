@@ -1013,3 +1013,4 @@ import EPPAIII
 -- Fibre rigidity true-twin reduction: odd triple adjacency uniformity
 #print axioms EPPAIII.TwoGraphs.odd_triple_adjacent_lifts_agree
 #print axioms EPPAIII.TwoGraphs.taylor_bad_pair_same_third_fibre_neighbours
+#print axioms EPPAIII.TwoGraphs.taylor_bad_pair_adjacent_true_twins
