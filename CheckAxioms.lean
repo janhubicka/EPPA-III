@@ -1009,3 +1009,7 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.xor_switch_adjacency
 #print axioms EPPAIII.TwoGraphs.taylorSwitchLift_graphAut
 #print axioms EPPAIII.TwoGraphs.taylor_automorphism_lift_of_triple_parity
+
+-- Fibre rigidity true-twin reduction: odd triple adjacency uniformity
+#print axioms EPPAIII.TwoGraphs.odd_triple_adjacent_lifts_agree
+#print axioms EPPAIII.TwoGraphs.taylor_bad_pair_same_third_fibre_neighbours
