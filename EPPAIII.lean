@@ -308,3 +308,5 @@ import EPPAIII.DoubleCover.InducedTwoTransitiveCore
 import EPPAIII.DoubleCover.InducedTwoTransitiveAssembly
 
 import EPPAIII.TwoGraphs.InducedTripleAction
+
+import EPPAIII.TwoGraphs.TripleParity
