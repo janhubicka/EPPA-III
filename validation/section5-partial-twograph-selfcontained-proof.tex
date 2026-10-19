@@ -1,0 +1,81 @@
+% EPPA-III, Lemma \label{lemma:gtg} (current Section 5.1).
+% Source base: main-new(20261019-085906).tex.
+% This is a separate proposed replacement, NOT an edit of the frozen manuscript.
+% No extra theorem is cited; the Mallows--Sloane theorem may still be
+% kept earlier as background/motivation.  The proof covers empty
+% domains, all fixed points, even and odd cycles, and open paths.
+%
+% Proposed replacement for the proof of \label{lemma:gtg} only:
+
+\begin{proof}
+Choose a graph $F$ in the switching class and write
+$e(x,y)\in\mathbb F_2$ for its adjacency indicator.
+Put $D=\dom{f}$ and, for $x,y\in D$, let
+$\delta(x,y)=e(x,y)+e(fx,fy)$.
+Since $f$ preserves the two-graph, we have
+$$
+\delta(x,y)+\delta(y,z)+\delta(z,x)=0
+$$
+for every $x,y,z\in D$; the equality also holds when two
+vertices coincide. If $D$ is empty there is nothing to prove.
+Otherwise choose $r\in D$ and put $h(x)=\delta(r,x)$.
+The displayed equality gives
+$$
+\delta(x,y)=h(x)+h(y)\qquad(x,y\in D).
+$$
+
+We will choose a function $s:X\to\mathbb F_2$ and a constant
+$c\in\mathbb F_2$ such that
+$$
+s(x)+s(fx)=h(x)+c\qquad(x\in D).
+$$
+Indeed, switching $F$ according to $s$ changes its adjacency
+indicator to $e_s(x,y)=e(x,y)+s(x)+s(y)$, and then, for
+$x,y\in D$,
+$$
+e_s(x,y)+e_s(fx,fy)
+=\delta(x,y)+h(x)+h(y)+c+c=0.
+$$
+Thus $f$ will be a partial automorphism of the switched graph.
+
+The directed graph of the partial bijection $f$ is a disjoint
+union of directed paths and cycles. On a cycle $C$ the displayed
+equations for $s$ are consistent precisely when
+$$
+\sum_{x\in C}h(x)=|C|c
+$$
+in $\mathbb F_2$. We claim that one choice of $c$ satisfies
+this condition for every cycle.
+
+First, let $C=(x_0,\ldots,x_{2m-1})$ be an even cycle, with
+$fx_i=x_{i+1}$ and indices read modulo $2m$. Summing
+$\delta(x_i,x_{i+m})=e(x_i,x_{i+m})
++e(x_{i+1},x_{i+m+1})$ over $0\le i<m$
+telescopes to zero: the final unordered pair is the first.
+On the other hand, these $m$ pairs partition $C$, so
+$$
+\sum_{x\in C}h(x)
+=\sum_{i=0}^{m-1}\delta(x_i,x_{i+m})=0.
+$$
+
+Next, let $C,C'$ be two odd cycles of lengths $a,b$ and choose
+$x\in C$, $y\in C'$. Put $L=\operatorname{lcm}(a,b)$.
+Summing $\delta(f^ix,f^iy)
+=e(f^ix,f^iy)+e(f^{i+1}x,f^{i+1}y)$
+over $0\le i<L$ again telescopes to zero. Hence
+$$
+0=\frac La\sum_{z\in C}h(z)
+ +\frac Lb\sum_{z\in C'}h(z).
+$$
+Both coefficients are odd, so the two sums are equal.
+If there is an odd cycle, choose $c$ to be this common sum;
+otherwise put $c=0$. The equations are now consistent on
+all cycles.
+
+Finally choose $s$ at one point of each cycle and propagate
+it using $s(fx)=s(x)+h(x)+c$; the cycle condition ensures
+consistency. On each directed path choose $s$ at its initial
+point freely and propagate by the same equation. Choose
+$s$ arbitrarily on vertices outside $\dom{f}\cup\ran{f}$.
+This constructs the required switching and proves the lemma.
+\end{proof}

@@ -297,3 +297,5 @@ import EPPAIII.CliqueCovers.CoverAutomorphismLift
 import EPPAIII.CliqueCovers.CoverVertexTransitivity
 
 import EPPAIII.CliqueCovers.WagnerSufficiency
+
+import EPPAIII.TwoGraphs.PartialAutomorphismParity

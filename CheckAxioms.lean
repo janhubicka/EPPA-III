@@ -970,3 +970,8 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph_isEPPA
 #print axioms EPPAIII.CliqueCovers.wagner_rotations_transitive
 #print axioms EPPAIII.CliqueCovers.wagnerCanonicalGraph_vertexTransitive
+
+-- Section 5.1 partial two-graph switching: algebraic parity interface
+#print axioms EPPAIII.TwoGraphs.triangle_discrepancy_potential_at
+#print axioms EPPAIII.TwoGraphs.triangle_discrepancy_potential
+#print axioms EPPAIII.TwoGraphs.partial_triple_parity_potential
