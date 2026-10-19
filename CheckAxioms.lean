@@ -1014,3 +1014,7 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.odd_triple_adjacent_lifts_agree
 #print axioms EPPAIII.TwoGraphs.taylor_bad_pair_same_third_fibre_neighbours
 #print axioms EPPAIII.TwoGraphs.taylor_bad_pair_adjacent_true_twins
+
+-- Section 5 fibre rigidity: EPPA propagation of true twins and base cluster reduction
+#print axioms EPPAIII.TwoGraphs.eppa_true_twins_propagate_to_all_edges
+#print axioms EPPAIII.TwoGraphs.eppa_selected_true_twin_edge_forces_cluster
