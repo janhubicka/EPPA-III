@@ -48,4 +48,38 @@ theorem taylor_bad_pair_same_third_fibre_neighbours
     (y ≠ z ∧ (G.Adj y z ↔ c = d))
   simpa only [hxz,hyz,true_and] using h
 
+/-- Under the same hypothesis, the two adjacent lifts are
+actual true twins of the entire Taylor graph, including their
+relations inside the two distinguished fibres. -/
+theorem taylor_bad_pair_adjacent_true_twins
+    {V : Type*} (G : SimpleGraph V)
+    (x y : V) (b c : Bool)
+    (hAdj : (taylorPairGraph G).Adj (b,x) (c,y))
+    (hBad : ∀ z : V, x ≠ z → y ≠ z →
+      ¬ EvenTriple G x y z) :
+    EPPAIII.CliqueCovers.SameClosedNeighbourhood
+      (taylorPairGraph G) (b,x) (c,y) := by
+  apply EPPAIII.CliqueCovers.closedNeighbourhood_eq_of_true_twins
+    (taylorPairGraph G) (b,x) (c,y) hAdj
+  intro w hwu hwv
+  rcases w with ⟨d,z⟩
+  by_cases hzx : z = x
+  · subst z
+    have hBase := hAdj.2
+    have hSym : G.Adj y x ↔ G.Adj x y := G.adj_comm y x
+    cases b <;> cases c <;> cases d <;>
+      by_cases eXY : G.Adj x y <;>
+      simp_all [taylorPairGraph, taylorPairAdj]
+  · by_cases hzy : z = y
+    · subst z
+      have hBase := hAdj.2
+      have hSym : G.Adj y x ↔ G.Adj x y := G.adj_comm y x
+      cases b <;> cases c <;> cases d <;>
+        by_cases eXY : G.Adj x y <;>
+        simp_all [taylorPairGraph, taylorPairAdj]
+    · have hxz : x ≠ z := fun h => hzx h.symm
+      have hyz : y ≠ z := fun h => hzy h.symm
+      exact taylor_bad_pair_same_third_fibre_neighbours
+        G x y b c hAdj hBad z d hxz hyz
+
 end EPPAIII.TwoGraphs
