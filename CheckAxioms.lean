@@ -975,3 +975,12 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.triangle_discrepancy_potential_at
 #print axioms EPPAIII.TwoGraphs.triangle_discrepancy_potential
 #print axioms EPPAIII.TwoGraphs.partial_triple_parity_potential
+
+-- Section 5 fibre rigidity: Taylor graph geometry under even-triple coverage
+#print axioms EPPAIII.TwoGraphs.taylorPairGraph
+#print axioms EPPAIII.TwoGraphs.taylor_mates_not_adj
+#print axioms EPPAIII.TwoGraphs.taylor_mates_no_common_neighbour
+#print axioms EPPAIII.TwoGraphs.taylor_different_fibres_two_step
+#print axioms EPPAIII.TwoGraphs.taylor_mates_three_step
+#print axioms EPPAIII.TwoGraphs.taylor_mates_three_and_not_shorter
+#print axioms EPPAIII.TwoGraphs.taylor_other_fibres_at_most_two
