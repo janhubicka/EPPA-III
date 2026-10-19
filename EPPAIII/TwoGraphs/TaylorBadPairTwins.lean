@@ -46,7 +46,11 @@ theorem taylor_bad_pair_same_third_fibre_neighbours
     G x y z b c d hXY (hBad z hxz hyz)
   change (x ≠ z ∧ (G.Adj x z ↔ b = d)) ↔
     (y ≠ z ∧ (G.Adj y z ↔ c = d))
-  simpa only [hxz,hyz,true_and] using h
+  constructor
+  · rintro ⟨_,hLeft⟩
+    exact ⟨hyz,h.mp hLeft⟩
+  · rintro ⟨_,hRight⟩
+    exact ⟨hxz,h.mpr hRight⟩
 
 /-- Under the same hypothesis, the two adjacent lifts are
 actual true twins of the entire Taylor graph, including their
