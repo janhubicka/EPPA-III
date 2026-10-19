@@ -310,3 +310,5 @@ import EPPAIII.DoubleCover.InducedTwoTransitiveAssembly
 import EPPAIII.TwoGraphs.TaylorAutomorphismLift
 
 import EPPAIII.TwoGraphs.TaylorBadPairTwins
+
+import EPPAIII.TwoGraphs.EPPAEdgeTwinPropagation
