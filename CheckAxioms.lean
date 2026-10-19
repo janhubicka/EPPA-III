@@ -982,3 +982,5 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_mates_no_common_neighbour
 #print axioms EPPAIII.TwoGraphs.taylor_different_fibres_two_step
 #print axioms EPPAIII.TwoGraphs.taylor_mates_three_step
+#print axioms EPPAIII.TwoGraphs.taylor_mates_three_and_not_shorter
+#print axioms EPPAIII.TwoGraphs.taylor_other_fibres_at_most_two
