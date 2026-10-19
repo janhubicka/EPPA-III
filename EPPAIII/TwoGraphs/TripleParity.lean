@@ -20,7 +20,7 @@ def OddBaseTriple {V : Type*} (G : SimpleGraph V)
 
 /-- A triangle can be assigned three fibre-side bits precisely
 when the parity of the three relations is odd. -/
-private theorem boolean_triangle_iff_odd (a b c : Bool) :
+theorem boolean_triangle_iff_odd (a b c : Bool) :
     (∃ i j k : Bool,
       (a = true ↔ i = j) ∧
       (b = true ↔ j = k) ∧
