@@ -42,7 +42,21 @@ theorem taylorTriple_iff_odd
     (z ≠ x ∧ (G.Adj z x ↔ d = b))) ↔
     Bool.xor (Bool.xor (decide (G.Adj x y))
       (decide (G.Adj y z))) (decide (G.Adj z x)) = true
-  simp [hxy, hyz, hzx]
+  have hReduce :
+      (∃ b c d : Bool,
+        (x ≠ y ∧ (G.Adj x y ↔ b = c)) ∧
+        (y ≠ z ∧ (G.Adj y z ↔ c = d)) ∧
+        (z ≠ x ∧ (G.Adj z x ↔ d = b))) ↔
+      (∃ b c d : Bool,
+        (G.Adj x y ↔ b = c) ∧
+        (G.Adj y z ↔ c = d) ∧
+        (G.Adj z x ↔ d = b)) := by
+    constructor
+    · rintro ⟨b,c,d,⟨_,hbc⟩,⟨_,hcd⟩,⟨_,hdb⟩⟩
+      exact ⟨b,c,d,hbc,hcd,hdb⟩
+    · rintro ⟨b,c,d,hbc,hcd,hdb⟩
+      exact ⟨b,c,d,⟨hxy,hbc⟩,⟨hyz,hcd⟩,⟨hzx,hdb⟩⟩
+  rw [hReduce]
   simpa only [decide_eq_true_eq] using
     boolean_triangle_iff_odd
       (decide (G.Adj x y))
