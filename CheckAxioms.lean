@@ -984,3 +984,8 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_mates_three_step
 #print axioms EPPAIII.TwoGraphs.taylor_mates_three_and_not_shorter
 #print axioms EPPAIII.TwoGraphs.taylor_other_fibres_at_most_two
+
+-- EPPA induced pair orbits and nonhomogeneity
+#print axioms EPPAIII.DoubleCover.eppa_induced_pair_orbit
+#print axioms EPPAIII.DoubleCover.induced_action_not_all_graph_automorphisms
+#print axioms EPPAIII.DoubleCover.induced_action_changes_some_pair_type
