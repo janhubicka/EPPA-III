@@ -42,7 +42,7 @@ theorem taylorTriple_iff_odd
     (z ≠ x ∧ (G.Adj z x ↔ d = b))) ↔
     Bool.xor (Bool.xor (decide (G.Adj x y))
       (decide (G.Adj y z))) (decide (G.Adj z x)) = true
-  simp only [hxy, hyz, hzx, true_and]
+  simp [hxy, hyz, hzx]
   simpa only [decide_eq_true_eq] using
     boolean_triangle_iff_odd
       (decide (G.Adj x y))
