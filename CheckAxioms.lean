@@ -1015,6 +1015,14 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_bad_pair_same_third_fibre_neighbours
 #print axioms EPPAIII.TwoGraphs.taylor_bad_pair_adjacent_true_twins
 
+-- Section 5: induced action preserves the associated Taylor two-graph
+#print axioms EPPAIII.TwoGraphs.taylorTriple_transport_forward
+#print axioms EPPAIII.TwoGraphs.taylorTriple_preserved_by_induced_action
+-- Identification of intrinsic Taylor triangles and ordinary odd triple parity
+#print axioms EPPAIII.TwoGraphs.boolean_triangle_iff_odd
+#print axioms EPPAIII.TwoGraphs.taylorTriple_iff_odd
+#print axioms EPPAIII.TwoGraphs.oddBaseTriple_preserved_by_induced_action
+
 -- Section 5 fibre rigidity: EPPA propagation of true twins and base cluster reduction
 #print axioms EPPAIII.TwoGraphs.eppa_true_twins_propagate_to_all_edges
 #print axioms EPPAIII.TwoGraphs.eppa_selected_true_twin_edge_forces_cluster
