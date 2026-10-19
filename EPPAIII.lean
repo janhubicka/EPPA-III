@@ -301,3 +301,5 @@ import EPPAIII.CliqueCovers.WagnerSufficiency
 import EPPAIII.TwoGraphs.PartialAutomorphismParity
 
 import EPPAIII.TwoGraphs.TaylorFibresDistance
+
+import EPPAIII.DoubleCover.InducedTwoTransitiveCore
