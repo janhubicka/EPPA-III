@@ -1,4 +1,5 @@
 import EPPAIII.TwoGraphs.XorSwitchingPotential
+import EPPAIII.EPPA.Definitions
 
 /-!
 # Elementary lifting of two-graph automorphisms to Taylor doubles
