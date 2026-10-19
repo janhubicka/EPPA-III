@@ -302,5 +302,7 @@ import EPPAIII.TwoGraphs.PartialAutomorphismParity
 
 import EPPAIII.TwoGraphs.TaylorFibresDistance
 
+import EPPAIII.TwoGraphs.OneForAllParity
+
 import EPPAIII.DoubleCover.InducedTwoTransitiveCore
 import EPPAIII.DoubleCover.InducedTwoTransitiveAssembly
