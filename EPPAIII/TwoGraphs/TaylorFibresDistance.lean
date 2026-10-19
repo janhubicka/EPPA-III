@@ -25,6 +25,7 @@ def taylorPairGraph {V : Type*} (G : SimpleGraph V) :
     SimpleGraph (Bool × V) where
   Adj := taylorPairAdj G
   symm := by
+    constructor
     intro u v huv
     rcases huv with ⟨hxy,hAdj⟩
     refine ⟨hxy.symm, ?_⟩
@@ -34,6 +35,7 @@ def taylorPairGraph {V : Type*} (G : SimpleGraph V) :
     · intro h
       exact (G.adj_comm _ _).mpr (hAdj.mpr h.symm)
   loopless := by
+    constructor
     intro u h
     exact h.1 rfl
 
@@ -60,7 +62,7 @@ theorem taylor_mates_no_common_neighbour {V : Type*}
   rintro ⟨⟨c,z⟩, h1, h2⟩
   rcases h1 with ⟨_, hb⟩
   rcases h2 with ⟨_, hc⟩
-  have hh : (b = c) ↔ (!b = c) := hb.symm.trans hc
+  have hh : (b = c) ↔ ((!b) = c) := hb.symm.trans hc
   cases b <;> cases c <;> simp at hh
 
 /-- Nonadjacent vertices over distinct points are joined by a
@@ -110,7 +112,7 @@ theorem taylor_mates_three_step {V : Type*}
   have h2 : G.Adj y z ↔ c = d := by
     dsimp [d]
     by_cases hyzE : G.Adj y z <;> cases c <;> simp_all
-  have h3 : G.Adj x z ↔ !b = d := by
+  have h3 : G.Adj x z ↔ (!b) = d := by
     dsimp [c,d]
     by_cases hxyE : G.Adj x y <;>
       by_cases hxzE : G.Adj x z <;>
