@@ -1001,3 +1001,7 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.induced_fibre_action_on_equal_type
 #print axioms EPPAIII.DoubleCover.induced_fibre_action_mixes_edge_to_nonedge
 #print axioms EPPAIII.DoubleCover.eppa_induced_fibre_action_two_transitive
+
+-- Section 5: induced action preserves the associated Taylor two-graph
+#print axioms EPPAIII.TwoGraphs.taylorTriple_transport_forward
+#print axioms EPPAIII.TwoGraphs.taylorTriple_preserved_by_induced_action
