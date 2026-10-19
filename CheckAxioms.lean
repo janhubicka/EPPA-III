@@ -984,3 +984,9 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_mates_three_step
 #print axioms EPPAIII.TwoGraphs.taylor_mates_three_and_not_shorter
 #print axioms EPPAIII.TwoGraphs.taylor_other_fibres_at_most_two
+
+-- Section 5.2 one-for-all: parity of neighbourhood types and switching
+#print axioms EPPAIII.TwoGraphs.types_equal_or_complementary
+#print axioms EPPAIII.TwoGraphs.one_of_two_switchings_separates
+#print axioms EPPAIII.TwoGraphs.complementary_types_equal_after_switch
+#print axioms EPPAIII.TwoGraphs.complementary_types_equal_after_switch_on
