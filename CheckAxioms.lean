@@ -990,3 +990,14 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.one_of_two_switchings_separates
 #print axioms EPPAIII.TwoGraphs.complementary_types_equal_after_switch
 #print axioms EPPAIII.TwoGraphs.complementary_types_equal_after_switch_on
+
+-- EPPA induced pair orbits and nonhomogeneity
+#print axioms EPPAIII.DoubleCover.eppa_induced_pair_orbit
+#print axioms EPPAIII.DoubleCover.induced_action_not_all_graph_automorphisms
+#print axioms EPPAIII.DoubleCover.induced_action_changes_some_pair_type
+-- Complete Section 5 induced-fibre 2-transitivity conclusion
+#print axioms EPPAIII.DoubleCover.InducedFibreAut.comp
+#print axioms EPPAIII.DoubleCover.InducedFibreAut.inverse
+#print axioms EPPAIII.DoubleCover.induced_fibre_action_on_equal_type
+#print axioms EPPAIII.DoubleCover.induced_fibre_action_mixes_edge_to_nonedge
+#print axioms EPPAIII.DoubleCover.eppa_induced_fibre_action_two_transitive
