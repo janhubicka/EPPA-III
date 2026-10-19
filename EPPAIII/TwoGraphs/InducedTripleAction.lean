@@ -54,6 +54,8 @@ theorem taylorTriple_preserved_by_induced_action
   · intro h
     have hBack := taylorTriple_transport_forward
       G A.inverse (A.σ x) (A.σ y) (A.σ z) h
+    change TaylorTriple G (A.σ.symm (A.σ x))
+      (A.σ.symm (A.σ y)) (A.σ.symm (A.σ z)) at hBack
     simpa using hBack
 
 end EPPAIII.TwoGraphs
