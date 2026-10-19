@@ -1001,3 +1001,11 @@ import EPPAIII
 #print axioms EPPAIII.DoubleCover.induced_fibre_action_on_equal_type
 #print axioms EPPAIII.DoubleCover.induced_fibre_action_mixes_edge_to_nonedge
 #print axioms EPPAIII.DoubleCover.eppa_induced_fibre_action_two_transitive
+
+-- Section 5: direct XOR potential and full Taylor automorphism lifts
+#print axioms EPPAIII.TwoGraphs.xor_three_pairs_zero
+#print axioms EPPAIII.TwoGraphs.xor_triangle_potential
+#print axioms EPPAIII.TwoGraphs.xor_potential_of_triple_parity
+#print axioms EPPAIII.TwoGraphs.xor_switch_adjacency
+#print axioms EPPAIII.TwoGraphs.taylorSwitchLift_graphAut
+#print axioms EPPAIII.TwoGraphs.taylor_automorphism_lift_of_triple_parity
