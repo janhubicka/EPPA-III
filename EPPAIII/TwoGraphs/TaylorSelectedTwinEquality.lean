@@ -60,7 +60,10 @@ theorem taylor_selected_twin_occupied_equalities
     closedTwinClass_card_of_vertex_transitive
       H hTrans w (false,x)
   have hClassSelf : (false,x) ∈ closedTwinClass H (false,x) := by
-    simp [closedTwinClass, SameClosedNeighbourhood]
+    classical
+    unfold closedTwinClass
+    apply Finset.mem_filter.mpr
+    exact ⟨Finset.mem_univ _, rfl⟩
   have ht : 0 < t :=
     Finset.card_pos.mpr ⟨(false,x),hClassSelf⟩
   have hOrder :
@@ -72,9 +75,10 @@ theorem taylor_selected_twin_occupied_equalities
       _ = 2 * Fintype.card V := by
         simp [Fintype.card_prod]
   have hCapacity : Fintype.card V ≤ I.card * t := by
-    simpa only [H,I,Q,t] using
-      (selected_twin_occupied_capacity
-        H (EPPAIII.DoubleCover.bottomEmbedding V) t hUniform)
+    have hCap := selected_twin_occupied_capacity
+      H (EPPAIII.DoubleCover.bottomEmbedding V) t hUniform
+    change Fintype.card V ≤ I.card * t at hCap
+    exact hCap
   have hIndependent : 2 * I.card ≤ Fintype.card Q := by
     simpa only [H,I,Q] using
       (taylor_selected_quotient_independent_half
