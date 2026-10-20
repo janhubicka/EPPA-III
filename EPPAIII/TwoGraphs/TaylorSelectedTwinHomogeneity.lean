@@ -68,7 +68,22 @@ theorem taylor_eppa_selected_true_twin_edge_homogeneous
   have hFib (q : I) :
       Fintype.card {v : V // f v = q} = t := by
     have hh := hFull q.val q.property
-    simpa [Fintype.card_subtype, f, I, π] using hh
+    have hEq (v : V) : (f v = q) ↔ (π v = q.val) := by
+      constructor
+      · intro h
+        exact congrArg Subtype.val h
+      · intro h
+        exact Subtype.ext h
+    calc
+      Fintype.card {v : V // f v = q} =
+          ((Finset.univ : Finset V).filter (fun v => f v = q)).card := by
+            simp [Fintype.card_subtype]
+      _ = ((Finset.univ : Finset V).filter (fun v => π v = q.val)).card := by
+            apply congrArg Finset.card
+            ext v
+            simp only [Finset.mem_filter,Finset.mem_univ,true_and]
+            exact hEq v
+      _ = t := hh
   have hAdj (u v : V) :
       G.Adj u v ↔ f u = f v ∧ u ≠ v := by
     constructor
