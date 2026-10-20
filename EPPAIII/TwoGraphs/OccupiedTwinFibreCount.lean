@@ -22,6 +22,7 @@ open EPPAIII.CliqueCovers
 size at most t times the size of its image. -/
 theorem finite_image_fibre_capacity
     {V Q : Type*} [Fintype V] [Fintype Q]
+    [DecidableEq V] [DecidableEq Q]
     (f : V → Q) (t : ℕ)
     (hFib : ∀ q : Q,
       ((Finset.univ : Finset V).filter (fun v => f v = q)).card ≤ t) :
@@ -32,13 +33,12 @@ theorem finite_image_fibre_capacity
   let fibre (q : Q) : Finset V :=
     (Finset.univ : Finset V).filter (fun v => f v = q)
   have hZero (q : Q) (hq : q ∉ I) : (fibre q).card = 0 := by
-    have hEmpty : fibre q = ∅ := by
-      apply Finset.eq_empty_iff_forall_not_mem.mpr
-      intro v hv
-      have hvq : f v = q := (Finset.mem_filter.mp hv).2
-      exact hq (Finset.mem_image.mpr
-        ⟨v, Finset.mem_univ _, hvq⟩)
-    simp [hEmpty]
+    by_contra hn
+    have hp : 0 < (fibre q).card := Nat.pos_of_ne_zero hn
+    obtain ⟨v,hv⟩ := Finset.card_pos.mp hp
+    have hvq : f v = q := (Finset.mem_filter.mp hv).2
+    exact hq (Finset.mem_image.mpr
+      ⟨v, Finset.mem_univ _, hvq⟩)
   have hCount :
       Fintype.card V = ∑ q : Q, (fibre q).card := by
     simpa [fibre] using
@@ -68,7 +68,8 @@ theorem finite_image_fibre_capacity
 the host true-twin class represented by that quotient vertex. -/
 theorem selected_twin_fibre_le_class
     {V W : Type*} [Fintype V] [Fintype W]
-    (H : SimpleGraph W) (e : V ↪ W) (w : W) :
+    (H : SimpleGraph W) [DecidableEq (ClosedTwinQuotient H)]
+    (e : V ↪ W) (w : W) :
     ((Finset.univ : Finset V).filter
        (fun v =>
          (Quotient.mk (closedTwinSetoid H) (e v) :
@@ -104,7 +105,8 @@ theorem selected_twin_fibre_le_class
 fibre over the canonical quotient. -/
 theorem selected_twin_quotient_fibre_capacity
     {V W : Type*} [Fintype V] [Fintype W]
-    (H : SimpleGraph W) (e : V ↪ W) (t : ℕ)
+    (H : SimpleGraph W) [DecidableEq (ClosedTwinQuotient H)]
+    (e : V ↪ W) (t : ℕ)
     (hUniform : ∀ w : W, (closedTwinClass H w).card = t)
     (z : ClosedTwinQuotient H) :
     ((Finset.univ : Finset V).filter
@@ -129,6 +131,7 @@ theorem selected_twin_occupied_capacity
     {V W : Type*} [Fintype V] [Fintype W]
     (H : SimpleGraph W)
     [Fintype (ClosedTwinQuotient H)]
+    [DecidableEq (ClosedTwinQuotient H)]
     (e : V ↪ W) (t : ℕ)
     (hUniform : ∀ w : W, (closedTwinClass H w).card = t) :
     Fintype.card V ≤
