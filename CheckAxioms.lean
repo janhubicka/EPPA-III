@@ -1022,3 +1022,7 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.boolean_triangle_iff_odd
 #print axioms EPPAIII.TwoGraphs.taylorTriple_iff_odd
 #print axioms EPPAIII.TwoGraphs.oddBaseTriple_preserved_by_induced_action
+
+-- Section 5 fibre rigidity: EPPA true-twin transversal descends to a homogeneous base
+#print axioms EPPAIII.TwoGraphs.eppa_twin_transversal_homogeneous
+#print axioms EPPAIII.TwoGraphs.eppa_unique_twin_representatives_homogeneous
