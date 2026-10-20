@@ -1067,3 +1067,6 @@ import EPPAIII
 -- Section 5 true-twin quotient: equality saturates every occupied fibre
 #print axioms EPPAIII.TwoGraphs.finite_image_fibres_full_of_capacity_eq
 #print axioms EPPAIII.TwoGraphs.selected_twin_quotient_occupied_class_full
+
+-- Generic finite equal-clique-fibre homogeneity, for true-twin quotient case
+#print axioms EPPAIII.TwoGraphs.homogeneous_of_uniform_complete_fibres
