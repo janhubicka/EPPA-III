@@ -56,8 +56,10 @@ theorem homogeneous_of_uniform_complete_fibres
         x.1 = y.1 := by
       rw [hMap x,hMap y]
       constructor
-      · exact eB.injective
-      · exact congrArg eB
+      · intro h
+        exact eB.injective h
+      · intro h
+        exact congrArg eB h
     have hDifferent : (φ x ≠ φ y) ↔ x ≠ y := by
       constructor
       · intro h heq
