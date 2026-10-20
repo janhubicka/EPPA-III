@@ -1060,3 +1060,6 @@ import EPPAIII
 
 -- Section 5 true-twin quotient: exact occupied-class count equalities
 #print axioms EPPAIII.TwoGraphs.taylor_selected_twin_occupied_equalities
+
+-- Section 5: homogeneity transported through arbitrary graph equivalences
+#print axioms EPPAIII.TwoGraphs.homogeneous_comap_equiv
