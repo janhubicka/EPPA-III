@@ -1082,3 +1082,6 @@ import EPPAIII
 
 -- Graph-intrinsic mate relation yields canonical invariant Taylor fibres
 #print axioms EPPAIII.TwoGraphs.taylor_invariant_pairs_of_even_coverage
+
+-- Source-facing Section 5 fibre-rigidity conclusion from actual EPPA
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_intrinsic_fibres
