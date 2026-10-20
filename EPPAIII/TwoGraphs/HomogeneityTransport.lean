@@ -48,7 +48,6 @@ theorem homogeneous_comap_equiv
     have hh := hExt (φ x)
       (Finset.mem_image.mpr ⟨x,hx,rfl⟩)
     apply φ.injective
-    change σ (φ x) = φ (p x) at hh
-    simpa [τ] using hh
+    simpa [τ, q] using hh
 
 end EPPAIII.TwoGraphs
