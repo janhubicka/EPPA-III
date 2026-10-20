@@ -1050,3 +1050,6 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.selected_twin_quotient_fibre_capacity
 #print axioms EPPAIII.TwoGraphs.selected_twin_occupied_capacity
 #print axioms EPPAIII.TwoGraphs.occupied_quotient_numerical_equalities
+
+-- Section 5: homogeneity transported through arbitrary graph equivalences
+#print axioms EPPAIII.TwoGraphs.homogeneous_comap_equiv
