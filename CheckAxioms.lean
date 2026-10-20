@@ -1063,3 +1063,7 @@ import EPPAIII
 
 -- Section 5: homogeneity transported through arbitrary graph equivalences
 #print axioms EPPAIII.TwoGraphs.homogeneous_comap_equiv
+
+-- Section 5 true-twin quotient: equality saturates every occupied fibre
+#print axioms EPPAIII.TwoGraphs.finite_image_fibres_full_of_capacity_eq
+#print axioms EPPAIII.TwoGraphs.selected_twin_quotient_occupied_class_full
