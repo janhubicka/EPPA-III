@@ -1037,3 +1037,7 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_deck_graph_automorphism
 #print axioms EPPAIII.TwoGraphs.taylor_mates_not_true_twins
 #print axioms EPPAIII.TwoGraphs.taylor_deck_twin_quotient_fixed_point_free
+
+-- Section 5 true-twin quotient: EPPA implies canonical Taylor vertex transitivity
+#print axioms EPPAIII.TwoGraphs.eppa_selected_bottom_transitive
+#print axioms EPPAIII.TwoGraphs.taylor_double_vertex_transitive_of_eppa
