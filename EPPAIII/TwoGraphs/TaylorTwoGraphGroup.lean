@@ -176,4 +176,39 @@ theorem taylor_eppa_two_graph_two_transitive_of_pairs {V : Type*}
       hNonhomogeneous x y u v hxy huv
   exact ⟨A.σ,induced_taylor_action_preserves_two_graph G A,hX,hY⟩
 
+
+/-- Source-facing Section 5 conclusion: for an actual non-homogeneous
+EPPA base with nontrivial associated two-graph, the induced group
+of the Taylor double is precisely the two-graph automorphism group,
+and that group is 2-transitive. No classification theorem is used. -/
+theorem taylor_eppa_two_graph_exact_and_two_transitive
+    {V : Type*} [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) [DecidableRel G.Adj]
+    [Fintype (ClosedTwinQuotient (taylorPairGraph G))]
+    [DecidableEq (ClosedTwinQuotient (taylorPairGraph G))]
+    [DecidableRel (closedTwinQuotientGraph (taylorPairGraph G)).Adj]
+    (heppa : IsEPPAEmbedding G (taylorPairGraph G)
+      (bottomEmbedding V))
+    (hNonhomogeneous : ¬ IsHomogeneousGraph G)
+    (hEven : ∃ a b c : V, a ≠ b ∧ a ≠ c ∧ b ≠ c ∧
+      EvenTriple G a b c) :
+    ((∀ q : Equiv.Perm (Bool × V),
+      EPPAIII.IsGraphAutomorphism (taylorPairGraph G) q →
+      ∃ σ : Equiv.Perm V, IsTwoGraphAutomorphism G σ ∧
+        (∀ b x, (q (b,x)).2 = σ x)) ∧
+    (∀ σ : Equiv.Perm V, IsTwoGraphAutomorphism G σ →
+      ∃ q : Equiv.Perm (Bool × V),
+        EPPAIII.IsGraphAutomorphism (taylorPairGraph G) q ∧
+        (∀ b x, (q (b,x)).2 = σ x))) ∧
+    (∀ x y u v : V, x ≠ y → u ≠ v →
+      ∃ σ : Equiv.Perm V,
+        IsTwoGraphAutomorphism G σ ∧
+        σ x = u ∧ σ y = v) := by
+  have hPairs : HasInvariantPairs (taylorPairGraph G) :=
+    taylor_eppa_intrinsic_fibres G heppa hNonhomogeneous hEven
+  refine ⟨taylor_induced_group_eq_two_graph G hPairs, ?_⟩
+  intro x y u v hxy huv
+  exact taylor_eppa_two_graph_two_transitive_of_pairs
+    G heppa hPairs hNonhomogeneous x y u v hxy huv
+
 end EPPAIII.TwoGraphs
