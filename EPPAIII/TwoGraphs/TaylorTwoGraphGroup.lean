@@ -31,7 +31,7 @@ def IsTwoGraphAutomorphism {V : Type*}
     OddBaseTriple G x y z ↔
       OddBaseTriple G (f x) (f y) (f z)
 
-private theorem oddBaseTriple_repeated_false {V : Type*}
+theorem oddBaseTriple_repeated_false {V : Type*}
     (G : SimpleGraph V) [DecidableRel G.Adj]
     (x y z : V)
     (hRepeated : x = y ∨ y = z ∨ z = x) :
