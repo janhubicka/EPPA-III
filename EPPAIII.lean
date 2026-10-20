@@ -323,3 +323,5 @@ import EPPAIII.TwoGraphs.TaylorTwinQuotientOccupancy
 import EPPAIII.TwoGraphs.TaylorQuotientPositive
 
 import EPPAIII.TwoGraphs.OccupiedTwinFibreCount
+
+import EPPAIII.TwoGraphs.HomogeneityTransport
