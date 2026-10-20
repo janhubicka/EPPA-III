@@ -324,4 +324,8 @@ import EPPAIII.TwoGraphs.TaylorQuotientPositive
 
 import EPPAIII.TwoGraphs.OccupiedTwinFibreCount
 
+import EPPAIII.TwoGraphs.TaylorEppaTransitivity
+
+import EPPAIII.TwoGraphs.TwinTransversalCardinality
+
 import EPPAIII.TwoGraphs.TaylorSelectedTwinEquality
