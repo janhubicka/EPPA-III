@@ -1054,3 +1054,6 @@ import EPPAIII
 -- Section 5 true-twin quotient: EPPA implies canonical Taylor vertex transitivity
 #print axioms EPPAIII.TwoGraphs.eppa_selected_bottom_transitive
 #print axioms EPPAIII.TwoGraphs.taylor_double_vertex_transitive_of_eppa
+
+-- Section 5: full transversal twin-quotient case from EPPA and cardinalities
+#print axioms EPPAIII.TwoGraphs.double_eppa_separated_twin_classes_homogeneous
