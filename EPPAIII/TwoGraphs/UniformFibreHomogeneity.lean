@@ -32,7 +32,10 @@ theorem homogeneous_of_uniform_complete_fibres
   let eFib (b : B) : Fin t ≃ {v : V // f v = b} :=
     (Fintype.equivFinOfCardEq (hCard b)).symm
   let eProd : (B × Fin t) ≃ (Σ _b : B, Fin t) :=
-    Equiv.refl _
+    { toFun := fun x => ⟨x.1,x.2⟩
+      invFun := fun x => (x.1,x.2)
+      left_inv := by rintro ⟨b,a⟩; rfl
+      right_inv := by rintro ⟨b,a⟩; rfl }
   let φ : (Fin (Fintype.card B) × Fin t) ≃ V :=
     (((Equiv.prodCongr eB (Equiv.refl (Fin t))).trans eProd).trans
       (Equiv.sigmaCongrRight eFib)).trans (Equiv.sigmaFiberEquiv f)
