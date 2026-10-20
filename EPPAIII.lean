@@ -317,3 +317,5 @@ import EPPAIII.TwoGraphs.TripleParity
 import EPPAIII.TwoGraphs.EPPAEdgeTwinPropagation
 
 import EPPAIII.TwoGraphs.TrueTwinTransversalHomogeneity
+
+import EPPAIII.TwoGraphs.TaylorTwinQuotientOccupancy

@@ -1030,3 +1030,10 @@ import EPPAIII
 -- Section 5 fibre rigidity: EPPA true-twin transversal descends to a homogeneous base
 #print axioms EPPAIII.TwoGraphs.eppa_twin_transversal_homogeneous
 #print axioms EPPAIII.TwoGraphs.eppa_unique_twin_representatives_homogeneous
+
+-- Section 5 twin-quotient: occupied independence and fixed-point-free deck action
+#print axioms EPPAIII.TwoGraphs.selected_twin_quotient_range_independent
+#print axioms EPPAIII.TwoGraphs.eppa_selected_twin_classes_independent
+#print axioms EPPAIII.TwoGraphs.taylor_deck_graph_automorphism
+#print axioms EPPAIII.TwoGraphs.taylor_mates_not_true_twins
+#print axioms EPPAIII.TwoGraphs.taylor_deck_twin_quotient_fixed_point_free
