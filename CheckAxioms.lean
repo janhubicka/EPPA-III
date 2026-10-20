@@ -1031,6 +1031,19 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.eppa_twin_transversal_homogeneous
 #print axioms EPPAIII.TwoGraphs.eppa_unique_twin_representatives_homogeneous
 
+-- Section 5 twin-quotient: occupied independence and fixed-point-free deck action
+#print axioms EPPAIII.TwoGraphs.selected_twin_quotient_range_independent
+#print axioms EPPAIII.TwoGraphs.eppa_selected_twin_classes_independent
+#print axioms EPPAIII.TwoGraphs.taylor_deck_graph_automorphism
+#print axioms EPPAIII.TwoGraphs.taylor_mates_not_true_twins
+#print axioms EPPAIII.TwoGraphs.taylor_deck_twin_quotient_fixed_point_free
+
+-- Section 5 true-twin quotient: positivity and independent-half bound
+#print axioms EPPAIII.TwoGraphs.taylor_even_triple_forces_noncluster
+#print axioms EPPAIII.TwoGraphs.taylor_even_triple_quotient_has_edge
+#print axioms EPPAIII.TwoGraphs.taylor_quotient_positive_regular
+#print axioms EPPAIII.TwoGraphs.taylor_selected_quotient_independent_half
+
 -- Section 5 true-twin quotient: finite occupancy and cardinality rigidity
 #print axioms EPPAIII.TwoGraphs.finite_image_fibre_capacity
 #print axioms EPPAIII.TwoGraphs.selected_twin_fibre_le_class
