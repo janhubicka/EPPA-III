@@ -1051,5 +1051,15 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.selected_twin_occupied_capacity
 #print axioms EPPAIII.TwoGraphs.occupied_quotient_numerical_equalities
 
+-- Section 5 true-twin quotient: EPPA implies canonical Taylor vertex transitivity
+#print axioms EPPAIII.TwoGraphs.eppa_selected_bottom_transitive
+#print axioms EPPAIII.TwoGraphs.taylor_double_vertex_transitive_of_eppa
+
+-- Section 5: full transversal twin-quotient case from EPPA and cardinalities
+#print axioms EPPAIII.TwoGraphs.double_eppa_separated_twin_classes_homogeneous
+
+-- Section 5 true-twin quotient: exact occupied-class count equalities
+#print axioms EPPAIII.TwoGraphs.taylor_selected_twin_occupied_equalities
+
 -- Section 5: homogeneity transported through arbitrary graph equivalences
 #print axioms EPPAIII.TwoGraphs.homogeneous_comap_equiv
