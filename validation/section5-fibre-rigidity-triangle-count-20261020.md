@@ -4,7 +4,7 @@
 
 ## Reduction already certified in Lean
 
-Suppose a pair of base vertices lies in no even-parity triple. Its adjacent lifts in the Taylor double are true twins (merged PR #328). Given EPPA, the two-point maps carry this property to every selected edge, hence the selected graph G is a cluster graph (PR #329, integration CI pending). We must show that **if G is a cluster graph, its Taylor double is vertex-transitive, and Δ(G) is nontrivial, then G is homogeneous.**
+Suppose a base pair lies in no even-parity triple. Its *adjacent lifts* in the Taylor double are true twins (merged PR #328), but **they may lie on opposite sides of the natural transversal**. The EPPA propagation theorem in PR #329 applies only if a true-twin class contains an actual selected edge (two vertices of G). This is the **first case** of the manuscript's quotient argument, not its entire proof. In that case EPPA proves G is a cluster graph, and the following triangle-count argument proves that a vertex-transitive Taylor double with nontrivial Δ cannot have unequal component sizes. The **second case**, where every true-twin class meets G in at most one vertex, still needs the original quotient/transversal reasoning.
 
 ## Triangle-count proof
 
@@ -27,13 +27,13 @@ e i,j}t_k.
 
 The final sum is strictly positive, because s≥3 and each component is nonempty. Thus `t_i=t_j` for all i,j. We conclude `G≅sK_t`, a homogeneous graph, contradiction.
 
-This finishes the key implication of Lemma `lem:fibre-rigidity` once the two preceding Lean statements are combined. It requires no graph classification, quotient construction, coherent EPPA lifts, or outside references.
+This gives a short, quotient-free contradiction **only in the first case**, when some selected edge has true-twin endpoints. It does **not** replace the second case of the source proof. It requires no external classification or coherent EPPA lifts.
 
 **Independent finite audit:** I directly counted the triangles through each lift in every Taylor double corresponding to an integer partition of n for n=3,...,10. The formula passed for 1,101 base-vertex positions. This test corroborates the symbolic formula, but arbitrary-size proof is the elementary double counting above.
 
 ## Verification boundary
 
-- The two-point true-twin and EPPA-to-cluster steps are now formally checked in PRs #328 and #329 (check #329 CI/merge before marking the composition green).
-- The triangle-count formula and the component-size conclusion are proved on paper here, **not yet formalized in Lean**.
-- The remaining source choice is whether to retain the existing true-twin quotient proof or replace it with this shorter count. Both avoid the external Gardiner/rank-three classifications.
+- The true-twin calculation is formalized in PR #328; the conditional **selected-edge** propagation theorem is in PR #329 (check its CI/merge before marking it green). Neither theorem asserts that every bad base pair gives a true-twin edge inside the selected transversal.
+- The triangle-count formula and the component-size conclusion for the cluster case are proved on paper here, **not yet formalized in Lean**. The original proof's second case (one selected vertex per true-twin class) remains necessary.
+- The remaining editorial choice is whether to shorten the **first branch** of the true-twin quotient proof using this count, while retaining the second branch. Both routes avoid the external Gardiner/rank-three classifications.
 - Do not modify the frozen manuscript or circulate the correction to Sofia before the deferred author review.
