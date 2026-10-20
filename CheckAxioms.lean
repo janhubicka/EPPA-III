@@ -1095,3 +1095,4 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.two_graph_automorphism_lifts_to_taylor
 #print axioms EPPAIII.TwoGraphs.taylor_induced_group_eq_two_graph
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_two_transitive_of_pairs
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_exact_and_two_transitive
