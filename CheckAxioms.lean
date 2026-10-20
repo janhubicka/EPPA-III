@@ -1026,3 +1026,7 @@ import EPPAIII
 -- Section 5 fibre rigidity: EPPA propagation of true twins and base cluster reduction
 #print axioms EPPAIII.TwoGraphs.eppa_true_twins_propagate_to_all_edges
 #print axioms EPPAIII.TwoGraphs.eppa_selected_true_twin_edge_forces_cluster
+
+-- Section 5 fibre rigidity: EPPA true-twin transversal descends to a homogeneous base
+#print axioms EPPAIII.TwoGraphs.eppa_twin_transversal_homogeneous
+#print axioms EPPAIII.TwoGraphs.eppa_unique_twin_representatives_homogeneous
