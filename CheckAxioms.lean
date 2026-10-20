@@ -1079,3 +1079,6 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.threeStepShortest_automorphism_iff
 #print axioms EPPAIII.TwoGraphs.taylor_threeStepShortest_iff_mate
 #print axioms EPPAIII.TwoGraphs.taylor_automorphism_preserves_mate_second
+
+-- Graph-intrinsic mate relation yields canonical invariant Taylor fibres
+#print axioms EPPAIII.TwoGraphs.taylor_invariant_pairs_of_even_coverage
