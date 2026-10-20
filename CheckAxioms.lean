@@ -1057,3 +1057,6 @@ import EPPAIII
 
 -- Section 5: full transversal twin-quotient case from EPPA and cardinalities
 #print axioms EPPAIII.TwoGraphs.double_eppa_separated_twin_classes_homogeneous
+
+-- Section 5 true-twin quotient: exact occupied-class count equalities
+#print axioms EPPAIII.TwoGraphs.taylor_selected_twin_occupied_equalities
