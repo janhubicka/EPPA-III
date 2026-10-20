@@ -37,8 +37,9 @@ theorem taylor_even_triple_forces_noncluster
       ¬ (taylorPairGraph G).Adj (false,x) (c,y) := by
     intro h
     have hRel : G.Adj x y ↔ false = c := h.2
-    by_cases hEdge : G.Adj x y <;>
-      simp_all [c]
+    by_cases hEdge : G.Adj x y
+    · simp [c, hEdge] at hRel
+    · simp [c, hEdge] at hRel
   obtain ⟨d,hxzAdj,hyzAdj⟩ :=
     taylor_different_fibres_two_step G x y z
       false c hxy hxz hyz hEven hNonadj
@@ -71,6 +72,7 @@ The exact numerical value of the degree is irrelevant. -/
 theorem taylor_quotient_positive_regular
     {V : Type*} (G : SimpleGraph V)
     [Fintype (ClosedTwinQuotient (taylorPairGraph G))]
+    [DecidableRel (closedTwinQuotientGraph (taylorPairGraph G)).Adj]
     (hTrans : HasTransitiveGraphAutomorphisms (taylorPairGraph G))
     (hEven : ∃ x y z : V, x ≠ y ∧ x ≠ z ∧ y ≠ z ∧
       EvenTriple G x y z) :
@@ -102,6 +104,8 @@ theorem taylor_selected_quotient_independent_half
     {V : Type*} [Fintype V] [DecidableEq V]
     (G : SimpleGraph V)
     [Fintype (ClosedTwinQuotient (taylorPairGraph G))]
+    [DecidableEq (ClosedTwinQuotient (taylorPairGraph G))]
+    [DecidableRel (closedTwinQuotientGraph (taylorPairGraph G)).Adj]
     (heppa : IsEPPAEmbedding G
       (taylorPairGraph G) (EPPAIII.DoubleCover.bottomEmbedding V))
     (hTrans : HasTransitiveGraphAutomorphisms (taylorPairGraph G))
