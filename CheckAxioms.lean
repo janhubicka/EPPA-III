@@ -1050,3 +1050,6 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.selected_twin_quotient_fibre_capacity
 #print axioms EPPAIII.TwoGraphs.selected_twin_occupied_capacity
 #print axioms EPPAIII.TwoGraphs.occupied_quotient_numerical_equalities
+
+-- Section 5 true-twin quotient: exact occupied-class count equalities
+#print axioms EPPAIII.TwoGraphs.taylor_selected_twin_occupied_equalities
