@@ -67,6 +67,7 @@ jobs:
           python3 checks/section3_wreath_orbits.py
           python3 checks/section3_short_profiles.py
           python3 checks/section3_c5_host_patterns.py
+          python3 checks/section6_unequal_taylor_named.py
       - name: Check fragile combinatorial screens
         run: |
           python3 checks/section5_partial_twograph_audit.py
