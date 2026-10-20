@@ -1077,3 +1077,13 @@ import EPPAIII
 -- Section 5 fibre rigidity: EPPA eliminates pairs with only odd triples
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_bad_pair_impossible
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_even_triple_pair_coverage
+
+-- Intrinsic Taylor fibres: shortest-three relation and automorphism preservation
+#print axioms EPPAIII.TwoGraphs.threeStepShortest_forward
+#print axioms EPPAIII.TwoGraphs.threeStepShortest_automorphism_iff
+#print axioms EPPAIII.TwoGraphs.taylor_threeStepShortest_iff_mate
+#print axioms EPPAIII.TwoGraphs.taylor_automorphism_preserves_mate_second
+-- Graph-intrinsic mate relation yields canonical invariant Taylor fibres
+#print axioms EPPAIII.TwoGraphs.taylor_invariant_pairs_of_even_coverage
+-- Source-facing Section 5 fibre-rigidity conclusion from actual EPPA
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_intrinsic_fibres

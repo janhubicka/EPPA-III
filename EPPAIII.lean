@@ -339,3 +339,7 @@ import EPPAIII.TwoGraphs.UniformFibreHomogeneity
 import EPPAIII.TwoGraphs.TaylorSelectedTwinHomogeneity
 
 import EPPAIII.TwoGraphs.TaylorEvenTripleCoverage
+
+import EPPAIII.TwoGraphs.IntrinsicTaylorMates
+import EPPAIII.TwoGraphs.TaylorIntrinsicFibreAction
+import EPPAIII.TwoGraphs.TaylorFibreRigidity
