@@ -314,4 +314,6 @@ import EPPAIII.TwoGraphs.TaylorBadPairTwins
 import EPPAIII.TwoGraphs.InducedTripleAction
 import EPPAIII.TwoGraphs.TripleParity
 
+import EPPAIII.TwoGraphs.EPPAEdgeTwinPropagation
+
 import EPPAIII.TwoGraphs.TrueTwinTransversalHomogeneity
