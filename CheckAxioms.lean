@@ -1087,3 +1087,11 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_invariant_pairs_of_even_coverage
 -- Source-facing Section 5 fibre-rigidity conclusion from actual EPPA
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_intrinsic_fibres
+
+-- Section 5 exact induced group Aut(Delta) and conditional 2-transitivity
+#print axioms EPPAIII.TwoGraphs.oddBaseTriple_repeated_false
+#print axioms EPPAIII.TwoGraphs.induced_taylor_action_preserves_two_graph
+#print axioms EPPAIII.TwoGraphs.taylor_host_action_inside_two_graph
+#print axioms EPPAIII.TwoGraphs.two_graph_automorphism_lifts_to_taylor
+#print axioms EPPAIII.TwoGraphs.taylor_induced_group_eq_two_graph
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_two_transitive_of_pairs
