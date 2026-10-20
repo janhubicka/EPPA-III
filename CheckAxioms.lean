@@ -1073,3 +1073,9 @@ import EPPAIII
 
 -- Section 5 fibre rigidity: selected true-twin edge forces base homogeneity
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_selected_true_twin_edge_homogeneous
+
+-- Intrinsic Taylor fibres: shortest-three relation and automorphism preservation
+#print axioms EPPAIII.TwoGraphs.threeStepShortest_forward
+#print axioms EPPAIII.TwoGraphs.threeStepShortest_automorphism_iff
+#print axioms EPPAIII.TwoGraphs.taylor_threeStepShortest_iff_mate
+#print axioms EPPAIII.TwoGraphs.taylor_automorphism_preserves_mate_second
