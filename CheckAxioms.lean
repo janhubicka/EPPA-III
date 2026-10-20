@@ -1043,3 +1043,6 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_even_triple_quotient_has_edge
 #print axioms EPPAIII.TwoGraphs.taylor_quotient_positive_regular
 #print axioms EPPAIII.TwoGraphs.taylor_selected_quotient_independent_half
+
+-- Section 5: full transversal twin-quotient case from EPPA and cardinalities
+#print axioms EPPAIII.TwoGraphs.double_eppa_separated_twin_classes_homogeneous
