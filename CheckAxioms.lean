@@ -1073,3 +1073,7 @@ import EPPAIII
 
 -- Section 5 fibre rigidity: selected true-twin edge forces base homogeneity
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_selected_true_twin_edge_homogeneous
+
+-- Section 5 fibre rigidity: EPPA eliminates pairs with only odd triples
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_bad_pair_impossible
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_even_triple_pair_coverage
