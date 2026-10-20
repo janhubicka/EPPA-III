@@ -57,7 +57,8 @@ theorem taylor_eppa_bad_pair_impossible
     intro h
     exact hxy (congrArg Prod.snd h)
   have hSelfMem : (false,x) ∈ closedTwinClass H (false,x) := by
-    simp [closedTwinClass,SameClosedNeighbourhood]
+    simp only [closedTwinClass, Finset.mem_filter, Finset.mem_univ, true_and]
+    rfl
   have hTwinMem : (c,y) ∈ closedTwinClass H (false,x) := by
     simp only [closedTwinClass,Finset.mem_filter,Finset.mem_univ,true_and]
     exact hTwin
@@ -71,7 +72,7 @@ theorem taylor_eppa_bad_pair_impossible
     · exact hTwinMem
   have hLarge : 2 ≤ (closedTwinClass H (false,x)).card := by
     have hTwo : ({(false,x),(c,y)} : Finset (Bool × V)).card = 2 := by
-      simp [hDistinct,hDistinct.symm]
+      simp [hDistinct]
     calc
       2 = ({(false,x),(c,y)} : Finset (Bool × V)).card :=
         hTwo.symm
