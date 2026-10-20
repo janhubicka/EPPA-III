@@ -1043,3 +1043,10 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_even_triple_quotient_has_edge
 #print axioms EPPAIII.TwoGraphs.taylor_quotient_positive_regular
 #print axioms EPPAIII.TwoGraphs.taylor_selected_quotient_independent_half
+
+-- Section 5 true-twin quotient: finite occupancy and cardinality rigidity
+#print axioms EPPAIII.TwoGraphs.finite_image_fibre_capacity
+#print axioms EPPAIII.TwoGraphs.selected_twin_fibre_le_class
+#print axioms EPPAIII.TwoGraphs.selected_twin_quotient_fibre_capacity
+#print axioms EPPAIII.TwoGraphs.selected_twin_occupied_capacity
+#print axioms EPPAIII.TwoGraphs.occupied_quotient_numerical_equalities
