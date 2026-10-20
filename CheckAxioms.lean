@@ -1030,3 +1030,10 @@ import EPPAIII
 -- Section 5 fibre rigidity: EPPA true-twin transversal descends to a homogeneous base
 #print axioms EPPAIII.TwoGraphs.eppa_twin_transversal_homogeneous
 #print axioms EPPAIII.TwoGraphs.eppa_unique_twin_representatives_homogeneous
+
+-- Section 5 true-twin quotient: finite occupancy and cardinality rigidity
+#print axioms EPPAIII.TwoGraphs.finite_image_fibre_capacity
+#print axioms EPPAIII.TwoGraphs.selected_twin_fibre_le_class
+#print axioms EPPAIII.TwoGraphs.selected_twin_quotient_fibre_capacity
+#print axioms EPPAIII.TwoGraphs.selected_twin_occupied_capacity
+#print axioms EPPAIII.TwoGraphs.occupied_quotient_numerical_equalities
