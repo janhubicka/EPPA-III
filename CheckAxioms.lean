@@ -1050,3 +1050,7 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.selected_twin_quotient_fibre_capacity
 #print axioms EPPAIII.TwoGraphs.selected_twin_occupied_capacity
 #print axioms EPPAIII.TwoGraphs.occupied_quotient_numerical_equalities
+
+-- Section 5 true-twin quotient: EPPA implies canonical Taylor vertex transitivity
+#print axioms EPPAIII.TwoGraphs.eppa_selected_bottom_transitive
+#print axioms EPPAIII.TwoGraphs.taylor_double_vertex_transitive_of_eppa
