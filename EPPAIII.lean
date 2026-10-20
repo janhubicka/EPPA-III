@@ -326,4 +326,10 @@ import EPPAIII.TwoGraphs.OccupiedTwinFibreCount
 
 import EPPAIII.TwoGraphs.TaylorEppaTransitivity
 
+import EPPAIII.TwoGraphs.TwinTransversalCardinality
+
+import EPPAIII.TwoGraphs.TaylorSelectedTwinEquality
+
+import EPPAIII.TwoGraphs.HomogeneityTransport
+
 import EPPAIII.TwoGraphs.FullSelectedTwinFibres
