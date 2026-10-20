@@ -70,7 +70,7 @@ theorem taylor_deck_graph_automorphism {V : Type*}
       (EPPAIII.DoubleCover.deckSwap V) := by
   rintro ⟨b,x⟩ ⟨c,y⟩
   change (x ≠ y ∧ (G.Adj x y ↔ b = c)) ↔
-    (x ≠ y ∧ (G.Adj x y ↔ !b = !c))
+    (x ≠ y ∧ (G.Adj x y ↔ (!b) = (!c)))
   cases b <;> cases c <;> simp
 
 /-- A vertex and its mate cannot be true twins because mates are
@@ -101,10 +101,13 @@ theorem taylor_deck_twin_quotient_fixed_point_free
   | _ p =>
     rcases p with ⟨b,x⟩
     intro h
-    have hSame : SameClosedNeighbourhood
-        (taylorPairGraph G) (!b,x) (b,x) := by
-      apply Quotient.exact
+    have hQuot :
+        Quotient.mk (closedTwinSetoid (taylorPairGraph G)) (!b,x) =
+        Quotient.mk (closedTwinSetoid (taylorPairGraph G)) (b,x) := by
       simpa [liftTwinAutomorphism_mk,EPPAIII.DoubleCover.deckSwap] using h
+    have hSame : SameClosedNeighbourhood
+        (taylorPairGraph G) (!b,x) (b,x) :=
+      Quotient.exact hQuot
     exact (taylor_mates_not_true_twins G b x) hSame.symm
 
 end EPPAIII.TwoGraphs
