@@ -1053,3 +1053,6 @@ import EPPAIII
 
 -- Section 5: homogeneity transported through arbitrary graph equivalences
 #print axioms EPPAIII.TwoGraphs.homogeneous_comap_equiv
+
+-- Generic finite equal-clique-fibre homogeneity, for true-twin quotient case
+#print axioms EPPAIII.TwoGraphs.homogeneous_of_uniform_complete_fibres
