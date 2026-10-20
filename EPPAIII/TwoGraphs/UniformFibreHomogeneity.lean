@@ -20,7 +20,7 @@ namespace EPPAIII.TwoGraphs
 complete clique fibres, without edges between different fibres,
 is homogeneous. The fibre set may be an arbitrary finite type. -/
 theorem homogeneous_of_uniform_complete_fibres
-    {V B : Type*} [Fintype V] [Fintype B]
+    {V B : Type*} [Fintype V] [Fintype B] [DecidableEq B]
     (G : SimpleGraph V) (f : V → B) (t : ℕ)
     (hCard : ∀ b : B, Fintype.card {v : V // f v = b} = t)
     (hAdj : ∀ x y : V,
@@ -31,11 +31,8 @@ theorem homogeneous_of_uniform_complete_fibres
     (Fintype.equivFin B).symm
   let eFib (b : B) : Fin t ≃ {v : V // f v = b} :=
     (Fintype.equivFinOfCardEq (hCard b)).symm
-  let eProd : (B × Fin t) ≃ (Σ _b : B, Fin t) where
-    toFun := fun x => ⟨x.1,x.2⟩
-    invFun := fun x => (x.1,x.2)
-    left_inv := by intro x; rfl
-    right_inv := by intro x; rfl
+  let eProd : (B × Fin t) ≃ (Σ _b : B, Fin t) :=
+    Equiv.refl _
   let φ : (Fin (Fintype.card B) × Fin t) ≃ V :=
     (((Equiv.prodCongr eB (Equiv.refl (Fin t))).trans eProd).trans
       (Equiv.sigmaCongrRight eFib)).trans (Equiv.sigmaFiberEquiv f)
