@@ -1044,5 +1044,16 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_quotient_positive_regular
 #print axioms EPPAIII.TwoGraphs.taylor_selected_quotient_independent_half
 
+-- Section 5 true-twin quotient: finite occupancy and cardinality rigidity
+#print axioms EPPAIII.TwoGraphs.finite_image_fibre_capacity
+#print axioms EPPAIII.TwoGraphs.selected_twin_fibre_le_class
+#print axioms EPPAIII.TwoGraphs.selected_twin_quotient_fibre_capacity
+#print axioms EPPAIII.TwoGraphs.selected_twin_occupied_capacity
+#print axioms EPPAIII.TwoGraphs.occupied_quotient_numerical_equalities
+
+-- Section 5 true-twin quotient: EPPA implies canonical Taylor vertex transitivity
+#print axioms EPPAIII.TwoGraphs.eppa_selected_bottom_transitive
+#print axioms EPPAIII.TwoGraphs.taylor_double_vertex_transitive_of_eppa
+
 -- Section 5: full transversal twin-quotient case from EPPA and cardinalities
 #print axioms EPPAIII.TwoGraphs.double_eppa_separated_twin_classes_homogeneous
