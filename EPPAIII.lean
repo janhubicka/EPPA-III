@@ -335,3 +335,5 @@ import EPPAIII.TwoGraphs.HomogeneityTransport
 import EPPAIII.TwoGraphs.FullSelectedTwinFibres
 
 import EPPAIII.TwoGraphs.UniformFibreHomogeneity
+
+import EPPAIII.TwoGraphs.TaylorSelectedTwinHomogeneity

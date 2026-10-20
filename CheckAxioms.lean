@@ -1070,3 +1070,6 @@ import EPPAIII
 
 -- Generic finite equal-clique-fibre homogeneity, for true-twin quotient case
 #print axioms EPPAIII.TwoGraphs.homogeneous_of_uniform_complete_fibres
+
+-- Section 5 fibre rigidity: selected true-twin edge forces base homogeneity
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_selected_true_twin_edge_homogeneous
