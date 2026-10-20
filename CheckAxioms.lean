@@ -1038,6 +1038,12 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_mates_not_true_twins
 #print axioms EPPAIII.TwoGraphs.taylor_deck_twin_quotient_fixed_point_free
 
+-- Section 5 true-twin quotient: positivity and independent-half bound
+#print axioms EPPAIII.TwoGraphs.taylor_even_triple_forces_noncluster
+#print axioms EPPAIII.TwoGraphs.taylor_even_triple_quotient_has_edge
+#print axioms EPPAIII.TwoGraphs.taylor_quotient_positive_regular
+#print axioms EPPAIII.TwoGraphs.taylor_selected_quotient_independent_half
+
 -- Section 5 true-twin quotient: EPPA implies canonical Taylor vertex transitivity
 #print axioms EPPAIII.TwoGraphs.eppa_selected_bottom_transitive
 #print axioms EPPAIII.TwoGraphs.taylor_double_vertex_transitive_of_eppa

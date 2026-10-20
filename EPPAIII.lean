@@ -320,4 +320,6 @@ import EPPAIII.TwoGraphs.TrueTwinTransversalHomogeneity
 
 import EPPAIII.TwoGraphs.TaylorTwinQuotientOccupancy
 
+import EPPAIII.TwoGraphs.TaylorQuotientPositive
+
 import EPPAIII.TwoGraphs.TaylorEppaTransitivity
