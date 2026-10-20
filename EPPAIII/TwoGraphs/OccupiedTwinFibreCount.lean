@@ -129,6 +129,7 @@ theorem selected_twin_quotient_fibre_capacity
 /-- The selected base occupies at least |V|/t quotient classes. -/
 theorem selected_twin_occupied_capacity
     {V W : Type*} [Fintype V] [Fintype W]
+    [DecidableEq V]
     (H : SimpleGraph W)
     [Fintype (ClosedTwinQuotient H)]
     [DecidableEq (ClosedTwinQuotient H)]
