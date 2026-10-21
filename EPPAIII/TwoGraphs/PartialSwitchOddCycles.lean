@@ -144,4 +144,66 @@ theorem partial_odd_cycles_potential_sums_equal
       hRepetitionsY
     _ = xorPrefix (fun i => h (y i)) b := hOddY
 
+
+/-- A directed trajectory returning after period steps repeats
+that block forever. No injectivity or minimal period is needed. -/
+theorem trajectory_block_periodic_of_return
+    {V : Type*}
+    (p : V → V) (x : ℕ → V)
+    (hStep : ∀ i, x (i + 1) = p (x i))
+    (period : ℕ) (hReturn : x period = x 0) :
+    ∀ k i : ℕ, x (period * k + i) = x i := by
+  have hShift : ∀ i : ℕ, x (period + i) = x i := by
+    intro i
+    induction i with
+    | zero =>
+        simpa using hReturn
+    | succ i hi =>
+        calc
+          x (period + (i + 1)) = p (x (period + i)) := by
+            simpa only [Nat.add_succ] using hStep (period + i)
+          _ = p (x i) := by rw [hi]
+          _ = x (i + 1) := (hStep i).symm
+  intro k
+  induction k with
+  | zero =>
+      intro i
+      simp
+  | succ k ih =>
+      intro i
+      calc
+        x (period * (k + 1) + i) =
+            x (period + (period * k + i)) := by
+              congr 1
+              omega
+        _ = x (period * k + i) := hShift _
+        _ = x i := ih i
+
+/-- Source-facing odd-cycle conclusion, requiring only that
+each trajectory returns after its specified odd number of
+steps. Block periodicity is derived rather than assumed. -/
+theorem partial_odd_cycles_potential_equal_of_returns
+    {V : Type*}
+    (edge : V → V → Bool) (h : V → Bool)
+    (p : V → V) (D : Finset V)
+    (hDelta : ∀ u ∈ D, ∀ v ∈ D,
+      Bool.xor (edge u v) (edge (p u) (p v)) =
+        Bool.xor (h u) (h v))
+    (x y : ℕ → V)
+    (hStepX : ∀ i, x (i + 1) = p (x i))
+    (hStepY : ∀ i, y (i + 1) = p (y i))
+    (hInX : ∀ i, x i ∈ D)
+    (hInY : ∀ i, y i ∈ D)
+    (a b k l : ℕ)
+    (ha : a = 2 * k + 1) (hb : b = 2 * l + 1)
+    (hReturnX : x a = x 0)
+    (hReturnY : y b = y 0) :
+    xorPrefix (fun i => h (x i)) a =
+      xorPrefix (fun i => h (y i)) b := by
+  exact partial_odd_cycles_potential_sums_equal
+    edge h p D hDelta x y hStepX hStepY hInX hInY
+    a b k l ha hb
+    (trajectory_block_periodic_of_return p x hStepX a hReturnX)
+    (trajectory_block_periodic_of_return p y hStepY b hReturnY)
+
 end EPPAIII.TwoGraphs
