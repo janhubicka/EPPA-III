@@ -373,5 +373,4 @@ import EPPAIII.TwoGraphs.PartialSwitchEvenCycle
 import EPPAIII.TwoGraphs.PartialSwitchOddCycles
 
 import EPPAIII.TwoGraphs.PartialSwitchCycleClose
-
 import EPPAIII.TwoGraphs.PartialSwitchSourceCycleGlue
