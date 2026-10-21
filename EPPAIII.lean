@@ -347,3 +347,5 @@ import EPPAIII.TwoGraphs.TaylorFibreRigidity
 import EPPAIII.TwoGraphs.TaylorTwoGraphGroup
 
 import EPPAIII.TwoGraphs.SecondTransversal
+
+import EPPAIII.TwoGraphs.Separation
