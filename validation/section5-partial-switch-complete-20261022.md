@@ -43,7 +43,7 @@ There is no assumption of coherent EPPA lifts, no Mallows–Sloane theorem invoc
 - Finite source-or-cycle and globally compatible-bit PRs #361–#362: complete green CI for their proof heads, merged.
 - Full lemma [PR #363](https://github.com/janhubicka/EPPA-III/pull/363): green full CI [run 39690185917](https://github.com/janhubicka/EPPA-III/actions/runs/39690185917), merged.
 - Arbitrary injection [PR #364](https://github.com/janhubicka/EPPA-III/pull/364): green full CI [run 39691199183](https://github.com/janhubicka/EPPA-III/actions/runs/39691199183), merged.
-- Integrated `main` merge: `0ae6b3e883ead1e6fa77188e54bf62937d5723e4`. Its full workflow [run 39691798823](https://github.com/janhubicka/EPPA-III/actions/runs/39691798823) was **in progress at the time this note was prepared**. Check its final conclusion before claiming a green integrated main run.
+- Integrated `main` merge: `0ae6b3e883ead1e6fa77188e54bf62937d5723e4`. Its full workflow [run 39691798823](https://github.com/janhubicka/EPPA-III/actions/runs/39691798823) **completed successfully** on the integrated main commit, including the full Lean build, permitted-axiom audit, finite regressions and placeholder rejection.
 
 The project workflow builds Lean, prints axioms of named declarations, rejects nonstandard axiom dependencies and unsolved placeholders, and runs independent finite regressions.
 
