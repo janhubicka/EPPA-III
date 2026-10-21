@@ -1174,3 +1174,5 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.xorPrefix_pointwise_xor
 #print axioms EPPAIII.TwoGraphs.xorPrefix_successive_differences
 #print axioms EPPAIII.TwoGraphs.last_cycle_equation_of_compatible_sum
+-- Section 5.1 glue all directed source/cycle equations into one switching
+#print axioms EPPAIII.TwoGraphs.vertex_equations_of_source_or_cycle
