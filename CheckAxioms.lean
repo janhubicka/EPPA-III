@@ -1168,3 +1168,9 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.partial_odd_cycles_potential_sums_equal
 #print axioms EPPAIII.TwoGraphs.trajectory_block_periodic_of_return
 #print axioms EPPAIII.TwoGraphs.partial_odd_cycles_potential_equal_of_returns
+
+-- Section 5.1 gluing a cycle by restoring its final arrow
+#print axioms EPPAIII.TwoGraphs.xorPrefix_congr_on_initial
+#print axioms EPPAIII.TwoGraphs.xorPrefix_pointwise_xor
+#print axioms EPPAIII.TwoGraphs.xorPrefix_successive_differences
+#print axioms EPPAIII.TwoGraphs.last_cycle_equation_of_compatible_sum
