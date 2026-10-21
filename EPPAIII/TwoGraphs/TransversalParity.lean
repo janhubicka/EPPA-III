@@ -26,6 +26,17 @@ def taylorTransversalGraph {V : Type*}
     (G : SimpleGraph V) (t : V → Bool) : SimpleGraph V :=
   (taylorPairGraph G).comap (taylorTransversalEmbedding t)
 
+/-- The switched graph has decidable adjacency whenever the base
+graph and vertex equality are decidable. -/
+instance taylorTransversalGraph_decidableRel
+    {V : Type*} [DecidableEq V]
+    (G : SimpleGraph V) [DecidableRel G.Adj]
+    (t : V → Bool) :
+    DecidableRel (taylorTransversalGraph G t).Adj := by
+  intro x y
+  change Decidable (x ≠ y ∧ (G.Adj x y ↔ t x = t y))
+  infer_instance
+
 /-- Pair adjacency is toggled exactly when the two chosen
 side bits differ. This includes the diagonal x=y. -/
 theorem taylor_transversal_decide_adj
@@ -90,7 +101,7 @@ theorem partial_transversal_preserves_two_graph
   have hDecide (u v : V) (hu : u ∈ D) (hv : v ∈ D) :
       decide (C.Adj u v) = decide (C.Adj (p u) (p v)) := by
     by_cases h : C.Adj u v
-    · have hh := (hp u v hu hv).mp h
+    · have hh : C.Adj (p u) (p v) := (hp u v hu hv).mp h
       simp [h,hh]
     · have hh : ¬ C.Adj (p u) (p v) :=
         fun he => h ((hp u v hu hv).mpr he)
