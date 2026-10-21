@@ -1096,3 +1096,9 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_induced_group_eq_two_graph
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_two_transitive_of_pairs
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_exact_and_two_transitive
+
+-- Section 5 second EPPA transversal via an actual host automorphism
+#print axioms EPPAIII.TwoGraphs.eppa_embedding_of_host_image
+#print axioms EPPAIII.TwoGraphs.taylor_changed_pair_forces_mixed_sides
+#print axioms EPPAIII.TwoGraphs.taylor_second_eppa_transversal_of_pairs
+#print axioms EPPAIII.TwoGraphs.taylor_second_eppa_transversal
