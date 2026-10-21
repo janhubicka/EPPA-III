@@ -358,3 +358,5 @@ import EPPAIII.TwoGraphs.ReindexedTransversal
 import EPPAIII.TwoGraphs.ComplementaryOnePoint
 
 import EPPAIII.TwoGraphs.OneForAll
+
+import EPPAIII.TwoGraphs.TrivialTwoGraph
