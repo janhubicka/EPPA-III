@@ -1107,3 +1107,10 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.two_transversals_separate_under_fibre_action
 #print axioms EPPAIII.TwoGraphs.taylor_separating_eppa_transversal_of_pairs
 #print axioms EPPAIII.TwoGraphs.taylor_separating_eppa_transversal
+
+-- Section 5 one-for-all local two-graph parity dichotomy
+#print axioms EPPAIII.TwoGraphs.one_point_two_graph_types_uniform
+
+-- Section 5 one-point extension of equal neighbourhood types
+#print axioms EPPAIII.TwoGraphs.equal_types_partial_swap
+#print axioms EPPAIII.TwoGraphs.eppa_one_point_extension_equal_types
