@@ -1162,3 +1162,6 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.xorPrefix_repeated_blocks
 #print axioms EPPAIII.TwoGraphs.xorPrefix_odd_constant
 #print axioms EPPAIII.TwoGraphs.partial_odd_cycles_potential_sums_equal
+
+#print axioms EPPAIII.TwoGraphs.trajectory_block_periodic_of_return
+#print axioms EPPAIII.TwoGraphs.partial_odd_cycles_potential_equal_of_returns
