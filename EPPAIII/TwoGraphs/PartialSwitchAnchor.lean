@@ -60,7 +60,7 @@ theorem anchored_transversal_adj_iff_odd
           true := by simpa using hAdj
     change Bool.xor (Bool.xor (decide (G.Adj r x))
       (decide (G.Adj x y))) (decide (G.Adj y r)) = true
-    exact hBool.symm.trans hh |>.symm
+    exact hBool.symm.trans hh
   · intro hOdd
     have hh :
         decide ((taylorTransversalGraph G (anchorSwitch G r)).Adj x y) =
