@@ -1139,3 +1139,8 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_transversal_decide_adj
 #print axioms EPPAIII.TwoGraphs.odd_triple_transversal_iff
 #print axioms EPPAIII.TwoGraphs.partial_transversal_preserves_two_graph
+
+-- Section 5 full switching class EPPA consequence via uniform deck alignment
+#print axioms EPPAIII.TwoGraphs.taylor_lift_choice_agreement_uniform
+#print axioms EPPAIII.TwoGraphs.homogeneous_two_graph_all_transversals_eppa
+#print axioms EPPAIII.TwoGraphs.taylor_one_eppa_all_switching_transversals
