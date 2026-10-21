@@ -380,3 +380,5 @@ import EPPAIII.TwoGraphs.PartialSwitchFiniteCycles
 import EPPAIII.TwoGraphs.PartialSwitchCompatibleConstant
 
 import EPPAIII.TwoGraphs.PartialSwitchFull
+
+import EPPAIII.TwoGraphs.PartialSwitchInjection
