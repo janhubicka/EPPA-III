@@ -1176,17 +1176,13 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.last_cycle_equation_of_compatible_sum
 -- Section 5.1 glue all directed source/cycle equations into one switching
 #print axioms EPPAIII.TwoGraphs.vertex_equations_of_source_or_cycle
-
 -- Section 5.1 finite partial permutations always have a source or removable cycle
 #print axioms EPPAIII.TwoGraphs.permutation_simple_positive_cycle
 #print axioms EPPAIII.TwoGraphs.finite_permutation_has_source_or_removable_cycle
-
 -- Section 5.1 one common global bit satisfies all closed walks
 #print axioms EPPAIII.TwoGraphs.xorPrefix_even_constant
 #print axioms EPPAIII.TwoGraphs.exists_globally_compatible_cycle_bit
-
 -- Section 5.1 exact full lemma: partial two-graph maps switch to partial graph maps
 #print axioms EPPAIII.TwoGraphs.partial_two_graph_has_switching_representative
-
 -- Section 5.1 actual partial injections need not be total permutations
 #print axioms EPPAIII.TwoGraphs.partial_two_graph_injection_has_switch
