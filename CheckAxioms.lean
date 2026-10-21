@@ -1184,3 +1184,6 @@ import EPPAIII
 -- Section 5.1 one common global bit satisfies all closed walks
 #print axioms EPPAIII.TwoGraphs.xorPrefix_even_constant
 #print axioms EPPAIII.TwoGraphs.exists_globally_compatible_cycle_bit
+
+-- Section 5.1 exact full lemma: partial two-graph maps switch to partial graph maps
+#print axioms EPPAIII.TwoGraphs.partial_two_graph_has_switching_representative
