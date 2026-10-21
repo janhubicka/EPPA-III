@@ -364,3 +364,5 @@ import EPPAIII.TwoGraphs.TrivialTwoGraph
 import EPPAIII.TwoGraphs.TransversalParity
 
 import EPPAIII.TwoGraphs.AllTransversalEppa
+
+import EPPAIII.TwoGraphs.PartialSwitchAnchor
