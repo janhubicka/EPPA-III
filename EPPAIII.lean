@@ -367,3 +367,4 @@ import EPPAIII.TwoGraphs.AllTransversalEppa
 
 import EPPAIII.TwoGraphs.PartialSwitchAnchor
 import EPPAIII.TwoGraphs.PartialSwitchCycleTelescope
+import EPPAIII.TwoGraphs.PartialSwitchCoboundary
