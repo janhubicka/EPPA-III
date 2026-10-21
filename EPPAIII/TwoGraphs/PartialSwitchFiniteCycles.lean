@@ -133,9 +133,6 @@ theorem finite_permutation_has_source_or_removable_cycle
       | succ i ih =>
           rw [hStep i]
           exact hForward (x i) ih
-    exact ⟨n,x,
-      (fun i _ => hIn i),
-      (fun i _ => hStep i),
-      hClose,hDistinct⟩
+    exact ⟨n,x,hIn,hStep,hClose,hDistinct⟩
 
 end EPPAIII.TwoGraphs
