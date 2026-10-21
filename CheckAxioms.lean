@@ -1102,3 +1102,8 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.taylor_changed_pair_forces_mixed_sides
 #print axioms EPPAIII.TwoGraphs.taylor_second_eppa_transversal_of_pairs
 #print axioms EPPAIII.TwoGraphs.taylor_second_eppa_transversal
+
+-- Section 5 genuine separation via EPPA host automorphism images
+#print axioms EPPAIII.TwoGraphs.two_transversals_separate_under_fibre_action
+#print axioms EPPAIII.TwoGraphs.taylor_separating_eppa_transversal_of_pairs
+#print axioms EPPAIII.TwoGraphs.taylor_separating_eppa_transversal
