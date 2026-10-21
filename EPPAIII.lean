@@ -353,3 +353,6 @@ import EPPAIII.TwoGraphs.Separation
 import EPPAIII.TwoGraphs.OnePointParity
 
 import EPPAIII.TwoGraphs.OnePointExtension
+
+import EPPAIII.TwoGraphs.ReindexedTransversal
+import EPPAIII.TwoGraphs.ComplementaryOnePoint
