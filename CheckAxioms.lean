@@ -1179,3 +1179,6 @@ import EPPAIII
 -- Section 5.1 finite partial permutations always have a source or removable cycle
 #print axioms EPPAIII.TwoGraphs.permutation_simple_positive_cycle
 #print axioms EPPAIII.TwoGraphs.finite_permutation_has_source_or_removable_cycle
+-- Section 5.1 one common global bit satisfies all closed walks
+#print axioms EPPAIII.TwoGraphs.xorPrefix_even_constant
+#print axioms EPPAIII.TwoGraphs.exists_globally_compatible_cycle_bit
