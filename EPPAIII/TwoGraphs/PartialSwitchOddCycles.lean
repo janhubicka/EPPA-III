@@ -174,8 +174,12 @@ theorem trajectory_block_periodic_of_return
       calc
         x (period * (k + 1) + i) =
             x (period + (period * k + i)) := by
-              congr 1
-              omega
+              have hArithmetic :
+                  period * (k + 1) + i =
+                    period + (period * k + i) := by
+                rw [Nat.mul_succ]
+                omega
+              exact congrArg x hArithmetic
         _ = x (period * k + i) := hShift _
         _ = x i := ih i
 
