@@ -1152,7 +1152,12 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.pair_discrepancy_telescopes
 #print axioms EPPAIII.TwoGraphs.pair_cycle_xor_sums_equal
 #print axioms EPPAIII.TwoGraphs.pair_swapped_cycle_xor_sums_equal
-
+-- Section 5.1 partial two-graph discrepancy and switching equations
+#print axioms EPPAIII.TwoGraphs.partial_two_graph_discrepancy_potential
+#print axioms EPPAIII.TwoGraphs.partial_switch_of_vertex_equations
+-- Section 5.1 open path branch: finite source elimination
+#print axioms EPPAIII.TwoGraphs.vertex_equations_of_partial_sources
+#print axioms EPPAIII.TwoGraphs.partial_two_graph_acyclic_switch
 -- Section 5.1 actual cyclic trajectory parity constraints
 #print axioms EPPAIII.TwoGraphs.xorPrefix_add
 #print axioms EPPAIII.TwoGraphs.partial_pair_trajectories_cycle_sums_equal
