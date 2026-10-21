@@ -366,3 +366,5 @@ import EPPAIII.TwoGraphs.TransversalParity
 import EPPAIII.TwoGraphs.AllTransversalEppa
 
 import EPPAIII.TwoGraphs.PartialSwitchAnchor
+
+import EPPAIII.TwoGraphs.PartialSwitchCoboundary
