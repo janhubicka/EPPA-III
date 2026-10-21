@@ -1128,3 +1128,9 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.two_graph_homogeneous_of_one_point_extensions
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_homogeneous_of_pairs
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_homogeneous
+
+-- Section 5 trivial two-graphs and unconditional Proposition 5.11
+#print axioms EPPAIII.TwoGraphs.even_triple_iff_not_odd
+#print axioms EPPAIII.TwoGraphs.no_even_triple_all_two_graph_automorphisms
+#print axioms EPPAIII.TwoGraphs.no_even_triple_two_graph_homogeneous
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_homogeneous_all_cases
