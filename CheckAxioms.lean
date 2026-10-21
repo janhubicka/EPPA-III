@@ -1107,3 +1107,6 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.two_transversals_separate_under_fibre_action
 #print axioms EPPAIII.TwoGraphs.taylor_separating_eppa_transversal_of_pairs
 #print axioms EPPAIII.TwoGraphs.taylor_separating_eppa_transversal
+
+-- Section 5 one-for-all local two-graph parity dichotomy
+#print axioms EPPAIII.TwoGraphs.one_point_two_graph_types_uniform
