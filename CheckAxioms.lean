@@ -1110,3 +1110,7 @@ import EPPAIII
 
 -- Section 5 one-for-all local two-graph parity dichotomy
 #print axioms EPPAIII.TwoGraphs.one_point_two_graph_types_uniform
+
+-- Section 5 one-point extension of equal neighbourhood types
+#print axioms EPPAIII.TwoGraphs.equal_types_partial_swap
+#print axioms EPPAIII.TwoGraphs.eppa_one_point_extension_equal_types
