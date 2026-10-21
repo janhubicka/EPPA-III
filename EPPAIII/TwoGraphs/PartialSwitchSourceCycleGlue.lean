@@ -29,8 +29,8 @@ def HasSourceOrRemovableCycle {V : Type*}
   ∀ (S : Finset V), S ⊆ D → S.Nonempty →
     (∃ z ∈ S, ∀ y ∈ S, p y ≠ z) ∨
     (∃ (n : ℕ) (x : ℕ → V),
-      (∀ i : ℕ, i ≤ n → x i ∈ S) ∧
-      (∀ i : ℕ, i ≤ n → x (i + 1) = p (x i)) ∧
+      (∀ i : ℕ, x i ∈ S) ∧
+      (∀ i : ℕ, x (i + 1) = p (x i)) ∧
       x (n + 1) = x 0 ∧
       (∀ i : ℕ, i < n → x i ≠ x n))
 
@@ -40,8 +40,8 @@ def HasCompatibleCycleSums {V : Type*}
     (p : Equiv.Perm V) (D : Finset V)
     (h : V → Bool) (c : Bool) : Prop :=
   ∀ (n : ℕ) (x : ℕ → V),
-    (∀ i : ℕ, i ≤ n → x i ∈ D) →
-    (∀ i : ℕ, i ≤ n → x (i + 1) = p (x i)) →
+    (∀ i : ℕ, x i ∈ D) →
+    (∀ i : ℕ, x (i + 1) = p (x i)) →
     x (n + 1) = x 0 →
     xorPrefix (fun i => h (x i)) (n + 1) =
       xorPrefix (fun _ : ℕ => c) (n + 1)
@@ -100,7 +100,7 @@ theorem vertex_equations_of_source_or_cycle
               Bool.xor (h y) c
           simpa only [if_neg hyz, if_neg hPy] using hOld
       · obtain ⟨n,x,hIn,hStep,hClose,hDistinct⟩ := hCycle
-        have hz : x n ∈ S := hIn n (Nat.le_refl n)
+        have hz : x n ∈ S := hIn n
         have hSmall : S.erase (x n) ⊆ D :=
           (Finset.erase_subset (x n) S).trans hSD
         obtain ⟨t,ht⟩ :=
@@ -109,23 +109,23 @@ theorem vertex_equations_of_source_or_cycle
             Bool.xor (t (x i)) (t (x (i + 1))) =
               Bool.xor (h (x i)) c := by
           intro i hi
-          have hXi : x i ∈ S := hIn i (Nat.le_of_lt hi)
+          have hXi : x i ∈ S := hIn i
           have hXiSmall : x i ∈ S.erase (x n) :=
             Finset.mem_erase.mpr ⟨hDistinct i hi,hXi⟩
           have hh := ht (x i) hXiSmall
-          rw [← hStep i (Nat.le_of_lt hi)] at hh
+          rw [← hStep i] at hh
           exact hh
         have hCycleCompatible :
             xorPrefix (fun i => h (x i)) (n + 1) =
               xorPrefix (fun _ : ℕ => c) (n + 1) := by
           apply hCompatible n x
-          · intro i hi
-            exact hSD (hIn i hi)
+          · intro i
+            exact hSD (hIn i)
           · exact hStep
           · exact hClose
         have hLast := last_cycle_equation_of_compatible_sum
           x t h c n hClose hCycleCompatible hEarlier
-        rw [hStep n (Nat.le_refl n)] at hLast
+        rw [hStep n] at hLast
         refine ⟨t, ?_⟩
         intro z hzS
         by_cases hzEq : z = x n
