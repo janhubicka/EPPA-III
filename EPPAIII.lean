@@ -351,3 +351,5 @@ import EPPAIII.TwoGraphs.SecondTransversal
 import EPPAIII.TwoGraphs.Separation
 
 import EPPAIII.TwoGraphs.OnePointParity
+
+import EPPAIII.TwoGraphs.OnePointExtension
