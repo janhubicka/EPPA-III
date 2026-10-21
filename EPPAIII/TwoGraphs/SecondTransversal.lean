@@ -47,13 +47,15 @@ theorem eppa_embedding_of_host_image
       intro u v
       change H.Adj u v ↔
         H.Adj (q (r (q.symm u))) (q (r (q.symm v)))
-      exact ((hq (q.symm u) (q.symm v)).symm).trans
-        ((hr (q.symm u) (q.symm v)).trans
-          (hq (r (q.symm u)) (r (q.symm v))))
+      simpa using
+        (((hq (q.symm u) (q.symm v)).symm).trans
+          ((hr (q.symm u) (q.symm v)).trans
+            (hq (r (q.symm u)) (r (q.symm v)))))
     refine ⟨r',hr',?_⟩
     intro x hx
-    have h := congrArg q (hExt x hx)
-    simpa [r',hostImageEmbedding] using h
+    change q (r (q.symm (q (e x)))) = q (e (p x))
+    rw [Equiv.symm_apply_apply]
+    exact congrArg q (hExt x hx)
 
 /-- A Taylor automorphism whose induced permutation changes a
 base adjacency type cannot preserve a constant layer choice
@@ -72,7 +74,7 @@ theorem taylor_changed_pair_forces_mixed_sides
   have hSource : G.Adj x y ↔
       (taylorPairGraph G).Adj (false,x) (false,y) := by
     change G.Adj x y ↔ (x ≠ y ∧ (G.Adj x y ↔ false = false))
-    simp only [eq_self_iff_true, iff_true]
+    simp only [iff_true]
     constructor
     · intro h
       exact ⟨G.ne_of_adj h,h⟩
@@ -86,7 +88,7 @@ theorem taylor_changed_pair_forces_mixed_sides
         (q (false,x)).1 = (q (false,y)).1)) ↔
       G.Adj (σ x) (σ y)
     rw [hBase false x, hBase false y, hSame]
-    simp only [eq_self_iff_true, iff_true]
+    simp only [iff_true]
     constructor
     · exact fun h => h.2
     · intro h
