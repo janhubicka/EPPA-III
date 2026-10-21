@@ -138,7 +138,7 @@ theorem homogeneous_two_graph_all_transversals_eppa
           intro hh
           exact hAnchor ((hUniform x hx x₀ hx₀).mp hh)
         have hFlip :
-            !(q (t x,x)).1 = t (σ x) := by
+            (!(q (t x,x)).1) = t (σ x) := by
           cases hqbit : (q (t x,x)).1 <;>
             cases htbit : t (σ x) <;> simp_all
         apply Prod.ext
