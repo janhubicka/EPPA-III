@@ -1157,3 +1157,8 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.xorPrefix_add
 #print axioms EPPAIII.TwoGraphs.partial_pair_trajectories_cycle_sums_equal
 #print axioms EPPAIII.TwoGraphs.partial_even_cycle_potential_zero
+
+-- Section 5.1 odd-cycle parity synchronization
+#print axioms EPPAIII.TwoGraphs.xorPrefix_repeated_blocks
+#print axioms EPPAIII.TwoGraphs.xorPrefix_odd_constant
+#print axioms EPPAIII.TwoGraphs.partial_odd_cycles_potential_sums_equal
