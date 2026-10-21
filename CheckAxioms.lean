@@ -1176,7 +1176,6 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.last_cycle_equation_of_compatible_sum
 -- Section 5.1 glue all directed source/cycle equations into one switching
 #print axioms EPPAIII.TwoGraphs.vertex_equations_of_source_or_cycle
-
 -- Section 5.1 finite partial permutations always have a source or removable cycle
 #print axioms EPPAIII.TwoGraphs.permutation_simple_positive_cycle
 #print axioms EPPAIII.TwoGraphs.finite_permutation_has_source_or_removable_cycle
