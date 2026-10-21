@@ -1158,3 +1158,7 @@ import EPPAIII
 -- Section 5.1 open path branch: finite source elimination
 #print axioms EPPAIII.TwoGraphs.vertex_equations_of_partial_sources
 #print axioms EPPAIII.TwoGraphs.partial_two_graph_acyclic_switch
+-- Section 5.1 actual cyclic trajectory parity constraints
+#print axioms EPPAIII.TwoGraphs.xorPrefix_add
+#print axioms EPPAIII.TwoGraphs.partial_pair_trajectories_cycle_sums_equal
+#print axioms EPPAIII.TwoGraphs.partial_even_cycle_potential_zero
