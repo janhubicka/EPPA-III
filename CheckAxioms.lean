@@ -1123,3 +1123,8 @@ import EPPAIII
 -- Section 5: actual complementary-type point extension
 #print axioms EPPAIII.TwoGraphs.eppa_one_point_extension_complementary_types
 #print axioms EPPAIII.TwoGraphs.eppa_one_point_two_graph_extension_of_pairs
+
+-- Section 5 finite-domain one-for-all induction and source-facing theorem
+#print axioms EPPAIII.TwoGraphs.two_graph_homogeneous_of_one_point_extensions
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_homogeneous_of_pairs
+#print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_homogeneous
