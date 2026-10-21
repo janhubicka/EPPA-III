@@ -360,3 +360,5 @@ import EPPAIII.TwoGraphs.ComplementaryOnePoint
 import EPPAIII.TwoGraphs.OneForAll
 
 import EPPAIII.TwoGraphs.TrivialTwoGraph
+
+import EPPAIII.TwoGraphs.TransversalParity
