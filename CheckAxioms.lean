@@ -1184,3 +1184,5 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.exists_globally_compatible_cycle_bit
 -- Section 5.1 exact full lemma: partial two-graph maps switch to partial graph maps
 #print axioms EPPAIII.TwoGraphs.partial_two_graph_has_switching_representative
+-- Section 5.1 actual partial injections need not be total permutations
+#print axioms EPPAIII.TwoGraphs.partial_two_graph_injection_has_switch
