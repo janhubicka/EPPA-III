@@ -1148,3 +1148,7 @@ import EPPAIII
 -- Section 5.1 partial switching with a fixed domain vertex
 #print axioms EPPAIII.TwoGraphs.anchored_transversal_adj_iff_odd
 #print axioms EPPAIII.TwoGraphs.partial_two_graph_fixed_point_switch
+-- Section 5.1 finite XOR telescoping for full cycles and swapped half-turns
+#print axioms EPPAIII.TwoGraphs.pair_discrepancy_telescopes
+#print axioms EPPAIII.TwoGraphs.pair_cycle_xor_sums_equal
+#print axioms EPPAIII.TwoGraphs.pair_swapped_cycle_xor_sums_equal
