@@ -36,7 +36,7 @@ theorem permutation_simple_positive_cycle
   have hOrder : p ^ N = 1 := pow_card_eq_one
   have hReturn : (p.toFun^[N]) z = z := by
     have hh := congrArg (fun q : Equiv.Perm V => q z) hOrder
-    simpa [pow_apply_eq_iterate] using hh
+    simpa [Equiv.Perm.coe_pow] using hh
   let P : ℕ → Prop :=
     fun k => 0 < k ∧ (p.toFun^[k]) z = z
   have hExists : ∃ k, P k := ⟨N,hN,hReturn⟩
@@ -52,7 +52,7 @@ theorem permutation_simple_positive_cycle
     intro i
     change (p.toFun^[i + 1 + 1]) z =
       p ((p.toFun^[i + 1]) z)
-    simpa only [Nat.add_assoc] using
+    simpa [Nat.succ_eq_add_one, Nat.add_assoc] using
       (Function.iterate_succ_apply' p.toFun (i + 1) z)
   have hEnd : x n = z := by
     change (p.toFun^[n + 1]) z = z
@@ -60,7 +60,7 @@ theorem permutation_simple_positive_cycle
     exact hM.2
   have hZero : x 0 = p z := by
     change (p.toFun^[0 + 1]) z = p z
-    simp [Function.iterate_succ_apply']
+    simp
   have hClose : x (n + 1) = x 0 := by
     calc
       x (n + 1) = p (x n) := hStep n
