@@ -1114,3 +1114,12 @@ import EPPAIII
 -- Section 5 one-point extension of equal neighbourhood types
 #print axioms EPPAIII.TwoGraphs.equal_types_partial_swap
 #print axioms EPPAIII.TwoGraphs.eppa_one_point_extension_equal_types
+
+-- Section 5: exact reindexing of automorphic EPPA transversals
+#print axioms EPPAIII.TwoGraphs.eppa_reindexed_host_image
+#print axioms EPPAIII.TwoGraphs.reindexed_host_fibre
+#print axioms EPPAIII.TwoGraphs.reindexed_host_choice
+#print axioms EPPAIII.TwoGraphs.taylor_complement_types_equal_on_transversal
+-- Section 5: actual complementary-type point extension
+#print axioms EPPAIII.TwoGraphs.eppa_one_point_extension_complementary_types
+#print axioms EPPAIII.TwoGraphs.eppa_one_point_two_graph_extension_of_pairs
