@@ -1155,3 +1155,6 @@ import EPPAIII
 -- Section 5.1 partial two-graph discrepancy and switching equations
 #print axioms EPPAIII.TwoGraphs.partial_two_graph_discrepancy_potential
 #print axioms EPPAIII.TwoGraphs.partial_switch_of_vertex_equations
+-- Section 5.1 open path branch: finite source elimination
+#print axioms EPPAIII.TwoGraphs.vertex_equations_of_partial_sources
+#print axioms EPPAIII.TwoGraphs.partial_two_graph_acyclic_switch
