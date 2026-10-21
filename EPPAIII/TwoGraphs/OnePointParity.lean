@@ -65,7 +65,8 @@ theorem one_point_two_graph_types_uniform
     intro r hr
     have hh := hEqual ⟨r,hr⟩
     change decide (G.Adj a r) = decide (G.Adj b r) at hh
-    exact decide_eq_decide.mp hh
+    by_cases har : G.Adj a r <;> by_cases hbr : G.Adj b r <;>
+      simp_all
   · right
     intro r hr
     have hh := hOpp ⟨r,hr⟩
