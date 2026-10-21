@@ -1134,3 +1134,8 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.no_even_triple_all_two_graph_automorphisms
 #print axioms EPPAIII.TwoGraphs.no_even_triple_two_graph_homogeneous
 #print axioms EPPAIII.TwoGraphs.taylor_eppa_two_graph_homogeneous_all_cases
+
+-- Section 5 all switching representatives: invariant triple parity
+#print axioms EPPAIII.TwoGraphs.taylor_transversal_decide_adj
+#print axioms EPPAIII.TwoGraphs.odd_triple_transversal_iff
+#print axioms EPPAIII.TwoGraphs.partial_transversal_preserves_two_graph
