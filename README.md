@@ -43,3 +43,7 @@ The [R3 singleton matching proof](validation/section3-r3-singleton-matching.tex)
 ## Reorganised manuscript (16 October 2026)
 
 The double-cover reduction is now Lemma 5.12 in §5.3 and the remaining imprimitive classification is in §6 (Proposition 6.17). See [source map](validation/section5-6-source-map.tex) and [validation changelog](validation/CHANGELOG.md). The original manuscript remains frozen. New Lean assembled theorem: `EPPAIII.BlockSystems.transitive_eppa_double_cover_classification`.
+
+## Section 5.1 partial two-graph switching (22 October 2026)
+
+The complete statement of `lemma:gtg`, including arbitrary finite-domain partial injections, is now Lean-verified. See the [completion checkpoint](validation/section5-partial-switch-complete-20261022.md) for exact exported theorem names, proof dependencies, CI provenance and the frozen-manuscript review boundary.
