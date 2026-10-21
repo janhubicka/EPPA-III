@@ -1152,3 +1152,8 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.pair_discrepancy_telescopes
 #print axioms EPPAIII.TwoGraphs.pair_cycle_xor_sums_equal
 #print axioms EPPAIII.TwoGraphs.pair_swapped_cycle_xor_sums_equal
+
+-- Section 5.1 actual cyclic trajectory parity constraints
+#print axioms EPPAIII.TwoGraphs.xorPrefix_add
+#print axioms EPPAIII.TwoGraphs.partial_pair_trajectories_cycle_sums_equal
+#print axioms EPPAIII.TwoGraphs.partial_even_cycle_potential_zero
