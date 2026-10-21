@@ -37,14 +37,19 @@ theorem equal_types_partial_swap
     exact Equiv.swap_apply_of_ne_of_ne hra hrb
   intro u v hu hv
   simp only [Finset.mem_insert] at hu hv
-  rcases hu with rfl | hu <;> rcases hv with rfl | hv
-  · simp
-  · simpa [hFix v hv] using hEqual v hv
-  · have hh : G.Adj u a ↔ G.Adj u b :=
-      (G.adj_comm u a).trans
-        ((hEqual u hu).trans (G.adj_comm b u))
-    simpa [hFix u hu] using hh
-  · simp [hFix u hu, hFix v hv]
+  rcases hu with huEq | hu
+  · subst u
+    rcases hv with hvEq | hv
+    · subst v
+      simp
+    · simpa [hFix v hv] using hEqual v hv
+  · rcases hv with hvEq | hv
+    · subst v
+      have hh : G.Adj u a ↔ G.Adj u b :=
+        (G.adj_comm u a).trans
+          ((hEqual u hu).trans (G.adj_comm b u))
+      simpa [hFix u hu] using hh
+    · simp [hFix u hu, hFix v hv]
 
 /-- If a and b have equal graph adjacency types into R, an
 actual EPPA Taylor double with invariant fibres supplies a
