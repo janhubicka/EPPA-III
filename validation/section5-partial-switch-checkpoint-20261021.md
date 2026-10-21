@@ -12,9 +12,9 @@
 | Vertex equations suffice for actual graph switching | `partial_switch_of_vertex_equations` | #354 — merged, green |
 | Open directed paths by finite source elimination | `vertex_equations_of_partial_sources`, `partial_two_graph_acyclic_switch` | #355 — merged, green |
 | Even periodic orbit has zero sum of vertex potential | `xorPrefix_add`, `partial_pair_trajectories_cycle_sums_equal`, `partial_even_cycle_potential_zero` | #356 — merged, green |
-| Two odd cyclic orbits have the same vertex-potential sum | `xorPrefix_repeated_blocks`, `xorPrefix_odd_constant`, `partial_odd_cycles_potential_equal_of_returns` | #357 — CI pending for strengthened return-only form |
+| Two odd cyclic orbits have the same vertex-potential sum | `xorPrefix_repeated_blocks`, `xorPrefix_odd_constant`, `partial_odd_cycles_potential_equal_of_returns` | #357 — merged and green; strengthened return-only theorem |
 
-The merged declarations are registered in `CheckAxioms.lean`, and each PR underwent the full Lean build, permitted-axiom audit, finite regressions and placeholder-rejection workflow. The #357 status must be updated only after its final build succeeds.
+The merged declarations are registered in `CheckAxioms.lean`, and each PR underwent the full Lean build, permitted-axiom audit, finite regressions and placeholder-rejection workflow. The strengthened #357 build and permitted-axiom audit passed; PR #357 is merged.
 
 ## Exact remaining theorem
 
