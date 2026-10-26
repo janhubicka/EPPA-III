@@ -1,6 +1,7 @@
 import EPPAIII.TwoGraphs.UniformFibreHomogeneity
 import EPPAIII.CliqueCovers.TwinQuotientFibres
 import EPPAIII.BlockSystems.ClusterObstructions
+import EPPAIII.CliqueCovers.TransitiveHalfEdges
 
 /-!
 # Finite vertex-transitive cluster graphs are homogeneous
