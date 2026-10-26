@@ -1191,7 +1191,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.cluster_adj_iff_closed_twin_fibre
 #print axioms EPPAIII.BlockSystems.vertex_transitive_cluster_isHomogeneous
 #print axioms EPPAIII.BlockSystems.transitive_nonhomogeneous_not_cluster
-
--- Section 6 host classification with the manuscript's nonhomogeneous assumption
+-- Section 6 source-facing classifications under actual nonhomogeneous host hypotheses
 #print axioms EPPAIII.CliqueCovers.eppa_nonhomogeneous_clique_double_all_positive
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_named_host_nonhomogeneous
