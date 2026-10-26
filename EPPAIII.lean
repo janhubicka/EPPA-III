@@ -380,3 +380,5 @@ import EPPAIII.TwoGraphs.PartialSwitchFull
 import EPPAIII.TwoGraphs.PartialSwitchInjection
 
 import EPPAIII.BlockSystems.TransitiveClusterHomogeneity
+
+import EPPAIII.BlockSystems.Section6NonhomogeneousInterfaces
