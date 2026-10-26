@@ -1194,3 +1194,10 @@ import EPPAIII
 -- Section 6 source-facing classifications under actual nonhomogeneous host hypotheses
 #print axioms EPPAIII.CliqueCovers.eppa_nonhomogeneous_clique_double_all_positive
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_named_host_nonhomogeneous
+
+-- Section 6: disjoint doubles of exceptional homogeneous bases cannot be omitted
+#print axioms EPPAIII.BlockSystems.disjoint_double_eppa_of_homogeneous
+#print axioms EPPAIII.BlockSystems.homogeneous_graph_vertex_transitive
+#print axioms EPPAIII.BlockSystems.disjoint_double_vertex_transitive
+#print axioms EPPAIII.BlockSystems.disjoint_double_not_homogeneous_of_induced_p3
+#print axioms EPPAIII.BlockSystems.disjoint_double_counterexample_schema
