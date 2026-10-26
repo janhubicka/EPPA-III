@@ -1186,3 +1186,8 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.partial_two_graph_has_switching_representative
 -- Section 5.1 actual partial injections need not be total permutations
 #print axioms EPPAIII.TwoGraphs.partial_two_graph_injection_has_switch
+
+-- Section 6: remove the non-cluster assumption under transitive non-homogeneity
+#print axioms EPPAIII.BlockSystems.cluster_adj_iff_closed_twin_fibre
+#print axioms EPPAIII.BlockSystems.vertex_transitive_cluster_isHomogeneous
+#print axioms EPPAIII.BlockSystems.transitive_nonhomogeneous_not_cluster
