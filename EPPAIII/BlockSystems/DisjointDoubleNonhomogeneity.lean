@@ -110,7 +110,9 @@ theorem disjoint_double_vertex_transitive
     rcases v with ⟨e,y'⟩
     change (d = e ∧ G.Adj x' y') ↔
       (τ d = τ e ∧ G.Adj (σ x') (σ y'))
-    exact and_congr (τ.injective.eq_iff) (hσ x' y')
+    have hSides : (d = e) ↔ (τ d = τ e) :=
+      ⟨fun heq => congrArg τ heq, fun heq => τ.injective heq⟩
+    exact and_congr hSides (hσ x' y')
   · change (τ b,σ x) = (c,y)
     simp [τ,hxy]
 
