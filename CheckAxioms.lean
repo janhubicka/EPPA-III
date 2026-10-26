@@ -1194,3 +1194,6 @@ import EPPAIII
 -- Section 6 source-facing classifications under actual nonhomogeneous host hypotheses
 #print axioms EPPAIII.CliqueCovers.eppa_nonhomogeneous_clique_double_all_positive
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_named_host_nonhomogeneous
+
+-- Section 6 complementary equal-clique case, without invoking the excluded double-cover lemma
+#print axioms EPPAIII.CliqueCovers.eppa_nonhomogeneous_complement_clique_double_all_positive
