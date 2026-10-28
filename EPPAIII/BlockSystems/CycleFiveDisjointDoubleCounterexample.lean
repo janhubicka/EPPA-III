@@ -52,6 +52,21 @@ theorem cycleFiveDihedral_graphAut :
         (cycleFiveDihedralPerm r flip y)
   decide
 
+/-- Local decidability checks used in the finite orbit exhaustion. -/
+private def cycleFivePartialDecidable
+    (D : Finset (Fin 5)) (p : Equiv.Perm (Fin 5)) :
+    Decidable (EPPAIII.IsPartialGraphAutomorphism
+      (SimpleGraph.cycleGraph 5) D p) := by
+  unfold EPPAIII.IsPartialGraphAutomorphism
+  infer_instance
+
+private def cycleFiveExtensionDecidable
+    (D : Finset (Fin 5)) (p : Equiv.Perm (Fin 5)) :
+    Decidable (∃ (r : Fin 5) (flip : Bool),
+      ∀ x : Fin 5, x ∈ D →
+        cycleFiveDihedralPerm r flip x = p x) := by
+  infer_instance
+
 /-- Exhaustive finite certificate: each partial automorphism
 of C5 agrees on its finite domain with one of the ten
 dihedral symmetries. The assertion is only about the finite
@@ -64,6 +79,11 @@ theorem cycleFiveDihedral_extends_partial :
         ∀ x : Fin 5, x ∈ D →
           cycleFiveDihedralPerm r flip x = p x := by
   letI : Fintype (Equiv.Perm (Fin 5)) := Equiv.instFintype
+  letI : ∀ D p, Decidable (EPPAIII.IsPartialGraphAutomorphism
+      (SimpleGraph.cycleGraph 5) D p) := cycleFivePartialDecidable
+  letI : ∀ D p, Decidable (∃ (r : Fin 5) (flip : Bool),
+      ∀ x : Fin 5, x ∈ D → cycleFiveDihedralPerm r flip x = p x) :=
+    cycleFiveExtensionDecidable
   decide
 
 /-- The five-cycle is homogeneous, witnessed by its explicit
@@ -105,10 +125,7 @@ theorem cycleFive_disjoint_double_imprimitive_counterexample :
   obtain ⟨hab,hbc,hac,hnot⟩ := cycleFive_inducedP3
   exact disjoint_double_imprimitive_counterexample_schema
     (SimpleGraph.cycleGraph 5) cycleFive_isHomogeneous
-    (by
-      first
-      | exact SimpleGraph.cycleGraph_preconnected
-      | exact SimpleGraph.preconnected_cycleGraph)
+    (by exact SimpleGraph.cycleGraph_preconnected)
     0 1 2 hab hbc hac hnot
 
 end EPPAIII.BlockSystems
