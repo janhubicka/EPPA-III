@@ -1197,3 +1197,8 @@ import EPPAIII
 
 -- Section 6 complementary equal-clique case, without invoking the excluded double-cover lemma
 #print axioms EPPAIII.CliqueCovers.eppa_nonhomogeneous_complement_clique_double_all_positive
+-- Section 6 disjoint double counterexample schema
+#print axioms EPPAIII.BlockSystems.disjoint_double_eppa_of_homogeneous
+#print axioms EPPAIII.BlockSystems.disjoint_double_vertex_transitive
+#print axioms EPPAIII.BlockSystems.disjoint_double_not_homogeneous_of_induced_p3
+#print axioms EPPAIII.BlockSystems.disjoint_double_counterexample_schema
