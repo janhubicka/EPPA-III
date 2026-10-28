@@ -608,6 +608,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.vertex_transitive_pullback
 #print axioms EPPAIII.BlockSystems.transitive_eppa_case2_unequal_three_components_impossible
 #print axioms EPPAIII.BlockSystems.graph_automorphism_preserves_base_neighbour_card
+#print axioms EPPAIII.BlockSystems.homogeneous_graph_vertex_transitive
 #print axioms EPPAIII.BlockSystems.nonhomogeneous_of_unequal_base_degrees
 #print axioms EPPAIII.BlockSystems.transitive_eppa_case2_unequal_three_components
 #print axioms EPPAIII.BlockSystems.eppa_case1_selected_block_eq_component
@@ -1194,14 +1195,14 @@ import EPPAIII
 #print axioms EPPAIII.CliqueCovers.eppa_nonhomogeneous_clique_double_all_positive
 #print axioms EPPAIII.BlockSystems.transitive_eppa_unequal_two_cliques_named_host_nonhomogeneous
 
--- Section 6: disjoint doubles of exceptional homogeneous bases cannot be omitted
+-- Section 6 complementary equal-clique case, without invoking the excluded double-cover lemma
+#print axioms EPPAIII.CliqueCovers.eppa_nonhomogeneous_complement_clique_double_all_positive
+-- Section 6 disjoint double counterexample schema
 #print axioms EPPAIII.BlockSystems.disjoint_double_eppa_of_homogeneous
-#print axioms EPPAIII.BlockSystems.homogeneous_graph_vertex_transitive
 #print axioms EPPAIII.BlockSystems.disjoint_double_vertex_transitive
 #print axioms EPPAIII.BlockSystems.disjoint_double_not_homogeneous_of_induced_p3
 #print axioms EPPAIII.BlockSystems.disjoint_double_counterexample_schema
-
--- Section 6: disjoint doubles of connected homogeneous bases have actual imprimitive blocks
+-- Section 6: connected disjoint doubles give invariant nontrivial two-block partitions
 #print axioms EPPAIII.BlockSystems.disjoint_double_reachable_iff_same_side
 #print axioms EPPAIII.BlockSystems.disjoint_double_invariant_side_blocks
 #print axioms EPPAIII.BlockSystems.disjoint_double_side_surjective
