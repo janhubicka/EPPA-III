@@ -386,3 +386,5 @@ import EPPAIII.CliqueCovers.Section6ComplementedCliques
 import EPPAIII.BlockSystems.DisjointDoubleNonhomogeneity
 import EPPAIII.BlockSystems.DisjointDoubleInvariantBlocks
 import EPPAIII.BlockSystems.RankThreeImprimitiveHomogeneity
+
+import EPPAIII.BlockSystems.RankThreeActualImprimitiveBlocks
