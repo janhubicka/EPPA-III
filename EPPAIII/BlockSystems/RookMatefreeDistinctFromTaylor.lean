@@ -36,11 +36,8 @@ theorem rook_matefree_has_false_twins :
     (true,((0 : Fin 3),(0 : Fin 3))), by decide,
     by decide, ?_⟩
   intro w
-  fin_cases w.1
-  · rcases w.2 with ⟨i,j⟩
-    fin_cases i <;> fin_cases j <;> decide
-  · rcases w.2 with ⟨i,j⟩
-    fin_cases i <;> fin_cases j <;> decide
+  rcases w with ⟨side,⟨i,j⟩⟩
+  cases side <;> fin_cases i <;> fin_cases j <;> decide
 
 /-- The canonical Taylor double of R3 has no false-twin
 pair at all. This is a finite certificate on 18 vertices,
