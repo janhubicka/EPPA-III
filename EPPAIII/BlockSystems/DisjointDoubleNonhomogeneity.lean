@@ -1,6 +1,7 @@
 import EPPAIII.DoubleCover.TwoPointAction
 import EPPAIII.DoubleCover.RigidLayerHomogeneity
 import EPPAIII.CliqueCovers.TransitiveHalfEdges
+import EPPAIII.BlockSystems.UnequalCase2WithoutHomogeneity
 
 /-!
 # Two disjoint copies of a homogeneous graph
@@ -66,28 +67,6 @@ theorem disjoint_double_eppa_of_homogeneous
     intro x hx
     change (false,σ x) = (false,p x)
     rw [hFix x hx]
-
-/-- Homogeneity of a finite graph entails vertex transitivity,
-using only extensions of one-point partial automorphisms. -/
-theorem homogeneous_graph_vertex_transitive
-    {V : Type*} [Fintype V] [DecidableEq V]
-    (G : SimpleGraph V)
-    (hHom : EPPAIII.DoubleCover.IsHomogeneousGraph G) :
-    EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms G := by
-  classical
-  intro x y
-  let p : Equiv.Perm V := Equiv.swap x y
-  have hPartial : EPPAIII.IsPartialGraphAutomorphism
-      G ({x} : Finset V) p := by
-    intro u v hu hv
-    have hux : u = x := by simpa using hu
-    have hvx : v = x := by simpa using hv
-    subst u
-    subst v
-    simp
-  obtain ⟨σ,hσ,hFix⟩ := hHom ({x} : Finset V) p hPartial
-  refine ⟨σ,hσ,?_⟩
-  simpa [p] using hFix x (by simp)
 
 /-- The disjoint double of a vertex-transitive graph is
 vertex-transitive: freely swap the two copies and transport
