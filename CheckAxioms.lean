@@ -1212,3 +1212,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.block_relation_of_same_pair_status
 #print axioms EPPAIII.BlockSystems.rank_three_imprimitive_cluster_or_cocluster
 #print axioms EPPAIII.BlockSystems.transitive_rank_three_imprimitive_isHomogeneous
+
+-- Section 6 rank-three exclusion from genuine nontrivial invariant block sizes
+#print axioms EPPAIII.BlockSystems.transitive_rank_three_actual_blocks_isHomogeneous
+#print axioms EPPAIII.BlockSystems.nonhomogeneous_imprimitive_not_rank_three_pairs
