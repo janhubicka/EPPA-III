@@ -1210,6 +1210,9 @@ import EPPAIII
 
 -- Section 6 explicit five-cycle disjoint double satisfies nonhomogeneous transitive imprimitive EPPA
 #print axioms EPPAIII.BlockSystems.cycleFiveDihedral_graphAut
+#print axioms EPPAIII.BlockSystems.cycleFive_rotations_transitive
+#print axioms EPPAIII.BlockSystems.cycleFive_ordered_pair_transitive
+#print axioms EPPAIII.BlockSystems.cycleFive_two_anchor_types_injective
 #print axioms EPPAIII.BlockSystems.cycleFiveDihedral_extends_partial
 #print axioms EPPAIII.BlockSystems.cycleFive_isHomogeneous
 #print axioms EPPAIII.BlockSystems.cycleFive_inducedP3
