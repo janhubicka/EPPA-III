@@ -1,5 +1,6 @@
 import EPPAIII.BlockSystems.DisjointDoubleInvariantBlocks
 import Mathlib.Combinatorics.SimpleGraph.CycleGraph
+import Mathlib.Data.Fintype.Perm
 
 /-!
 # The omitted 2C5 host in Proposition 6.17
@@ -62,6 +63,7 @@ theorem cycleFiveDihedral_extends_partial :
       ∃ (r : Fin 5) (flip : Bool),
         ∀ x : Fin 5, x ∈ D →
           cycleFiveDihedralPerm r flip x = p x := by
+  letI : Fintype (Equiv.Perm (Fin 5)) := Equiv.instFintype
   decide
 
 /-- The five-cycle is homogeneous, witnessed by its explicit
@@ -103,7 +105,10 @@ theorem cycleFive_disjoint_double_imprimitive_counterexample :
   obtain ⟨hab,hbc,hac,hnot⟩ := cycleFive_inducedP3
   exact disjoint_double_imprimitive_counterexample_schema
     (SimpleGraph.cycleGraph 5) cycleFive_isHomogeneous
-    SimpleGraph.preconnected_cycleGraph
+    (by
+      first
+      | exact SimpleGraph.cycleGraph_preconnected
+      | exact SimpleGraph.preconnected_cycleGraph)
     0 1 2 hab hbc hac hnot
 
 end EPPAIII.BlockSystems
