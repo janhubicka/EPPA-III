@@ -383,3 +383,5 @@ import EPPAIII.BlockSystems.TransitiveClusterHomogeneity
 import EPPAIII.BlockSystems.Section6NonhomogeneousInterfaces
 
 import EPPAIII.BlockSystems.DisjointDoubleNonhomogeneity
+
+import EPPAIII.BlockSystems.DisjointDoubleInvariantBlocks
