@@ -1202,8 +1202,13 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.disjoint_double_vertex_transitive
 #print axioms EPPAIII.BlockSystems.disjoint_double_not_homogeneous_of_induced_p3
 #print axioms EPPAIII.BlockSystems.disjoint_double_counterexample_schema
-
--- Section 6 strict-order imprimitive rank-three conclusion without classification
+-- Section 6: connected disjoint doubles give invariant nontrivial two-block partitions
+#print axioms EPPAIII.BlockSystems.disjoint_double_reachable_iff_same_side
+#print axioms EPPAIII.BlockSystems.disjoint_double_invariant_side_blocks
+#print axioms EPPAIII.BlockSystems.disjoint_double_side_surjective
+#print axioms EPPAIII.BlockSystems.disjoint_double_nontrivial_side_block
+#print axioms EPPAIII.BlockSystems.disjoint_double_imprimitive_counterexample_schema
+-- Section 6: imprimitive rank-three ordered-pair actions produce homogeneous hosts
 #print axioms EPPAIII.BlockSystems.block_relation_of_same_pair_status
 #print axioms EPPAIII.BlockSystems.rank_three_imprimitive_cluster_or_cocluster
 #print axioms EPPAIII.BlockSystems.transitive_rank_three_imprimitive_isHomogeneous
