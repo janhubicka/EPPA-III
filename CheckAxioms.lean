@@ -1200,3 +1200,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.disjoint_double_vertex_transitive
 #print axioms EPPAIII.BlockSystems.disjoint_double_not_homogeneous_of_induced_p3
 #print axioms EPPAIII.BlockSystems.disjoint_double_counterexample_schema
+
+-- Section 6: disjoint doubles of connected homogeneous bases have actual imprimitive blocks
+#print axioms EPPAIII.BlockSystems.disjoint_double_reachable_iff_same_side
+#print axioms EPPAIII.BlockSystems.disjoint_double_invariant_side_blocks
+#print axioms EPPAIII.BlockSystems.disjoint_double_side_surjective
+#print axioms EPPAIII.BlockSystems.disjoint_double_nontrivial_side_block
+#print axioms EPPAIII.BlockSystems.disjoint_double_imprimitive_counterexample_schema
