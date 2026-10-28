@@ -79,10 +79,12 @@ theorem cycleFiveDihedral_extends_partial :
         ∀ x : Fin 5, x ∈ D →
           cycleFiveDihedralPerm r flip x = p x := by
   letI : Fintype (Equiv.Perm (Fin 5)) := Equiv.instFintype
-  letI : ∀ D p, Decidable (EPPAIII.IsPartialGraphAutomorphism
-      (SimpleGraph.cycleGraph 5) D p) := cycleFivePartialDecidable
-  letI : ∀ D p, Decidable (∃ (r : Fin 5) (flip : Bool),
-      ∀ x : Fin 5, x ∈ D → cycleFiveDihedralPerm r flip x = p x) :=
+  letI : ∀ (D : Finset (Fin 5)) (p : Equiv.Perm (Fin 5)),
+      Decidable (EPPAIII.IsPartialGraphAutomorphism
+        (SimpleGraph.cycleGraph 5) D p) := cycleFivePartialDecidable
+  letI : ∀ (D : Finset (Fin 5)) (p : Equiv.Perm (Fin 5)),
+      Decidable (∃ (r : Fin 5) (flip : Bool),
+        ∀ x : Fin 5, x ∈ D → cycleFiveDihedralPerm r flip x = p x) :=
     cycleFiveExtensionDecidable
   decide
 
