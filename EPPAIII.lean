@@ -382,4 +382,5 @@ import EPPAIII.TwoGraphs.PartialSwitchInjection
 import EPPAIII.BlockSystems.TransitiveClusterHomogeneity
 import EPPAIII.BlockSystems.Section6NonhomogeneousInterfaces
 
+import EPPAIII.CliqueCovers.Section6ComplementedCliques
 import EPPAIII.BlockSystems.DisjointDoubleNonhomogeneity
