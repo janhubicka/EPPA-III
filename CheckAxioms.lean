@@ -1208,3 +1208,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.disjoint_double_side_surjective
 #print axioms EPPAIII.BlockSystems.disjoint_double_nontrivial_side_block
 #print axioms EPPAIII.BlockSystems.disjoint_double_imprimitive_counterexample_schema
+
+-- Section 6 explicit five-cycle disjoint double satisfies nonhomogeneous transitive imprimitive EPPA
+#print axioms EPPAIII.BlockSystems.cycleFiveDihedral_graphAut
+#print axioms EPPAIII.BlockSystems.cycleFiveDihedral_extends_partial
+#print axioms EPPAIII.BlockSystems.cycleFive_isHomogeneous
+#print axioms EPPAIII.BlockSystems.cycleFive_inducedP3
+#print axioms EPPAIII.BlockSystems.cycleFive_disjoint_double_imprimitive_counterexample
