@@ -86,7 +86,8 @@ theorem cycleFiveDihedral_extends_partial :
       Decidable (∃ (r : Fin 5) (flip : Bool),
         ∀ x : Fin 5, x ∈ D → cycleFiveDihedralPerm r flip x = p x) :=
     cycleFiveExtensionDecidable
-  decide
+  intro D
+  fin_cases D <;> decide
 
 /-- The five-cycle is homogeneous, witnessed by its explicit
 dihedral automorphisms. -/
