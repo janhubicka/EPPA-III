@@ -1216,3 +1216,9 @@ import EPPAIII
 -- Section 6 rank-three exclusion from genuine nontrivial invariant block sizes
 #print axioms EPPAIII.BlockSystems.transitive_rank_three_actual_blocks_isHomogeneous
 #print axioms EPPAIII.BlockSystems.nonhomogeneous_imprimitive_not_rank_three_pairs
+
+-- Section 6: mate-free rook complement-of-2-clique-extension distinct from Taylor
+#print axioms EPPAIII.BlockSystems.rook_matefree_has_false_twins
+#print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
+#print axioms EPPAIII.BlockSystems.false_twins_transport_iso
+#print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
