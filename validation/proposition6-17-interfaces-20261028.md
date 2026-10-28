@@ -15,7 +15,8 @@
 ## Additional proof branches — status must be checked before citing as completed
 
 - [PR #371](https://github.com/janhubicka/EPPA-III/pull/371): explicit `2C_5` counterexample with a finite dihedral homogeneity certificate, connectedness, induced `P_3`, and actual imprimitivity. **Pending CI/merge.**
-- [PR #372](https://github.com/janhubicka/EPPA-III/pull/372): classification-free proof that an imprimitive rank-three ordered pair action gives a cluster/co-cluster host; vertex transitivity makes it homogeneous. **Pending CI/merge.** This would eliminate the need to cite a *classification of imprimitive rank-three graphs*, but not the separate earlier proposition asserting rank three when the host is too small.
+- [PR #372](https://github.com/janhubicka/EPPA-III/pull/372): **merged, green**. An imprimitive rank-three ordered-pair action gives a cluster/co-cluster host; vertex transitivity makes it homogeneous. This eliminates the separate classification of imprimitive rank-three graphs, but not the earlier small-witness-to-rank-three theorem.
+- [PR #374](https://github.com/janhubicka/EPPA-III/pull/374): **merged, green**. Extracts the necessary same-block and different-block witnesses from the actual finite invariant block hypotheses (surjectivity, two block labels and a block of size at least two), and certifies the strict-order rank-three contradiction with those hypotheses.
 
 ## Minimal author-facing changes, in priority order
 
