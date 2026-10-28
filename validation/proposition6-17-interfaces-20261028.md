@@ -15,7 +15,8 @@
 ## Additional proof branches — status must be checked before citing as completed
 
 - [PR #371](https://github.com/janhubicka/EPPA-III/pull/371): explicit `2C_5` counterexample with a finite dihedral homogeneity certificate, connectedness, induced `P_3`, and actual imprimitivity. **Pending CI/merge.**
-- [PR #372](https://github.com/janhubicka/EPPA-III/pull/372): classification-free proof that an imprimitive rank-three ordered pair action gives a cluster/co-cluster host; vertex transitivity makes it homogeneous. **Pending CI/merge.** This would eliminate the need to cite a *classification of imprimitive rank-three graphs*, but not the separate earlier proposition asserting rank three when the host is too small.
+- [PR #372](https://github.com/janhubicka/EPPA-III/pull/372): **merged, green**. An imprimitive rank-three ordered-pair action gives a cluster/co-cluster host; vertex transitivity makes it homogeneous. This eliminates the separate classification of imprimitive rank-three graphs, but not the earlier small-witness-to-rank-three theorem.
+- [PR #374](https://github.com/janhubicka/EPPA-III/pull/374): **merged, green**. Extracts the necessary same-block and different-block witnesses from the actual finite invariant block hypotheses (surjectivity, two block labels and a block of size at least two), and certifies the strict-order rank-three contradiction with those hypotheses.
 
 ## Minimal author-facing changes, in priority order
 
@@ -27,15 +28,16 @@
 
 **P617-04 (do NOT discard 2G):** The proof's assertion that `2C_5` and `2R_3` are homogeneous hosts is false: whenever a connected homogeneous base `G` contains an induced `P_3`, its disjoint double `2G` is transitive, imprimitive, EPPA, and **non-homogeneous** (#369–#370). Retain `H=2G` in the homogeneous-base alternative, along with the Taylor double. This is a mathematical omission, not merely a relabelling issue. The fully explicit C5 certificate is being separately checked in #371.
 
-**P617-05 (R3 list):** The `R_3` item in the recent author-review copy omits the complement of the two-clique extension of `R_3` even though Lemma 6.14 and the following proof include it. Reinstate the alternative explicitly unless the exact model is shown to coincide with another listed graph. The verified named-model and cross-degree certificates distinguish the relevant cases.
+**P617-05 (R3 list):** The `R_3` item in the recent author-review copy omits the complement of the two-clique extension of `R_3`, although the preceding lemma includes it. **PR #375 is merged and Lean-verified:** its canonical mate-free blow-up has nonadjacent false twins, while the Taylor double has none. Both are 8-regular but cannot be isomorphic. Reinstate the missing alternative explicitly.
 
 **P617-06 (Wagner wording):** Delete “or its complement” immediately after the 3-regular Wagner model in the statement of Lemma 6.1. The complement is 4-regular; simultaneous complementation of the *pair* of graphs in the final theorem is a separate operation.
 
-**P617-07 (strict-order branch):** In the argument `|H|<2|G|`, one still uses the previous small-EPPA-witness proposition supplying the rank-three alternative. Once #372 is green, the follow-up assertion “only imprimitive rank-three graphs are clique unions or complements” admits a short direct proof from the ordered edge/nonedge orbits and the invariant nontrivial block relation, without any rank-three graph classification. The earlier small-witness proposition remains a dependency.
+**P617-07 (strict-order branch):** The argument `|H|<2|G|` still uses the earlier small-EPPA-witness proposition to obtain the rank-three alternative. The follow-up imprimitive rank-three step is now certified by PR #372, and the contradiction from the manuscript's exact block cardinalities by PR #374, both merged and axiom-audited. No imprimitive rank-three *classification* is needed, but the earlier small-witness proposition remains a dependency.
 
 ## What is not certified here
 
-- The Gardiner classification of finite homogeneous graphs (used to reduce the base `G` to its named families), and the separate small-order EPPA-witness-to-rank-three theorem, have not been replaced by general Lean proofs in this audit.
+- The Gardiner classification of finite homogeneous graphs (reducing the base `G` to its named families), and the earlier small-order EPPA-witness-to-rank-three theorem, have not been replaced by Lean proofs here.
+- PR #371, the concrete finite C5 homogeneity and `2C5` instantiation, is still under CI; do not mark that optional concrete certificate as completed. The abstract disjoint-double theorem and invariant-block system were already certified in PRs #369–#370.
 - The original text of Claims 6.2–6.5 and 6.7–6.10 has not been checked verbatim. Relevant conclusions have stronger independently formalised replacements.
 - No existing source validation marker should be silently changed to “original proof checked” on the basis of these alternative certificates.
 - The introduction's low-order two-graph equivalence issue remains separate.
