@@ -1208,3 +1208,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.disjoint_double_side_surjective
 #print axioms EPPAIII.BlockSystems.disjoint_double_nontrivial_side_block
 #print axioms EPPAIII.BlockSystems.disjoint_double_imprimitive_counterexample_schema
+-- Section 6: imprimitive rank-three ordered-pair actions produce homogeneous hosts
+#print axioms EPPAIII.BlockSystems.block_relation_of_same_pair_status
+#print axioms EPPAIII.BlockSystems.rank_three_imprimitive_cluster_or_cocluster
+#print axioms EPPAIII.BlockSystems.transitive_rank_three_imprimitive_isHomogeneous
