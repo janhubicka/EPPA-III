@@ -43,13 +43,6 @@ def odd_hole(A):
 def alpha_omega_fail(A):
     n=len(A)
     B=complement(A)
-    @lru_cache(None)
-    def opt(mask, neigh):
-        if not mask: return 0
-        v=(mask & -mask).bit_length()-1
-        return max(opt(mask & ~(1 << v), neigh),
-                   1 + opt(mask & neigh[v], neigh))
-    # Passing an unhashable adjacency tuple through opt is avoided:
     def max_clique(neigh):
         @lru_cache(None)
         def go(mask):
