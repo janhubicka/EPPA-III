@@ -392,3 +392,5 @@ import EPPAIII.BlockSystems.RankThreeActualImprimitiveBlocks
 import EPPAIII.BlockSystems.RookMatefreeDistinctFromTaylor
 
 import EPPAIII.CliqueCovers.NoInducedFive
+
+import EPPAIII.CliqueCovers.NoInducedFiveComplement
