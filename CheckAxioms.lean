@@ -1222,3 +1222,11 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
 #print axioms EPPAIII.BlockSystems.false_twins_transport_iso
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
+-- Seven finite base-cycle certificates used in Section 8.
+#print axioms EPPAIII.BlockSystems.BinaryFiveCycles.spFour_five_cycle
+#print axioms EPPAIII.BlockSystems.BinaryFiveCycles.oSixPlus_five_cycle
+#print axioms EPPAIII.BlockSystems.BinaryFiveCycles.oSixMinus_five_cycle
+#print axioms EPPAIII.BlockSystems.BinaryFiveCycles.noSixPlus_five_cycle
+#print axioms EPPAIII.BlockSystems.BinaryFiveCycles.noSixMinus_five_cycle
+#print axioms EPPAIII.BlockSystems.BinaryFiveCycles.voSixPlus_five_cycle
+#print axioms EPPAIII.BlockSystems.BinaryFiveCycles.voSixMinus_five_cycle
