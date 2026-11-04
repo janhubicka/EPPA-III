@@ -1225,3 +1225,4 @@ import EPPAIII
 
 #print axioms EPPAIII.CliqueCovers.cover_induced_cycle_edge_crosses_sides
 #print axioms EPPAIII.CliqueCovers.cover_no_induced_five_cycle
+#print axioms EPPAIII.CliqueCovers.cover_complement_no_induced_five_cycle
