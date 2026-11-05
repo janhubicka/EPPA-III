@@ -73,40 +73,40 @@ set_option maxHeartbeats 0
 
 theorem spFour_five_cycle :
     IsInducedFiveCycleOn isSpFourVertex symplecticAdj 1 2 4 12 11 := by
-  decide
+  simp [IsInducedFiveCycleOn, isSpFourVertex, symplecticAdj, symplecticFour, bit]
 
 theorem oSixPlus_five_cycle :
     IsInducedFiveCycleOn
       (isOrthogonalVertex true true) (orthogonalAdj true)
       1 2 8 24 55 := by
-  decide
+  simp [IsInducedFiveCycleOn, isOrthogonalVertex, orthogonalAdj, polarPlus, quadPlus, bit]
 
 theorem oSixMinus_five_cycle :
     IsInducedFiveCycleOn
       (isOrthogonalVertex false true) (orthogonalAdj false)
       1 2 4 12 27 := by
-  decide
+  simp [IsInducedFiveCycleOn, isOrthogonalVertex, orthogonalAdj, polarMinus, quadMinus, bit]
 
 theorem noSixPlus_five_cycle :
     IsInducedFiveCycleOn
       (isOrthogonalVertex true false) (orthogonalAdj true)
       9 11 19 37 52 := by
-  decide
+  simp [IsInducedFiveCycleOn, isOrthogonalVertex, orthogonalAdj, polarPlus, quadPlus, bit]
 
 theorem noSixMinus_five_cycle :
     IsInducedFiveCycleOn
       (isOrthogonalVertex false false) (orthogonalAdj false)
       5 7 11 17 24 := by
-  decide
+  simp [IsInducedFiveCycleOn, isOrthogonalVertex, orthogonalAdj, polarMinus, quadMinus, bit]
 
 theorem voSixPlus_five_cycle :
     IsInducedFiveCycleOn isVectorVertex (vectorAdj true)
       0 1 9 18 47 := by
-  decide
+  simp [IsInducedFiveCycleOn, isVectorVertex, vectorAdj, quadPlus, polarPlus, bit]
 
 theorem voSixMinus_five_cycle :
     IsInducedFiveCycleOn isVectorVertex (vectorAdj false)
       0 1 5 10 23 := by
-  decide
+  simp [IsInducedFiveCycleOn, isVectorVertex, vectorAdj, quadMinus, polarMinus, bit]
 
 end EPPAIII.BlockSystems.BinaryFiveCycles
