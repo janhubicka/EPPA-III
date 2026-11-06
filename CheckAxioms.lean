@@ -1229,3 +1229,6 @@ import EPPAIII
 #print axioms EPPAIII.LineGraph.focused_iff_contains_common_point
 #print axioms EPPAIII.LineGraph.shared_endpoint_signature_preserved
 #print axioms EPPAIII.LineGraph.shared_point_has_matching_signature
+
+#print axioms EPPAIII.eppa_on_subset_downward
+#print axioms EPPAIII.non_eppa_on_subset_upward
