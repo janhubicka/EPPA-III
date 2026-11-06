@@ -16,6 +16,14 @@ family of automorphism lifts is assumed.
 
 namespace EPPAIII
 
+/-- The composite of two explicitly selected induced embeddings. -/
+private def selectedCompositeEmbedding
+    {U V W : Type*} (f : U ↪ V) (e : V ↪ W) : U ↪ W where
+  toFun := fun u => e (f u)
+  inj' := by
+    intro u v h
+    exact f.injective (e.injective h)
+
 /-- If H is an EPPA witness for an induced embedded graph G, it is also
 an EPPA witness for any induced subgraph F embedded into that copy of G.
 All three embeddings are explicitly retained, so the conclusion concerns
@@ -28,7 +36,7 @@ theorem eppa_embedding_of_induced_embedding
     (f : U ↪ V) (e : V ↪ W)
     (hf : IsInducedGraphEmbedding F G f)
     (heppa : IsEPPAEmbedding G H e) :
-    IsEPPAEmbedding F H (e.comp f) := by
+    IsEPPAEmbedding F H (selectedCompositeEmbedding f e) := by
   classical
   constructor
   · intro u v
