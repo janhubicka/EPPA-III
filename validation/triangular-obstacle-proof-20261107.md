@@ -96,10 +96,17 @@ above is the reconstruction argument, not extrapolation from them.
 
 `EPPAIII/EPPA/Hereditary.lean` formalizes that a verified EPPA
 embedding remains EPPA after restricting the *selected base* to any
-induced embedded subgraph. It is the logical foundation for the
-obstruction hypergraph's downward-closed admissible subsets, but it
-does **not** formalize Whitney reconstruction or the triangular
-classification. The general triangular proof is paper-level until
+induced embedded subgraph. The companion `EPPAIII/EPPA/InducedSubsetEPPA.lean` specializes
+this to literal vertex subsets of a fixed host and proves downward closure
+of EPPA and upward closure of failure. The new
+`EPPAIII/EPPA/IncidenceSignature.lean` establishes unique shared
+endpoints for distinct two-point edges and derives their entire indexed
+incidence signatures from focused-triple data in Lean, including transport
+to a second edge family with the same intersection and focus records.
+This does **not** yet build the global ground-point permutation, formalize
+the mixed-triangle obstruction, or establish the triangular classification.
+Each new declaration is registered in `CheckAxioms.lean`, but must not
+be described as CI-verified until the current branch passes its workflow. The general triangular proof is paper-level until
 those geometric/incidence lemmas are represented in Lean.
 
 ## Editorial policy
