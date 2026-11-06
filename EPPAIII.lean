@@ -396,3 +396,5 @@ import EPPAIII.EPPA.Hereditary
 import EPPAIII.EPPA.IncidenceSignature
 
 import EPPAIII.EPPA.InducedSubsetEPPA
+
+import EPPAIII.EPPA.MinimalObstructions
