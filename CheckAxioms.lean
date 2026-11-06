@@ -1232,3 +1232,6 @@ import EPPAIII
 
 #print axioms EPPAIII.eppa_on_subset_downward
 #print axioms EPPAIII.non_eppa_on_subset_upward
+
+#print axioms EPPAIII.non_eppa_contains_minimal_obstruction
+#print axioms EPPAIII.eppa_iff_avoids_minimal_obstructions
