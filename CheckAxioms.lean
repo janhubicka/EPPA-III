@@ -1224,3 +1224,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
 
 #print axioms EPPAIII.eppa_embedding_of_induced_embedding
+
+#print axioms EPPAIII.LineGraph.distinct_two_edges_unique_shared_point
+#print axioms EPPAIII.LineGraph.focused_iff_contains_common_point
+#print axioms EPPAIII.LineGraph.shared_endpoint_signature_preserved
+#print axioms EPPAIII.LineGraph.shared_point_has_matching_signature
