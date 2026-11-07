@@ -39,11 +39,11 @@ theorem eppa_on_subset_downward
     (hTS : T ⊆ S) (hS : IsEPPAOnSubset H S) :
     IsEPPAOnSubset H T := by
   classical
-  let f : {v : V // v ∈ T} ↪ {v : V // v ∈ S} where
-    toFun := fun x => ⟨x.1, hTS x.2⟩
-    inj' := by
-      intro x y h
-      exact Subtype.ext (congrArg Subtype.val h)
+  let f : {v : V // v ∈ T} ↪ {v : V // v ∈ S} :=
+    { toFun := fun x => ⟨x.1, hTS x.2⟩
+      inj' := by
+        intro x y h
+        exact Subtype.ext (congrArg Subtype.val h) }
   have hInduced : IsInducedGraphEmbedding
       (selectedSubsetGraph H T) (selectedSubsetGraph H S) f := by
     intro x y
