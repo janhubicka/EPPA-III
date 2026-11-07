@@ -43,7 +43,9 @@ theorem eppa_on_subset_downward
     { toFun := fun x => ⟨x.1, hTS x.2⟩
       inj' := by
         intro x y h
-        exact Subtype.ext (congrArg Subtype.val h) }
+        have hval : (x.1 : V) = y.1 :=
+          congrArg (fun z : {v : V // v ∈ S} => z.1) h
+        exact Subtype.ext hval }
   have hInduced : IsInducedGraphEmbedding
       (selectedSubsetGraph H T) (selectedSubsetGraph H S) f := by
     intro x y
