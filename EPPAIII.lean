@@ -398,3 +398,5 @@ import EPPAIII.EPPA.IncidenceSignature
 import EPPAIII.EPPA.InducedSubsetEPPA
 
 import EPPAIII.EPPA.MinimalObstructions
+
+import EPPAIII.TwoGraphs.TaylorObstacleNecessary
