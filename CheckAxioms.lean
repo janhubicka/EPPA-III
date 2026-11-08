@@ -1222,3 +1222,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
 #print axioms EPPAIII.BlockSystems.false_twins_transport_iso
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
+
+#print axioms EPPAIII.DoubleCover.selected_nonedges_same_fibre_status
+#print axioms EPPAIII.DoubleCover.selected_mate_and_cross_nonedge_not_eppa
