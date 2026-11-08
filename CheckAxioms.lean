@@ -1235,3 +1235,8 @@ import EPPAIII
 
 #print axioms EPPAIII.non_eppa_contains_minimal_obstruction
 #print axioms EPPAIII.eppa_iff_avoids_minimal_obstructions
+
+#print axioms EPPAIII.TwoGraphs.taylor_invariant_fibre_map
+#print axioms EPPAIII.TwoGraphs.taylor_one_cross_nonedge
+#print axioms EPPAIII.TwoGraphs.taylor_full_fibre_with_third_not_eppa
+#print axioms EPPAIII.TwoGraphs.taylor_ep_subset_has_no_full_fibre_and_third
