@@ -65,8 +65,13 @@ def adversarial():
     assert common((0,0),(1,2))==2
     assert adj((0,0),(0,1)) and adj((0,0),(1,2))
     # Its dihedral base action together with the deck map is transitive.
-    for u in V:
-        assert any(u==((b^flip,k)) for b,flip,k in product((0,), (0,1),range(5)))
+    autos=[tuple((b^flip,(k+(-x if refl else x))%5) for b,x in V)
+           for flip,k,refl in product((0,1),range(5),(0,1))]
+    assert len(set(autos))==20
+    assert all(all(adj(u,v)==adj(q[V.index(u)],q[V.index(v)])
+                   for u,v in combinations(V,2)) for q in autos)
+    assert len({q[0] for q in autos})==10
+    assert not adj((0,1),(1,2))
 
 if __name__=="__main__":
     for n in (3,4):
