@@ -31,20 +31,25 @@ theorem non_eppa_contains_minimal_obstruction
     (hBad : ¬ IsEPPAOnSubset H S) :
     ∃ B : Finset V, B ⊆ S ∧ IsMinimalEPPAObstruction H B := by
   classical
-  have hAll (U : Finset V) :
+  have hAll : ∀ n : ℕ, ∀ U : Finset V, U.card = n →
       (¬ IsEPPAOnSubset H U) →
         ∃ B : Finset V, B ⊆ U ∧ IsMinimalEPPAObstruction H B := by
-    apply Finset.strongInductionOn U
-    intro U ih hU
-    by_cases hMinimal :
-        ∀ T : Finset V, T ⊂ U → IsEPPAOnSubset H T
-    · exact ⟨U, Finset.Subset.rfl, hU, hMinimal⟩
-    · push_neg at hMinimal
-      obtain ⟨T,hTU,hTbad⟩ := hMinimal
-      obtain ⟨B,hBT,hBmin⟩ := ih T hTU hTbad
-      have hTsub : T ⊆ U := (Finset.ssubset_def.mp hTU).1
-      exact ⟨B,hBT.trans hTsub,hBmin⟩
-  exact hAll S hBad
+    intro n
+    induction n using Nat.strong_induction_on with
+    | h n ih =>
+      intro U hCard hU
+      by_cases hMinimal :
+          ∀ T : Finset V, T ⊂ U → IsEPPAOnSubset H T
+      · exact ⟨U, Finset.Subset.rfl, hU, hMinimal⟩
+      · push_neg at hMinimal
+        obtain ⟨T,hTU,hTbad⟩ := hMinimal
+        have hLess : T.card < n := by
+          rw [← hCard]
+          exact Finset.card_lt_card hTU
+        obtain ⟨B,hBT,hBmin⟩ := ih T.card hLess T rfl hTbad
+        have hTsub : T ⊆ U := (Finset.ssubset_def.mp hTU).1
+        exact ⟨B,hBT.trans hTsub,hBmin⟩
+  exact hAll S.card S rfl hBad
 
 /-- The exact logical characterization of all admissible EPPA subsets:
 an induced vertex subset has EPPA iff it contains no minimal obstacle. -/
