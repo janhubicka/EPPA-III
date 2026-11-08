@@ -34,17 +34,16 @@ theorem non_eppa_contains_minimal_obstruction
   have hAll (U : Finset V) :
       (¬ IsEPPAOnSubset H U) →
         ∃ B : Finset V, B ⊆ U ∧ IsMinimalEPPAObstruction H B := by
-    induction U using Finset.strongInductionOn with
-    | h U ih =>
-      intro hU
-      by_cases hMinimal :
-          ∀ T : Finset V, T ⊂ U → IsEPPAOnSubset H T
-      · exact ⟨U, Finset.Subset.rfl, hU, hMinimal⟩
-      · push_neg at hMinimal
-        obtain ⟨T,hTU,hTbad⟩ := hMinimal
-        obtain ⟨B,hBT,hBmin⟩ := ih T hTU hTbad
-        have hTsub : T ⊆ U := (Finset.ssubset_def.mp hTU).1
-        exact ⟨B,hBT.trans hTsub,hBmin⟩
+    apply Finset.strongInductionOn U
+    intro U ih hU
+    by_cases hMinimal :
+        ∀ T : Finset V, T ⊂ U → IsEPPAOnSubset H T
+    · exact ⟨U, Finset.Subset.rfl, hU, hMinimal⟩
+    · push_neg at hMinimal
+      obtain ⟨T,hTU,hTbad⟩ := hMinimal
+      obtain ⟨B,hBT,hBmin⟩ := ih T hTU hTbad
+      have hTsub : T ⊆ U := (Finset.ssubset_def.mp hTU).1
+      exact ⟨B,hBT.trans hTsub,hBmin⟩
   exact hAll S hBad
 
 /-- The exact logical characterization of all admissible EPPA subsets:
