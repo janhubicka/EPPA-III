@@ -390,3 +390,11 @@ import EPPAIII.BlockSystems.RankThreeImprimitiveHomogeneity
 import EPPAIII.BlockSystems.RankThreeActualImprimitiveBlocks
 
 import EPPAIII.BlockSystems.RookMatefreeDistinctFromTaylor
+
+import EPPAIII.EPPA.Hereditary
+
+import EPPAIII.EPPA.IncidenceSignature
+
+import EPPAIII.EPPA.InducedSubsetEPPA
+
+import EPPAIII.EPPA.MinimalObstructions

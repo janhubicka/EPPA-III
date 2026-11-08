@@ -1222,3 +1222,16 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
 #print axioms EPPAIII.BlockSystems.false_twins_transport_iso
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
+
+#print axioms EPPAIII.eppa_embedding_of_induced_embedding
+
+#print axioms EPPAIII.LineGraph.distinct_two_edges_unique_shared_point
+#print axioms EPPAIII.LineGraph.focused_iff_contains_common_point
+#print axioms EPPAIII.LineGraph.shared_endpoint_signature_preserved
+#print axioms EPPAIII.LineGraph.shared_point_has_matching_signature
+
+#print axioms EPPAIII.eppa_on_subset_downward
+#print axioms EPPAIII.non_eppa_on_subset_upward
+
+#print axioms EPPAIII.non_eppa_contains_minimal_obstruction
+#print axioms EPPAIII.eppa_iff_avoids_minimal_obstructions
