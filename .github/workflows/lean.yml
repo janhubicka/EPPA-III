@@ -75,6 +75,7 @@ jobs:
           python3 checks/section7_srg_cover_audit.py
           python3 checks/section6_cover_sufficiency.py
           python3 checks/section9_doublecover_obstacles.py
+          python3 checks/section9_taylor_c5_obstacles.py
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then
