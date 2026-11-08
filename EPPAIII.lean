@@ -23,6 +23,7 @@ import EPPAIII.BlockSystems.GraphTransport
 import EPPAIII.BlockSystems.FullDoubleCover
 import EPPAIII.DoubleCover.FibreOrbits
 import EPPAIII.DoubleCover.DeckSwap
+import EPPAIII.DoubleCover.FibreObstacle
 import EPPAIII.DoubleCover.InterblockOrbits
 import EPPAIII.BlockSystems.OrderedInterblockOrbits
 import EPPAIII.EPPA.ProfileOrbitBound
