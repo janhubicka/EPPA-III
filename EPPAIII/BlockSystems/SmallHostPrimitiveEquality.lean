@@ -110,4 +110,54 @@ theorem primitive_balanced_eppa_has_pair_orbits
   exact primitive_balanced_selected_pair_coverage
     H hTrans hPrim x₀ y₀ hxy₀
 
+/-- When each Boolean side has at most one vertex, a transitive
+host has a single orbit on ordered distinct pairs. This includes
+the empty-vertex case, where the statement is vacuous. -/
+theorem transitive_subsingleton_double_has_pair_orbits
+    {V : Type*} [Subsingleton V]
+    (H : SimpleGraph (Bool × V))
+    (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms H) :
+    HasOrderedPairOrbitByStatus H := by
+  intro u v u' v' huv huv' _
+  obtain ⟨q,hq,hqu⟩ := hTrans u u'
+  have sideNe (w z : Bool × V) (hwz : w ≠ z) : w.1 ≠ z.1 := by
+    intro h
+    exact hwz (Prod.ext h (Subsingleton.elim w.2 z.2))
+  have hqDiff : q u ≠ q v := q.injective.ne huv
+  have hLeft : u'.1 ≠ (q v).1 := by
+    have hh := sideNe (q u) (q v) hqDiff
+    simpa [hqu] using hh
+  have hRight : u'.1 ≠ v'.1 := sideNe u' v' huv'
+  have hMatch : (q v).1 = v'.1 := by
+    cases hU : u'.1 <;> cases hQ : (q v).1 <;>
+      cases hV : v'.1 <;> simp_all
+  exact ⟨q,hq,hqu,
+    Prod.ext hMatch (Subsingleton.elim _ _)⟩
+
+/-- Full primitive equality case, including the zero- and
+one-vertex base graphs. No nontriviality assumption on V is needed. -/
+theorem primitive_balanced_eppa_has_pair_orbits_all
+    {V : Type*} [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) (H : SimpleGraph (Bool × V))
+    (heppa : IsEPPAEmbedding G H
+      (EPPAIII.DoubleCover.bottomEmbedding V))
+    (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms H)
+    (hPrim : IsPrimitiveAutAction H) :
+    HasOrderedPairOrbitByStatus H := by
+  classical
+  by_cases hSub : Subsingleton V
+  · letI : Subsingleton V := hSub
+    exact transitive_subsingleton_double_has_pair_orbits H hTrans
+  · have hDiff : ∃ x y : V, x ≠ y := by
+      by_contra hNo
+      apply hSub
+      refine ⟨?_⟩
+      intro x y
+      by_contra hxy
+      exact hNo ⟨x,y,hxy⟩
+    obtain ⟨x,y,hxy⟩ := hDiff
+    letI : Nonempty V := ⟨x⟩
+    exact primitive_balanced_eppa_has_pair_orbits
+      G H heppa hTrans hPrim x y hxy
+
 end EPPAIII.BlockSystems
