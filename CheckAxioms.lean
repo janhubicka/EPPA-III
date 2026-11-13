@@ -1222,3 +1222,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
 #print axioms EPPAIII.BlockSystems.false_twins_transport_iso
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
+
+-- Small-host rank-three reduction: conditional pair-orbit assembly
+#print axioms EPPAIII.BlockSystems.eppa_embedded_two_point_orbit
+#print axioms EPPAIII.BlockSystems.eppa_pair_status_orbits_of_selected_coverage
