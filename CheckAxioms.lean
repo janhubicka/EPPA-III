@@ -1234,3 +1234,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.connected_bipartite_automorphism_preserves_side_relation
 #print axioms EPPAIII.BlockSystems.primitive_invariant_cross_graph_subsingleton
 #print axioms EPPAIII.BlockSystems.primitive_forbids_nonempty_invariant_cross_graph
+#print axioms EPPAIII.BlockSystems.primitive_balanced_unordered_orbit_hits_bottom
+#print axioms EPPAIII.BlockSystems.primitive_balanced_selected_pair_coverage
+#print axioms EPPAIII.BlockSystems.primitive_balanced_eppa_has_pair_orbits
