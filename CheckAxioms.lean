@@ -1237,3 +1237,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.primitive_balanced_unordered_orbit_hits_bottom
 #print axioms EPPAIII.BlockSystems.primitive_balanced_selected_pair_coverage
 #print axioms EPPAIII.BlockSystems.primitive_balanced_eppa_has_pair_orbits
+#print axioms EPPAIII.BlockSystems.large_selected_set_meets_every_unordered_pair_orbit
+#print axioms EPPAIII.BlockSystems.large_selected_set_pair_coverage
+#print axioms EPPAIII.BlockSystems.transitive_eppa_small_strict_has_pair_orbits
