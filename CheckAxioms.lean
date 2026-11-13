@@ -1230,3 +1230,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_base_edge
 #print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_automorphism
 #print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_vertex_transitive
+#print axioms EPPAIII.BlockSystems.primitive_invariant_nonempty_graph_preconnected
+#print axioms EPPAIII.BlockSystems.connected_bipartite_automorphism_preserves_side_relation
+#print axioms EPPAIII.BlockSystems.primitive_invariant_cross_graph_subsingleton
+#print axioms EPPAIII.BlockSystems.primitive_forbids_nonempty_invariant_cross_graph
