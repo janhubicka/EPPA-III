@@ -1222,3 +1222,28 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
 #print axioms EPPAIII.BlockSystems.false_twins_transport_iso
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
+
+-- Small-host rank-three reduction: conditional pair-orbit assembly
+#print axioms EPPAIII.BlockSystems.eppa_embedded_two_point_orbit
+#print axioms EPPAIII.BlockSystems.eppa_pair_status_orbits_of_selected_coverage
+#print axioms EPPAIII.BlockSystems.transitive_balanced_independent_half
+#print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_base_edge
+#print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_automorphism
+#print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_vertex_transitive
+#print axioms EPPAIII.BlockSystems.primitive_invariant_nonempty_graph_preconnected
+#print axioms EPPAIII.BlockSystems.connected_bipartite_automorphism_preserves_side_relation
+#print axioms EPPAIII.BlockSystems.primitive_invariant_cross_graph_subsingleton
+#print axioms EPPAIII.BlockSystems.primitive_forbids_nonempty_invariant_cross_graph
+#print axioms EPPAIII.BlockSystems.primitive_balanced_unordered_orbit_hits_bottom
+#print axioms EPPAIII.BlockSystems.primitive_balanced_selected_pair_coverage
+#print axioms EPPAIII.BlockSystems.primitive_balanced_eppa_has_pair_orbits
+#print axioms EPPAIII.BlockSystems.large_selected_set_meets_every_unordered_pair_orbit
+#print axioms EPPAIII.BlockSystems.large_selected_set_pair_coverage
+#print axioms EPPAIII.BlockSystems.transitive_eppa_small_strict_has_pair_orbits
+#print axioms EPPAIII.BlockSystems.transitive_subsingleton_double_has_pair_orbits
+#print axioms EPPAIII.BlockSystems.primitive_balanced_eppa_has_pair_orbits_all
+#print axioms EPPAIII.BlockSystems.primitive_pullback_equiv
+#print axioms EPPAIII.BlockSystems.pair_orbits_of_pullback
+#print axioms EPPAIII.BlockSystems.transitive_eppa_primitive_double_has_pair_orbits
+#print axioms EPPAIII.BlockSystems.transitive_eppa_at_most_double_has_pair_orbits
+#print axioms EPPAIII.BlockSystems.transitive_eppa_at_most_double_clique_empty_or_rank_three
