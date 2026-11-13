@@ -1242,3 +1242,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_eppa_small_strict_has_pair_orbits
 #print axioms EPPAIII.BlockSystems.transitive_subsingleton_double_has_pair_orbits
 #print axioms EPPAIII.BlockSystems.primitive_balanced_eppa_has_pair_orbits_all
+#print axioms EPPAIII.BlockSystems.primitive_pullback_equiv
+#print axioms EPPAIII.BlockSystems.pair_orbits_of_pullback
+#print axioms EPPAIII.BlockSystems.transitive_eppa_primitive_double_has_pair_orbits
+#print axioms EPPAIII.BlockSystems.transitive_eppa_at_most_double_has_pair_orbits
