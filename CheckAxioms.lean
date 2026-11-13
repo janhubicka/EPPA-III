@@ -1246,3 +1246,4 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.pair_orbits_of_pullback
 #print axioms EPPAIII.BlockSystems.transitive_eppa_primitive_double_has_pair_orbits
 #print axioms EPPAIII.BlockSystems.transitive_eppa_at_most_double_has_pair_orbits
+#print axioms EPPAIII.BlockSystems.transitive_eppa_at_most_double_clique_empty_or_rank_three
