@@ -46,6 +46,7 @@ theorem transitive_eppa_at_most_double_clique_empty_or_rank_three
     · left
       apply SimpleGraph.ext
       funext u v
+      apply propext
       change H.Adj u v ↔ u ≠ v
       constructor
       · exact H.ne_of_adj
@@ -56,6 +57,7 @@ theorem transitive_eppa_at_most_double_clique_empty_or_rank_three
     left
     apply SimpleGraph.ext
     funext u v
+    apply propext
     change H.Adj u v ↔ False
     exact ⟨fun h => hEdge ⟨u,v,h⟩, False.elim⟩
 
