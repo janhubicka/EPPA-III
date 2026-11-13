@@ -49,7 +49,8 @@ theorem large_selected_set_meets_every_unordered_pair_orbit
       (F.mem_neighborFinset a b).mpr hEdge
     have hvPos : 0 < (F.neighborFinset a).card :=
       Finset.card_pos.mpr ⟨b,hv⟩
-    simpa [SimpleGraph.degree] using hvPos
+    change 0 < (F.neighborFinset a).card
+    exact hvPos
   have hd : 0 < d := by
     rw [hRegular a] at hPositiveDegree
     exact hPositiveDegree
