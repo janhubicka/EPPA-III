@@ -1,5 +1,6 @@
 import EPPAIII.BlockSystems.RankThreeImprimitiveHomogeneity
 import EPPAIII.DoubleCover.TwoPointAction
+import EPPAIII.CliqueCovers.TransitiveHalfEdges
 
 /-!
 # Pair-orbit assembly for the small-witness rank-three reduction
@@ -85,5 +86,40 @@ theorem eppa_pair_status_orbits_of_selected_coverage {V W : Type*}
   · change r.symm (p (q v)) = v'
     rw [hqv,hpy,←hrv]
     simp
+
+/-- A vertex-transitive graph on two equally sized labelled sides,
+with no edges on the first side, has no edges on the second side.
+This is the half-edge-count step in the equality case of the
+small-witness rank-three argument; it does NOT yet prove that an
+invariant orbital graph contradicts primitivity. -/
+theorem transitive_balanced_independent_half {V : Type*}
+    [Fintype V] [Nonempty V]
+    (F : SimpleGraph (Bool × V)) [DecidableRel F.Adj]
+    (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms F)
+    (hFirst : ∀ x y : V, ¬ F.Adj (false,x) (false,y)) :
+    ∀ x y : V, ¬ F.Adj (true,x) (true,y) := by
+  classical
+  have hFirstBot : EPPAIII.CliqueCovers.sideGraph F false = ⊥ := by
+    apply SimpleGraph.ext
+    funext x y
+    apply propext
+    change F.Adj (false,x) (false,y) ↔ False
+    exact ⟨hFirst x y, False.elim⟩
+  have hSides :=
+    EPPAIII.CliqueCovers.sideEdges_equal_of_transitive_graph F hTrans
+  have hFirstZero : EPPAIII.CliqueCovers.sideEdgeCount F false = 0 := by
+    simp [EPPAIII.CliqueCovers.sideEdgeCount,hFirstBot]
+  have hSecondZero : EPPAIII.CliqueCovers.sideEdgeCount F true = 0 := by
+    rw [←hSides]
+    exact hFirstZero
+  have hEmpty : (EPPAIII.CliqueCovers.sideGraph F true).edgeFinset = ∅ :=
+    Finset.card_eq_zero.mp
+      (by simpa [EPPAIII.CliqueCovers.sideEdgeCount] using hSecondZero)
+  have hSecondBot : EPPAIII.CliqueCovers.sideGraph F true = ⊥ :=
+    (SimpleGraph.edgeFinset_eq_empty).mp hEmpty
+  intro x y h
+  have hh : (EPPAIII.CliqueCovers.sideGraph F true).Adj x y := h
+  rw [hSecondBot] at hh
+  exact hh
 
 end EPPAIII.BlockSystems
