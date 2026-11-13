@@ -1226,3 +1226,4 @@ import EPPAIII
 -- Small-host rank-three reduction: conditional pair-orbit assembly
 #print axioms EPPAIII.BlockSystems.eppa_embedded_two_point_orbit
 #print axioms EPPAIII.BlockSystems.eppa_pair_status_orbits_of_selected_coverage
+#print axioms EPPAIII.BlockSystems.transitive_balanced_independent_half
