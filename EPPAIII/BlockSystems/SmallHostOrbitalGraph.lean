@@ -26,8 +26,8 @@ def unorderedPairOrbitGraph {W : Type*}
     rintro ⟨p,hp,h⟩
     refine ⟨p,hp,?_⟩
     rcases h with ⟨ha,hb⟩ | ⟨ha,hb⟩
-    · exact Or.inr ⟨hb,ha⟩
-    · exact Or.inl ⟨hb,ha⟩
+    · exact Or.inr ⟨ha,hb⟩
+    · exact Or.inl ⟨ha,hb⟩
   loopless := by
     constructor
     intro u
