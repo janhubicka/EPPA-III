@@ -395,3 +395,4 @@ import EPPAIII.BlockSystems.SmallHostOrbitalGraph
 import EPPAIII.BlockSystems.SmallHostPrimitivity
 import EPPAIII.BlockSystems.SmallHostPrimitiveEquality
 import EPPAIII.BlockSystems.SmallHostStrictRankThree
+import EPPAIII.BlockSystems.SmallHostRankThreeFinal
