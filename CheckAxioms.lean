@@ -1227,3 +1227,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.eppa_embedded_two_point_orbit
 #print axioms EPPAIII.BlockSystems.eppa_pair_status_orbits_of_selected_coverage
 #print axioms EPPAIII.BlockSystems.transitive_balanced_independent_half
+#print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_base_edge
+#print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_automorphism
+#print axioms EPPAIII.BlockSystems.unorderedPairOrbitGraph_vertex_transitive
