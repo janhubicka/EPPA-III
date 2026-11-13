@@ -81,11 +81,11 @@ theorem connected_bipartite_automorphism_preserves_side_relation
     (hq : IsGraphAutomorphism F q) :
     ∀ u v : Bool × V, (u.1 = v.1 ↔ (q u).1 = (q v).1) := by
   intro u v
-  let P : Bool × V → Prop :=
-    fun z => Bool.xor z.1 (q z).1 = Bool.xor u.1 (q u).1
+  let P : Set (Bool × V) :=
+    {z | Bool.xor z.1 (q z).1 = Bool.xor u.1 (q u).1}
   have hClosed :
-      ∀ z ∈ (Set.setOf P), ∀ w : Bool × V,
-        F.Adj z w → w ∈ (Set.setOf P) := by
+      ∀ z ∈ P, ∀ w : Bool × V,
+        F.Adj z w → w ∈ P := by
     intro z hz w hzw
     change P z at hz
     change P w
@@ -95,10 +95,10 @@ theorem connected_bipartite_automorphism_preserves_side_relation
         (hCross z w hzw)
         (hCross (q z) (q w) ((hq z w).mp hzw))
     exact hFlip.symm.trans hz
-  have hAtU : u ∈ (Set.setOf P) := by
+  have hAtU : u ∈ P := by
     rfl
-  have hAtV : v ∈ (Set.setOf P) :=
-    reachable_mem_of_adj_closed F (Set.setOf P)
+  have hAtV : v ∈ P :=
+    reachable_mem_of_adj_closed F P
       hClosed u v hAtU (hConn u v)
   change Bool.xor v.1 (q v).1 =
       Bool.xor u.1 (q u).1 at hAtV
