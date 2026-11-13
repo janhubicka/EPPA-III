@@ -393,3 +393,4 @@ import EPPAIII.BlockSystems.RookMatefreeDistinctFromTaylor
 import EPPAIII.BlockSystems.SmallHostPairOrbits
 import EPPAIII.BlockSystems.SmallHostOrbitalGraph
 import EPPAIII.BlockSystems.SmallHostPrimitivity
+import EPPAIII.BlockSystems.SmallHostPrimitiveEquality
