@@ -390,3 +390,4 @@ import EPPAIII.BlockSystems.RankThreeImprimitiveHomogeneity
 import EPPAIII.BlockSystems.RankThreeActualImprimitiveBlocks
 
 import EPPAIII.BlockSystems.RookMatefreeDistinctFromTaylor
+import EPPAIII.BlockSystems.SmallHostPairOrbits
