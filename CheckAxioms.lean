@@ -1222,3 +1222,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
 #print axioms EPPAIII.BlockSystems.false_twins_transport_iso
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
+
+-- The Section 5 (2) -> (1) switching-class implication.
+#print axioms EPPAIII.TwoGraphs.switching_class_has_nonhomogeneous_representative
