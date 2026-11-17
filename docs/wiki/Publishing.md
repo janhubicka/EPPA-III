@@ -9,10 +9,10 @@ On a push touching `docs/wiki/**` or the workflow, or on manual dispatch, the wo
 1. Checks out the requested source revision.
 2. Authenticates Git with `GITHUB_TOKEN` (using `gh auth setup-git`).
 3. Checks whether the independent `EPPA-III.wiki.git` repository has been initialized.
-4. If present, synchronizes the source-controlled Markdown to the [live Wiki tab](https://github.com/janhubicka/EPPA-III/wiki), without force-pushing or producing empty commits.
+4. If present, synchronizes the source-controlled Markdown to the [live Wiki tab](https://github.com/janhubicka/EPPA-III/wiki). The third-party publishing action currently invokes `git push -f origin master`; it avoids empty commits but **does force-push**. Direct edits to the live Wiki may therefore be overwritten.
 5. If missing, writes an explicit notice to the Action's step summary. **The wiki is not published in that case.**
 
-**Current state (17 November 2026):** The source-controlled documentation was merged in [PR #401](https://github.com/janhubicka/EPPA-III/pull/401). The repository owner has reported creating the initial Wiki Home page. The publishing workflow now runs from `main` and its logs should be used to verify an actual Wiki push; a successful check with a **skipped** publishing step does not establish publication. Publishing does not itself assert that a Lean proof or its printed-paper correspondence is correct.
+**Published (17 November 2026):** The source-controlled documentation was merged in [PR #401](https://github.com/janhubicka/EPPA-III/pull/401). The first Wiki Home page initialized `EPPA-III.wiki.git`, automatically triggering [publishing run #44068392794](https://github.com/janhubicka/EPPA-III/actions/runs/44068392794). The run checked 47 exact Lean snippets and pushed Wiki commit `383f15d` to `master`, publishing `Home.md`, `Imprimitive-Classification.md`, `Gardiner-External-Assumption.md`, `Named-Host-Models.md`, `Primitive-classification.md`, `Primitive-classification-assumptions.md`, `Publishing.md`, and `_Sidebar.md`. A green run with a **skipped** publishing step would not establish publication; this one completed the actual push. Wiki publication does not itself verify Lean proofs.
 
 ## One-time Wiki initialization if required
 
