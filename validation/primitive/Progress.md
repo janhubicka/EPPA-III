@@ -23,3 +23,9 @@ The R17 review packet contains patches against the frozen manuscript and the
 preceding proposal, LaTeX diffs, proof notes, and the prior-corrections register.
 It includes the correction to Case 4(e), which specifies the matching of
 corresponding vertices.
+
+The [sufficiency constructions](../ImprimitiveSufficiency.md) prove EPPA for
+the canonical copies used in Proposition 6.17. The [arbitrary-copy argument](../ArbitrarySelectedCopies.md)
+shows that every copy of the indicated base in Theorem 1.2 (3) and (4a–f) is
+carried to a canonical copy by a host automorphism. This connects the manuscript's
+abstract base descriptions to the fixed-embedding proof.

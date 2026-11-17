@@ -532,7 +532,8 @@ Key sources: [partition and double-counting](../../EPPAIII/BlockSystems/Transiti
 | Internal all-transversals/two-graph equivalence | [FourWayAllOrders](../../EPPAIII/TwoGraphs/FourWayAllOrders.lean) | Checked equivalence in the Taylor setting |
 | Nontrivial homogeneous two-graphs | [TwoGraphOrderFromGardiner](../../EPPAIII/TwoGraphs/TwoGraphOrderFromGardiner.lean) | Every descendant is a pentagon or the three-by-three rook graph by Gardiner, so the orders are six and ten |
 | Sufficiency of all five named imprimitive alternatives | [ImprimitiveNamedSufficiency](../../EPPAIII/BlockSystems/ImprimitiveNamedSufficiency.lean) | Each construction gives EPPA for the prescribed selected copy |
-| Full fixed-embedding equivalence | [SmallWitnessClassification](../../EPPAIII/Primitive/SmallWitnessClassification.lean) | Combines the primitive cases, five named imprimitive alternatives, and the Taylor branch in both orientations |
+| Full fixed-embedding equivalence | [SmallWitnessNamedClassification](../../EPPAIII/Primitive/SmallWitnessNamedClassification.lean) | Combines the primitive cases, five named imprimitive alternatives, and the two named Taylor doubles in both orientations |
+| Arbitrary selected copies in the named models | [ArbitrarySelectedCopies](../../validation/ArbitrarySelectedCopies.md) | Host automorphisms carry all copies described in Cases 3 and 4(a–f) to the fixed embeddings used in the sufficiency proofs |
 | Printed proof | Cumulative R17 patch | Repairs the affected claims and lemmas in Sections 5 and 6 |
 
 ### Corrections to frozen R17

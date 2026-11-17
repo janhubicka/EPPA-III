@@ -79,6 +79,7 @@ jobs:
           python3 checks/section8_rook_five_lower_bound.py
           python3 checks/primitive_small_paley.py
           python3 checks/check_named_taylor_models.py
+          python3 checks/check_imprimitive_embedding_orbits.py
           python3 checks/primitive_figure_audit.py checks/primitive_figure_panels.json
       - name: Reject unsolved placeholders
         run: |
