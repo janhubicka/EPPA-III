@@ -74,7 +74,7 @@ private theorem PublishedSmallModelSources.remaining_models (sources : Published
       · unfold smallConstituentSourceModel at hRow
         split at hRow <;> simp_all
   | triangularComplement side =>
-      exact sources.triangular.source_model H p hPrim hRank hSRG hRow
+      exact PublishedSmallTriangularActions.source_model sources.triangular H p hPrim hRank hSRG hRow
   | paleyPrime q => exact sources.paley.prime_model_of_row H p other hPrim hRank hSRG hRow
   | paleyTwentyFive => exact sources.paley.twentyFive_model_of_row H p other hPrim hRank hSRG hRow
   | foldedFiveCube => exact (hClebsch rfl).elim
