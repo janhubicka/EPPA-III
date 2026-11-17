@@ -493,3 +493,8 @@ import EPPAIII.Primitive.AffineLineArithmetic
 import EPPAIII.Primitive.AffineLineBound
 import EPPAIII.Primitive.HoffmanSingleton
 import EPPAIII.Primitive.AffineSemilinearArithmetic
+import EPPAIII.Primitive.AffineSemilinearExclusion
+import EPPAIII.Primitive.BinaryAffineHalfSpinExclusion
+import EPPAIII.Primitive.BilinearParity
+import EPPAIII.Primitive.BilinearExclusion
+import EPPAIII.Primitive.GrassmannExclusion

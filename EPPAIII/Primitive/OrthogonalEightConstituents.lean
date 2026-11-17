@@ -103,7 +103,8 @@ def HasCliqueUnionOrCoverModel {V : Type*} (G : SimpleGraph V) : Prop :=
   (∃ s t, IsModelUpToComplement G (cliqueUnion s t)) ∨
     (∃ s t X Y, IsModelUpToComplement G (coverGraph s t X Y))
 
-private theorem not_cliqueUnionOrCover_of_fiveCycle {V : Type*} {G : SimpleGraph V}
+/-- None of the four constituent forms contain an induced five-cycle. -/
+theorem not_cliqueUnionOrCover_of_fiveCycle {V : Type*} {G : SimpleGraph V}
     (f : SimpleGraph.cycleGraph 5 ↪g G) : ¬ HasCliqueUnionOrCoverModel G := by
   rintro (⟨s, t, h⟩ | ⟨s, t, X, Y, h⟩)
   · rcases h with h | h

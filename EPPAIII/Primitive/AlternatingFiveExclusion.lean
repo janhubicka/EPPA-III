@@ -15,29 +15,19 @@ private theorem isomorphic_degree {V W : Type*} [Fintype V] [Fintype W]
   rw [← card_neighborSet_eq_degree, ← card_neighborSet_eq_degree]
   exact (Fintype.card_congr (φ.mapNeighborSet v)).symm
 
-/-- At either A(5,q) constituent order and degree, the four classified
-host forms are impossible. This conclusion uses only the constituent
-profile, so applies equally to any graph with that order and degree. -/
-theorem alternatingFive_constituent_exclusion {V : Type*} [Fintype V] (G : SimpleGraph V)
-    [DecidableRel G.Adj] {q : Nat} (hq : 2 ≤ q) (side : Bool)
-    (hCard : Fintype.card V = ((alternatingFiveParameters q).constituentProfile side).1)
-    (hReg : G.IsRegularOfDegree ((alternatingFiveParameters q).constituentProfile side).2) :
+/-- The four Section 8 constituent forms are incompatible with a sparse
+regular profile when the possible block sizes cannot divide the order. -/
+theorem sparse_regular_constituent_excludes_forms {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] {d : ℕ} (hReg : G.IsRegularOfDegree d)
+    (hDegreePos : 1 < d) (hSparse : 2 * d + 2 < Fintype.card V)
+    (hOddOrVerySparse : Fintype.card V % 2 = 1 ∨ 4 * d < Fintype.card V)
+    (hD : ¬ d ∣ Fintype.card V) (hD1 : ¬ (d + 1) ∣ Fintype.card V)
+    (hD2 : ¬ (d + 2) ∣ Fintype.card V) :
     (∀ s t, IsEmpty (G ≃g cliqueUnion s t)) ∧
     (∀ s t, IsEmpty (G ≃g (cliqueUnion s t)ᶜ)) ∧
     (∀ s t X Y, IsEmpty (G ≃g coverGraph s t X Y)) ∧
     (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
   classical
-  let d := ((alternatingFiveParameters q).constituentProfile side).2
-  obtain ⟨hDegreePos, hSparse, hOddOrVerySparse⟩ := alternatingFive_constituent_sparse hq side
-  obtain ⟨hD, hD1, hD2⟩ := alternatingFive_constituent_near_degree_not_dvd hq side
-  change 1 < d at hDegreePos
-  change 2 * d + 2 < _ at hSparse
-  change _ ∨ 4 * d < _ at hOddOrVerySparse
-  change ¬ d ∣ _ at hD
-  change ¬ (d + 1) ∣ _ at hD1
-  change ¬ (d + 2) ∣ _ at hD2
-  change G.IsRegularOfDegree d at hReg
-  rw [← hCard] at hSparse hOddOrVerySparse hD hD1 hD2
   have hPos : 0 < Fintype.card V := by omega
   refine ⟨?_, ?_, ?_, ?_⟩
   · intro s t
@@ -107,6 +97,22 @@ theorem alternatingFive_constituent_exclusion {V : Type*} [Fintype V] (G : Simpl
     rw [hReg] at hDeg
     have hQuarter := coverGraph_compl_quarter_order_le_degree X Y i a (hDeg ▸ hDegreePos)
     omega
+
+/-- At either A(5,q) constituent order and degree, the four classified
+host forms are impossible. -/
+theorem alternatingFive_constituent_exclusion {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {q : Nat} (hq : 2 ≤ q) (side : Bool)
+    (hCard : Fintype.card V = ((alternatingFiveParameters q).constituentProfile side).1)
+    (hReg : G.IsRegularOfDegree ((alternatingFiveParameters q).constituentProfile side).2) :
+    (∀ s t, IsEmpty (G ≃g cliqueUnion s t)) ∧
+    (∀ s t, IsEmpty (G ≃g (cliqueUnion s t)ᶜ)) ∧
+    (∀ s t X Y, IsEmpty (G ≃g coverGraph s t X Y)) ∧
+    (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
+  obtain ⟨hDegreePos, hSparse, hOddOrVerySparse⟩ := alternatingFive_constituent_sparse hq side
+  obtain ⟨hD, hD1, hD2⟩ := alternatingFive_constituent_near_degree_not_dvd hq side
+  rw [← hCard] at hSparse hOddOrVerySparse hD hD1 hD2
+  exact sparse_regular_constituent_excludes_forms G hReg hDegreePos hSparse
+    hOddOrVerySparse hD hD1 hD2
 
 /-- The four classified forms are excluded for either actual constituent
 of any strongly regular graph with the A(5,q) parameters. -/

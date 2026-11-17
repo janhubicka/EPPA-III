@@ -1381,3 +1381,9 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.card_le_pow_mul_add_of_pointwise_stabilizer
 #print axioms EPPAIII.Primitive.affineLine_apply_of_fixed_pair
 #print axioms EPPAIII.Primitive.affineLine_eppa_order_bound
+#print axioms EPPAIII.Primitive.hoffmanSingleton_maxEppaOrder_le
+#print axioms EPPAIII.Primitive.affineSemilinear_twice_profile_lt_order
+#print axioms EPPAIII.Primitive.affineSemilinear_no_half_eppa
+#print axioms EPPAIII.Primitive.binaryAffineHalfSpin_excludes_actual_constituents
+#print axioms EPPAIII.Primitive.bilinearForms_no_halfOrder_eppa_of_constituent_shapes
+#print axioms EPPAIII.Primitive.grassmannGraph_constituents_exclude_forms

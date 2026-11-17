@@ -8,35 +8,6 @@ namespace EPPAIII.Primitive
 open EPPAIII.BlockSystems
 open EPPAIII.CliqueCovers
 
-private def localIso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
-    (φ : G ≃g H) (r : V) : localGraph G r ≃g localGraph H (φ r) where
-  toEquiv := φ.mapNeighborSet r
-  map_rel_iff' := φ.map_adj_iff
-
-private def nonlocalIso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
-    (φ : G ≃g H) (r : V) : nonlocalGraph G r ≃g nonlocalGraph H (φ r) where
-  toEquiv := φ.toEquiv.subtypeEquiv fun x =>
-    and_congr (not_congr φ.injective.eq_iff.symm) φ.map_adj_iff.symm.not
-  map_rel_iff' := φ.map_adj_iff
-
-private def localComplIso {V : Type*} (G : SimpleGraph V) (r : V) :
-    localGraph Gᶜ r ≃g (nonlocalGraph G r)ᶜ where
-  toEquiv := Equiv.refl _
-  map_rel_iff' := and_congr (not_congr Subtype.val_injective.eq_iff.symm) Iff.rfl
-
-private def nonlocalComplIso {V : Type*} (G : SimpleGraph V) (r : V) :
-    nonlocalGraph Gᶜ r ≃g (localGraph G r)ᶜ where
-  toEquiv := (Equiv.refl V).subtypeEquiv fun x => by
-    change (r ≠ x ∧ ¬ (r ≠ x ∧ ¬ G.Adj r x)) ↔ G.Adj r x
-    exact ⟨fun ⟨hne, h⟩ => Classical.byContradiction fun hn => h ⟨hne, hn⟩,
-      fun h => ⟨h.ne, fun hn => hn.2 h⟩⟩
-  map_rel_iff' := by
-    intro a b
-    change (_ ≠ _ ∧ ¬ G.Adj a.val b.val) ↔
-      (a.val ≠ b.val ∧ ¬ G.Adj a.val b.val)
-    exact and_congr (not_congr ⟨fun h => congrArg (fun x : G.neighborSet r => x.val) h,
-      fun h => Subtype.ext h⟩) Iff.rfl
-
 private theorem transitive_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
     (φ : G ≃g H) (h : HasTransitiveGraphAutomorphisms G) :
     HasTransitiveGraphAutomorphisms H := by
