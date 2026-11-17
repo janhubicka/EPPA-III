@@ -490,3 +490,4 @@ import EPPAIII.Primitive.BilinearConstituentObstructions
 import EPPAIII.Primitive.BinaryOrthogonalGeneratorMatrices
 import EPPAIII.Primitive.GrassmannGraph
 import EPPAIII.Primitive.AffineLineArithmetic
+import EPPAIII.Primitive.AffineLineBound

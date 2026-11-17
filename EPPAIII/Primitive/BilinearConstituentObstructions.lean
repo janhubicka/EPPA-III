@@ -11,9 +11,6 @@ open Matrix
 
 private abbrev Seed := Matrix (Fin 2) (Fin 3) ℤ
 
-private instance : DecidableEq (Fin 3 → ℤ) := fun f g =>
-  decidable_of_iff (∀ i, f i = g i) ⟨fun h => funext h, fun h i => congrFun h i⟩
-
 private def pentagonSeed : Fin 5 → Seed :=
   ![!![0, 0, 1; 0, 1, 0],
     !![0, 0, 1; 0, 1, 1],
@@ -29,7 +26,7 @@ private def unitMinor (A : Seed) : Prop :=
   ∃ p q, minor A p q = 1 ∨ minor A p q = -1
 
 private def rankOneSeed (A : Seed) : Prop :=
-  (A 0 = 0 ∨ A 1 = 0 ∨ A 1 = -A 0) ∧
+  ((∀ j, A 0 j = 0) ∨ (∀ j, A 1 j = 0) ∨ (∀ j, A 1 j = -A 0 j)) ∧
     ∃ r c, A r c = 1 ∨ A r c = -1
 
 private theorem seed_vertices : ∀ i, unitMinor (pentagonSeed i) := by
@@ -110,19 +107,22 @@ private theorem rank_one_of_seed {F : Type*} [Field F] {m : ℕ}
       rcases hentry with h | h <;> simp [h]
     exact hentry' (by rw [hzero]; rfl)
   rcases hrows with h | h | h
-  · have hzero : B 0 = 0 := by
+  · have hRow : A 0 = 0 := funext h
+    have hzero : B 0 = 0 := by
       funext c
-      simp [B, liftSeed, h]
+      simp [B, liftSeed, hRow]
     exact (bilinearFormsGraph_zero_adj_iff B).mp
       (bilinearFormsGraph_adj_of_same_row 0 hB.symm hzero.symm)
-  · have hzero : B 1 = 0 := by
+  · have hRow : A 1 = 0 := funext h
+    have hzero : B 1 = 0 := by
       funext c
-      simp [B, liftSeed, h]
+      simp [B, liftSeed, hRow]
     exact (bilinearFormsGraph_zero_adj_iff B).mp
       (bilinearFormsGraph_adj_of_same_row 1 hB.symm hzero.symm)
-  · have hopp : B 1 = -B 0 := by
+  · have hRow : A 1 = -A 0 := funext h
+    have hopp : B 1 = -B 0 := by
       funext c
-      simp only [B, liftSeed, Matrix.of_apply, Pi.neg_apply, h]
+      simp only [B, liftSeed, Matrix.of_apply, Pi.neg_apply, hRow]
       split <;> simp
     have hne : B 0 ≠ 0 := by
       intro hzero

@@ -48,8 +48,14 @@ theorem grassmannGraph_adj_iff_intersection_ne_bot [FiniteDimensional F V]
   change finrank F (P.val ⊓ Q.val : Submodule F V) = 1 ↔ _
   have hZero : finrank F (P.val ⊓ Q.val : Submodule F V) = 0 ↔
       (P.val ⊓ Q.val : Submodule F V) = ⊥ := Submodule.finrank_eq_zero
-  rw [← hZero]
-  omega
+  constructor
+  · intro hOne hBot
+    have hRank := hZero.mpr hBot
+    omega
+  · intro hNonzero
+    have hRank : finrank F (P.val ⊓ Q.val : Submodule F V) ≠ 0 :=
+      fun h => hNonzero (hZero.mp h)
+    omega
 
 private theorem card_nonzero_vectors {W : Type*} [Zero W] [Finite W] :
     Nat.card {v : W // v ≠ 0} = Nat.card W - 1 := by
@@ -64,7 +70,8 @@ private theorem card_finite_vectorSpace {W : Type*} [AddCommGroup W] [Module F W
     Nat.card W = Fintype.card F ^ finrank F W := by
   let e : W ≃ₗ[F] (Fin (finrank F W) → F) := LinearEquiv.ofFinrankEq _ _ (by simp)
   rw [Nat.card_congr e.toEquiv]
-  simp only [Nat.card_fun, Nat.card_fin, Nat.card_eq_fintype_card]
+  rw [Nat.card_eq_fintype_card]
+  exact Fintype.card_pi_const F _
 
 /-- Independent Grassmann vertices have pairwise disjoint nonzero vector sets.
 This gives the packing bound used for the second constituent, since any
@@ -99,7 +106,7 @@ theorem grassmannGraph_independent_packing [FiniteDimensional F V]
   have hFamily (i : Fin k) : Nat.card (family i) = Fintype.card F ^ 2 - 1 := by
     dsimp [family]
     rw [card_nonzero_vectors, card_finite_vectorSpace (F := F), (f i).property]
-  simpa only [hFamily, Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul] using hCard
+  simpa only [hFamily, Finset.sum_const, Finset.card_univ, Fintype.card_fin, Nat.nsmul_eq_mul] using hCard
 
 /-- On distinct neighbours of the root, the lines obtained by intersecting
 with the root are distinct throughout any independent set. -/

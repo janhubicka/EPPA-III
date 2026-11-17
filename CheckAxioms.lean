@@ -1378,3 +1378,6 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.affineLine_paley_small_orders
 #print axioms EPPAIII.Primitive.affineLine_peisert_small_orders
 #print axioms EPPAIII.Primitive.affineLine_vanLintSchrijver_small_orders
+#print axioms EPPAIII.Primitive.card_le_pow_mul_add_of_pointwise_stabilizer
+#print axioms EPPAIII.Primitive.affineLine_apply_of_fixed_pair
+#print axioms EPPAIII.Primitive.affineLine_eppa_order_bound
