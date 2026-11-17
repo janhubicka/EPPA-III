@@ -12,7 +12,8 @@ namespace EPPAIII.Primitive
 open SimpleGraph EPPAIII.BlockSystems
 attribute [local instance] Classical.propDecidable
 
-private theorem regularCluster_iso_cliqueUnion {V : Type*} [Fintype V]
+/-- A regular cluster graph of order `s * q` has exactly `s` cliques of size `q`. -/
+theorem regularCluster_iso_cliqueUnion {V : Type*} [Fintype V]
     (J : SimpleGraph V) {s q : ℕ} (hq : 0 < q) (hSize : Fintype.card V = s * q)
     (hDegree : J.IsRegularOfDegree (q - 1)) (hCluster : IsClusterGraph J) :
     Nonempty (J ≃g cliqueUnion s q) := by

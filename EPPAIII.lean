@@ -554,4 +554,8 @@ import EPPAIII.Primitive.GardinerFinRecognition
 import EPPAIII.Primitive.SmallConstituentSourceModels
 import EPPAIII.Primitive.SmallRankThreeCodegrees
 import EPPAIII.Primitive.PublishedRecognitionAssembly
+import EPPAIII.Primitive.RankThreeActionCatalogue
+import EPPAIII.Primitive.RookActionRecognition
+import EPPAIII.Primitive.AffineRankThreeSourceAdapters
+import EPPAIII.Primitive.SporadicRankThreeSourceAdapters
 import EPPAIII.TwoGraphs.TwoGraphOrderFromGardiner

@@ -1,6 +1,6 @@
 import EPPAIII.Primitive.GardinerFinRecognition
 import EPPAIII.Primitive.PublishedLocalRecognition
-import EPPAIII.Primitive.ClebschRecognition
+import EPPAIII.Primitive.RookRecognition
 import EPPAIII.Primitive.SmallRankThreeCodegrees
 import EPPAIII.Primitive.SmallWitnessNamedClassification
 
@@ -18,7 +18,7 @@ structure PublishedRecognitionSources : Prop where
   gardiner : FinGardinerRecognition
   localRecognition : PublishedLocalRecognition.{v}
   smallParameters : PublishedSmallRankThreeNonadjacentCodegrees
-  smallModels : PublishedSmallRankThreeModelsExceptClebsch
+  smallModels : PublishedSmallRankThreeModelsExceptClebschAndRookFour
 
 /-- Recover the recognition interface used inside the minimal-pair proof. -/
 theorem PublishedRecognitionSources.to_primitiveRecognitionInputs
@@ -30,7 +30,8 @@ theorem PublishedRecognitionSources.to_primitiveRecognitionInputs
       (publishedSmallRankThreeTable_of_nonadjacentCodegrees sources.smallParameters)
     smallModels := smallRankThreeModelIdentification_of_source
       (smallRankThreeSourceModelIdentification_of_published
-        (publishedSmallRankThreeModels_of_exceptClebsch sources.smallModels)) }
+        (publishedSmallRankThreeModels_of_exceptClebsch
+          (publishedSmallRankThreeModelsExceptClebsch_of_exceptClebschAndRookFour sources.smallModels))) }
 
 /-- The named fixed-embedding classification with recognition specified
 in terms of the published source data. Finite checks remain explicit. -/
