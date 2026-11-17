@@ -11,6 +11,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = ROOT / "docs/wiki/Imprimitive-Classification.md"
 GARDINER = ROOT / "docs/wiki/Gardiner-External-Assumption.md"
+MODELS = ROOT / "docs/wiki/Named-Host-Models.md"
 
 MAIN_DECLS = [
     ("EPPAIII/EPPA/Definitions.lean", "def", "IsGraphAutomorphism"),
@@ -49,6 +50,25 @@ GARDINER_DECLS = [
     ("EPPAIII/BlockSystems/GardinerLiteralNormalization.lean", "theorem", "imprimitive_actual_host_classification_from_published_gardiner"),
 ]
 
+MODEL_DECLS = [
+    ("EPPAIII/DoubleCover/PairPatterns.lean", "structure", "PairPattern"),
+    ("EPPAIII/DoubleCover/PairPatterns.lean", "def", "taylor"),
+    ("EPPAIII/DoubleCover/UniformPattern.lean", "def", "RepresentsPairPattern"),
+    ("EPPAIII/BlockSystems/TwoCliqueSwitching.lean", "def", "twoCliqueGraph"),
+    ("EPPAIII/BlockSystems/TwoCliqueTaylorNamed.lean", "def", "twoCliqueMatchedRel"),
+    ("EPPAIII/BlockSystems/TwoCliqueTaylorNamed.lean", "def", "twoCliqueMatchedGraph"),
+    ("EPPAIII/BlockSystems/CycleFiveDoubleClassification.lean", "def", "cycleFiveExplicitAdjacent"),
+    ("EPPAIII/BlockSystems/CycleFiveDoubleClassification.lean", "def", "cycleFiveDoubleRelation"),
+    ("EPPAIII/BlockSystems/CycleFiveDoubleClassification.lean", "def", "cycleFiveDoubleGraph"),
+    ("EPPAIII/BlockSystems/CycleFiveZeroCrossConclusion.lean", "def", "cycleFiveDisjointDoubleGraph"),
+    ("EPPAIII/BlockSystems/CycleFiveMatchingModels.lean", "def", "cycleFiveMatchingRelation"),
+    ("EPPAIII/BlockSystems/CycleFiveMatchingModels.lean", "def", "cycleFiveMatchingGraph"),
+    ("EPPAIII/BlockSystems/RookThreeBase.lean", "def", "rookThreeGraph"),
+    ("EPPAIII/BlockSystems/RookThreeTriangleCertificates.lean", "abbrev", "rookDoubleRelation"),
+    ("EPPAIII/BlockSystems/RookThreeTriangleCertificates.lean", "def", "rookDoubleGraph"),
+    ("EPPAIII/CliqueCovers/WagnerHostConclusion.lean", "def", "wagnerCanonicalGraph"),
+]
+
 NEXT_DECL = re.compile(
     r"\n\n(?:/--|theorem\s|lemma\s|def\s|abbrev\s|"
     r"inductive\s|structure\s|end\s|namespace\s)"
@@ -79,6 +99,7 @@ def check_page(path: Path, entries: list[tuple[str, str, str]]) -> int:
 def main() -> None:
     checked = check_page(MAIN, MAIN_DECLS)
     checked += check_page(GARDINER, GARDINER_DECLS)
+    checked += check_page(MODELS, MODEL_DECLS)
     src = (ROOT / "EPPAIII/BlockSystems/ImprimitiveGlobalClassification.lean").read_text(encoding="utf8")
     doc = MAIN.read_text(encoding="utf8")
     if "```lean\n" + src.rstrip() + "\n```" not in doc:
