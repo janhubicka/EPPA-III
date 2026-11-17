@@ -112,7 +112,8 @@ private theorem intersection_card_of_not_clique {V I : Type*} [Fintype V]
   have hx' := (Finset.mem_filter.mp hx).2
   exact ⟨fun e => hij (A.injective (Subtype.ext e)), x, hx' i hi, hx' j hj⟩
 
-private def twoSetPerm {V : Type*} (e : Equiv.Perm V) : Equiv.Perm (TwoSet V) where
+/-- A point permutation induces a permutation of the two-element sets. -/
+def twoSetPerm {V : Type*} (e : Equiv.Perm V) : Equiv.Perm (TwoSet V) where
   toFun a := ⟨a.val.map e.toEmbedding, by simp [a.property]⟩
   invFun a := ⟨a.val.map e.symm.toEmbedding, by simp [a.property]⟩
   left_inv a := by
@@ -124,7 +125,8 @@ private def twoSetPerm {V : Type*} (e : Equiv.Perm V) : Equiv.Perm (TwoSet V) wh
     ext x
     simp
 
-private theorem twoSetPerm_automorphism {V : Type*} (e : Equiv.Perm V) :
+/-- The induced action preserves intersection adjacency. -/
+theorem twoSetPerm_automorphism {V : Type*} (e : Equiv.Perm V) :
     IsGraphAutomorphism (triangularGraph V) (twoSetPerm e) := by
   classical
   intro a b

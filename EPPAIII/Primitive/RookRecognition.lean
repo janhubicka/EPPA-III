@@ -1,8 +1,9 @@
 import EPPAIII.Primitive.ClebschRecognition
 import EPPAIII.Primitive.RankTwoLineRecognition
+import EPPAIII.Primitive.RookLocalRecognition
 import Mathlib.Logic.Equiv.Option
 
-/-! # Recognizing the four-by-four rook graph -/
+/-! # Recognizing square rook graphs -/
 
 namespace EPPAIII.Primitive
 
@@ -17,6 +18,25 @@ private theorem eq_or_eq_of_card_two {V : Type*} [Fintype V]
   have hx : x ∈ S := by rw [hUniv]; simp
   simpa [S] using hx
 
+private theorem nonedge_common_complete_of_rankThree {V : Type*} [Fintype V]
+    (H : SimpleGraph V) [DecidableRel H.Adj] {n degree l : ℕ} (h : H.IsSRGWith n degree l 2)
+    (hRank : HasRankThreeAutAction H) (a b : V) (hab : a ≠ b) (hnab : ¬ H.Adj a b)
+    {s t : H.commonNeighbors a b} (hst : H.Adj s.val t.val)
+    (x y : V) (hxy : x ≠ y) (hnxy : ¬ H.Adj x y)
+    (c d : H.commonNeighbors x y) (hcd : c ≠ d) : H.Adj c.val d.val := by
+  classical
+  obtain ⟨π, hπ, hπa, hπb⟩ := hRank.2.2.2 a b x y hab hxy (iff_of_false hnab hnxy)
+  let image (z : H.commonNeighbors a b) : H.commonNeighbors x y :=
+    ⟨π z.val, hπa ▸ (hπ a z.val).mp z.property.1, hπb ▸ (hπ b z.val).mp z.property.2⟩
+  have hne : image s ≠ image t := fun he => hst.ne (π.injective (congrArg Subtype.val he))
+  have hEdge : H.Adj (image s).val (image t).val := (hπ s.val t.val).mp hst
+  rcases eq_or_eq_of_card_two (h.of_not_adj hxy hnxy) hne c with hc | hc <;>
+    rcases eq_or_eq_of_card_two (h.of_not_adj hxy hnxy) hne d with hd | hd
+  · exact (hcd (hc.trans hd.symm)).elim
+  · simpa [hc, hd] using hEdge
+  · simpa [hc, hd] using hEdge.symm
+  · exact (hcd (hc.trans hd.symm)).elim
+
 /-- Rank three forces the common neighbours of nonedges to be independent.
 Otherwise every nonadjacent pair in the six-vertex local graph has a common
 neighbour there, although the local degree two precludes this. -/
@@ -26,19 +46,7 @@ private theorem rook_common_nonedge_independent {V : Type*} [Fintype V]
     (s t : H.commonNeighbors a b) : ¬ H.Adj s.val t.val := by
   classical
   intro hst
-  have hCommon (x y : V) (hxy : x ≠ y) (hnxy : ¬ H.Adj x y)
-      (c d : H.commonNeighbors x y) (hcd : c ≠ d) : H.Adj c.val d.val := by
-    obtain ⟨π, hπ, hπa, hπb⟩ := hRank.2.2.2 a b x y hab hxy (iff_of_false hnab hnxy)
-    let image (z : H.commonNeighbors a b) : H.commonNeighbors x y :=
-      ⟨π z.val, hπa ▸ (hπ a z.val).mp z.property.1, hπb ▸ (hπ b z.val).mp z.property.2⟩
-    have hne : image s ≠ image t := fun he => hst.ne (π.injective (congrArg Subtype.val he))
-    have hEdge : H.Adj (image s).val (image t).val := (hπ s.val t.val).mp hst
-    rcases eq_or_eq_of_card_two (h.of_not_adj hxy hnxy) hne c with hc | hc <;>
-      rcases eq_or_eq_of_card_two (h.of_not_adj hxy hnxy) hne d with hd | hd
-    · exact (hcd (hc.trans hd.symm)).elim
-    · simpa [hc, hd] using hEdge
-    · simpa [hc, hd] using hEdge.symm
-    · exact (hcd (hc.trans hd.symm)).elim
+  have hCommon := nonedge_common_complete_of_rankThree H h hRank a b hab hnab hst
   let r := a
   let J := localGraph H r
   have hProfile := constituentGraph_profile H (⟨16, 6, 2, 2⟩ : SRGParameters) h r false
@@ -83,13 +91,16 @@ private theorem rook_common_nonedge_independent {V : Type*} [Fintype V]
   rw [Finset.card_univ, hSize] at hLower
   omega
 
-private theorem rook_four_local_charts {V : Type*} [Fintype V]
-    (H : SimpleGraph V) [DecidableRel H.Adj] (h : H.IsSRGWith 16 6 2 2)
-    (hRank : HasRankThreeAutAction H) : ∀ r, Nonempty (localGraph H r ≃g cliqueUnion 2 3) := by
+private theorem local_charts_of_independent_rook_nonedges {V : Type*} [Fintype V]
+    (H : SimpleGraph V) [DecidableRel H.Adj] {n k : ℕ} (hk : 0 < k)
+    (h : H.IsSRGWith n (2 * k) (k - 1) 2)
+    (hIndependent : ∀ a b, a ≠ b → ¬ H.Adj a b →
+      ∀ s t : H.commonNeighbors a b, ¬ H.Adj s.val t.val) :
+    ∀ r, Nonempty (localGraph H r ≃g cliqueUnion 2 k) := by
   classical
   intro r
-  have hProfile := constituentGraph_profile H (⟨16, 6, 2, 2⟩ : SRGParameters) h r false
-  apply regularCluster_iso_cliqueUnion (localGraph H r) (by decide)
+  have hProfile := constituentGraph_profile H ⟨_, _, _, _⟩ h r false
+  apply regularCluster_iso_cliqueUnion (localGraph H r) hk
   · exact Nat.card_eq_fintype_card.symm.trans hProfile.1
   · intro x
     rw [← (localGraph H r).card_neighborSet_eq_degree, ← Nat.card_eq_fintype_card]
@@ -99,7 +110,7 @@ private theorem rook_four_local_charts {V : Type*} [Fintype V]
     have hne : a.val ≠ c.val := fun he => hac (Subtype.ext he)
     let x : H.commonNeighbors a.val c.val := ⟨r, a.property.symm, c.property.symm⟩
     let y : H.commonNeighbors a.val c.val := ⟨b.val, hab, hbc.symm⟩
-    exact rook_common_nonedge_independent H h hRank a.val c.val hne hnc x y b.property
+    exact hIndependent a.val c.val hne hnc x y b.property
 
 private def splitRookRoot {V : Type*} (H : SimpleGraph V) [DecidableRel H.Adj]
     (r : V) : (H.neighborSet r ⊕ Hᶜ.neighborSet r) ≃ {v : V // v ≠ r} where
@@ -336,7 +347,9 @@ parameters `(16,6,2,2)`. -/
 theorem rook_four_iso_of_parameters {V : Type*} [Fintype V] (H : SimpleGraph V)
     [DecidableRel H.Adj] (h : H.IsSRGWith 16 6 2 2) (hRank : HasRankThreeAutAction H) :
     Nonempty (H ≃g rookGraph 4) :=
-  rook_iso_of_srg_and_local_charts H (k := 3) h (rook_four_local_charts H h hRank)
+  rook_iso_of_srg_and_local_charts H (k := 3) h
+    (local_charts_of_independent_rook_nonedges H (by decide) h
+      (rook_common_nonedge_independent H h hRank))
 
 open EPPAIII.BlockSystems
 
@@ -365,5 +378,84 @@ theorem publishedSmallRankThreeModelsExceptClebsch_of_exceptClebschAndRookFour
     change Nonempty (H ≃g rookGraph 4)
     exact rook_four_iso_of_parameters H hSRG hRank
   · exact hSource H p m complementModel hPrim hRank hSRG hLabel hClebsch hRook
+
+/-- For a rook graph of side at least five, a local graph cannot have one
+common neighbour for each nonedge. Rank three therefore makes the two
+common neighbours of each host nonedge independent. -/
+private theorem rook_large_common_nonedge_independent {V : Type*} [Fintype V]
+    (H : SimpleGraph V) [DecidableRel H.Adj] {k : ℕ} (hk : 4 ≤ k)
+    (h : H.IsSRGWith ((k + 1) * (k + 1)) (2 * k) (k - 1) 2)
+    (hRank : HasRankThreeAutAction H) (a b : V) (hab : a ≠ b) (hnab : ¬ H.Adj a b)
+    (s t : H.commonNeighbors a b) : ¬ H.Adj s.val t.val := by
+  classical
+  intro hst
+  have hCommon := nonedge_common_complete_of_rankThree H h hRank a b hab hnab hst
+  let r := a
+  let J := localGraph H r
+  have hp := constituentGraph_profile H ⟨_, _, _, _⟩ h r false
+  have hSize : Fintype.card (H.neighborSet r) = 2*k :=
+    Nat.card_eq_fintype_card.symm.trans hp.1
+  have hReg : J.IsRegularOfDegree (k-1) := by
+    intro x
+    rw [← J.card_neighborSet_eq_degree, ← Nat.card_eq_fintype_card]
+    exact hp.2 x
+  refine no_geodetic_of_rook_local_parameters J hk hSize hReg ?_
+  intro x y hxy hnxy
+  have hxy' : x.val ≠ y.val := fun he => hxy (Subtype.ext he)
+  let w : H.commonNeighbors x.val y.val := ⟨r, x.property.symm, y.property.symm⟩
+  have hCard := h.of_not_adj hxy' hnxy
+  have hMany : 1 < Fintype.card (H.commonNeighbors x.val y.val) := by rw [hCard]; decide
+  obtain ⟨z, hz⟩ := Fintype.exists_ne_of_one_lt_card hMany w
+  let q : H.neighborSet r := ⟨z.val, hCommon x.val y.val hxy' hnxy w z hz.symm⟩
+  refine ⟨q, ⟨z.property.1, z.property.2⟩, ?_⟩
+  intro u hu
+  let u' : H.commonNeighbors x.val y.val := ⟨u.val, hu.1, hu.2⟩
+  rcases eq_or_eq_of_card_two hCard hz u' with he | he
+  · exact Subtype.ext (congrArg (fun v : H.commonNeighbors x.val y.val => v.val) he)
+  · exact (u.property.ne (congrArg (fun v : H.commonNeighbors x.val y.val => v.val) he).symm).elim
+
+/-- The parameters and rank-three action recognize square rook graphs of
+side at least five. The small case of side four has its own proof. -/
+theorem rook_large_iso_of_parameters {V : Type*} [Fintype V] (H : SimpleGraph V)
+    [DecidableRel H.Adj] {k : ℕ} (hk : 4 ≤ k)
+    (h : H.IsSRGWith ((k + 1) * (k + 1)) (2 * k) (k - 1) 2)
+    (hRank : HasRankThreeAutAction H) : Nonempty (H ≃g rookGraph (k+1)) :=
+  rook_iso_of_srg_and_local_charts H h
+    (local_charts_of_independent_rook_nonedges H (by omega) h
+      (rook_large_common_nonedge_independent H hk h hRank))
+
+/-- Host identities still supplied by the printed catalogue after the
+Clebsch host and all six rook hosts have been recognized. -/
+def PublishedSmallRankThreeModelsExceptClebschAndRooks : Prop :=
+  ∀ {n : ℕ} (H : SimpleGraph (Fin n)) [DecidableRel H.Adj]
+    (p : SRGParameters) (m : SmallConstituentHostModel) (complementModel : Bool),
+    IsPrimitiveAutAction H → HasRankThreeAutAction H →
+    H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon →
+    smallConstituentSourceModel p = some (m, complementModel) →
+    m ≠ .foldedFiveCube → (∀ side, m ≠ .rook side false) →
+    Nonempty (H ≃g if complementModel then m.graphᶜ else m.graph)
+
+/-- The remaining 13 printed identities give the former source interface. -/
+theorem publishedSmallRankThreeModelsExceptClebschAndRookFour_of_exceptClebschAndRooks
+    (hSource : PublishedSmallRankThreeModelsExceptClebschAndRooks) :
+    PublishedSmallRankThreeModelsExceptClebschAndRookFour := by
+  intro n H _ p m complementModel hPrim hRank hSRG hLabel hClebsch hRookFour
+  by_cases hRook : ∃ side, m = .rook side false
+  · obtain ⟨side, rfl⟩ := hRook
+    have hProfile : 4 ≤ side - 1 ∧ complementModel = false ∧
+        p = ⟨(side - 1 + 1) * (side - 1 + 1), 2 * (side - 1), side - 1 - 1, 2⟩ := by
+      unfold smallConstituentSourceModel at hLabel
+      split at hLabel <;> simp_all
+      all_goals
+        obtain ⟨he, _⟩ := hLabel
+        subst side
+        decide
+    rcases hProfile with ⟨hSide, rfl, rfl⟩
+    change Nonempty (H ≃g rookGraph side)
+    have hEq : side - 1 + 1 = side := by omega
+    rw [← hEq]
+    exact rook_large_iso_of_parameters H (k := side - 1) hSide hSRG hRank
+  · exact hSource H p m complementModel hPrim hRank hSRG hLabel hClebsch
+      (fun s hs => hRook ⟨s, hs⟩)
 
 end EPPAIII.Primitive
