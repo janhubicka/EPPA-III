@@ -19,7 +19,7 @@ private instance decidableComplTriangular (m : ℕ) :
   change Decidable (a ≠ b ∧ ¬ (a ≠ b ∧ ∃ c : Fin m, c ∈ a.val ∧ c ∈ b.val))
   infer_instance
 
-private theorem srg_parameters_of_rooted_local_iso {V U : Type*}
+theorem srg_parameters_of_rooted_local_iso {V U : Type*}
     [Fintype V] [Fintype U] (H : SimpleGraph V) [DecidableRel H.Adj]
     (K : SimpleGraph U) [DecidableRel K.Adj] {n k l μ : ℕ}
     (h : H.IsSRGWith n k l μ) (root : V)

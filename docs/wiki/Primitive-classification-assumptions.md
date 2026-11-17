@@ -18,6 +18,11 @@ also uses `NamedTaylorFiniteChecks`, the homogeneity of the two concrete
 nontrivial two-graphs. The checker `checks/check_named_taylor_models.py`
 verifies these facts and their host and switching-class identities.
 
+The [source-data formulation](https://github.com/janhubicka/EPPA-III/blob/main/validation/primitive/PublishedRecognitionSources.md)
+recovers the adjacent codegree from the other three SRG parameters,
+derives the complementary model identifications, and reduces the small
+model premise to 19 printed rows. It also derives the order-256 point bound.
+
 ## Rank-three catalogue
 
 The coverage premise uses the **full** graph automorphism group. Rank three

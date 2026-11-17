@@ -28,6 +28,21 @@ def cliqueExtension (I : Type*) (H : SimpleGraph V) : SimpleGraph (I × V) where
     intro x h
     exact h.elim (H.loopless.irrefl x.2) (fun h => h.2 rfl)
 
+/-- A clique extension over nonempty fibres preserves connectedness. -/
+theorem cliqueExtension_connected [Nonempty I] {H : SimpleGraph V}
+    (hConnected : H.Connected) : (cliqueExtension I H).Connected := by
+  have := hConnected.nonempty
+  refine ⟨?_⟩
+  intro x y
+  let layer : H →g cliqueExtension I H :=
+    ⟨fun v => (x.1, v), fun h => Or.inl h⟩
+  have hWalk := (hConnected x.2 y.2).map layer
+  have hEnd : (cliqueExtension I H).Reachable (x.1, y.2) y := by
+    by_cases h : x.1 = y.1
+    · rw [show (x.1, y.2) = y from Prod.ext h rfl]
+    · exact (show (cliqueExtension I H).Adj (x.1, y.2) y from Or.inr ⟨rfl, h⟩).reachable
+  exact hWalk.trans hEnd
+
 private theorem cliqueExtension_closedNeighbourhood_iff (H : SimpleGraph V) (x y : I × V) :
     y ∈ closedNeighbourhood (cliqueExtension I H) x ↔
       y.2 ∈ closedNeighbourhood H x.2 := by

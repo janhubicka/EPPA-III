@@ -7,8 +7,10 @@ The source is Brouwer and Van Maldeghem, *Strongly Regular Graphs*,
 Table 11.8, author preprint pages 365–367 (PDF pages 381–383).
 The list runs through the last row of order at most 460. Repeated
 parameter tuples are retained because they come from distinct rows.
-The first row is the 5-cycle, so its adjacency common-neighbor count
-is 0. The preprint prints 1, inconsistent with the parameter equation.
+The first row is the 5-cycle and has adjacent codegree 0, whereas
+the preprint prints 1. The values 12 for the halved folded 8-cube's
+nonadjacent codegree and 353 for the order of the Paley graph with
+valency 176 agree with the current author PDF.
 
 The theorem checks all rows in both complementary orientations.
 It is purely numerical. The rank-three classification, named-model

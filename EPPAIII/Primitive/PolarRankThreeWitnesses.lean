@@ -52,6 +52,23 @@ def PolarSixChart.root {F V : Type*} [Field F] {G : SimpleGraph V}
     (C : PolarSixChart G valid pairing) (hValid : valid rootVector) : V :=
   C.point ⟨rootVector, nonzero_of_normalized (i := 0) rfl, hValid⟩
 
+/-- Transport the chart's point representatives along a graph isomorphism. -/
+def PolarSixChart.relabel {F V W : Type*} [Field F]
+    {G : SimpleGraph V} {H : SimpleGraph W}
+    {valid : PolarSix F → Prop} {pairing : PolarSix F → PolarSix F → F}
+    (C : PolarSixChart G valid pairing) (φ : G ≃g H) :
+    PolarSixChart H valid pairing where
+  point x := φ (C.point x)
+  same_ray h := C.same_ray (φ.injective h)
+  adjacency x y := φ.map_adj_iff.trans
+    ((C.adjacency x y).trans (and_congr (not_congr φ.injective.eq_iff.symm) Iff.rfl))
+
+@[simp] theorem PolarSixChart.root_relabel {F V W : Type*} [Field F]
+    {G : SimpleGraph V} {H : SimpleGraph W}
+    {valid : PolarSix F → Prop} {pairing : PolarSix F → PolarSix F → F}
+    (C : PolarSixChart G valid pairing) (φ : G ≃g H) (hValid : valid rootVector) :
+    (C.relabel φ).root hValid = φ (C.root hValid) := rfl
+
 private theorem normalized_injective {F V : Type*} [Field F] {G : SimpleGraph V}
     {valid : PolarSix F → Prop} {pairing : PolarSix F → PolarSix F → F}
     (C : PolarSixChart G valid pairing)

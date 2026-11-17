@@ -1,4 +1,5 @@
 import EPPAIII.Primitive.PrimitiveClassificationReduction
+import EPPAIII.Primitive.SmallRankThreeParameterRecognition
 
 /-!
 # Graph recognition input for the primitive classification
@@ -32,6 +33,39 @@ with independently supplied model recognition. -/
 def PublishedRankThreeGraphCoverage : Prop :=
   ∀ {W : Type v} [Fintype W] (H : SimpleGraph W),
     IsPrimitiveAutAction H → HasRankThreeAutAction H → HasPublishedRankThreeModel H
+
+/-- The graph-level catalogue can be supplied on standard vertex sets.
+The model-specific graph and action data are still part of the conclusion. -/
+def FinPublishedRankThreeGraphCoverage : Prop :=
+  ∀ {n : ℕ} (H : SimpleGraph (Fin n)),
+    IsPrimitiveAutAction H → HasRankThreeAutAction H → HasPublishedRankThreeModel H
+
+theorem HasPublishedRankThreeModel.of_iso {A B : Type*}
+    {G : SimpleGraph A} {H : SimpleGraph B} (hModel : HasPublishedRankThreeModel G)
+    (φ : G ≃g H) : HasPublishedRankThreeModel H := by
+  have lift {C : Type} {J : SimpleGraph C} (h : IsModelUpToComplement G J) :
+      IsModelUpToComplement H J := by
+    rcases h with h | h
+    · obtain ⟨e⟩ := h
+      exact Or.inl ⟨φ.symm.trans e⟩
+    · obtain ⟨e⟩ := h
+      exact Or.inr ⟨φ.symm.trans e⟩
+  rcases hModel with ⟨n, hn, h⟩ | ⟨n, hn, h⟩ | h | h | h | ⟨K, hK, h⟩
+  · exact Or.inl ⟨n, hn, lift h⟩
+  · exact Or.inr (Or.inl ⟨n, hn, lift h⟩)
+  · exact Or.inr (Or.inr (Or.inl (lift h)))
+  · exact Or.inr (Or.inr (Or.inr (Or.inl (lift h))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inl (lift h)))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inr ⟨K, hK, lift h⟩))))
+
+/-- Relabel an arbitrary finite host before applying the published catalogue. -/
+theorem publishedRankThreeGraphCoverage_of_fin (hFin : FinPublishedRankThreeGraphCoverage) :
+    PublishedRankThreeGraphCoverage.{v} := by
+  intro W _ H hPrim hRank
+  let labels := (Fintype.equivFin W).symm
+  let φ : pullbackGraph H labels ≃g H := ⟨labels, Iff.rfl⟩
+  exact (hFin _ (primitive_pullback_equiv H labels hPrim)
+    (rankThree_pullback H labels hRank)).of_iso φ
 
 private def coveredModels : RankThreeCatalog := fun _ => {model | CompleteRankThreeCase model.2}
 

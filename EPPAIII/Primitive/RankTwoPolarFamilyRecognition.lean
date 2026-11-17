@@ -1,5 +1,7 @@
 import EPPAIII.Primitive.RankThreeContextualCoverage
 import EPPAIII.Primitive.PolarRankTwoArithmetic
+import EPPAIII.Primitive.RankTwoLineRecognition
+import EPPAIII.Primitive.FullGraphStabilizerOrder
 
 /-! # Catalogue entries from the published rank-two parameters -/
 
@@ -14,6 +16,16 @@ structure RankTwoPolarChart {n : ℕ} (H : SimpleGraph (Fin n)) (Q t : ℕ) : Pr
   parameters : H.IsSRGWith ((Q + 1) * (Q * t + 1)) (Q * (t + 1)) (Q - 1) (t + 1)
   localCliques : ∀ r, Nonempty (localGraph H r ≃g cliqueUnion (t + 1) Q)
 
+/-- The source supplies the parameters and one line. Edge transitivity
+recovers the whole local chart needed by the rank-two catalogue. -/
+theorem rankTwoPolarChart_of_line {n q t : ℕ} (H : SimpleGraph (Fin n)) (hq : 0 < q)
+    (hRank : EPPAIII.BlockSystems.HasRankThreeAutAction H)
+    (hSRG : H.IsSRGWith ((q + 1) * (q * t + 1)) (q * (t + 1)) (q - 1) (t + 1))
+    (line : Finset (Fin n)) (hLineCard : line.card = q + 1) (hLine : H.IsClique ↑line) :
+    RankTwoPolarChart H q t :=
+  ⟨hSRG, localCharts_of_rankThree_line H hq hRank
+    (by simpa only [Nat.mul_comm q (t + 1)] using hSRG) line hLineCard hLine⟩
+
 private theorem RankTwoPolarChart.catalogue_of_bound {n Q t k : ℕ}
     {H : SimpleGraph (Fin n)} (data : RankTwoPolarChart H Q t)
     (hRange : RankTwoPolarRange Q t) (hBound : k < (Q / 2).factorial ^ (t + 1))
@@ -21,6 +33,30 @@ private theorem RankTwoPolarChart.catalogue_of_bound {n Q t k : ℕ}
     RankTwoPolarCatalogueModel H :=
   Or.inl ⟨Q, t, hRange, data.parameters, data.localCliques,
     fun r => (hOrder r).trans_lt hBound⟩
+
+/-- A bound on the full group's order supplies the point bound at each root
+of a transitive rank-two graph. -/
+theorem RankTwoPolarChart.catalogue_of_full_group_bound {n Q t k : ℕ}
+    {H : SimpleGraph (Fin n)} (data : RankTwoPolarChart H Q t)
+    (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms H)
+    (hRange : RankTwoPolarRange Q t) (hCutoff : k < (Q / 2).factorial ^ (t + 1))
+    (hFull : Nat.card (graphAutomorphisms H) ≤ n * k) : RankTwoPolarCatalogueModel H := by
+  apply data.catalogue_of_bound hRange hCutoff
+  intro r
+  have hCard := graphAutomorphisms_card_eq_mul_pointStabilizer H hTrans r
+  have hPoint : n * Nat.card (pointwiseGraphStabilizer H {r}) ≤ n * k := by
+    simpa only [hCard, Nat.card_fin] using hFull
+  exact Nat.le_of_mul_le_mul_left hPoint r.isLt.pos
+
+/-- The SRG tuple already identifies each local graph of the affine
+Berlekamp–Van Lint–Seidel row as an eleven-edge matching. -/
+theorem affineMatchingCatalogueModel_of_srg {n : ℕ} {H : SimpleGraph (Fin n)}
+    (hSRG : H.IsSRGWith 243 22 1 2)
+    (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms H) (r : Fin n)
+    (hPoint : Nat.card (pointwiseGraphStabilizer H {r}) = 15840) :
+    AffineMatchingCatalogueModel H :=
+  ⟨hSRG, localCharts_of_srg_lambda_one H (s := 11) hSRG,
+    fun x => (card_pointwiseGraphStabilizer_singleton_of_transitive H hTrans x r).trans hPoint⟩
 
 /-- The symplectic and odd orthogonal case at field order seven and above. -/
 theorem rankTwoCatalogue_of_symplectic {n q f : ℕ} {H : SimpleGraph (Fin n)}

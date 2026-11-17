@@ -49,7 +49,7 @@ private theorem uniformLocalModel_of_rankThree {V W : Type*}
     exact localIso move s
   exact ⟨hIso.trans φ⟩
 
-private theorem complement_rankThree {W : Type*} {H : SimpleGraph W}
+theorem complement_rankThree {W : Type*} {H : SimpleGraph W}
     (hRank : HasRankThreeAutAction H) : HasRankThreeAutAction Hᶜ := by
   obtain ⟨⟨a, b, hab⟩, ⟨c, d, hcd, hncd⟩, hTrans, hPairs⟩ := hRank
   refine ⟨⟨c, d, hcd, hncd⟩, ⟨a, b, hab.ne, fun h => h.2 hab⟩,
