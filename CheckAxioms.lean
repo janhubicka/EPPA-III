@@ -1222,3 +1222,8 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
 #print axioms EPPAIII.BlockSystems.false_twins_transport_iso
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
+
+-- Section 6 unequal-clique switching class: exact transversal compatibility.
+#print axioms EPPAIII.BlockSystems.seidelSwitchGraph_eq_taylorTransversalGraph
+#print axioms EPPAIII.BlockSystems.twoCliqueGraph_taylorTransversal_to_any_twoClique
+#print axioms EPPAIII.BlockSystems.twoCliqueGraph_taylorTransversal_to_complete
