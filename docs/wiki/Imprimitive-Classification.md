@@ -527,12 +527,16 @@ Key sources: [partition and double-counting](../../EPPAIII/BlockSystems/Transiti
 
 From a checkout of the integrated branch, with the `lean-toolchain` and `lakefile` from the repository:
 
-```lean
+```bash
 lake build
 lake env lean CheckAxioms.lean
+```
 
-# In an extra Lean scratch file:
+In a separate Lean file:
+
+```lean
 import EPPAIII
+
 #check EPPAIII.BlockSystems.nonhomogeneous_transitive_imprimitive_eppa_global_classification
 #print axioms EPPAIII.BlockSystems.nonhomogeneous_transitive_imprimitive_eppa_global_classification
 ```
