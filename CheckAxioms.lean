@@ -1480,3 +1480,7 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.affine_gqThreeFive_not_eppa
 #print axioms EPPAIII.Primitive.affineLine_listed_of_eppa
 #print axioms EPPAIII.Primitive.primitiveCases_iff_eppa_of_catalogue
+#print axioms EPPAIII.Primitive.symplecticFourFour_not_eppa
+#print axioms EPPAIII.Primitive.symplecticFourFive_not_eppa
+#print axioms EPPAIII.Primitive.ellipticSixThree_not_eppa
+#print axioms EPPAIII.Primitive.ellipticSixFour_not_eppa

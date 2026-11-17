@@ -93,4 +93,32 @@ theorem unitaryFive_dual_stabilizer_bound (q f : ℕ) (hq : 2 ≤ q) (hf : f ≤
       rw [pow_mul]
       exact Nat.pow_le_pow_left hFactorial _
 
+/-- At field order seven the field automorphism factor is one. -/
+theorem polar_rankTwo_seven_stabilizer_bounds :
+    7 ^ 4 * (7 - 1) * (7 ^ 2 - 1) < (7 / 2).factorial ^ (7 + 1) ∧
+    2 * 7 ^ 6 * (7 - 1) * (7 ^ 4 - 1) < (7 / 2).factorial ^ (7 ^ 2 + 1) := by
+  decide
+
+/-- For every field order at least three, the two unitary point-stabilizer
+bounds are strict, including the fields below the uniform polar cutoff. -/
+theorem polar_rankTwo_unitary_stabilizer_bounds (q f : ℕ) (hq : 3 ≤ q) (hf : f ≤ q) :
+    2 * f * q ^ 6 * (q ^ 2 - 1) ^ 2 < (q ^ 2 / 2).factorial ^ (q + 1) ∧
+    2 * f * q ^ 10 * (q ^ 2 - 1) ^ 2 * (q ^ 3 + 1) <
+      (q ^ 2 / 2).factorial ^ (q ^ 3 + 1) := by
+  by_cases hLarge : 8 ≤ q
+  · exact (polar_rankTwo_large_stabilizer_bounds q f hLarge hf).2.2
+  have hSmall : ∀ r : Fin 8, 3 ≤ r.val →
+      (2 * r.val * r.val ^ 6 * (r.val ^ 2 - 1) ^ 2 <
+        (r.val ^ 2 / 2).factorial ^ (r.val + 1)) ∧
+      (2 * r.val * r.val ^ 10 * (r.val ^ 2 - 1) ^ 2 * (r.val ^ 3 + 1) <
+        (r.val ^ 2 / 2).factorial ^ 16) := by decide
+  obtain ⟨hEven, hOdd⟩ := hSmall ⟨q, by omega⟩ hq
+  have hfOdd : 2 * f * q ^ 10 * (q ^ 2 - 1) ^ 2 * (q ^ 3 + 1) ≤
+      2 * q * q ^ 10 * (q ^ 2 - 1) ^ 2 * (q ^ 3 + 1) := by gcongr
+  refine ⟨lt_of_le_of_lt (by gcongr) hEven, hfOdd.trans_lt (hOdd.trans_le ?_)⟩
+  have hExponent : 16 ≤ q ^ 3 + 1 := by
+    have hCube := Nat.pow_le_pow_left hq 3
+    omega
+  exact Nat.pow_le_pow_right (Nat.factorial_pos _) hExponent
+
 end EPPAIII.Primitive

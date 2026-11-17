@@ -2,6 +2,9 @@ import EPPAIII.Primitive.AffineLineCompletion
 import EPPAIII.Primitive.AffineMatchingExclusion
 import EPPAIII.Primitive.AffineTriangleClusterExclusion
 import EPPAIII.Primitive.RankThreeFamilyReductions
+import EPPAIII.Primitive.PolarSymplecticFive
+import EPPAIII.Primitive.SmallEllipticExclusion
+import EPPAIII.Primitive.SymplecticFourFour
 import EPPAIII.Primitive.UnitaryFiveTwoPoint
 
 /-! # Catalogue rows that use the selected constituent sizes -/
@@ -89,7 +92,20 @@ def RankTwoPolarCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
     (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 165888)) ∨
   (H.IsSRGWith 756 130 4 26 ∧
     (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 26 5)) ∧
-    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 78000000))
+    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 78000000)) ∨
+  (H.IsSRGWith 85 20 3 5 ∧
+    (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 5 4)) ∧
+    (∀ r u v, u ≠ v → H.Adj r u → H.Adj r v →
+      Nat.card (pointwiseGraphStabilizer H {r, u, v}) = if H.Adj u v then 384 else 72)) ∨
+  (H.IsSRGWith 156 30 4 6 ∧
+    (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 6 5)) ∧
+    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 60000)) ∨
+  (H.IsSRGWith 112 30 2 10 ∧
+    (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 10 3)) ∧
+    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ∣ 233280)) ∨
+  (H.IsSRGWith 325 68 3 17 ∧
+    (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 17 4)) ∧
+    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ∣ 12533760))
 
 /-- Published recognition data for the affine Berlekamp–Van Lint–Seidel graph. -/
 def AffineMatchingCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
@@ -153,6 +169,8 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
   have hSize := (Nat.card_congr φ.toEquiv).symm.trans_le hHalf
   have hNonlocal := (hShape.relabel φ).2
   obtain ⟨Q, t, hRange, hSRG, hLocal, hStabilizer⟩ |
+      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
+      ⟨hSRG, hLocal, hTriple⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ := hModel
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact polar_rankTwo_not_eppa_of_small_stabilizer G K f hMoved hSize
@@ -162,6 +180,18 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
       hNonlocal (hStabilizer (f root))
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact ellipticSixFive_not_eppa G K f hMoved hSize
+      (transitive_of_iso φ hTrans) root hSRG hLocalModel hNonlocal (hStabilizer (f root))
+  · obtain ⟨hLocalModel⟩ := hLocal (f root)
+    exact symplecticFourFour_not_eppa G K f hMoved root hSRG hLocalModel
+      (hTriple (f root)) hSize hNonlocal
+  · obtain ⟨hLocalModel⟩ := hLocal (f root)
+    exact symplecticFourFive_not_eppa G K f hMoved hSize
+      (transitive_of_iso φ hTrans) root hSRG hLocalModel hNonlocal (hStabilizer (f root))
+  · obtain ⟨hLocalModel⟩ := hLocal (f root)
+    exact ellipticSixThree_not_eppa G K f hMoved hSize
+      (transitive_of_iso φ hTrans) root hSRG hLocalModel hNonlocal (hStabilizer (f root))
+  · obtain ⟨hLocalModel⟩ := hLocal (f root)
+    exact ellipticSixFour_not_eppa G K f hMoved hSize
       (transitive_of_iso φ hTrans) root hSRG hLocalModel hNonlocal (hStabilizer (f root))
 
 private theorem affineMatchingCatalogueModel_excludes_embedding
