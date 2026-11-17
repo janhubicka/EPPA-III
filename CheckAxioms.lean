@@ -1355,3 +1355,7 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.bilinearFormsRankOne_independent_bound
 #print axioms EPPAIII.Primitive.bilinearFormsRankTwo_independent_bound
 #print axioms EPPAIII.Primitive.bilinearFormsRankTwo_connected
+#print axioms EPPAIII.Primitive.rookFour_canonicalClassification
+#print axioms EPPAIII.Primitive.no_clique_union_or_compl_of_induced_five_cycle
+#print axioms EPPAIII.Primitive.no_cover_or_compl_of_induced_five_cycle
+#print axioms EPPAIII.Primitive.orthogonalEight_constituents_exclude_forms

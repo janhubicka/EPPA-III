@@ -21,24 +21,6 @@ theorem maxEppaOrder_rookGraph_le (n : ℕ) :
 theorem maxEppaOrder_rookFive_le_eleven : maxEppaOrder (rookGraph 5) ≤ 11 :=
   maxEppaOrder_rookGraph_le 5
 
-
-/-- The four-by-four rook host witnesses both displayed maximal selections. -/
-theorem rookFourFigures_eppa (S : Set (Fin 4 × Fin 4)) (hS : S ∈ rookFourFigures) :
-    IsEPPAEmbedding ((rookGraph 4).induce S) (rookGraph 4) (Function.Embedding.subtype S) := by
-  have hCorner : {x : Fin 4 × Fin 4 |
-      (x.1.val < 3 ∧ x.2.val < 3) ∨ (x.1.val = 3 ∧ x.2.val = 3)} = rookThreeCorner 4 := by
-    ext x
-    change ((_ ∧ _) ∨ (_ ∧ _)) ↔ ((_ ∧ _) ∨ (_ ∧ _))
-    have hRow := x.1.isLt
-    have hCol := x.2.isLt
-    omega
-  rcases (show S = _ ∨ S = _ from by
-    simpa only [rookFourFigures, Set.mem_insert_iff, Set.mem_singleton_iff] using hS) with h | h
-  · rw [h, hCorner]
-    exact rookThreeCorner_eppa 4
-  · rw [h]
-    exact rookTwoColumns_eppa 4
-
 private theorem rookFiveCorner_card : Nat.card (rookThreeCorner 5) = 11 := by
   letI membership (x : Fin 5 × Fin 5) : Decidable (x ∈ rookThreeCorner 5) :=
     inferInstanceAs (Decidable
@@ -86,14 +68,11 @@ private theorem homogeneous_graph_of_iso {W F : Type*} [Finite W]
     exact φ.symm_apply_apply x
   exact (hId ▸ hBack).2
 
-/-- The rook branch of the primitive catalogue. Homogeneity settles
-`R₃`, and the orientation obstruction excludes larger side lengths.
-The only input is the canonical finite check for `R₄`. -/
+/-- The rook branch of the primitive catalogue holds for every allowed side length. -/
 theorem primitiveCases_of_rook_model {V W : Type*} [Finite V] [Finite W]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (hEppa : IsEPPAEmbedding G H e) (hHalf : Nat.card W ≤ 2 * Nat.card V)
-    (n : ℕ) (hn : 3 ≤ n) (hModel : IsModelUpToComplement H (rookGraph n))
-    (hRookFour : CanonicalFigureClassification (rookGraph 4) rookFourFigures) :
+    (n : ℕ) (hn : 3 ≤ n) (hModel : IsModelUpToComplement H (rookGraph n)) :
     primitiveCases G H e := by
   have hUpper := rook_side_le_four_of_eppa G H e hEppa hHalf n hModel
   by_cases hThree : n = 3
@@ -107,13 +86,13 @@ theorem primitiveCases_of_rook_model {V W : Type*} [Finite V] [Finite W]
     subst n
     rcases hModel with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
     · have hShape := (canonicalFigureClassification_iff_embedding G H e hEppa.1
-        hHalf _ _ φ hRookFour).mp hEppa
+        hHalf _ _ φ rookFour_canonicalClassification).mp hEppa
       exact Or.inl (Or.inr (Or.inr (Or.inl hShape)))
     · have φ' : Hᶜ ≃g rookGraph 4 := by
         simpa only [compl_compl] using complHostIso φ
       have hCompl := eppa_embedding_complement G H e hEppa
       have hShape := (canonicalFigureClassification_iff_embedding Gᶜ Hᶜ e hCompl.1
-        hHalf _ _ φ' hRookFour).mp hCompl
+        hHalf _ _ φ' rookFour_canonicalClassification).mp hCompl
       exact Or.inr (Or.inr (Or.inr (Or.inl hShape)))
 
 end EPPAIII.Primitive

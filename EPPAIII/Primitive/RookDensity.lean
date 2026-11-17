@@ -37,7 +37,8 @@ def transpose (S : Finset (Fin n × Fin n)) : Finset (Fin n × Fin n) :=
 @[simp] theorem card_transpose (S : Finset (Fin n × Fin n)) : (transpose S).card = S.card := by
   simp [transpose]
 
-private theorem row_card_filter (S : Finset (Fin n × Fin n)) (r : Fin n) :
+/-- A row has as many columns as selected cells. -/
+theorem row_card_filter (S : Finset (Fin n × Fin n)) (r : Fin n) :
     (row S r).card = (S.filter fun p => p.1 = r).card := by
   apply Finset.card_bij (fun c _ => (r, c))
   · intro c hc
@@ -50,7 +51,8 @@ private theorem row_card_filter (S : Finset (Fin n × Fin n)) (r : Fin n) :
     subst r'
     exact ⟨c, (mem_row S r c).mpr h, rfl⟩
 
-private theorem sum_row_card (S : Finset (Fin n × Fin n)) :
+/-- The selected order is the sum of the row orders. -/
+theorem sum_row_card (S : Finset (Fin n × Fin n)) :
     S.card = ∑ r : Fin n, (row S r).card := by
   have h :=
     Finset.card_eq_sum_card_fiberwise (f := Prod.fst) (s := S) (t := univ)
@@ -58,7 +60,8 @@ private theorem sum_row_card (S : Finset (Fin n × Fin n)) :
   rw [h]
   exact sum_congr rfl fun r _ => (row_card_filter S r).symm
 
-private theorem row_card_le (S : Finset (Fin n × Fin n)) (r : Fin n) :
+/-- Each row has at most the side length many cells. -/
+theorem row_card_le (S : Finset (Fin n × Fin n)) (r : Fin n) :
     (row S r).card ≤ n := by
   simpa using Finset.card_le_card (Finset.subset_univ (row S r))
 
@@ -82,7 +85,8 @@ private theorem disjointPairs_of_large (S : Finset (Fin n × Fin n)) {r r' : Fin
   refine ⟨r, r', hn, A, B, fun _ hc => (mem_sdiff.mp (hA hc)).1, hB, hPairA, hPairB, ?_⟩
   exact disjoint_left.mpr fun _ ha hb => (mem_sdiff.mp (hA ha)).2 hb
 
-private theorem disjointPairs_of_outside (S : Finset (Fin n × Fin n)) {r r' : Fin n}
+/-- A second occupied row using a new column supplies disjoint row stars. -/
+theorem disjointPairs_of_outside (S : Finset (Fin n × Fin n)) {r r' : Fin n}
     (hR : 3 ≤ (row S r).card) (hR' : 2 ≤ (row S r').card)
     {c : Fin n} (hc : c ∈ row S r') (hOutside : c ∉ row S r) :
     SameOrientation S := by
@@ -117,8 +121,9 @@ private theorem dense_row_three (S : Finset (Fin n × Fin n))
   simp at hSum
   omega
 
-private theorem impossibly_large_row (S : Finset (Fin n × Fin n))
-    (hSize : 2 * n < S.card) (hNone : ¬ SameOrientation S)
+/-- A selection of at least twice the side length with no disjoint row stars has no row of size four. -/
+theorem row_card_le_three_of_no_sameOrientation (S : Finset (Fin n × Fin n))
+    (hSize : 2 * n ≤ S.card) (hNone : ¬ SameOrientation S)
     (r : Fin n) :
     (row S r).card ≤ 3 := by
   by_contra hLarge
@@ -167,8 +172,8 @@ theorem dense_sameOrientation (S : Finset (Fin n × Fin n))
   have hNoCol : ¬ SameOrientation (transpose S) := fun h => hNone (Or.inr h)
   have hLinear := (le_max_left (2 * n) (n + 6)).trans_lt hSize
   have hLinear' := (le_max_right (2 * n) (n + 6)).trans_lt hSize
-  have hRow := impossibly_large_row S hLinear hNoRow
-  have hCol := impossibly_large_row (transpose S) (by simpa using hLinear) hNoCol
+  have hRow := row_card_le_three_of_no_sameOrientation S hLinear.le hNoRow
+  have hCol := row_card_le_three_of_no_sameOrientation (transpose S) (by simpa using hLinear.le) hNoCol
   obtain ⟨r, hr⟩ := dense_row_three S hLinear
   let C := row S r
   have hC : C.card = 3 := Nat.le_antisymm (hRow r) hr

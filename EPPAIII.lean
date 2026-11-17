@@ -479,3 +479,6 @@ import EPPAIII.Primitive.RookPositiveModels
 import EPPAIII.Primitive.AlternatingFiveExclusion
 import EPPAIII.Primitive.RookTwoEdgeCriterion
 import EPPAIII.Primitive.BilinearGraph
+import EPPAIII.Primitive.RookFourClassification
+import EPPAIII.Primitive.CycleFiveCoverObstruction
+import EPPAIII.Primitive.OrthogonalEightConstituents

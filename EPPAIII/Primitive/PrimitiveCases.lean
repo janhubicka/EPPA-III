@@ -1,14 +1,14 @@
 import EPPAIII.Primitive.FixedEmbeddingCases
 import EPPAIII.Primitive.TriangularObstruction
 import EPPAIII.Primitive.ClebschSchlafliModels
+import EPPAIII.Primitive.RookFourClassification
 
 /-!
 # The primitive cases of the classification theorem
 
-The three finite clauses have concrete labelled hosts and concrete
-maximal selections. Their external computational inputs concern those
-three finite statements alone. The triangular clause uses the edge set
-of the given embedding.
+The finite clauses use concrete labelled hosts and maximal selections.
+The rook clause is established by the structure of induced matchings.
+The remaining finite inputs concern the Clebsch and Schläfli graphs.
 -/
 
 namespace EPPAIII.Primitive
@@ -31,10 +31,8 @@ def orientedPrimitiveCases : PairClassification.{u, v} :=
 def primitiveCases : PairClassification.{u, v} :=
   complementClosedCases orientedPrimitiveCases
 
-/-- Closed finite recognition obligations. Each can be independently
-checked by enumerating the actual host orbits and the extension property. -/
+/-- Finite recognition obligations for the Clebsch and Schläfli models. -/
 structure PrimitiveFiniteChecks : Prop where
-  rookFour : CanonicalFigureClassification (rookGraph 4) rookFourFigures
   clebsch : CanonicalFigureClassification clebschGraph clebschLargeFigures
   schlafli : CanonicalFigureClassification schlafliGraph schlafliLargeFigures
 
@@ -57,8 +55,7 @@ theorem eppa_of_homogeneousHost {V W : Type*} [Finite V]
   simpa only [Function.Embedding.trans_refl] using
     eppa_precompose_induced G H H e (Function.Embedding.refl W) hInd hSelf
 
-/-- The primitive list gives EPPA for the actual embedding. The required
-computational inputs are precisely the three named finite checks. -/
+/-- The primitive list gives EPPA for the actual embedding. -/
 theorem eppa_of_primitiveCases {V W : Type*} [Finite V]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (hInd : IsInducedGraphEmbedding G H e) (hHalf : Nat.card W ≤ 2 * Nat.card V)
@@ -72,7 +69,7 @@ theorem eppa_of_primitiveCases {V W : Type*} [Finite V]
     · exact eppa_of_triangularPair A B e hInd' hTri
     · obtain ⟨φ, S, hS, hImage⟩ := hRook
       exact (canonicalFigureClassification_iff_embedding A B e hInd' hHalf
-        _ _ φ hCheck.rookFour).mpr ⟨φ, S, hS, hImage⟩
+        _ _ φ rookFour_canonicalClassification).mpr ⟨φ, S, hS, hImage⟩
     · obtain ⟨φ, S, hS, hImage⟩ := hClebsch
       exact (canonicalFigureClassification_iff_embedding A B e hInd' hHalf
         _ _ φ hCheck.clebsch).mpr ⟨φ, S, hS, hImage⟩
@@ -136,7 +133,7 @@ theorem primitiveCases_iff_eppa_of_listedHost {V W : Type*} [Finite V]
   · have hCase : ∀ (A : SimpleGraph V) (B : SimpleGraph W),
         IsEPPAEmbedding A B e → (B ≃g rookGraph 4) → orientedPrimitiveCases A B e :=
       fun A B h φ => Or.inr (Or.inr (Or.inl
-        ((canonicalFigureClassification_iff_embedding A B e h.1 hHalf _ _ φ hChecks.rookFour).mp h)))
+        ((canonicalFigureClassification_iff_embedding A B e h.1 hHalf _ _ φ rookFour_canonicalClassification).mp h)))
     obtain hModel | hModel := hRook
     · obtain ⟨φ⟩ := hModel
       exact Or.inl (hCase G H hEppa φ)

@@ -60,7 +60,8 @@ private theorem rook_eq_of_no_edge {n : ℕ} {x y : RookCell n} (hne : x ≠ y)
     (h : ¬ (rookGraph n).Adj x y) : x.1 ≠ y.1 ∧ x.2 ≠ y.2 :=
   ⟨fun hRow => h ⟨hne, Or.inl hRow⟩, fun hCol => h ⟨hne, Or.inr hCol⟩⟩
 
-private theorem rookGraph_preserves_coordinates {n : ℕ}
+/-- Permuting the row and column coordinates preserves every rook edge. -/
+theorem rookGraph_preserves_coordinates {n : ℕ}
     (r c : Equiv.Perm (Fin n)) :
     IsGraphAutomorphism (rookGraph n) (Equiv.prodCongr r c) := by
   intro a b
@@ -69,7 +70,8 @@ private theorem rookGraph_preserves_coordinates {n : ℕ}
       (r a.1 = r b.1 ∨ c a.2 = c b.2))
   simp only [ne_eq, (Equiv.prodCongr r c).injective.eq_iff, r.injective.eq_iff, c.injective.eq_iff]
 
-private theorem rookGraph_transpose_auto {n : ℕ} :
+/-- Transposition preserves every rook edge. -/
+theorem rookGraph_transpose_auto {n : ℕ} :
     IsGraphAutomorphism (rookGraph n) (Equiv.prodComm (Fin n) (Fin n)) := by
   intro a b
   change (a ≠ b ∧ (a.1 = b.1 ∨ a.2 = b.2)) ↔
