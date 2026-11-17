@@ -157,9 +157,9 @@ theorem twoClique_matched_bottom_induced
   by_cases hxy : x = y
   · subst y
     simp [twoCliqueGraph, twoCliqueMatchedGraph,
-      twoCliqueMatchedRel]
+      bottomEmbedding, Bool.xor]
   · simp [twoCliqueGraph, twoCliqueMatchedGraph,
-      twoCliqueMatchedRel, hxy, Bool.xor]
+      twoCliqueMatchedRel, bottomEmbedding, hxy, Bool.xor]
 
 /-- A *nonhomogeneous* two-clique base nevertheless has an EPPA
 double for either mate bit. No homogeneity of the base is assumed. -/
