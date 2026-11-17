@@ -1394,3 +1394,10 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.not_eppa_embedding_order_eightyOne_of_pair_stabilizers
 #print axioms EPPAIII.Primitive.smallPaleyExclusions_of_affine_actions
 #print axioms EPPAIII.Primitive.eSix_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.grassmann_model_excludes_forms
+#print axioms EPPAIII.Primitive.bilinearRankOne_rookThree
+#print axioms EPPAIII.Primitive.bilinearForms_model_excludes_forms
+#print axioms EPPAIII.Primitive.not_eppa_embedding_order_eightyOne_of_point_stabilizers
+#print axioms EPPAIII.Primitive.locallyTriangular_four_completeEquipartite
+#print axioms EPPAIII.Primitive.mathieuTwentyTwo_maxEppaOrder_le
+#print axioms EPPAIII.Primitive.higmanSims_maxEppaOrder_le_of_m22_model

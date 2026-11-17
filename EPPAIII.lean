@@ -495,10 +495,13 @@ import EPPAIII.Primitive.HoffmanSingleton
 import EPPAIII.Primitive.AffineSemilinearArithmetic
 import EPPAIII.Primitive.AffineSemilinearExclusion
 import EPPAIII.Primitive.BinaryAffineHalfSpinExclusion
-import EPPAIII.Primitive.BilinearParity
 import EPPAIII.Primitive.BilinearExclusion
 import EPPAIII.Primitive.GrassmannExclusion
 import EPPAIII.Primitive.Gewirtz
 import EPPAIII.Primitive.AffineLineExclusion
 import EPPAIII.Primitive.AffineLineSmallPaley
 import EPPAIII.Primitive.E6Constituents
+import EPPAIII.Primitive.AffineLineExclusionFromSubdegrees
+import EPPAIII.Primitive.LocalRecognition
+import EPPAIII.Primitive.MathieuTwentyTwo
+import EPPAIII.Primitive.HigmanSims

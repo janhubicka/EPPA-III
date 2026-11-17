@@ -31,10 +31,12 @@ private theorem eSix_nonlocal_degree_gt_one {q : ℕ} (hq : 2 ≤ q) :
     unfold eSixLocalOrder eSixNonadjacentCommon degree
     ring
   have hPos : 1 < degree := by
-    have hSquare : 9 ≤ (t + 3) ^ 2 := Nat.pow_le_pow_left (by omega) 2
+    have hSquare : 9 ≤ (t + 3) ^ 2 :=
+      Nat.pow_le_pow_left (show 3 ≤ t + 3 by omega) 2
     have hFactors : 1 ≤ ((2 + t) ^ 2 + 1) * (t ^ 2 + 3 * t + 3) ^ 2 *
         (t ^ 3 + 7 * t ^ 2 + 16 * t + 11) := by
-      have hSquare₂ : 9 ≤ (t ^ 2 + 3 * t + 3) ^ 2 := Nat.pow_le_pow_left (by omega) 2
+      have hSquare₂ : 9 ≤ (t ^ 2 + 3 * t + 3) ^ 2 :=
+        Nat.pow_le_pow_left (show 3 ≤ t ^ 2 + 3 * t + 3 by omega) 2
       exact Nat.mul_pos (Nat.mul_pos (by omega) (by omega)) (by omega)
     have hLower : (t + 3) ^ 2 ≤ degree := by
       simpa only [degree, Nat.mul_one, ← Nat.mul_assoc] using

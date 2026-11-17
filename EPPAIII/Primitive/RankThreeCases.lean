@@ -1,4 +1,5 @@
 import EPPAIII.Primitive.BipartitionTenExclusion
+import EPPAIII.Primitive.GrassmannExclusion
 import EPPAIII.Primitive.OrthogonalEightConstituents
 
 /-! # The resolved branches of the primitive rank-three catalogue -/
@@ -45,6 +46,38 @@ private theorem model_form_of_compl {V : Type*} {G : SimpleGraph V}
   rcases h with ⟨s, t, h⟩ | ⟨s, t, X, Y, h⟩
   · exact Or.inl ⟨s, t, move h⟩
   · exact Or.inr ⟨s, t, X, Y, move h⟩
+
+/-- If both constituents of a model violate the shape requirement at every
+root, the same holds for all labellings and both orientations of the model. -/
+theorem constituent_forms_exclusion_of_model {V W : Type*} {G : SimpleGraph V}
+    {H : SimpleGraph W}
+    (hExclude : ∀ r : V, ¬ HasCliqueUnionOrCoverModel (localGraph G r) ∧
+      ¬ HasCliqueUnionOrCoverModel (nonlocalGraph G r))
+    (hModel : IsModelUpToComplement H G) (root : W) :
+    ¬ HasCliqueUnionOrCoverModel (localGraph H root) ∧
+      ¬ HasCliqueUnionOrCoverModel (nonlocalGraph H root) := by
+  rcases hModel with hModel | hModel
+  · obtain ⟨φ⟩ := hModel
+    obtain ⟨hL, hN⟩ := hExclude (φ root)
+    exact ⟨fun h => hL (model_form_of_iso (localIso φ root) h),
+      fun h => hN (model_form_of_iso (nonlocalIso φ root) h)⟩
+  · obtain ⟨φ⟩ := hModel
+    obtain ⟨hL, hN⟩ := hExclude (φ root)
+    refine ⟨fun h => hN (model_form_of_compl ?_), fun h => hL (model_form_of_compl ?_)⟩
+    · exact model_form_of_iso (localComplIso G (φ root)) (model_form_of_iso (localIso φ root) h)
+    · exact model_form_of_iso (nonlocalComplIso G (φ root))
+        (model_form_of_iso (nonlocalIso φ root) h)
+
+/-- A Grassmann model in dimension at least five violates the constituent
+shape requirement at every root, in either orientation. -/
+theorem grassmann_model_excludes_forms {F V W : Type*}
+    [Field F] [Finite F] [AddCommGroup V] [Module F V] [FiniteDimensional F V]
+    {H : SimpleGraph W} (hDim : 5 ≤ Module.finrank F V)
+    (hModel : IsModelUpToComplement H (grassmannGraph F V)) (root : W) :
+    ¬ HasCliqueUnionOrCoverModel (localGraph H root) ∧
+      ¬ HasCliqueUnionOrCoverModel (nonlocalGraph H root) :=
+  constituent_forms_exclusion_of_model
+    (fun r => grassmannGraph_constituents_exclude_forms r hDim) hModel root
 
 /-- The order-120 graph and its complement violate the Section 8
 constituent-shape requirement at every root, in any labelling. -/

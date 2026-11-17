@@ -1,4 +1,5 @@
-import EPPAIII.Primitive.BilinearGraph
+import EPPAIII.Primitive.BilinearRankOne
+import EPPAIII.Primitive.RookModel
 import Mathlib.Combinatorics.SimpleGraph.CycleGraph
 import Mathlib.Combinatorics.SimpleGraph.Hasse
 import Mathlib.Tactic.Ring
@@ -26,13 +27,15 @@ private def unitMinor (A : Seed) : Prop :=
   ∃ p q, minor A p q = 1 ∨ minor A p q = -1
 
 private def rankOneSeed (A : Seed) : Prop :=
-  ((∀ j, A 0 j = 0) ∨ (∀ j, A 1 j = 0) ∨ (∀ j, A 1 j = -A 0 j)) ∧
+  ((∀ j, A 0 j = 0) ∨ (∀ j, A 1 j = 0) ∨
+    (∀ j, A 1 j = -A 0 j) ∨ (∀ j, A 1 j = A 0 j)) ∧
     ∃ r c, A r c = 1 ∨ A r c = -1
 
 private def checkRankOneSeed (A : Seed) : Bool :=
-  (((List.finRange 3).all (fun j => decide (A 0 j = 0)) ||
+  ((((List.finRange 3).all (fun j => decide (A 0 j = 0)) ||
     (List.finRange 3).all (fun j => decide (A 1 j = 0))) ||
-    (List.finRange 3).all (fun j => decide (A 1 j = -A 0 j))) &&
+    (List.finRange 3).all (fun j => decide (A 1 j = -A 0 j))) ||
+    (List.finRange 3).all (fun j => decide (A 1 j = A 0 j))) &&
     (List.finRange 2).any (fun r =>
       (List.finRange 3).any (fun c => (A r c == 1) || (A r c == -1)))
 
@@ -42,14 +45,17 @@ private theorem checkRankOneSeed_sound {A : Seed} (h : checkRankOneSeed A = true
   unfold rankOneSeed
   obtain ⟨hRows, hEntry⟩ := Bool.and_eq_true_iff.mp h
   refine ⟨?_, ?_⟩
-  · rcases Bool.or_eq_true_iff.mp hRows with hZero | hOpp
-    · rcases Bool.or_eq_true_iff.mp hZero with hFirst | hSecond
-      · exact Or.inl (fun j => of_decide_eq_true
-          (List.all_eq_true.mp hFirst j (List.mem_finRange j)))
-      · exact Or.inr (Or.inl (fun j => of_decide_eq_true
-          (List.all_eq_true.mp hSecond j (List.mem_finRange j))))
-    · exact Or.inr (Or.inr (fun j => of_decide_eq_true
-        (List.all_eq_true.mp hOpp j (List.mem_finRange j))))
+  · rcases Bool.or_eq_true_iff.mp hRows with hOld | hEqual
+    · rcases Bool.or_eq_true_iff.mp hOld with hZero | hOpp
+      · rcases Bool.or_eq_true_iff.mp hZero with hFirst | hSecond
+        · exact Or.inl (fun j => of_decide_eq_true
+            (List.all_eq_true.mp hFirst j (List.mem_finRange j)))
+        · exact Or.inr (Or.inl (fun j => of_decide_eq_true
+            (List.all_eq_true.mp hSecond j (List.mem_finRange j))))
+      · exact Or.inr (Or.inr (Or.inl (fun j => of_decide_eq_true
+          (List.all_eq_true.mp hOpp j (List.mem_finRange j)))))
+    · exact Or.inr (Or.inr (Or.inr (fun j => of_decide_eq_true
+        (List.all_eq_true.mp hEqual j (List.mem_finRange j)))))
   · obtain ⟨r, _, hr⟩ := List.any_eq_true.mp hEntry
     obtain ⟨c, _, hc⟩ := List.any_eq_true.mp hr
     exact ⟨r, c, (Bool.or_eq_true_iff.mp hc).imp beq_iff_eq.mp beq_iff_eq.mp⟩
@@ -132,7 +138,17 @@ private theorem rank_one_of_seed {F : Type*} [Field F] {m : ℕ}
       rw [liftSeed_on_seed hm]
       rcases hentry with h | h <;> simp [h]
     exact hentry' (by rw [hzero]; rfl)
-  rcases hrows with h | h | h
+  have rank_of_proportional (a : F) (hRow : B 1 = a • B 0) : B.rank = 1 := by
+    have hne : B 0 ≠ 0 := by
+      intro hzero
+      apply hB
+      have hzero' : B 1 = 0 := by rw [hRow, hzero, smul_zero]
+      ext r c
+      fin_cases r
+      · exact congrFun hzero c
+      · exact congrFun hzero' c
+    exact (bilinear_rank_one_iff_rows_proportional B hne).mpr ⟨a, hRow.symm⟩
+  rcases hrows with h | h | h | h
   · have hRow : A 0 = 0 := funext h
     have hzero : B 0 = 0 := by
       funext c
@@ -150,25 +166,12 @@ private theorem rank_one_of_seed {F : Type*} [Field F] {m : ℕ}
       funext c
       simp only [B, liftSeed, Matrix.of_apply, Pi.neg_apply, hRow]
       split <;> simp
-    have hne : B 0 ≠ 0 := by
-      intro hzero
-      apply hB
-      have hzero' : B 1 = 0 := by rw [hopp, hzero, neg_zero]
-      ext r c
-      fin_cases r
-      · exact congrFun hzero c
-      · exact congrFun hzero' c
-    by_contra hRank
-    have hNotAdj : ¬ (bilinearFormsGraph F m).Adj 0 B := by
-      rw [bilinearFormsGraph_zero_adj_iff]
-      exact hRank
-    have hTwo := (bilinearFormsGraph_zero_nonadj_iff B).mp ⟨hB, hNotAdj⟩
-    have hRows : B.row = ![B 0, B 1] := by
-      funext i
-      fin_cases i <;> rfl
-    have hi := (bilinear_rank_two_iff_rows_independent B).mp hTwo
-    rw [hRows] at hi
-    exact (LinearIndependent.pair_iff' hne).mp hi (-1) (by simpa using hopp.symm)
+    exact rank_of_proportional (-1) (by simpa using hopp)
+  · have hRow : A 1 = A 0 := funext h
+    have heq : B 1 = B 0 := by
+      funext c
+      simp [B, liftSeed, hRow]
+    exact rank_of_proportional 1 (by simpa using heq)
 
 private def seedGraphEmbedding {ι F : Type*} [Field F] {m k : ℕ}
     (S : SimpleGraph ι) [DecidableRel S.Adj] [DecidableEq ι]
@@ -260,5 +263,49 @@ def bilinearRankOne_inducedPath {F : Type*} [Field F] {m : ℕ} (hm : 3 ≤ m) :
   exact seedGraphEmbedding (SimpleGraph.pathGraph 4) A
     (fun i => rank_one_of_seed hm (path_vertices i)) hEdge hNonedge
 
+
+private instance : DecidableRel (rookGraph 3).Adj := fun x y =>
+  inferInstanceAs (Decidable (x ≠ y ∧ (x.1 = y.1 ∨ x.2 = y.2)))
+
+private def rookSeed (i : Fin 3 × Fin 3) : Seed :=
+  Matrix.of fun row col =>
+    if col = i.2 then (![![1, 0], ![0, 1], ![1, 1]] : Fin 3 → Fin 2 → ℤ) i.1 row else 0
+
+private theorem rook_vertices : ∀ i, rankOneSeed (rookSeed i) := by
+  have h : ∀ i : Fin 3 × Fin 3, checkRankOneSeed (rookSeed i) = true := by decide
+  exact fun i => checkRankOneSeed_sound (h i)
+
+set_option maxRecDepth 20000 in
+set_option maxHeartbeats 0 in
+private theorem rook_edges : ∀ i j, (rookGraph 3).Adj i j →
+    rankOneSeed (rookSeed i - rookSeed j) := by
+  have h : ∀ i j : Fin 3 × Fin 3, (rookGraph 3).Adj i j →
+      checkRankOneSeed (rookSeed i - rookSeed j) = true := by decide
+  exact fun i j hij => checkRankOneSeed_sound (h i j hij)
+
+set_option maxRecDepth 20000 in
+set_option maxHeartbeats 0 in
+private theorem rook_nonedges : ∀ i j, i ≠ j → ¬ (rookGraph 3).Adj i j →
+    unitMinor (rookSeed i - rookSeed j) := by
+  unfold unitMinor
+  decide
+
+/-- An induced 3 by 3 rook graph in the rank-one constituent, using three
+pairwise independent column directions and three coordinate rows. -/
+def bilinearRankOne_rookThree {F : Type*} [Field F] {m : ℕ} (hm : 3 ≤ m) :
+    rookGraph 3 ↪g bilinearFormsRankOneGraph F m := by
+  let A (i : Fin 3 × Fin 3) : Matrix (Fin 2) (Fin m) F := liftSeed F m (rookSeed i)
+  have hEdge (i j : Fin 3 × Fin 3) (h : (rookGraph 3).Adj i j) :
+      (A i - A j).rank = 1 := by
+    change (liftSeed F m (rookSeed i) - liftSeed F m (rookSeed j)).rank = 1
+    rw [← liftSeed_sub]
+    exact rank_one_of_seed hm (rook_edges i j h)
+  have hNonedge (i j : Fin 3 × Fin 3) (hne : i ≠ j) (h : ¬ (rookGraph 3).Adj i j) :
+      (A i - A j).rank = 2 := by
+    change (liftSeed F m (rookSeed i) - liftSeed F m (rookSeed j)).rank = 2
+    rw [← liftSeed_sub]
+    exact rank_two_of_seed hm (rook_nonedges i j hne h)
+  exact seedGraphEmbedding (rookGraph 3) A
+    (fun i => rank_one_of_seed hm (rook_vertices i)) hEdge hNonedge
 
 end EPPAIII.Primitive

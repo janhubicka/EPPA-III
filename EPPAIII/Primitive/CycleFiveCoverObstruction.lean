@@ -77,8 +77,7 @@ theorem no_induced_five_cycle_in_cover {s t : ℕ} (X : CrossType) (Y : Bool) :
       (f.injective (Prod.ext hSameSide (Prod.ext hSameBlock h)))
   exact hpq (Or.inl ⟨hSameSide, hSameBlock, hDifferentCoordinates⟩)
 
-/-- The five-cycle has an induced copy in its complement. -/
-def cycleFive_complEmbedding : cycleGraph 5 ↪g (cycleGraph 5)ᶜ where
+private def cycleFive_complEmbedding : cycleGraph 5 ↪g (cycleGraph 5)ᶜ where
   toFun i := i + i
   inj' := by
     have h : ∀ i j : Fin 5, i + i = j + j → i = j := by decide
