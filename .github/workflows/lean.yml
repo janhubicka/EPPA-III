@@ -77,6 +77,7 @@ jobs:
           python3 checks/section8_binary_negative.py
           python3 checks/section8_rook_four.py
           python3 checks/section8_rook_five_lower_bound.py
+          python3 checks/primitive_figure_audit.py checks/primitive_figure_panels.json
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then

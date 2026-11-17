@@ -1361,3 +1361,5 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.orthogonalEight_constituents_exclude_forms
 #print axioms EPPAIII.Primitive.orthogonalEight_model_excludes_forms
 #print axioms EPPAIII.Primitive.primitiveCases_or_residual_rankThree_model
+#print axioms EPPAIII.Primitive.nonhomogeneous_cover_selected_at_most_half
+#print axioms EPPAIII.Primitive.other_selection_meets_half_of_local_cover

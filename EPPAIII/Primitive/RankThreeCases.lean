@@ -34,7 +34,8 @@ private def nonlocalComplIso {V : Type*} (G : SimpleGraph V) (r : V) :
     intro a b
     change (_ ≠ _ ∧ ¬ G.Adj a.val b.val) ↔
       (a.val ≠ b.val ∧ ¬ G.Adj a.val b.val)
-    exact and_congr (not_congr ⟨fun h => congrArg Subtype.val h, Subtype.ext⟩) Iff.rfl
+    exact and_congr (not_congr ⟨fun h => congrArg (fun x : G.neighborSet r => x.val) h,
+      fun h => Subtype.ext h⟩) Iff.rfl
 
 private theorem transitive_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
     (φ : G ≃g H) (h : HasTransitiveGraphAutomorphisms G) :
@@ -50,7 +51,7 @@ private theorem transitive_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleG
 private theorem model_form_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
     (φ : G ≃g H) (h : HasCliqueUnionOrCoverModel G) :
     HasCliqueUnionOrCoverModel H := by
-  have move {U : Type*} {K : SimpleGraph U} (hK : IsModelUpToComplement G K) :
+  have move {U : Type} {K : SimpleGraph U} (hK : IsModelUpToComplement G K) :
       IsModelUpToComplement H K := by
     rcases hK with hK | hK
     · obtain ⟨ψ⟩ := hK
@@ -63,7 +64,7 @@ private theorem model_form_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleG
 
 private theorem model_form_of_compl {V : Type*} {G : SimpleGraph V}
     (h : HasCliqueUnionOrCoverModel Gᶜ) : HasCliqueUnionOrCoverModel G := by
-  have move {U : Type*} {K : SimpleGraph U} (hK : IsModelUpToComplement Gᶜ K) :
+  have move {U : Type} {K : SimpleGraph U} (hK : IsModelUpToComplement Gᶜ K) :
       IsModelUpToComplement G K := by
     rcases hK with hK | hK
     · obtain ⟨ψ⟩ := hK
