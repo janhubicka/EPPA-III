@@ -1284,3 +1284,21 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.seidelSwitchGraph_eq_taylorTransversalGraph
 #print axioms EPPAIII.BlockSystems.twoCliqueGraph_taylorTransversal_to_any_twoClique
 #print axioms EPPAIII.BlockSystems.twoCliqueGraph_taylorTransversal_to_complete
+
+-- Sections 7 and 8: primitive reduction, triangular witnesses, and the finite screen.
+#print axioms EPPAIII.Primitive.local_eppa
+#print axioms EPPAIII.Primitive.nonlocal_eppa
+#print axioms EPPAIII.Primitive.root_restrictToSelected_surjective
+#print axioms EPPAIII.Primitive.even_subconstituents_rank_three_or_equal
+#print axioms EPPAIII.Primitive.factorial_dvd_rootStabilizer_card_of_homogeneous_subset
+#print axioms EPPAIII.Primitive.card_le_pow_add_of_pointwise_fixation
+#print axioms EPPAIII.Primitive.cliqueExtension_projection_eppa
+#print axioms EPPAIII.Primitive.cliqueExtension_selected_order_le_of_connected
+#print axioms EPPAIII.Primitive.triangularGraph_eppa_iff_triangleFreeRange
+#print axioms EPPAIII.Primitive.card_triangularSelection_le_mantel
+#print axioms EPPAIII.Primitive.exists_oriented_primitive_rankThree_minimalCounterexample
+#print axioms EPPAIII.Primitive.MinimalCounterexample.classified_half_subconstituent
+#print axioms EPPAIII.Primitive.small_primitive_eppa_in_rankThreeCatalog
+#print axioms EPPAIII.Primitive.OrthogonalSearchChecks.equalBipartitionThree
+#print axioms EPPAIII.Primitive.smallConstituentHits_complete
+#print axioms EPPAIII.Primitive.smallConstituentHost_order_le_460

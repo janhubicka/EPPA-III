@@ -412,3 +412,30 @@ import EPPAIII.TwoGraphs.TrivialTwoGraphBoth
 import EPPAIII.TwoGraphs.FourWayInternalEquivalence
 import EPPAIII.TwoGraphs.FourWayAllOrders
 import EPPAIII.BlockSystems.TwoCliqueTaylorSwitching
+
+-- Sections 7 and 8: primitive EPPA validation.
+import EPPAIII.BlockSystems.BinaryFiveCycleCertificates
+import EPPAIII.EPPA.PartialSwap
+import EPPAIII.Primitive.IntersectionProfiles
+import EPPAIII.Primitive.Triangular
+import EPPAIII.Primitive.TriangularObstruction
+import EPPAIII.Primitive.TriangularEmbedding
+import EPPAIII.Primitive.TriangularRoot
+import EPPAIII.Primitive.Subconstituents
+import EPPAIII.Primitive.LocalReduction
+import EPPAIII.Primitive.LocalSections
+import EPPAIII.Primitive.EvenLocalRankThree
+import EPPAIII.Primitive.FactorialStabilizer
+import EPPAIII.Primitive.NeighbourhoodBound
+import EPPAIII.Primitive.CliqueExtension
+import EPPAIII.Primitive.RankThree
+import EPPAIII.Primitive.EqualBipartitionModels
+import EPPAIII.Primitive.RankThreeCatalog
+import EPPAIII.Primitive.MinimalCounterexample
+import EPPAIII.Primitive.BinaryOrthogonalModels
+import EPPAIII.Primitive.Order35Transport
+import EPPAIII.Primitive.FiniteExclusions
+import EPPAIII.Primitive.FiniteCaseArithmetic
+import EPPAIII.Primitive.UnitaryFourTwoArithmetic
+import EPPAIII.Primitive.SmallConstituentBound
+import EPPAIII.Primitive.SmallConstituentTable
