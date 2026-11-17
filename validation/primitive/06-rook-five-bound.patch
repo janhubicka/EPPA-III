@@ -1,6 +1,6 @@
 --- a/main-new(20261116-151839)-markers-r17.tex
 +++ b/main-new(20261116-151839)-markers-r17.tex
-@@ -3461,9 +3461,9 @@
+@@ -3461,9 +3461,10 @@
  The graph $O_6^+(2)$ is not in~$\ep$ by Lemma~\ref{lemma:smallconstituents}. 
  The graph $\NO_8^+(2)$ will be treated in Lemma~\ref{lem:o2} below.
  Now consider the graph $K$ on $126$ vertices. Its first subconstituent is $\gridfi$.
@@ -8,8 +8,9 @@
 -The second subconstituent is not a rank~3 graph by \cite[Section~11.6]{BRO22}.
 -By Proposition~\ref{prop:local}, we obtain $K \notin \ep$.
 +The rook graph bound $\kappa(L_{5,5})\leq 11$ gives $|\gc_1|\leq 11$.
-+Fix a vertex of the selected graph. Since $|\gc|\geq 63$, at least $63-1-11=51$ selected vertices belong to its second subconstituent.
-+The second subconstituent has order $100$ and is transitive. Proposition~\ref{prop:rank3} would make it rank~$3$, since it is neither complete nor edgeless. This contradicts~\cite[Section~11.6]{BRO22}.
++Fix a vertex of the selected graph. Since $|\gc|\geq 63$, at least $63-1-11=51$ selected vertices belong to its second subconstituent of order $100$.
++In the bipartition model of $K$, represent each partition of $\{0,\ldots,9\}$ into two $5$-sets by the part containing~$0$. Two representatives are adjacent if their intersection has size $1$ or $4$. With root $\{0,1,2,3,4\}$, the second subconstituent consists of the representatives meeting the root in $2$ or $3$ points.
++For $A=\{0,1,2,5,6\}$, $B=\{0,1,2,5,7\}$, and $C=\{0,1,5,6,7\}$, direct counting gives $6$ common neighbours of $A,B$ and $8$ common neighbours of $A,C$ in that subconstituent. Both pairs are adjacent, while $A$ is not adjacent to $\{0,1,2,7,8\}$. The second subconstituent is thus neither rank~$3$, complete, nor edgeless. It is transitive, so its strictly larger than half selection contradicts Proposition~\ref{prop:rank3}.
  %Similarly, we argue for the graph 56 vertices.
  %As for individual examples, by \cite[Theorem 11.3.1]{BRO22}, we need to consider the unique strongly regular graphs with parameters $(35,16,6,8)$ and $(126,25,8,4)$ as well as the graph $NO_8^+(2)$, which has parameters $(120, 56, 28, 24)$.
  %In the second case, the first subconstituent is a $5 \times 5$-grid, and the second is not a rank~3 graph by \cite[Section~11.6]{BRO22} strongly regular. Thus by Remark~\ref{rem:possibilitieslocalgraph}, $H$ cannot be isomorphic to this graph.

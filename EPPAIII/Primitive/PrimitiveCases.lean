@@ -105,7 +105,8 @@ theorem triangularPair_of_eppa {V W : Type*} [Finite V]
   have hTri := (triangularGraph_eppa_iff_triangleFreeEdges S (by simpa using hn) hSize).mp hSelect
   exact ⟨n, hn, φ, hTri⟩
 
-private def complHostIso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
+/-- Simultaneous complementation preserves a graph isomorphism. -/
+def complHostIso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
     (φ : G ≃g H) : Gᶜ ≃g Hᶜ where
   toEquiv := φ.toEquiv
   map_rel_iff' := by

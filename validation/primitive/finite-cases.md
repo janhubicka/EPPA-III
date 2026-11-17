@@ -13,7 +13,13 @@ Lean checks all four displayed parameter tuples in `FiniteModelParameters.lean`.
 
 The coordinate formulas are shared with the prior seven induced-five-cycle certificates. For each host, the coordinates and adjacency relation are fixed independently of the classification and EPPA. The finite induced-cycle certificates alone give no EPPA exclusion. To use a search input under a rank-three classification result, supply a graph isomorphism to the appropriate model. Matching the strongly regular parameters alone is insufficient. Complementing the selected graph and host preserves the fixed embedding and its EPPA property. As a result, a single search assumption per complementary pair suffices.
 
-The four negative outcomes were independently reproduced. [The certificate note](binary-negative-certificate.md) gives the exact checker, its rules and the two affine degree tests. The checker uses integer operations with explicit combinatorial witnesses for each discarded orbit representative. The four finite exclusions are still separate propositions in the Lean theorem interface.
+The four negative outcomes were independently reproduced. [The certificate note](binary-negative-certificate.md) gives the exact checker, its rules and the two affine degree tests. The checker uses integer operations with explicit combinatorial witnesses for each discarded orbit representative. `AffineRootDegreeCertificate.lean` uses kernel reduction to check coverage of the listed local and nonlocal mask products and a selected vertex of wrong degree in each product. The point-orbit coverage and the reduction of every affine witness to a listed mask are still required to discharge the four finite exclusion propositions in Lean.
+
+## The order-126 bipartition graph
+
+`BipartitionTenConstituents.lean` represents a partition of the ten points by the part containing zero. It identifies the local graph at `{0,1,2,3,4}` with the 5-by-5 rook graph by swapping one point from each part. The nonlocal subconstituent has 100 vertices. Within it, `{0,1,2,5,6}` and `{0,1,2,5,7}` are an adjacent pair with six common neighbours, whereas `{0,1,2,5,6}` and `{0,1,5,6,7}` are an adjacent pair with eight. `{0,1,2,5,6}` and `{0,1,2,7,8}` are nonadjacent.
+
+In a half-order selected set of a rank-three host of this type, the rook bound of 11 leaves at least `63 − 1 − 11 = 51` selected nonneighbours of a selected root. Root stabilizer transitivity and EPPA would then force the 100-vertex nonlocal graph to be complete, empty or rank three. The displayed pairs exclude all three outcomes.
 
 `NO_3^+(8)` is `T(9)` by Brouwer–Van Maldeghem §3.1.4, so its complement has a large EPPA subgraph using the triangular theorem. The complement of `NO_3^+(4)` is likewise the complement of `T(5)`. The accompanying manuscript patch records both orientations. [Brouwer–Van Maldeghem, Strongly Regular Graphs](https://homepages.cwi.nl/~aeb/math/srg/rk3/srgw.pdf)
 

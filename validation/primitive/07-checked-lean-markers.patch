@@ -1,0 +1,68 @@
+--- a/main-new(20261116-151839)-markers-r17.tex
++++ b/main-new(20261116-151839)-markers-r17.tex
+@@ -2759,8 +2759,8 @@
+ Let $v \in V(G)$ and set $G_i = H[V(H_i^v) \cap V(G)]$ for $i = 1, 2$. 
+ Then $H_i^v$ is an EPPA witness for~$G_i$. 
+ \end{lemma}
+-% EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+-\leanpending{Sections 7--8: no formal theorem match}%
++% EPPA-III statement status: integrated Lean CI 44061937154 at b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6.
++\leanverifiedpinned{b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6}{EPPAIII/Primitive/Subconstituents.lean}{74}{both rooted restrictions at the actual selected embedding}%
+ 
+ \begin{proof}
+ Let $\varphi$ be a partial automorphism of $G_1$. 
+@@ -2782,8 +2782,8 @@
+ of $X$, extended by the identity on $U$, is a partial automorphism of $G$,
+ then $\Aut(X)$ is a section of $\Aut(H)_{(U)}$.
+ \end{Corollary}
+-% EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+-\leanpending{Sections 7--8: no formal theorem match}%
++% EPPA-III statement status: integrated Lean CI 44061937154 at b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6.
++\leanverifiedpinned{b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6}{EPPAIII/Primitive/LocalSections.lean}{85}{local and general stabiliser sections on the selected set}%
+ 
+ \begin{proof}
+ Let $A\leq\Aut(X)$ be the group in question (in the first assertion take
+@@ -2809,8 +2809,8 @@
+         \item $\kappa(H_1) = |H_1|/2$ and $\kappa(H_2) = |H_2|/2$. In particular, both subconstituents of $H$ are contained in $\ep$.
+     \end{enumerate} 
+ \end{Proposition}
+-% EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+-\leanpending{Sections 7--8: no formal theorem match}%
++% EPPA-III statement status: integrated Lean CI 44061937154 at b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6.
++\leanverifiedpinned{b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6}{EPPAIII/Primitive/EvenLocalRankThree.lean}{68}{corrected even-order clause with the half-order EPPA hypothesis}%
+ % EPPA-III NEW 2026-11-10 N01: scope of the even--even assertion (not the withdrawn V01 repair).
+ \leanproofgap{The final even--even alternative uses $H\in\ep$ although that condition is absent from its clause; the proof also needs vertex-transitivity of $H_\alpha$}%
+ \rehurek{1}{In Proposition~\ref{prop:local}, explicitly require $H\in\ep$ for the final even--even assertion. No extra rank~3 hypothesis is needed: when both subconstituents have even order, $|H|$ is odd, so $H\in\ep$ implies $\kappa(H)>|H|/2$. Proposition~\ref{prop:rank3} then makes the connected, non-complete $H$ rank~3, and hence each $H_\alpha$ vertex-transitive. Use this before applying Proposition~\ref{prop:rank3} again to $H_\alpha$.}
+@@ -2894,8 +2894,8 @@
+ %    \[|G| \leq \min \{|U \cup N_G(U)| +1, 2^{|U|} + |U|\}.\] 
+  %   In particular, we have $|G| \leq |U| \cdot (d+1)+1$, where $d$ is the maximal degree of a vertex in~$H$.
+ \end{lemma}
+-% EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+-\leanpending{Sections 7--8: no formal theorem match}%
++% EPPA-III statement status: integrated Lean CI 44061937154 at b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6.
++\leanverifiedpinned{b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6}{EPPAIII/Primitive/NeighbourhoodBound.lean}{37}{vertex bound from a trivial pointwise stabiliser}%
+ 
+ 
+ \begin{proof}
+@@ -2963,8 +2963,8 @@
+ Let $l \geq 1$. Let~$H$ be a graph without twins, and $\hat{H}$ its $l$-clique extension. If $\hat{H}$ is an EPPA witness for an induced subgraph~$\hat{G}$, then~$H$ is an EPPA witness for $\pi(\hat{G})$.
+ \end{lemma}
+ 
+-% EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+-\leanpending{Sections 7--8: no formal theorem match}%
++% EPPA-III statement status: integrated Lean CI 44061937154 at b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6.
++\leanverifiedpinned{b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6}{EPPAIII/Primitive/CliqueExtension.lean}{110}{EPPA for the projection under the stated twin-free hypothesis}%
+ 
+ \leanproofgap{The lift $(i,d)\mapsto(i,\alpha(d))$ need not land inside $\hat G$; choose one vertex over each domain and image point instead}%
+ \todo[color=cyan,inline]{SB: fixed}
+@@ -2987,8 +2987,8 @@
+ Then $\kappa(\hat{H}) \leq l \kappa(H)$. 
+ For a connected subgraph $\hat{G}$ of $\hat{H}$ for which $\hat{H}$ is an EPPA witness, we have $|\hat{G}| \leq \max\{l, \kappa(H)\}$. 
+ \end{Corollary}
+-% EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+-\leanpending{Sections 7--8: no formal theorem match}%
++% EPPA-III statement status: integrated Lean CI 44061937154 at b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6.
++\leanverifiedpinned{b018ad2be513e8cc2c0869b0c0a4b0754c9ab3e6}{EPPAIII/Primitive/CliqueExtension.lean}{220}{order bound for a connected selected graph}%
+ 
+ 
+ \begin{proof}

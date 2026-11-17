@@ -464,3 +464,15 @@ import EPPAIII.Primitive.StronglyRegularCovers
 import EPPAIII.Primitive.LocalRecognitionArithmetic
 import EPPAIII.Primitive.RookObstruction
 import EPPAIII.Primitive.AffineRootDegreeCertificate
+import EPPAIII.Primitive.RookBounds
+import EPPAIII.Primitive.BipartitionTenConstituents
+import EPPAIII.Primitive.AffineRootScreenApplication
+import EPPAIII.Primitive.GrassmannArithmetic
+import EPPAIII.Primitive.BilinearArithmetic
+import EPPAIII.Primitive.BilinearExceptionalArithmetic
+import EPPAIII.Primitive.BipartitionTenExclusion
+import EPPAIII.Primitive.RookCoordinateExtension
+import EPPAIII.Primitive.SparseConstituent
+import EPPAIII.Primitive.AlternatingFiveArithmetic
+import EPPAIII.Primitive.NonlocalConnectivity
+import EPPAIII.Primitive.RookPositiveModels
