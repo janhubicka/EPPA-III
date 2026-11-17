@@ -1,6 +1,6 @@
 import EPPAIII.Primitive.GardinerFinRecognition
 import EPPAIII.Primitive.PublishedLocalRecognition
-import EPPAIII.Primitive.RookRecognition
+import EPPAIII.Primitive.PublishedSmallModelSources
 import EPPAIII.Primitive.SmallRankThreeCodegrees
 import EPPAIII.Primitive.SmallWitnessNamedClassification
 
@@ -18,25 +18,18 @@ structure PublishedRecognitionSources : Prop where
   gardiner : FinGardinerRecognition
   localRecognition : PublishedLocalRecognition.{v}
   smallParameters : PublishedSmallRankThreeNonadjacentCodegrees
-  smallModels : PublishedSmallRankThreeModelsExceptClebschAndRooks
+  smallModels : PublishedSmallModelSources
 
 /-- Recover the recognition interface used inside the minimal-pair proof. -/
 theorem PublishedRecognitionSources.to_primitiveRecognitionInputs
-    (sources : PublishedRecognitionSources.{v}) : PrimitiveRecognitionInputs.{u, v} := by
-  have exceptClebschAndRookFour : PublishedSmallRankThreeModelsExceptClebschAndRookFour :=
-    publishedSmallRankThreeModelsExceptClebschAndRookFour_of_exceptClebschAndRooks sources.smallModels
-  have exceptClebsch : PublishedSmallRankThreeModelsExceptClebsch :=
-    publishedSmallRankThreeModelsExceptClebsch_of_exceptClebschAndRookFour exceptClebschAndRookFour
-  have printed : PublishedSmallRankThreeModels :=
-    publishedSmallRankThreeModels_of_exceptClebsch exceptClebsch
-  exact
-    { gardinerSelected := fun G => gardinerRecognition_of_fin sources.gardiner G
-      gardinerHost := fun hPositive H => gardinerRecognition_of_fin sources.gardiner H hPositive
-      triangular := fun H => locallyTriangularRecognitionInputs_both_of_published sources.localRecognition H
-      smallParameters := smallRankThreeParameterCoverage_of_publishedTable
-        (publishedSmallRankThreeTable_of_nonadjacentCodegrees sources.smallParameters)
-      smallModels := smallRankThreeModelIdentification_of_source
-        (smallRankThreeSourceModelIdentification_of_published printed) }
+    (sources : PublishedRecognitionSources.{v}) : PrimitiveRecognitionInputs.{u, v} :=
+  { gardinerSelected := fun G => gardinerRecognition_of_fin sources.gardiner G
+    gardinerHost := fun hPositive H => gardinerRecognition_of_fin sources.gardiner H hPositive
+    triangular := fun H => locallyTriangularRecognitionInputs_both_of_published sources.localRecognition H
+    smallParameters := smallRankThreeParameterCoverage_of_publishedTable
+      (publishedSmallRankThreeTable_of_nonadjacentCodegrees sources.smallParameters)
+    smallModels := smallRankThreeModelIdentification_of_source
+      (smallRankThreeSourceModelIdentification_of_published sources.smallModels.to_printedModels) }
 
 /-- The named fixed-embedding classification with recognition specified
 in terms of the published source data. Finite checks remain explicit. -/
