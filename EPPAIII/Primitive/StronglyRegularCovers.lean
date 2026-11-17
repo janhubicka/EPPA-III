@@ -584,7 +584,7 @@ theorem srg_positive_codegrees_exclude_forms {V : Type*} [Fintype V]
     have hJ := srg_of_iso f h
     have hJ' := srg_of_eq (compl_compl _) hJ.compl
     rcases srg_cover_cluster_or_complement X Y hJ' with hc | hc
-    · exact (hExcludes _ hJ).2 (by simpa only [compl_compl] using hc)
+    · exact (hExcludes _ hJ).2 (by simpa only [compl_compl, BlockSystems.IsClusterGraph] using hc)
     · exact (hExcludes _ hJ).1 hc
 
 end EPPAIII.Primitive
