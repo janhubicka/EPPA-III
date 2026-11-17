@@ -115,7 +115,7 @@ theorem primitiveCases_of_completeRankThreeCoverage
       · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
         · exact Or.inl (homogeneous_graph_of_iso φ hHom)
         · exact Or.inl (homogeneous_graph_of_iso φ
-            ((DoubleCover.homogeneous_complement_iff _).mpr hHom))
+            ((DoubleCover.homogeneous_complement_iff _).mp hHom))
       · exact Or.inr (Or.inl ⟨n, hn, model_up_to_complement_trans hIso hTri⟩)
       · exact Or.inr (Or.inr (Or.inl (model_up_to_complement_trans hIso hRook)))
       · exact Or.inr (Or.inr (Or.inr (Or.inl (model_up_to_complement_trans hIso hCl))))

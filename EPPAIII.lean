@@ -482,6 +482,7 @@ import EPPAIII.Primitive.BilinearGraph
 import EPPAIII.Primitive.RookFourClassification
 import EPPAIII.Primitive.CycleFiveCoverObstruction
 import EPPAIII.Primitive.OrthogonalEightConstituents
+import EPPAIII.Primitive.BinaryUnitaryConstituents
 import EPPAIII.Primitive.RankThreeCases
 import EPPAIII.Primitive.CoverHalfReduction
 import EPPAIII.Primitive.SmallConstituentCases
@@ -534,3 +535,4 @@ import EPPAIII.Primitive.NonsingularTernaryProfiles
 import EPPAIII.Primitive.AffineExceptionalRefinements
 import EPPAIII.Primitive.AffineConferenceExclusion
 import EPPAIII.Primitive.PolarRankTwoExclusion
+import EPPAIII.Primitive.UnitaryFiveDual

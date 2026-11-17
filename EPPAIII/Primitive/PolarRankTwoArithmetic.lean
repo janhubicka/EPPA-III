@@ -25,7 +25,7 @@ are for symplectic (or odd orthogonal), elliptic orthogonal, even unitary,
 and odd unitary rank-two polar graphs. -/
 theorem polar_rankTwo_large_stabilizer_bounds (q f : ℕ) (hq : 8 ≤ q) (hf : f ≤ q) :
     f * q ^ 4 * (q - 1) * (q ^ 2 - 1) < (q / 2).factorial ^ (q + 1) ∧
-    2 * f * q ^ 6 * (q ^ 4 - 1) < (q / 2).factorial ^ (q ^ 2 + 1) ∧
+    2 * f * q ^ 6 * (q - 1) * (q ^ 4 - 1) < (q / 2).factorial ^ (q ^ 2 + 1) ∧
     2 * f * q ^ 6 * (q ^ 2 - 1) ^ 2 < (q ^ 2 / 2).factorial ^ (q + 1) ∧
     2 * f * q ^ 10 * (q ^ 2 - 1) ^ 2 * (q ^ 3 + 1) <
       (q ^ 2 / 2).factorial ^ (q ^ 3 + 1) := by
@@ -53,10 +53,10 @@ theorem polar_rankTwo_large_stabilizer_bounds (q f : ℕ) (hq : 8 ≤ q) (hf : f
       _ ≤ q * q ^ 4 * q * q ^ 2 := by
         gcongr <;> exact Nat.sub_le _ _
       _ = _ := by ring
-  · apply (show 2 * f * q ^ 6 * (q ^ 4 - 1) ≤ q ^ 12 from ?_).trans_lt
-      (hPower 12 (q ^ 2 + 1) (by omega))
+  · apply (show 2 * f * q ^ 6 * (q - 1) * (q ^ 4 - 1) ≤ q ^ 13 from ?_).trans_lt
+      (hPower 13 (q ^ 2 + 1) (by omega))
     calc
-      _ ≤ q * q * q ^ 6 * q ^ 4 := by
+      _ ≤ q * q * q ^ 6 * q * q ^ 4 := by
         gcongr <;> first | omega | exact Nat.sub_le _ _
       _ = _ := by ring
   · apply (show 2 * f * q ^ 6 * (q ^ 2 - 1) ^ 2 ≤ q ^ 12 from ?_).trans_lt
@@ -71,5 +71,26 @@ theorem polar_rankTwo_large_stabilizer_bounds (q f : ℕ) (hq : 8 ≤ q) (hf : f
       _ ≤ q * q * q ^ 10 * (q ^ 2) ^ 2 * q ^ 4 := by
         gcongr <;> first | omega | exact Nat.sub_le _ _
       _ = _ := by ring
+
+/-- For the dual of the rank-two Hermitian geometry in dimension five,
+the line-stabilizer order is smaller than the local factorial bound. -/
+theorem unitaryFive_dual_stabilizer_bound (q f : ℕ) (hq : 2 ≤ q) (hf : f ≤ q) :
+    2 * f * q ^ 10 * (q ^ 2 - 1) * (q ^ 4 - 1) <
+      (q ^ 3 / 2).factorial ^ (q ^ 2 + 1) := by
+  by_cases hTwo : q = 2
+  · subst q
+    exact (Nat.mul_le_mul_right 15 (Nat.mul_le_mul_right 3
+      (Nat.mul_le_mul_right 1024 (Nat.mul_le_mul_left 2 hf)))).trans_lt (by decide)
+  have hSquare : 3 ^ 2 ≤ q ^ 2 := Nat.pow_le_pow_left (by omega : 3 ≤ q) _
+  have hCube : 2 ^ 3 ≤ q ^ 3 := Nat.pow_le_pow_left hq _
+  have hFactorial := le_half_factorial hCube
+  calc
+    _ ≤ q * q * q ^ 10 * q ^ 2 * q ^ 4 := by
+      gcongr <;> exact Nat.sub_le _ _
+    _ = q ^ 18 := by ring
+    _ < q ^ (3 * (q ^ 2 + 1)) := Nat.pow_lt_pow_right (by omega) (by omega)
+    _ ≤ _ := by
+      rw [pow_mul]
+      exact Nat.pow_le_pow_left hFactorial _
 
 end EPPAIII.Primitive

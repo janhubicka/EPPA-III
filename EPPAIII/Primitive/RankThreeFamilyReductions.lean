@@ -5,6 +5,7 @@ import EPPAIII.Primitive.AffineSemilinearExclusion
 import EPPAIII.Primitive.BilinearExclusion
 import EPPAIII.Primitive.BinaryAffineHalfSpinExclusion
 import EPPAIII.Primitive.BinaryPolarExclusions
+import EPPAIII.Primitive.BinaryUnitaryConstituents
 import EPPAIII.Primitive.ConstituentShapeReduction
 import EPPAIII.Primitive.ConwayConstituents
 import EPPAIII.Primitive.E6Constituents
@@ -53,6 +54,9 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
         H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
       (hConnected : ∀ root side, (constituentGraph H root side).Connected)
   | binaryPolar (hCharts : HasBinaryPolarConstituentCharts H)
+  | binaryNonsingularUnitary (d : ℕ)
+      (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms (binaryUnitaryGraph (5 + d)))
+      (hModel : IsModelUpToComplement H (binaryUnitaryGraph (5 + d)))
   | binaryAffineHalfSpin (hSRG : H.IsSRGWith 65536 2295 310 72)
   | projectiveHalfSpin {F : Type} [Field F]
       (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms (halfSpinFiveGraph F))
@@ -183,6 +187,9 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (eSix_constituents_exclude_forms H hq root hSRG (hConnected root)))
   | binaryPolar hCharts => exact Or.inr (binaryPolar_constituents_exclude_forms hCharts)
+  | binaryNonsingularUnitary d hTrans hModel =>
+      exact Or.inr (fun root => constituent_forms_exclusion_of_model
+        (binaryUnitary_constituents_exclude_forms d hTrans) hModel root)
   | binaryAffineHalfSpin hSRG =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (binaryAffineHalfSpin_excludes_actual_constituents H hSRG root))

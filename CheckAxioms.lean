@@ -1359,6 +1359,9 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.no_clique_union_or_compl_of_induced_five_cycle
 #print axioms EPPAIII.Primitive.no_cover_or_compl_of_induced_five_cycle
 #print axioms EPPAIII.Primitive.orthogonalEight_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.binaryUnitaryLocalFiveCycle
+#print axioms EPPAIII.Primitive.binaryUnitaryNonlocalFiveCycle
+#print axioms EPPAIII.Primitive.binaryUnitary_constituents_exclude_forms
 #print axioms EPPAIII.Primitive.orthogonalEight_model_excludes_forms
 #print axioms EPPAIII.Primitive.primitiveCases_or_residual_rankThree_model
 #print axioms EPPAIII.Primitive.nonhomogeneous_cover_selected_at_most_half
@@ -1456,5 +1459,8 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.conference_not_eppa_of_point_stabilizers
 #print axioms EPPAIII.Primitive.conference_eightyOne_not_eppa
 #print axioms EPPAIII.Primitive.polar_rankTwo_large_stabilizer_bounds
+#print axioms EPPAIII.Primitive.unitaryFive_dual_stabilizer_bound
+#print axioms EPPAIII.Primitive.unitaryFive_dual_not_eppa
 #print axioms EPPAIII.Primitive.affine_15625_constituents_exclude_forms
 #print axioms EPPAIII.Primitive.polar_rankTwo_not_eppa_of_small_stabilizer
+#print axioms EPPAIII.Primitive.primitiveCases_of_completeRankThreeCoverage
