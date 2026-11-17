@@ -18,7 +18,7 @@ The workflow includes the initial documentation branch for first publication; af
 
 GitHub stores Wiki pages in a distinct Git repository. Enabling the Wiki feature (`has_wiki: true`) does **not** establish that the Wiki Git repository already has a first commit.
 
-If the workflow reports an uninitialized Wiki, open [EPPA III Wiki](https://github.com/janhubicka/EPPA-III/wiki), choose **Create the first page**, name it **Home**, add a temporary sentence, and save. Then use [Actions → Publish EPPA III wiki](https://github.com/janhubicka/EPPA-III/actions/workflows/publish-wiki.yml) to run the publisher (or make another change to `docs/wiki/`). This is the same one-time procedure documented and successfully used in `lean-milliken`.
+If the workflow reports an uninitialized Wiki, open [EPPA III Wiki](https://github.com/janhubicka/EPPA-III/wiki), choose **Create the first page**, name it **Home**, add a temporary sentence, and save. Then use [Actions → Publish EPPA III wiki](https://github.com/janhubicka/EPPA-III/actions/workflows/publish-wiki.yml) to run the publisher (or make another change to `docs/wiki/`). Until this workflow is merged to the default branch, GitHub may not offer its manual `workflow_dispatch` control; a new push touching `docs/wiki/` on the documentation branch will trigger the publisher instead. This is the same one-time procedure documented and successfully used in `lean-milliken`.
 
 ## Source of truth and links
 
