@@ -1401,3 +1401,10 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.locallyTriangular_four_completeEquipartite
 #print axioms EPPAIII.Primitive.mathieuTwentyTwo_maxEppaOrder_le
 #print axioms EPPAIII.Primitive.higmanSims_maxEppaOrder_le_of_m22_model
+#print axioms EPPAIII.Primitive.locallyTriangular_order256_maxEppaOrder_le
+#print axioms EPPAIII.Primitive.locallyTriangular_order2048_maxEppaOrder_le
+#print axioms EPPAIII.Primitive.g2Two_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.g2Four_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.binary_halfSpin_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.halfSpinChart_localPentagon
+#print axioms EPPAIII.Primitive.halfSpinChart_nonlocalPentagon

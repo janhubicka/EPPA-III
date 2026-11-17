@@ -505,3 +505,6 @@ import EPPAIII.Primitive.AffineLineExclusionFromSubdegrees
 import EPPAIII.Primitive.LocalRecognition
 import EPPAIII.Primitive.MathieuTwentyTwo
 import EPPAIII.Primitive.HigmanSims
+import EPPAIII.Primitive.LocallyTriangularExclusions
+import EPPAIII.Primitive.G2ConstituentExclusions
+import EPPAIII.Primitive.HalfSpinPentagons
