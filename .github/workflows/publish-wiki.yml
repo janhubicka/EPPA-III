@@ -14,7 +14,10 @@ on:
       - 'EPPAIII/EPPA/Definitions.lean'
       - 'EPPAIII/BlockSystems/**'
       - 'EPPAIII/DoubleCover/RigidLayerHomogeneity.lean'
+      - 'EPPAIII/DoubleCover/PairPatterns.lean'
+      - 'EPPAIII/DoubleCover/UniformPattern.lean'
       - 'EPPAIII/CliqueCovers/Basic.lean'
+      - 'EPPAIII/CliqueCovers/WagnerHostConclusion.lean'
   workflow_dispatch:
 
 concurrency:
