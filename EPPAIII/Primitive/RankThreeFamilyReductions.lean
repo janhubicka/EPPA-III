@@ -56,7 +56,7 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
   | eSix {q : ℕ} (hq : 2 ≤ q)
       (hSRG : let p := eSixParameters q
         H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
-      (hConnected : ∀ root side, (constituentGraph H root side).Connected)
+      (hConnected : ∀ root, (constituentGraph H root false).Connected)
   | binaryPolar (hCharts : HasBinaryPolarConstituentCharts H)
   | binaryNonsingularUnitary (d : ℕ)
       (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms (binaryUnitaryGraph (5 + d)))

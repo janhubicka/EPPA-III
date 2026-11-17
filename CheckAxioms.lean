@@ -1397,6 +1397,7 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.affineLine_vanLintSchrijver_host_orders
 #print axioms EPPAIII.Primitive.not_eppa_embedding_order_eightyOne_of_pair_stabilizers
 #print axioms EPPAIII.Primitive.smallPaleyExclusions_of_affine_actions
+#print axioms EPPAIII.Primitive.eSix_nonlocal_connected
 #print axioms EPPAIII.Primitive.eSix_constituents_exclude_forms
 #print axioms EPPAIII.Primitive.grassmann_model_excludes_forms
 #print axioms EPPAIII.Primitive.bilinearRankOne_rookThree

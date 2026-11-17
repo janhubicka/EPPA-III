@@ -1,3 +1,4 @@
+import EPPAIII.Primitive.NonlocalConnectivity
 import EPPAIII.Primitive.SparseConstituent
 import EPPAIII.Primitive.SmallConstituentGraphScreen
 import Mathlib.Tactic.Ring
@@ -92,19 +93,44 @@ private theorem eSixNonlocal_four_mul_degree_lt_order {q : ℕ} (hq : 2 ≤ q) :
       omega
     _ = q ^ 8 * (q ^ 4 + 1) * (q ^ 4 + q ^ 3 + q ^ 2 + q + 1) := by ring
 
+/-- The second E₆ subconstituent is connected by the general strongly regular
+connectivity criterion and the published host parameters. -/
+theorem eSix_nonlocal_connected {V : Type*} [Fintype V] [DecidableEq V]
+    (H : SimpleGraph V) [DecidableRel H.Adj] {q : ℕ} (hq : 2 ≤ q) (root : V)
+    (hSRG : let p := eSixParameters q
+      H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon) :
+    (constituentGraph H root true).Connected := by
+  change (nonlocalGraph H root).Connected
+  refine nonlocalGraph_connected_of_degree_lt_order H hSRG ?_ root ?_
+  · change 0 < q ^ 6 + q ^ 5 + q ^ 4 + 2 * q ^ 3 + q ^ 2 + q + 1
+    omega
+  · have hProfile := (constituentGraph_profile H (eSixParameters q) hSRG root true).1
+    change Nat.card {x : V // root ≠ x ∧ ¬ H.Adj root x} =
+      eSixLocalOrder q + eSixNonlocalOrder q + 1 - eSixLocalOrder q - 1 at hProfile
+    rw [hProfile]
+    change eSixLocalOrder q <
+      eSixLocalOrder q + eSixNonlocalOrder q + 1 - eSixLocalOrder q - 1
+    have hBound := eSixNonlocal_four_mul_degree_lt_order hq
+    omega
+
 /-- The E₆ constituent profiles follow from the published parameters.
-Given connectivity, each actual constituent is excluded by sparsity. -/
+The local graph is connected from its published clique-extension model.
+Both actual constituents are excluded by sparsity. -/
 theorem eSix_constituents_exclude_forms {V : Type*} [Fintype V] [DecidableEq V]
     (H : SimpleGraph V) [DecidableRel H.Adj] {q : ℕ} (hq : 2 ≤ q) (root : V)
     (hSRG : let p := eSixParameters q
       H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
-    (hConnected : ∀ side, (constituentGraph H root side).Connected) (side : Bool) :
+    (hLocalConnected : (constituentGraph H root false).Connected) (side : Bool) :
     let G := constituentGraph H root side
     (∀ s t, IsEmpty (G ≃g cliqueUnion s t)) ∧
     (∀ s t, IsEmpty (G ≃g (cliqueUnion s t)ᶜ)) ∧
     (∀ s t X Y, IsEmpty (G ≃g coverGraph s t X Y)) ∧
     (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
   classical
+  have hConnected (side : Bool) : (constituentGraph H root side).Connected := by
+    cases side
+    · exact hLocalConnected
+    · exact eSix_nonlocal_connected H hq root hSRG
   have exclude (side : Bool) (n degree : ℕ)
       (hProfile : HasRegularProfile (constituentGraph H root side) (n, degree))
       (hPos : 1 < degree) (hQuarter : 4 * degree < n) := by
