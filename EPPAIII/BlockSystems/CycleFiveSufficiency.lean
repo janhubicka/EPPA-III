@@ -19,6 +19,10 @@ dihedral automorphism of the five-cycle, verified as a finite
 decidable proposition. -/
 theorem cycleFive_isHomogeneous :
     DoubleCover.IsHomogeneousGraph (SimpleGraph.cycleGraph 5) := by
+  letI : DecidableRel (SimpleGraph.cycleGraph 5).Adj :=
+    fun x y => decidable_of_iff
+      (cycleFiveExplicitAdjacent x y)
+      (cycleFiveExplicitAdjacent_iff x y)
   decide
 
 /-- Unconditional EPPA sufficiency of the five-cycle's disjoint double. -/
