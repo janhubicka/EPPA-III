@@ -18,6 +18,7 @@ treats the unequal two-clique base, where homogeneity is false.
 namespace EPPAIII.BlockSystems
 
 open EPPAIII.DoubleCover
+open EPPAIII.TwoGraphs
 
 /-- Sufficiency from extension of automorphisms of a homogeneous base.
 The host automorphism need not be chosen coherently. -/
@@ -174,9 +175,9 @@ def matchedLayerGraph {V : Type*}
     rcases h with hSame | hCross
     · cases hb : u.1 with
       | false =>
-          exact G.irrefl (by simpa [hb] using hSame.2)
+          exact (G.irrefl u.2) (by simpa [hb] using hSame.2)
       | true =>
-          exact K.irrefl (by simpa [hb] using hSame.2)
+          exact (K.irrefl u.2) (by simpa [hb] using hSame.2)
     · exact hCross.1 rfl
 
 /-- A matching host is EPPA if the top-layer adjacency relation is
