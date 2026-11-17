@@ -558,7 +558,7 @@ theorem srg_positive_codegrees_exclude_forms {V : Type*} [Fintype V]
     (∀ s t X Y, IsEmpty (G ≃g coverGraph s t X Y)) ∧
     (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
   classical
-  have hExcludes {W : Type*} [Fintype W] (J : SimpleGraph W) [DecidableRel J.Adj]
+  have hExcludes {W : Type} [Fintype W] (J : SimpleGraph W) [DecidableRel J.Adj]
       (hJ : J.IsSRGWith n k l m) :
       ¬ BlockSystems.IsClusterGraph J ∧ ¬ BlockSystems.IsClusterGraph Jᶜ :=
     ⟨srg_not_cluster_of_positive_mu J hJ hOrder hMu,

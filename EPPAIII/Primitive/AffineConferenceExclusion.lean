@@ -65,4 +65,48 @@ theorem conference_eightyOne_not_eppa {V W : Type*} [Finite V]
   intro x y hxy
   rw [conference_subdegree_eq H h (by decide) x y]
 
+/-- The four affine conference rows that pass the order-and-degree screen. -/
+inductive AffineConferenceRow
+  | order49
+  | order81
+  | order529
+  | order2209
+
+/-- Both orientations have the same strongly regular parameters. -/
+def AffineConferenceRow.parameters (row : AffineConferenceRow) : ℕ × ℕ × ℕ × ℕ :=
+  match row with
+  | .order49 => (49, 24, 11, 12)
+  | .order81 => (81, 40, 19, 20)
+  | .order529 => (529, 264, 131, 132)
+  | .order2209 => (2209, 1104, 551, 552)
+
+/-- Bounds for the full point stabilizers cited from Brouwer–Van Maldeghem,
+Sections 10.18, 10.30, 10.70 and 10.86. -/
+def AffineConferenceRow.pointBound (row : AffineConferenceRow) : ℕ :=
+  match row with
+  | .order49 => 96
+  | .order81 => 480
+  | .order529 => 528
+  | .order2209 => 2208
+
+/-- None of the four conference rows admits an EPPA selection of at least half
+the host order, given the published full point-stabilizer bounds. -/
+theorem affineConference_not_eppa {V W : Type*} [Finite V] [Fintype W] [DecidableEq W]
+    (G : SimpleGraph V) (H : SimpleGraph W) [DecidableRel H.Adj] (e : V ↪ W)
+    (row : AffineConferenceRow)
+    (h : let p := row.parameters; H.IsSRGWith p.1 p.2.1 p.2.2.1 p.2.2.2)
+    (hLarge : Nat.card W ≤ 2 * Nat.card V)
+    (hTrans : ∀ x y z : W, x ≠ y → x ≠ z → (H.Adj x y ↔ H.Adj x z) →
+      ∃ q : Equiv.Perm W, IsGraphAutomorphism H q ∧ q x = x ∧ q y = z)
+    (hPoint : ∀ x : W, Nat.card (hostPointwiseStabilizer H {x}) ≤ row.pointBound) :
+    ¬ IsEPPAEmbedding G H e := by
+  cases row
+  · exact conference_not_eppa_of_point_stabilizers G H e (m := 4) h
+      (by decide) (by decide) (by decide) hLarge hTrans hPoint
+  · exact conference_eightyOne_not_eppa G H e h hLarge hTrans hPoint
+  · exact conference_not_eppa_of_point_stabilizers G H e (m := 2) h
+      (by decide) (by decide) (by decide) hLarge hTrans hPoint
+  · exact conference_not_eppa_of_point_stabilizers G H e (m := 2) h
+      (by decide) (by decide) (by decide) hLarge hTrans hPoint
+
 end EPPAIII.Primitive

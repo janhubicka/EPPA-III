@@ -1,4 +1,5 @@
 import EPPAIII.Primitive.NonsingularTernaryExclusion
+import EPPAIII.Primitive.AffineConferenceExclusion
 import EPPAIII.Primitive.AffineExceptionalScreen
 import EPPAIII.Primitive.AffineFifteenThousandExclusion
 import EPPAIII.Primitive.AffineSurvivorExclusions
@@ -100,6 +101,10 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
       (hOrigin : ∀ x : V, ∃ a : KGraph ≃g KGraph, a x = 0)
       (hAction : ∀ a : Equiv.Perm V, IsGraphAutomorphism KGraph a → a 0 = 0 →
         ∃ (g : K ≃ₐ[F] K) (f : V →ₛₗ[RingHomClass.toRingHom g] V), ∀ x, a x = f x)
+  | affineConference (row : AffineConferenceRow)
+      (hSRG : let p := row.parameters; H.IsSRGWith p.1 p.2.1 p.2.2.1 p.2.2.2)
+      (hRank : HasRankThreeAutAction H)
+      (hPoint : ∀ x, Nat.card (hostPointwiseStabilizer H {x}) ≤ row.pointBound)
   | affinePairBound {k : ℕ} (hOrder : 8 * k + 4 < n)
       (hPair : ∀ x y, x ≠ y → Nat.card (hostPointwiseStabilizer H {x, y}) ≤ k)
   | affineEightyOne (hOrder : n = 81)
@@ -286,6 +291,12 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
       intro S hHalf heppa
       rw [Nat.card_eq_fintype_card, Nat.card_eq_fintype_card] at hHalf
       exact affineSemilinear_no_half_eppa _ KGraph _ heppa hHalf hq hDim hOrigin hAction
+  | affineConference row hSRG hRank hPoint =>
+      left
+      apply (noHalfOrderEPPA_iff H).mpr
+      intro S hHalf
+      exact affineConference_not_eppa _ H _ row hSRG hHalf
+        (fun x y z hxy hxz hStatus => hRank.2.2.2 x y x z hxy hxz hStatus) hPoint
   | affinePairBound hOrder hPair =>
       left
       apply (noHalfOrderEPPA_iff H).mpr

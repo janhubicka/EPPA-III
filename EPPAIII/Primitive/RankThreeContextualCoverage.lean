@@ -60,7 +60,8 @@ private theorem model_up_to_complement_trans {V W X : Type*} {H : SimpleGraph V}
 
 /-- The rank-two exclusion uses the local clique union and the stabilizer
 bound once the shape test rules out the nonlocal half-order selection. The
-unitary point model of order 165 uses the exact clique multiplicities. -/
+unitary point model of order 165 uses the exact clique multiplicities,
+and the elliptic point model of order 756 uses a stronger factorial bound. -/
 def RankTwoPolarCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
   (∃ Q t : ℕ, RankTwoPolarRange Q t ∧
     H.IsSRGWith ((Q + 1) * (Q * t + 1)) (Q * (t + 1)) (Q - 1) (t + 1) ∧
@@ -68,7 +69,10 @@ def RankTwoPolarCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
     (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) < (Q / 2).factorial ^ (t + 1))) ∨
   (H.IsSRGWith 165 36 3 9 ∧
     (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 9 4)) ∧
-    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 165888))
+    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 165888)) ∨
+  (H.IsSRGWith 756 130 4 26 ∧
+    (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 26 5)) ∧
+    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 78000000))
 
 /-- A row can use global exclusions, a listed positive host,
 or the rank-two argument at the chosen root. -/
@@ -88,13 +92,17 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
   have hMoved := eppa_relabel_host G e hEPPA φ
   have hSize := (Nat.card_congr φ.toEquiv).symm.trans_le hHalf
   have hNonlocal := (hShape.relabel φ).2
-  obtain ⟨Q, t, hRange, hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ := hModel
+  obtain ⟨Q, t, hRange, hSRG, hLocal, hStabilizer⟩ |
+      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ := hModel
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact polar_rankTwo_not_eppa_of_small_stabilizer G K f hMoved hSize
       (transitive_of_iso φ hTrans) root hRange hSRG hLocalModel hNonlocal (hStabilizer (f root))
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact unitaryFiveTwo_point_not_eppa G K f hMoved hSize root hSRG hLocalModel
       hNonlocal (hStabilizer (f root))
+  · obtain ⟨hLocalModel⟩ := hLocal (f root)
+    exact ellipticSixFive_not_eppa G K f hMoved hSize
+      (transitive_of_iso φ hTrans) root hSRG hLocalModel hNonlocal (hStabilizer (f root))
 
 /-- An exhaustive graph catalogue yields the actual primitive case when
 each remaining row has the appropriate reduction. -/
@@ -122,6 +130,15 @@ theorem primitiveCases_of_completeRankThreeCoverage
   · have hListed' : IsListedPrimitiveHost H := by
       obtain hHom | ⟨n, hn, hTri⟩ | hRook | hCl | hSch := hListed
       · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
+        · exact Or.inl (homogeneous_graph_of_iso φ hHom)
+        · exact Or.inl (homogeneous_graph_of_iso φ
+            ((DoubleCover.homogeneous_complement_iff _).mp hHom))
+      · exact Or.inr (Or.inl ⟨n, hn, model_up_to_complement_trans hIso hTri⟩)
+      · exact Or.inr (Or.inr (Or.inl (model_up_to_complement_trans hIso hRook)))
+      · exact Or.inr (Or.inr (Or.inr (Or.inl (model_up_to_complement_trans hIso hCl))))
+      · exact Or.inr (Or.inr (Or.inr (Or.inr (model_up_to_complement_trans hIso hSch))))
+    exact (primitiveCases_iff_eppa_of_listedHost G H e hEPPA.1 hHalf hListed' hFinite).mpr hEPPA
+  · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
     · exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding
         hPolar φ hRank.2.2.1 hEPPA hHalf hShape)
     · have φ' : Hᶜ ≃g K.2 := by simpa only [compl_compl] using complHostIso φ

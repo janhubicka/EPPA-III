@@ -1468,3 +1468,11 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.unitaryFiveTwo_point_not_eppa
 #print axioms EPPAIII.Primitive.srg_positive_codegrees_exclude_forms
 #print axioms EPPAIII.Primitive.evenTernary_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.ellipticSixFive_not_eppa
+#print axioms EPPAIII.Primitive.affine_81_32_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.affine_169_72_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.affine_2401_240_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.affine_2401_480_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.affine_2048_276_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.affine_256_120_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.affine_243_22_nonlocal_exclude_forms

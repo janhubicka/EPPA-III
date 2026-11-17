@@ -50,4 +50,30 @@ theorem factorial_pow_card_le_prod_of_average {ι : Type*} (s : Finset ι) (a : 
     Nat.pow_le_pow_right hm hSum
   exact Nat.le_of_mul_le_mul_right ((Nat.mul_le_mul_left _ hmPower).trans hStep) (Nat.pow_pos hm)
 
+
+private theorem two_pow_le_twice_factorial (a : ℕ) : 2 ^ a ≤ 2 * a.factorial := by
+  induction a with
+  | zero => simp
+  | succ a ih =>
+    cases a with
+    | zero => decide
+    | succ a =>
+      rw [pow_succ', Nat.factorial_succ]
+      exact (Nat.mul_le_mul_left 2 ih).trans
+        (by simpa only [mul_assoc] using
+          Nat.mul_le_mul_left 2 (Nat.mul_le_mul_right (a + 1).factorial
+            (show 2 ≤ a + 1 + 1 by omega)))
+
+/-- Each nonempty clique of order `a` contributes at least `2^(a-1)`
+permutations. An empty clique also satisfies the bound with truncation. -/
+theorem two_pow_le_clique_factorial_prod {ι : Type*} (s : Finset ι) (a : ι → ℕ)
+    {m : ℕ} (hSize : s.card + m ≤ ∑ i ∈ s, a i) :
+    2 ^ m ≤ ∏ i ∈ s, (a i).factorial := by
+  have hProd : ∏ i ∈ s, (2 ^ a i : ℕ) ≤ ∏ i ∈ s, (2 * (a i).factorial) :=
+    Finset.prod_le_prod (fun i _ => two_pow_le_twice_factorial (a i))
+  rw [Finset.prod_pow_eq_pow_sum, Finset.prod_mul_distrib, Finset.prod_const] at hProd
+  have hPow := (Nat.pow_le_pow_right (by decide : 0 < 2) hSize).trans hProd
+  rw [pow_add] at hPow
+  exact Nat.le_of_mul_le_mul_left hPow (Nat.pow_pos (by decide))
+
 end EPPAIII.Primitive

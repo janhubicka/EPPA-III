@@ -44,6 +44,23 @@ private theorem product_factorials_le_cluster_automorphisms {U I : Type*} [Finty
   rw [Nat.card_pi] at hBound
   simpa only [Nat.card_perm] using hBound
 
+private theorem cluster_product_le_root_stabilizer
+    {V W I : Type*} [Finite V] [Finite W] [Fintype I]
+    (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W) (heppa : IsEPPAEmbedding G H e)
+    (root : V) (part : G.neighborSet root → I)
+    (hAdj : ∀ x y, (localGraph G root).Adj x y ↔ part x = part y ∧ x ≠ y) :
+    (∏ i, (Nat.card {x // part x = i}).factorial) ≤
+      Nat.card (pointwiseGraphStabilizer H {e root}) := by
+  classical
+  have hAuto := product_factorials_le_cluster_automorphisms (localGraph G root) part hAdj
+  have hSurj := root_restrictToSelected_surjective G H e heppa root (G.neighborSet root)
+    (G.loopless.irrefl root) (fun _ hx _ hy => iff_of_true hx hy)
+  have hSection := Nat.card_le_card_of_surjective _ hSurj
+  have hInclusion (K : Subgroup (pointwiseGraphStabilizer H {e root})) :
+      Nat.card K ≤ Nat.card (pointwiseGraphStabilizer H {e root}) :=
+    Nat.card_le_card_of_injective Subtype.val Subtype.val_injective
+  exact hAuto.trans (hSection.trans (hInclusion _))
+
 /-- If a sufficiently large selected neighbourhood is a union of cliques
 with the given indexing, the ambient point stabilizer is at least as large
 as the factorial of the average lower bound raised to the number of cliques.
@@ -62,23 +79,14 @@ theorem factorial_pow_le_root_stabilizer_of_clique_partition
   have hProd := factorial_pow_card_le_prod_of_average Finset.univ
     (fun i => Nat.card {x // part x = i}) hm (by simpa only [Finset.card_univ, hCount] using hAvg)
   rw [Finset.card_univ] at hProd
-  have hAuto := product_factorials_le_cluster_automorphisms (localGraph G root) part hAdj
-  have hSurj := root_restrictToSelected_surjective G H e heppa root (G.neighborSet root)
-    (G.loopless.irrefl root) (fun _ hx _ hy => iff_of_true hx hy)
-  have hSection := Nat.card_le_card_of_surjective _ hSurj
-  have hInclusion (K : Subgroup (pointwiseGraphStabilizer H {e root})) :
-      Nat.card K ≤ Nat.card (pointwiseGraphStabilizer H {e root}) :=
-    Nat.card_le_card_of_injective Subtype.val Subtype.val_injective
-  exact hProd.trans (hAuto.trans (hSection.trans (hInclusion _)))
+  exact hProd.trans (cluster_product_le_root_stabilizer G H e heppa root part hAdj)
 
-/-- A local model of equal cliques contributes one part per ambient clique
-even if some of them miss the selected embedding. -/
-theorem factorial_pow_le_root_stabilizer_of_local_clique_union
-    {V W : Type*} [Finite V] [Finite W]
+private theorem selected_clique_partition
+    {V W : Type*}
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W) (heppa : IsEPPAEmbedding G H e)
-    (root : V) {s Q m : ℕ} (φ : localGraph H (e root) ≃g cliqueUnion s Q)
-    (hm : 0 < m) (hAvg : s * m ≤ Nat.card (G.neighborSet root)) :
-    m.factorial ^ s ≤ Nat.card (pointwiseGraphStabilizer H {e root}) := by
+    (root : V) {s Q : ℕ} (φ : localGraph H (e root) ≃g cliqueUnion s Q) :
+    ∃ part : G.neighborSet root → Fin s,
+      ∀ x y, (localGraph G root).Adj x y ↔ part x = part y ∧ x ≠ y := by
   let f : localGraph G root ↪g localGraph H (e root) :=
     ⟨⟨fun x => ⟨e x, (heppa.1 root x).mp x.property⟩,
         fun _ _ h => Subtype.ext (e.injective (congrArg Subtype.val h))⟩,
@@ -96,8 +104,37 @@ theorem factorial_pow_le_root_stabilizer_of_local_clique_union
       exact congrArg (fun a => (k a).2) hEqual
     · intro hDifferent hEqual
       exact hDifferent (k.injective (Prod.ext hIndex hEqual))
+  exact ⟨part, hAdj⟩
+
+/-- A local model of equal cliques contributes one part per ambient clique
+even if some of them miss the selected embedding. -/
+theorem factorial_pow_le_root_stabilizer_of_local_clique_union
+    {V W : Type*} [Finite V] [Finite W]
+    (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W) (heppa : IsEPPAEmbedding G H e)
+    (root : V) {s Q m : ℕ} (φ : localGraph H (e root) ≃g cliqueUnion s Q)
+    (hm : 0 < m) (hAvg : s * m ≤ Nat.card (G.neighborSet root)) :
+    m.factorial ^ s ≤ Nat.card (pointwiseGraphStabilizer H {e root}) := by
+  obtain ⟨part, hAdj⟩ := selected_clique_partition G H e heppa root φ
   simpa only [Fintype.card_fin] using
     factorial_pow_le_root_stabilizer_of_clique_partition G H e heppa root part hAdj hm
       (by simpa only [Fintype.card_fin] using hAvg)
+
+/-- A selected neighbourhood with at least `s+m` vertices in `s`
+ambient cliques forces at least `2^m` elements in the root stabilizer. -/
+theorem two_pow_le_root_stabilizer_of_local_clique_union
+    {V W : Type*} [Finite V] [Finite W]
+    (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W) (heppa : IsEPPAEmbedding G H e)
+    (root : V) {s Q m : ℕ} (φ : localGraph H (e root) ≃g cliqueUnion s Q)
+    (hSize : s + m ≤ Nat.card (G.neighborSet root)) :
+    2 ^ m ≤ Nat.card (pointwiseGraphStabilizer H {e root}) := by
+  classical
+  obtain ⟨part, hAdj⟩ := selected_clique_partition G H e heppa root φ
+  have hCount : (∑ i, Nat.card {x // part x = i}) = Nat.card (G.neighborSet root) := by
+    rw [← Nat.card_sigma]
+    exact Nat.card_congr (Equiv.sigmaFiberEquiv part)
+  have hProd := two_pow_le_clique_factorial_prod Finset.univ
+    (fun i => Nat.card {x // part x = i})
+    (by simpa only [Finset.card_univ, Fintype.card_fin, hCount] using hSize)
+  exact hProd.trans (cluster_product_le_root_stabilizer G H e heppa root part hAdj)
 
 end EPPAIII.Primitive
