@@ -1222,3 +1222,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.rook_taylor_has_no_false_twins
 #print axioms EPPAIII.BlockSystems.false_twins_transport_iso
 #print axioms EPPAIII.BlockSystems.rook_matefree_not_isomorphic_to_taylor
+
+-- Elementary non-homogeneous cluster dichotomy for Proposition 6.17.
+#print axioms EPPAIII.BlockSystems.cluster_equal_degrees_isHomogeneous
+#print axioms EPPAIII.BlockSystems.cluster_homogeneous_or_unequal_degrees
