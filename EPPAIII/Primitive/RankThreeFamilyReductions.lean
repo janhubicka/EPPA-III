@@ -1,4 +1,5 @@
 import EPPAIII.Primitive.NonsingularTernaryExclusion
+import EPPAIII.Primitive.OddNonsingularOrthogonal
 import EPPAIII.Primitive.AffineConferenceExclusion
 import EPPAIII.Primitive.AffineExceptionalScreen
 import EPPAIII.Primitive.AffineFifteenThousandExclusion
@@ -60,6 +61,9 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
   | binaryNonsingularUnitary (d : ℕ)
       (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms (binaryUnitaryGraph (5 + d)))
       (hModel : IsModelUpToComplement H (binaryUnitaryGraph (5 + d)))
+  | oddNonsingularOrthogonal (field : OddOrthogonalField) (plus : Bool) (d : ℕ)
+      (hTrans : ∀ r s, ∃ a : field.graph plus d ≃g field.graph plus d, a r = s)
+      (hModel : IsModelUpToComplement H (field.graph plus d))
   | binaryAffineHalfSpin (hSRG : H.IsSRGWith 65536 2295 310 72)
   | projectiveHalfSpin {F : Type} [Field F]
       (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms (halfSpinFiveGraph F))
@@ -231,6 +235,12 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
   | binaryNonsingularUnitary d hTrans hModel =>
       exact Or.inr (fun root => constituent_forms_exclusion_of_model
         (binaryUnitary_constituents_exclude_forms d hTrans) hModel root)
+  | oddNonsingularOrthogonal field plus d hTrans hModel =>
+      right
+      apply constituent_forms_exclusion_of_model _ hModel
+      intro r
+      obtain ⟨⟨a⟩, ⟨b⟩⟩ := field.constituentPentagons plus d hTrans r
+      exact ⟨not_cliqueUnionOrCover_of_fiveCycle a, not_cliqueUnionOrCover_of_fiveCycle b⟩
   | binaryAffineHalfSpin hSRG =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (binaryAffineHalfSpin_excludes_actual_constituents H hSRG root))

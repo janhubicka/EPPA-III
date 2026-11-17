@@ -1362,6 +1362,7 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.binaryUnitaryLocalFiveCycle
 #print axioms EPPAIII.Primitive.binaryUnitaryNonlocalFiveCycle
 #print axioms EPPAIII.Primitive.binaryUnitary_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.OddOrthogonalField.constituentPentagons
 #print axioms EPPAIII.Primitive.orthogonalEight_model_excludes_forms
 #print axioms EPPAIII.Primitive.primitiveCases_or_residual_rankThree_model
 #print axioms EPPAIII.Primitive.nonhomogeneous_cover_selected_at_most_half
@@ -1484,3 +1485,9 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.symplecticFourFive_not_eppa
 #print axioms EPPAIII.Primitive.ellipticSixThree_not_eppa
 #print axioms EPPAIII.Primitive.ellipticSixFour_not_eppa
+#print axioms EPPAIII.Primitive.polarSymplecticThree_not_eppa
+#print axioms EPPAIII.Primitive.rankTwoCatalogue_of_symplectic
+#print axioms EPPAIII.Primitive.rankTwoCatalogue_of_elliptic
+#print axioms EPPAIII.Primitive.rankTwoCatalogue_of_unitaryFour
+#print axioms EPPAIII.Primitive.rankTwoCatalogue_of_unitaryFive
+#print axioms EPPAIII.Primitive.rankTwoCatalogue_of_unitaryFiveDual

@@ -3,6 +3,7 @@ import EPPAIII.Primitive.AffineMatchingExclusion
 import EPPAIII.Primitive.AffineTriangleClusterExclusion
 import EPPAIII.Primitive.RankThreeFamilyReductions
 import EPPAIII.Primitive.PolarSymplecticFive
+import EPPAIII.Primitive.PolarOrderForty
 import EPPAIII.Primitive.SmallEllipticExclusion
 import EPPAIII.Primitive.SymplecticFourFour
 import EPPAIII.Primitive.UnitaryFiveTwoPoint
@@ -105,7 +106,8 @@ def RankTwoPolarCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
     (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ∣ 233280)) ∨
   (H.IsSRGWith 325 68 3 17 ∧
     (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 17 4)) ∧
-    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ∣ 12533760))
+    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ∣ 12533760)) ∨
+  (H.IsSRGWith 40 12 2 4 ∧ OrderFortyPolarLocalCheck H)
 
 /-- Published recognition data for the affine Berlekamp–Van Lint–Seidel graph. -/
 def AffineMatchingCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
@@ -161,17 +163,17 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
     {e : V ↪ W} {root : V}
     (hModel : RankTwoPolarCatalogueModel K) (φ : H ≃g K)
     (hTrans : HasTransitiveGraphAutomorphisms H) (hEPPA : IsEPPAEmbedding G H e)
-    (hHalf : Nat.card W ≤ 2 * Nat.card V) (hShape : SelectedConstituentShapes G H e root) :
+    (hHalf : Nat.card W ≤ 2 * Nat.card V) (hShapes : ∀ r, SelectedConstituentShapes G H e r) :
     False := by
   classical
   let f := e.trans φ.toEquiv.toEmbedding
   have hMoved := eppa_relabel_host G e hEPPA φ
   have hSize := (Nat.card_congr φ.toEquiv).symm.trans_le hHalf
-  have hNonlocal := (hShape.relabel φ).2
+  have hNonlocal := ((hShapes root).relabel φ).2
   obtain ⟨Q, t, hRange, hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hTriple⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
-      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ := hModel
+      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hCheck⟩ := hModel
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact polar_rankTwo_not_eppa_of_small_stabilizer G K f hMoved hSize
       (transitive_of_iso φ hTrans) root hRange hSRG hLocalModel hNonlocal (hStabilizer (f root))
@@ -193,6 +195,8 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact ellipticSixFour_not_eppa G K f hMoved hSize
       (transitive_of_iso φ hTrans) root hSRG hLocalModel hNonlocal (hStabilizer (f root))
+  · exact polarSymplecticThree_not_eppa G K f hMoved hSize hSRG hCheck
+      (fun r => ((hShapes r).relabel φ).2)
 
 private theorem affineMatchingCatalogueModel_excludes_embedding
     {V W : Type*} [Finite V] {n : ℕ}
@@ -256,11 +260,11 @@ theorem primitiveCases_of_completeRankThreeCoverage
     exact (primitiveCases_iff_eppa_of_listedHost G H e hEPPA.1 hHalf hListed' hFinite).mpr hEPPA
   · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
     · exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding
-        hPolar φ hRank.2.2.1 hEPPA hHalf hShape)
+        hPolar φ hRank.2.2.1 hEPPA hHalf hShapes)
     · have φ' : Hᶜ ≃g K.2 := by simpa only [compl_compl] using complHostIso φ
       exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding hPolar φ'
         (transitive_complement H hRank.2.2.1) (eppa_embedding_complement G H e hEPPA)
-        hHalf hShape.compl)
+        hHalf (fun r => (hShapes r).compl))
   · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
     · exact False.elim (affineMatchingCatalogueModel_excludes_embedding
         hMatching φ hEPPA hHalf hShape)

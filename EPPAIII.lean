@@ -483,6 +483,7 @@ import EPPAIII.Primitive.RookFourClassification
 import EPPAIII.Primitive.CycleFiveCoverObstruction
 import EPPAIII.Primitive.OrthogonalEightConstituents
 import EPPAIII.Primitive.BinaryUnitaryConstituents
+import EPPAIII.Primitive.OddNonsingularOrthogonal
 import EPPAIII.Primitive.RankThreeCases
 import EPPAIII.Primitive.CoverHalfReduction
 import EPPAIII.Primitive.SmallConstituentCases
@@ -541,3 +542,4 @@ import EPPAIII.Primitive.AffineTriangleClusterExclusion
 import EPPAIII.Primitive.PolarRankTwoExclusion
 import EPPAIII.Primitive.UnitaryFiveDual
 import EPPAIII.Primitive.UnitaryFiveTwoPoint
+import EPPAIII.Primitive.RankTwoPolarFamilyRecognition
