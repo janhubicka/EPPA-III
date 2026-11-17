@@ -1537,6 +1537,10 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.rook_four_iso_of_parameters
 #print axioms EPPAIII.Primitive.rook_iso_of_srg_and_local_charts
 #print axioms EPPAIII.Primitive.publishedSmallRankThreeModelsExceptClebsch_of_exceptClebschAndRookFour
+#print axioms EPPAIII.Primitive.no_geodetic_of_rook_local_parameters
+#print axioms EPPAIII.Primitive.rook_large_iso_of_parameters
+#print axioms EPPAIII.Primitive.publishedSmallRankThreeModelsExceptClebschAndRookFour_of_exceptClebschAndRooks
+#print axioms EPPAIII.Primitive.HasPublishedRankThreeModel.of_square_product_subgroup
 #print axioms EPPAIII.Primitive.hostPairStabilizer_card_mul_srg_subdegree
 #print axioms EPPAIII.Primitive.pointwiseGraphStabilizer_card_mul_srg_subdegree
 #print axioms EPPAIII.Primitive.card_pointwiseGraphStabilizer_singleton_of_full_order

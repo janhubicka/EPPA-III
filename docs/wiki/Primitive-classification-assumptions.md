@@ -19,9 +19,11 @@ nontrivial two-graphs. The checker `checks/check_named_taylor_models.py`
 verifies these facts and their host and switching-class identities.
 
 The [source-data formulation](https://github.com/janhubicka/EPPA-III/blob/main/validation/primitive/PublishedRecognitionSources.md)
-recovers the adjacent codegree from the other three SRG parameters,
-derives the complementary model identifications, and reduces the small
-model premise to 18 printed rows. It also derives the order-256 point bound.
+recovers the adjacent codegree from the other three SRG parameters and checks
+the numerical small-model screen. The EPPA reductions cover all 21 oriented
+rows using the named models. Lean derives eight of those model identities
+from parameters, rank three, or complementation, and takes the other 13
+identities from the published list. It also derives the order-256 point bound.
 The [orbital-action adapters](https://github.com/janhubicka/EPPA-III/blob/main/validation/primitive/OrbitalCatalogue.md)
 recover graph models up to complement from labelled rank-three actions and
 identify the full graph automorphism group with the 2-closure.

@@ -18,20 +18,24 @@ structure PublishedRecognitionSources : Prop where
   gardiner : FinGardinerRecognition
   localRecognition : PublishedLocalRecognition.{v}
   smallParameters : PublishedSmallRankThreeNonadjacentCodegrees
-  smallModels : PublishedSmallRankThreeModelsExceptClebschAndRookFour
+  smallModels : PublishedSmallRankThreeModelsExceptClebschAndRooks
 
 /-- Recover the recognition interface used inside the minimal-pair proof. -/
 theorem PublishedRecognitionSources.to_primitiveRecognitionInputs
-    (sources : PublishedRecognitionSources.{v}) : PrimitiveRecognitionInputs.{u, v} :=
-  { gardinerSelected := fun G => gardinerRecognition_of_fin sources.gardiner G
-    gardinerHost := fun hPositive H => gardinerRecognition_of_fin sources.gardiner H hPositive
-    triangular := fun H => locallyTriangularRecognitionInputs_both_of_published sources.localRecognition H
-    smallParameters := smallRankThreeParameterCoverage_of_publishedTable
-      (publishedSmallRankThreeTable_of_nonadjacentCodegrees sources.smallParameters)
-    smallModels := smallRankThreeModelIdentification_of_source
-      (smallRankThreeSourceModelIdentification_of_published
-        (publishedSmallRankThreeModels_of_exceptClebsch
-          (publishedSmallRankThreeModelsExceptClebsch_of_exceptClebschAndRookFour sources.smallModels))) }
+    (sources : PublishedRecognitionSources.{v}) : PrimitiveRecognitionInputs.{u, v} := by
+  have exceptClebschAndRookFour :=
+    publishedSmallRankThreeModelsExceptClebschAndRookFour_of_exceptClebschAndRooks sources.smallModels
+  have exceptClebsch :=
+    publishedSmallRankThreeModelsExceptClebsch_of_exceptClebschAndRookFour exceptClebschAndRookFour
+  have printed := publishedSmallRankThreeModels_of_exceptClebsch exceptClebsch
+  exact
+    { gardinerSelected := fun G => gardinerRecognition_of_fin sources.gardiner G
+      gardinerHost := fun hPositive H => gardinerRecognition_of_fin sources.gardiner H hPositive
+      triangular := fun H => locallyTriangularRecognitionInputs_both_of_published sources.localRecognition H
+      smallParameters := smallRankThreeParameterCoverage_of_publishedTable
+        (publishedSmallRankThreeTable_of_nonadjacentCodegrees sources.smallParameters)
+      smallModels := smallRankThreeModelIdentification_of_source
+        (smallRankThreeSourceModelIdentification_of_published printed) }
 
 /-- The named fixed-embedding classification with recognition specified
 in terms of the published source data. Finite checks remain explicit. -/
