@@ -1247,3 +1247,7 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.transitive_eppa_primitive_double_has_pair_orbits
 #print axioms EPPAIII.BlockSystems.transitive_eppa_at_most_double_has_pair_orbits
 #print axioms EPPAIII.BlockSystems.transitive_eppa_at_most_double_clique_empty_or_rank_three
+
+-- First paragraph of Section 6 Proposition 6.17: strict-order obstruction.
+#print axioms EPPAIII.BlockSystems.transitive_eppa_strict_imprimitive_host_isHomogeneous
+#print axioms EPPAIII.BlockSystems.nonhomogeneous_imprimitive_eppa_host_exactly_double
