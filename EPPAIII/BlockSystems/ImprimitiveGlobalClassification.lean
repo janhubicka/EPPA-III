@@ -56,8 +56,9 @@ def GeneralImprimitiveHostModels
         q u = u' ∧ q v = v'))
 
 /-- Global imprimitive necessity: no selected-base restriction is
-assumed. Gardiner is invoked only for the selected base G and,
-when needed, its complement; both dependencies are explicit.
+assumed. Gardiner is invoked only for G itself: the complement
+branch is reached after G is proved non-homogeneous, so its
+complement is non-homogeneous too.
 
 The graph-theoretic output is deliberately a disjunction, not an
 unverified claim that all Taylor and canonical host models have
@@ -81,9 +82,7 @@ theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
         (fun w => block w = b₀)).card)
     (hBound : Fintype.card W ≤ 2 * Fintype.card V)
     (hGardinerG : DoubleCover.IsHomogeneousGraph G →
-      GardinerPublishedModels G)
-    (hGardinerComplement : DoubleCover.IsHomogeneousGraph Gᶜ →
-      GardinerPublishedModels Gᶜ) :
+      GardinerPublishedModels G) :
     Fintype.card W = 2 * Fintype.card V ∧
       GeneralImprimitiveHostModels G H e block := by
   classical
@@ -107,7 +106,10 @@ theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
         hGardinerG
     exact Or.inl hCases.2
   by_cases hCoCluster : IsCoClusterGraph G
-  · have hClusterC : IsClusterGraph Gᶜ := by
+  · have hNonHomogeneousCBase :
+        ¬ DoubleCover.IsHomogeneousGraph Gᶜ :=
+      (DoubleCover.nonhomogeneous_complement_iff G).mp hHom
+    have hClusterC : IsClusterGraph Gᶜ := by
       intro a b c hab hbc hac
       change a ≠ b ∧ ¬ G.Adj a b at hab
       change b ≠ c ∧ ¬ G.Adj b c at hbc
@@ -129,7 +131,8 @@ theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
       imprimitive_actual_host_classification_from_published_gardiner
         Gᶜ Hᶜ e hEPPAc block hBlocksc hSurj hTransc
         hNonhomogeneousC hManyBlocks hNontrivial hBound
-        (Or.inr hClusterC) hGardinerComplement
+        (Or.inr hClusterC)
+        (fun hHomC => (hNonHomogeneousCBase hHomC).elim)
     exact Or.inr (Or.inl hCases.2)
   · have hTaylor :=
       transitive_eppa_double_cover_classification
