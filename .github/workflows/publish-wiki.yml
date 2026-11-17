@@ -1,0 +1,64 @@
+name: Publish EPPA III wiki
+
+on:
+  gollum:
+  push:
+    branches:
+      - main
+      # Initial publication from the reviewed imprimitive integration stack.
+      - docs/wiki-imprimitive-gardiner-20261117
+    paths:
+      - 'docs/wiki/**'
+      - 'scripts/check_wiki_imprimitive.py'
+      - '.github/workflows/publish-wiki.yml'
+      - 'EPPAIII/EPPA/Definitions.lean'
+      - 'EPPAIII/BlockSystems/**'
+      - 'EPPAIII/DoubleCover/RigidLayerHomogeneity.lean'
+      - 'EPPAIII/CliqueCovers/Basic.lean'
+  workflow_dispatch:
+
+concurrency:
+  group: publish-eppa-iii-wiki
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out documented Lean revision
+        uses: actions/checkout@v4
+
+      - name: Check exact Lean snippets against the checked-out source
+        run: python3 scripts/check_wiki_imprimitive.py
+
+      # GitHub Wiki is a separate .wiki.git repository that may require
+      # one Home-page initialization via the website. This is the same
+      # publication scheme already used in other Jan Hubička Lean repos.
+      - name: Check whether the Wiki Git repository is initialized
+        id: wiki
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh auth setup-git
+          if git ls-remote "https://github.com/${GITHUB_REPOSITORY}.wiki.git" HEAD >/dev/null 2>&1; then
+            echo "initialized=true" >> "$GITHUB_OUTPUT"
+            echo "Wiki repository exists; publishing versioned source" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "initialized=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GitHub Wiki uninitialized. Create the first Home page at https://github.com/${GITHUB_REPOSITORY}/wiki then rerun."
+            echo "## Wiki publication skipped" >> "$GITHUB_STEP_SUMMARY"
+            echo "The separate Wiki repository has no initial Home page. Create it at https://github.com/${GITHUB_REPOSITORY}/wiki and rerun this workflow." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Publish Markdown source to the live GitHub Wiki
+        if: steps.wiki.outputs.initialized == 'true'
+        uses: Andrew-Chen-Wang/github-wiki-action@v5
+        with:
+          path: docs/wiki
+          preprocess: true
+          strategy: clone
+          disable-empty-commits: true
