@@ -1267,3 +1267,6 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.gardiner_complement_rook_normalized
 #print axioms EPPAIII.BlockSystems.gardiner_published_implies_normalized
 #print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_from_published_gardiner
+
+-- Arbitrary base: imprimitive transitive EPPA classification relative to Gardiner.
+#print axioms EPPAIII.BlockSystems.nonhomogeneous_transitive_imprimitive_eppa_global_classification
