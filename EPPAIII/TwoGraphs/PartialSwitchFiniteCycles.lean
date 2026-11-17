@@ -74,7 +74,6 @@ theorem permutation_simple_positive_cycle
     have hNot : ¬ P (i + 1) := Nat.find_min hExists hSmall
     apply hNot
     refine ⟨by omega, ?_⟩
-    change (p.toFun^[i + 1]) z = z
     exact hEq.trans hEnd
   exact ⟨n,x,hZero,hStep,hEnd,hClose,hDistinct⟩
 
