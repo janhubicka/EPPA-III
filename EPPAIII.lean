@@ -547,3 +547,4 @@ import EPPAIII.Primitive.PolarRankTwoExclusion
 import EPPAIII.Primitive.UnitaryFiveDual
 import EPPAIII.Primitive.UnitaryFiveTwoPoint
 import EPPAIII.Primitive.RankTwoPolarFamilyRecognition
+import EPPAIII.Primitive.SmallWitnessClassification

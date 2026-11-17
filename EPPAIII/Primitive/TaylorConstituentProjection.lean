@@ -12,6 +12,8 @@ open EPPAIII.DoubleCover
 open EPPAIII.TwoGraphs
 open SimpleGraph
 
+universe w
+
 /-- The numerical consequence of the published homogeneous two-graph
 classification. Both distinct-triple parities occur in the nontrivial case. -/
 def HomogeneousTwoGraphOrderRecognition (V : Type*) [Fintype V] : Prop :=
@@ -78,7 +80,7 @@ private theorem taylor_order_profile {V : Type*} [Fintype V]
   · exact ⟨(12, 5), by decide, Or.inl (by simpa [h] using taylor_half_profile G)⟩
   · exact ⟨(20, 9), by decide, Or.inl (by simpa [h] using taylor_half_profile G)⟩
 
-private theorem canonical_taylor_eq {V : Type*}
+theorem canonical_taylor_eq {V : Type*}
     (G : SimpleGraph V) (P : SimpleGraph (Bool × V))
     (hBottom : IsInducedGraphEmbedding G P (bottomEmbedding V))
     (mate : Bool)
@@ -215,6 +217,33 @@ theorem section8Cases_of_imprimitive_eppa
       hCo hRecognition φ hBottom mate hMate hInter))
 
 
+/-- A nonprimitive finite action supplies a quotient with at least two
+blocks and a block containing two distinct vertices. -/
+theorem exists_invariant_block_map_of_not_primitive {W : Type w} [Finite W]
+    (H : SimpleGraph W) (hNotPrimitive : ¬ IsPrimitiveAutAction H) :
+    ∃ (B : Type w) (_ : Finite B) (block : W → B),
+      InvariantBlockMap H block ∧ Function.Surjective block ∧
+      2 ≤ Nat.card B ∧ (∃ a b : W, block a = block b ∧ a ≠ b) := by
+  classical
+  unfold IsPrimitiveAutAction at hNotPrimitive
+  push Not at hNotPrimitive
+  obtain ⟨R,hEq,hInv,⟨a,b,hab,hne⟩,⟨c,d,hcd⟩⟩ := hNotPrimitive
+  let S : Setoid W := ⟨R,hEq⟩
+  let B := Quotient S
+  let : Fintype B := Fintype.ofFinite B
+  let block : W → B := Quotient.mk S
+  have hBlock (x y : W) : block x = block y ↔ R x y :=
+    ⟨@Quotient.exact W S x y, @Quotient.sound W S x y⟩
+  have hBlocks : InvariantBlockMap H block := by
+    intro q hq x y
+    exact (hBlock x y).trans ((hInv q hq x y).trans (hBlock (q x) (q y)).symm)
+  have hSurj : Function.Surjective block := fun c => Quotient.inductionOn c (fun x => ⟨x,rfl⟩)
+  have hMany : 2 ≤ Fintype.card B :=
+    Fintype.one_lt_card_iff.mpr ⟨block c,block d,fun heq => hcd ((hBlock c d).mp heq)⟩
+  exact ⟨B, inferInstance, block, hBlocks, hSurj,
+    by simpa only [Nat.card_eq_fintype_card] using hMany,
+    a, b, (hBlock a b).mpr hab, hne⟩
+
 /-- Project classified smaller pairs while using the actual EPPA, size, and
 transitivity hypotheses in the imprimitive branch. Nonprimitivity supplies
 the finite quotient of an invariant equivalence relation. -/
@@ -234,25 +263,15 @@ theorem section8Cases_of_primitive_or_imprimitive
   by_cases hHom : IsHomogeneousGraph H
   · exact section8Cases_of_primitiveCases (G := G) (e := e) hGardinerH
       (Or.inl (Or.inl hHom))
-  unfold IsPrimitiveAutAction at hImprimitive
-  push Not at hImprimitive
-  obtain ⟨R,hEq,hInv,⟨a,b,hab,hne⟩,⟨c,d,hcd⟩⟩ := hImprimitive
-  let S : Setoid W := ⟨R,hEq⟩
-  let B := Quotient S
+  obtain ⟨B,hFinB,block,hBlocks,hSurj,hMany,⟨a,b,hab,hne⟩⟩ :=
+    exists_invariant_block_map_of_not_primitive H hImprimitive
+  let : Finite B := hFinB
   let : Fintype B := Fintype.ofFinite B
-  let block : W → B := Quotient.mk S
-  have hBlock (x y : W) : block x = block y ↔ R x y :=
-    ⟨@Quotient.exact W S x y, @Quotient.sound W S x y⟩
-  have hBlocks : InvariantBlockMap H block := by
-    intro q hq x y
-    exact (hBlock x y).trans ((hInv q hq x y).trans (hBlock (q x) (q y)).symm)
-  have hSurj : Function.Surjective block := fun c => Quotient.inductionOn c (fun x => ⟨x,rfl⟩)
-  have hMany : 2 ≤ Fintype.card B :=
-    Fintype.one_lt_card_iff.mpr ⟨block c,block d,fun heq => hcd ((hBlock c d).mp heq)⟩
+  rw [Nat.card_eq_fintype_card] at hMany
   have hNontrivial : ∃ b₀ : B, 2 ≤ ((Finset.univ : Finset W).filter
       (fun w => block w = b₀)).card := by
     refine ⟨block b, Finset.one_lt_card_iff.mpr ?_⟩
-    exact ⟨a,b,by simp [(hBlock a b).mpr hab],by simp,hne⟩
+    exact ⟨a,b,by simp [hab],by simp,hne⟩
   have hSize : Fintype.card W ≤ 2 * Fintype.card V := by
     simpa only [Nat.card_eq_fintype_card] using hPair.halfOrder
   have hHostPositive : 0 < Fintype.card W := Fintype.card_pos_iff.mpr ⟨a⟩

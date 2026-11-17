@@ -1498,3 +1498,5 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.rankTwoCatalogue_of_unitaryFour
 #print axioms EPPAIII.Primitive.rankTwoCatalogue_of_unitaryFive
 #print axioms EPPAIII.Primitive.rankTwoCatalogue_of_unitaryFiveDual
+#print axioms EPPAIII.Primitive.smallWitnessModelCases_of_eppa
+#print axioms EPPAIII.Primitive.eppa_of_nonclusterTaylorWitnessCases

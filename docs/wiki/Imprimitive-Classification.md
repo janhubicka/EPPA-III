@@ -278,22 +278,8 @@ def GeneralImprimitiveHostModels
     {V W B : Type*} [Fintype V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W)
     (e : V ↪ W) (block : W → B) : Prop :=
-  ImprimitiveHostModels G H e ∨
-  ImprimitiveHostModels Gᶜ Hᶜ e ∨
-  ((∃ φ : Bool × V ≃ W,
-      (∀ x : V, φ (false,x) = e x) ∧
-      ∃ mate : Bool,
-        (∀ x : V, H.Adj (φ (false,x)) (φ (true,x)) ↔
-          mate = true) ∧
-        DoubleCover.RepresentsPairPattern
-          G (pullbackGraph H φ) DoubleCover.taylor) ∧
-   (∀ u v u' v' : W,
-      block u ≠ block v →
-      block u' ≠ block v' →
-      (H.Adj u v ↔ H.Adj u' v') →
-      ∃ q : Equiv.Perm W,
-        IsGraphAutomorphism H q ∧
-        q u = u' ∧ q v = v'))
+  ImprimitiveHostModels G H e ∨ ImprimitiveHostModels Gᶜ Hᶜ e ∨
+    ImprimitiveTaylorHostModel G H e block
 ```
 
 ## 4. The Gardiner assumption occurs as a term parameter
@@ -356,16 +342,12 @@ nonhomogeneous base; that result is not assumed here.
 
 namespace EPPAIII.BlockSystems
 
-/-- Necessary alternatives for an arbitrary selected graph G:
-the classified homogeneous/cluster models, their simultaneous
-complements, or a fixed-embedding Taylor double with uniformly
-optional mate edges and full ordered inter-block orbit transitivity. -/
-def GeneralImprimitiveHostModels
+/-- The fixed Taylor fibre decomposition and the transitivity of its two
+ordered inter-block pair orbits. -/
+def ImprimitiveTaylorHostModel
     {V W B : Type*} [Fintype V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W)
     (e : V ↪ W) (block : W → B) : Prop :=
-  ImprimitiveHostModels G H e ∨
-  ImprimitiveHostModels Gᶜ Hᶜ e ∨
   ((∃ φ : Bool × V ≃ W,
       (∀ x : V, φ (false,x) = e x) ∧
       ∃ mate : Bool,
@@ -381,6 +363,15 @@ def GeneralImprimitiveHostModels
         IsGraphAutomorphism H q ∧
         q u = u' ∧ q v = v'))
 
+/-- A named host model or the Taylor fibre pattern from the global reduction. -/
+def GeneralImprimitiveHostModels
+    {V W B : Type*} [Fintype V] [Fintype W]
+    (G : SimpleGraph V) (H : SimpleGraph W)
+    (e : V ↪ W) (block : W → B) : Prop :=
+  ImprimitiveHostModels G H e ∨ ImprimitiveHostModels Gᶜ Hᶜ e ∨
+    ImprimitiveTaylorHostModel G H e block
+
+
 /-- Global imprimitive necessity: no selected-base restriction is
 assumed. Gardiner is invoked only for G itself: the complement
 branch is reached after G is proved non-homogeneous, so its
@@ -390,7 +381,7 @@ The graph-theoretic output is deliberately a disjunction, not an
 unverified claim that all Taylor and canonical host models have
 the EPPA property.
 -/
-theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
+theorem nonhomogeneous_transitive_imprimitive_eppa_with_taylor_base
     {V W B : Type*}
     [Fintype V] [DecidableEq V]
     [Fintype W] [DecidableEq W]
@@ -410,7 +401,9 @@ theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
     (hGardinerG : DoubleCover.IsHomogeneousGraph G →
       GardinerPublishedModels G) :
     Fintype.card W = 2 * Fintype.card V ∧
-      GeneralImprimitiveHostModels G H e block := by
+      (ImprimitiveHostModels G H e ∨ ImprimitiveHostModels Gᶜ Hᶜ e ∨
+        (¬ DoubleCover.IsHomogeneousGraph G ∧ ¬ IsClusterGraph G ∧ ¬ IsCoClusterGraph G ∧
+          ImprimitiveTaylorHostModel G H e block)) := by
   classical
   have hDouble : Fintype.card W = 2 * Fintype.card V :=
     nonhomogeneous_imprimitive_eppa_host_exactly_double
@@ -464,7 +457,35 @@ theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
       transitive_eppa_double_cover_classification
         G H e heppa block hTrans hBlocks hSurj
         hHom hCluster hCoCluster hManyBlocks hNontrivial hDouble
-    exact Or.inr (Or.inr hTaylor)
+    exact Or.inr (Or.inr ⟨hHom, hCluster, hCoCluster, hTaylor⟩)
+
+/-- The original global model disjunction, forgetting the properties held
+by the selected base in the Taylor branch. -/
+theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
+    {V W B : Type*}
+    [Fintype V] [DecidableEq V]
+    [Fintype W] [DecidableEq W]
+    [Fintype B] [DecidableEq B]
+    (G : SimpleGraph V) (H : SimpleGraph W) [DecidableRel H.Adj]
+    (e : V ↪ W) (heppa : IsEPPAEmbedding G H e)
+    (block : W → B)
+    (hBlocks : InvariantBlockMap H block)
+    (hSurj : Function.Surjective block)
+    (hTrans : IsVertexTransitive H)
+    (hNonhomogeneousH : ¬ DoubleCover.IsHomogeneousGraph H)
+    (hManyBlocks : 2 ≤ Fintype.card B)
+    (hNontrivial : ∃ b₀ : B, 2 ≤
+      ((Finset.univ : Finset W).filter
+        (fun w => block w = b₀)).card)
+    (hBound : Fintype.card W ≤ 2 * Fintype.card V)
+    (hGardinerG : DoubleCover.IsHomogeneousGraph G →
+      GardinerPublishedModels G) :
+    Fintype.card W = 2 * Fintype.card V ∧
+      GeneralImprimitiveHostModels G H e block := by
+  obtain ⟨hDouble, hCases⟩ := nonhomogeneous_transitive_imprimitive_eppa_with_taylor_base
+    G H e heppa block hBlocks hSurj hTrans hNonhomogeneousH hManyBlocks hNontrivial
+    hBound hGardinerG
+  exact ⟨hDouble, hCases.imp id (Or.imp id (fun h => h.2.2.2))⟩
 
 end EPPAIII.BlockSystems
 ```
