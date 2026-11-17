@@ -12,13 +12,13 @@ namespace EPPAIII.Primitive
 
 open EPPAIII.BlockSystems
 
-/-- The constituent bound and the point stabilizer order give the
+/-- The constituent bound and an upper bound on the point stabilizer order give the
 Higman–Sims exclusion for the actual selected embedding. -/
-theorem higmanSims_not_eppa_embedding {V W : Type*} [Finite V] [Fintype W]
+theorem higmanSims_not_eppa_embedding_of_pointStabilizer_bound {V W : Type*} [Finite V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W) [DecidableRel H.Adj]
     (h : H.IsSRGWith 100 22 0 6)
     (hNonlocal : ∀ r, maxEppaOrder (nonlocalGraph H r) ≤ 38)
-    (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 887040)
+    (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 887040)
     (e : V ↪ W) (hLarge : 50 ≤ Nat.card V) :
     ¬ IsEPPAEmbedding G H e := by
   classical
@@ -52,18 +52,30 @@ theorem higmanSims_not_eppa_embedding {V W : Type*} [Finite V] [Fintype W]
   have hDiv := factorial_dvd_rootStabilizer_card_of_homogeneous_subset
     G H e heppa root (G.neighborSet root) (G.loopless.irrefl root)
     (fun _ hx _ hy => iff_of_true hx hy) (Or.inr hIndependent) hLocalOrder
-  rw [hStabilizer (e root)] at hDiv
-  exact (show ¬ Nat.factorial 11 ∣ 887040 by decide) hDiv
+  have hPos : 0 < Nat.card (pointwiseGraphStabilizer H {e root}) := Nat.card_pos
+  have hFactorial := (Nat.le_of_dvd hPos hDiv).trans (hStabilizer (e root))
+  exact (show ¬ Nat.factorial 11 ≤ 887040 by decide) hFactorial
+
+/-- An exact point stabilizer order supplies the bound for the exclusion. -/
+theorem higmanSims_not_eppa_embedding {V W : Type*} [Finite V] [Fintype W]
+    (G : SimpleGraph V) (H : SimpleGraph W) [DecidableRel H.Adj]
+    (h : H.IsSRGWith 100 22 0 6)
+    (hNonlocal : ∀ r, maxEppaOrder (nonlocalGraph H r) ≤ 38)
+    (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 887040)
+    (e : V ↪ W) (hLarge : 50 ≤ Nat.card V) :
+    ¬ IsEPPAEmbedding G H e :=
+  higmanSims_not_eppa_embedding_of_pointStabilizer_bound G H h hNonlocal
+    (fun r => (hStabilizer r).le) e hLarge
 
 /-- A specified isomorphism of each second constituent with the M₂₂
 model supplies its EPPA bound. -/
-theorem higmanSims_maxEppaOrder_le_of_m22_model {W X : Type*} [Fintype W] [Fintype X]
+theorem higmanSims_maxEppaOrder_le_of_m22_model_of_bound {W X : Type*} [Fintype W] [Fintype X]
     (H : SimpleGraph W) [DecidableRel H.Adj] (h : H.IsSRGWith 100 22 0 6)
     (M : SimpleGraph X) [DecidableRel M.Adj] (hM : M.IsSRGWith 77 16 0 4)
     (hMRank : HasRankThreeAutAction M)
     (hMStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer M {r}) = 11520)
     (hModel : ∀ r, Nonempty (nonlocalGraph H r ≃g M))
-    (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 887040) :
+    (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 887040) :
     maxEppaOrder H ≤ 49 := by
   have hSecond (r : W) : maxEppaOrder (nonlocalGraph H r) ≤ 38 := by
     obtain ⟨φ⟩ := hModel r
@@ -74,7 +86,19 @@ theorem higmanSims_maxEppaOrder_le_of_m22_model {W X : Type*} [Fintype W] [Finty
     exact hBound.trans (mathieuTwentyTwo_maxEppaOrder_le M hM hMRank hMStabilizer)
   obtain ⟨S, hOrder, heppa⟩ := maxEppaOrder_attained H
   by_contra! hLarge
-  exact higmanSims_not_eppa_embedding (H.induce S) H h hSecond hStabilizer
-    (Function.Embedding.subtype S) (by omega) heppa
+  exact higmanSims_not_eppa_embedding_of_pointStabilizer_bound
+    (H.induce S) H h hSecond hStabilizer (Function.Embedding.subtype S) (by omega) heppa
+
+/-- An exact point stabilizer order supplies the bound for the constituent reduction. -/
+theorem higmanSims_maxEppaOrder_le_of_m22_model {W X : Type*} [Fintype W] [Fintype X]
+    (H : SimpleGraph W) [DecidableRel H.Adj] (h : H.IsSRGWith 100 22 0 6)
+    (M : SimpleGraph X) [DecidableRel M.Adj] (hM : M.IsSRGWith 77 16 0 4)
+    (hMRank : HasRankThreeAutAction M)
+    (hMStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer M {r}) = 11520)
+    (hModel : ∀ r, Nonempty (nonlocalGraph H r ≃g M))
+    (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 887040) :
+    maxEppaOrder H ≤ 49 :=
+  higmanSims_maxEppaOrder_le_of_m22_model_of_bound H h M hM hMRank hMStabilizer hModel
+    (fun r => (hStabilizer r).le)
 
 end EPPAIII.Primitive

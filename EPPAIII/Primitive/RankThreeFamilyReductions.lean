@@ -121,6 +121,9 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
       (hLocal : ∀ root, let p := evenTernaryParameters a plus
         let μ := evenTernaryLocalCodegree a plus
         (constituentGraph H root false).IsSRGWith p.degree p.adjacentCommon μ μ)
+  | evenTernaryOfHost {a : ℕ} (ha : 1 ≤ a) (plus : Bool)
+      (hHost : let p := evenTernaryParameters a plus
+        H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
   | nonsingularOrthogonalSixMinus
       (hModel : IsModelUpToComplement H (orthogonalSixGraph false false))
   | affineOrthogonalSix (plus : Bool)
@@ -135,7 +138,7 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
       (M : SimpleGraph W) (hMSRG : M.IsSRGWith 77 16 0 4) (hMRank : HasRankThreeAutAction M)
       (hMStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer M {r}) = 11520)
       (hModel : ∀ r, Nonempty (nonlocalGraph H r ≃g M))
-      (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 887040)
+      (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ≤ 887040)
 
 private theorem automorphism_moving_root {V : Type*} {H : SimpleGraph V}
     (hTrans : HasTransitiveGraphAutomorphisms H) (r s : V) :
@@ -426,6 +429,9 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
   | evenTernary ha plus hHost hLocal =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (evenTernary_constituents_exclude_forms H ha plus hHost hLocal root))
+  | evenTernaryOfHost ha plus hHost =>
+      exact Or.inr (fun root => no_rooted_forms_of_exclusions root
+        (evenTernary_constituents_exclude_forms_of_host H ha plus hHost root))
   | nonsingularOrthogonalSixMinus hModel =>
       exact Or.inl (hOrthogonal.noSixMinus.of_iso_or_compl hModel)
   | affineOrthogonalSix plus hModel =>
@@ -443,7 +449,7 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
         (mathieuTwentyTwo_maxEppaOrder_le H hSRG hRank hStabilizer) (by decide))
   | higmanSims hSRG M hMSRG hMRank hMStabilizer hModel hStabilizer =>
       exact Or.inl (no_half_order_of_maxEppaOrder_bound hSRG.card
-        (higmanSims_maxEppaOrder_le_of_m22_model H hSRG M hMSRG hMRank hMStabilizer
+        (higmanSims_maxEppaOrder_le_of_m22_model_of_bound H hSRG M hMSRG hMRank hMStabilizer
           hModel hStabilizer) (by decide))
 
 /-- Remove the recognized families from the catalogue at the actual selected
