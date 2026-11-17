@@ -519,6 +519,7 @@ import EPPAIII.Primitive.ConstituentClassifiedModels
 import EPPAIII.Primitive.ConstituentParity
 import EPPAIII.Primitive.G2TwoModel
 import EPPAIII.Primitive.RankThreeFamilyReductions
+import EPPAIII.Primitive.RankThreeContextualCoverage
 import EPPAIII.Primitive.PolarRankThreeWitnesses
 import EPPAIII.Primitive.TriangularConstituentReduction
 import EPPAIII.Primitive.BinaryPolarExclusions

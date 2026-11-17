@@ -9,7 +9,7 @@ namespace EPPAIII.Primitive
 open EPPAIII.BlockSystems
 open EPPAIII.CliqueCovers
 
-private theorem transitive_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
+theorem transitive_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
     (φ : G ≃g H) (h : HasTransitiveGraphAutomorphisms G) :
     HasTransitiveGraphAutomorphisms H := by
   intro a b
@@ -20,7 +20,7 @@ private theorem transitive_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleG
   · change φ (q (φ.symm a)) = b
     rw [hab, φ.apply_symm_apply]
 
-private theorem model_form_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
+theorem model_form_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
     (φ : G ≃g H) (h : HasCliqueUnionOrCoverModel G) :
     HasCliqueUnionOrCoverModel H := by
   have move {U : Type} {K : SimpleGraph U} (hK : IsModelUpToComplement G K) :
@@ -34,7 +34,7 @@ private theorem model_form_of_iso {V W : Type*} {G : SimpleGraph V} {H : SimpleG
   · exact Or.inl ⟨s, t, move h⟩
   · exact Or.inr ⟨s, t, X, Y, move h⟩
 
-private theorem model_form_of_compl {V : Type*} {G : SimpleGraph V}
+theorem model_form_of_compl {V : Type*} {G : SimpleGraph V}
     (h : HasCliqueUnionOrCoverModel Gᶜ) : HasCliqueUnionOrCoverModel G := by
   have move {U : Type} {K : SimpleGraph U} (hK : IsModelUpToComplement Gᶜ K) :
       IsModelUpToComplement G K := by

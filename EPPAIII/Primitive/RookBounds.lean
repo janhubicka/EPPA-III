@@ -56,7 +56,8 @@ theorem rook_side_le_four_of_eppa {V W : Type*} [Finite V] [Finite W]
   have hNo := (noHalfOrderEPPA_rookGraph n (by omega)).of_iso_or_compl hModel
   exact hNo.not_eppa_embedding G e hHalf hEppa
 
-private theorem homogeneous_graph_of_iso {W F : Type*} [Finite W]
+/-- Homogeneity is invariant under graph isomorphisms. -/
+theorem homogeneous_graph_of_iso {W F : Type*} [Finite W]
     {H : SimpleGraph W} {K : SimpleGraph F} (φ : H ≃g K)
     (hHom : DoubleCover.IsHomogeneousGraph K) :
     DoubleCover.IsHomogeneousGraph H := by

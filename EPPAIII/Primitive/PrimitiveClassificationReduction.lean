@@ -1,4 +1,4 @@
-import EPPAIII.Primitive.RankThreeFamilyReductions
+import EPPAIII.Primitive.RankThreeContextualCoverage
 import EPPAIII.Primitive.TaylorConstituentProjection
 
 /-! # From published model recognition to primitive EPPA necessity -/
@@ -48,7 +48,7 @@ catalogue is covered by the proved family reductions. Its remaining inputs
 are graph and group recognition, together with the specified finite results. -/
 theorem primitiveCases_of_eppa_of_catalogue
     (catalog : RankThreeCatalog) (hCatalogue : RankThreeClassification.{v} catalog)
-    (hFamilies : ∀ c K, K ∈ catalog c → RecognizedRankThreeFamily K.2)
+    (hFamilies : ∀ c K, K ∈ catalog c → CompleteRankThreeCase K.2)
     (hRecognize : PrimitiveRecognitionInputs.{u, v})
     (hSearch : OrthogonalSearchChecks) (hPaley : SmallPaleyExclusions)
     (hFinite : PrimitiveFiniteChecks)
@@ -78,10 +78,14 @@ theorem primitiveCases_of_eppa_of_catalogue
     exact section8Cases_of_primitive_or_imprimitive P Q j hp hc
       (hRecognize.gardinerSelected P) hRecognize.gardinerHost hRecognize.twoGraphOrders
   obtain ⟨hRec, hRecC⟩ := hRecognize.triangular L hPrimL hRankL
-  obtain ⟨_, _, _, hFalse, _⟩ := hMin.residual_rankThree_family hPrimL hRankL root
-    catalog (fun _ _ => False) hCatalogue (fun c M hm => Or.inl (hFamilies c M hm))
-    hProject Or.inl hRecognize.smallParameters hRecognize.smallModels hSearch hPaley hFinite
-    hRec hRecC
-  exact hFalse
+  obtain ⟨hLocal, hNonlocal⟩ := hMin.constituent_shapes hPrimL hRankL root hProject
+    Or.inl hRecognize.smallParameters hRecognize.smallModels hSearch hPaley hFinite
+    (fun side n hn hModel => Or.inl
+      (primitiveCases_of_triangular_constituent K L f hMin.pair.eppa hMin.pair.halfOrder hRankL
+        hRec hRecC hSearch hFinite (f root) side n hn hModel))
+  have hCases := primitiveCases_of_completeRankThreeCoverage catalog hFamilies K L f
+    hRankL hMin.pair.eppa hMin.pair.halfOrder (hCatalogue L hPrimL hRankL)
+    hSearch hFinite root ⟨hLocal, hNonlocal⟩
+  exact hMin.unclassified (Or.inl hCases)
 
 end EPPAIII.Primitive
