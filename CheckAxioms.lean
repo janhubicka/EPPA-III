@@ -1299,3 +1299,10 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.twoClique_matched_bottom_induced
 #print axioms EPPAIII.BlockSystems.twoClique_matched_isEPPA
 #print axioms EPPAIII.BlockSystems.twoClique_matched_vertexTransitive
+
+-- Direct finite C5 homogeneity, without any external Gardiner input.
+#print axioms EPPAIII.BlockSystems.cycleFive_isHomogeneous
+#print axioms EPPAIII.BlockSystems.cycleFive_separated_double_eppa
+#print axioms EPPAIII.BlockSystems.cycleFive_taylor_double_eppa
+#print axioms EPPAIII.BlockSystems.cycleFive_matching_prism_eppa
+#print axioms EPPAIII.BlockSystems.cycleFive_twin_blowup_eppa
