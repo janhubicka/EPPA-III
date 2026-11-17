@@ -484,3 +484,5 @@ import EPPAIII.Primitive.CycleFiveCoverObstruction
 import EPPAIII.Primitive.OrthogonalEightConstituents
 import EPPAIII.Primitive.RankThreeCases
 import EPPAIII.Primitive.CoverHalfReduction
+import EPPAIII.Primitive.SmallConstituentCases
+import EPPAIII.Primitive.BilinearRankOne

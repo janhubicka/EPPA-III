@@ -68,6 +68,11 @@ def schlaefliModel : SimpleGraph SchlaefliVertex where
     · simpa [schlaefliRelated, Finset.inter_comm] using h.2
   loopless := ⟨fun _ h => h.1 rfl⟩
 
+instance : DecidableRel schlaefliModel.Adj := fun a b => by
+  change Decidable (a ≠ b ∧ schlaefliRelated a b)
+  rcases a with ⟨r, i⟩ | p <;> rcases b with ⟨s, j⟩ | q <;>
+    unfold schlaefliRelated <;> infer_instance
+
 /-- Table labels for the screened, oriented host models. -/
 inductive SmallConstituentHostModel
   | rook (n : Nat) (complemented : Bool)

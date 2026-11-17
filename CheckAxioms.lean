@@ -1363,3 +1363,8 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.primitiveCases_or_residual_rankThree_model
 #print axioms EPPAIII.Primitive.nonhomogeneous_cover_selected_at_most_half
 #print axioms EPPAIII.Primitive.other_selection_meets_half_of_local_cover
+#print axioms EPPAIII.Primitive.foldedFiveCube_eq_clebsch
+#print axioms EPPAIII.Primitive.schlaefliModelIso
+#print axioms EPPAIII.Primitive.primitiveCases_of_screened_small_constituent
+#print axioms EPPAIII.Primitive.bilinearFormsRankOne_card
+#print axioms EPPAIII.Primitive.bilinearFormsRankOne_connected
