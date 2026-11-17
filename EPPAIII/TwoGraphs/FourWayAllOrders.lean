@@ -39,8 +39,9 @@ theorem all_taylor_transversals_eppa_iff_homogeneous_two_graph
       obtain ⟨t,hNonhom⟩ :=
         switching_class_has_nonhomogeneous_representative
           G x y z hxy hxz hyz
-      exact (taylor_fourway_internal_equivalence
-        G x y z hxy hxz hyz).mp ⟨t,hNonhom,hAll t⟩ |>.2
+      have hBoth := (taylor_fourway_internal_equivalence
+        G x y z hxy hxz hyz).mp ⟨t,hNonhom,hAll t⟩
+      exact hBoth.2
     · have hNoEven : ¬ ∃ a b c : V,
         a ≠ b ∧ a ≠ c ∧ b ≠ c ∧ EvenTriple G a b c := by
         rintro ⟨a,b,c,hab,hac,hbc,_⟩
