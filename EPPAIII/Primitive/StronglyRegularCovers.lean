@@ -527,4 +527,64 @@ theorem srg_iso_cover_homogeneous {V : Type*} [Fintype V]
   · obtain ⟨φ⟩ := hIso
     exact homogeneous_of_iso φ (srg_uniform_cover_compl_homogeneous X Y (srg_of_iso φ hSRG))
 
+/-- Positive nonedge codegree forces an induced two-edge path as soon as a
+nonedge exists. The order and degree hypotheses ensure there is a nonedge. -/
+private theorem srg_not_cluster_of_positive_mu {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] {n k l m : ℕ}
+    (h : G.IsSRGWith n k l m) (hOrder : k + 1 < n) (hMu : 0 < m) :
+    ¬ BlockSystems.IsClusterGraph G := by
+  classical
+  intro hCluster
+  obtain ⟨x⟩ := Fintype.card_pos_iff.mp (h.card.symm ▸ (show 0 < n by omega))
+  have hNonneighbors : 0 < Fintype.card (Gᶜ.neighborSet x) := by
+    rw [Gᶜ.card_neighborSet_eq_degree, h.compl.regular]
+    omega
+  obtain ⟨⟨y, hxy⟩⟩ := Fintype.card_pos_iff.mp hNonneighbors
+  have hCommon : 0 < Fintype.card (G.commonNeighbors x y) := by
+    rw [h.of_not_adj hxy.1 hxy.2]
+    exact hMu
+  obtain ⟨⟨z, hxz, hyz⟩⟩ := Fintype.card_pos_iff.mp hCommon
+  exact hxy.2 (hCluster x z y hxz hyz.symm hxy.1)
+
+/-- An SRG with a positive common-neighbour count on each side of a
+nontrivial adjacency relation cannot be a clique union or a cover, in either
+orientation. -/
+theorem srg_positive_codegrees_exclude_forms {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] {n k l m : ℕ}
+    (h : G.IsSRGWith n k l m) (hDegree : 0 < k) (hOrder : k + 1 < n)
+    (hMu : 0 < m) (hMuCompl : 2 * k - l < n) :
+    (∀ s t, IsEmpty (G ≃g cliqueUnion s t)) ∧
+    (∀ s t, IsEmpty (G ≃g (cliqueUnion s t)ᶜ)) ∧
+    (∀ s t X Y, IsEmpty (G ≃g coverGraph s t X Y)) ∧
+    (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
+  classical
+  have hExcludes {W : Type*} [Fintype W] (J : SimpleGraph W) [DecidableRel J.Adj]
+      (hJ : J.IsSRGWith n k l m) :
+      ¬ BlockSystems.IsClusterGraph J ∧ ¬ BlockSystems.IsClusterGraph Jᶜ :=
+    ⟨srg_not_cluster_of_positive_mu J hJ hOrder hMu,
+      srg_not_cluster_of_positive_mu Jᶜ hJ.compl (by omega) (by omega)⟩
+  have hUnion (s t : ℕ) : BlockSystems.IsClusterGraph (cliqueUnion s t) := by
+    intro x y z hxy hyz hxz
+    change x.1 = y.1 ∧ x.2 ≠ y.2 at hxy
+    change y.1 = z.1 ∧ y.2 ≠ z.2 at hyz
+    exact ⟨hxy.1.trans hyz.1, fun h₂ => hxz (Prod.ext (hxy.1.trans hyz.1) h₂)⟩
+  refine ⟨fun s t => ⟨?_⟩, fun s t => ⟨?_⟩, fun s t X Y => ⟨?_⟩,
+    fun s t X Y => ⟨?_⟩⟩
+  · intro f
+    exact (hExcludes _ (srg_of_iso f h)).1 (hUnion _ _)
+  · intro f
+    apply (hExcludes _ (srg_of_iso f h)).2
+    simpa only [compl_compl] using hUnion s t
+  · intro f
+    have hJ := srg_of_iso f h
+    rcases srg_cover_cluster_or_complement X Y hJ with hc | hc
+    · exact (hExcludes _ hJ).1 hc
+    · exact (hExcludes _ hJ).2 hc
+  · intro f
+    have hJ := srg_of_iso f h
+    have hJ' := srg_of_eq (compl_compl _) hJ.compl
+    rcases srg_cover_cluster_or_complement X Y hJ' with hc | hc
+    · exact (hExcludes _ hJ).2 (by simpa only [compl_compl] using hc)
+    · exact (hExcludes _ hJ).1 hc
+
 end EPPAIII.Primitive

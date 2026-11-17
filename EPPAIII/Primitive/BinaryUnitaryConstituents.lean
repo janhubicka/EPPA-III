@@ -1,6 +1,7 @@
 import EPPAIII.Primitive.OrthogonalEightConstituents
 import Mathlib.Algebra.BigOperators.Fin
 import Mathlib.Data.Fin.VecNotation
+import Mathlib.Data.ZMod.Basic
 
 /-! # Induced pentagons in nonsingular binary unitary graphs -/
 
@@ -11,7 +12,7 @@ open scoped BigOperators
 /-- Coefficients in `𝔽₂[ω]/(ω² + ω + 1)`, in the basis `(1,ω)`. -/
 abbrev BinaryUnitaryScalar := ZMod 2 × ZMod 2
 
-private def scalar (a : Fin 4) : BinaryUnitaryScalar := (a.val % 2, a.val / 2)
+private def scalar (a : Fin 4) : BinaryUnitaryScalar := (Nat.cast (a.val % 2), Nat.cast (a.val / 2))
 
 private def scalarMul (x y : BinaryUnitaryScalar) : BinaryUnitaryScalar :=
   (x.1 * y.1 + x.2 * y.2, x.1 * y.2 + x.2 * y.1 + x.2 * y.2)
@@ -53,11 +54,11 @@ instance (n : ℕ) : DecidableEq (BinaryUnitaryPoint n) := by
 /-- The nonorthogonality graph on the nonsingular binary unitary points. -/
 def binaryUnitaryGraph (n : ℕ) : SimpleGraph (BinaryUnitaryPoint n) where
   Adj x y := x ≠ y ∧ hermitian x.val y.val ≠ 0
-  symm := by
+  symm := ⟨by
     rintro x y ⟨hne, hxy⟩
     refine ⟨hne.symm, fun hyx => hxy ?_⟩
-    rw [← hermitian_swap y.val x.val, hyx, map_zero]
-  loopless x h := h.1 rfl
+    rw [← hermitian_swap y.val x.val, hyx, map_zero]⟩
+  loopless := ⟨fun _ h => h.1 rfl⟩
 
 instance (n : ℕ) : DecidableRel (binaryUnitaryGraph n).Adj := fun _ _ => by
   change Decidable (_ ∧ _)
@@ -115,7 +116,7 @@ private def zeroExtend (d : ℕ) (x : BinaryUnitaryPoint 5) : BinaryUnitaryPoint
   · obtain ⟨i, hi, hBefore⟩ := x.property.1
     refine ⟨Fin.castAdd d i, (Fin.append_left _ _ _).trans hi, ?_⟩
     intro j hj
-    have hj5 : j.val < 5 := hj.trans i.isLt
+    have hj5 : j.val < 5 := (show j.val < i.val from hj).trans i.isLt
     let j' : Fin 5 := ⟨j.val, hj5⟩
     have hj' : Fin.castAdd d j' = j := Fin.ext rfl
     rw [← hj', Fin.append_left]

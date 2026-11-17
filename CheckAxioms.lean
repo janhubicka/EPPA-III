@@ -1464,3 +1464,7 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.affine_15625_constituents_exclude_forms
 #print axioms EPPAIII.Primitive.polar_rankTwo_not_eppa_of_small_stabilizer
 #print axioms EPPAIII.Primitive.primitiveCases_of_completeRankThreeCoverage
+#print axioms EPPAIII.Primitive.unitaryFiveTwo_cliqueProfileMin
+#print axioms EPPAIII.Primitive.unitaryFiveTwo_point_not_eppa
+#print axioms EPPAIII.Primitive.srg_positive_codegrees_exclude_forms
+#print axioms EPPAIII.Primitive.evenTernary_constituents_exclude_forms

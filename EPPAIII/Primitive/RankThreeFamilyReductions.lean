@@ -1,5 +1,7 @@
+import EPPAIII.Primitive.NonsingularTernaryExclusion
 import EPPAIII.Primitive.AffineExceptionalScreen
 import EPPAIII.Primitive.AffineFifteenThousandExclusion
+import EPPAIII.Primitive.AffineSurvivorExclusions
 import EPPAIII.Primitive.AffineLineSmallPaley
 import EPPAIII.Primitive.AffineSemilinearExclusion
 import EPPAIII.Primitive.BilinearExclusion
@@ -61,6 +63,18 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
   | projectiveHalfSpin {F : Type} [Field F]
       (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms (halfSpinFiveGraph F))
       (hModel : IsModelUpToComplement H (halfSpinFiveGraph F))
+  | affine81Degree32 (complement : Bool)
+      (hSRG : (if complement then Hᶜ else H).IsSRGWith 81 32 13 12)
+  | affine169Degree72 (complement : Bool)
+      (hSRG : (if complement then Hᶜ else H).IsSRGWith 169 72 31 30)
+  | affine256Degree120 (complement : Bool)
+      (hSRG : (if complement then Hᶜ else H).IsSRGWith 256 120 56 56)
+  | affine2048Degree276 (complement : Bool)
+      (hSRG : (if complement then Hᶜ else H).IsSRGWith 2048 276 44 36)
+  | affine2401Degree240 (complement : Bool)
+      (hSRG : (if complement then Hᶜ else H).IsSRGWith 2401 240 59 20)
+  | affine2401Degree480 (complement : Bool)
+      (hSRG : (if complement then Hᶜ else H).IsSRGWith 2401 480 119 90)
   | affineFifteenThousand (hSRG : H.IsSRGWith 15625 7560 3655 3660)
   | affineExceptionalProfile (i : Fin 25) (complement : Bool)
       (hSRG : let p := affineExceptionalExcludedParametersOriented i complement
@@ -91,6 +105,12 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
   | affineEightyOne (hOrder : n = 81)
       (hPair : ∀ x y, x ≠ y → Nat.card (hostPointwiseStabilizer H {x, y}) ≤ 12)
   | orthogonalSixPlus (hModel : IsModelUpToComplement H (orthogonalSixGraph true true))
+  | evenTernary {a : ℕ} (ha : 1 ≤ a) (plus : Bool)
+      (hHost : let p := evenTernaryParameters a plus
+        H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
+      (hLocal : ∀ root, let p := evenTernaryParameters a plus
+        let μ := evenTernaryLocalCodegree a plus
+        (constituentGraph H root false).IsSRGWith p.degree p.adjacentCommon μ μ)
   | nonsingularOrthogonalSixMinus
       (hModel : IsModelUpToComplement H (orthogonalSixGraph false false))
   | affineOrthogonalSix (plus : Bool)
@@ -128,6 +148,22 @@ private theorem no_constituent_form_of_exclusions {V : Type*} {G : SimpleGraph V
   · rcases h with h | h
     · exact (hG s t X Y).false (Classical.choice h)
     · exact (hCG s t X Y).false (Classical.choice h)
+
+private theorem no_rooted_forms_of_orientation {n : ℕ} {H : SimpleGraph (Fin n)}
+    (complement : Bool)
+    (h : let K := if complement then Hᶜ else H
+      ∀ root, ¬ HasCliqueUnionOrCoverModel (localGraph K root) ∧
+        ¬ HasCliqueUnionOrCoverModel (nonlocalGraph K root)) :
+    ∀ root, ¬ HasCliqueUnionOrCoverModel (localGraph H root) ∧
+      ¬ HasCliqueUnionOrCoverModel (nonlocalGraph H root) := by
+  have hModel : IsModelUpToComplement H (if complement then Hᶜ else H) := by
+    cases complement
+    · exact Or.inl ⟨SimpleGraph.Iso.refl⟩
+    · apply Or.inr
+      change Nonempty (H ≃g Hᶜᶜ)
+      rw [compl_compl]
+      exact ⟨SimpleGraph.Iso.refl⟩
+  exact constituent_forms_exclusion_of_model h hModel
 
 private theorem no_constituent_form_of_rook {V : Type*} {G : SimpleGraph V}
     (f : rookGraph 3 ↪g G) : ¬ HasCliqueUnionOrCoverModel G :=
@@ -195,6 +231,30 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
         (binaryAffineHalfSpin_excludes_actual_constituents H hSRG root))
   | projectiveHalfSpin hTrans hModel =>
       exact Or.inr (halfSpinFive_model_excludes_forms hTrans hModel)
+  | affine81Degree32 complement hSRG =>
+      exact Or.inr (no_rooted_forms_of_orientation complement fun root =>
+        no_rooted_forms_of_exclusions root
+          (affine_81_32_constituents_exclude_forms _ hSRG root))
+  | affine169Degree72 complement hSRG =>
+      exact Or.inr (no_rooted_forms_of_orientation complement fun root =>
+        no_rooted_forms_of_exclusions root
+          (affine_169_72_constituents_exclude_forms _ hSRG root))
+  | affine256Degree120 complement hSRG =>
+      exact Or.inr (no_rooted_forms_of_orientation complement fun root =>
+        no_rooted_forms_of_exclusions root
+          (affine_256_120_constituents_exclude_forms _ hSRG root))
+  | affine2048Degree276 complement hSRG =>
+      exact Or.inr (no_rooted_forms_of_orientation complement fun root =>
+        no_rooted_forms_of_exclusions root
+          (affine_2048_276_constituents_exclude_forms _ hSRG root))
+  | affine2401Degree240 complement hSRG =>
+      exact Or.inr (no_rooted_forms_of_orientation complement fun root =>
+        no_rooted_forms_of_exclusions root
+          (affine_2401_240_constituents_exclude_forms _ hSRG root))
+  | affine2401Degree480 complement hSRG =>
+      exact Or.inr (no_rooted_forms_of_orientation complement fun root =>
+        no_rooted_forms_of_exclusions root
+          (affine_2401_480_constituents_exclude_forms _ hSRG root))
   | affineFifteenThousand hSRG =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (affine_15625_constituents_exclude_forms H hSRG root))
@@ -240,6 +300,9 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
       simpa only [Nat.card_fin] using hOrder
   | orthogonalSixPlus hModel =>
       exact Or.inl (hOrthogonal.oSixPlus.of_iso_or_compl hModel)
+  | evenTernary ha plus hHost hLocal =>
+      exact Or.inr (fun root => no_rooted_forms_of_exclusions root
+        (evenTernary_constituents_exclude_forms H ha plus hHost hLocal root))
   | nonsingularOrthogonalSixMinus hModel =>
       exact Or.inl (hOrthogonal.noSixMinus.of_iso_or_compl hModel)
   | affineOrthogonalSix plus hModel =>
