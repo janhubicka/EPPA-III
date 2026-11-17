@@ -1,0 +1,17 @@
+--- a/main-new(20261116-151839)-markers-r17.tex
++++ b/main-new(20261116-151839)-markers-r17.tex
+@@ -4585,7 +4585,13 @@
+ 
+ We first consider some special cases for small $m$. 
+ Both $\overline{\NO_3^+(3)}  = 3 K_2$ and $\overline{\NO_3^-(3)} = K_3$ are homogeneous. 
+-The graphs $\overline{\NO_5^+(3)} = U_4(2)$ and $\overline{\NO_5^-(3)} \cong \NO_6^-(2)$ were considered in Lemma~\ref{lemma:polarspaces} and Lemma~\ref{lem:o2}, respectively.
++The graph $\overline{\NO_5^-(3)}\cong\NO_6^-(2)$ was considered in Lemma~\ref{lem:o2}. We next consider $\overline{\NO_5^+(3)}\cong U_4(2)$.
++
++Use the Hermitian form $\sum_{j=1}^4 x_j y_j^2$ over $\F_4$ and take $\vc=(0,0,1,1)$. The local vertices are $A(a,b)=(1,a,b,b)$ for $a\in\F_4^\times$, $b\in\F_4$, with one $4$-clique per value of $a$. We claim that $|\gc_1|\leq 6$. Suppose that seven local vertices are selected. If they meet all three local cliques, select one vertex in the smallest clique and vary the choice in the second-largest clique. Each such choice determines a different vertex in the largest clique that gives three projectively collinear points, and at most one vertex of the largest clique is missing. There is also a noncollinear triple, by changing the choice in the largest clique. Both triples are independent. The collinear triple has two common neighbours other than~$\vc$, whereas the noncollinear triple has none, as is seen by taking the orthogonal complements of their spans. This contradicts EPPA.
++
++Otherwise the seven vertices meet two cliques in $4$ and $3$ vertices. By scaling the second coordinate and using field conjugation, take their indices to be $1$ and $\omega$, respectively, where $\omega^2=\omega+1$. Fix the edge $A(1,0)A(1,1)$ and choose an edge $A(\omega,b)A(\omega,c)$ in the second clique. The union of the common-neighbour sets of the four cross pairs, with $\vc$ removed, has eight vertices and induces $12$ edges if $b+c=\omega^2$, and $8$ otherwise. To check these counts, the two common neighbours of $A(a,b)$ and $A(a',b')$ other than~$\vc$ have representatives $(h^2,\ell^2,z,1+z)$, where $\ell=(b+b')/(a+a')$, $h=b+a\ell$, and $z$ ranges over the two values giving isotropic points. Any three values of the second-clique coordinate contain pairs giving both edge counts. The two induced copies of $2K_2$ therefore cannot be exchanged while fixing~$\vc$. This proves the claim.
++
++Now $|\gc_2|\geq 23-1-6=16$. The graph $\hc_2$ has order $32$ and degree $9$. Neither it nor its complement is a disjoint union of equal cliques, since neither $10$ nor $23$ divides $32$. Substituting $st=16$ and the degrees $9$ and $22$ in the cover degree formula leaves only $s=2$, $t=8$, $X=\overline M$, $Y=1$ for the complement. In that case $\hc_2$ contains a $K_{8,8}$, contradicting $\mu=3$ in $U_4(2)$. Thus $\hc_2$ cannot be the subconstituent selected in Hypothesis~\ref{ass:classification}.
+ %If $\hc = \overline{\NO_{7}^+(3)}$, then $|\hc_2| = 260$. If $\hc_2$ is a generalised clique cover or the complement, then by Remark~\ref{rem:sectionwreath}, $\Aut(\bar{H})_v$ (for $v \in V(\gc)$) contains a section isomorphic to~$S_{13}$, as $|\hc_2|/2 = 130$, but $13! > 48522240 = |\Aut(\hc)_v|$ (see~\cite[Section~10.67]{BRO22}), a contradiction.
+ %The local graph is $\NO_6^+(3)$, which is shown not to be in $\ep$ by Lemma~\ref{lemma:no2m3} below (or by a direct calculation).
+ %Thus $\hc \neq \overline{\NO_7^+(3)}$.

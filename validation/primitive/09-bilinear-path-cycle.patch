@@ -1,0 +1,62 @@
+--- a/main-new(20261116-151839)-markers-r17.tex
++++ b/main-new(20261116-151839)-markers-r17.tex
+@@ -3670,45 +3670,20 @@
+ \leanpending{Sections 7--8: no formal theorem match}%
+ 
+ \begin{proof}
+-Assume $\hc = H_q(2,m)$. 
+-We have $v =  q^{2m}$, $k = (q+1)(q^m-1)$, and $\lambda = q^m + (q-2)(q+1)$. 
+-Moreover, 
+-\begin{equation*}
+-\Aut(\hc) = \F_q^{2m} \rtimes (\GL_m(q) \circ \GL_2(q)) \rtimes C_r,
+- \end{equation*}
+-where $\circ$ denotes the central product (see~\cite[Theorem~1]{skresanov2021}).
+-In particular, we have 
+-\begin{equation}\label{eq:autbilinear}
+-|\Aut(\hc)_{\vc}| = \frac{1}{q-1} q^{\frac{m(m-1)}{2}} \prod_{i = 1}^m (q^i-1) \cdot q (q-1) (q^2-1) r \leq q^{m^2 + 4}.
+-\end{equation}
+-%Every edge in $\hc$ corresponds to a line in $\F_q^{m+2}$, i.e., to a point in $P(\F_q^{m+2})$, which we use as a label for the edge.
+-%Let $l \colon E(\hc) \to P(\F_q^{m+2})$ be the resulting labelling function and $L \coloneqq l(E(\gc))$ be the set of edge labels in~$\gc$. By Corollary~\ref{cor:subsets_projective}, there exist $e_1, \dots, e_s \in L$ with $s \leq m+2 + \log_2(r)$ such that $\PGammaL_{m+2}(q)_{(e_1, \dots, e_s)} = 1$. Let $a_1 b_1, \dots, a_sb_s \in E(\gc)$ be edges with labels $e_1, \dots, e_s$, respectively.
+-%Then $\Aut(H)_{(U)} = 1$ as $\Aut(H)$ induces an action of a subgroup of $\PGammaL_{m+2}(q)$ on the edge labels.
+-%\rehurek{4}{The set $U$ has not been defined, and faithfulness of the action on edge labels is not shown: translations or scalar kernels may fix every label. Define $U=\{a_i,b_i:i\in[s]\}$ and compute the kernel before concluding the pointwise stabiliser is trivial.}
+-%For $i \in [s]$, $a_s$ and $b_s$ together have $2k - \lambda$ neighbours. 
+-%Thus $|U \cup N_H(U)| \leq s \cdot (2+2k - \lambda)$.
+-%%As each of the $s$ vertices has $k$ neighbours in $H$, but two adjacent vertices share $\lambda$ neighbours, we obtain $|U \cup N_H(U)| \leq s \cdot (2+2k - \lambda)$. 
+-%For $(m,q) \notin \{(3,2), (3,3), (3,4), (4,2), (4,3), (5,2),(6,2)\}$, Lemma~\ref{lemma:boundneighboringset} yields
+-%\[|\gc| \leq (m+2 + \log_2(r)) (2+2(q+1)(q^m-1) 
+-%    - (q^m + (q-2)(q+1))) 
+-%	< \frac{q^{2m}}{2}
+-%	= \frac{|\hc|}{2},\]
+-%\rehurek{2}{Please record the verification of this parameter inequality and the exceptional list, preferably as a small script or appendix table. Seven exceptional pairs are too many for inserting the parameters to remain invisible.}
+-%which is a contradiction.
+-%
+-%Now we consider the remaining cases and 
+-%Unless $(m,q) = (4,2)$, it can be deduced from the parameters that neither subconstituent of $\hc$ is (complement-) triangular. 
+-%For $(m,q) = (4,2)$, this follows from~\cite[Section~10.57]{BRO22}. 
+-From the geometric description, it follows that~$\hc_1$ is connected, and since $\hc_1$ has more non-edges than edges, it is not the complement of a disjoint union of cliques. 
+-If $\hc_1$ is a generalised clique cover (or the complement), then $k$ must be even. 
+-But then $q$ is odd and so $|\hc_2|$ is even. 
+-By Hypothesis~\ref{ass:classification}, then also $\hc_2$ is a generalised clique cover (or the complement). 
+-
+-Thus it remains to consider the case that $\hc_2$ is a disjoint union of cliques, a generalised clique cover, or the complement of one of these graphs. 
+-If $(m,q) \neq (3,2)$, we have $\lfloor\sqrt{|\hc_2|/2}\rfloor! > q^{m^2 + 4} \geq |\Aut(\hc)_{\vc}|$ by~\eqref{eq:autbilinear}, which is a contradiction to Remark~\ref{rem:factorialboundstabilizer}.
+-For $(m,q) = (3,2)$, the subconstituent~$\hc_2$ has order~$42$. 
+-By Remark~\ref{rem:sectionwreath} and Corollary~\ref{cor:local-section}, $\Aut(\hc)_{\vc}$ contains a section isomorphic to $S_7$, but $|\Aut(\hc)_{\vc}| = 2016< |S_7|$, which is impossible.
+-Thus~$\hc$ does not satisfy Hypothesis~\ref{ass:classification}, which is a contradiction.
++Assume $\hc=H_q(2,m)$. Each vertex is the graph of a linear map from a fixed $2$-dimensional complement into the fixed $m$-space. Thus vertices identify with $2\times m$ matrices, adjacent when their difference has rank one. Translation lets us take $\vc=0$, so the two subconstituents consist of the matrices of ranks one and two.
++
++Write $e_0,e_1,e_2$ for the first three coordinate rows. In $\hc_1$, the matrices with row pairs $(e_0,0)$, $(e_1,0)$, $(0,e_1)$, and $(0,e_2)$ induce a path in this order. Consecutive differences have one zero row or have opposite rows. Nonconsecutive differences have independent rows. A disjoint union of cliques cannot contain this induced path, and the path is self-complementary.
++
++In $\hc_2$, the matrices with the following row pairs induce a cycle in the displayed cyclic order:
++\[
++(e_2,e_1),\qquad (e_2,e_1+e_2),\qquad
++(e_1,e_1+e_2),\qquad (e_1,e_0),\qquad (e_0,e_1).
++\]
++Each matrix has a $2\times2$ minor equal to $1$ or $-1$. Four consecutive differences have a zero row and the remaining one has opposite rows. Each difference of nonconsecutive matrices has a minor equal to $1$ or $-1$.
++
++A generalised clique cover cannot contain an induced five-cycle. Such a cycle has an edge whose endpoints lie on the same side and hence in the same block. The two vertices immediately outside that edge on the cycle each distinguish its endpoints. They must therefore lie on the opposite side in the same block as those endpoints, since the off-diagonal cross blocks have constant adjacency. This gives a chord. A disjoint union of cliques has no induced five-cycle either. Self-complementarity of the five-cycle also rules out both complementary orientations. Thus $\hc_2$ has none of the four forms in Hypothesis~\ref{ass:classification}.
++
++Put $x=q^m$. The order of $\hc_1$ is $(q+1)(x-1)$, by choosing a column line and then a nonzero row. The order of $\hc_2$ is $(x-1)(x-q)$, by choosing two independent rows in order. Both orders exceed nine. Hence Theorem~\ref{thm:gardiner} and the displayed induced subgraphs imply that neither subconstituent is homogeneous. By Hypothesis~\ref{ass:classification}, $\hc_1$ must be a generalised clique cover or its complement. Its order is even, so $q$ is odd. Then $\hc_2$ also has even order. The same hypothesis now requires $\hc_2$ to be a generalised clique cover or its complement, a contradiction.
+ \end{proof}
+ 
+ \subsubsection{Alternating forms graphs}

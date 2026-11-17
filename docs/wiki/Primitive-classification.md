@@ -1,6 +1,6 @@
 # Primitive EPPA witness classification
 
-## Statement to verify
+## Manuscript statement
 
 Let `H` be a finite simple graph whose full automorphism group acts transitively on vertices. Fix a finite simple graph `G` and a particular induced embedding `e : G ↪ H`. Suppose `|V(H)| ≤ 2|V(G)|`. The classification in R17, `thmintro:classification`, asserts that `IsEPPAEmbedding G H e` is equivalent to the following list, with simultaneous complementation of both graphs permitted.
 
@@ -11,10 +11,18 @@ Let `H` be a finite simple graph whose full automorphism group acts transitively
 | 3(a) | Exact doubled order, with a homogeneous selected graph and host its disjoint double or Taylor double. |
 | 3(b) | Exact doubled order, with an equal-sized disjoint clique union and a generalised clique cover of it. |
 | 3(c) | Exact doubled order, with two selected cliques of distinct sizes and the host two cliques of the total selected order joined by a perfect matching. |
-| 4(a–f) | Wagner / `2K₂`. `C₅` prism / `C₅`. Complement of the 2-clique extension of `C₅` / `C₅`. `R₃` prism / `R₃`. Matched `R₃ ⊔ complement(R₃)` / `R₃`. Complement of the 2-clique extension of `R₃` / `R₃`. |
+| 4(a–f) | Wagner / `2K₂`. `C₅` prism / `C₅`. Complement of the 2-clique extension of `C₅` / `C₅`. `R₃` prism / `R₃`. `R₃ ⊔ complement(R₃)`, with corresponding vertices joined by a matching / `R₃`. Complement of the 2-clique extension of `R₃` / `R₃`. |
 | 4(g–k) | Icosahedron / the four stated six-vertex forms. `R₄` / induced subgraph of `R₃ ⊔ K₁` or `L₄,₂`. Clebsch / induced subgraph of a listed figure model. `J(6,3)` / a Petersen switching mate. Schläfli / induced subgraph of a listed figure model. |
 
-The table is a specification of the manuscript's target. In the final Lean disjunction each row needs a graph model, and rows whose necessity or sufficiency depends on the embeddings must retain `e` or prove that the abstract pair condition determines the required property. Figure models need exact adjacency data. The size condition remains in force when a maximal figure model is replaced by an induced subgraph.
+The table describes the full manuscript statement. The corresponding-vertex
+matching in Case 4(e) is the correction recorded in the R17 review patch.
+The primitive Lean equivalence retains the specific embedding. Its alternatives are the homogeneous hosts,
+triangle-free selections in triangular hosts, and the R4, Clebsch and
+Schläfli figure cases. Each finite figure clause places the actual
+selection in a listed model by a host isomorphism.
+The [full fixed-embedding equivalence](https://github.com/janhubicka/EPPA-III/blob/main/EPPAIII/Primitive/SmallWitnessNamedClassification.lean)
+combines these with the imprimitive cases and the icosahedral and Johnson Taylor
+transversals.
 
 ## How the primitive proof connects
 
@@ -28,7 +36,13 @@ The rank-three assumptions and finite computation boundary are listed on the [as
 
 ## Verification status
 
-The small-host trichotomy is available in the repository. The family exclusions and final primitive classification are in progress. The pages here document the proof obligations and the source for each input.
+The endpoint `primitiveCases_iff_eppa_of_publishedRankThreeCoverage`
+proves the equivalence for the specified embedding in a finite primitive host.
+The proof includes all rank-two polar reductions and all 40 extraspecial and
+exceptional affine reductions. Exhaustive model recognition, the separate
+local recognition hypotheses, the four small Paley exclusions, and the
+specified finite outcomes are explicit theorem parameters. The order-40
+rooted certificate is part of the corresponding model data. [Lean endpoint](https://github.com/janhubicka/EPPA-III/blob/main/EPPAIII/Primitive/PublishedRankThreeCoverage.lean#L64)
 
 ## Local checks
 

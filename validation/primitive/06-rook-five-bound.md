@@ -1,0 +1,13 @@
+# The five by five rook graph bound
+
+R17 writes that the EPPA maximum of the five by five rook graph is strictly below 11. Select the upper-left three by three square and the two remaining diagonal points. This induced graph is $R_3\sqcup 2K_1$ and is an EPPA selection of order 11.
+
+For a partial isomorphism, a host automorphism exists when the row and column equality relations on the selected points are both respected, up to a simultaneous exchange of the two directions. Extend each partial coordinate bijection to a full permutation. If neither choice works, an adjacent pair witnesses the failure of each choice. Their union uses at most four points. The exact checker `checks/section8_rook_five_lower_bound.py` enumerates all labelled lists of at most four distinct selected vertices. Their adjacency masks determine the pair of coordinate-equality masks up to exchange.
+
+For the upper bound, a selection of at least 12 vertices has a row of size at least three and a column of size at least three. Omitting their intersection produces two disjoint, oppositely oriented edges inducing a copy of $2K_2$. Two disjoint same-oriented edges on distinct parallel lines with disjoint coordinates give the same induced graph. The first configuration has a common host neighbour of all four vertices, at the omitted row–column intersection. The second configuration has none. EPPA rules out the simultaneous occurrence of these configurations.
+
+If a row has at least four selected points, any different row with two points supplies a same-oriented pair by choosing the two disjoint coordinates in the first row. Thus, in the absence of such a pair, the whole selection has size at most $5+4=9$. Otherwise all rows have size at most three. Choose one with three points. Every other row of size at least two must use only those three columns, or it supplies a same-oriented pair. Apply the same four-point argument to columns to see that those three columns each have at most three selected points. If $a$ rows have at least two points then the total is at most $\min(3a,9)+(5-a)\le 11$. This proves the upper bound.
+
+The 126-vertex exclusion only needs the resulting bound of 11. The selected second subconstituent then has at least 51 of its 100 vertices. The corrected patch supersedes the corresponding hunk of `02-sections-7-8.patch`.
+
+The patch uses the concrete order-126 bipartition model. The local graph is the five by five rook graph. In the second subconstituent, the two displayed adjacent pairs have different common-neighbour counts, 6 and 8, and a displayed third pair is nonadjacent. Lean checks these counts by finite decision. The graph identity in the rank-three catalogue supplies the bipartition model.

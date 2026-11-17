@@ -1,0 +1,89 @@
+--- a/main-new(20261116-151839)-markers-r17.tex
++++ b/main-new(20261116-151839)-markers-r17.tex
+@@ -3723,30 +3723,64 @@
+ The minimal counterexample~$\hc$ is not $A(5,q)$ for any prime power $q$.
+ \end{lemma}
+ % EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+-\leanpending{Sections 7--8: no formal theorem match}%
+-
+-\begin{proof}
+-Assume $\hc = A(5,q)$ for some prime power $q$. 
+-Write $q = p^r$ for a prime number $p$. 
+-We have $v = q^{10}$, $k = (q^2+1)(q^5-1)$, $\lambda = q^5 + q^4 - q^2- 2$, and $\mu = q^2(q^2+1)$.
+-It is easy to see that both subconstituents of $\hc$ are connected.
+-They also have more non-edges than edges, and are thus not complements of disjoint unions of cliques.
+-%Using the parameters, we deduce that neither subconstituent is triangular.
+-
+-If $q$ is odd, then both $\hc_1$ and $\hc_2$ have even order. 
+-If $\hc_1$ is a generalised clique cover or the complement, then by Hypothesis~\ref{ass:classification}, also $\hc_2$ is. 
+-If $q$ is even, then $\hc_1$ has odd order. 
+-
+-In both cases, it thus suffices to consider the case that $\hc_2$ is a generalised clique cover or the complement. 
+-By~\cite[Theorem~1]{skresanov2021}, we have $\Aut(\hc)_{\vc} \leq \GammaL_5(q) / \{\pm 1\} \times (\F_q^\times / (\F_q^\times)^2)$, so $|\Aut(\hc)_{\vc}| \leq r q^{\binom{5}{2}} \prod_{i=1}^5 (q^i-1) \leq q^{26}$.
+-Note that \[
+-\sqrt{|\hc_2|/2} = \sqrt{(q^{10} - (q^2 + 1)(q^5-1) - 1)/2} \geq q^4.\]
+-By Remark~\ref{rem:factorialboundstabilizer} and Stirling's formula, $\Aut(\hc)_{\vc}$ thus contains a section of size at least 
++\leanpending{The constituent exclusions are formalized given the displayed SRG parameters}%
++
++\begin{proof}
++Assume $\hc=A(5,q)$. Its strongly regular parameters are
+ \[
+-|S_{q^4}| \geq \left(\frac{q^4}{e}\right)^{q^4} \geq (q^2)^{q^4} \geq q^{32},
++v=q^{10},\qquad k=(q^2+1)(q^5-1),\qquad
++\lambda=q^5+q^4-q^2-2,\qquad \mu=q^2(q^2+1).
+ \]
+-using $q \geq 2$. 
+-This is a contradiction.
++The orders and degrees of its subconstituents are $(N_1,d_1)=(k,\lambda)$
++and $(N_2,d_2)=(v-k-1,k-\mu)$.
++
++We use the following observation. Let a regular graph have order $N$
++and degree $d$ with $d>1$ and $2d+2<N$. Assume that $N$ is odd or $4d<N$,
++and that none of $d,d+1,d+2$ divides $N$.
++A disjoint union of cliques of order $t$ has $d=t-1$ and $t\mid N$.
++Its complement either has degree zero or has $d\geq N/2$.
++Thus both forms are impossible.
++
++A generalised clique cover of $sK_t$ has order $N=2st$ and degree
++$t-1+x+Y(s-1)t$, where $x\in\{0,1,t-1,t\}$.
++If $Y=1$, its degree is at least $st-1$.
++If $Y=0$, the four values of $x$ make one of $d,d+1,d+2$ equal to $t$ or $2t$.
++Both $t$ and $2t$ divide $N$. These conclusions exclude a generalised
++clique cover. Its complement has even order and degree at least $st-t$.
++If $s\geq2$, this gives $4d\geq2st=N$. If $s=1$, the complement has
++degree in $\{0,1,t-1,t\}$, which is incompatible with $d>1$ and $4d<2t$.
++This proves the observation.
++
++For both subconstituents, $d_i>1$ follows from the displayed
++parameters. For $q=2$, we have $(N_1,d_1)=(155,42)$, which gives
++$2d_1+2<N_1$ and odd $N_1$. For $q\geq3$,
++\[
++4d_1<\tfrac{16}{3}q^5<10(q^5-1)\leq N_1.
++\]
++For every $q\geq2$ we have $k\leq q^7+q^5\leq 5q^7/4$ and
++$q^{10}\geq8q^7$, so $N_2\geq27q^7/4-1>5q^7\geq4d_2$.
++In each case with $4d_i<N_i$, the bound $d_i>1$ gives $2d_i+2<N_i$.
++
++For the divisibility conditions, put
++\[
++\begin{aligned}
++a_1&=q^2-q+1, & r_1&=q^5-q^3+q^2-q,\\
++a_2&=q^3-q,   & r_2&=q^6-q^3+q^2-q.
++\end{aligned}
++\]
++Expansion gives $N_1=(d_1+1)a_1+r_1$ and $N_2=d_2a_2+r_2$.
++For $q\geq2$, we have $a_1<r_1$ and $r_1+a_1<d_1$, since
++$r_1-a_1=q^5-q^3-1>0$ and
++$d_1-r_1-a_1=q^4+q^3-3q^2+2q-3>0$.
++We also have $2a_2<r_2$ and $r_2<d_2$, since
++$r_2-2a_2=q^6-3q^3+q^2+q>0$ and
++$d_2-r_2=q^7-q^6+q^5-q^4-3q^2+q^3+q-1>0$.
++The remainders for divisors $d_1,d_1+1,d_1+2$ are respectively
++$r_1+a_1,r_1,r_1-a_1$. For divisors $d_2,d_2+1,d_2+2$ they are
++$r_2,r_2-a_2,r_2-2a_2$. Each is positive and smaller than its divisor.
++
++The observation now rules out all four forms in
++Hypothesis~\ref{ass:classification} for both subconstituents.
+ \end{proof}
+ %
+ %\begin{lemma}

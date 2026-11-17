@@ -55,4 +55,14 @@ theorem partial_two_graph_injection_has_switch
   have h := hSwitch x y hx hy
   simpa only [hExt ⟨x,hx⟩, hExt ⟨y,hy⟩] using h
 
+/-- A two-graph automorphism fixes a graph in its switching class. -/
+theorem two_graph_automorphism_has_switching_representative
+    {V : Type*} [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) [DecidableRel G.Adj]
+    (p : Equiv.Perm V) (hAutomorphism : IsTwoGraphAutomorphism G p) :
+    ∃ t : V → Bool, EPPAIII.IsGraphAutomorphism (taylorTransversalGraph G t) p := by
+  obtain ⟨t, hPartial⟩ := partial_two_graph_has_switching_representative
+    G Finset.univ p (fun x _ y _ z _ => hAutomorphism x y z)
+  exact ⟨t, fun x y => hPartial x y (Finset.mem_univ x) (Finset.mem_univ y)⟩
+
 end EPPAIII.TwoGraphs

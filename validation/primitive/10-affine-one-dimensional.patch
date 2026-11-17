@@ -1,0 +1,47 @@
+--- a/main-new(20261116-151839)-markers-r17.tex
++++ b/main-new(20261116-151839)-markers-r17.tex
+@@ -4960,7 +4960,7 @@
+ %
+ 
+ \begin{lemma}\label{lemma:paleypeisert}
+-The minimal counterexample $\hc$ is not a Paley, Peisert, or Van Lint-Schrijver graph.
++The minimal counterexample $\hc$ is not a Paley, Peisert, or Van Lint--Schrijver graph, nor the sporadic Peisert graph.
+ \end{lemma}
+ % EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+ \leanpending{Sections 7--8: no formal theorem match}%
+@@ -4968,22 +4968,19 @@
+ 
+ 
+ \begin{proof}
+-Assume that $\hc$ is a Paley graph or a Peisert graph with $q > 9$ (the graphs on $5$ and $9$ vertices are homogeneous). 
+-First assume $q \notin \{7^2,3^4,23^2\}$.
+-It is well-known that in this case, we have $\Aut(\hc) \leq \AGammaL_1(q)$ and thus $\Aut(\hc)_{\vc} \leq \GammaL_1(q)$. 
+-Note that $\GammaL_1(q) \cong \F_q^\times \rtimes C_r$ does not have a section isomorphic to $S_4$ as the only cyclic normal subgroup of $S_4$ is the trivial group.
+-By Remark~\ref{rem:factorialboundstabilizer}, every clique or independent set in $\gc$ thus has size at most 3. 
+-By Remark~\ref{rem:Ramsey}, we have $|\gc_i| \leq 17$ for $i = 1,2$, so $|\gc| \leq 35$ and thus $|\hc| \leq 70$.
+-The remaining small graphs are all covered by our previous results. 
+-For $q = 7^2$, we have $|\Aut(\hc)_{(v,w)}| = 2$ for every pair of distinct vertices $v,w \in V(\gc)$. 
+-As $|\gc| \geq 24$, $\gc$ contains at least five vertices with the same neighbouring relation to $v$ and $w$, on which $\Aut(\hc)_{(v,w)}$ must thus act transitively. 
+-This is a contradiction. 
+-The same argument works for $q = 23^2$. For $q = 3^4$, the stabiliser of a pair of distinct vertices has order $4$. 
+-We can then argue as before.
+-
+-Now assume that $\hc$ is a Van Lint--Schrijver graph. 
+-Then $\Aut(\hc) \leq \AGammaL_1(q)$ unless~$\hc$ is in a small list of exceptions given in \cite[Table~4]{GUO24}, which are already covered by our previous results.
+-In the general case, we argue as before to obtain a contradiction. 
++Write $q=p^r$. Fix distinct vertices $x,y$ of $\gc$, and partition the other vertices of $\gc$ by their adjacency to $x$ and $y$. Each of the four classes lies in an orbit of $\Aut(\hc)_{(x,y)}$. Indeed, EPPA extends the partial map that fixes $x,y$ and takes one vertex of the class to another. In particular, if the pointwise stabiliser of $x,y$ has order at most $t$, then $|\gc|\leq 4t+2$.
++
++Suppose first that the full automorphism group of $\hc$ is contained in $\AGammaL_1(q)$. A map $z\mapsto a z^\sigma+b$ fixing $x,y$ is determined by $\sigma\in\operatorname{Gal}(\F_q/\F_p)$: its value at $z$ is
++\[
++ x+(y-x)\left(\frac{z-x}{y-x}\right)^\sigma .
++\]
++Thus $|\gc|\leq 4r+2$ and $p^r=q\leq 8r+4$. Comparing $2^6,3^4,5^2$ with the bounds at their respective exponents gives $r\leq5$ for $p=2$, $r\leq3$ for $p=3$, and $r=1$ for $p\geq5$. The strict inequalities persist at larger exponents, since the powers at least double and the bound increases by eight. In the last case $p\leq 12$. Consequently $q\equiv 1\pmod4$ leaves only $q=5,9$ for Paley graphs, and $p\equiv3\pmod4$ with even $r$ leaves only $q=9$ for Peisert graphs. The corresponding graphs are homogeneous. For Van Lint--Schrijver graphs the connection index $e$ is an odd prime, $e\mid q-1$, and $e-1\mid r$ by the primitive-residue condition. Thus $r$ is even, and the bounds leave only $(q,e)=(4,3),(16,3),(16,5)$. The first graph is a matching, and at $(16,5)$ the connection set is a scalar multiple of $\F_4^\times$, so the components are the additive cosets of the corresponding scalar multiple of $\F_4$, with each component a clique. At $(16,3)$ the graph is the Clebsch graph, as below.
++
++For Paley graphs the full-group containment holds by Carlitz's theorem (see~\cite[Section~7.4.4]{BRO22}). For Peisert graphs, the cases to check outside the preceding argument have orders $49,81,529$ (see~\cite[Lemma~2.7]{GUO24}). By~\cite[Sections~10.18, 10.30 and~10.70]{BRO22}, the full point stabilisers of the Peisert graphs of orders $49$ and $81$ have orders $72$ and $480$, respectively, and those of the ordinary and sporadic Peisert graphs of order $529$ have order $264$. Dividing by the common subdegrees $24$, $40$ and $264$, respectively, gives full two-point stabiliser orders $3$, $12$ and $1$. The bound $|\gc|\leq4t+2$ excludes the graphs of orders $49$ and $529$.
++
++For the Peisert graph of order $81$, we have $|\gc|\geq 41$, so one of the four classes at $x,y$ has at least ten vertices. Its containing orbit has size at least ten and divides $12$, hence has size $12$. The stabiliser of any vertex in this orbit inside $\Aut(\hc)_{(x,y)}$ is trivial. Taking a selected vertex of the orbit as a third anchor, Lemma~\ref{lemma:boundneighboringset} gives $|\gc|\leq 2^3+3=11$, a contradiction.
++
++For Van Lint--Schrijver graphs with full automorphism group outside $\AGammaL_1(q)$, Proposition~3.1 and Table~4 of~\cite{GUO24} give the Clebsch graph on $16$ vertices, the rook graphs $R_5$ and $R_9$, the affine polar graph $\VO^-_4(4)$, and the bilinear forms graphs $H_2(2,3)$, $H_3(2,3)$, $H_2(2,5)$ and $H_4(2,3)$, up to complementation. The Clebsch graph is in the classification, and the other graphs were treated in the corresponding family cases above.
+ \end{proof}
+ 
+ \begin{Remark}

@@ -1,0 +1,129 @@
+--- a/main-new(20261116-151839)-markers-r17.tex
++++ b/main-new(20261116-151839)-markers-r17.tex
+@@ -3487,56 +3487,23 @@
+ \leanpending{Sections 7--8: no formal theorem match}%
+ 
+ \begin{proof}
+-Assume that $\hc = G(n,q)$ for some $n \geq 5$ and a prime power $q$. 
+-Write $q = p^r$ for a prime number $p$ and $r \in \mathbb{N}$.
+-It suffices to show that neither subconstituent of $\hc$ is a disjoint union of cliques of equal size, a generalised clique cover, or the complement of one of these graphs. 
+-This is then a contradiction to Hypothesis~\ref{ass:classification}.
+-
+-From the geometric description, it is clear that both subconstituents of~$\hc$ are connected. 
+-We have \[
+-v = \frac{(q^n-1)(q^{n-1}-1)}{(q^2-1)(q-1)},\, k = (q+1)\left(\frac{q^{n-1}-1}{q-1}-1\right), \, \lambda = \frac{q^{n-1}-1}{q-1} + q^2 - 2.\] 
+-%Grassmann graphs have two types of maximal cliques, corresponding to all projective lines through a given point and all projective lines in a given plane, respectively. 
+-%The former have size $\frac{q^{n-1}-1}{q-1}$, the latter size $\frac{q^{3}-1}{q-1}$.
+-%As $q \geq 2$, both values are at least $7$. By Remark~\ref{rem:triangularclique}, $\hc_1$ is not a triangular graph. 
+-%The subconstituent $\hc_2$ has fewer edges than non-edges due to $k-\mu < |\hc_2|/2$.
+-%Using the parameters and Remark~\ref{rem:calculation}, it follows that $\hc_2$ is not triangular. 
+-Note that $\Aut(\hc) \cong \PGammaL_n(q)$, so we have
+-\begin{equation}\label{eq:autgrass}
+-|\Aut(\hc)_{\vc}| = \frac{|\PGammaL_n(q)|}{|\hc|} = \frac{r q^{n(n-1)/2} \prod_{i=2}^n (q^i-1)}{\frac{(q^n-1)(q^{n-1}-1)}{(q^2-1)(q-1)}} \leq \frac{q^{n^2}}{q^{2n-4}} = q^{n^2-2n+4}.
+-\end{equation}
+-%First assume that $\hc_1$ is a generalised clique cover or the complement. 
+-%By Remark~\ref{rem:sectionwreath}, $\Aut(\hc)_v$ contains a section isomorphic to $S_l$, where $l \geq \sqrt{k/2}$.
+-%If $q \geq 4$, or $q = 3$ and $n \geq 7$, or $q = 2$ and $n \geq 11$, we have $l! \geq q^{2n^2-2n+4} \geq |\Aut(\hc)_v|$, which is a contradiction by~\eqref{eq:autgrass}.
+-
+-%If $\hc_i$ is a generalised clique cover of a disjoint union of $s$ cliques of size $t$ with $st = k/2$, then 
+-%Then $\hc_1$ is a generalised clique cover of a disjoint union of $t$ cliques of size $s$ with $st = k/2$. 
+-%In particular, it contains a clique of size $s$ and an independent set of size $t$. 
+-%Note that when fixing two adjacent vertices (i.e., two intersecting projective lines), also the intersection (which is a point of $P(\F_q)$ is fixed.
+-%But as $st \geq q^{n-2}$, one of them is larger than $q^{\frac{n-2}{2}}$, say $t$. 
+-%Then $|S_t| > \left(\frac{q^{\frac{n-2}{2}}}{e}\right)^{q^{(n-2)/2}} > |\Aut(H)|$ 
+-%for $n \geq 14$ if $q = 2$. 
+-%All vertices in a clique must be linearly independent as 
+-%But all vertices belonging to the disjoint union of 
+-%Applying Remark with $m = k$, this leads to a contradiction. 
+-Fixing two vertices $u_1, u_2$ of $\gc$ (i.e., projective lines) fixes the point $p$ that they intersect in. 
+-Whenever we fix some vertices of a clique, the others must be independently permutable. 
+-In particular, the intersection of the subspaces corresponding to the other vertices with $u_1$ and $u_2$ must be linearly independent of $v$. 
+-Inductively, it follows that any clique in $\gc$ has size at most $2n$.
+-If, for some $i \in \{1,2\}$, the subconstituent $\hc_i$ is a generalised clique cover of $s K_t$, then $t \leq 2n$. 
+-If $\hc_i$ is the complement thereof, we have $s \leq 2n$ (note that $\overline{sK_t}$ contains cliques of size~$s$). 
+-Thus $\max\{s,t\} \geq \min\{k,v-k-1\}/4n$ and hence $\Aut(\hc)_{\vc}$ contains a section isomorphic to $S_{\lfloor \min\{k,v-k-1\}/4n \rfloor}$. 
+-Inserting the parameters, we find $\lfloor \min\{k,v-k-1\}/4n \rfloor ! > |\Aut(\hc)_{\vc}|$ by \eqref{eq:autgrass} if $(n,q) \notin \{(5,2),(6,2),(5,3)\}$, which is a contradiction.
+-For $n = 5$ and $q = 2$, we have $|\hc| = 155$, $|\hc_1| = 42$, and $|\hc_2| = 112$. 
+-Moreover, $|\Aut(\hc)_{\vc}| = 64512$, so $\Aut(\hc)_{\vc}$ does not contain a section isomorphic to $S_5$. 
+-Hence the largest clique and the largest independent set in $\gc$ have size at most 4, so $s,t \leq 4$. 
+-For $n = 5$ and $q = 3$, we have $|\hc_1| = 156$ and $|\hc_2| = 1053$, so only $\hc_1$ could be a generalised clique cover. 
+-Since $|\hc_1|$ is divisible by $13$, the above argument yields that $\Aut(\hc)_{\vc}$ contains a section isomorphic to $S_{13}$, but $|\Aut(\hc)_{\vc}| \leq 3^{7} < |S_{13}|$ by~\eqref{eq:autgrass}, which is a contradiction.
+-For $n = 6$ and $q = 2$, we have $|\hc_1| = 90$ and $|\hc_2| = 560$. 
+-To exclude that $\hc_1$ is a generalised clique cover, we check that for all $s,t \in \mathbb{N}$ with $st = 45$, we have $|S_s \wr S_t| > 2^{28} \geq |\Aut(\hc)_{\vc}|$ (see~\eqref{eq:autgrass}). 
+-The second subconstituent can be treated similarly. 
+-
+-It follows that neither $\hc_1$ nor $\hc_2$ is a generalised clique cover or the complement thereof.
+-This is a contradiction to Hypothesis~\ref{ass:classification}.
++Assume $\hc=G(n,q)$. We use the following observation. If a connected graph of order $N$ has degree $d<N/2-1$, it is neither a disjoint union of equal cliques nor its complement. If it is a generalised clique cover, the degree condition forces $Y=0$, in the notation of Definition~\ref{def:generalizedcover}. Connectedness then forces $s=1$, which gives $d\geq N/2-1$, a contradiction. If its complement is a generalised clique cover of $sK_t$, then the original graph contains an independent set of size $t$. Moreover, $t\geq N/2-d$: for $Y=0$ the complement degree is at most $2t-1$, and for $Y=1$ it is at most $N/2-1+t$.
++
++Write $L$ for the line corresponding to $\vc$ and $Q=(q^{n-1}-1)/(q-1)$. The first subconstituent is connected: for two lines meeting $L$ at different points, the line joining an off-$L$ point of the first to the intersection of the second with $L$ meets both. An independent set contains at most one line through any point of $L$, and so has order at most $q+1$. Writing $N_1=(q+1)(Q-1)$ and $d_1=Q+q^2-2$, we have
++\[
++\frac{N_1}{2}-d_1=\frac{q^{n-1}-q}{2}-q^2+1>q+1.
++\]
++Thus the observation excludes every possibility for the first subconstituent in Hypothesis~\ref{ass:classification}.
++
++The second subconstituent is also connected: for two lines disjoint from $L$, choose a point on each with linearly independent images in the vector-space quotient by $L$. The line they span meets both lines and is disjoint from $L$. Pairwise disjoint projective lines use disjoint sets of nonzero vectors, so an independent set has order at most $(q^n-1)/(q^2-1)$. Put $A=q^{n-3}$. The order and degree of the second subconstituent are
++\[
++N_2=\frac{q^4(qA-1)(A-1)}{(q^2-1)(q-1)},\qquad d_2=(q+1)(Q-q-2).
++\]
++The first formula counts the lines in the quotient, each with $q^4$ lifts. For the second use $\mu=(q+1)^2$, since a common neighbour of two disjoint lines joins a point of one to a point of the other. We have
++\[
++d_2+\frac{q^n-1}{q^2-1}<\frac{Aq^2(q^2+3q+1)}{q^2-1}\leq \frac{N_2}{2}.
++\]
++For the last inequality, it suffices that $q^2(qA-1)(A-1)\geq 2(q-1)A(q^2+3q+1)$. This holds for $q\geq3$ by $qA-1\geq(q-1)A$ and $A-1\geq q^2-1$, and for $q=2$, $n\geq6$ by $A\geq8$. For $(n,q)=(5,2)$, the needed inequality is $33+31/3<56$. Thus the observation excludes the second subconstituent as well, contradicting Hypothesis~\ref{ass:classification}.
+ \end{proof}
+ %
+ %%%% correct but not needed
+@@ -3670,45 +3637,13 @@
+ \leanpending{Sections 7--8: no formal theorem match}%
+ 
+ \begin{proof}
+-Assume $\hc = H_q(2,m)$. 
+-We have $v =  q^{2m}$, $k = (q+1)(q^m-1)$, and $\lambda = q^m + (q-2)(q+1)$. 
+-Moreover, 
+-\begin{equation*}
+-\Aut(\hc) = \F_q^{2m} \rtimes (\GL_m(q) \circ \GL_2(q)) \rtimes C_r,
+- \end{equation*}
+-where $\circ$ denotes the central product (see~\cite[Theorem~1]{skresanov2021}).
+-In particular, we have 
+-\begin{equation}\label{eq:autbilinear}
+-|\Aut(\hc)_{\vc}| = \frac{1}{q-1} q^{\frac{m(m-1)}{2}} \prod_{i = 1}^m (q^i-1) \cdot q (q-1) (q^2-1) r \leq q^{m^2 + 4}.
+-\end{equation}
+-%Every edge in $\hc$ corresponds to a line in $\F_q^{m+2}$, i.e., to a point in $P(\F_q^{m+2})$, which we use as a label for the edge.
+-%Let $l \colon E(\hc) \to P(\F_q^{m+2})$ be the resulting labelling function and $L \coloneqq l(E(\gc))$ be the set of edge labels in~$\gc$. By Corollary~\ref{cor:subsets_projective}, there exist $e_1, \dots, e_s \in L$ with $s \leq m+2 + \log_2(r)$ such that $\PGammaL_{m+2}(q)_{(e_1, \dots, e_s)} = 1$. Let $a_1 b_1, \dots, a_sb_s \in E(\gc)$ be edges with labels $e_1, \dots, e_s$, respectively.
+-%Then $\Aut(H)_{(U)} = 1$ as $\Aut(H)$ induces an action of a subgroup of $\PGammaL_{m+2}(q)$ on the edge labels.
+-%\rehurek{4}{The set $U$ has not been defined, and faithfulness of the action on edge labels is not shown: translations or scalar kernels may fix every label. Define $U=\{a_i,b_i:i\in[s]\}$ and compute the kernel before concluding the pointwise stabiliser is trivial.}
+-%For $i \in [s]$, $a_s$ and $b_s$ together have $2k - \lambda$ neighbours. 
+-%Thus $|U \cup N_H(U)| \leq s \cdot (2+2k - \lambda)$.
+-%%As each of the $s$ vertices has $k$ neighbours in $H$, but two adjacent vertices share $\lambda$ neighbours, we obtain $|U \cup N_H(U)| \leq s \cdot (2+2k - \lambda)$. 
+-%For $(m,q) \notin \{(3,2), (3,3), (3,4), (4,2), (4,3), (5,2),(6,2)\}$, Lemma~\ref{lemma:boundneighboringset} yields
+-%\[|\gc| \leq (m+2 + \log_2(r)) (2+2(q+1)(q^m-1) 
+-%    - (q^m + (q-2)(q+1))) 
+-%	< \frac{q^{2m}}{2}
+-%	= \frac{|\hc|}{2},\]
+-%\rehurek{2}{Please record the verification of this parameter inequality and the exceptional list, preferably as a small script or appendix table. Seven exceptional pairs are too many for inserting the parameters to remain invisible.}
+-%which is a contradiction.
+-%
+-%Now we consider the remaining cases and 
+-%Unless $(m,q) = (4,2)$, it can be deduced from the parameters that neither subconstituent of $\hc$ is (complement-) triangular. 
+-%For $(m,q) = (4,2)$, this follows from~\cite[Section~10.57]{BRO22}. 
+-From the geometric description, it follows that~$\hc_1$ is connected, and since $\hc_1$ has more non-edges than edges, it is not the complement of a disjoint union of cliques. 
+-If $\hc_1$ is a generalised clique cover (or the complement), then $k$ must be even. 
+-But then $q$ is odd and so $|\hc_2|$ is even. 
+-By Hypothesis~\ref{ass:classification}, then also $\hc_2$ is a generalised clique cover (or the complement). 
+-
+-Thus it remains to consider the case that $\hc_2$ is a disjoint union of cliques, a generalised clique cover, or the complement of one of these graphs. 
+-If $(m,q) \neq (3,2)$, we have $\lfloor\sqrt{|\hc_2|/2}\rfloor! > q^{m^2 + 4} \geq |\Aut(\hc)_{\vc}|$ by~\eqref{eq:autbilinear}, which is a contradiction to Remark~\ref{rem:factorialboundstabilizer}.
+-For $(m,q) = (3,2)$, the subconstituent~$\hc_2$ has order~$42$. 
+-By Remark~\ref{rem:sectionwreath} and Corollary~\ref{cor:local-section}, $\Aut(\hc)_{\vc}$ contains a section isomorphic to $S_7$, but $|\Aut(\hc)_{\vc}| = 2016< |S_7|$, which is impossible.
+-Thus~$\hc$ does not satisfy Hypothesis~\ref{ass:classification}, which is a contradiction.
++Assume $\hc=H_q(2,m)$, and identify its vertices with $2\times m$ matrices, adjacent when their difference has rank one. At $0$, the first and second subconstituents consist of the matrices of rank one and two, respectively. Put $x=q^m$.
++
++Two rank-one matrices can be joined through a rank-one matrix with the column space of the first and row space of the second. Thus the first subconstituent is connected, and an independent set contains at most one matrix for each column space, hence at most $q+1$ matrices. Its order and degree are $N_1=(q+1)(x-1)$ and $d_1=x+(q-2)(q+1)$. If $q$ is even, $N_1$ is odd and $d_1<N_1/2-1$. If $q$ is odd, $N_1/2-d_1>q+1$ since $m\geq3$. Applying the observation in the proof of Lemma~\ref{lemma:grassmann} excludes the first subconstituent.
++
++The second subconstituent is connected: for matrices with rows $(a,b)$ and $(c,d)$, choose a row $z$ outside the spans of $a$ and $c$, and change one row at a time through $(a,z)$ and $(c,z)$. An independent set contains at most one matrix per first row, hence at most $x$ matrices. The order and degree are $N_2=x^2-(q+1)x+q$ and $d_2=(q+1)(x-q-1)$. If $(m,q)\neq(3,2)$, then $x\geq3q+6$, which gives $N_2/2-d_2>x$. Thus the same observation excludes the second subconstituent.
++
++For $(m,q)=(3,2)$, the second subconstituent has order $42$ and degree $15$. The only remaining possibility is that its complement, of degree $26$, is a generalised clique cover. Substituting $st=21$ in the degree formula of Definition~\ref{def:generalizedcover} leaves $s=3$, $t=7$, $X=\overline M$, $Y=1$. Then $\hc_2$ contains $K_{7,14}$, contradicting $\mu=6$ in $H_2(2,3)$.
+ \end{proof}
+ 
+ \subsubsection{Alternating forms graphs}

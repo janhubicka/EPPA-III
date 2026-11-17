@@ -74,6 +74,13 @@ jobs:
           python3 checks/section5_taylor_fibre_distance.py
           python3 checks/section7_srg_cover_audit.py
           python3 checks/section6_cover_sufficiency.py
+          python3 checks/section8_binary_negative.py
+          python3 checks/section8_rook_four.py
+          python3 checks/section8_rook_five_lower_bound.py
+          python3 checks/primitive_small_paley.py
+          python3 checks/check_named_taylor_models.py
+          python3 checks/check_imprimitive_embedding_orbits.py
+          python3 checks/primitive_figure_audit.py checks/primitive_figure_panels.json
       - name: Reject unsolved placeholders
         run: |
           if grep -R -nE '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|^axiom ' EPPAIII; then
