@@ -1457,3 +1457,4 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.conference_eightyOne_not_eppa
 #print axioms EPPAIII.Primitive.polar_rankTwo_large_stabilizer_bounds
 #print axioms EPPAIII.Primitive.affine_15625_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.polar_rankTwo_not_eppa_of_small_stabilizer

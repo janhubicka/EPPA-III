@@ -6,6 +6,7 @@ import EPPAIII.Primitive.TaylorConstituentProjection
 namespace EPPAIII.Primitive
 
 open EPPAIII.BlockSystems
+open EPPAIII.DoubleCover
 open SimpleGraph
 
 universe u v

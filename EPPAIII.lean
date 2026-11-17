@@ -532,3 +532,4 @@ import EPPAIII.Primitive.PolarRankTwoArithmetic
 import EPPAIII.Primitive.NonsingularTernaryProfiles
 import EPPAIII.Primitive.AffineExceptionalRefinements
 import EPPAIII.Primitive.AffineConferenceExclusion
+import EPPAIII.Primitive.PolarRankTwoExclusion
