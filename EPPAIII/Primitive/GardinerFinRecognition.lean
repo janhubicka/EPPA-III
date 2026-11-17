@@ -16,7 +16,7 @@ def FinGardinerRecognition : Prop :=
 theorem gardinerPublishedModels_of_iso {A B : Type*} [Fintype A] [Fintype B]
     {G : SimpleGraph A} {H : SimpleGraph B} (φ : G ≃g H)
     (hModel : GardinerPublishedModels G) : GardinerPublishedModels H := by
-  have lift {X : Type*} {K : SimpleGraph X} (e : X ≃ A) (he : CanonicalBaseCopy K G e) :
+  have lift {X : Type} {K : SimpleGraph X} (e : X ≃ A) (he : CanonicalBaseCopy K G e) :
       CanonicalBaseCopy K H (e.trans φ.toEquiv) :=
     fun x y => (he x y).trans φ.map_adj_iff.symm
   unfold GardinerPublishedModels at hModel ⊢

@@ -43,11 +43,13 @@ def FinPublishedRankThreeGraphCoverage : Prop :=
 theorem HasPublishedRankThreeModel.of_iso {A B : Type*}
     {G : SimpleGraph A} {H : SimpleGraph B} (hModel : HasPublishedRankThreeModel G)
     (φ : G ≃g H) : HasPublishedRankThreeModel H := by
-  have lift {C : Type*} {J : SimpleGraph C} (h : IsModelUpToComplement G J) :
+  have lift {C : Type} {J : SimpleGraph C} (h : IsModelUpToComplement G J) :
       IsModelUpToComplement H J := by
-    rcases h with ⟨e⟩ | ⟨e⟩
-    · exact Or.inl ⟨φ.symm.trans e⟩
-    · exact Or.inr ⟨φ.symm.trans e⟩
+    rcases h with h | h
+    · obtain ⟨e⟩ := h
+      exact Or.inl ⟨φ.symm.trans e⟩
+    · obtain ⟨e⟩ := h
+      exact Or.inr ⟨φ.symm.trans e⟩
   rcases hModel with ⟨n, hn, h⟩ | ⟨n, hn, h⟩ | h | h | h | ⟨K, hK, h⟩
   · exact Or.inl ⟨n, hn, lift h⟩
   · exact Or.inr (Or.inl ⟨n, hn, lift h⟩)
