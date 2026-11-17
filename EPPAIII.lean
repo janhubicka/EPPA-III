@@ -550,4 +550,6 @@ import EPPAIII.Primitive.UnitaryFiveTwoPoint
 import EPPAIII.Primitive.RankTwoPolarFamilyRecognition
 import EPPAIII.Primitive.SmallWitnessClassification
 import EPPAIII.Primitive.SmallWitnessNamedClassification
+import EPPAIII.Primitive.GardinerFinRecognition
+import EPPAIII.Primitive.SmallConstituentSourceModels
 import EPPAIII.TwoGraphs.TwoGraphOrderFromGardiner

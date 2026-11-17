@@ -1504,6 +1504,12 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.eppa_of_smallWitnessModelCases
 #print axioms EPPAIII.Primitive.smallWitnessModelCases_iff_eppa
 #print axioms EPPAIII.Primitive.smallWitnessNamedModelCases_iff_eppa
+#print axioms EPPAIII.Primitive.gardinerRecognition_of_fin
+#print axioms EPPAIII.Primitive.publishedRankThreeGraphCoverage_of_fin
+#print axioms EPPAIII.Primitive.smallRankThreeParameterCoverage_of_publishedTable
+#print axioms EPPAIII.Primitive.smallRankThreeModelIdentification_of_source
+#print axioms EPPAIII.Primitive.rankTwoPolarChart_of_line
+#print axioms EPPAIII.Primitive.localCharts_of_srg_lambda_one
 #print axioms EPPAIII.TwoGraphs.two_graph_automorphism_has_switching_representative
 #print axioms EPPAIII.TwoGraphs.homogeneous_two_graph_nontrivial_descendant_of_gardiner
 #print axioms EPPAIII.TwoGraphs.homogeneous_two_graph_nontrivial_order_of_gardiner

@@ -1,6 +1,7 @@
 import EPPAIII.Primitive.BinaryOrthogonalModels
 import EPPAIII.Primitive.RankThreeCatalog
 import EPPAIII.Primitive.SmallConstituentGraphScreen
+import EPPAIII.Primitive.SmallRankThreeParameterRecognition
 
 /-!
 # Graph models of the screened Table 11.8 rows
@@ -146,14 +147,6 @@ theorem smallConstituentHostModel_exists {p : SRGParameters} {side : Bool}
   have hAll : smallConstituentHits.all
       (fun (p, _) => (smallConstituentHostModel p).isSome) = true := by decide
   exact Option.isSome_iff_exists.mp (List.all_eq_true.mp hAll (p, side) hHit)
-
-/-- The parameter coverage claim of Table 11.8 in the needed range. -/
-def SmallRankThreeParameterCoverage : Prop :=
-  ∀ {V : Type u} [Fintype V] (H : SimpleGraph V) [DecidableRel H.Adj]
-    (p : SRGParameters),
-    IsPrimitiveAutAction H → HasRankThreeAutAction H →
-    H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon →
-    p.order ≤ 460 → p ∈ orientedSmallRankThreeTable
 
 /-- The graph identities of the 21 screened Table 11.8 tuples.
 Primitivity and graph rank three are essential to this assertion. -/

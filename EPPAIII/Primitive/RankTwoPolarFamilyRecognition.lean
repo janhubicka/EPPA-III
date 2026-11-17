@@ -1,5 +1,6 @@
 import EPPAIII.Primitive.RankThreeContextualCoverage
 import EPPAIII.Primitive.PolarRankTwoArithmetic
+import EPPAIII.Primitive.RankTwoLineRecognition
 
 /-! # Catalogue entries from the published rank-two parameters -/
 
@@ -13,6 +14,16 @@ rank-two polar geometry of order `(Q,t)`. -/
 structure RankTwoPolarChart {n : ℕ} (H : SimpleGraph (Fin n)) (Q t : ℕ) : Prop where
   parameters : H.IsSRGWith ((Q + 1) * (Q * t + 1)) (Q * (t + 1)) (Q - 1) (t + 1)
   localCliques : ∀ r, Nonempty (localGraph H r ≃g cliqueUnion (t + 1) Q)
+
+/-- The source supplies the parameters and one line. Edge transitivity
+recovers the whole local chart needed by the rank-two catalogue. -/
+theorem rankTwoPolarChart_of_line {n q t : ℕ} (H : SimpleGraph (Fin n)) (hq : 0 < q)
+    (hRank : EPPAIII.BlockSystems.HasRankThreeAutAction H)
+    (hSRG : H.IsSRGWith ((q + 1) * (q * t + 1)) (q * (t + 1)) (q - 1) (t + 1))
+    (line : Finset (Fin n)) (hLineCard : line.card = q + 1) (hLine : H.IsClique ↑line) :
+    RankTwoPolarChart H q t :=
+  ⟨hSRG, localCharts_of_rankThree_line H hq hRank
+    (by simpa only [Nat.mul_comm q (t + 1)] using hSRG) line hLineCard hLine⟩
 
 private theorem RankTwoPolarChart.catalogue_of_bound {n Q t k : ℕ}
     {H : SimpleGraph (Fin n)} (data : RankTwoPolarChart H Q t)

@@ -452,7 +452,8 @@ theorem srg_uniform_cover_homogeneous {s t n k l m : ℕ} (X : CrossType) (Y : B
       (BlockSystems.vertex_transitive_cluster_isHomogeneous _
         (BlockSystems.transitive_complement _ hTrans) h)
 
-private theorem srg_of_eq {V : Type*} [Fintype V] {G K : SimpleGraph V}
+/-- Transport strong regularity across graph equality and adjacency instances. -/
+theorem srg_of_eq {V : Type*} [Fintype V] {G K : SimpleGraph V}
     [gDec : DecidableRel G.Adj] [kDec : DecidableRel K.Adj]
     {n k l m : ℕ} (heq : G = K) (h : G.IsSRGWith n k l m) :
     K.IsSRGWith n k l m := by
@@ -470,7 +471,8 @@ theorem srg_uniform_cover_compl_homogeneous {s t n k l m : ℕ} (X : CrossType) 
   exact (DoubleCover.homogeneous_complement_iff _).mp
     (srg_uniform_cover_homogeneous X Y hCom)
 
-private theorem srg_of_iso {V W : Type*} [Fintype V] [Fintype W]
+/-- Strongly regular parameters are invariant under changing vertex labels. -/
+theorem srg_of_iso {V W : Type*} [Fintype V] [Fintype W]
     {G : SimpleGraph V} [DecidableRel G.Adj] {H : SimpleGraph W} [DecidableRel H.Adj]
     (φ : G ≃g H) {n k l m : ℕ} (h : G.IsSRGWith n k l m) : H.IsSRGWith n k l m := by
   have hAdj (x y : V) : G.Adj x y ↔ H.Adj (φ x) (φ y) :=
