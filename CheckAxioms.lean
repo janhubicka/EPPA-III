@@ -1527,6 +1527,11 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.locallyTriangular_ten_point_bound
 #print axioms EPPAIII.Primitive.locallyTriangularRecognitionInputs_both_of_published
 #print axioms EPPAIII.Primitive.smallWitnessNamedModelCases_iff_eppa_of_published_sources
+#print axioms EPPAIII.Primitive.permTwoClosure_eq_graphAutomorphisms
+#print axioms EPPAIII.Primitive.HasRankThreeGraphOrbits.full_rank_three
+#print axioms EPPAIII.Primitive.IsRankThreeActionModel.isModelUpToComplement
+#print axioms EPPAIII.Primitive.finPublishedRankThreeGraphCoverage_of_actions
+#print axioms EPPAIII.Primitive.affineLineAction_of_twoClosure
 #print axioms EPPAIII.TwoGraphs.two_graph_automorphism_has_switching_representative
 #print axioms EPPAIII.TwoGraphs.homogeneous_two_graph_nontrivial_descendant_of_gardiner
 #print axioms EPPAIII.TwoGraphs.homogeneous_two_graph_nontrivial_order_of_gardiner
