@@ -56,8 +56,8 @@ def GeneralImprimitiveHostModels
         q u = u' ∧ q v = v'))
 
 /-- Global imprimitive necessity: no selected-base restriction is
-assumed. External Gardiner is an explicit implication available for
-every homogeneous graph on the *same nonempty finite vertex type*.
+assumed. Gardiner is invoked only for the selected base G and,
+when needed, its complement; both dependencies are explicit.
 
 The graph-theoretic output is deliberately a disjunction, not an
 unverified claim that all Taylor and canonical host models have
