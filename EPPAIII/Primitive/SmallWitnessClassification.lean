@@ -163,7 +163,7 @@ theorem smallWitnessModelCases_iff_eppa
     {V : Type u} {W : Type v} [Fintype V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (hInd : IsInducedGraphEmbedding G H e) (hHalf : Nat.card W ≤ 2 * Nat.card V)
-    (hTrans : HasTransitiveGraphAutomorphisms H) :
+    (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms H) :
     SmallWitnessModelCases G H e ↔ IsEPPAEmbedding G H e := by
   exact ⟨eppa_of_smallWitnessModelCases G H e hInd hHalf hFinite,
     fun hEPPA => smallWitnessModelCases_of_eppa hPublished hRecognize

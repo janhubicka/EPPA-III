@@ -17,7 +17,6 @@ structure PrimitiveRecognitionInputs : Prop where
     Nonempty A → IsHomogeneousGraph G → GardinerPublishedModels G
   gardinerHost : ∀ {B : Type v} [Fintype B], Nonempty B → ∀ H : SimpleGraph B,
     IsHomogeneousGraph H → GardinerHomogeneousModels H
-  twoGraphOrders : ∀ {A : Type u} [Fintype A], HomogeneousTwoGraphOrderRecognition A
   triangular : ∀ {B : Type v} [Fintype B] (H : SimpleGraph B),
     IsPrimitiveAutAction H → HasRankThreeAutAction H →
       LocallyTriangularRecognitionInputs H ∧ LocallyTriangularRecognitionInputs Hᶜ
@@ -76,7 +75,8 @@ theorem primitiveCases_of_eppa_of_catalogue
     let _ : Fintype X := Fintype.ofFinite X
     let _ : Fintype Y := Fintype.ofFinite Y
     exact section8Cases_of_primitive_or_imprimitive P Q j hp hc
-      (hRecognize.gardinerSelected P) hRecognize.gardinerHost hRecognize.twoGraphOrders
+      (hRecognize.gardinerSelected P) hRecognize.gardinerHost
+      (homogeneousTwoGraphOrderRecognition_of_gardiner (fun R => hRecognize.gardinerSelected R))
   obtain ⟨hRec, hRecC⟩ := hRecognize.triangular L hPrimL hRankL
   have hShapes (r : A) : SelectedConstituentShapes K L f r := by
     obtain ⟨hLocal, hNonlocal⟩ := hMin.constituent_shapes hPrimL hRankL r hProject

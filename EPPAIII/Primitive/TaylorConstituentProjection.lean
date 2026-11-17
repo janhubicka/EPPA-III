@@ -1,5 +1,6 @@
 import EPPAIII.Primitive.ConstituentClassifiedModels
 import EPPAIII.TwoGraphs.TrivialTwoGraph
+import EPPAIII.TwoGraphs.TwoGraphOrderFromGardiner
 import Mathlib.Data.Fintype.Card
 
 /-! # The arbitrary-base Taylor branch of the Section 8 reduction -/
@@ -21,6 +22,19 @@ def HomogeneousTwoGraphOrderRecognition (V : Type*) [Fintype V] : Prop :=
     (∃ a b c, a ≠ b ∧ a ≠ c ∧ b ≠ c ∧ EvenTriple G a b c) →
     (∃ a b c, a ≠ b ∧ a ≠ c ∧ b ≠ c ∧ OddBaseTriple G a b c) →
     Fintype.card V = 6 ∨ Fintype.card V = 10
+
+universe u
+
+/-- The numerical two-graph input to Section 8 follows from Gardiner. -/
+theorem homogeneousTwoGraphOrderRecognition_of_gardiner {V : Type u} [Fintype V]
+    (hGardiner : ∀ {A : Type u} [Fintype A] (H : SimpleGraph A),
+      Nonempty A → IsHomogeneousGraph H → GardinerPublishedModels H) :
+    HomogeneousTwoGraphOrderRecognition V := by
+  intro G _ hHom hEven hOdd
+  apply homogeneous_two_graph_nontrivial_order_of_gardiner G
+    (fun H => hGardiner H) hHom hOdd
+  obtain ⟨a, b, c, hab, hac, hbc, hEven⟩ := hEven
+  exact ⟨a, b, c, hab, hac, hbc, (even_triple_iff_not_odd G a b c).mp hEven⟩
 
 private theorem taylor_nontrivial_orders {V : Type*} [Fintype V]
     (G : SimpleGraph V) [DecidableRel G.Adj]
