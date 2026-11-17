@@ -34,11 +34,11 @@ def switchingFibreEquiv {V : Type*} (t : V → Bool) :
   left_inv := by
     intro u
     rcases u with ⟨b,x⟩
-    cases b <;> cases ht : t x <;> rfl
+    cases b <;> cases ht : t x <;> simp [ht, Bool.xor]
   right_inv := by
     intro u
     rcases u with ⟨b,x⟩
-    cases b <;> cases ht : t x <;> rfl
+    cases b <;> cases ht : t x <;> simp [ht, Bool.xor]
 
 /-- The bottom half of the switched Taylor graph maps precisely
 to the chosen transversal of the original Taylor graph. -/
@@ -46,9 +46,8 @@ theorem switchingFibreEquiv_bottom {V : Type*}
     (t : V → Bool) (x : V) :
     switchingFibreEquiv t (false,x) =
       taylorTransversalEmbedding t x := by
-  apply Prod.ext
-  · simp [switchingFibreEquiv,taylorTransversalEmbedding,Bool.xor]
-  · rfl
+  change (Bool.xor false (t x),x) = (t x,x)
+  cases ht : t x <;> simp [ht, Bool.xor]
 
 /-- An exact graph equality after pulling back the original host.
 In particular the inverse switching map preserves all host adjacency,
