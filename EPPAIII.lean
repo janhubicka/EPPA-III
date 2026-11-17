@@ -399,3 +399,4 @@ import EPPAIII.BlockSystems.SmallHostRankThreeFinal
 import EPPAIII.BlockSystems.SmallHostRankThreeStatement
 
 import EPPAIII.BlockSystems.ImprimitiveStrictOrder
+import EPPAIII.BlockSystems.ImprimitiveProposition617
