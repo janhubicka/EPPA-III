@@ -7,6 +7,11 @@ equivalence, the named imprimitive models, and the icosahedral and Johnson Taylo
 transversals. The table identifies the external inputs to these
 reductions.
 
+The [source-data version](PublishedRecognitionSources.md) derives the
+oriented small-graph entries, transports Gardiner and the rank-three
+catalogue from finite labels, recognizes the Clebsch host from its SRG
+parameters, and proves the order-256 local stabilizer bound internally.
+
 | Track | Checked result | Inputs to the proof |
 | --- | --- | --- |
 | Triangular and rook | Half-order criteria for the actual embedding, including the two R4 figure families. | The host isomorphisms used by catalogue recognition. |

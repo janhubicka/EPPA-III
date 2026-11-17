@@ -29,6 +29,7 @@ import EPPAIII.Primitive.TriangularConstituentReduction
 namespace EPPAIII.Primitive
 
 open EPPAIII.BlockSystems
+open EPPAIII.CliqueCovers
 open SimpleGraph
 
 attribute [local instance] Classical.propDecidable
@@ -135,6 +136,107 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
       (hMStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer M {r}) = 11520)
       (hModel : ∀ r, Nonempty (nonlocalGraph H r ≃g M))
       (hStabilizer : ∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 887040)
+
+private theorem automorphism_moving_root {V : Type*} {H : SimpleGraph V}
+    (hTrans : HasTransitiveGraphAutomorphisms H) (r s : V) :
+    ∃ φ : H ≃g H, φ r = s := by
+  obtain ⟨p, hAdj, hRoot⟩ := hTrans r s
+  exact ⟨⟨p, fun {x y} => (hAdj x y).symm⟩, hRoot⟩
+
+/-- For a transitive split polar model one chart suffices. -/
+theorem RecognizedRankThreeFamily.splitPolar_of_chart
+    {n : ℕ} {H : SimpleGraph (Fin n)} {F : Type} [Field F]
+    (hTrans : HasTransitiveGraphAutomorphisms H) (scalars : Fin 3 ↪ F)
+    (C : PolarSixChart (F := F) H (fun v => splitPolarQuadratic v = 0) splitPolarPairing) :
+    RecognizedRankThreeFamily H := by
+  apply splitPolarRankThree scalars
+  intro s
+  obtain ⟨φ, hRoot⟩ := automorphism_moving_root hTrans (C.root splitPolar_root_valid) s
+  exact ⟨C.relabel φ, by simpa only [PolarSixChart.root_relabel] using hRoot⟩
+
+/-- For a transitive symplectic polar model one chart suffices. -/
+theorem RecognizedRankThreeFamily.symplecticPolar_of_chart
+    {n : ℕ} {H : SimpleGraph (Fin n)} {F : Type} [Field F]
+    (hTrans : HasTransitiveGraphAutomorphisms H)
+    (C : PolarSixChart (F := F) H (fun _ => True) symplecticPolarPairing) :
+    RecognizedRankThreeFamily H := by
+  apply symplecticPolarRankThree (F := F)
+  intro s
+  obtain ⟨φ, hRoot⟩ := automorphism_moving_root hTrans (C.root trivial) s
+  exact ⟨C.relabel φ, by simpa only [PolarSixChart.root_relabel] using hRoot⟩
+
+/-- The two binary constituent identities of a transitive model can be
+given at one root. -/
+theorem RecognizedRankThreeFamily.binaryPolar_of_root
+    {n : ℕ} {H : SimpleGraph (Fin n)}
+    (hTrans : HasTransitiveGraphAutomorphisms H) (r : Fin n)
+    (L N : BinaryPolarConstituentChart)
+    (hLocal : localGraph H r ≃g L.model.2) (hNonlocal : nonlocalGraph H r ≃g N.model.2) :
+    RecognizedRankThreeFamily H := by
+  apply binaryPolar
+  intro s
+  obtain ⟨φ, hRoot⟩ := automorphism_moving_root hTrans r s
+  rw [← hRoot]
+  exact ⟨⟨L, ⟨(localIso φ r).symm.trans hLocal⟩⟩,
+    ⟨N, ⟨(nonlocalIso φ r).symm.trans hNonlocal⟩⟩⟩
+
+/-- Once the E₆ parameters are known, the local connectivity input can
+be supplied at one vertex. -/
+theorem RecognizedRankThreeFamily.eSix_of_local_connected
+    {n : ℕ} {H : SimpleGraph (Fin n)} {q : ℕ}
+    (hTrans : HasTransitiveGraphAutomorphisms H) (hq : 2 ≤ q)
+    (hSRG : let p := eSixParameters q
+      H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
+    (r : Fin n) (hConnected : (localGraph H r).Connected) : RecognizedRankThreeFamily H := by
+  refine .eSix hq hSRG fun s => ?_
+  change (localGraph H s).Connected
+  obtain ⟨φ, hRoot⟩ := automorphism_moving_root hTrans r s
+  rw [← hRoot]
+  exact (localIso φ r).connected_iff.mp hConnected
+
+/-- The published E₆ local clique-extension description at one vertex
+supplies the required connectedness. -/
+theorem RecognizedRankThreeFamily.eSix_of_local_model
+    {n : ℕ} {H : SimpleGraph (Fin n)} {q : ℕ} {V : Type*} {J : SimpleGraph V}
+    (hTrans : HasTransitiveGraphAutomorphisms H) (hq : 2 ≤ q)
+    (hSRG : let p := eSixParameters q
+      H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
+    (r : Fin n) (hConnected : J.Connected)
+    (φ : localGraph H r ≃g cliqueExtension (Fin q) J) : RecognizedRankThreeFamily H := by
+  have : Nonempty (Fin q) := ⟨⟨0, by omega⟩⟩
+  exact eSix_of_local_connected hTrans hq hSRG r
+    (φ.connected_iff.mpr (cliqueExtension_connected hConnected))
+
+private theorem transitive_model {V W : Type*} {H : SimpleGraph V} {K : SimpleGraph W}
+    (hTrans : HasTransitiveGraphAutomorphisms H) (hModel : IsModelUpToComplement H K) :
+    HasTransitiveGraphAutomorphisms K := by
+  rcases hModel with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
+  · exact transitive_of_iso φ hTrans
+  · exact transitive_of_iso (by simpa only [compl_compl] using complHostIso φ)
+      (transitive_complement H hTrans)
+
+/-- Model transitivity follows from host transitivity and the model isomorphism,
+including in the complementary orientation. -/
+theorem RecognizedRankThreeFamily.binaryNonsingularUnitary_of_model
+    {n : ℕ} {H : SimpleGraph (Fin n)} (hTrans : HasTransitiveGraphAutomorphisms H)
+    (d : ℕ) (hModel : IsModelUpToComplement H (binaryUnitaryGraph (5 + d))) :
+    RecognizedRankThreeFamily H :=
+  .binaryNonsingularUnitary d (transitive_model hTrans hModel) hModel
+
+theorem RecognizedRankThreeFamily.oddNonsingularOrthogonal_of_model
+    {n : ℕ} {H : SimpleGraph (Fin n)} (hTrans : HasTransitiveGraphAutomorphisms H)
+    (field : OddOrthogonalField) (plus : Bool) (d : ℕ)
+    (hModel : IsModelUpToComplement H (field.graph plus d)) :
+    RecognizedRankThreeFamily H :=
+  .oddNonsingularOrthogonal field plus d
+    (automorphism_moving_root (transitive_model hTrans hModel)) hModel
+
+theorem RecognizedRankThreeFamily.projectiveHalfSpin_of_model
+    {n : ℕ} {H : SimpleGraph (Fin n)} {F : Type} [Field F]
+    (hTrans : HasTransitiveGraphAutomorphisms H)
+    (hModel : IsModelUpToComplement H (halfSpinFiveGraph F)) :
+    RecognizedRankThreeFamily H :=
+  .projectiveHalfSpin (transitive_model hTrans hModel) hModel
 
 /-- Published model recognition of the part of the catalogue outside the
 residual list. The residual predicate may specify individual rows within a
