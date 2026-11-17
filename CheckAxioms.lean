@@ -1451,6 +1451,8 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.polar_rankTwo_actual_second_constituent_excludes_forms
 #print axioms EPPAIII.Primitive.section8Cases_of_primitive_or_imprimitive
 #print axioms EPPAIII.Primitive.primitiveCases_of_eppa_of_catalogue
+#print axioms EPPAIII.Primitive.publishedRankThreeGraphCoverage_iff_catalogue
+#print axioms EPPAIII.Primitive.primitiveCases_iff_eppa_of_publishedRankThreeCoverage
 #print axioms EPPAIII.Primitive.factorial_pow_le_root_stabilizer_of_local_clique_union
 #print axioms EPPAIII.Primitive.tripled_odd_degree_excludes_forms
 #print axioms EPPAIII.Primitive.srg_independent_size_bound_outside
