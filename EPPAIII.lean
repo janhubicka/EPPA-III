@@ -405,3 +405,10 @@ import EPPAIII.BlockSystems.ClusterRegularHomogeneity
 import EPPAIII.BlockSystems.ImprimitiveGardinerBridge
 import EPPAIII.BlockSystems.GardinerLiteralNormalization
 import EPPAIII.BlockSystems.ImprimitiveGlobalClassification
+
+-- Section 5 all-orders two-graph equivalence and Section 6 switching-class interface
+import EPPAIII.TwoGraphs.SwitchingClassNonhomogeneous
+import EPPAIII.TwoGraphs.TrivialTwoGraphBoth
+import EPPAIII.TwoGraphs.FourWayInternalEquivalence
+import EPPAIII.TwoGraphs.FourWayAllOrders
+import EPPAIII.BlockSystems.TwoCliqueTaylorSwitching

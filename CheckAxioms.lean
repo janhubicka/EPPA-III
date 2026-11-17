@@ -1258,6 +1258,7 @@ import EPPAIII
 
 -- Exact source-facing Proposition 6.17, relative only to published Gardiner.
 #print axioms EPPAIII.BlockSystems.cluster_equal_degrees_isHomogeneous
+#print axioms EPPAIII.BlockSystems.cluster_homogeneous_or_unequal_degrees
 #print axioms EPPAIII.BlockSystems.gardiner_models_are_imprimitive_base_models
 #print axioms EPPAIII.BlockSystems.imprimitive_base_models_from_gardiner
 #print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_from_gardiner
@@ -1270,3 +1271,16 @@ import EPPAIII
 
 -- Arbitrary base: imprimitive transitive EPPA classification relative to Gardiner.
 #print axioms EPPAIII.BlockSystems.nonhomogeneous_transitive_imprimitive_eppa_global_classification
+
+-- Integrated Section 5/6 theorem surfaces: PRs #389, #393, #397 and #390.
+#print axioms EPPAIII.TwoGraphs.switching_class_has_nonhomogeneous_representative
+#print axioms EPPAIII.TwoGraphs.no_odd_triple_two_graph_homogeneous
+#print axioms EPPAIII.TwoGraphs.trivial_two_graph_homogeneous
+#print axioms EPPAIII.TwoGraphs.switchingFibreEquiv_taylor_pullback
+#print axioms EPPAIII.TwoGraphs.nonhomogeneous_transversal_eppa_implies_two_graph_homogeneous
+#print axioms EPPAIII.TwoGraphs.taylor_fourway_internal_equivalence
+#print axioms EPPAIII.TwoGraphs.all_taylor_transversals_eppa_iff_homogeneous_two_graph
+#print axioms EPPAIII.TwoGraphs.taylor_fourway_relative_to_external_models
+#print axioms EPPAIII.BlockSystems.seidelSwitchGraph_eq_taylorTransversalGraph
+#print axioms EPPAIII.BlockSystems.twoCliqueGraph_taylorTransversal_to_any_twoClique
+#print axioms EPPAIII.BlockSystems.twoCliqueGraph_taylorTransversal_to_complete
