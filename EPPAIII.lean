@@ -400,3 +400,6 @@ import EPPAIII.BlockSystems.SmallHostRankThreeStatement
 
 import EPPAIII.BlockSystems.ImprimitiveStrictOrder
 import EPPAIII.BlockSystems.ImprimitiveProposition617
+
+import EPPAIII.BlockSystems.ClusterRegularHomogeneity
+import EPPAIII.BlockSystems.ImprimitiveGardinerBridge
