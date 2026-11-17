@@ -10,6 +10,7 @@ The principal certified result is a **necessity theorem** for nonhomogeneous hos
 |---|---|
 | [Imprimitive classification — exact Lean code and proof architecture](Imprimitive-Classification.md) | The EPPA and block-system definitions, exact model predicates, full main Lean module, proof-by-cases, dependency map, and source-fidelity audit |
 | [Gardiner: formal external hypothesis and normalization](Gardiner-External-Assumption.md) | Literal six-case definition, graph relabelling, C₅/rook self-complementarity, reduction to canonical cases, and the precise trust boundary |
+| [Named host models and Taylor matrices](Named-Host-Models.md) | Exact Lean definitions for all terminal canonical graph constructors appearing in the host alternatives |
 | [Publishing this wiki](Publishing.md) | The GitHub Actions sync from `docs/wiki/` to the separate Wiki Git repository, initialization, and troubleshooting |
 
 ## Runnable entry points
