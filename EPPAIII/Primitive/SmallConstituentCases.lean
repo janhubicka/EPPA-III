@@ -67,7 +67,9 @@ private theorem validScreenLabel_of_hit {p : SRGParameters} {side : Bool}
 
 /-- The four Paley hosts appearing in the small-constituent screen. -/
 structure SmallPaleyExclusions : Prop where
-  prime : ∀ q ∈ ([17, 37, 41] : List ℕ), NoHalfOrderEPPA (paleyPrimeModel q)
+  seventeen : NoHalfOrderEPPA (paleyPrimeModel 17)
+  thirtySeven : NoHalfOrderEPPA (paleyPrimeModel 37)
+  fortyOne : NoHalfOrderEPPA (paleyPrimeModel 41)
   twentyFive : NoHalfOrderEPPA paleyTwentyFiveModel
 
 /-- A screened small constituent yields one of the primitive alternatives
@@ -104,12 +106,18 @@ theorem primitiveCases_of_screened_small_constituent
   | triangularComplement n =>
       exact listed (Or.inr (Or.inl ⟨n, of_decide_eq_true hValid, Or.inr ⟨φ⟩⟩))
   | paleyPrime n =>
-      exact exclude ((hPaley.prime n (of_decide_eq_true hValid)).of_iso φ)
+      have hn : n ∈ ([17, 37, 41] : List ℕ) := of_decide_eq_true hValid
+      simp only [List.mem_cons, List.not_mem_nil, or_false] at hn
+      rcases hn with rfl | rfl | rfl
+      · exact exclude (hPaley.seventeen.of_iso φ)
+      · exact exclude (hPaley.thirtySeven.of_iso φ)
+      · exact exclude (hPaley.fortyOne.of_iso φ)
   | paleyTwentyFive =>
       exact exclude (hPaley.twentyFive.of_iso φ)
   | foldedFiveCube =>
+      change H ≃g foldedFiveCubeModel at φ
       have ψ : H ≃g clebschGraph := by
-        simpa only [SmallConstituentHostModel.graph, foldedFiveCube_eq_clebsch] using φ
+        simpa only [foldedFiveCube_eq_clebsch] using φ
       exact listed (Or.inr (Or.inr (Or.inr (Or.inl (Or.inl ⟨ψ⟩)))))
   | schlaefliComplement =>
       exact listed (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr

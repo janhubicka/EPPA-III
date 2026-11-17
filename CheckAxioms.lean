@@ -1368,3 +1368,5 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.primitiveCases_of_screened_small_constituent
 #print axioms EPPAIII.Primitive.bilinearFormsRankOne_card
 #print axioms EPPAIII.Primitive.bilinearFormsRankOne_connected
+#print axioms EPPAIII.Primitive.bilinearRankOne_inducedPath
+#print axioms EPPAIII.Primitive.bilinearRankTwo_fiveCycle
