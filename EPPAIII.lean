@@ -412,3 +412,9 @@ import EPPAIII.TwoGraphs.TrivialTwoGraphBoth
 import EPPAIII.TwoGraphs.FourWayInternalEquivalence
 import EPPAIII.TwoGraphs.FourWayAllOrders
 import EPPAIII.BlockSystems.TwoCliqueTaylorSwitching
+
+-- Independent English and Lean sufficiency certificates (not manuscript edits)
+import EPPAIII.BlockSystems.ImprimitiveSufficiencyLifts
+import EPPAIII.BlockSystems.TwoCliqueMatchedSufficiency
+
+import EPPAIII.BlockSystems.CycleFiveSufficiency
