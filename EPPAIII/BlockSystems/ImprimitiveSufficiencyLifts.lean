@@ -175,9 +175,11 @@ def matchedLayerGraph {V : Type*}
     rcases h with hSame | hCross
     · cases hb : u.1 with
       | false =>
-          exact (G.irrefl u.2) (by simpa [hb] using hSame.2)
+          have ha : G.Adj u.2 u.2 := by simpa [hb] using hSame.2
+          exact G.irrefl ha
       | true =>
-          exact (K.irrefl u.2) (by simpa [hb] using hSame.2)
+          have ha : K.Adj u.2 u.2 := by simpa [hb] using hSame.2
+          exact K.irrefl ha
     · exact hCross.1 rfl
 
 /-- A matching host is EPPA if the top-layer adjacency relation is
