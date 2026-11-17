@@ -12,13 +12,13 @@ On a push touching `docs/wiki/**` or the workflow, or on manual dispatch, the wo
 4. If present, synchronizes the source-controlled Markdown to the [live Wiki tab](https://github.com/janhubicka/EPPA-III/wiki), without force-pushing or producing empty commits.
 5. If missing, writes an explicit notice to the Action's step summary. **The wiki is not published in that case.**
 
-The workflow includes the initial documentation branch for first publication; after merging it, `main` is the ongoing publication source. Publishing does not itself assert that a Lean proof or its printed-paper correspondence is correct.
+**Current state (17 November 2026):** The source-controlled documentation was merged in [PR #401](https://github.com/janhubicka/EPPA-III/pull/401). The repository owner has reported creating the initial Wiki Home page. The publishing workflow now runs from `main` and its logs should be used to verify an actual Wiki push; a successful check with a **skipped** publishing step does not establish publication. Publishing does not itself assert that a Lean proof or its printed-paper correspondence is correct.
 
 ## One-time Wiki initialization if required
 
 GitHub stores Wiki pages in a distinct Git repository. Enabling the Wiki feature (`has_wiki: true`) does **not** establish that the Wiki Git repository already has a first commit.
 
-If the workflow reports an uninitialized Wiki, open [EPPA III Wiki](https://github.com/janhubicka/EPPA-III/wiki), choose **Create the first page**, name it **Home**, add a temporary sentence, and save. Then use [Actions → Publish EPPA III wiki](https://github.com/janhubicka/EPPA-III/actions/workflows/publish-wiki.yml) to run the publisher (or make another change to `docs/wiki/`). Until this workflow is merged to the default branch, GitHub may not offer its manual `workflow_dispatch` control; a new push touching `docs/wiki/` on the documentation branch will trigger the publisher instead. This is the same one-time procedure documented and successfully used in `lean-milliken`.
+If the workflow reports an uninitialized Wiki, open [EPPA III Wiki](https://github.com/janhubicka/EPPA-III/wiki), choose **Create the first page**, name it **Home**, add a temporary sentence, and save. Then use [Actions → Publish EPPA III wiki](https://github.com/janhubicka/EPPA-III/actions/workflows/publish-wiki.yml) to run the publisher (or make another change to `docs/wiki/`). The publishing workflow is now on the default branch, so manual `workflow_dispatch` can be used when needed. This is the same one-time procedure documented and successfully used in `lean-milliken`.
 
 ## Source of truth and links
 
