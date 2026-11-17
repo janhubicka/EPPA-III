@@ -175,7 +175,7 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
   obtain ⟨Q, t, hRange, hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hTriple⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
-      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hCheck⟩ | ⟨ψ⟩ := hModel
+      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hCheck⟩ | ⟨⟨ψ⟩⟩ := hModel
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact polar_rankTwo_not_eppa_of_small_stabilizer G K f hMoved hSize
       (transitive_of_iso φ hTrans) root hRange hSRG hLocalModel hNonlocal (hStabilizer (f root))
@@ -265,7 +265,7 @@ theorem primitiveCases_of_completeRankThreeCoverage
   · have hListed' := listedPrimitiveHost_of_model hIso hListed
     exact (primitiveCases_iff_eppa_of_listedHost G H e hEPPA.1 hHalf hListed' hFinite).mpr hEPPA
   · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
-    · exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding
+    · exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding (root := root)
         hPolar φ hRank.2.2.1 hEPPA hHalf hShapes)
     · have φ' : Hᶜ ≃g K.2 := by simpa only [compl_compl] using complHostIso φ
       exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding hPolar φ'
