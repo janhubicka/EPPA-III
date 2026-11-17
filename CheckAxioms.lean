@@ -1477,3 +1477,4 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.affine_256_120_constituents_exclude_forms
 #print axioms EPPAIII.Primitive.affine_243_22_nonlocal_exclude_forms
 #print axioms EPPAIII.Primitive.affine_blvs_not_eppa
+#print axioms EPPAIII.Primitive.affine_gqThreeFive_not_eppa

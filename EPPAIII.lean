@@ -536,6 +536,7 @@ import EPPAIII.Primitive.NonsingularTernaryExclusion
 import EPPAIII.Primitive.AffineExceptionalRefinements
 import EPPAIII.Primitive.AffineConferenceExclusion
 import EPPAIII.Primitive.AffineMatchingExclusion
+import EPPAIII.Primitive.AffineTriangleClusterExclusion
 import EPPAIII.Primitive.PolarRankTwoExclusion
 import EPPAIII.Primitive.UnitaryFiveDual
 import EPPAIII.Primitive.UnitaryFiveTwoPoint
