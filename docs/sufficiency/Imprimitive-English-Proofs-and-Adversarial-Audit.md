@@ -112,6 +112,37 @@ Let `Δ` be the odd-edge-parity two-graph of a selected representative `G`, and 
 
 **External outstanding identification:** The classification of finite homogeneous two-graphs as trivial or the unique nontrivial 6- and 10-point examples is **not** a Lean theorem in this repository. To conclude unconditional EPPA of the *named* icosahedron and Johnson graph `J(6,3)`, one must (a) construct explicit 6/10-point two-graphs and prove their homogeneity, or use a separately identified external theorem **and** (b) prove a labelled graph equivalence from their Taylor doubles to these named hosts, taking the selected transversals with them. A classification theorem which only says every homogeneous two-graph belongs to a list is **not sufficient** to prove that every item in that list is homogeneous, absent the converse/existence part. Until then the general implication is formally certified, while unconditional named-model certification is pending.
 
+### 7.1 Direct finite EPPA certificates for the named sporadic hosts
+
+We can verify the two nontrivial examples independently of the external homogeneous two-graph classification. The canonical six-vertex representative is (G_6=C_5\sqcup K_1), with the natural bottom embedding in its twelve-vertex Taylor double (the icosahedron). The canonical ten-vertex representative starts from the Petersen graph (P=KG(5,2)); the twenty-vertex Taylor double of the complement (T(5)) is **literally** the Johnson graph (J(6,3)) after the following explicit coordinate change.
+
+Label the ten vertices of (T(5)) by two-element subsets (S\subseteq[5]). Send the bottom vertex ((0,S)) to the three-subset (S\cup\{5\}) of ([6]), and the top vertex ((1,S)) to ([5]\setminus S). In each layer the Johnson adjacency (\lvert U\cap V\rvert=2) is equivalent to the two-subsets sharing one point (the adjacency of (T(5))); between layers it is equivalent to the two-subsets being disjoint (the nonadjacency of (T(5))). Both mates are nonadjacent. This proves a full labelled graph isomorphism between the Taylor double of (T(5)) and (J(6,3)).
+
+To embed the **Petersen** graph rather than (T(5)), use the concrete permutation of the ten two-subsets (in lexicographic order)
+`
+(0, 1, 5, 7, 6, 9, 2, 4, 3, 8).
+`
+It reverses the odd parity of **every** triple in the Petersen two-graph. Therefore it carries the Petersen graph into the switching class of (T(5)). With the anchor `0` the switching side bits are
+`
+(0, 1, 1, 0, 1, 0, 1, 0, 0, 1).
+`
+Using the inverse of the displayed permutation before applying the labelled Taylor transversal gives the *fixed Petersen embedding* into (J(6,3)). The resulting ten values in Johnson's lexicographic three-subset numbering are
+`
+(3, 13, 4, 18, 17, 11, 7, 9, 0, 14).
+`
+The script checks inducedness of all 100 ordered pairs. This construction avoids the erroneous shortcut of treating the Petersen graph as literally equal to (T(5)).
+
+For the icosahedral double, full two-graph automorphisms number **60**, and each has two Taylor lifts, giving **120** explicit host automorphisms. For the Johnson double, the ten-point two-graph automorphism group has **720** elements and gives **1,440** explicit Taylor lifts. The checker verifies all these permutations preserve host adjacency, and that the orbit of a vertex meets every host vertex (transitivity). It then exhausts all partial isomorphisms up to orbits of their domains under the **base graph** automorphism group:
+
+| Model | Base automorphisms | Domain orbits | Partial isomorphisms checked | Result |
+|---|---:|---:|---:|---|
+| Icosahedral double of (C_5\sqcup K_1) | 10 | 16 | **213** | Every map extends |
+| Johnson (J(6,3)) over Petersen | 120 | 34 | **4,061** | Every map extends |
+
+Each domain orbit reduction is sound: for an arbitrary partial isomorphism `f:D→B`, choose a base automorphism carrying an enumerated representative domain `D₀` to `D`, verify extension for the resulting map from `D₀`, and compose the host extension with the known lifted base automorphism. All finite maps are enumerated, not sampled.
+
+**Trust boundary:** these are independent complete finite exhaustive checks `checks/section6_sporadic_sufficiency.py`, **not yet Lean-kernel derivations**. To close the repository's Lean formalization completely, transfer this explicit finite certificate or prove the equivalent two-graph homogeneity results directly in Lean, and formalize the labelled Johnson identification. The generic homogeneous-two-graph implication in `AllTransversalEppa.lean` is already verified.
+
 ## 8. Complements and relabellings (fully accounted for)
 
 If `e:G→H` is EPPA, then the same chosen vertex injection `e:Gᶜ→Hᶜ` is EPPA: a partial isomorphism preserves edge and nonedge information in either graph, and every automorphism of `H` preserves its complement. If `φ:K≃G` is a graph equivalence, precompose the embedding and conjugate the partial maps. These are already formally proved as `EPPAIII.eppa_embedding_complement` and `EPPAIII.eppa_relabel_base`; no new correctness hypothesis is introduced.
