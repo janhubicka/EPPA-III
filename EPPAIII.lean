@@ -491,3 +491,5 @@ import EPPAIII.Primitive.BinaryOrthogonalGeneratorMatrices
 import EPPAIII.Primitive.GrassmannGraph
 import EPPAIII.Primitive.AffineLineArithmetic
 import EPPAIII.Primitive.AffineLineBound
+import EPPAIII.Primitive.HoffmanSingleton
+import EPPAIII.Primitive.AffineSemilinearArithmetic
