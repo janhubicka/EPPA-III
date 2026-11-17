@@ -126,7 +126,7 @@ theorem nonhomogeneous_transversal_eppa_implies_two_graph_homogeneous
   have hpJ : IsPartialTwoGraphAutomorphism J D p := by
     intro x hx y hy z hz
     exact (hParity x y z).trans
-      ((hp x hx y hy z hz).trans (hParity (p x) (p y) (p z)).symm) |>.symm
+      ((hp x hx y hy z hz).trans (hParity (p x) (p y) (p z)).symm)
   obtain ⟨σ,hσ,hExtend⟩ := hHomJ D p hpJ
   refine ⟨σ, ?_, hExtend⟩
   intro x y z
