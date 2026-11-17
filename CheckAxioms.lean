@@ -1238,3 +1238,6 @@ import EPPAIII
 -- Section 5 all-orders EPPA/two-graph equivalence and four-way external boundary.
 #print axioms EPPAIII.TwoGraphs.all_taylor_transversals_eppa_iff_homogeneous_two_graph
 #print axioms EPPAIII.TwoGraphs.taylor_fourway_relative_to_external_models
+
+-- Literal finite homogeneous two-graph models relative to the paper's classification.
+#print axioms EPPAIII.TwoGraphs.fourway_exact_named_twograph_models_relative_to_classification
