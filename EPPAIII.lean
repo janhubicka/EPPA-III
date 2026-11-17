@@ -391,3 +391,4 @@ import EPPAIII.BlockSystems.RankThreeActualImprimitiveBlocks
 
 import EPPAIII.BlockSystems.RookMatefreeDistinctFromTaylor
 import EPPAIII.TwoGraphs.SwitchingClassNonhomogeneous
+import EPPAIII.TwoGraphs.TrivialTwoGraphBoth
