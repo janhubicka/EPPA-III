@@ -500,6 +500,7 @@ import EPPAIII.Primitive.BilinearExclusion
 import EPPAIII.Primitive.GrassmannExclusion
 import EPPAIII.Primitive.Gewirtz
 import EPPAIII.Primitive.AffineLineExclusion
+import EPPAIII.Primitive.AffineLineCompletion
 import EPPAIII.Primitive.AffineLineSmallPaley
 import EPPAIII.Primitive.E6Constituents
 import EPPAIII.Primitive.AffineLineExclusionFromSubdegrees

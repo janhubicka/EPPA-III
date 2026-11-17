@@ -1,3 +1,4 @@
+import EPPAIII.Primitive.AffineLineCompletion
 import EPPAIII.Primitive.AffineMatchingExclusion
 import EPPAIII.Primitive.AffineTriangleClusterExclusion
 import EPPAIII.Primitive.RankThreeFamilyReductions
@@ -60,6 +61,20 @@ private theorem model_up_to_complement_trans {V W X : Type*} {H : SimpleGraph V}
   · exact Or.inr ⟨φ.trans (complHostIso ψ)⟩
   · exact Or.inl ⟨φ.trans (by simpa only [compl_compl] using complHostIso ψ)⟩
 
+private theorem listedPrimitiveHost_of_model {V W : Type*} [Finite V]
+    {H : SimpleGraph V} {K : SimpleGraph W}
+    (hIso : IsModelUpToComplement H K) (hListed : IsListedPrimitiveHost K) :
+    IsListedPrimitiveHost H := by
+  obtain hHom | ⟨n, hn, hTri⟩ | hRook | hCl | hSch := hListed
+  · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
+    · exact Or.inl (homogeneous_graph_of_iso φ hHom)
+    · exact Or.inl (homogeneous_graph_of_iso φ
+        ((DoubleCover.homogeneous_complement_iff _).mp hHom))
+  · exact Or.inr (Or.inl ⟨n, hn, model_up_to_complement_trans hIso hTri⟩)
+  · exact Or.inr (Or.inr (Or.inl (model_up_to_complement_trans hIso hRook)))
+  · exact Or.inr (Or.inr (Or.inr (Or.inl (model_up_to_complement_trans hIso hCl))))
+  · exact Or.inr (Or.inr (Or.inr (Or.inr (model_up_to_complement_trans hIso hSch))))
+
 /-- The rank-two exclusion uses the local clique union and the stabilizer
 bound once the shape test rules out the nonlocal half-order selection. The
 unitary point model of order 165 uses the exact clique multiplicities,
@@ -89,11 +104,40 @@ def AffineTriangleClusterCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Pr
     (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 2160) ∧
     (∀ r w, H.Adj r w → Nat.card (pointwiseGraphStabilizer H {r, w}) = 120)
 
+/-- A semilinear one-dimensional model and the small connection-set
+identifications. Exceptional larger full groups use their own rows. -/
+inductive AffineLineCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
+  | model {K F : Type} [Field K] [Field F] [Fintype F] [Algebra K F]
+      [FiniteDimensional K F] (J : SimpleGraph F)
+      (hModel : IsModelUpToComplement H J)
+      (hAffine : HasAffineLineAction K J) {p : ℕ} (hp : p.Prime)
+      (hCard : Nat.card F = p ^ Module.finrank K F)
+      (hConnection : AffineLineConnection J p (Module.finrank K F))
+
+private theorem affineLineCatalogueModel_listed {V W : Type*} [Finite V] [Finite W]
+    {G : SimpleGraph V} {H : SimpleGraph W} {n : ℕ} {L : SimpleGraph (Fin n)}
+    {e : V ↪ W} (hModel : AffineLineCatalogueModel L)
+    (hIso : IsModelUpToComplement H L) (hEPPA : IsEPPAEmbedding G H e)
+    (hHalf : Nat.card W ≤ 2 * Nat.card V) :
+    IsListedPrimitiveHost H := by
+  obtain ⟨J, hJ, hAffine, hp, hCard, hConnection⟩ := hModel
+  have hModel := model_up_to_complement_trans hIso hJ
+  apply listedPrimitiveHost_of_model hModel
+  rcases hModel with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
+  · exact affineLine_listed_of_eppa G J _
+      (eppa_relabel_host G e hEPPA φ) ((Nat.card_congr φ.toEquiv).symm.trans_le hHalf)
+      hAffine hp hCard hConnection
+  · have φ' : Hᶜ ≃g J := by simpa only [compl_compl] using complHostIso φ
+    exact affineLine_listed_of_eppa Gᶜ J _
+      (eppa_relabel_host Gᶜ e (eppa_embedding_complement G H e hEPPA) φ')
+      ((Nat.card_congr φ'.toEquiv).symm.trans_le hHalf) hAffine hp hCard hConnection
+
 /-- A row can use global exclusions, a listed positive host,
 or an exclusion that uses the selected constituent sizes. -/
 def CompleteRankThreeCase {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
   RecognizedRankThreeFamily H ∨ IsListedPrimitiveHost H ∨
-    RankTwoPolarCatalogueModel H ∨ AffineMatchingCatalogueModel H ∨ AffineTriangleClusterCatalogueModel H
+    RankTwoPolarCatalogueModel H ∨ AffineMatchingCatalogueModel H ∨
+    AffineTriangleClusterCatalogueModel H ∨ AffineLineCatalogueModel H
 
 private theorem rankTwoPolarCatalogueModel_excludes_embedding
     {V W : Type*} [Finite V] {n : ℕ}
@@ -164,29 +208,21 @@ theorem primitiveCases_of_completeRankThreeCoverage
     (hRank : HasRankThreeAutAction H) (hEPPA : IsEPPAEmbedding G H e)
     (hHalf : Nat.card W ≤ 2 * Nat.card V) (hModel : InRankThreeCatalog catalog H)
     (hOrthogonal : OrthogonalSearchChecks) (hFinite : PrimitiveFiniteChecks)
-    (root : V) (hShape : SelectedConstituentShapes G H e root) :
+    (root : V) (hShapes : ∀ r, SelectedConstituentShapes G H e r) :
     primitiveCases G H e := by
+  have hShape := hShapes root
   have hEither := (selected_subconstituent_at_least_half G H e root hRank.2.2.1 hHalf).imp
     hShape.1 hShape.2
   obtain hCases | ⟨c, K, hMem, hIso⟩ :=
     primitiveCases_or_residual_rankThree_model catalog G H e hRank hEPPA hHalf hModel
       hOrthogonal (e root) (fun _ => hEither)
   · exact hCases
-  obtain hKnown | hListed | hPolar | hMatching | hTriangle := hCoverage c K hMem
+  obtain hKnown | hListed | hPolar | hMatching | hTriangle | hLine := hCoverage c K hMem
   · obtain hExclude | hForms := hKnown.exclusion hOrthogonal
     · exact False.elim ((hExclude.of_iso_or_compl hIso).not_eppa_embedding G e hHalf hEPPA)
     · obtain ⟨hLocal, hNonlocal⟩ := constituent_forms_exclusion_of_model hForms hIso (e root)
       exact False.elim (hEither.elim hLocal hNonlocal)
-  · have hListed' : IsListedPrimitiveHost H := by
-      obtain hHom | ⟨n, hn, hTri⟩ | hRook | hCl | hSch := hListed
-      · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
-        · exact Or.inl (homogeneous_graph_of_iso φ hHom)
-        · exact Or.inl (homogeneous_graph_of_iso φ
-            ((DoubleCover.homogeneous_complement_iff _).mp hHom))
-      · exact Or.inr (Or.inl ⟨n, hn, model_up_to_complement_trans hIso hTri⟩)
-      · exact Or.inr (Or.inr (Or.inl (model_up_to_complement_trans hIso hRook)))
-      · exact Or.inr (Or.inr (Or.inr (Or.inl (model_up_to_complement_trans hIso hCl))))
-      · exact Or.inr (Or.inr (Or.inr (Or.inr (model_up_to_complement_trans hIso hSch))))
+  · have hListed' := listedPrimitiveHost_of_model hIso hListed
     exact (primitiveCases_iff_eppa_of_listedHost G H e hEPPA.1 hHalf hListed' hFinite).mpr hEPPA
   · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
     · exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding
@@ -207,5 +243,8 @@ theorem primitiveCases_of_completeRankThreeCoverage
     · have φ' : Hᶜ ≃g K.2 := by simpa only [compl_compl] using complHostIso φ
       exact False.elim (affineTriangleClusterCatalogueModel_excludes_embedding
         hTriangle φ' (eppa_embedding_complement G H e hEPPA) hHalf hShape.compl)
+
+  · exact (primitiveCases_iff_eppa_of_listedHost G H e hEPPA.1 hHalf
+      (affineLineCatalogueModel_listed hLine hIso hEPPA hHalf) hFinite).mpr hEPPA
 
 end EPPAIII.Primitive

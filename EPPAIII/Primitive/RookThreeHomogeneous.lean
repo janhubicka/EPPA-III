@@ -63,8 +63,16 @@ private theorem coordinateMover_fix :
       ((rookGraph 3).Adj x z ↔ (rookGraph 3).Adj y z) → coordinateMover x y z = z := by
   decide
 
-/-- Every partial automorphism of the three-by-three rook graph extends. -/
-theorem rookThree_homogeneous : IsHomogeneousGraph (rookGraph 3) := by
+/-- If a symmetry can move a vertex while fixing every other vertex with
+the same adjacency to its source and target, partial automorphisms extend. -/
+theorem homogeneous_of_pair_movers {V : Type*} (G : SimpleGraph V)
+    (move : V → V → Equiv.Perm V)
+    (hAuto : ∀ x y, IsGraphAutomorphism G (move x y))
+    (hMove : ∀ x y, move x y x = y)
+    (hFix : ∀ x y z, z ≠ x → z ≠ y →
+      (G.Adj x z ↔ G.Adj y z) → move x y z = z) :
+    IsHomogeneousGraph G := by
+  classical
   intro D
   induction D using Finset.induction_on with
   | empty =>
@@ -72,29 +80,34 @@ theorem rookThree_homogeneous : IsHomogeneousGraph (rookGraph 3) := by
       exact ⟨Equiv.refl _, fun _ _ => Iff.rfl, by simp⟩
   | @insert x D hx ih =>
       intro p hp
-      have hpD : IsPartialGraphAutomorphism (rookGraph 3) D p := by
+      have hpD : IsPartialGraphAutomorphism G D p := by
         intro u v hu hv
         exact hp u v (Finset.mem_insert_of_mem hu) (Finset.mem_insert_of_mem hv)
       obtain ⟨q, hq, hAgree⟩ := ih p hpD
-      let r := coordinateMover (q x) (p x)
-      have hr := coordinateMover_auto (q x) (p x)
+      let r := move (q x) (p x)
+      have hr := hAuto (q x) (p x)
       refine ⟨q.trans r, fun u v => (hq u v).trans (hr (q u) (q v)), ?_⟩
       intro v hv
       rcases Finset.mem_insert.mp hv with rfl | hv
-      · exact coordinateMover_apply (q v) (p v)
+      · exact hMove (q v) (p v)
       · change r (q v) = p v
         rw [← hAgree v hv]
         have hqv : q v ≠ q x := fun h => hx (q.injective h ▸ hv)
         have hpv : q v ≠ p x := by
           rw [hAgree v hv]
           exact fun h => hx (p.injective h ▸ hv)
-        have hAdj : (rookGraph 3).Adj (q x) (q v) ↔
-            (rookGraph 3).Adj (p x) (q v) := by
+        have hAdj : G.Adj (q x) (q v) ↔
+            G.Adj (p x) (q v) := by
           calc
-            (rookGraph 3).Adj (q x) (q v) ↔ (rookGraph 3).Adj x v := (hq x v).symm
-            _ ↔ (rookGraph 3).Adj (p x) (p v) :=
+            G.Adj (q x) (q v) ↔ G.Adj x v := (hq x v).symm
+            _ ↔ G.Adj (p x) (p v) :=
               hp x v (Finset.mem_insert_self x D) (Finset.mem_insert_of_mem hv)
-            _ ↔ (rookGraph 3).Adj (p x) (q v) := by rw [hAgree v hv]
-        exact coordinateMover_fix (q x) (p x) (q v) hqv hpv hAdj
+            _ ↔ G.Adj (p x) (q v) := by rw [hAgree v hv]
+        exact hFix (q x) (p x) (q v) hqv hpv hAdj
+
+/-- Every partial automorphism of the three-by-three rook graph extends. -/
+theorem rookThree_homogeneous : IsHomogeneousGraph (rookGraph 3) :=
+  homogeneous_of_pair_movers _ coordinateMover coordinateMover_auto
+    coordinateMover_apply coordinateMover_fix
 
 end EPPAIII.Primitive

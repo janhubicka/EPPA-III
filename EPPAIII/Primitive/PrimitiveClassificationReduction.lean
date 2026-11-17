@@ -78,14 +78,35 @@ theorem primitiveCases_of_eppa_of_catalogue
     exact section8Cases_of_primitive_or_imprimitive P Q j hp hc
       (hRecognize.gardinerSelected P) hRecognize.gardinerHost hRecognize.twoGraphOrders
   obtain ⟨hRec, hRecC⟩ := hRecognize.triangular L hPrimL hRankL
-  obtain ⟨hLocal, hNonlocal⟩ := hMin.constituent_shapes hPrimL hRankL root hProject
-    Or.inl hRecognize.smallParameters hRecognize.smallModels hSearch hPaley hFinite
-    (fun side n hn hModel => Or.inl
-      (primitiveCases_of_triangular_constituent K L f hMin.pair.eppa hMin.pair.halfOrder hRankL
-        hRec hRecC hSearch hFinite (f root) side n hn hModel))
+  have hShapes (r : A) : SelectedConstituentShapes K L f r := by
+    obtain ⟨hLocal, hNonlocal⟩ := hMin.constituent_shapes hPrimL hRankL r hProject
+      Or.inl hRecognize.smallParameters hRecognize.smallModels hSearch hPaley hFinite
+      (fun side n hn hModel => Or.inl
+        (primitiveCases_of_triangular_constituent K L f hMin.pair.eppa hMin.pair.halfOrder hRankL
+          hRec hRecC hSearch hFinite (f r) side n hn hModel))
+    exact ⟨hLocal, hNonlocal⟩
   have hCases := primitiveCases_of_completeRankThreeCoverage catalog hFamilies K L f
     hRankL hMin.pair.eppa hMin.pair.halfOrder (hCatalogue L hPrimL hRankL)
-    hSearch hFinite root ⟨hLocal, hNonlocal⟩
+    hSearch hFinite root hShapes
   exact hMin.unclassified (Or.inl hCases)
+
+/-- The primitive classification as an equivalence for the actual embedding,
+with the published recognitions and finite computations explicit. -/
+theorem primitiveCases_iff_eppa_of_catalogue
+    (catalog : RankThreeCatalog) (hCatalogue : RankThreeClassification.{v} catalog)
+    (hFamilies : ∀ c K, K ∈ catalog c → CompleteRankThreeCase K.2)
+    (hRecognize : PrimitiveRecognitionInputs.{u, v})
+    (hSearch : OrthogonalSearchChecks) (hPaley : SmallPaleyExclusions)
+    (hFinite : PrimitiveFiniteChecks)
+    {V : Type u} {W : Type v} [Finite V] [Finite W]
+    (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
+    (hInd : IsInducedGraphEmbedding G H e)
+    (hHalf : Nat.card W ≤ 2 * Nat.card V)
+    (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms H)
+    (hPrim : IsPrimitiveAutAction H) :
+    primitiveCases G H e ↔ IsEPPAEmbedding G H e :=
+  ⟨eppa_of_primitiveCases G H e hInd hHalf hFinite,
+    fun hEPPA => primitiveCases_of_eppa_of_catalogue catalog hCatalogue hFamilies
+      hRecognize hSearch hPaley hFinite G H e ⟨hEPPA, hTrans, hHalf⟩ hPrim⟩
 
 end EPPAIII.Primitive

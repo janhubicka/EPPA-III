@@ -9,7 +9,7 @@ namespace EPPAIII.Primitive
 
 /-- In the rank-two geometry, the nonlocal host graph fails the induction
 shape test, so the selected local neighbourhood reaches half order. -/
-private theorem selected_local_at_least_half_of_rankTwoPolar
+theorem selected_local_at_least_half_of_rankTwoPolar
     {V W : Type*} [Finite V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W) [DecidableRel H.Adj] (e : V ↪ W)
     (hHalf : Nat.card W ≤ 2 * Nat.card V)

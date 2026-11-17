@@ -1478,3 +1478,5 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.affine_243_22_nonlocal_exclude_forms
 #print axioms EPPAIII.Primitive.affine_blvs_not_eppa
 #print axioms EPPAIII.Primitive.affine_gqThreeFive_not_eppa
+#print axioms EPPAIII.Primitive.affineLine_listed_of_eppa
+#print axioms EPPAIII.Primitive.primitiveCases_iff_eppa_of_catalogue
