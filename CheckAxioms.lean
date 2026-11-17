@@ -1359,3 +1359,5 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.no_clique_union_or_compl_of_induced_five_cycle
 #print axioms EPPAIII.Primitive.no_cover_or_compl_of_induced_five_cycle
 #print axioms EPPAIII.Primitive.orthogonalEight_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.orthogonalEight_model_excludes_forms
+#print axioms EPPAIII.Primitive.primitiveCases_or_residual_rankThree_model

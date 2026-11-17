@@ -482,3 +482,4 @@ import EPPAIII.Primitive.BilinearGraph
 import EPPAIII.Primitive.RookFourClassification
 import EPPAIII.Primitive.CycleFiveCoverObstruction
 import EPPAIII.Primitive.OrthogonalEightConstituents
+import EPPAIII.Primitive.RankThreeCases
