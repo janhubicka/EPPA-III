@@ -90,7 +90,7 @@ theorem MinimalCounterexample.constituent_shapes
     {G : SimpleGraph V} {H : SimpleGraph W} [DecidableRel H.Adj] {e : V ↪ W}
     (h : MinimalCounterexample classified G H e) (hPrim : IsPrimitiveAutAction H)
     (hRank : HasRankThreeAutAction H) (root : V)
-    (hProject : ∀ {A : Type u} {B : Type v} [Finite B]
+    (hProject : ∀ {A : Type u} {B : Type v} [Finite A] [Finite B]
       (K : SimpleGraph A) (L : SimpleGraph B) (f : A ↪ B),
       SmallEPPAPair K L f → classified K L f → Section8ConstituentCases L)
     (hIncludePrimitive : primitiveCases G H e → classified G H e)

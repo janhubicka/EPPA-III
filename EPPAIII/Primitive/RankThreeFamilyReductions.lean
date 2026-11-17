@@ -294,7 +294,7 @@ theorem MinimalCounterexample.residual_rankThree_family
     (catalog : RankThreeCatalog) (residual : RankThreeExternalCase → FiniteGraphModel → Prop)
     (hClassification : RankThreeClassification.{v} catalog)
     (hCoverage : RankThreeFamilyCoverage catalog residual)
-    (hProject : ∀ {A : Type u} {B : Type v} [Finite B]
+    (hProject : ∀ {A : Type u} {B : Type v} [Finite A] [Finite B]
       (K : SimpleGraph A) (L : SimpleGraph B) (f : A ↪ B),
       SmallEPPAPair K L f → classified K L f → Section8ConstituentCases L)
     (hIncludePrimitive : primitiveCases G H e → classified G H e)
