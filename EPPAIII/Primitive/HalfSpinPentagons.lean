@@ -14,7 +14,7 @@ def IsAlternatingFive {R : Type*} [Ring R] (A : Matrix (Fin 5) (Fin 5) R) : Prop
   (∀ i, A i i = 0) ∧ ∀ i j, A i j = -A j i
 
 abbrev HalfSpinChartVertex (F : Type*) [Field F] :=
-  {A : Matrix (Fin 5) (Fin 5) F // IsAlternatingFive A}
+  {A : Matrix (Fin 5) (Fin 5) F // IsAlternatingFive A ∧ A.rank % 2 = 0}
 
 /-- The origin of the alternating chart corresponds to the fixed maximal
 totally singular space. -/
@@ -176,8 +176,43 @@ private theorem pencil_sub_rank {F : Type*} [Field F] (i j : Fin 5)
     Matrix.ext (fun r c => edge_factor_coordinates i j r c h)]
   exact liftWedge_rank_le_two ..
 
+private def shiftedNull (i : Fin 5) : Fin 5 → ℤ :=
+  ![0, if i = 3 then 1 else 0, if i = 4 then 1 else 0, 0, 1]
+
+private theorem shiftedNull_coefficients :
+    ∀ i j : Fin 5, (seed true i).mulVec (shiftedNull i) j = 0 := by
+  decide
+
+private theorem shifted_rank {F : Type*} [Field F] (i : Fin 5) :
+    (liftForm F (seed true i)).rank = 4 := by
+  let A := liftForm F (seed true i)
+  let x : Fin 5 → F := fun j => (shiftedNull i j : F)
+  have hx : x ≠ 0 := by
+    intro h
+    have h4 := congrFun h (4 : Fin 5)
+    simp [x, shiftedNull] at h4
+  have hKer : x ∈ LinearMap.ker A.mulVecLin := by
+    apply LinearMap.mem_ker.mpr
+    funext j
+    change (∑ k, (seed true i j k : F) * (shiftedNull i k : F)) = 0
+    simpa only [Int.cast_sum, Int.cast_mul, Int.cast_zero, Matrix.mulVec, dotProduct] using
+      congrArg (Int.cast : ℤ → F) (shiftedNull_coefficients i j)
+  have hKerPos : 0 < Module.finrank F (LinearMap.ker A.mulVecLin) :=
+    Module.finrank_pos_iff_exists_ne_zero.mpr
+      ⟨⟨x, hKer⟩, fun h => hx (congrArg Subtype.val h)⟩
+  have hDimension := A.mulVecLin.finrank_range_add_finrank_ker
+  change A.rank + _ = Module.finrank F (Fin 5 → F) at hDimension
+  rw [Module.finrank_fintype_fun_eq_card, Fintype.card_fin] at hDimension
+  have hLower : 4 ≤ A.rank := liftForm_rank_of_minor _ _ (shifted_minor i)
+  dsimp only [A] at hDimension hLower hKerPos
+  omega
+
 private def seedPoint (F : Type*) [Field F] (shifted : Bool) (i : Fin 5) : HalfSpinChartVertex F :=
-  ⟨liftForm F (seed shifted i), liftForm_alternating (seed_alternating shifted i)⟩
+  ⟨liftForm F (seed shifted i), liftForm_alternating (seed_alternating shifted i), by
+    cases shifted
+    · change (liftForm F (pencil i)).rank % 2 = 0
+      rw [pencil_rank]
+    · rw [shifted_rank]⟩
 
 private theorem seed_sub (shifted : Bool) (i j : Fin 5) :
     seed shifted i - seed shifted j = pencil i - pencil j := by

@@ -513,3 +513,9 @@ import EPPAIII.Primitive.ConwayConstituents
 import EPPAIII.Primitive.UnitaryFourThreeConstituents
 import EPPAIII.Primitive.ConstituentShapeReduction
 import EPPAIII.Primitive.FanoConstituents
+import EPPAIII.Primitive.HalfSpinExclusion
+import EPPAIII.Primitive.LocalTriangularWidth
+import EPPAIII.Primitive.ConstituentClassifiedModels
+import EPPAIII.Primitive.ConstituentParity
+import EPPAIII.Primitive.G2TwoModel
+import EPPAIII.Primitive.RankThreeFamilyReductions

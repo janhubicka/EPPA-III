@@ -1,13 +1,15 @@
 import EPPAIII.Primitive.ConstituentProfileScreen
 import EPPAIII.Primitive.SmallConstituentGraphScreen
 
-/-! # Numerical constituent exclusions for the two G₂ graphs -/
+/-! # Numerical constituent exclusions for the two G₂ graphs and the binary half-spin graph -/
 
 namespace EPPAIII.Primitive
 
 open SimpleGraph
 
-private theorem screen_regular_profile {V : Type*} [Fintype V] {G : SimpleGraph V}
+/-- Both clique-union and generalized-cover orientations fail for the given
+regular profile and arithmetic tests. -/
+theorem regular_profile_excludes_all_forms {V : Type*} [Fintype V] {G : SimpleGraph V}
     [DecidableRel G.Adj] {n d : ℕ} (hProfile : HasRegularProfile G (n, d))
     (hn : 0 < n) (hd : d < n) (hUnion : ¬ (d + 1) ∣ n) (hUnionCompl : ¬ (n - d) ∣ n)
     (hCover : ¬ CoverDegreeCompatible n d) (hCoverCompl : ¬ CoverDegreeCompatible n (n - 1 - d)) :
@@ -39,10 +41,10 @@ theorem g2Two_constituents_exclude_forms {V : Type*} [Fintype V] [DecidableEq V]
     (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
   classical
   cases side
-  · exact screen_regular_profile (n := 14) (d := 4)
+  · exact regular_profile_excludes_all_forms (n := 14) (d := 4)
       (constituentGraph_profile H ⟨36, 14, 4, 6⟩ hSRG root false)
       (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)
-  · exact screen_regular_profile (n := 21) (d := 8)
+  · exact regular_profile_excludes_all_forms (n := 21) (d := 8)
       (constituentGraph_profile H ⟨36, 14, 4, 6⟩ hSRG root true)
       (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)
 
@@ -58,10 +60,10 @@ theorem g2Four_constituents_exclude_forms {V : Type*} [Fintype V] [DecidableEq V
     (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
   classical
   cases side
-  · exact screen_regular_profile (n := 100) (d := 36)
+  · exact regular_profile_excludes_all_forms (n := 100) (d := 36)
       (constituentGraph_profile H ⟨416, 100, 36, 20⟩ hSRG root false)
       (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)
-  · exact screen_regular_profile (n := 315) (d := 80)
+  · exact regular_profile_excludes_all_forms (n := 315) (d := 80)
       (constituentGraph_profile H ⟨416, 100, 36, 20⟩ hSRG root true)
       (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)
 
@@ -79,10 +81,10 @@ theorem binary_halfSpin_constituents_exclude_forms {V : Type*} [Fintype V] [Deci
     (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
   classical
   cases side
-  · exact screen_regular_profile (n := 310) (d := 85)
+  · exact regular_profile_excludes_all_forms (n := 310) (d := 85)
       (constituentGraph_profile H ⟨2295, 310, 85, 35⟩ hSRG root false)
       (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)
-  · exact screen_regular_profile (n := 1984) (d := 275)
+  · exact regular_profile_excludes_all_forms (n := 1984) (d := 275)
       (constituentGraph_profile H ⟨2295, 310, 85, 35⟩ hSRG root true)
       (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)
 

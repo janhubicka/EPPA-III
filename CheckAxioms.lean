@@ -1417,3 +1417,16 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.MinimalCounterexample.constituent_shapes
 #print axioms EPPAIII.Primitive.fanoNonincidence_not_srg
 #print axioms EPPAIII.Primitive.fanoFlag_not_srg
+#print axioms EPPAIII.Primitive.halfSpinChartIntoGeometry
+#print axioms EPPAIII.Primitive.halfSpinFive_model_excludes_forms
+#print axioms EPPAIII.Primitive.locallyTriangular_width_ge_four
+#print axioms EPPAIII.Primitive.section8Cases_of_primitiveCases
+#print axioms EPPAIII.Primitive.section8Cases_of_imprimitiveHostModels
+#print axioms EPPAIII.Primitive.section8Cases_of_generalImprimitiveHostModels
+#print axioms EPPAIII.Primitive.nonhomogeneous_constituents_exactHalves_or_mixedParity
+#print axioms EPPAIII.Primitive.g2Two_isSRG
+#print axioms EPPAIII.Primitive.g2Two_localIso
+#print axioms EPPAIII.Primitive.g2Two_nonlocalIso
+#print axioms EPPAIII.Primitive.sporadic_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.primitiveCases_or_residual_rankThree_family
+#print axioms EPPAIII.Primitive.MinimalCounterexample.residual_rankThree_family
