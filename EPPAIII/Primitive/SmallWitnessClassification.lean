@@ -1,5 +1,6 @@
 import EPPAIII.Primitive.PublishedRankThreeCoverage
 import EPPAIII.TwoGraphs.AllTransversalEppa
+import EPPAIII.BlockSystems.ImprimitiveNamedSufficiency
 
 /-! # Assembling both full-action branches of the small-witness classification -/
 
@@ -136,5 +137,36 @@ theorem smallWitnessModelCases_of_eppa
   · exact Or.inr (Or.inr (Or.inl hNamed))
   · exact Or.inr (Or.inr (Or.inr
       (nonclusterTaylorWitnessCases_of_eppa G H e block hPair.eppa hG hC hCo hTaylor)))
+
+/-- All listed models extend the fixed selected copy. Only the primitive
+converse uses the finite Clebsch and Schläfli classifications. -/
+theorem eppa_of_smallWitnessModelCases
+    {V W : Type*} [Fintype V] [Fintype W]
+    (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
+    (hInd : IsInducedGraphEmbedding G H e) (hHalf : Nat.card W ≤ 2 * Nat.card V)
+    (hFinite : PrimitiveFiniteChecks) (hCases : SmallWitnessModelCases G H e) :
+    IsEPPAEmbedding G H e := by
+  rcases hCases with hPrim | hImprim | hCompl | hTaylor
+  · exact eppa_of_primitiveCases G H e hInd hHalf hFinite hPrim
+  · exact hImprim.eppa
+  · simpa only [compl_compl] using eppa_embedding_complement Gᶜ Hᶜ e hCompl.eppa
+  · exact eppa_of_nonclusterTaylorWitnessCases G H e hTaylor
+
+/-- Fixed-embedding classification at the half-order threshold, in both
+action branches. The Taylor alternative uses the intrinsic homogeneous
+two-graph condition and its canonical graph model. -/
+theorem smallWitnessModelCases_iff_eppa
+    (hPublished : PublishedRankThreeGraphCoverage.{v})
+    (hRecognize : PrimitiveRecognitionInputs.{u, v})
+    (hOrthogonal : OrthogonalSearchChecks) (hPaley : SmallPaleyExclusions)
+    (hFinite : PrimitiveFiniteChecks)
+    {V : Type u} {W : Type v} [Fintype V] [Fintype W]
+    (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
+    (hInd : IsInducedGraphEmbedding G H e) (hHalf : Nat.card W ≤ 2 * Nat.card V)
+    (hTrans : HasTransitiveGraphAutomorphisms H) :
+    SmallWitnessModelCases G H e ↔ IsEPPAEmbedding G H e := by
+  exact ⟨eppa_of_smallWitnessModelCases G H e hInd hHalf hFinite,
+    fun hEPPA => smallWitnessModelCases_of_eppa hPublished hRecognize
+      hOrthogonal hPaley hFinite G H e ⟨hEPPA, hTrans, hHalf⟩⟩
 
 end EPPAIII.Primitive

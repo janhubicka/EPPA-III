@@ -405,6 +405,7 @@ import EPPAIII.BlockSystems.ClusterRegularHomogeneity
 import EPPAIII.BlockSystems.ImprimitiveGardinerBridge
 import EPPAIII.BlockSystems.GardinerLiteralNormalization
 import EPPAIII.BlockSystems.ImprimitiveGlobalClassification
+import EPPAIII.BlockSystems.ImprimitiveNamedSufficiency
 
 -- Section 5 all-orders two-graph equivalence and Section 6 switching-class interface
 import EPPAIII.TwoGraphs.SwitchingClassNonhomogeneous
