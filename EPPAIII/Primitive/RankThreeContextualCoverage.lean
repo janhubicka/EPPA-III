@@ -80,7 +80,7 @@ def RankTwoPolarCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
 def AffineMatchingCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
   H.IsSRGWith 243 22 1 2 ∧
     (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 11 2)) ∧
-    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 7920)
+    (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) = 15840)
 
 /-- Published recognition data for the affine collinearity graph of (GQ(3,5)). -/
 def AffineTriangleClusterCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=

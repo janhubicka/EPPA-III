@@ -153,7 +153,8 @@ private theorem large_matching_subset {s : ℕ} (S : Finset (Fin s × Fin 2))
     intro a b
     exact and_congr (hj _ _) Iff.rfl
 
-private theorem card_automorphisms_of_iso {U U' : Type*}
+/-- Isomorphic graphs have equally many automorphisms. -/
+theorem card_automorphisms_of_iso {U U' : Type*}
     {J : SimpleGraph U} {J' : SimpleGraph U'} (φ : J ≃g J') :
     Nat.card (graphAutomorphisms J) = Nat.card (graphAutomorphisms J') := by
   apply Nat.card_congr
@@ -171,7 +172,9 @@ private theorem card_automorphisms_of_iso {U U' : Type*}
     rw [φ.symm_apply_apply, φ.symm_apply_apply, φ.map_rel_iff, φ.map_rel_iff] at h
     exact h
 
-private theorem automorphisms_dvd_root_stabilizer_of_local_embedding {U V W : Type*}
+/-- An induced embedding into the selected local constituent gives an
+automorphism section in the host root stabilizer. -/
+theorem automorphisms_dvd_root_stabilizer_of_local_embedding {U V W : Type*}
     [Finite V] [Finite W] {J : SimpleGraph U}
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (heppa : IsEPPAEmbedding G H e) (root : V) (f : J ↪g localGraph G root) :
@@ -211,7 +214,7 @@ theorem affine_blvs_local_order_le_ten {V W : Type*} [Finite V] [Finite W]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (heppa : IsEPPAEmbedding G H e) (root : V)
     (φ : localGraph H (e root) ≃g cliqueUnion 11 2)
-    (hStabilizer : Nat.card (pointwiseGraphStabilizer H {e root}) = 7920) :
+    (hStabilizer : Nat.card (pointwiseGraphStabilizer H {e root}) = 15840) :
     Nat.card (G.neighborSet root) ≤ 10 := by
   classical
   let := Fintype.ofFinite V
@@ -235,12 +238,12 @@ theorem affine_blvs_local_order_le_ten {V W : Type*} [Finite V] [Finite W]
     have hDiv := automorphisms_dvd_root_stabilizer_of_local_embedding G H e heppa root
       (ψ.symm.toEmbedding.comp f)
     rw [card_automorphisms_empty, Fintype.card_fin, hStabilizer] at hDiv
-    exact (by decide : ¬ (Nat.factorial 8 ∣ 7920)) hDiv
+    exact (by decide : ¬ (Nat.factorial 8 ∣ 15840)) hDiv
   · obtain ⟨f⟩ := hEdges
     have hDiv := automorphisms_dvd_root_stabilizer_of_local_embedding G H e heppa root
       (ψ.symm.toEmbedding.comp f)
     rw [card_automorphisms_cliqueUnion (by decide), hStabilizer] at hDiv
-    exact (by decide : ¬ (Nat.factorial 4 * Nat.factorial 2 ^ 4 ∣ 7920)) hDiv
+    exact (by decide : ¬ (Nat.factorial 4 * Nat.factorial 2 ^ 4 ∣ 15840)) hDiv
 
 /-- The local matching bound for BLVS forces a half-order nonlocal
 selection, whose four allowed constituent forms fail by the SRG tuple. -/
@@ -249,7 +252,7 @@ theorem affine_blvs_not_eppa {V W : Type*} [Finite V] [Fintype W] [DecidableEq W
     (heppa : IsEPPAEmbedding G H e) (root : V)
     (hSRG : H.IsSRGWith 243 22 1 2)
     (φ : localGraph H (e root) ≃g cliqueUnion 11 2)
-    (hStabilizer : Nat.card (pointwiseGraphStabilizer H {e root}) = 7920)
+    (hStabilizer : Nat.card (pointwiseGraphStabilizer H {e root}) = 15840)
     (hHalf : Nat.card W ≤ 2 * Nat.card V)
     (hNonlocal :
       Nat.card {x : W // e root ≠ x ∧ ¬ H.Adj (e root) x} ≤
