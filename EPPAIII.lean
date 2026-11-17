@@ -487,3 +487,6 @@ import EPPAIII.Primitive.CoverHalfReduction
 import EPPAIII.Primitive.SmallConstituentCases
 import EPPAIII.Primitive.BilinearRankOne
 import EPPAIII.Primitive.BilinearConstituentObstructions
+import EPPAIII.Primitive.BinaryOrthogonalGeneratorMatrices
+import EPPAIII.Primitive.GrassmannGraph
+import EPPAIII.Primitive.AffineLineArithmetic

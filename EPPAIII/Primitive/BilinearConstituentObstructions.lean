@@ -11,6 +11,9 @@ open Matrix
 
 private abbrev Seed := Matrix (Fin 2) (Fin 3) ℤ
 
+private instance : DecidableEq (Fin 3 → ℤ) := fun f g =>
+  decidable_of_iff (∀ i, f i = g i) ⟨fun h => funext h, fun h i => congrFun h i⟩
+
 private def pentagonSeed : Fin 5 → Seed :=
   ![!![0, 0, 1; 0, 1, 0],
     !![0, 0, 1; 0, 1, 1],

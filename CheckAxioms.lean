@@ -1370,3 +1370,11 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.bilinearFormsRankOne_connected
 #print axioms EPPAIII.Primitive.bilinearRankOne_inducedPath
 #print axioms EPPAIII.Primitive.bilinearRankTwo_fiveCycle
+#print axioms EPPAIII.Primitive.binaryOrthogonalGenerator_inverse_laws
+#print axioms EPPAIII.Primitive.binaryOrthogonalGeneratorValue_quadratic
+#print axioms EPPAIII.Primitive.grassmannGraph_independent_packing
+#print axioms EPPAIII.Primitive.grassmannGraph_local_independent_bound
+#print axioms EPPAIII.Primitive.affineLine_prime_power_candidates
+#print axioms EPPAIII.Primitive.affineLine_paley_small_orders
+#print axioms EPPAIII.Primitive.affineLine_peisert_small_orders
+#print axioms EPPAIII.Primitive.affineLine_vanLintSchrijver_small_orders
