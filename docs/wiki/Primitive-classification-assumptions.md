@@ -8,10 +8,15 @@ below. [Lean endpoint](https://github.com/janhubicka/EPPA-III/blob/946ec067b757e
 | Parameter | Input |
 |---|---|
 | `PublishedRankThreeGraphCoverage` | Every primitive rank-three graph is isomorphic up to complement to one of the fixed models or to a model with the data for a checked reduction. This includes the geometric, strongly regular and full-stabilizer data required for each model. The order-40 cases include the finite rooted certificate. |
-| `PrimitiveRecognitionInputs` | Gardiner recognition for the homogeneous selected graphs and hosts, the order-six-or-ten consequence for nontrivial homogeneous two-graphs, locally triangular and locally complement-triangular recognition in both orientations, and the small rank-three parameter and model lists. |
+| `PrimitiveRecognitionInputs` | Gardiner recognition for finite nonempty homogeneous graphs, locally triangular and locally complement-triangular recognition in both orientations, and the small rank-three parameter and model lists. The order-six-or-ten two-graph consequence is proved from Gardiner. |
 | `OrthogonalSearchChecks` | Negative half-order EPPA results for the four exact models `O₆⁺(2)`, `NO₆⁻(2)`, `VO₆⁺(2)` and `VO₆⁻(2)`. |
-| `SmallPaleyExclusions` | Negative half-order EPPA results for the Paley models of orders 17, 25, 37 and 41. Lean derives these from the specified full affine group actions and the order-25 field-model identification. |
+| `SmallPaleyExclusions` | Negative half-order EPPA results for the Paley models of orders 17, 25, 37 and 41. The exact checker `checks/primitive_small_paley.py` proves the bounds by rooted refinement without requiring full-group orders. |
 | `PrimitiveFiniteChecks` | The exact Clebsch and Schläfli figure classifications, including the EPPA assertions for the model selections and coverage of actual embeddings. The separate solver audit is deferred. |
+
+The [full fixed-embedding classification](https://github.com/janhubicka/EPPA-III/blob/main/EPPAIII/Primitive/SmallWitnessNamedClassification.lean)
+also uses `NamedTaylorFiniteChecks`, the homogeneity of the two concrete
+nontrivial two-graphs. The checker `checks/check_named_taylor_models.py`
+verifies these facts and their host and switching-class identities.
 
 ## Rank-three catalogue
 

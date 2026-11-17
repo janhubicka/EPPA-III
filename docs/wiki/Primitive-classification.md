@@ -16,11 +16,13 @@ Let `H` be a finite simple graph whose full automorphism group acts transitively
 
 The table describes the full manuscript statement. The corresponding-vertex
 matching in Case 4(e) is the correction recorded in the R17 review patch.
-The primitive Lean equivalence restricts to primitive hosts and retains
-the specific embedding. Its alternatives are the homogeneous hosts,
+The primitive Lean equivalence retains the specific embedding. Its alternatives are the homogeneous hosts,
 triangle-free selections in triangular hosts, and the R4, Clebsch and
 Schläfli figure cases. Each finite figure clause places the actual
 selection in a listed model by a host isomorphism.
+The [full fixed-embedding equivalence](https://github.com/janhubicka/EPPA-III/blob/main/EPPAIII/Primitive/SmallWitnessNamedClassification.lean)
+combines these with the imprimitive cases and the icosahedral and Johnson Taylor
+transversals.
 
 ## How the primitive proof connects
 
@@ -34,13 +36,13 @@ The rank-three assumptions and finite computation boundary are listed on the [as
 
 ## Verification status
 
-The checked endpoint `primitiveCases_iff_eppa_of_publishedRankThreeCoverage`
+The endpoint `primitiveCases_iff_eppa_of_publishedRankThreeCoverage`
 proves the equivalence for the specified embedding in a finite primitive host.
 The proof includes all rank-two polar reductions and all 40 extraspecial and
 exceptional affine reductions. Exhaustive model recognition, the separate
 local recognition hypotheses, the four small Paley exclusions, and the
 specified finite outcomes are explicit theorem parameters. The order-40
-rooted certificate is part of the corresponding model data. [Lean endpoint](https://github.com/janhubicka/EPPA-III/blob/946ec067b757eb65b2969322235c5f038836ff49/EPPAIII/Primitive/PublishedRankThreeCoverage.lean#L64) · [Integrated CI](https://github.com/janhubicka/EPPA-III/actions/runs/44106831662)
+rooted certificate is part of the corresponding model data. [Lean endpoint](https://github.com/janhubicka/EPPA-III/blob/main/EPPAIII/Primitive/PublishedRankThreeCoverage.lean#L64)
 
 ## Local checks
 

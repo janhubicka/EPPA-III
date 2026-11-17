@@ -280,8 +280,8 @@ This apparently small simplification matters: it prevents the completed theorem 
 | Every regular cluster graph is homogeneous | Lean theorem, verified |
 | The source-facing homogeneous/cluster host classification | Lean theorem **relative to Gardiner** |
 | Arbitrary-base imprimitive necessity | Lean theorem **relative to Gardiner** |
-| Finite homogeneous **two-graph** classification (trivial, 6/10-point cases) | Separate external mathematical input for the sharp Taylor list |
-| Sufficiency of every item of the canonical disjunction | Not supplied by the global necessity theorem |
+| Nontrivial homogeneous two-graphs at orders six and ten | Follows from Gardiner via the checked rooted descendant classification |
+| Sufficiency of every item of the named imprimitive disjunction | Checked directly for the prescribed selected copy |
 
 ### Reproduce the checked interfaces
 These commands inspect the **actual declarations and axioms** at the Git revision; they do not assert the external classification theorem:

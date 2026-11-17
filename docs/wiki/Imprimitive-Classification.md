@@ -530,11 +530,12 @@ Key sources: [partition and double-counting](../../EPPAIII/BlockSystems/Transiti
 | Gardiner classification itself | **External mathematical theorem** | Supplied as `hGardinerG`; **not** proved in this repository |
 | Global imprimitive necessity | [ImprimitiveGlobalClassification](../../EPPAIII/BlockSystems/ImprimitiveGlobalClassification.lean) | One disjunction for arbitrary selected base graph, fixed `e` and `block` |
 | Internal all-transversals/two-graph equivalence | [FourWayAllOrders](../../EPPAIII/TwoGraphs/FourWayAllOrders.lean) | Checked equivalence in the Taylor setting |
-| Complete finite homogeneous two-graph 6/10 list | **External classification** | Not required by global necessity; needed to turn candidate Taylor patterns into the final manuscript's finite list |
-| Sufficiency of all listed models | Separate constructions/cases | **Not** asserted by the global necessity theorem |
-| Printed proof as written | TeX review | The Lean alternative does not itself repair invalid English invocations |
+| Nontrivial homogeneous two-graphs | [TwoGraphOrderFromGardiner](../../EPPAIII/TwoGraphs/TwoGraphOrderFromGardiner.lean) | Every descendant is a pentagon or the three-by-three rook graph by Gardiner, so the orders are six and ten |
+| Sufficiency of all five named imprimitive alternatives | [ImprimitiveNamedSufficiency](../../EPPAIII/BlockSystems/ImprimitiveNamedSufficiency.lean) | Each construction gives EPPA for the prescribed selected copy |
+| Full fixed-embedding equivalence | [SmallWitnessClassification](../../EPPAIII/Primitive/SmallWitnessClassification.lean) | Combines the primitive cases, five named imprimitive alternatives, and the Taylor branch in both orientations |
+| Printed proof | Cumulative R17 patch | Repairs the affected claims and lemmas in Sections 5 and 6 |
 
-### Known printed-proof discrepancies that must remain visible
+### Corrections to frozen R17
 
 - **Claim 5.14:** the maximal-domain extension step in the printed proof does not establish adjacency preservation. Lean uses a different invariant-pair argument.
 - **Claim 5.15:** its conclusion follows from the alternative two-point pair-matrix proof; it does not validate the printed dependence on Claim 5.14.

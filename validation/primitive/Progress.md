@@ -1,16 +1,16 @@
 # Primitive classification checkpoint
 
-[`smallWitnessModelCases_iff_eppa`](../../EPPAIII/Primitive/SmallWitnessClassification.lean)
+[`smallWitnessNamedModelCases_iff_eppa`](../../EPPAIII/Primitive/SmallWitnessNamedClassification.lean)
 gives both directions for the actual selected embedding in any finite
 vertex-transitive host at the half-order threshold. It combines the primitive
-equivalence, the named imprimitive models, and the canonical Taylor doubles of
-homogeneous two-graphs. The table identifies the external inputs to these
+equivalence, the named imprimitive models, and the icosahedral and Johnson Taylor
+transversals. The table identifies the external inputs to these
 reductions.
 
 | Track | Checked result | Inputs to the proof |
 | --- | --- | --- |
 | Triangular and rook | Half-order criteria for the actual embedding, including the two R4 figure families. | The host isomorphisms used by catalogue recognition. |
-| Imprimitive hosts | Necessity and sufficiency for all named models of Proposition 6.17 in the fixed embedding. The Taylor branch recognizes the descendants as the pentagon and the three-by-three rook graph, using Gardiner. | Gardiner's classification for finite nonempty homogeneous graphs. |
+| Imprimitive hosts | Necessity and sufficiency for all named models of Proposition 6.17 in the fixed embedding. The Taylor branch recognizes the descendants as the pentagon and the three-by-three rook graph, using Gardiner. | Gardiner's classification for finite nonempty homogeneous graphs and the exact finite homogeneity checks for the two Taylor models. |
 | Sections 7–8 | The local reductions and smaller-pair projection give the constituent shapes at every selected root. The two-graph order restriction follows from Gardiner. | Gardiner's homogeneous graph recognition, locally triangular recognition, and the small rank-three parameter and model lists. |
 | Classical and exceptional | Rank-two polar cases, nonsingular orthogonal and unitary cases, and the exceptional reductions. The local obstructions for the 45-vertex unitary graph are checked in Lean. | Published model, parameter and full-group data where used. Both order-40 polar models use the finite rooted certificate. |
 | One-dimensional affine | The semilinear cutoff, its small endpoint models, and the exceptional-action exclusions. | Published full affine actions, stabilizer bounds and model identities. The local screening theorem uses four small Paley exclusions, proved by the documented exact finite checker. |
