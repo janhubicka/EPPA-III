@@ -154,12 +154,14 @@ theorem twoClique_matched_bottom_induced
     IsInducedGraphEmbedding (twoCliqueGraph c)
       (twoCliqueMatchedGraph c mate) (bottomEmbedding V) := by
   intro x y
+  change (x ≠ y ∧ c x = c y) ↔
+    ((false,x) ≠ (false,y) ∧
+      (Bool.xor false (c x) = Bool.xor false (c y) ∨
+       (mate = true ∧ x = y)))
   by_cases hxy : x = y
   · subst y
-    simp [twoCliqueGraph, twoCliqueMatchedGraph,
-      bottomEmbedding, Bool.xor]
-  · simp [twoCliqueGraph, twoCliqueMatchedGraph,
-      twoCliqueMatchedRel, bottomEmbedding, hxy, Bool.xor]
+    simp
+  · simp [hxy, Bool.xor]
 
 /-- A *nonhomogeneous* two-clique base nevertheless has an EPPA
 double for either mate bit. No homogeneity of the base is assumed. -/
