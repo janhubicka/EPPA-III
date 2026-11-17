@@ -393,3 +393,4 @@ import EPPAIII.BlockSystems.RookMatefreeDistinctFromTaylor
 import EPPAIII.TwoGraphs.SwitchingClassNonhomogeneous
 import EPPAIII.TwoGraphs.TrivialTwoGraphBoth
 import EPPAIII.TwoGraphs.FourWayInternalEquivalence
+import EPPAIII.TwoGraphs.FourWayAllOrders
