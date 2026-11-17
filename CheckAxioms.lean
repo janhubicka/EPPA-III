@@ -1408,3 +1408,12 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.binary_halfSpin_constituents_exclude_forms
 #print axioms EPPAIII.Primitive.halfSpinChart_localPentagon
 #print axioms EPPAIII.Primitive.halfSpinChart_nonlocalPentagon
+#print axioms EPPAIII.Primitive.locallyComplementTriangular_five_recognition
+#print axioms EPPAIII.Primitive.locallyComplementTriangular_six_recognition
+#print axioms EPPAIII.Primitive.srg_independent_size_bound
+#print axioms EPPAIII.Primitive.conway1408_independent_size_le
+#print axioms EPPAIII.Primitive.conway1408_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.unitaryFourThree_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.MinimalCounterexample.constituent_shapes
+#print axioms EPPAIII.Primitive.fanoNonincidence_not_srg
+#print axioms EPPAIII.Primitive.fanoFlag_not_srg

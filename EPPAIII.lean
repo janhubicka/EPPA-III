@@ -508,3 +508,8 @@ import EPPAIII.Primitive.HigmanSims
 import EPPAIII.Primitive.LocallyTriangularExclusions
 import EPPAIII.Primitive.G2ConstituentExclusions
 import EPPAIII.Primitive.HalfSpinPentagons
+import EPPAIII.Primitive.LocalKneserRecognition
+import EPPAIII.Primitive.ConwayConstituents
+import EPPAIII.Primitive.UnitaryFourThreeConstituents
+import EPPAIII.Primitive.ConstituentShapeReduction
+import EPPAIII.Primitive.FanoConstituents
