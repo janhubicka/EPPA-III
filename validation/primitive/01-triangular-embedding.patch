@@ -1,0 +1,84 @@
+--- a/main-new(20261116-151839)-markers-r17.tex
++++ b/main-new(20261116-151839)-markers-r17.tex
+@@ -1042,13 +1042,13 @@
+ If $G'$ contains a triangle $abc$, then $G$ contains the triangle $uvw$, where $u = \{a,b\}$, $v = \{b,c\}$, and $w =  \{a,c\}$, and $u \cap v \cap w = \emptyset$. 
+ Conversely, it is easily seen that every triangle $uvw$ of $G$ with $u \cap v \cap w = \emptyset$ arises in this way from a triangle in $G'$. 
+ 
+-If $G$ is an induced subgraph of $T(n)$ for which $T(n)$ is an EPPA witness, then $G$ cannot contain triangles $uvw$ and $u'v'w'$ with $u \cap v \cap w = \emptyset$ and $|u' \cap v' \cap w'| = 1$ as one cannot be mapped to the other by an automorphism of $T(n)$. 
++If $n\geq 5$ and $G$ is an induced subgraph of $T(n)$ for which $T(n)$ is an EPPA witness, then $G$ cannot contain triangles $uvw$ and $u'v'w'$ with $u \cap v \cap w = \emptyset$ and $|u' \cap v' \cap w'| = 1$ as one cannot be mapped to the other by an automorphism of $T(n)$. 
+ 
+ In the following, we therefore distinguish between the case where $G'$ contains a triangle and the case where $G'$ is triangle-free.
+ We begin with the case that $G'$ contains a triangle.
+ 
+ \begin{Remark}[Line graphs of graphs containing a triangle]\label{rem:unfocussed}
+-Let $G$ be a subgraph of $T(n)$ for which $T(n)$ is an EPPA witness, and suppose that $G$ is a line graph of a graph containing a triangle.
++Let $n\geq 5$ and let $G$ be an induced subgraph of $T(n)$ for which $T(n)$ is an EPPA witness. Suppose that the graph on $[n]$ with edge set $V(G)$ contains a triangle.
+ By the above, $G$ does not contain a triangle $uvw$ with $u \cap v \cap w\neq \emptyset$. 
+ Hence for every $i \in [n]$, there exist at most two vertices of~$G$ whose corresponding sets contain $i$.
+ This implies $|G| \leq n$.
+@@ -1060,7 +1060,7 @@
+ \begin{theorem}\label{thm:triangularsubgraphs}
+ \label{thm:foctri}
+ Let $n \in \mathbb{N}$.
+- Suppose $G$ is an induced subgraph of $T(n)$ that is a line graph of a triangle-free graph.
++ Suppose $G$ is an induced subgraph of $T(n)$ and the graph on $[n]$ with edge set $V(G)$ is triangle-free.
+  Then $T(n)$ is an EPPA witness for $G$.
+ \end{theorem}
+ % EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+@@ -1084,10 +1084,10 @@
+ 
+ \begin{proof}[Proof of Theorem~\ref{thm:triangularsubgraphs}]
+ We call a clique on vertices $u_1, \dots, u_k$ in $T(n)$ \emph{focussed} if $u_1 \cap \dots \cap u_k \neq \emptyset$. 
+-By the above, $G$ contains only focussed triangles since it is the line graph of a triangle-free graph.
++By the above, $G$ contains only focussed triangles since the graph on $[n]$ with edge set $V(G)$ is triangle-free.
+  Suppose that $p:A\rightarrow B$ is a partial automorphism of $G$.
+  Let $a_1,...,a_k$ be an enumeration of $A$ and $b_1=p(a_1),...,b_k=p(a_k)$ the respective enumeration of $B$. 
+- As~$G$ has only focussed triangles, note that for any $I \subseteq [k]$ of cardinality at least~2, $\left|\bigcap_{i\in I}a_i\right| = 1$ only if $\{a_i\}_{i\in I}$ induces a focussed clique in $G$. 
++ As~$G$ has only focussed triangles, note that for any $I \subseteq [k]$ of cardinality at least~2, $\left|\bigcap_{i\in I}a_i\right| = 1$ if and only if $\{a_i\}_{i\in I}$ induces a focussed clique in $G$. 
+  Otherwise $\left|\bigcap_{i\in I}a_i\right| = 0$ and $\{a_i\}_{i\in I}$ does not induce a clique. 
+  Both conditions are preserved by the partial automorphism~$p$ as all the cliques in $G$ are focussed. So $\left|\bigcap_{i\in I}a_i\right| = \left|\bigcap_{i\in I}b_i\right|$. 
+  The same equality holds for $|I| \in \{0,1\}$.
+@@ -1138,18 +1138,18 @@
+ Every finite graph on $n$ vertices is a subgraph of a homogeneous graph, or its minimal EPPA witness has $\Omega(n^2)$ vertices.  
+ \end{Conjecture}
+ 
+-As a converse of Lemma~\ref{lemma:latticeintriangular}, the next theorem shows that if~$G$ is a sufficiently large triangle-free induced subgraph of $T(n)$, then $G$ is an induced subgraph of a lattice graph in $T(n)$. 
++As a converse of Lemma~\ref{lemma:latticeintriangular}, the next theorem shows that if~$G$ is a sufficiently large induced subgraph of $T(n)$ whose underlying edge set is triangle-free, then $G$ is an induced subgraph of a lattice graph in $T(n)$. 
+ In this sense, the (induced) lattice graphs in $T(n)$ are the maximal graphs for which $T(n)$ is an EPPA witness.
+ 
+ \begin{theorem}\label{thm:latticesintriangular}
+ Let $G$ be an induced subgraph of $T(n)$ of order at least $\lfloor n^2/4 \rfloor - \lfloor n/2 \rfloor + 2$. 
+-If~$G$ is the line graph of a triangle-free graph, then $G$ is an induced subgraph of a lattice graph $L_{r,s}$ with $r+s \leq n$ in $T(n)$. 
++If the graph on $[n]$ with edge set $V(G)$ is triangle-free, then $G$ is an induced subgraph of a lattice graph $L_{r,s}$ with $r+s \leq n$ in $T(n)$. 
+ \end{theorem}
+ % EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+ \leanpending{lattice characterization}%
+ 
+ \begin{proof}
+-Let $G'$ be the triangle-free graph whose line graph is $G$.
++Let $G'$ be the triangle-free graph on $[n]$ with edge set $V(G)$.
+ Then~$G'$ has at least $\lfloor n^2/4 \rfloor - \lfloor n/2 \rfloor + 2$ edges. 
+ By \cite[Theorem~1.1]{KOR21}, $G'$ is bipartite, so a subgraph of a complete bipartite graph $K' \cong K_{r,s}$ with $r+s \leq n$.
+ It follows that~$G$ is an induced subgraph of the line graph of $K'$, that is, of $L_{r,s}$.
+@@ -1164,17 +1164,18 @@
+ This yields the following characterisation:
+ 
+ \begin{Corollary}\label{cor:triangulartrianglefree}
+-Let $n \geq 5$, $H = T(n)$, and let $G$ be a subgraph of $H$ with $|G| \geq |H|/2$. 
++Let $n \geq 5$, $H = T(n)$, and let $G$ be an induced subgraph of $H$ with $|G| \geq |H|/2$. 
+ Then~$H$ is an EPPA witness for $G$ if and only if $G$ is the line graph of a triangle-free graph on $n$ vertices.
+ \end{Corollary}
+ % EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+ \leanpending{triangle-free corollary}%
+ 
+ \begin{proof}
+-If $G$ is the line graph of a triangle-free graph, then $H$ is an EPPA witness for $G$ by Theorem~\ref{thm:triangularsubgraphs}. 
++Suppose $G$ is the line graph of a triangle-free graph. Then $G$ has no induced diamond: three pairwise intersecting edges share a vertex, and an edge meeting exactly two of them would join two leaves of that star and form a triangle.
++In the graph on $[n]$ with edge set $V(G)$, an edge leaving a triangle would give an induced diamond. Thus all its triangles are components. If there are $r\geq1$ such components, Mantel's theorem gives $|G|\leq 3r+(n-3r)^2/4$. By convexity the maximum over $1\leq r\leq\lfloor n/3\rfloor$ is at an endpoint, and both bounds are less than $n(n-1)/4$ for $n\geq5$. Hence this graph is triangle-free and Theorem~\ref{thm:triangularsubgraphs} applies. 
+ Now assume that $H$ is an EPPA witness for $G$. 
+ If $n \geq 6$, then $|G| > n$ and thus~$G$ is the line graph of a triangle-free graph by Remark~\ref{rem:unfocussed}.
+-For $n = 5$, $H$ is the complement of the Petersen graph, and we check directly that the maximal graphs on at least 5 vertices for which $H$ is an EPPA witness are $C_5$ and the complement of $C_6$ (see Figure~\ref{fig:petersen}), both of which are line graphs of triangle-free graphs on $5$ vertices.
++If $n=5$ and the underlying graph contains a triangle, Remark~\ref{rem:unfocussed} shows that the triangle is a component. This leaves at most one further edge, contradicting $|G|\geq5$.
+ \end{proof}
+ 
+ This settles the triangular case (case (2)) of Theorem~\ref{thmintro:classification}.

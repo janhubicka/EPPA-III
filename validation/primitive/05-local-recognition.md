@@ -1,0 +1,11 @@
+# Triangular and complement-triangular local recognition
+
+`05-local-recognition.patch` applies to the frozen R17 source. It corrects both parts of `prop:locally-triangular-recognition` and the use of its second conclusion in `lem:no-triangular-subconstituent`. Apply it with `02-sections-7-8.patch`, which supplies the vertex-transitive and non-complete hypotheses used here.
+
+For local \(T(4)\), the host is the complete multipartite graph \(K_{2,2,2,2}\). Each of the four parts has two vertices. Two opposite vertices in the octahedral neighbourhood share all four other vertices of the octahedron and the root as neighbours. Thus \(\mu\geq 5\), and the strongly regular parameters satisfy \(6=(|H|-7)\mu\). This forces \((|H|,\mu)=(8,6)\). The complement has degree one, giving the four parts.
+
+The complement of the triangular graph on the two-element subsets of an \(m\)-set is the Kneser graph \(\mathrm{KG}(m,2)\). In \(\mathrm{KG}(m+2,2)\), the neighbours of a fixed pair are the two-element subsets of the remaining \(m\) points. Their induced graph is \(\mathrm{KG}(m,2)\). This gives the complement in the recognition conclusion. For example, the strongly regular graph \(\mathrm{KG}(7,2)\) has order \(21\), valency \(10\), and Petersen neighbourhoods.
+
+The corrected proof cites the existing `GHS10` bibliography entry. Theorem 1 uses the inclusive bound \(m\geq7\) for the general local recognition result and gives the separate candidate lists for \(m=5\) and \(m=6\). For \(m=5\), the strongly regular equation is \(60=(|H|-11)\mu\), which excludes orders \(63\) and \(65\). For \(m=6\), it is \(120=(|H|-16)\mu\), which excludes order \(32\) and retains \(\mathrm{KG}(8,2)\) and \(\mathrm{NO}_6^-(2)\) of orders \(28\) and \(36\), respectively. [Gramlich, Hall and Straub, Theorem 1](https://doi.org/10.1007/s10801-009-0201-4) · [Author copy](https://users.math.msu.edu/users/halljo/research/straub.pdf) · [Brouwer, Section 2](https://doi.org/10.37236/12621)
+
+Lean checks the strongly regular order calculations in `EPPAIII/Primitive/LocalRecognitionArithmetic.lean`. For local \(T(4)\), it takes the parameters and the bound \(\mu\geq5\) as hypotheses. For the two complement-triangular cases, it takes the candidate order lists and local parameters as hypotheses. The graph recognitions of Hall, Buekenhout–Hubaut and Makhnev remain external results.

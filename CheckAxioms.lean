@@ -1302,3 +1302,28 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.OrthogonalSearchChecks.equalBipartitionThree
 #print axioms EPPAIII.Primitive.smallConstituentHits_complete
 #print axioms EPPAIII.Primitive.smallConstituentHost_order_le_460
+
+-- Section 8: exact finite model data, exhaustive numerical screen and search implications.
+#print axioms EPPAIII.Primitive.smallConstituentScreen_of_srg
+#print axioms EPPAIII.Primitive.primitiveRankThree_smallConstituent_hostModel_of_eppa
+#print axioms EPPAIII.Primitive.oSixPlus_isSRG
+#print axioms EPPAIII.Primitive.noSixMinus_isSRG
+#print axioms EPPAIII.Primitive.voSixPlus_isSRG
+#print axioms EPPAIII.Primitive.voSixMinus_isSRG
+#print axioms EPPAIII.Primitive.affineOrthogonal_degreeBound
+#print axioms EPPAIII.Primitive.not_eppa_of_tupleParity_zero_obstruction
+#print axioms EPPAIII.Primitive.no_good_of_empty_orbit_level
+#print axioms EPPAIII.Primitive.proper_coordinate_field_or_small_galois_base
+#print axioms EPPAIII.Primitive.proper_subfield_or_semilinear_stabilizer_base
+#print axioms EPPAIII.Primitive.triangularGraph_eppa_iff_triangleFreeLineGraph
+#print axioms EPPAIII.Primitive.primitiveCases_iff_eppa_of_listedHost
+#print axioms EPPAIII.Primitive.srg_uniform_cover_homogeneous
+#print axioms EPPAIII.Primitive.srg_uniform_cover_compl_homogeneous
+#print axioms EPPAIII.Primitive.locallyTriangular_four_srg_order
+#print axioms EPPAIII.Primitive.locallyComplementTriangular_five_srg_order
+#print axioms EPPAIII.Primitive.locallyComplementTriangular_six_srg_order
+#print axioms EPPAIII.Primitive.rookGraph_eppa_card_le
+#print axioms EPPAIII.Primitive.rookFive_eppa_card_le_eleven
+#print axioms EPPAIII.Primitive.rookGraph_not_eppa_half
+#print axioms EPPAIII.Primitive.affineRootMask_badDegree
+#print axioms EPPAIII.Primitive.srg_iso_cover_homogeneous

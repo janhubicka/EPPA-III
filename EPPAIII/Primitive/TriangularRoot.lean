@@ -27,7 +27,8 @@ private theorem mem_triangularRootGraph_edgeSet {V : Type*} [DecidableEq V]
   rw [triangularRootGraph, SimpleGraph.edgeSet_fromEdgeSet]
   exact ⟨fun h => h.1, fun h => ⟨h, h.choose⟩⟩
 
-private theorem triangularRootGraph_adj {V : Type*} [DecidableEq V]
+/-- An edge of the root graph is exactly a selected pair of distinct points. -/
+theorem triangularRootGraph_adj {V : Type*} [DecidableEq V]
     (S : Set (TwoSet V)) {x y : V} (hxy : x ≠ y) :
     (triangularRootGraph S).Adj x y ↔ triangularPair x y hxy ∈ S := by
   rw [← SimpleGraph.mem_edgeSet, mem_triangularRootGraph_edgeSet]

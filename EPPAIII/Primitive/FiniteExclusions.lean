@@ -1,6 +1,7 @@
 import EPPAIII.Primitive.Order35Transport
 import EPPAIII.Primitive.LocalReduction
 import EPPAIII.EPPA.ComplementTransport
+import EPPAIII.EPPA.HostRelabel
 
 /-!
 # Four finite EPPA search assumptions for the primitive proof
@@ -77,25 +78,7 @@ theorem maxEppaOrder_le_of_iso {W X : Type*} [Finite W] [Finite X]
     {H : SimpleGraph W} {K : SimpleGraph X} (φ : H ≃g K) :
     maxEppaOrder H ≤ maxEppaOrder K := by
   obtain ⟨S, hCard, heppa⟩ := maxEppaOrder_attained H
-  let e : S ↪ W := Function.Embedding.subtype S
-  let f : W ≃ X := φ.toEquiv
-  have hMap (x y : W) : H.Adj x y ↔ K.Adj (f x) (f y) :=
-    φ.map_rel_iff.symm
-  have hEPPA : IsEPPAEmbedding (H.induce S) K (e.trans f.toEmbedding) := by
-    constructor
-    · intro x y
-      exact (heppa.1 x y).trans (hMap (e x) (e y))
-    · intro D p hp
-      obtain ⟨q, hq, hExt⟩ := heppa.2 D p hp
-      refine ⟨(f.symm.trans q).trans f, ?_, ?_⟩
-      · intro x y
-        change K.Adj x y ↔ K.Adj (f (q (f.symm x))) (f (q (f.symm y)))
-        simpa only [Equiv.apply_symm_apply] using ((hMap (f.symm x) (f.symm y)).symm.trans
-          ((hq (f.symm x) (f.symm y)).trans (hMap (q (f.symm x)) (q (f.symm y)))))
-      · intro x hx
-        change f (q (f.symm (f (e x)))) = f (e (p x))
-        have hExtend : q (e x) = e (p x) := hExt x hx
-        rw [f.symm_apply_apply, hExtend]
+  have hEPPA := eppa_relabel_host (H.induce S) (Function.Embedding.subtype S) heppa φ
   simpa only [hCard] using order_le_maxEppaOrder _ _ _ hEPPA
 
 /-- Move a checked exclusion to an isomorphic host. -/

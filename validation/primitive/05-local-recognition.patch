@@ -1,0 +1,53 @@
+--- a/main-new(20261116-151839)-markers-r17.tex
++++ b/main-new(20261116-151839)-markers-r17.tex
+@@ -3022,29 +3022,27 @@
+ \begin{Proposition}\label{prop:locally-triangular-recognition}
+ Let $H$ be a connected strongly regular graph. 
+ \begin{enumerate}
+-    \item If $H_1\cong T(m)$, then $H$ is $K_{4,2}$, the complement of the
++    \item If $H_1\cong T(m)$, then $H$ is the complete multipartite graph $K_{2,2,2,2}$, the complement of the
+ Clebsch graph, the half-graph of the folded $m$-cube for $m\in\{8,10\}$, or
+ the half-graph of the graph of cosets of the extended binary Golay code.
+-\item If $H_1\cong\overline{T(m)}$ and $m \geq 5$, then $H = T(m+2)$ or $m  = 6$ and $H = \NO^-_6(2)$.
++\item If $H_1\cong\overline{T(m)}$ and $m\geq5$, then $H\cong\overline{T(m+2)}$, or $m=6$ and $H\cong\NO^-_6(2)$.
+ \end{enumerate}
+ \end{Proposition}
+ % EPPA-III statement status: Lean main ee821458a28c; see validation audit.
+ \leanpending{Sections 7--8: no formal theorem match}%
+ 
+ \begin{proof}
+-The triangular statement is Makhnev's classification~\cite{MAK01}. 
+-Now assume that $H_1$ is complement-triangular. 
+ Let $(v,k,\lambda,\mu)$ denote the parameters of $H$.
+-The connected locally complement-triangular graphs are classified in~\cite[Theorem~2]{HAL85}. 
+-These are the stated triangular graphs, together with two exceptional graphs which are locally $T(5)$, and three which are locally $T(6)$. 
+-The exceptional locally $T(5)$ graphs have orders $63$ and $65$, respectively.
+-Since $H$ is locally $T(5)$, we have $k = 10$ and $\lambda = 3$, which yields
+-$60=(|H|-11)\mu$. 
+-This excludes both possibilities. 
+-The locally $T(6)$ exceptions have orders $32$ and $36$, the latter graph being $\NO_6^-(2)$. 
+-In this case, we have
+-$k=15$ and $\lambda=6$, which yields $120=(|H|-16)\mu$. 
+-This excludes the graph of order $32$.
++In the triangular case, connectedness and non-completeness give $m\geq4$. For $m=4$, the local graph is octahedral and $(k,\lambda)=(6,4)$.
++Two opposite vertices of this octahedron have its four other vertices and the root as common neighbours, so $\mu\geq5$. Then $6=(|H|-7)\mu$ gives $|H|=8$ and $\mu=6$. The complement is a perfect matching, so $H\cong K_{2,2,2,2}$.
++For $m\geq5$, the triangular statement follows from Makhnev's classification~\cite{MAK01}.
++Now assume that $H_1$ is complement-triangular.
++Write $\mathrm{KG}(m,2)=\overline{T(m)}$ for the graph on $2$-subsets of an $m$-set, with disjointness as adjacency.
++The classification in~\cite[Theorem~1]{GHS10} gives $H\cong\mathrm{KG}(m+2,2)$ for $m\geq7$.
++For $m=5$, the candidates are $\mathrm{KG}(7,2)$ and two graphs of orders $63$ and $65$.
++The local graph $\mathrm{KG}(5,2)$ has order $10$ and valency $3$, so the strongly regular parameter identity gives $60=(|H|-11)\mu$. Neither $52$ nor $54$ divides $60$, leaving $\mathrm{KG}(7,2)$.
++For $m=6$, the candidates are $\mathrm{KG}(8,2)$, a graph of order $32$, and $\NO^-_6(2)$ of order $36$.
++The local graph $\mathrm{KG}(6,2)$ has order $15$ and valency $6$, so the parameter identity gives $120=(|H|-16)\mu$. Since $16$ does not divide $120$, the graph of order $32$ is excluded.
+ \end{proof}
+ 
+ \begin{lemma}\label{lem:srg-generalised-cover-homogeneous}
+@@ -3365,7 +3363,7 @@
+ By replacing $\hc$ by its complement we may assume that $\hc_1$ is (complement-) triangular. 
+ We apply Proposition~\ref{prop:locally-triangular-recognition}.
+ The imprimitive and Clebsch cases are already contained in
+-Theorem~\ref{thmintro:classification}, similarly the triangular graphs. 
++Theorem~\ref{thmintro:classification}, which also covers the complements of triangular graphs by its complementation clause.
+ The exceptional graph $\NO^-_6(2)$ was excluded in Lemma~\ref{lemma:smallconstituents}, the $64$-vertex locally triangular case (the complement of $\VO^+_6(2)$) can be excluded with the computational methods from Section~\ref{sec:computer}. 
+ The remaining two locally triangular possibilities, on $256$ and $2048$ vertices, were considered in Examples~\ref{ex:256} and~\ref{ex:m24}.
+ This is a contradiction.

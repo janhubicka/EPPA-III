@@ -439,3 +439,28 @@ import EPPAIII.Primitive.FiniteCaseArithmetic
 import EPPAIII.Primitive.UnitaryFourTwoArithmetic
 import EPPAIII.Primitive.SmallConstituentBound
 import EPPAIII.Primitive.SmallConstituentTable
+
+-- Concrete case inputs and finite certificates.
+import EPPAIII.Primitive.SmallConstituentGraphScreen
+import EPPAIII.Primitive.SmallConstituentModels
+import EPPAIII.Primitive.SmallConstituentExclusion
+import EPPAIII.Primitive.FiniteModelParameters
+import EPPAIII.Primitive.ClebschSchlafliModels
+import EPPAIII.Primitive.BinaryOrthogonalTransport
+import EPPAIII.Primitive.AffineOrthogonalDegreeBound
+import EPPAIII.Primitive.TupleParityObstruction
+import EPPAIII.Primitive.BinaryObstruction
+import EPPAIII.Primitive.OrbitCoverCertificate
+import EPPAIII.Primitive.AffineRootMaskData
+import EPPAIII.Primitive.StabilizerBase
+import EPPAIII.Primitive.FieldCoordinateStabilizer
+import EPPAIII.EPPA.HostRelabel
+
+import EPPAIII.Primitive.SemilinearStabilizer
+import EPPAIII.Primitive.FixedEmbeddingCases
+import EPPAIII.Primitive.PrimitiveCases
+import EPPAIII.Primitive.TriangularAbstract
+import EPPAIII.Primitive.StronglyRegularCovers
+import EPPAIII.Primitive.LocalRecognitionArithmetic
+import EPPAIII.Primitive.RookObstruction
+import EPPAIII.Primitive.AffineRootDegreeCertificate
