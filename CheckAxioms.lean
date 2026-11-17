@@ -1234,3 +1234,7 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.switchingFibreEquiv_taylor_pullback
 #print axioms EPPAIII.TwoGraphs.nonhomogeneous_transversal_eppa_implies_two_graph_homogeneous
 #print axioms EPPAIII.TwoGraphs.taylor_fourway_internal_equivalence
+
+-- Section 5 all-orders EPPA/two-graph equivalence and four-way external boundary.
+#print axioms EPPAIII.TwoGraphs.all_taylor_transversals_eppa_iff_homogeneous_two_graph
+#print axioms EPPAIII.TwoGraphs.taylor_fourway_relative_to_external_models
