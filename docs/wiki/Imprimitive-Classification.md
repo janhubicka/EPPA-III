@@ -121,6 +121,8 @@ def IsCoClusterGraph {V : Type*} (G : SimpleGraph V) : Prop :=
 
 ## 3. Exact predicates naming the possible hosts
 
+For the last layer of definitions (the actual four-bit Taylor matrix and concrete two-clique, C₅, rook, and Wagner graph constructors), see [exact named host models](Named-Host-Models.md).
+
 ### 3.1 Fixed relabelling of canonical bases
 
 `CanonicalBaseCopy K G φ` means that the graph `K` becomes **exactly** the selected graph `G` after transporting adjacency along the stated equivalence `φ`. The reindexed selected embedding is always carried through to the host, rather than forgotten.
