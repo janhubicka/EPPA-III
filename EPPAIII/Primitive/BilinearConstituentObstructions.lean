@@ -29,14 +29,40 @@ private def rankOneSeed (A : Seed) : Prop :=
   ((∀ j, A 0 j = 0) ∨ (∀ j, A 1 j = 0) ∨ (∀ j, A 1 j = -A 0 j)) ∧
     ∃ r c, A r c = 1 ∨ A r c = -1
 
+private def checkRankOneSeed (A : Seed) : Bool :=
+  (((List.finRange 3).all (fun j => decide (A 0 j = 0)) ||
+    (List.finRange 3).all (fun j => decide (A 1 j = 0))) ||
+    (List.finRange 3).all (fun j => decide (A 1 j = -A 0 j))) &&
+    (List.finRange 2).any (fun r =>
+      (List.finRange 3).any (fun c => (A r c == 1) || (A r c == -1)))
+
+private theorem checkRankOneSeed_sound {A : Seed} (h : checkRankOneSeed A = true) :
+    rankOneSeed A := by
+  unfold checkRankOneSeed at h
+  unfold rankOneSeed
+  obtain ⟨hRows, hEntry⟩ := Bool.and_eq_true_iff.mp h
+  refine ⟨?_, ?_⟩
+  · rcases Bool.or_eq_true_iff.mp hRows with hZero | hOpp
+    · rcases Bool.or_eq_true_iff.mp hZero with hFirst | hSecond
+      · exact Or.inl (fun j => of_decide_eq_true
+          (List.all_eq_true.mp hFirst j (List.mem_finRange j)))
+      · exact Or.inr (Or.inl (fun j => of_decide_eq_true
+          (List.all_eq_true.mp hSecond j (List.mem_finRange j))))
+    · exact Or.inr (Or.inr (fun j => of_decide_eq_true
+        (List.all_eq_true.mp hOpp j (List.mem_finRange j))))
+  · obtain ⟨r, _, hr⟩ := List.any_eq_true.mp hEntry
+    obtain ⟨c, _, hc⟩ := List.any_eq_true.mp hr
+    exact ⟨r, c, (Bool.or_eq_true_iff.mp hc).imp beq_iff_eq.mp beq_iff_eq.mp⟩
+
 private theorem seed_vertices : ∀ i, unitMinor (pentagonSeed i) := by
   unfold unitMinor
   decide
 
 private theorem seed_edges : ∀ i j, (SimpleGraph.cycleGraph 5).Adj i j →
     rankOneSeed (pentagonSeed i - pentagonSeed j) := by
-  unfold rankOneSeed
-  decide
+  have h : ∀ i j : Fin 5, (SimpleGraph.cycleGraph 5).Adj i j →
+      checkRankOneSeed (pentagonSeed i - pentagonSeed j) = true := by decide
+  exact fun i j hij => checkRankOneSeed_sound (h i j hij)
 
 private theorem seed_nonedges : ∀ i j, i ≠ j → ¬ (SimpleGraph.cycleGraph 5).Adj i j →
     unitMinor (pentagonSeed i - pentagonSeed j) := by
@@ -202,13 +228,14 @@ private instance : DecidableRel (SimpleGraph.pathGraph 4).Adj := fun _ _ =>
   decidable_of_iff _ SimpleGraph.pathGraph_adj.symm
 
 private theorem path_vertices : ∀ i, rankOneSeed (pathSeed i) := by
-  unfold rankOneSeed
-  decide
+  have h : ∀ i : Fin 4, checkRankOneSeed (pathSeed i) = true := by decide
+  exact fun i => checkRankOneSeed_sound (h i)
 
 private theorem path_edges : ∀ i j, (SimpleGraph.pathGraph 4).Adj i j →
     rankOneSeed (pathSeed i - pathSeed j) := by
-  unfold rankOneSeed
-  decide
+  have h : ∀ i j : Fin 4, (SimpleGraph.pathGraph 4).Adj i j →
+      checkRankOneSeed (pathSeed i - pathSeed j) = true := by decide
+  exact fun i j hij => checkRankOneSeed_sound (h i j hij)
 
 private theorem path_nonedges : ∀ i j, i ≠ j → ¬ (SimpleGraph.pathGraph 4).Adj i j →
     unitMinor (pathSeed i - pathSeed j) := by
