@@ -12,6 +12,7 @@ import EPPAIII.Primitive.HigmanSims
 import EPPAIII.Primitive.SporadicConstituentExclusions
 import EPPAIII.Primitive.HoffmanSingleton
 import EPPAIII.Primitive.UnitaryFourThreeConstituents
+import EPPAIII.Primitive.TriangularConstituentReduction
 
 /-! # Family reductions for the primitive rank-three catalogue -/
 
@@ -255,13 +256,15 @@ theorem MinimalCounterexample.residual_rankThree_family
     (hSmallIdentify : SmallRankThreeModelIdentification.{v})
     (hSearch : OrthogonalSearchChecks) (hPaley : SmallPaleyExclusions)
     (hPositive : PrimitiveFiniteChecks)
-    (hTriangular : ∀ side (n : ℕ), 5 ≤ n →
-      IsModelUpToComplement (constituentGraph H (e root) side) (triangularModel n) →
-        classified G H e) :
+    (hRecognition : LocallyTriangularRecognitionInputs H)
+    (hRecognitionCompl : LocallyTriangularRecognitionInputs Hᶜ) :
     ∃ c : RankThreeExternalCase, ∃ model ∈ catalog c,
       residual c model ∧ IsModelUpToComplement H model.2 := by
   obtain ⟨hLocal, hNonlocal⟩ := h.constituent_shapes hPrim hRank root hProject hIncludePrimitive
-    hSmallCoverage hSmallIdentify hSearch hPaley hPositive hTriangular
+    hSmallCoverage hSmallIdentify hSearch hPaley hPositive
+    (fun side n hn hModel => hIncludePrimitive
+      (primitiveCases_of_triangular_constituent G H e h.pair.eppa h.pair.halfOrder hRank
+        hRecognition hRecognitionCompl hSearch hPositive (e root) side n hn hModel))
   have hShape := (selected_subconstituent_at_least_half G H e root h.pair.transitive
     h.pair.halfOrder).imp hLocal hNonlocal
   exact (primitiveCases_or_residual_rankThree_family catalog residual hCoverage G H e hRank

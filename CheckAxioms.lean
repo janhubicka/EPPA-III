@@ -1430,3 +1430,9 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.sporadic_constituents_exclude_forms
 #print axioms EPPAIII.Primitive.primitiveCases_or_residual_rankThree_family
 #print axioms EPPAIII.Primitive.MinimalCounterexample.residual_rankThree_family
+#print axioms EPPAIII.Primitive.listed_or_noHalfOrderEPPA_of_triangular_neighbourhood
+#print axioms EPPAIII.Primitive.primitiveCases_of_triangular_constituent
+#print axioms EPPAIII.Primitive.splitPolar_local_rookThree
+#print axioms EPPAIII.Primitive.splitPolar_nonlocal_rookThree
+#print axioms EPPAIII.Primitive.symplecticPolar_local_pentagon
+#print axioms EPPAIII.Primitive.symplecticPolar_nonlocal_pentagon
