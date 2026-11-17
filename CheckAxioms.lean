@@ -1284,3 +1284,18 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.seidelSwitchGraph_eq_taylorTransversalGraph
 #print axioms EPPAIII.BlockSystems.twoCliqueGraph_taylorTransversal_to_any_twoClique
 #print axioms EPPAIII.BlockSystems.twoCliqueGraph_taylorTransversal_to_complete
+
+-- Sufficiency of the classified imprimitive models (fixed bottom embedding).
+#print axioms EPPAIII.BlockSystems.eppa_of_homogeneous_base_and_lifts
+#print axioms EPPAIII.BlockSystems.eppa_of_homogeneous_base_and_diagonal_lifts
+#print axioms EPPAIII.BlockSystems.homogeneous_base_separated_double_eppa
+#print axioms EPPAIII.BlockSystems.homogeneous_base_twin_blowup_eppa
+#print axioms EPPAIII.BlockSystems.homogeneous_base_taylor_double_eppa
+#print axioms EPPAIII.BlockSystems.matched_layer_eppa_of_invariant_top
+#print axioms EPPAIII.BlockSystems.homogeneous_base_matching_prism_eppa
+#print axioms EPPAIII.BlockSystems.homogeneous_base_complement_matching_eppa
+#print axioms EPPAIII.BlockSystems.twoCliqueMatchedSymmetry_graphAut
+#print axioms EPPAIII.BlockSystems.twoClique_partial_color_discrepancy
+#print axioms EPPAIII.BlockSystems.twoClique_matched_bottom_induced
+#print axioms EPPAIII.BlockSystems.twoClique_matched_isEPPA
+#print axioms EPPAIII.BlockSystems.twoClique_matched_vertexTransitive
