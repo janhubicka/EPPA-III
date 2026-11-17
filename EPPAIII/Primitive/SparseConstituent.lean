@@ -1,4 +1,4 @@
-import EPPAIII.CliqueCovers.Basic
+import EPPAIII.CliqueCovers.CliqueUnionDegrees
 import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
 
 /-! # Sparse subconstituents versus generalized clique covers -/
@@ -6,6 +6,14 @@ import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
 namespace EPPAIII.Primitive
 
 open SimpleGraph
+
+private theorem index_eq_of_reachable {V I : Type*} {G : SimpleGraph V} (index : V → I)
+    (hIndex : ∀ {v w}, G.Adj v w → index v = index w)
+    {v w : V} (h : G.Reachable v w) : index v = index w := by
+  obtain ⟨walk⟩ := h
+  induction walk with
+  | nil => rfl
+  | cons edge _ ih => exact (hIndex edge).trans ih
 
 /-- Number of neighbours across a single diagonal cross block. -/
 def coverDiagonalDegree (X : CrossType) (t : ℕ) : ℕ :=
@@ -95,14 +103,9 @@ theorem coverGraph_s_eq_one_of_connected_off_empty {s t : ℕ} (X : CrossType)
     · exact h.2.1
     · by_contra hne
       simpa [hne] using h.2
-  have hWalk {v w : CoverVertex s t} (walk : (coverGraph s t X false).Walk v w) :
-      v.2.1 = w.2.1 := by
-    induction walk with
-    | nil => rfl
-    | cons h _ ih => exact (hIndex h).trans ih
-  have hSingle (j : Fin s) : i = j := by
-    obtain ⟨walk⟩ := hConnected (left i a) (left j a)
-    exact hWalk walk
+  have hSingle (j : Fin s) : i = j :=
+    index_eq_of_reachable (fun v : CoverVertex s t => v.2.1) hIndex
+      (hConnected (left i a) (left j a))
   have hs : 0 < s := lt_of_le_of_lt (Nat.zero_le _) i.isLt
   by_contra hne
   let j₀ : Fin s := ⟨0, hs⟩
@@ -208,6 +211,50 @@ private theorem degree_eq_of_iso {V W : Type*} [Fintype V] [Fintype W]
     (φ : G ≃g H) (v : V) : H.degree (φ v) = G.degree v := by
   rw [← card_neighborSet_eq_degree, ← card_neighborSet_eq_degree]
   exact (Fintype.card_congr (φ.mapNeighborSet v)).symm
+
+/-- Connected graphs of positive degree less than half their order minus
+one are neither equal-clique unions nor their complements. -/
+theorem sparseConnected_not_cliqueUnion_or_compl {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] {d : ℕ} (hConnected : G.Connected)
+    (hRegular : G.IsRegularOfDegree d) (hPos : 0 < d)
+    (hSparse : 2 * d + 2 < Fintype.card V) {s t : ℕ}
+    (h : Nonempty (G ≃g cliqueUnion s t) ∨ Nonempty (G ≃g (cliqueUnion s t)ᶜ)) : False := by
+  classical
+  have hOrder : Fintype.card (Fin s × Fin t) = s * t := by simp
+  rcases h with h | h
+  · obtain ⟨φ⟩ := h
+    have hSize := φ.card_eq.trans hOrder
+    have hConn := φ.connected_iff.mp hConnected
+    obtain ⟨⟨i, a⟩⟩ := hConn.nonempty
+    have hs : 0 < s := lt_of_le_of_lt (Nat.zero_le _) i.isLt
+    have hDeg := degree_eq_of_iso φ.symm (i, a)
+    rw [hRegular, CliqueCovers.cliqueUnion_degree hs] at hDeg
+    have hSingle : s = 1 := by
+      by_contra hne
+      let j₀ : Fin s := ⟨0, hs⟩
+      let j₁ : Fin s := ⟨1, by omega⟩
+      have hEq : j₀ = j₁ := index_eq_of_reachable (G := cliqueUnion s t) Prod.fst
+        (fun edge => edge.1) (hConn (j₀, a) (j₁, a))
+      exact Nat.zero_ne_one (congrArg Fin.val hEq)
+    simp [hSingle] at hSize
+    omega
+  · obtain ⟨φ⟩ := h
+    have hSize := φ.card_eq.trans hOrder
+    obtain ⟨v⟩ := hConnected.nonempty
+    let w := φ v
+    have hs : 0 < s := lt_of_le_of_lt (Nat.zero_le _) w.1.isLt
+    have hDeg := degree_eq_of_iso φ v
+    rw [CliqueCovers.cliqueUnion_compl_regular (φ v), hRegular] at hDeg
+    have hs₂ : 2 ≤ s := by
+      by_contra! hsmall
+      have hs₁ : s = 1 := by omega
+      simp [hs₁] at hDeg
+      omega
+    have hBlock : s * t = (s - 1) * t + t := by
+      rw [← Nat.add_one_mul, Nat.sub_add_cancel (by omega : 1 ≤ s)]
+    have ht : t ≤ (s - 1) * t := by
+      simpa using Nat.mul_le_mul_right t (show 1 ≤ s - 1 by omega)
+    omega
 
 /-- A connected regular graph of degree less than half its order minus one
 cannot be isomorphic to a generalized cover. -/

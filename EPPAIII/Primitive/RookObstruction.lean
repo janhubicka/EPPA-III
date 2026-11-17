@@ -24,11 +24,13 @@ variable {n : ℕ}
 /-- The adjacency matrix of two disjoint edges in their natural order. -/
 private def pairAdj (i j : Fin 4) : Prop := i ≠ j ∧ i.val / 2 = j.val / 2
 
-private structure TwoEdgeTuple {W : Type*} (H : SimpleGraph W) (u : Fin 4 → W) : Prop where
+/-- An ordered induced copy of two disjoint edges. -/
+structure TwoEdgeTuple {W : Type*} (H : SimpleGraph W) (u : Fin 4 → W) : Prop where
   injective : Function.Injective u
   adj : ∀ i j, H.Adj (u i) (u j) ↔ pairAdj i j
 
-private theorem four_cells_match {W : Type*} (H : SimpleGraph W) {a b c d : W}
+/-- Four vertices with the six prescribed adjacency relations form an induced matching. -/
+theorem four_cells_match {W : Type*} (H : SimpleGraph W) {a b c d : W}
     (hab : H.Adj a b) (hcd : H.Adj c d)
     (hac : ¬ H.Adj a c) (had : ¬ H.Adj a d)
     (hbc : ¬ H.Adj b c) (hbd : ¬ H.Adj b d) :
@@ -172,7 +174,7 @@ private theorem twoEdges_of_oppositeOrientation (S : Finset (Fin n × Fin n))
 
 /-- A graph EPPA selection cannot contain copies of two disjoint
 edges with different common-neighbour profiles in the witness. -/
-private theorem not_eppa_of_twoEdgeTuples {W : Type*} (H : SimpleGraph W) (S : Set W)
+theorem not_eppa_of_twoEdgeTuples {W : Type*} (H : SimpleGraph W) (S : Set W)
     (u v : Fin 4 → S) (hu : TwoEdgeTuple H (fun i => (u i).val))
     (hv : TwoEdgeTuple H (fun i => (v i).val))
     (hNo : ¬ (∃ z, ∀ i, H.Adj z (u i).val))

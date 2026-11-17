@@ -25,4 +25,8 @@ def equalBipartitionGraph (m : ℕ) :
     intro x h
     exact h.1 rfl
 
+instance (m : ℕ) : DecidableRel (equalBipartitionGraph m).Adj := fun a b => by
+  change Decidable (a ≠ b ∧ ((a.val ∩ b.val).card = 1 ∨ (a.val ∩ b.val).card = m))
+  infer_instance
+
 end EPPAIII.Primitive

@@ -476,3 +476,6 @@ import EPPAIII.Primitive.SparseConstituent
 import EPPAIII.Primitive.AlternatingFiveArithmetic
 import EPPAIII.Primitive.NonlocalConnectivity
 import EPPAIII.Primitive.RookPositiveModels
+import EPPAIII.Primitive.AlternatingFiveExclusion
+import EPPAIII.Primitive.RookTwoEdgeCriterion
+import EPPAIII.Primitive.BilinearGraph

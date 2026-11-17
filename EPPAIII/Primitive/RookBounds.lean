@@ -1,5 +1,6 @@
 import EPPAIII.Primitive.RookObstruction
 import EPPAIII.Primitive.RookThreeHomogeneous
+import EPPAIII.Primitive.RookPositiveModels
 import EPPAIII.Primitive.FiniteExclusions
 import EPPAIII.Primitive.PrimitiveCases
 
@@ -19,6 +20,41 @@ theorem maxEppaOrder_rookGraph_le (n : ℕ) :
 /-- The bound needed in the 126-point rank-three case. -/
 theorem maxEppaOrder_rookFive_le_eleven : maxEppaOrder (rookGraph 5) ≤ 11 :=
   maxEppaOrder_rookGraph_le 5
+
+
+/-- The four-by-four rook host witnesses both displayed maximal selections. -/
+theorem rookFourFigures_eppa (S : Set (Fin 4 × Fin 4)) (hS : S ∈ rookFourFigures) :
+    IsEPPAEmbedding ((rookGraph 4).induce S) (rookGraph 4) (Function.Embedding.subtype S) := by
+  have hCorner : {x : Fin 4 × Fin 4 |
+      (x.1.val < 3 ∧ x.2.val < 3) ∨ (x.1.val = 3 ∧ x.2.val = 3)} = rookThreeCorner 4 := by
+    ext x
+    change ((_ ∧ _) ∨ (_ ∧ _)) ↔ ((_ ∧ _) ∨ (_ ∧ _))
+    have hRow := x.1.isLt
+    have hCol := x.2.isLt
+    omega
+  rcases (show S = _ ∨ S = _ from by
+    simpa only [rookFourFigures, Set.mem_insert_iff, Set.mem_singleton_iff] using hS) with h | h
+  · rw [h, hCorner]
+    exact rookThreeCorner_eppa 4
+  · rw [h]
+    exact rookTwoColumns_eppa 4
+
+private theorem rookFiveCorner_card : Nat.card (rookThreeCorner 5) = 11 := by
+  letI membership (x : Fin 5 × Fin 5) : Decidable (x ∈ rookThreeCorner 5) :=
+    inferInstanceAs (Decidable
+      ((x.1.val < 3 ∧ x.2.val < 3) ∨ (3 ≤ x.1.val ∧ x.1.val = x.2.val)))
+  let selected := Finset.univ.filter (fun x => x ∈ rookThreeCorner 5)
+  have hSelected (x : Fin 5 × Fin 5) : x ∈ selected ↔ x ∈ rookThreeCorner 5 := by
+    simp [selected]
+  letI := Fintype.ofFinset selected hSelected
+  rw [Nat.card_eq_fintype_card, Fintype.card_ofFinset selected hSelected]
+  decide
+
+/-- The maximum EPPA order of the five-by-five rook graph is eleven. -/
+theorem maxEppaOrder_rookFive_eq_eleven : maxEppaOrder (rookGraph 5) = 11 := by
+  apply le_antisymm maxEppaOrder_rookFive_le_eleven
+  have hOrder := order_le_maxEppaOrder _ _ _ (rookThreeCorner_eppa 5)
+  rwa [rookFiveCorner_card] at hOrder
 
 /-- Every square rook graph of side at least five is excluded. -/
 theorem noHalfOrderEPPA_rookGraph (n : ℕ) (hn : 5 ≤ n) :

@@ -16,16 +16,16 @@ of two edges at a time.
 
 namespace EPPAIII.Primitive
 
-private abbrev Cell (n : ℕ) := Fin n × Fin n
+private abbrev RookCell (n : ℕ) := Fin n × Fin n
 
 /-- Two rook edges have the same direction when both run along rows or
 both along columns. -/
-def rookSameDirection {n : ℕ} (a b c d : Cell n) : Prop :=
+def rookSameDirection {n : ℕ} (a b c d : RookCell n) : Prop :=
   (a.1 = b.1 ↔ c.1 = d.1)
 
 /-- Every graph-preserving correspondence of two edges in the selected
 set preserves whether the directions agree. The edges may share vertices. -/
-def RookFourPointCondition {n : ℕ} (S : Set (Cell n)) : Prop :=
+def RookFourPointCondition {n : ℕ} (S : Set (RookCell n)) : Prop :=
   ∀ u v : Fin 4 → S,
     (∀ i j, u i = u j ↔ v i = v j) →
     (∀ i j, (rookGraph n).Adj (u i).val (u j).val ↔ (rookGraph n).Adj (v i).val (v j).val) →
@@ -51,12 +51,12 @@ private theorem exists_perm_of_sameFibres {ι A : Type*} [Finite A]
   let x : image := ⟨f i, ⟨i, rfl⟩⟩
   exact (hσ x).trans ((h _ _).mp (hRepr x))
 
-private theorem rook_edge_axes {n : ℕ} {x y : Cell n} (h : (rookGraph n).Adj x y) :
+private theorem rook_edge_axes {n : ℕ} {x y : RookCell n} (h : (rookGraph n).Adj x y) :
     x.2 = y.2 ↔ ¬ x.1 = y.1 := by
   refine ⟨fun hCol hRow => h.1 (Prod.ext hRow hCol), ?_⟩
   exact fun hRow => h.2.resolve_left hRow
 
-private theorem rook_eq_of_no_edge {n : ℕ} {x y : Cell n} (hne : x ≠ y)
+private theorem rook_eq_of_no_edge {n : ℕ} {x y : RookCell n} (hne : x ≠ y)
     (h : ¬ (rookGraph n).Adj x y) : x.1 ≠ y.1 ∧ x.2 ≠ y.2 :=
   ⟨fun hRow => h ⟨hne, Or.inl hRow⟩, fun hCol => h ⟨hne, Or.inr hCol⟩⟩
 
@@ -78,10 +78,10 @@ private theorem rookGraph_transpose_auto {n : ℕ} :
   simp only [ne_eq, (Equiv.prodComm (Fin n) (Fin n)).injective.eq_iff, or_comm]
 
 private theorem extend_consistent_axes {ι : Type*} {n : ℕ}
-    (u v : ι → Cell n)
+    (u v : ι → RookCell n)
     (hRow : ∀ i j, (u i).1 = (u j).1 ↔ (v i).1 = (v j).1)
     (hCol : ∀ i j, (u i).2 = (u j).2 ↔ (v i).2 = (v j).2) :
-    ∃ q : Equiv.Perm (Cell n), IsGraphAutomorphism (rookGraph n) q ∧
+    ∃ q : Equiv.Perm (RookCell n), IsGraphAutomorphism (rookGraph n) q ∧
       ∀ i, q (u i) = v i := by
   obtain ⟨r, hr⟩ := exists_perm_of_sameFibres (fun i => (u i).1) (fun i => (v i).1) hRow
   obtain ⟨c, hc⟩ := exists_perm_of_sameFibres (fun i => (u i).2) (fun i => (v i).2) hCol
@@ -89,12 +89,12 @@ private theorem extend_consistent_axes {ι : Type*} {n : ℕ}
     fun i => Prod.ext (hr i) (hc i)⟩
 
 private theorem extend_consistent_directions {ι : Type*} {n : ℕ}
-    (u v : ι → Cell n) (hu : Function.Injective u) (hv : Function.Injective v)
+    (u v : ι → RookCell n) (hu : Function.Injective u) (hv : Function.Injective v)
     (hAdj : ∀ i j, (rookGraph n).Adj (u i) (u j) ↔ (rookGraph n).Adj (v i) (v j))
     (hDirection : ∀ a b c d, (rookGraph n).Adj (u a) (u b) →
       (rookGraph n).Adj (u c) (u d) →
       (rookSameDirection (u a) (u b) (u c) (u d) ↔ rookSameDirection (v a) (v b) (v c) (v d))) :
-    ∃ q : Equiv.Perm (Cell n), IsGraphAutomorphism (rookGraph n) q ∧
+    ∃ q : Equiv.Perm (RookCell n), IsGraphAutomorphism (rookGraph n) q ∧
       ∀ i, q (u i) = v i := by
   classical
   have hOrient :
@@ -155,15 +155,15 @@ private theorem extend_consistent_directions {ι : Type*} {n : ℕ}
 
 /-- A checked four-point condition suffices for EPPA of a selected
 subgraph of a square rook graph. -/
-theorem rookGraph_eppa_of_fourPointCondition {n : ℕ} (S : Set (Cell n))
+theorem rookGraph_eppa_of_fourPointCondition {n : ℕ} (S : Set (RookCell n))
     (hFour : RookFourPointCondition S) :
     IsEPPAEmbedding ((rookGraph n).induce S) (rookGraph n) (Function.Embedding.subtype S) := by
   classical
   refine ⟨fun _ _ => Iff.rfl, ?_⟩
   intro D p hp
   let I := {x : S // x ∈ D}
-  let u (i : I) : Cell n := i.val.val
-  let v (i : I) : Cell n := (p i.val).val
+  let u (i : I) : RookCell n := i.val.val
+  let v (i : I) : RookCell n := (p i.val).val
   have hu : Function.Injective u := fun _ _ h => Subtype.ext (Subtype.ext h)
   have hv : Function.Injective v := fun _ _ h => Subtype.ext (p.injective (Subtype.ext h))
   have hAdj (i j : I) : (rookGraph n).Adj (u i) (u j) ↔ (rookGraph n).Adj (v i) (v j) :=
@@ -177,27 +177,27 @@ theorem rookGraph_eppa_of_fourPointCondition {n : ℕ} (S : Set (Cell n))
 
 
 /-- Two designated edges have no cross edge. -/
-private def rookCrossEmpty {n : ℕ} (a b c d : Cell n) : Prop :=
+private def rookCrossEmpty {n : ℕ} (a b c d : RookCell n) : Prop :=
   ¬ (rookGraph n).Adj a c ∧ ¬ (rookGraph n).Adj a d ∧
     ¬ (rookGraph n).Adj b c ∧ ¬ (rookGraph n).Adj b d
 
-private def rookCrossFork {n : ℕ} (a b c d : Cell n) : Prop :=
+private def rookCrossFork {n : ℕ} (a b c d : RookCell n) : Prop :=
   ((rookGraph n).Adj a c ∧ (rookGraph n).Adj a d) ∨
     ((rookGraph n).Adj b c ∧ (rookGraph n).Adj b d) ∨
     ((rookGraph n).Adj a c ∧ (rookGraph n).Adj b c) ∨
     ((rookGraph n).Adj a d ∧ (rookGraph n).Adj b d)
 
-private def rookCrossComplete {n : ℕ} (a b c d : Cell n) : Prop :=
+private def rookCrossComplete {n : ℕ} (a b c d : RookCell n) : Prop :=
   (rookGraph n).Adj a c ∧ (rookGraph n).Adj a d ∧
     (rookGraph n).Adj b c ∧ (rookGraph n).Adj b d
 
-private theorem sameDirection_of_shared {n : ℕ} {a b c : Cell n}
+private theorem sameDirection_of_shared {n : ℕ} {a b c : RookCell n}
     (hab : (rookGraph n).Adj a b) (hac : (rookGraph n).Adj a c) :
     rookSameDirection a b a c ↔ b = c ∨ (rookGraph n).Adj b c := by
   simp only [rookSameDirection, rookGraph, ne_eq, Prod.ext_iff] at *
   grind
 
-private theorem sameDirection_of_nonempty_cross {n : ℕ} {a b c d : Cell n}
+private theorem sameDirection_of_nonempty_cross {n : ℕ} {a b c d : RookCell n}
     (hab : (rookGraph n).Adj a b) (hcd : (rookGraph n).Adj c d)
     (hac : a ≠ c) (had : a ≠ d) (hbc : b ≠ c) (hbd : b ≠ d)
     (hCross : ¬ rookCrossEmpty a b c d) :
@@ -221,7 +221,7 @@ private theorem sameDirection_of_nonempty_cross {n : ℕ} {a b c d : Cell n}
 
 
 /-- Two designated edges form an induced matching of four cells. -/
-def RookInducedMatching {n : ℕ} (a b c d : Cell n) : Prop :=
+def RookInducedMatching {n : ℕ} (a b c d : RookCell n) : Prop :=
   (rookGraph n).Adj a b ∧ (rookGraph n).Adj c d ∧
     a ≠ c ∧ a ≠ d ∧ b ≠ c ∧ b ≠ d ∧
     ¬ (rookGraph n).Adj a c ∧ ¬ (rookGraph n).Adj a d ∧
@@ -229,7 +229,7 @@ def RookInducedMatching {n : ℕ} (a b c d : Cell n) : Prop :=
 
 /-- A selection is EPPA when all its induced two-edge matchings have
 the same relative direction. -/
-theorem rookGraph_eppa_of_matchingDirection {n : ℕ} (S : Set (Cell n))
+theorem rookGraph_eppa_of_matchingDirection {n : ℕ} (S : Set (RookCell n))
     (direction : Prop)
     (hDirection : ∀ a b c d : S, RookInducedMatching a.val b.val c.val d.val →
       (rookSameDirection a.val b.val c.val d.val ↔ direction)) :
@@ -247,7 +247,7 @@ theorem rookGraph_eppa_of_matchingDirection {n : ℕ} (S : Set (Cell n))
     Subtype.val_injective.eq_iff.trans ((hEq 1 3).trans Subtype.val_injective.eq_iff.symm)
   have v01 := (hAdj 0 1).mp h01
   have v23 := (hAdj 2 3).mp h23
-  have shared {a b c d : Cell n}
+  have shared {a b c d : RookCell n}
       (hab : (rookGraph n).Adj a b) (hcd : (rookGraph n).Adj c d) :
       (a = c → (rookSameDirection a b c d ↔ b = d ∨ (rookGraph n).Adj b d)) ∧
       (a = d → (rookSameDirection a b c d ↔ b = c ∨ (rookGraph n).Adj b c)) ∧

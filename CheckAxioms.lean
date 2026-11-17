@@ -1346,3 +1346,12 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.nonlocalGraph_connected_of_degree_lt_order
 #print axioms EPPAIII.Primitive.rookThreeCorner_eppa
 #print axioms EPPAIII.Primitive.rookTwoColumns_eppa
+#print axioms EPPAIII.Primitive.alternatingFive_excludes_actual_constituents
+#print axioms EPPAIII.Primitive.sparseConnected_not_cliqueUnion_or_compl
+#print axioms EPPAIII.Primitive.rookFourFigures_eppa
+#print axioms EPPAIII.Primitive.maxEppaOrder_rookFive_eq_eleven
+#print axioms EPPAIII.Primitive.rookGraph_eppa_iff_no_conflicting_matchings
+#print axioms EPPAIII.Primitive.bilinearFormsRankTwo_card
+#print axioms EPPAIII.Primitive.bilinearFormsRankOne_independent_bound
+#print axioms EPPAIII.Primitive.bilinearFormsRankTwo_independent_bound
+#print axioms EPPAIII.Primitive.bilinearFormsRankTwo_connected

@@ -15,12 +15,12 @@ namespace EPPAIII.Primitive
 
 open EPPAIII.DoubleCover
 
-private abbrev Cell := Fin 3 × Fin 3
+private abbrev RookThreeCell := Fin 3 × Fin 3
 
-local instance (x y : Cell) : Decidable ((rookGraph 3).Adj x y) :=
+local instance (x y : RookThreeCell) : Decidable ((rookGraph 3).Adj x y) :=
   inferInstanceAs (Decidable (x ≠ y ∧ (x.1 = y.1 ∨ x.2 = y.2)))
 
-private def coordinateMover (x y : Cell) : Equiv.Perm Cell :=
+private def coordinateMover (x y : RookThreeCell) : Equiv.Perm RookThreeCell :=
   if x.1 = y.1 then
     Equiv.prodCongr (Equiv.refl _) (Equiv.swap x.2 y.2)
   else if x.2 = y.2 then
@@ -30,16 +30,16 @@ private def coordinateMover (x y : Cell) : Equiv.Perm Cell :=
     let t := s.trans (Equiv.swap (s y.2) x.1)
     (Equiv.prodComm _ _).trans (Equiv.prodCongr t t.symm)
 
-private theorem coordinateMover_auto (x y : Cell) :
+private theorem coordinateMover_auto (x y : RookThreeCell) :
     IsGraphAutomorphism (rookGraph 3) (coordinateMover x y) := by
-  have straight (a b : Equiv.Perm (Fin 3)) (u v : Cell) :
+  have straight (a b : Equiv.Perm (Fin 3)) (u v : RookThreeCell) :
       (rookGraph 3).Adj u v ↔
         (rookGraph 3).Adj (Equiv.prodCongr a b u) (Equiv.prodCongr a b v) := by
     change (u ≠ v ∧ (u.1 = v.1 ∨ u.2 = v.2)) ↔
       (Equiv.prodCongr a b u ≠ Equiv.prodCongr a b v ∧
         (a u.1 = a v.1 ∨ b u.2 = b v.2))
     simp only [ne_eq, (Equiv.prodCongr a b).injective.eq_iff, a.injective.eq_iff, b.injective.eq_iff]
-  have transpose (u v : Cell) :
+  have transpose (u v : RookThreeCell) :
       (rookGraph 3).Adj u v ↔
         (rookGraph 3).Adj (Equiv.prodComm _ _ u) (Equiv.prodComm _ _ v) := by
     change (u ≠ v ∧ (u.1 = v.1 ∨ u.2 = v.2)) ↔
@@ -55,11 +55,11 @@ private theorem coordinateMover_auto (x y : Cell) :
 
 set_option maxHeartbeats 4000000 in
 private theorem coordinateMover_apply :
-    ∀ x y : Cell, coordinateMover x y x = y := by decide
+    ∀ x y : RookThreeCell, coordinateMover x y x = y := by decide
 
 set_option maxHeartbeats 4000000 in
 private theorem coordinateMover_fix :
-    ∀ x y z : Cell, z ≠ x → z ≠ y →
+    ∀ x y z : RookThreeCell, z ≠ x → z ≠ y →
       ((rookGraph 3).Adj x z ↔ (rookGraph 3).Adj y z) → coordinateMover x y z = z := by
   decide
 
