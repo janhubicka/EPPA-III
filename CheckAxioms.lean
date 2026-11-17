@@ -1255,3 +1255,9 @@ import EPPAIII
 -- End-to-end imprimitive classification relative to explicit Gardiner base cases.
 #print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_of_base_models
 #print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_relative_to_gardiner
+
+-- Exact source-facing Proposition 6.17, relative only to published Gardiner.
+#print axioms EPPAIII.BlockSystems.cluster_equal_degrees_isHomogeneous
+#print axioms EPPAIII.BlockSystems.gardiner_models_are_imprimitive_base_models
+#print axioms EPPAIII.BlockSystems.imprimitive_base_models_from_gardiner
+#print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_from_gardiner
