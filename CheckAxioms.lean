@@ -1258,6 +1258,7 @@ import EPPAIII
 
 -- Exact source-facing Proposition 6.17, relative only to published Gardiner.
 #print axioms EPPAIII.BlockSystems.cluster_equal_degrees_isHomogeneous
+#print axioms EPPAIII.BlockSystems.cluster_homogeneous_or_unequal_degrees
 #print axioms EPPAIII.BlockSystems.gardiner_models_are_imprimitive_base_models
 #print axioms EPPAIII.BlockSystems.imprimitive_base_models_from_gardiner
 #print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_from_gardiner
