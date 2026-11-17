@@ -175,7 +175,7 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
   obtain ⟨Q, t, hRange, hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hTriple⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
-      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hCheck⟩ | ⟨⟨ψ⟩⟩ := hModel
+      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hCheck⟩ | hUnitary := hModel
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact polar_rankTwo_not_eppa_of_small_stabilizer G K f hMoved hSize
       (transitive_of_iso φ hTrans) root hRange hSRG hLocalModel hNonlocal (hStabilizer (f root))
@@ -199,7 +199,8 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
       (transitive_of_iso φ hTrans) root hSRG hLocalModel hNonlocal (hStabilizer (f root))
   · exact polarSymplecticThree_not_eppa G K f hMoved hSize hSRG hCheck
       (fun r => ((hShapes r).relabel φ).2)
-  · let τ := φ.trans ψ
+  · obtain ⟨ψ⟩ := hUnitary
+    let τ := φ.trans ψ
     exact unitaryFourTwo_not_eppa G (e.trans τ.toEquiv.toEmbedding)
       (eppa_relabel_host G e hEPPA τ) root (transitive_of_iso τ hTrans)
       ((Nat.card_congr τ.toEquiv).symm.trans_le hHalf) ((hShapes root).relabel τ).2
@@ -268,7 +269,7 @@ theorem primitiveCases_of_completeRankThreeCoverage
     · exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding (root := root)
         hPolar φ hRank.2.2.1 hEPPA hHalf hShapes)
     · have φ' : Hᶜ ≃g K.2 := by simpa only [compl_compl] using complHostIso φ
-      exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding hPolar φ'
+      exact False.elim (rankTwoPolarCatalogueModel_excludes_embedding (root := root) hPolar φ'
         (transitive_complement H hRank.2.2.1) (eppa_embedding_complement G H e hEPPA)
         hHalf (fun r => (hShapes r).compl))
   · rcases hIso with ⟨⟨φ⟩⟩ | ⟨⟨φ⟩⟩
