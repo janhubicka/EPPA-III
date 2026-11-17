@@ -79,7 +79,7 @@ def ImprimitiveBaseModels {V : Type*} [Fintype V]
 /-- Complete concrete model list, *up to complementation*, for
 the selected imprimitive EPPA host. Every alternative has a
 specified fixed embedding of the canonical model of the base. -/
-def ImprimitiveHostModels {V W : Type*} [Fintype V]
+def ImprimitiveHostModels {V W : Type*} [Fintype V] [Fintype W]
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W) : Prop :=
   (∃ s t : ℕ, 0 < s ∧ 0 < t ∧
     ∃ φ : (Fin s × Fin t) ≃ V,
@@ -210,11 +210,13 @@ theorem imprimitive_actual_host_classification_of_base_models
     exact Or.inr (Or.inr (Or.inr (Or.inl
       ⟨φ,hModel,hCases⟩)))
   · obtain ⟨hCluster,x,y,hDifferent⟩ := hUnequal
+    obtain ⟨b₀,hb₀⟩ := hNontrivial
+    letI : Nonempty B := ⟨b₀⟩
     letI : Nonempty V := ⟨x⟩
     obtain ⟨c,φ,hG,hBottom,hHost⟩ :=
       transitive_eppa_unequal_two_cliques_named_host_nonhomogeneous
         G H e heppa block hBlocks hSurj hTrans
-        hNonhomogeneous hCluster hManyBlocks hNontrivial
+        hNonhomogeneous hCluster hManyBlocks ⟨b₀,hb₀⟩
         hDouble x y hDifferent
     exact Or.inr (Or.inr (Or.inr (Or.inr
       ⟨c,φ,hG,hBottom,hHost⟩)))
