@@ -53,7 +53,8 @@ private theorem affineSemilinear_rooted_eppa_bound
     have hA : A.card ≤ U.card + 1 := by
       change (insert root (Finset.univ.image pre)).card ≤ _
       have hImage : (Finset.univ.image pre).card ≤ U.card := by
-        simpa only [Finset.card_univ, Fintype.card_coe] using Finset.card_image_le (f := pre)
+        simpa only [Finset.card_univ, Fintype.card_coe] using
+          Finset.card_image_le (s := (Finset.univ : Finset U)) (f := pre)
       exact (Finset.card_insert_le _ _).trans (Nat.succ_le_succ hImage)
     have hFix (a : Equiv.Perm W) (ha : IsGraphAutomorphism H a)
         (hAnchors : ∀ u ∈ A, a (e u) = e u) (v : V) : a (e v) = e v := by
@@ -93,7 +94,12 @@ theorem affineSemilinear_no_half_eppa
     (Fintype.one_lt_card_iff_nontrivial.mpr inferInstance) Module.finrank_pos
     (hFieldOrder ▸ hq : 3 ≤ Fintype.card F ^ Module.finrank F K) hd
   rw [← hFieldOrder, ← hOrder] at hCutoff
-  have hLarge : 4 < Fintype.card W := by omega
+  have hLarge : 4 < Fintype.card W := calc
+    4 < 3 ^ 4 := by decide
+    _ ≤ Fintype.card K ^ 4 := Nat.pow_le_pow_left hq 4
+    _ ≤ Fintype.card W := by
+      rw [hOrder]
+      exact Nat.pow_le_pow_right (by omega) hd
   have hNonempty : 0 < Fintype.card V := by omega
   obtain ⟨root⟩ := Fintype.card_pos_iff.mp hNonempty
   obtain ⟨a, ha⟩ := hOrigin (e root)

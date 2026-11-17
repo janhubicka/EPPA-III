@@ -10,7 +10,7 @@ open Module Matrix
 private theorem finrank_graph_inf {F X Y : Type*} [Field F]
     [AddCommGroup X] [Module F X] [AddCommGroup Y] [Module F Y]
     (f g : X →ₗ[F] Y) :
-    finrank F (f.graph ⊓ g.graph) = finrank F (LinearMap.ker (f - g)) := by
+    finrank F (f.graph ⊓ g.graph : Submodule F (X × Y)) = finrank F (LinearMap.ker (f - g)) := by
   let K := LinearMap.ker (f - g)
   let l : K →ₗ[F] X × Y := (LinearMap.id.prod f).comp K.subtype
   have hrange : LinearMap.range l = f.graph ⊓ g.graph := by
@@ -70,10 +70,10 @@ noncomputable def grassmannGraph_nonlocal_fiveCycle
   let e₂ : (Fin m → F) ≃ₗ[F] W := LinearEquiv.ofFinrankEq _ _ (by simp [m])
   let e := (e₁.prodCongr e₂).trans raw
   let P (A : Matrix (Fin 2) (Fin m) F) : GrassmannPlane F V :=
-    ⟨A.vecMulLinear.graph.map e, by rw [e.finrank_map_eq, finrank_graph]; simp⟩
+    ⟨A.vecMulLinear.graph.map e.toLinearMap, by rw [e.finrank_map_eq, finrank_graph]; simp⟩
   have hRoot : P 0 = root := by
     apply Subtype.ext
-    change (0 : Matrix (Fin 2) (Fin m) F).vecMulLinear.graph.map e = root.val
+    change (0 : Matrix (Fin 2) (Fin m) F).vecMulLinear.graph.map e.toLinearMap = root.val
     ext x
     constructor
     · rintro ⟨⟨u, v⟩, huv, rfl⟩
@@ -81,14 +81,14 @@ noncomputable def grassmannGraph_nonlocal_fiveCycle
         change v = (0 : Matrix (Fin 2) (Fin m) F).vecMulLinear u at huv
         simpa using huv
       subst v
-      simpa [e, raw, Submodule.coe_prodEquivOfIsCompl'] using (e₁ u).property
+      simp [e, raw, Submodule.coe_prodEquivOfIsCompl']
     · intro hx
       refine ⟨(e₁.symm ⟨x, hx⟩, 0), ?_, ?_⟩
       · simp [LinearMap.mem_graph_iff]
       · simp [e, raw, Submodule.coe_prodEquivOfIsCompl']
   have hIntersection (A B : Matrix (Fin 2) (Fin m) F) :
       (A - B).rank + finrank F ((P A).val ⊓ (P B).val : Submodule F V) = 2 := by
-    change _ + finrank F (A.vecMulLinear.graph.map e ⊓ B.vecMulLinear.graph.map e) = _
+    change _ + finrank F (A.vecMulLinear.graph.map e.toLinearMap ⊓ B.vecMulLinear.graph.map e.toLinearMap : Submodule F V) = _
     rw [← Submodule.map_inf _ e.injective, e.finrank_map_eq, finrank_graph_inf,
       ← vecMulLinear_sub]
     exact finrank_ker_vecMulLinear (A - B)

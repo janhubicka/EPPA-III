@@ -305,4 +305,35 @@ theorem order_even_of_cover_or_compl {V : Type*} [Fintype V] (G : SimpleGraph V)
   rw [Nat.mul_assoc] at hCard
   omega
 
+/-- A connected regular graph whose degree is between two and a quarter of its
+order has none of the four forms in the reduced Section 8 hypothesis. -/
+theorem sparseConnected_excludes_cliqueUnion_or_cover {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] {d : ℕ} (hConnected : G.Connected)
+    (hRegular : G.IsRegularOfDegree d) (hDegree : 1 < d)
+    (hQuarter : 4 * d < Fintype.card V) :
+    (∀ s t, IsEmpty (G ≃g cliqueUnion s t)) ∧
+    (∀ s t, IsEmpty (G ≃g (cliqueUnion s t)ᶜ)) ∧
+    (∀ s t X Y, IsEmpty (G ≃g coverGraph s t X Y)) ∧
+    (∀ s t X Y, IsEmpty (G ≃g (coverGraph s t X Y)ᶜ)) := by
+  classical
+  have hSparse : 2 * d + 2 < Fintype.card V := by omega
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · intro s t
+    exact ⟨fun φ => sparseConnected_not_cliqueUnion_or_compl G hConnected hRegular
+      (by omega) hSparse (Or.inl ⟨φ⟩)⟩
+  · intro s t
+    exact ⟨fun φ => sparseConnected_not_cliqueUnion_or_compl G hConnected hRegular
+      (by omega) hSparse (Or.inr ⟨φ⟩)⟩
+  · intro s t X Y
+    exact ⟨sparseConnected_not_cover G hConnected hRegular hSparse X Y⟩
+  · intro s t X Y
+    refine ⟨fun φ => ?_⟩
+    obtain ⟨v⟩ := hConnected.nonempty
+    obtain ⟨_, i, a⟩ := φ v
+    have hOrder := φ.card_eq.trans (coverVertex_card s t)
+    have hDeg := degree_eq_of_iso φ.symm (left i a)
+    rw [hRegular] at hDeg
+    have hLower := coverGraph_compl_quarter_order_le_degree X Y i a (hDeg ▸ hDegree)
+    omega
+
 end EPPAIII.Primitive

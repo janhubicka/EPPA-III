@@ -1,5 +1,6 @@
 import EPPAIII.Primitive.GrassmannGraph
 import EPPAIII.Primitive.RookModel
+import Mathlib.Combinatorics.SimpleGraph.Maps
 
 /-! # An induced three-by-three grid in the first Grassmann constituent -/
 
@@ -39,7 +40,7 @@ private theorem finrank_projective_inf [FiniteDimensional F V]
   classical
   by_cases h : a = b
   · subst b
-    simp [Projectivization.finrank_submodule]
+    rw [ite_eq_left rfl, inf_idem, Projectivization.finrank_submodule]
   · have hStrict : (a.submodule ⊓ b.submodule : Submodule F V) < a.submodule := by
       refine lt_of_le_of_ne inf_le_left ?_
       intro e
@@ -48,7 +49,7 @@ private theorem finrank_projective_inf [FiniteDimensional F V]
           rw [Projectivization.finrank_submodule, Projectivization.finrank_submodule])))
     have hRank := Submodule.finrank_lt_finrank_of_lt hStrict
     rw [Projectivization.finrank_submodule] at hRank
-    simp only [if_neg h]
+    rw [ite_eq_right h]
     omega
 
 /-- Choosing three lines in the root and in a complement gives an induced rook graph. -/
@@ -68,20 +69,29 @@ noncomputable def grassmannGraph_local_rookThree [Finite F] [FiniteDimensional F
   let P (i : Fin 3 × Fin 3) : Submodule F (root.val × W) :=
     (left i.1).submodule.prod (right i.2).submodule
   let P' (i : Fin 3 × Fin 3) : GrassmannPlane F V :=
-    ⟨(P i).map e, by
+    ⟨(P i).map e.toLinearMap, by
       rw [e.finrank_map_eq, finrank_prod_submodule,
         Projectivization.finrank_submodule, Projectivization.finrank_submodule]⟩
-  have hRoot : (Submodule.prod ⊤ ⊥ : Submodule F (root.val × W)).map e = root.val := by
-    rw [Submodule.coe_prodEquivOfIsCompl, Submodule.map_coprod_prod, Submodule.map_bot,
-      sup_bot_eq, ← LinearMap.range_eq_map, Submodule.range_subtype]
+  have hRoot : (Submodule.prod ⊤ ⊥ : Submodule F (root.val × W)).map e.toLinearMap = root.val := by
+    ext x
+    rw [Submodule.mem_map_equiv]
+    change e.symm x ∈ (Submodule.prod ⊤ ⊥ : Submodule F (root.val × W)) ↔ x ∈ root.val
+    rw [Submodule.mem_prod]
+    simp [e]
   have hLocal (i : Fin 3 × Fin 3) :
       (grassmannGraph F V).Adj root (P' i) := by
-    change finrank F (root.val ⊓ (P i).map e : Submodule F V) = 1
-    rw [← hRoot, ← Submodule.map_inf _ e.injective, e.finrank_map_eq]
-    change finrank F ((Submodule.prod ⊤ ⊥ : Submodule F (root.val × W)) ⊓
-      (left i.1).submodule.prod (right i.2).submodule) = 1
-    rw [Submodule.prod_inf_prod, top_inf_eq, bot_inf_eq, finrank_prod_submodule,
-      Projectivization.finrank_submodule, finrank_bot, add_zero]
+    change finrank F (root.val ⊓ (P i).map e.toLinearMap : Submodule F V) = 1
+    calc
+      _ = finrank F (((Submodule.prod ⊤ ⊥ : Submodule F (root.val × W)).map e.toLinearMap) ⊓
+          (P i).map e.toLinearMap : Submodule F V) :=
+        congrArg (fun R : Submodule F V => finrank F (R ⊓ (P i).map e.toLinearMap :
+          Submodule F V)) hRoot.symm
+      _ = 1 := by
+        rw [← Submodule.map_inf _ e.injective, e.finrank_map_eq]
+        change finrank F ((Submodule.prod ⊤ ⊥ : Submodule F (root.val × W)) ⊓
+          (left i.1).submodule.prod (right i.2).submodule : Submodule F (root.val × W)) = 1
+        rw [Submodule.prod_inf_prod, top_inf_eq, bot_inf_eq, finrank_prod_submodule,
+          Projectivization.finrank_submodule, finrank_bot, add_zero]
   have hInj : Function.Injective P' := by
     intro i j h
     have he : P i = P j := Submodule.map_injective_of_injective e.injective
@@ -97,17 +107,17 @@ noncomputable def grassmannGraph_local_rookThree [Finite F] [FiniteDimensional F
         congrArg (Submodule.map (LinearMap.snd F root.val W)) he
   refine ⟨⟨fun i => ⟨P' i, hLocal i⟩, fun _ _ h => hInj (congrArg Subtype.val h)⟩, ?_⟩
   intro i j
-  change finrank F ((P i).map e ⊓ (P j).map e : Submodule F V) = 1 ↔
+  change finrank F ((P i).map e.toLinearMap ⊓ (P j).map e.toLinearMap : Submodule F V) = 1 ↔
     i ≠ j ∧ (i.1 = j.1 ∨ i.2 = j.2)
   rw [← Submodule.map_inf _ e.injective, e.finrank_map_eq]
   change finrank F ((left i.1).submodule.prod (right i.2).submodule ⊓
-    (left j.1).submodule.prod (right j.2).submodule) = 1 ↔ _
+    (left j.1).submodule.prod (right j.2).submodule : Submodule F (root.val × W)) = 1 ↔ _
   rw [Submodule.prod_inf_prod, finrank_prod_submodule, finrank_projective_inf, finrank_projective_inf]
   simp only [left.injective.eq_iff, right.injective.eq_iff]
   by_cases h1 : i.1 = j.1 <;> by_cases h2 : i.2 = j.2
-  · simp [Prod.ext h1 h2, h1, h2]
-  · simp [h1, h2, fun h : i = j => h2 (congrArg Prod.snd h)]
-  · simp [h1, h2, fun h : i = j => h1 (congrArg Prod.fst h)]
+  · simp [Prod.ext h1 h2]
+  · simpa [h1, h2] using (fun h : i = j => h2 (congrArg Prod.snd h))
+  · simpa [h1, h2] using (fun h : i = j => h1 (congrArg Prod.fst h))
   · simp [h1, h2]
 
 end EPPAIII.Primitive

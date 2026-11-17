@@ -49,9 +49,12 @@ private theorem no_induced_path_four_in_compl_clique_union (s t : ℕ) :
 
 private theorem no_cliqueUnion_of_induced_path_four {S : Type*} {K : SimpleGraph S}
     (path : pathGraph 4 ↪g K) (s t : ℕ) : ¬ IsModelUpToComplement K (cliqueUnion s t) := by
-  rintro (⟨φ⟩ | ⟨φ⟩)
-  · exact (no_induced_path_four_in_clique_union s t).false (φ.toEmbedding.comp path)
-  · exact (no_induced_path_four_in_compl_clique_union s t).false (φ.toEmbedding.comp path)
+  intro h
+  rcases h with h | h
+  · obtain ⟨φ⟩ := h
+    exact (no_induced_path_four_in_clique_union s t).false (φ.toEmbedding.comp path)
+  · obtain ⟨φ⟩ := h
+    exact (no_induced_path_four_in_compl_clique_union s t).false (φ.toEmbedding.comp path)
 
 private theorem nonhomogeneous_of_large_induced_path_four {S : Type*} [Fintype S]
     {K : SimpleGraph S} (path : pathGraph 4 ↪g K) (hOrder : 9 < Nat.card S)
@@ -94,7 +97,8 @@ private def bilinearLocalIso {F : Type*} [Field F] {m : ℕ} {W : Type*}
   have ψ : localGraph H r ≃g localGraph (bilinearFormsGraph F m) 0 := by
     have h := localIso (φ.trans (bilinearTranslation (φ r))) r
     change localGraph H r ≃g localGraph (bilinearFormsGraph F m) (φ r - φ r) at h
-    simpa only [sub_self] using h
+    exact Eq.ndrec (motive := fun z =>
+      localGraph H r ≃g localGraph (bilinearFormsGraph F m) z) h (sub_self (φ r))
   exact ψ.trans bilinearLocalIsoZero
 
 private def bilinearNonlocalIso {F : Type*} [Field F] {m : ℕ} {W : Type*}
@@ -103,7 +107,8 @@ private def bilinearNonlocalIso {F : Type*} [Field F] {m : ℕ} {W : Type*}
   have ψ : nonlocalGraph H r ≃g nonlocalGraph (bilinearFormsGraph F m) 0 := by
     have h := nonlocalIso (φ.trans (bilinearTranslation (φ r))) r
     change nonlocalGraph H r ≃g nonlocalGraph (bilinearFormsGraph F m) (φ r - φ r) at h
-    simpa only [sub_self] using h
+    exact Eq.ndrec (motive := fun z =>
+      nonlocalGraph H r ≃g nonlocalGraph (bilinearFormsGraph F m) z) h (sub_self (φ r))
   exact ψ.trans bilinearNonlocalIsoZero
 
 private theorem cover_bound_of_large_induced_path_four
@@ -151,10 +156,11 @@ theorem bilinearForms_no_halfOrder_eppa_of_constituent_shapes
   have hEither := selected_subconstituent_at_least_half G H e root hRank.2.2.1 hHalf
   have hSplitHost := order_eq_one_add_subconstituent_orders H (e root)
   have hSplitSelected := order_eq_one_add_subconstituent_orders G root
-  rcases hModel with ⟨φ⟩ | ⟨φ⟩
-  · let ψOne := bilinearLocalIso φ (e root)
+  rcases hModel with hModel | hModel
+  · obtain ⟨φ⟩ := hModel
+    let ψOne := bilinearLocalIso φ (e root)
     let ψTwo := bilinearNonlocalIso φ (e root)
-    have hExclude := not_cliqueUnionOrCover_of_fiveCycle (ψTwo.symm.toEmbedding.comp cycle)
+    have hExclude := not_cliqueUnionOrCover_of_fiveCycle ((SimpleGraph.Iso.toEmbedding ψTwo.symm).comp cycle)
     rcases hEither with hLocal | hNonlocal
     · have hOrder := Nat.card_congr ψOne.toEquiv
       have hEven := Nat.card_congr ψTwo.toEquiv
@@ -162,19 +168,27 @@ theorem bilinearForms_no_halfOrder_eppa_of_constituent_shapes
       have hLocalBound := cover_bound_of_large_induced_path_four
         (localGraph G root) (localGraph H (e root)) _
         (local_eppa G H e hEppa root) (localGraph_transitive H hRank (e root))
-        (ψOne.symm.toEmbedding.comp path) (by omega) hGardiner (hLocalShape hLocal)
+        ((SimpleGraph.Iso.toEmbedding ψOne.symm).comp path) (by omega) hGardiner (hLocalShape hLocal)
       exact hExclude (hNonlocalShape (by omega))
     · exact hExclude (hNonlocalShape hNonlocal)
-  · have φ' : Hᶜ ≃g bilinearFormsGraph F m := by
-      simpa only [compl_compl] using complHostIso φ
+  · obtain ⟨φ⟩ := hModel
+    have φ' : Hᶜ ≃g bilinearFormsGraph F m :=
+      Eq.ndrec (motive := fun K => Hᶜ ≃g K)
+        (complHostIso φ) (compl_compl (bilinearFormsGraph F m))
     have hLocalIso : localGraph H (e root) ≃g (nonlocalGraph Hᶜ (e root))ᶜ := by
-      simpa only [compl_compl] using localComplIso Hᶜ (e root)
+      exact Eq.ndrec (motive := fun K : SimpleGraph W =>
+        localGraph K (e root) ≃g (nonlocalGraph Hᶜ (e root))ᶜ)
+        (localComplIso Hᶜ (e root)) (compl_compl H)
     have hNonlocalIso : nonlocalGraph H (e root) ≃g (localGraph Hᶜ (e root))ᶜ := by
-      simpa only [compl_compl] using nonlocalComplIso Hᶜ (e root)
-    let ψOne := hNonlocalIso.trans (complHostIso (bilinearLocalIso φ' (e root)))
-    let ψTwo := hLocalIso.trans (complHostIso (bilinearNonlocalIso φ' (e root)))
+      exact Eq.ndrec (motive := fun K : SimpleGraph W =>
+        nonlocalGraph K (e root) ≃g (localGraph Hᶜ (e root))ᶜ)
+        (nonlocalComplIso Hᶜ (e root)) (compl_compl H)
+    let ψOne : nonlocalGraph H (e root) ≃g (bilinearFormsRankOneGraph F m)ᶜ :=
+      hNonlocalIso.trans (complHostIso (bilinearLocalIso φ' (e root)))
+    let ψTwo : localGraph H (e root) ≃g (bilinearFormsRankTwoGraph F m)ᶜ :=
+      hLocalIso.trans (complHostIso (bilinearNonlocalIso φ' (e root)))
     have hExclude := not_cliqueUnionOrCover_of_fiveCycle
-      (ψTwo.symm.toEmbedding.comp ((Embedding.complEquiv cycle).comp cycleFive_complEmbedding))
+      ((SimpleGraph.Iso.toEmbedding ψTwo.symm).comp ((Embedding.complEquiv cycle).comp cycleFive_complEmbedding))
     rcases hEither with hLocal | hNonlocal
     · exact hExclude (hLocalShape hLocal)
     · have hOrder := Nat.card_congr ψOne.toEquiv
@@ -183,7 +197,7 @@ theorem bilinearForms_no_halfOrder_eppa_of_constituent_shapes
       have hNonlocalBound := cover_bound_of_large_induced_path_four
         (nonlocalGraph G root) (nonlocalGraph H (e root)) _
         (nonlocal_eppa G H e hEppa root) (nonlocalGraph_transitive H hRank (e root))
-        (ψOne.symm.toEmbedding.comp ((Embedding.complEquiv path).comp pathFour_complEmbedding))
+        ((SimpleGraph.Iso.toEmbedding ψOne.symm).comp ((Embedding.complEquiv path).comp pathFour_complEmbedding))
         (by omega) hGardiner (hNonlocalShape hNonlocal)
       exact hExclude (hLocalShape (by omega))
 
