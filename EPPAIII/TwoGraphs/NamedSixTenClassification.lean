@@ -32,7 +32,7 @@ def cycleFiveWithIsolated : SimpleGraph (Option (Fin 5)) :=
 /-- Ten-point representative of the exceptional two-graph:
 the 3x3 rook graph with one isolated vertex. -/
 def rookThreeWithIsolated :
-    SimpleGraph (Option EPPAIII.BlockSystems.rookVertex) :=
+    SimpleGraph (Option (Fin 3 × Fin 3)) :=
   SimpleGraph.fromRel (fun a b =>
     match a,b with
     | some x,some y => EPPAIII.BlockSystems.rookThreeGraph.Adj x y
@@ -52,8 +52,8 @@ noncomputable def ClassifiedHomogeneousTwoGraph
       ∀ a b c : Option (Fin 5),
         OddBaseTriple cycleFiveWithIsolated a b c ↔
           OddBaseTriple G (φ a) (φ b) (φ c)) ∨
-    (∃ φ : Option EPPAIII.BlockSystems.rookVertex ≃ V,
-      ∀ a b c : Option EPPAIII.BlockSystems.rookVertex,
+    (∃ φ : Option (Fin 3 × Fin 3) ≃ V,
+      ∀ a b c : Option (Fin 3 × Fin 3),
         OddBaseTriple rookThreeWithIsolated a b c ↔
           OddBaseTriple G (φ a) (φ b) (φ c))
 
