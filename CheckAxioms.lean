@@ -1229,3 +1229,8 @@ import EPPAIII
 -- Both trivial two-graphs in the Section 5 converse (without EPPA).
 #print axioms EPPAIII.TwoGraphs.no_odd_triple_two_graph_homogeneous
 #print axioms EPPAIII.TwoGraphs.trivial_two_graph_homogeneous
+
+-- Section 5 four-way theorem: internal EPPA/two-graph homogeneity directions.
+#print axioms EPPAIII.TwoGraphs.switchingFibreEquiv_taylor_pullback
+#print axioms EPPAIII.TwoGraphs.nonhomogeneous_transversal_eppa_implies_two_graph_homogeneous
+#print axioms EPPAIII.TwoGraphs.taylor_fourway_internal_equivalence
