@@ -1261,3 +1261,9 @@ import EPPAIII
 #print axioms EPPAIII.BlockSystems.gardiner_models_are_imprimitive_base_models
 #print axioms EPPAIII.BlockSystems.imprimitive_base_models_from_gardiner
 #print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_from_gardiner
+
+-- Exact six-case Gardiner statement and source-facing imprimitive necessity.
+#print axioms EPPAIII.BlockSystems.gardiner_complement_cycle_normalized
+#print axioms EPPAIII.BlockSystems.gardiner_complement_rook_normalized
+#print axioms EPPAIII.BlockSystems.gardiner_published_implies_normalized
+#print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_from_published_gardiner
