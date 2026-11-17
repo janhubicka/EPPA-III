@@ -1,4 +1,5 @@
 import EPPAIII.Primitive.PublishedRankThreeCoverage
+import EPPAIII.TwoGraphs.AllTransversalEppa
 
 /-! # Assembling both full-action branches of the small-witness classification -/
 
@@ -35,6 +36,7 @@ def SmallWitnessModelCases {V W : Type*} [Fintype V] [Fintype W]
 
 private theorem eppa_of_taylor_witness_copy
     {V W : Type*} [Fintype V] (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
+    [DecidableRel G.Adj]
     (hHomogeneous : IsHomogeneousTwoGraph G) (hModel : IsTaylorWitnessCopy G H e) :
     IsEPPAEmbedding G H e := by
   classical
@@ -62,8 +64,8 @@ theorem eppa_of_nonclusterTaylorWitnessCases
     (h : NonclusterTaylorWitnessCases G H e) : IsEPPAEmbedding G H e := by
   rcases h.2.2 with ⟨hHom, hModel⟩ | ⟨hHom, hModel⟩
   · exact eppa_of_taylor_witness_copy G H e hHom hModel
-  · simpa only [compl_compl] using
-      eppa_embedding_complement Gᶜ Hᶜ e (eppa_of_taylor_witness_copy Gᶜ Hᶜ e hHom hModel)
+  · have hEppa := @eppa_of_taylor_witness_copy V W _ Gᶜ Hᶜ e _ hHom hModel
+    simpa only [compl_compl] using eppa_embedding_complement Gᶜ Hᶜ e hEppa
 
 private theorem nonclusterTaylorWitnessCases_of_eppa
     {V W B : Type*} [Fintype V] [Fintype W]
@@ -87,8 +89,12 @@ private theorem nonclusterTaylorWitnessCases_of_eppa
       simpa only [hEq, compl_compl] using
         eppa_embedding_complement G (pullbackGraph H φ) (bottomEmbedding V) hPullEPPA
     have hEq' : pullbackGraph Hᶜ φ = taylorPairGraph Gᶜ := by
-      change (pullbackGraph H φ)ᶜ = _
-      rw [hEq, compl_compl]
+      have hCompl : pullbackGraph Hᶜ φ = (pullbackGraph H φ)ᶜ := by
+        ext x y
+        change (φ x ≠ φ y ∧ ¬ H.Adj (φ x) (φ y)) ↔
+          (x ≠ y ∧ ¬ H.Adj (φ x) (φ y))
+        rw [φ.injective.ne_iff]
+      rw [hCompl, hEq, compl_compl]
     exact Or.inr ⟨taylor_eppa_two_graph_homogeneous_all_cases Gᶜ hTaylor
       ((nonhomogeneous_complement_iff G).mp hG), φ, hBottom, hEq'⟩
 
