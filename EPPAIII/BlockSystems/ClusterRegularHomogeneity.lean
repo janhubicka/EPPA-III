@@ -71,7 +71,6 @@ theorem cluster_equal_degrees_isHomogeneous
         simp [DoubleCover.clusterBaseNeighbours]
       unfold DoubleCover.clusterBaseComponent
       rw [Finset.card_insert_of_notMem hx]
-      omega
     have hCard : ∀ b : B,
         Fintype.card {v : V // f v = b} = t := by
       intro b
