@@ -129,7 +129,8 @@ private def splitGrid_law {F V : Type*} [Field F] {G : SimpleGraph V}
       · exact Prod.ext (f.injective (congrFun he 1)) (f.injective (congrFun he 4))
       · exact Prod.ext (f.injective (congrFun he 2)) (f.injective (congrFun he 5))
 
-private theorem splitRoot_valid {F : Type*} [Field F] :
+/-- The first hyperbolic generator is singular for the split quadratic form. -/
+theorem splitPolar_root_valid {F : Type*} [Field F] :
     splitPolarQuadratic (rootVector (F := F)) = 0 := by
   simp [splitPolarQuadratic, rootVector, Matrix.cons_val]
 
@@ -137,11 +138,11 @@ private theorem splitRoot_valid {F : Type*} [Field F] :
 constituent contains the nine-vertex rook graph. -/
 def splitPolar_local_rookThree {F V : Type*} [Field F] {G : SimpleGraph V}
     (C : PolarSixChart (F := F) G (fun x => splitPolarQuadratic x = 0) splitPolarPairing)
-    (f : Fin 3 ↪ F) : rookGraph 3 ↪g localGraph G (C.root splitRoot_valid) where
+    (f : Fin 3 ↪ F) : rookGraph 3 ↪g localGraph G (C.root splitPolar_root_valid) where
   toFun x := ⟨splitGrid_law C f true x, by
-    change G.Adj (C.root splitRoot_valid) (C.point (splitGridPoint true (f x.1) (f x.2)))
+    change G.Adj (C.root splitPolar_root_valid) (C.point (splitGridPoint true (f x.1) (f x.2)))
     rw [PolarSixChart.root, C.adjacency]
-    exact ⟨root_ne_of_coordinate C splitRoot_valid _ (i := 1) rfl rfl, by
+    exact ⟨root_ne_of_coordinate C splitPolar_root_valid _ (i := 1) rfl rfl, by
       simp [rootVector, splitPolarPairing, splitGrid, splitGridPoint, Matrix.cons_val]⟩⟩
   inj' := fun p q h => (splitGrid_law C f true).injective (congrArg Subtype.val h)
   map_rel_iff' := (splitGrid_law C f true).map_rel_iff
@@ -150,11 +151,11 @@ def splitPolar_local_rookThree {F V : Type*} [Field F] {G : SimpleGraph V}
 rook graph, using the affine representatives with first mate coordinate one. -/
 def splitPolar_nonlocal_rookThree {F V : Type*} [Field F] {G : SimpleGraph V}
     (C : PolarSixChart (F := F) G (fun x => splitPolarQuadratic x = 0) splitPolarPairing)
-    (f : Fin 3 ↪ F) : rookGraph 3 ↪g nonlocalGraph G (C.root splitRoot_valid) where
+    (f : Fin 3 ↪ F) : rookGraph 3 ↪g nonlocalGraph G (C.root splitPolar_root_valid) where
   toFun x := ⟨splitGrid_law C f false x, by
-    change C.root splitRoot_valid ≠ C.point (splitGridPoint false (f x.1) (f x.2)) ∧
-      ¬ G.Adj (C.root splitRoot_valid) (C.point (splitGridPoint false (f x.1) (f x.2)))
-    refine ⟨root_ne_of_coordinate C splitRoot_valid _ (i := 3) rfl rfl, ?_⟩
+    change C.root splitPolar_root_valid ≠ C.point (splitGridPoint false (f x.1) (f x.2)) ∧
+      ¬ G.Adj (C.root splitPolar_root_valid) (C.point (splitGridPoint false (f x.1) (f x.2)))
+    refine ⟨root_ne_of_coordinate C splitPolar_root_valid _ (i := 3) rfl rfl, ?_⟩
     rw [PolarSixChart.root, C.adjacency]
     simp [rootVector, splitPolarPairing, splitGrid, splitGridPoint, Matrix.cons_val]⟩
   inj' := fun p q h => (splitGrid_law C f false).injective (congrArg Subtype.val h)

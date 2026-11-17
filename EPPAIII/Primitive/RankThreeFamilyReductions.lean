@@ -1,7 +1,9 @@
+import EPPAIII.Primitive.AffineExceptionalScreen
 import EPPAIII.Primitive.AffineLineSmallPaley
 import EPPAIII.Primitive.AffineSemilinearExclusion
 import EPPAIII.Primitive.BilinearExclusion
 import EPPAIII.Primitive.BinaryAffineHalfSpinExclusion
+import EPPAIII.Primitive.BinaryPolarExclusions
 import EPPAIII.Primitive.ConstituentShapeReduction
 import EPPAIII.Primitive.ConwayConstituents
 import EPPAIII.Primitive.E6Constituents
@@ -9,6 +11,8 @@ import EPPAIII.Primitive.Gewirtz
 import EPPAIII.Primitive.G2ConstituentExclusions
 import EPPAIII.Primitive.HalfSpinExclusion
 import EPPAIII.Primitive.HigmanSims
+import EPPAIII.Primitive.PolarRankThreeWitnesses
+import EPPAIII.Primitive.GrassmannRookObstruction
 import EPPAIII.Primitive.SporadicConstituentExclusions
 import EPPAIII.Primitive.HoffmanSingleton
 import EPPAIII.Primitive.UnitaryFourThreeConstituents
@@ -36,14 +40,25 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
   | alternatingFive {q : ℕ} (hq : 2 ≤ q)
       (hSRG : let p := alternatingFiveParameters q
         H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
+  | splitPolarRankThree {F : Type} [Field F] (scalars : Fin 3 ↪ F)
+      (hChart : ∀ r, ∃ C : PolarSixChart (F := F) H
+        (fun v => splitPolarQuadratic v = 0) splitPolarPairing,
+        C.root splitPolar_root_valid = r)
+  | symplecticPolarRankThree {F : Type} [Field F]
+      (hChart : ∀ r, ∃ C : PolarSixChart (F := F) H
+        (fun _ => True) symplecticPolarPairing, C.root trivial = r)
   | eSix {q : ℕ} (hq : 2 ≤ q)
       (hSRG : let p := eSixParameters q
         H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
       (hConnected : ∀ root side, (constituentGraph H root side).Connected)
+  | binaryPolar (hCharts : HasBinaryPolarConstituentCharts H)
   | binaryAffineHalfSpin (hSRG : H.IsSRGWith 65536 2295 310 72)
   | projectiveHalfSpin {F : Type} [Field F]
       (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms (halfSpinFiveGraph F))
       (hModel : IsModelUpToComplement H (halfSpinFiveGraph F))
+  | affineExceptionalProfile (i : Fin 25) (complement : Bool)
+      (hSRG : let p := affineExceptionalExcludedParametersOriented i complement
+        H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
   | sporadicProfile (i : Fin 13) (complement : Bool)
       (hSRG : let p := sporadicConstituentParametersOriented i complement
         H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
@@ -108,6 +123,14 @@ private theorem no_constituent_form_of_exclusions {V : Type*} {G : SimpleGraph V
     · exact (hG s t X Y).false (Classical.choice h)
     · exact (hCG s t X Y).false (Classical.choice h)
 
+private theorem no_constituent_form_of_rook {V : Type*} {G : SimpleGraph V}
+    (f : rookGraph 3 ↪g G) : ¬ HasCliqueUnionOrCoverModel G :=
+  no_constituent_form_of_exclusions
+    ⟨fun s t => (no_clique_union_or_compl_of_induced_rookThree f s t).1,
+      fun s t => (no_clique_union_or_compl_of_induced_rookThree f s t).2,
+      fun s t X Y => (no_cover_or_compl_of_induced_rookThree f s t X Y).1,
+      fun s t X Y => (no_cover_or_compl_of_induced_rookThree f s t X Y).2⟩
+
 private theorem no_rooted_forms_of_exclusions {V : Type*} {H : SimpleGraph V} (root : V)
     (h : ∀ side, let G := constituentGraph H root side
       (∀ s t, IsEmpty (G ≃g cliqueUnion s t)) ∧
@@ -140,14 +163,32 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
   | alternatingFive hq hSRG =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (alternatingFive_excludes_actual_constituents H hq hSRG root))
+  | splitPolarRankThree scalars hChart =>
+      right
+      intro root
+      obtain ⟨C, hRoot⟩ := hChart root
+      rw [← hRoot]
+      exact ⟨no_constituent_form_of_rook (splitPolar_local_rookThree C scalars),
+        no_constituent_form_of_rook (splitPolar_nonlocal_rookThree C scalars)⟩
+  | symplecticPolarRankThree hChart =>
+      right
+      intro root
+      obtain ⟨C, hRoot⟩ := hChart root
+      rw [← hRoot]
+      exact ⟨not_cliqueUnionOrCover_of_fiveCycle (symplecticPolar_local_pentagon C),
+        not_cliqueUnionOrCover_of_fiveCycle (symplecticPolar_nonlocal_pentagon C)⟩
   | eSix hq hSRG hConnected =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (eSix_constituents_exclude_forms H hq root hSRG (hConnected root)))
+  | binaryPolar hCharts => exact Or.inr (binaryPolar_constituents_exclude_forms hCharts)
   | binaryAffineHalfSpin hSRG =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (binaryAffineHalfSpin_excludes_actual_constituents H hSRG root))
   | projectiveHalfSpin hTrans hModel =>
       exact Or.inr (halfSpinFive_model_excludes_forms hTrans hModel)
+  | affineExceptionalProfile i complement hSRG =>
+      exact Or.inr (fun root => no_rooted_forms_of_exclusions root
+        (affineExceptional_constituents_exclude_forms H i complement hSRG root))
   | sporadicProfile i complement hSRG =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (sporadic_constituents_exclude_forms H i complement hSRG root))
@@ -250,7 +291,7 @@ theorem MinimalCounterexample.residual_rankThree_family
     (hCoverage : RankThreeFamilyCoverage catalog residual)
     (hProject : ∀ {A : Type u} {B : Type v} [Finite B]
       (K : SimpleGraph A) (L : SimpleGraph B) (f : A ↪ B),
-      classified K L f → Section8ConstituentCases L)
+      SmallEPPAPair K L f → classified K L f → Section8ConstituentCases L)
     (hIncludePrimitive : primitiveCases G H e → classified G H e)
     (hSmallCoverage : SmallRankThreeParameterCoverage.{v})
     (hSmallIdentify : SmallRankThreeModelIdentification.{v})

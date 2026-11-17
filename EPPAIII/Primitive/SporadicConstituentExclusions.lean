@@ -13,20 +13,20 @@ namespace EPPAIII.Primitive
 
 open SimpleGraph
 
-private def CoverDegreeDivisibility (n d : ℕ) : Prop :=
+def CoverDegreeDivisibility (n d : ℕ) : Prop :=
   let m := n / 2
   n % 2 = 0 ∧ (
     (d + 1) ∣ m ∨ ((d + 1) % 2 = 0 ∧ (d + 1) / 2 ∣ m) ∨
     d ∣ m ∨ ((d + 2) % 2 = 0 ∧ (d + 2) / 2 ∣ m) ∨
     d = m - 1 ∨ (d + 1 - m) ∣ m ∨ d = m ∨ (d + 2 - m) ∣ m)
 
-private instance (n d : ℕ) : Decidable (CoverDegreeDivisibility n d) := by
+instance (n d : ℕ) : Decidable (CoverDegreeDivisibility n d) := by
   unfold CoverDegreeDivisibility
   infer_instance
 
 /-- Solve each of the eight degree equations for the putative clique size.
 This gives the arithmetic test without enumerating the large vertex orders. -/
-private theorem coverDegree_divisibility {n d : ℕ} (h : CoverDegreeCompatible n d) :
+theorem coverDegree_divisibility {n d : ℕ} (h : CoverDegreeCompatible n d) :
     CoverDegreeDivisibility n d := by
   obtain ⟨hEven, t, ht, hDiv, hDeg⟩ := h
   refine ⟨hEven, ?_⟩

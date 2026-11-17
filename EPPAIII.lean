@@ -521,3 +521,8 @@ import EPPAIII.Primitive.G2TwoModel
 import EPPAIII.Primitive.RankThreeFamilyReductions
 import EPPAIII.Primitive.PolarRankThreeWitnesses
 import EPPAIII.Primitive.TriangularConstituentReduction
+import EPPAIII.Primitive.BinaryPolarExclusions
+import EPPAIII.Primitive.TaylorConstituentProjection
+import EPPAIII.Primitive.AffineExceptionalScreen
+import EPPAIII.Primitive.ClusterFactorialBound
+import EPPAIII.Primitive.PolarRankTwoConstituent

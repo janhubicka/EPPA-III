@@ -92,7 +92,7 @@ theorem MinimalCounterexample.constituent_shapes
     (hRank : HasRankThreeAutAction H) (root : V)
     (hProject : ∀ {A : Type u} {B : Type v} [Finite B]
       (K : SimpleGraph A) (L : SimpleGraph B) (f : A ↪ B),
-      classified K L f → Section8ConstituentCases L)
+      SmallEPPAPair K L f → classified K L f → Section8ConstituentCases L)
     (hIncludePrimitive : primitiveCases G H e → classified G H e)
     (hCoverage : SmallRankThreeParameterCoverage.{v})
     (hIdentify : SmallRankThreeModelIdentification.{v})
@@ -117,7 +117,10 @@ theorem MinimalCounterexample.constituent_shapes
         (primitiveCases_of_screened_constituent_up_to_compl
           G H e h.pair.eppa h.pair.halfOrder hPrim hRank hCoverage hIdentify
           hSearch hPaley hPositive (e root) side hs))).elim
-  exact ⟨fun hs => shape false (hProject _ _ _ (hLocal hs)),
-    fun hs => shape true (hProject _ _ _ (hNonlocal hs))⟩
+  exact ⟨fun hs => shape false (hProject _ _ _
+      ⟨local_eppa G H e h.pair.eppa root, localGraph_transitive H hRank (e root), hs⟩ (hLocal hs)),
+    fun hs => shape true (hProject _ _ _
+      ⟨nonlocal_eppa G H e h.pair.eppa root, nonlocalGraph_transitive H hRank (e root), hs⟩
+      (hNonlocal hs))⟩
 
 end EPPAIII.Primitive

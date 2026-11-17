@@ -1436,3 +1436,13 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.splitPolar_nonlocal_rookThree
 #print axioms EPPAIII.Primitive.symplecticPolar_local_pentagon
 #print axioms EPPAIII.Primitive.symplecticPolar_nonlocal_pentagon
+#print axioms EPPAIII.Primitive.orthogonalSix_into_hyperbolic_extension
+#print axioms EPPAIII.Primitive.affineOrthogonalSix_into_hyperbolic_extension
+#print axioms EPPAIII.Primitive.symplecticFour_into_hyperbolic_extension
+#print axioms EPPAIII.Primitive.binaryPolar_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.screened_profile_of_taylor_pair
+#print axioms EPPAIII.Primitive.section8Cases_of_imprimitive_eppa
+#print axioms EPPAIII.Primitive.affineExceptional_constituents_exclude_forms
+#print axioms EPPAIII.Primitive.factorial_pow_card_le_prod_of_average
+#print axioms EPPAIII.Primitive.polar_rankTwo_actual_second_constituent_excludes_forms
+#print axioms EPPAIII.Primitive.section8Cases_of_primitive_or_imprimitive
