@@ -1,22 +1,22 @@
 # Primitive classification checkpoint
 
-The statement retains the actual selected embedding. The forward theorem
-`primitiveCases_of_eppa_of_catalogue` uses the published graph and action
-recognition hypotheses and an exhaustive classification into its recognized
-families. The reverse direction for a listed host is in
-`primitiveCases_iff_eppa_of_listedHost`.
+[`primitiveCases_iff_eppa_of_publishedRankThreeCoverage`](../../EPPAIII/Primitive/PublishedRankThreeCoverage.lean)
+proves both directions of the primitive classification for the actual selected
+embedding. The Lean build, axiom audit, finite checks and placeholder scan
+passed at `946ec06`. [Integrated CI](https://github.com/janhubicka/EPPA-III/actions/runs/44106831662)
 
-| Track | Completed proof steps | Remaining inputs |
+| Track | Checked result | Inputs to the proof |
 | --- | --- | --- |
-| Triangular and rook | Both complete, including the half-order criteria and the R4 classification. | The separate finite EPPA outcomes used elsewhere are explicit premises. |
-| Section 7 | 8/8 reductions. The triangular and Kneser cases, including the 256- and 2048-vertex exclusions, now feed the main induction. | The published local recognition lists and stated point stabilizer orders. |
-| Smaller-pair projection | The Section 8 constituent shapes and parity follow for actual restrictions. The Taylor branch yields the two screened profiles and the imprimitive block map is extracted from the action. | Gardiner recognition and the order-six-or-ten consequence for nontrivial homogeneous two-graphs. |
-| Rank-three catalogue | 5/6 milestones. The half-spin, higher-rank polar chart, higher binary constituent chart and sporadic exclusions are connected. The rank-two local exclusion uses the actual clique profile and its stabilizer. | An exhaustive model-to-row classification and the remaining row identifications, exact action inputs, and small-field polar proof connections. |
-| Affine line | 6/7 milestones, including the small Paley reductions and exceptional Peisert stabilizer argument. | Supply the named full actions and model identifications. |
-| Extraspecial and exceptional affine tables | 25/40 tuples excluded by the degree screen. The conference stabilizer, two order-2401 clique bounds and the order-15625 exclusion are checked separately. | Connect the published table rows to the profile and group arguments. |
-| Nontriangular sporadic cases | 15/15 exclusions given the published graph inputs. | Supply the catalogue recognition for the actual models. |
-| Finite computational inputs | 7/7 premises identified and transported. | The checker audit is deferred. |
+| Triangular and rook | Half-order criteria for the actual embedding, including the two R4 figure families. | The host isomorphisms used by catalogue recognition. |
+| Sections 7–8 | The local reductions and smaller-pair projection give the constituent shapes at every selected root. | Gardiner's homogeneous graph recognition, the homogeneous two-graph order consequence, locally triangular recognition, and the small rank-three parameter and model lists. |
+| Classical and exceptional | Rank-two polar cases, nonsingular orthogonal and unitary cases, and the exceptional reductions. The local obstructions for the 45-vertex unitary graph are checked in Lean. | Published model, parameter and full-group data where used. Both order-40 polar models use the finite rooted certificate. |
+| One-dimensional affine | The semilinear cutoff, its small endpoint models, and the exceptional-action exclusions. | Published full affine actions, stabilizer bounds and model identities. The local screening theorem also takes the four Paley exclusions. |
+| Extraspecial and exceptional affine | All 40 parameter rows have checked reductions. | Published model and action data for the rows where the parameter screen alone does not suffice. |
+| Nontriangular sporadic | The parameter screens and the Mathieu and Higman–Sims reductions. | Published graph identities and full stabilizer orders as needed. |
+| Exhaustive rank-three recognition | The theorem applies every supplied model's checked reduction. | `PublishedRankThreeGraphCoverage` remains an explicit premise. Every primitive rank-three host must have the required model and model-specific data. |
+| Finite inputs | The exclusions and figure classifications transport to actual embeddings and complement orientations. | Four exact orthogonal and affine-orthogonal exclusions, the order-40 rooted certificate and the Clebsch and Schläfli figure classifications. The separate solver audit for Clebsch and Schläfli is deferred. |
 
-The R17 review packet includes the cumulative patch, the increment,
-the LaTeX diffs, and pinned validation marks with the scope of each result.
-The computational cases are used as premises.
+The R17 review packet contains patches against the frozen manuscript and the
+preceding proposal, LaTeX diffs, proof notes, and the prior-corrections register.
+It includes the correction to Case 4(e), which specifies the matching of
+corresponding vertices.

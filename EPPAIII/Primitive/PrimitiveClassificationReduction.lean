@@ -14,7 +14,7 @@ universe u v
 /-- The published inputs to the smaller-pair and local recognition arguments. -/
 structure PrimitiveRecognitionInputs : Prop where
   gardinerSelected : ∀ {A : Type u} [Fintype A] (G : SimpleGraph A),
-    IsHomogeneousGraph G → GardinerPublishedModels G
+    Nonempty A → IsHomogeneousGraph G → GardinerPublishedModels G
   gardinerHost : ∀ {B : Type v} [Fintype B], Nonempty B → ∀ H : SimpleGraph B,
     IsHomogeneousGraph H → GardinerHomogeneousModels H
   twoGraphOrders : ∀ {A : Type u} [Fintype A], HomogeneousTwoGraphOrderRecognition A

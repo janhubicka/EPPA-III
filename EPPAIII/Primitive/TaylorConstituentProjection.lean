@@ -223,7 +223,7 @@ theorem section8Cases_of_primitive_or_imprimitive
     (G : SimpleGraph V) (H : SimpleGraph W) (e : V ↪ W)
     (hPair : SmallEPPAPair G H e)
     (hCase : primitiveCases G H e ∨ ¬ IsPrimitiveAutAction H)
-    (hGardinerG : IsHomogeneousGraph G → GardinerPublishedModels G)
+    (hGardinerG : Nonempty V → IsHomogeneousGraph G → GardinerPublishedModels G)
     (hGardinerH : Nonempty W → ∀ K : SimpleGraph W,
       IsHomogeneousGraph K → GardinerHomogeneousModels K)
     (hRecognition : HomogeneousTwoGraphOrderRecognition V) :
@@ -253,9 +253,11 @@ theorem section8Cases_of_primitive_or_imprimitive
       (fun w => block w = b₀)).card := by
     refine ⟨block b, Finset.one_lt_card_iff.mpr ?_⟩
     exact ⟨a,b,by simp [(hBlock a b).mpr hab],by simp,hne⟩
+  have hSize : Fintype.card W ≤ 2 * Fintype.card V := by
+    simpa only [Nat.card_eq_fintype_card] using hPair.halfOrder
+  have hHostPositive : 0 < Fintype.card W := Fintype.card_pos_iff.mpr ⟨a⟩
+  have hSelected : Nonempty V := Fintype.card_pos_iff.mp (by omega)
   exact section8Cases_of_imprimitive_eppa G H e hPair.eppa block hBlocks hSurj
-    hPair.transitive hHom hMany hNontrivial
-    (by simpa only [Nat.card_eq_fintype_card] using hPair.halfOrder)
-    hGardinerG hRecognition
+    hPair.transitive hHom hMany hNontrivial hSize (hGardinerG hSelected) hRecognition
 
 end EPPAIII.Primitive
