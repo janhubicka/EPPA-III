@@ -44,7 +44,10 @@ private def cliqueBottomEmbedding {V : Type*} (H : SimpleGraph V) :
     H ↪g cliqueExtension Bool H where
   toFun x := (false, x)
   inj' := fun _ _ h => congrArg Prod.snd h
-  map_rel_iff' := by simp [cliqueExtension]
+  map_rel_iff' := by
+    intro x y
+    change (H.Adj x y ∨ (x = y ∧ false ≠ false)) ↔ H.Adj x y
+    simp
 
 private def taylorBottomEmbedding {V : Type*} (H : SimpleGraph V) :
     H ↪g TwoGraphs.taylorPairGraph H where
@@ -59,9 +62,9 @@ private def taylorBottomEmbedding {V : Type*} (H : SimpleGraph V) :
 private def BinaryPolarConstituentChart.pentagon (chart : BinaryPolarConstituentChart) :
     cycleGraph 5 ↪g chart.model.2 :=
   match chart with
-  | .base base => base.pentagon
-  | .clique base => (cliqueBottomEmbedding base.model.2).comp base.pentagon
-  | .taylor base => (taylorBottomEmbedding base.model.2).comp base.pentagon
+  | .base b => b.pentagon
+  | .clique b => (cliqueBottomEmbedding b.model.2).comp b.pentagon
+  | .taylor b => (taylorBottomEmbedding b.model.2).comp b.pentagon
 
 /-- Published binary polar constituent identities supply a chart in each
 of the two actual rooted graphs. The input consists of graph isomorphisms. -/

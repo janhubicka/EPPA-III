@@ -1,4 +1,5 @@
 import EPPAIII.Primitive.AffineExceptionalScreen
+import EPPAIII.Primitive.AffineFifteenThousandExclusion
 import EPPAIII.Primitive.AffineLineSmallPaley
 import EPPAIII.Primitive.AffineSemilinearExclusion
 import EPPAIII.Primitive.BilinearExclusion
@@ -56,6 +57,7 @@ inductive RecognizedRankThreeFamily {n : ℕ} (H : SimpleGraph (Fin n)) : Prop
   | projectiveHalfSpin {F : Type} [Field F]
       (hTrans : EPPAIII.CliqueCovers.HasTransitiveGraphAutomorphisms (halfSpinFiveGraph F))
       (hModel : IsModelUpToComplement H (halfSpinFiveGraph F))
+  | affineFifteenThousand (hSRG : H.IsSRGWith 15625 7560 3655 3660)
   | affineExceptionalProfile (i : Fin 25) (complement : Bool)
       (hSRG : let p := affineExceptionalExcludedParametersOriented i complement
         H.IsSRGWith p.order p.degree p.adjacentCommon p.nonadjacentCommon)
@@ -186,6 +188,9 @@ theorem RecognizedRankThreeFamily.exclusion {n : ℕ} {H : SimpleGraph (Fin n)}
         (binaryAffineHalfSpin_excludes_actual_constituents H hSRG root))
   | projectiveHalfSpin hTrans hModel =>
       exact Or.inr (halfSpinFive_model_excludes_forms hTrans hModel)
+  | affineFifteenThousand hSRG =>
+      exact Or.inr (fun root => no_rooted_forms_of_exclusions root
+        (affine_15625_constituents_exclude_forms H hSRG root))
   | affineExceptionalProfile i complement hSRG =>
       exact Or.inr (fun root => no_rooted_forms_of_exclusions root
         (affineExceptional_constituents_exclude_forms H i complement hSRG root))

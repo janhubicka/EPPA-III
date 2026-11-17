@@ -11,10 +11,10 @@ open scoped BigOperators
 
 /-- Count neighbours of an independent set at every vertex, then apply
 Cauchy–Schwarz to their first and second moments. -/
-theorem srg_independent_size_bound {V : Type*} [Fintype V] (H : SimpleGraph V)
+theorem srg_independent_size_bound_outside {V : Type*} [Fintype V] (H : SimpleGraph V)
     [DecidableRel H.Adj] {n k l μ m : ℕ} (h : H.IsSRGWith n k l μ)
     (f : Fin m ↪ V) (hf : ∀ i j, ¬ H.Adj (f i) (f j)) :
-    (m * k) ^ 2 ≤ n * (m * k + m * (m - 1) * μ) := by
+    (m * k) ^ 2 ≤ (n - m) * (m * k + m * (m - 1) * μ) := by
   classical
   let adj (i : Fin m) (v : V) : ℕ := if H.Adj (f i) v then 1 else 0
   let d (v : V) : ℕ := ∑ i, adj i v
@@ -73,7 +73,31 @@ theorem srg_independent_size_bound {V : Type*} [Fintype V] (H : SimpleGraph V)
         simp only [hRow, Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
         change m * (k + (m - 1) * μ) = _
         ring
-  have hCS := sq_sum_le_card_mul_sum_sq (s := (Finset.univ : Finset V)) (f := d)
-  rwa [Finset.card_univ, h.card, sumFirst, sumSecond] at hCS
+  let S := Finset.univ.image f
+  have cardS : S.card = m := by
+    rw [Finset.card_image_of_injective _ f.injective, Finset.card_univ, Fintype.card_fin]
+  have d_zero (v : V) (hv : v ∈ S) : d v = 0 := by
+    obtain ⟨i, _, rfl⟩ := Finset.mem_image.mp hv
+    simp [d, adj, hf]
+  have sumFirstOutside : (∑ v ∈ Sᶜ, d v) = m * k := by
+    rw [← sumFirst]
+    apply Finset.sum_subset (Finset.subset_univ _)
+    intro v _ hv
+    exact d_zero v (by simpa using hv)
+  have sumSecondOutside : (∑ v ∈ Sᶜ, d v ^ 2) = m * k + m * (m - 1) * μ := by
+    rw [← sumSecond]
+    apply Finset.sum_subset (Finset.subset_univ _)
+    intro v _ hv
+    simp [d_zero v (by simpa using hv)]
+  have hCS := sq_sum_le_card_mul_sum_sq (s := Sᶜ) (f := d)
+  rwa [Finset.card_compl, h.card, cardS, sumFirstOutside, sumSecondOutside] at hCS
+
+/-- A version using the entire host order as a simpler upper bound. -/
+theorem srg_independent_size_bound {V : Type*} [Fintype V] (H : SimpleGraph V)
+    [DecidableRel H.Adj] {n k l μ m : ℕ} (h : H.IsSRGWith n k l μ)
+    (f : Fin m ↪ V) (hf : ∀ i j, ¬ H.Adj (f i) (f j)) :
+    (m * k) ^ 2 ≤ n * (m * k + m * (m - 1) * μ) :=
+  (srg_independent_size_bound_outside H h f hf).trans
+    (Nat.mul_le_mul_right _ (Nat.sub_le _ _))
 
 end EPPAIII.Primitive

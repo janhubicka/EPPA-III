@@ -1446,3 +1446,14 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.factorial_pow_card_le_prod_of_average
 #print axioms EPPAIII.Primitive.polar_rankTwo_actual_second_constituent_excludes_forms
 #print axioms EPPAIII.Primitive.section8Cases_of_primitive_or_imprimitive
+#print axioms EPPAIII.Primitive.primitiveCases_of_eppa_of_catalogue
+#print axioms EPPAIII.Primitive.factorial_pow_le_root_stabilizer_of_local_clique_union
+#print axioms EPPAIII.Primitive.tripled_odd_degree_excludes_forms
+#print axioms EPPAIII.Primitive.srg_independent_size_bound_outside
+#print axioms EPPAIII.Primitive.affine_2401_240_no_sixty_clique
+#print axioms EPPAIII.Primitive.affine_2401_480_no_hundred_twenty_clique
+#print axioms EPPAIII.Primitive.affine_15625_no_complemented_cover
+#print axioms EPPAIII.Primitive.conference_not_eppa_of_point_stabilizers
+#print axioms EPPAIII.Primitive.conference_eightyOne_not_eppa
+#print axioms EPPAIII.Primitive.polar_rankTwo_large_stabilizer_bounds
+#print axioms EPPAIII.Primitive.affine_15625_constituents_exclude_forms
