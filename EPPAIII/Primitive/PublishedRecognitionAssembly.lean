@@ -23,11 +23,12 @@ structure PublishedRecognitionSources : Prop where
 /-- Recover the recognition interface used inside the minimal-pair proof. -/
 theorem PublishedRecognitionSources.to_primitiveRecognitionInputs
     (sources : PublishedRecognitionSources.{v}) : PrimitiveRecognitionInputs.{u, v} := by
-  have exceptClebschAndRookFour :=
+  have exceptClebschAndRookFour : PublishedSmallRankThreeModelsExceptClebschAndRookFour :=
     publishedSmallRankThreeModelsExceptClebschAndRookFour_of_exceptClebschAndRooks sources.smallModels
-  have exceptClebsch :=
+  have exceptClebsch : PublishedSmallRankThreeModelsExceptClebsch :=
     publishedSmallRankThreeModelsExceptClebsch_of_exceptClebschAndRookFour exceptClebschAndRookFour
-  have printed := publishedSmallRankThreeModels_of_exceptClebsch exceptClebsch
+  have printed : PublishedSmallRankThreeModels :=
+    publishedSmallRankThreeModels_of_exceptClebsch exceptClebsch
   exact
     { gardinerSelected := fun G => gardinerRecognition_of_fin sources.gardiner G
       gardinerHost := fun hPositive H => gardinerRecognition_of_fin sources.gardiner H hPositive
