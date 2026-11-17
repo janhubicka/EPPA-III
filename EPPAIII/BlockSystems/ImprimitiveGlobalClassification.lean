@@ -80,8 +80,10 @@ theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
       ((Finset.univ : Finset W).filter
         (fun w => block w = b₀)).card)
     (hBound : Fintype.card W ≤ 2 * Fintype.card V)
-    (hGardiner : ∀ K : SimpleGraph V,
-      DoubleCover.IsHomogeneousGraph K → GardinerPublishedModels K) :
+    (hGardinerG : DoubleCover.IsHomogeneousGraph G →
+      GardinerPublishedModels G)
+    (hGardinerComplement : DoubleCover.IsHomogeneousGraph Gᶜ →
+      GardinerPublishedModels Gᶜ) :
     Fintype.card W = 2 * Fintype.card V ∧
       GeneralImprimitiveHostModels G H e block := by
   classical
@@ -95,14 +97,14 @@ theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
       imprimitive_actual_host_classification_from_published_gardiner
         G H e heppa block hBlocks hSurj hTrans hNonhomogeneousH
         hManyBlocks hNontrivial hBound (Or.inl hHom)
-        (hGardiner G)
+        hGardinerG
     exact Or.inl hCases.2
   by_cases hCluster : IsClusterGraph G
   · have hCases :=
       imprimitive_actual_host_classification_from_published_gardiner
         G H e heppa block hBlocks hSurj hTrans hNonhomogeneousH
         hManyBlocks hNontrivial hBound (Or.inr hCluster)
-        (hGardiner G)
+        hGardinerG
     exact Or.inl hCases.2
   by_cases hCoCluster : IsCoClusterGraph G
   · have hClusterC : IsClusterGraph Gᶜ := by
@@ -127,7 +129,7 @@ theorem nonhomogeneous_transitive_imprimitive_eppa_global_classification
       imprimitive_actual_host_classification_from_published_gardiner
         Gᶜ Hᶜ e hEPPAc block hBlocksc hSurj hTransc
         hNonhomogeneousC hManyBlocks hNontrivial hBound
-        (Or.inr hClusterC) (hGardiner Gᶜ)
+        (Or.inr hClusterC) hGardinerComplement
     exact Or.inr (Or.inl hCases.2)
   · have hTaylor :=
       transitive_eppa_double_cover_classification
