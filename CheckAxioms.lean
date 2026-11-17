@@ -1251,3 +1251,7 @@ import EPPAIII
 -- First paragraph of Section 6 Proposition 6.17: strict-order obstruction.
 #print axioms EPPAIII.BlockSystems.transitive_eppa_strict_imprimitive_host_isHomogeneous
 #print axioms EPPAIII.BlockSystems.nonhomogeneous_imprimitive_eppa_host_exactly_double
+
+-- End-to-end imprimitive classification relative to explicit Gardiner base cases.
+#print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_of_base_models
+#print axioms EPPAIII.BlockSystems.imprimitive_actual_host_classification_relative_to_gardiner
