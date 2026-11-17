@@ -1479,6 +1479,10 @@ import EPPAIII
 #print axioms EPPAIII.Primitive.affine_243_22_nonlocal_exclude_forms
 #print axioms EPPAIII.Primitive.affine_blvs_not_eppa
 #print axioms EPPAIII.Primitive.affine_gqThreeFive_not_eppa
+#print axioms EPPAIII.Primitive.UnitaryFourTwo.graph_isSRG
+#print axioms EPPAIII.Primitive.UnitaryFourTwo.local_order_le_six
+#print axioms EPPAIII.Primitive.unitaryFourTwo_nonlocal_excludes_forms
+#print axioms EPPAIII.Primitive.unitaryFourTwo_not_eppa
 #print axioms EPPAIII.Primitive.affineLine_listed_of_eppa
 #print axioms EPPAIII.Primitive.primitiveCases_iff_eppa_of_catalogue
 #print axioms EPPAIII.Primitive.symplecticFourFour_not_eppa

@@ -83,7 +83,9 @@ private theorem strong_complement_common_neighbours
     Fintype.card_fin] using
     Fintype.card_le_of_embedding (complement_cover_common_neighbours_embedding H e i a b)
 
-private theorem exclude_forms_of_complement_codegree {V W : Type*} [Fintype V] [Fintype W]
+/-- If the degree screen leaves only complemented covers of a single
+width, an ambient codegree bound can rule them out. -/
+theorem exclude_forms_of_complement_codegree {V W : Type*} [Fintype V] [Fintype W]
     {H : SimpleGraph V} [DecidableRel H.Adj] {G : SimpleGraph W} [DecidableRel G.Adj]
     (inclusion : G ↪g H) {n d m t₀ μ : ℕ} (hProfile : HasRegularProfile G (n, d))
     (hn : 0 < n) (hd : d < n) (hm : n / 2 = m)

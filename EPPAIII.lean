@@ -437,6 +437,9 @@ import EPPAIII.Primitive.Order35Transport
 import EPPAIII.Primitive.FiniteExclusions
 import EPPAIII.Primitive.FiniteCaseArithmetic
 import EPPAIII.Primitive.UnitaryFourTwoArithmetic
+import EPPAIII.Primitive.UnitaryFourTwoModel
+import EPPAIII.Primitive.UnitaryFourTwoCertificates
+import EPPAIII.Primitive.UnitaryFourTwoExclusion
 import EPPAIII.Primitive.SmallConstituentBound
 import EPPAIII.Primitive.SmallConstituentTable
 

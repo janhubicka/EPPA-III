@@ -7,6 +7,7 @@ import EPPAIII.Primitive.PolarOrderForty
 import EPPAIII.Primitive.SmallEllipticExclusion
 import EPPAIII.Primitive.SymplecticFourFour
 import EPPAIII.Primitive.UnitaryFiveTwoPoint
+import EPPAIII.Primitive.UnitaryFourTwoExclusion
 
 /-! # Catalogue rows that use the selected constituent sizes -/
 
@@ -107,7 +108,8 @@ def RankTwoPolarCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
   (H.IsSRGWith 325 68 3 17 ∧
     (∀ r, Nonempty (localGraph H r ≃g cliqueUnion 17 4)) ∧
     (∀ r, Nat.card (pointwiseGraphStabilizer H {r}) ∣ 12533760)) ∨
-  (H.IsSRGWith 40 12 2 4 ∧ OrderFortyPolarLocalCheck H)
+  (H.IsSRGWith 40 12 2 4 ∧ OrderFortyPolarLocalCheck H) ∨
+  Nonempty (H ≃g UnitaryFourTwo.graph)
 
 /-- Published recognition data for the affine Berlekamp–Van Lint–Seidel graph. -/
 def AffineMatchingCatalogueModel {n : ℕ} (H : SimpleGraph (Fin n)) : Prop :=
@@ -173,7 +175,7 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
   obtain ⟨Q, t, hRange, hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
       ⟨hSRG, hLocal, hTriple⟩ | ⟨hSRG, hLocal, hStabilizer⟩ |
-      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hCheck⟩ := hModel
+      ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hLocal, hStabilizer⟩ | ⟨hSRG, hCheck⟩ | ⟨ψ⟩ := hModel
   · obtain ⟨hLocalModel⟩ := hLocal (f root)
     exact polar_rankTwo_not_eppa_of_small_stabilizer G K f hMoved hSize
       (transitive_of_iso φ hTrans) root hRange hSRG hLocalModel hNonlocal (hStabilizer (f root))
@@ -197,6 +199,10 @@ private theorem rankTwoPolarCatalogueModel_excludes_embedding
       (transitive_of_iso φ hTrans) root hSRG hLocalModel hNonlocal (hStabilizer (f root))
   · exact polarSymplecticThree_not_eppa G K f hMoved hSize hSRG hCheck
       (fun r => ((hShapes r).relabel φ).2)
+  · let τ := φ.trans ψ
+    exact unitaryFourTwo_not_eppa G (e.trans τ.toEquiv.toEmbedding)
+      (eppa_relabel_host G e hEPPA τ) root (transitive_of_iso τ hTrans)
+      ((Nat.card_congr τ.toEquiv).symm.trans_le hHalf) ((hShapes root).relabel τ).2
 
 private theorem affineMatchingCatalogueModel_excludes_embedding
     {V W : Type*} [Finite V] {n : ℕ}

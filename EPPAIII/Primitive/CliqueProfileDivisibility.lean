@@ -157,6 +157,7 @@ private theorem cliqueLayers_count {U : Type*} {s Q : ℕ} [Finite U]
   have hSize' := Nat.card_congr (layeredLabel part hCap).symm
   simpa only [LayeredVertex, Nat.card_sigma, Nat.card_prod, Nat.card_fin] using hSize'
 
+set_option maxHeartbeats 2000000 in
 /-- The exact-size clique layers give a product of wreath-product groups
 inside the automorphism group of the selected local graph. The local EPPA
 section transfers its order to the full host point stabilizer. -/
