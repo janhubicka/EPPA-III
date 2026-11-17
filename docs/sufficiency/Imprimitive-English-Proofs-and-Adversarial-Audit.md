@@ -93,6 +93,17 @@ For transitivity, choose `σ` moving the second coordinate of a given vertex to 
 
 **Adversarial issue:** A graph with the correct 10- or 18-vertex adjacency type is not automatically a witness for an *arbitrary prescribed embedding* of the base. Our claims concern the **fixed canonical bottom embedding**, followed by explicit base/host relabelling. All uses of complementation must complement the selected base as well as the host, with the self-complementing base equivalence supplied.
 
+### 6.1 Direct finite homogeneity proof by orbit certificates
+
+There is a proof **independent of Gardiner** that both exceptional bases are homogeneous. Let (A\leq\operatorname{Aut}(G)) be the explicit group and let (D_1,\dots,D_m) represent its orbits on vertex subsets. For each (D_i), enumerate every injection (f:D_i\to V(G)) preserving adjacency **and** nonadjacency. If each such map agrees with the restriction of an element of (A), every partial automorphism of (G) extends: conjugate the arbitrary domain to a representative, extend there and conjugate back.
+
+- For (C_5), the dihedral group (x\mapsto a\pm x \pmod 5) has order **10**. There are **8** subset orbits, with **66** injective adjacency-preserving partial maps across their representatives. All 66 are restrictions of those automorphisms.
+- For the (3\times3) rook graph, independent row/column permutations and coordinate swap form a group of order **72**. There are **26** subset orbits and **1,594** partial isomorphisms on their representatives. Each extends to a member of that explicit 72-element group.
+
+The independently executable `checks/section6_exceptional_homogeneity.py` verifies all the declared group actions preserve the graph, the subset orbits cover the entire power set, and every injective partial isomorphism on each representative extends to the group, using exhaustive backtracking. This yields a complete **English/computational finite proof** of homogeneity without Gardiner.
+
+**Trust boundary:** the enumerations are independently checked by Python, **not yet kernel checked in Lean**. The conditional homogeneous-base Lean EPPA lifts below can use these mathematical facts only after their Lean proofs or an honest explicit external assumption.
+
 ## 7. Nontrivial homogeneous two-graphs: the icosahedron and J(6,3)
 
 Let `Δ` be the odd-edge-parity two-graph of a selected representative `G`, and `T(G)` its mate-free Taylor double. Suppose **`Δ` is homogeneous**. Given a partial automorphism of any switching transversal, it preserves the parity of every selected triple and hence extends to an automorphism `σ` of `Δ`. Every `σ` has a Taylor-double lift `q` using the switching potential. A priori the lift may map the chosen transversal to its opposite side on some vertices. But for any two vertices in the prescribed partial domain, preservation of their graph adjacency makes the side discrepancy equal; thus it is globally constant on that domain. Composing `q` with the global deck involution if necessary corrects that common side. Hence **every** switching representative is an EPPA transversal. The host is transitive whenever `Δ` is point-transitive; homogeneity implies point-transitivity for a nonempty two-graph. This is the *sufficiency direction* of the four-way two-graph theorem.
