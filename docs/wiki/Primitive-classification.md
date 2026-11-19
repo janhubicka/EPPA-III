@@ -80,17 +80,19 @@ uses a **specific induced embedding** `e`, the half-order bound, host transitivi
 
 ### Triangular abstract-graph versus selected-edge-set bridge
 
-Let (F\subseteq E(K_n)) represent the chosen vertices of (T(n)), (n\ge5), with
-(|F|\ge n(n-1)/4), and suppose its line graph is isomorphic to that of a
-triangle-free graph (Q) on (n) vertices. Whitney's line-graph exception
+Let $F\subseteq E(K_n)$ represent the chosen vertices of $T(n)$, $n\ge5$,
+with $|F|\ge n(n-1)/4$, and suppose its line graph is isomorphic to that of a
+triangle-free graph $Q$ on $n$ vertices. Whitney's line-graph exception
 exchanges an isolated triangle component with a three-edge star component.
-But if (Q) contained a three-edge star component, Mantel's bound on its
-remaining (n-4) vertices would give
-[
+But if $Q$ contained a three-edge star component, Mantel's bound on its
+remaining $n-4$ vertices would give
+
+$$
 |E(Q)|\le 3+\lfloor (n-4)^2/4\rfloor < n(n-1)/4,
-]
+$$
+
 a contradiction. Hence the Whitney exception cannot occur, and the selected
-edge set (F) is triangle-free. This is a **paper-level bridge**, not a Lean
+edge set $F$ is triangle-free. This is a **paper-level bridge**, not a Lean
 lemma, and needs either citation or inclusion when treating case (2) as an
 abstract line-graph statement.
 
