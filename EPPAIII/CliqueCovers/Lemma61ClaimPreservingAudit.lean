@@ -86,7 +86,9 @@ theorem lemma61_claim_preserving_profile_audit
       · exact Or.inl (eppa_cluster_actual_host_is_uniform_cover
           H e heppa hCluster outside hOutside)
       · -- The three profile regimes; no coherent EPPA lifts used.
-    
+        have hs : 2 ≤ s := hs2
+        have ht : 2 ≤ t := ht2
+        have hNonCluster : ¬ EPPAIII.BlockSystems.IsClusterGraph H := hCluster
         by_cases hSome :
             ∃ w : W, w ∉ Set.range e ∧
               (properPartialPositions
