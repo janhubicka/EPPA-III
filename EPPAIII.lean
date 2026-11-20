@@ -24,6 +24,7 @@ import EPPAIII.BlockSystems.FullDoubleCover
 import EPPAIII.DoubleCover.FibreOrbits
 import EPPAIII.DoubleCover.DeckSwap
 import EPPAIII.DoubleCover.InterblockOrbits
+import EPPAIII.DoubleCover.DBW02PatchAudit
 import EPPAIII.BlockSystems.OrderedInterblockOrbits
 import EPPAIII.EPPA.ProfileOrbitBound
 import EPPAIII.CliqueCovers.WreathGenerators
