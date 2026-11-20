@@ -87,114 +87,114 @@ theorem lemma61_claim_preserving_profile_audit
           H e heppa hCluster outside hOutside)
       · -- The three profile regimes; no coherent EPPA lifts used.
     
-      by_cases hSome :
-          ∃ w : W, w ∉ Set.range e ∧
-            (properPartialPositions
-              (finiteNeighbourhoodProfile H e w)).Nonempty
-      · obtain ⟨w,hw,⟨i,hi⟩⟩ := hSome
-        let P : Finset (Fin s × Fin t) := finiteNeighbourhoodProfile H e w
-        let S : Finset (Fin s) := properPartialPositions P
-        have hPos : 0 < S.card := Finset.card_pos.mpr ⟨i,hi⟩
-        by_cases hTwo : 2 ≤ S.card
-        · obtain ⟨hs2,ht2⟩ :=
-            eppa_two_proper_partial_positions_exception
-              H e heppa hOrder w hw hs ht hTwo
-          subst s
-          subst t
-          have hCard : S.card = 2 := by
-            have hBound : S.card ≤ 2 := by
-              have h := Finset.card_le_univ S
-              simpa [S] using h
-            omega
-          have hFull : S = (Finset.univ : Finset (Fin 2)) := by
-            apply Finset.eq_of_subset_of_card_le (Finset.subset_univ _)
-            simpa [hCard]
-          have hEvery (j : Fin 2) :
-              (profileSlice P j).card = 1 := by
-            have hj : j ∈ S := by
-              rw [hFull]
-              exact Finset.mem_univ _
-            obtain ⟨hp,hpProper⟩ :=
-              (mem_properPartialPositions P j).mp hj
-            omega
-          have hK : kPositions P 1 = Finset.univ := by
-            ext j
-            simp only [Finset.mem_univ, iff_true]
-            exact (mem_kPositions P 1 j).mpr (hEvery j)
-          have hBoth :
-              (kPositions (finiteNeighbourhoodProfile H e w) 1).card = 2 := by
-            rw [hK]
-            decide
-          obtain ⟨phi,hFixed,hPhi⟩ :=
-            eppa_two_partial_host_is_wagner_fixed_base
-              H e heppa hOrder w hw hBoth hTransitive
-          right
-          refine ⟨rfl,rfl,phi,?_,hPhi⟩
-          simpa using hFixed
-        · have hOne : S.card = 1 := by omega
-          obtain ⟨j,k,hkPos,hkProper,hSlice,hUnique⟩ :=
-            unique_proper_partial_gives_unique_k P hOne
-          have hExtreme : k = 1 ∨ k + 1 = t :=
-            eppa_clique_degree_extreme_of_double
-              H e heppa hOrder w hw j k
-                (by omega) hkPos hkProper hSlice
-          rcases hExtreme with hkOne | hkCo
-          · have hUniqueOne :
-                (kPositions (finiteNeighbourhoodProfile H e w) 1).card = 1 := by
-              simpa [P,hkOne] using hUnique
-            obtain ⟨b,hEq⟩ :=
-              eppa_singleton_host_is_uniform_cover
-                H e heppa hOrder w hw hUniqueOne hs ht hTransitive
-            left
-            refine ⟨balancedHostEquiv e
-              (saturatedSingletonOutsideEquiv
-                H e heppa hOrder w hw hUniqueOne),
-                .matching,b,?_,hEq⟩
-            intro x
-            simp
-          · have hkCosingleton : k = t - 1 := by omega
-            have hUniqueCo :
-                (kPositions
-                  (finiteNeighbourhoodProfile H e w) (t - 1)).card = 1 := by
-              simpa [P,hkCosingleton] using hUnique
-            obtain ⟨b,hEq⟩ :=
-              eppa_cosingleton_host_is_uniform_cover
-                H e heppa hOrder w hw hUniqueCo hs ht hTransitive
-            left
-            refine ⟨balancedHostEquiv e
-              (saturatedCoSingletonOutsideEquiv
-                H e heppa hOrder (by omega) w hw hUniqueCo),
-                .coMatching,b,?_,hEq⟩
-            intro x
-            simp
-      · have hNoPartial :
-            ∀ w : W, w ∉ Set.range e →
-              ∀ j : Fin s,
-                (profileSlice (finiteNeighbourhoodProfile H e w) j).card = 0 ∨
-                (profileSlice (finiteNeighbourhoodProfile H e w) j).card = t := by
-          intro w hw j
-          let P : Finset (Fin s × Fin t) :=
-            finiteNeighbourhoodProfile H e w
-          have hjNot : j ∉ properPartialPositions P := by
-            intro hj
-            exact hSome ⟨w,hw,⟨j,hj⟩⟩
-          let k := (profileSlice P j).card
-          have hBound : k ≤ t := by
-            have h := Finset.card_le_univ (profileSlice P j)
-            simpa [k] using h
-          by_cases hZero : k = 0
-          · exact Or.inl hZero
-          · have hkPos : 0 < k := by omega
-            have hkNotProper : ¬ k < t := by
-              intro hkLt
-              exact hjNot
-                ((mem_properPartialPositions P j).mpr ⟨hkPos,hkLt⟩)
-            have hkEq : k = t := by omega
-            exact Or.inr hkEq
-        obtain ⟨phi,X,Y,hFixed,hEq⟩ :=
-          eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base
-            H e heppa hNoPartial (by omega) (by omega)
-            hOrder hTransitive hNonCluster
-        exact Or.inl ⟨phi,X,Y,hFixed,hEq⟩
+        by_cases hSome :
+            ∃ w : W, w ∉ Set.range e ∧
+              (properPartialPositions
+                (finiteNeighbourhoodProfile H e w)).Nonempty
+        · obtain ⟨w,hw,⟨i,hi⟩⟩ := hSome
+          let P : Finset (Fin s × Fin t) := finiteNeighbourhoodProfile H e w
+          let S : Finset (Fin s) := properPartialPositions P
+          have hPos : 0 < S.card := Finset.card_pos.mpr ⟨i,hi⟩
+          by_cases hTwo : 2 ≤ S.card
+          · obtain ⟨hs2,ht2⟩ :=
+              eppa_two_proper_partial_positions_exception
+                H e heppa hOrder w hw hs ht hTwo
+            subst s
+            subst t
+            have hCard : S.card = 2 := by
+              have hBound : S.card ≤ 2 := by
+                have h := Finset.card_le_univ S
+                simpa [S] using h
+              omega
+            have hFull : S = (Finset.univ : Finset (Fin 2)) := by
+              apply Finset.eq_of_subset_of_card_le (Finset.subset_univ _)
+              simpa [hCard]
+            have hEvery (j : Fin 2) :
+                (profileSlice P j).card = 1 := by
+              have hj : j ∈ S := by
+                rw [hFull]
+                exact Finset.mem_univ _
+              obtain ⟨hp,hpProper⟩ :=
+                (mem_properPartialPositions P j).mp hj
+              omega
+            have hK : kPositions P 1 = Finset.univ := by
+              ext j
+              simp only [Finset.mem_univ, iff_true]
+              exact (mem_kPositions P 1 j).mpr (hEvery j)
+            have hBoth :
+                (kPositions (finiteNeighbourhoodProfile H e w) 1).card = 2 := by
+              rw [hK]
+              decide
+            obtain ⟨phi,hFixed,hPhi⟩ :=
+              eppa_two_partial_host_is_wagner_fixed_base
+                H e heppa hOrder w hw hBoth hTransitive
+            right
+            refine ⟨rfl,rfl,phi,?_,hPhi⟩
+            simpa using hFixed
+          · have hOne : S.card = 1 := by omega
+            obtain ⟨j,k,hkPos,hkProper,hSlice,hUnique⟩ :=
+              unique_proper_partial_gives_unique_k P hOne
+            have hExtreme : k = 1 ∨ k + 1 = t :=
+              eppa_clique_degree_extreme_of_double
+                H e heppa hOrder w hw j k
+                  (by omega) hkPos hkProper hSlice
+            rcases hExtreme with hkOne | hkCo
+            · have hUniqueOne :
+                  (kPositions (finiteNeighbourhoodProfile H e w) 1).card = 1 := by
+                simpa [P,hkOne] using hUnique
+              obtain ⟨b,hEq⟩ :=
+                eppa_singleton_host_is_uniform_cover
+                  H e heppa hOrder w hw hUniqueOne hs ht hTransitive
+              left
+              refine ⟨balancedHostEquiv e
+                (saturatedSingletonOutsideEquiv
+                  H e heppa hOrder w hw hUniqueOne),
+                  .matching,b,?_,hEq⟩
+              intro x
+              simp
+            · have hkCosingleton : k = t - 1 := by omega
+              have hUniqueCo :
+                  (kPositions
+                    (finiteNeighbourhoodProfile H e w) (t - 1)).card = 1 := by
+                simpa [P,hkCosingleton] using hUnique
+              obtain ⟨b,hEq⟩ :=
+                eppa_cosingleton_host_is_uniform_cover
+                  H e heppa hOrder w hw hUniqueCo hs ht hTransitive
+              left
+              refine ⟨balancedHostEquiv e
+                (saturatedCoSingletonOutsideEquiv
+                  H e heppa hOrder (by omega) w hw hUniqueCo),
+                  .coMatching,b,?_,hEq⟩
+              intro x
+              simp
+        · have hNoPartial :
+              ∀ w : W, w ∉ Set.range e →
+                ∀ j : Fin s,
+                  (profileSlice (finiteNeighbourhoodProfile H e w) j).card = 0 ∨
+                  (profileSlice (finiteNeighbourhoodProfile H e w) j).card = t := by
+            intro w hw j
+            let P : Finset (Fin s × Fin t) :=
+              finiteNeighbourhoodProfile H e w
+            have hjNot : j ∉ properPartialPositions P := by
+              intro hj
+              exact hSome ⟨w,hw,⟨j,hj⟩⟩
+            let k := (profileSlice P j).card
+            have hBound : k ≤ t := by
+              have h := Finset.card_le_univ (profileSlice P j)
+              simpa [k] using h
+            by_cases hZero : k = 0
+            · exact Or.inl hZero
+            · have hkPos : 0 < k := by omega
+              have hkNotProper : ¬ k < t := by
+                intro hkLt
+                exact hjNot
+                  ((mem_properPartialPositions P j).mpr ⟨hkPos,hkLt⟩)
+              have hkEq : k = t := by omega
+              exact Or.inr hkEq
+          obtain ⟨phi,X,Y,hFixed,hEq⟩ :=
+            eppa_zero_partial_noncluster_host_is_uniform_cover_fixed_base
+              H e heppa hNoPartial (by omega) (by omega)
+              hOrder hTransitive hNonCluster
+          exact Or.inl ⟨phi,X,Y,hFixed,hEq⟩
 
 end EPPAIII.CliqueCovers
