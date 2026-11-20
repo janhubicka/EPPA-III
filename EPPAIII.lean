@@ -560,3 +560,4 @@ import EPPAIII.Primitive.RookPublishedRecognition
 import EPPAIII.Primitive.AffineRankThreeSourceAdapters
 import EPPAIII.Primitive.SporadicRankThreeSourceAdapters
 import EPPAIII.TwoGraphs.TwoGraphOrderFromGardiner
+import EPPAIII.CliqueCovers.Lemma61ClaimPreservingAudit
