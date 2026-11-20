@@ -1567,3 +1567,4 @@ import EPPAIII
 #print axioms EPPAIII.TwoGraphs.homogeneous_two_graph_nontrivial_descendant_of_gardiner
 #print axioms EPPAIII.TwoGraphs.homogeneous_two_graph_nontrivial_order_of_gardiner
 #print axioms EPPAIII.Primitive.homogeneousTwoGraphOrderRecognition_of_gardiner
+#print axioms EPPAIII.DoubleCover.dbw02_claim514_515_canonical_audit
